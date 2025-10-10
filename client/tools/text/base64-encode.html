@@ -1,0 +1,199 @@
+<!-- File: tools/text/base64-encode.html -->
+<style>
+    .b64-textarea {
+        background-color: #FDFBF5;
+        border: 2px solid #EAE3D5;
+        border-radius: 0.5rem;
+        padding: 1rem;
+        width: 90%;
+        min-width: 320px;
+        max-width: 700px;
+        height: 80px;
+        color: #4A4A4A;
+        font-size: 1.1rem;
+        line-height: 1.6;
+        transition: all 0.2s;
+        resize: none;
+        overflow: auto;
+        box-sizing: border-box;
+        margin: 0 auto 1.2rem auto;
+        display: block;
+    }
+    .b64-textarea:focus {
+        outline: none;
+        border-color: #D9534F;
+        box-shadow: 0 0 0 3px rgba(217, 83, 79, 0.2);
+    }
+    .b64-options-box {
+        margin: 0 auto 1.5rem auto;
+        padding: 1.2rem 1.5rem;
+        background-color: #FDFBF5;
+        border-radius: 0.5rem;
+        border: 1px solid #EAE3D5;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.2rem;
+        align-items: center;
+        justify-content: center;
+        max-width: 700px;
+    }
+    .b64-label {
+        font-weight: 600;
+        color: #D9534F;
+        margin-right: 0.5rem;
+    }
+    .b64-input, .b64-select {
+        padding: 0.3rem 0.7rem;
+        border-radius: 0.4rem;
+        border: 1px solid #EAE3D5;
+        font-size: 1rem;
+        margin-right: 0.5rem;
+    }
+    .b64-toggle {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 1rem;
+        font-weight: 600;
+        color: #D9534F;
+    }
+    .b64-toggle input[type=checkbox] {
+        accent-color: #D9534F;
+        width: 1.2rem;
+        height: 1.2rem;
+    }
+    .b64-output-box {
+        margin: 2rem auto 0 auto;
+        background: #fff;
+        border: 2px solid #D9534F;
+        border-radius: 0.7rem;
+        padding: 1.2rem 1rem;
+        min-height: 80px;
+        color: #333;
+        font-size: 1.15rem;
+        font-family: 'Fira Code', monospace;
+        letter-spacing: 1px;
+        word-break: break-word;
+        overflow: auto;
+        max-width: 700px;
+        width: 90%;
+        text-align: left;
+    }
+    .b64-utility-bar {
+        margin-top: 2.5rem;
+        display: flex;
+        gap: 1.2rem;
+        justify-content: center;
+    }
+    .b64-utility-button {
+        background-color: #fff;
+        color: #D9534F;
+        font-weight: 600;
+        border: 2px solid #D9534F;
+        cursor: pointer;
+        padding: 0.7rem 2rem;
+        border-radius: 0.5rem;
+        transition: all 0.2s;
+        font-size: 1.1rem;
+    }
+    .b64-utility-button:hover {
+        background-color: #D9534F;
+        color: #fff;
+    }
+</style>
+<div>
+    <h2 class="handwritten text-5xl text-[#D9534F] mb-4">Base64 Encode & Decode</h2>
+    <div class="mb-6 p-6 bg-amber-50/70 rounded-lg border border-amber-200">
+        <p class="text-lg text-gray-800 font-bold mb-2">The Base64 Encode/Decode tool makes it easy to convert text or data to and from Base64 encoding. Instantly encode plain text, JSON, or binary data for safe transfer over the web, or decode Base64 back to readable text. Perfect for developers, data analysts, and anyone working with APIs, email, or encoded data. Supports multi-line input and optional line wrapping for MIME compatibility. Copy or download your result with a click!</p>
+        <ul class="list-disc list-inside text-gray-700 text-base">
+            <li>Encode and decode text to/from Base64 (for safe data transfer, web, and APIs)</li>
+            <li>Multi-line mode for lists of strings</li>
+            <li>Option to wrap encoded output at 76 characters (MIME standard)</li>
+            <li>Applications: web development, data transfer, email attachments, QR code generation, API payloads, debugging, and more</li>
+        </ul>
+    </div>
+    <textarea id="b64-input" class="b64-textarea" placeholder="Paste or type your text here..."></textarea>
+    <div class="b64-options-box">
+        <button id="b64-encode" class="b64-utility-button">Encode</button>
+        <button id="b64-decode" class="b64-utility-button">Decode</button>
+        <div class="b64-toggle">
+            <input type="checkbox" id="b64-multiline">
+            <label for="b64-multiline">Multi-line Mode</label>
+        </div>
+        <div class="b64-toggle">
+            <input type="checkbox" id="b64-wrap">
+            <label for="b64-wrap">Wrap at 76 chars</label>
+        </div>
+    </div>
+    <div class="b64-output-box" id="b64-output"></div>
+    <div class="b64-utility-bar">
+        <button id="b64-copy" class="b64-utility-button">Copy</button>
+        <button id="b64-download" class="b64-utility-button">Download</button>
+        <button id="b64-clear" class="b64-utility-button">Clear</button>
+    </div>
+</div>
+<script>
+function initializeBase64Encode() {
+    const b64Input = document.getElementById('b64-input');
+    const b64Output = document.getElementById('b64-output');
+    const btnEncode = document.getElementById('b64-encode');
+    const btnDecode = document.getElementById('b64-decode');
+    const btnCopy = document.getElementById('b64-copy');
+    const btnDownload = document.getElementById('b64-download');
+    const btnClear = document.getElementById('b64-clear');
+    const cbMultiline = document.getElementById('b64-multiline');
+    const cbWrap = document.getElementById('b64-wrap');
+    function encodeBase64(str) {
+        try {
+            return btoa(unescape(encodeURIComponent(str)));
+        } catch { return '' }
+    }
+    function decodeBase64(str) {
+        try {
+            return decodeURIComponent(escape(atob(str)));
+        } catch { return '' }
+    }
+    function wrap76(str) {
+        return str.replace(/(.{76})/g, '$1\n');
+    }
+    function process(action) {
+        let input = b64Input.value;
+        let result = '';
+        if (cbMultiline.checked) {
+            const lines = input.split(/\r?\n/);
+            result = lines.map(line => action === 'encode' ? encodeBase64(line) : decodeBase64(line)).join('\n');
+        } else {
+            result = action === 'encode' ? encodeBase64(input) : decodeBase64(input);
+        }
+        if (cbWrap.checked && action === 'encode') {
+            result = wrap76(result);
+        }
+        b64Output.textContent = result;
+    }
+    btnEncode.addEventListener('click', () => process('encode'));
+    btnDecode.addEventListener('click', () => process('decode'));
+    btnCopy.addEventListener('click', () => {
+        navigator.clipboard.writeText(b64Output.textContent).then(() => {
+            const orig = btnCopy.textContent;
+            btnCopy.textContent = 'Copied!';
+            setTimeout(() => { btnCopy.textContent = orig; }, 2000);
+        });
+    });
+    btnDownload.addEventListener('click', () => {
+        const blob = new Blob([b64Output.textContent], { type: 'text/plain' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'base64-encoded.txt';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    });
+    btnClear.addEventListener('click', () => {
+        b64Input.value = '';
+        b64Output.textContent = '';
+    });
+}
+initializeBase64Encode();
+</script>

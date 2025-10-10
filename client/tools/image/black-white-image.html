@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Black & White Image Converter - Free Photo Tool</title>
+  <meta name="description" content="Convert any photo to black and white instantly. Free, privacy-first, and easy to use. No uploads stored.">
+  <meta name="keywords" content="black and white converter, photo filter, image editor, free tool">
+  <meta name="author" content="YourName">
+  <!-- Open Graph tags -->
+  <meta property="og:title" content="Black & White Image Converter">
+  <meta property="og:description" content="Convert any photo to black and white instantly. Free, privacy-first, and easy to use. No uploads stored.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://yourwebsite.com/og-image.jpg">
+  
+  <style>
+    .black-white-tool body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; }
+    .black-white-tool main { display: block; }
+    .black-white-tool .reduce-size-container { max-width: 800px; margin: 3em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2em 1.5em 2.5em 1.5em; }
+    .black-white-tool .handwritten { font-family: 'Caveat', cursive; }
+    .black-white-tool .upload-area { border: 3px dashed #D9534F; border-radius: 1em; padding: 3em 2em; text-align: center; margin: 2em 0; background: #FDFBF5; transition: all 0.3s; cursor: pointer; }
+    .black-white-tool .upload-area:hover { background: #F0F8FF; border-color: #4682B4; }
+    .black-white-tool .upload-icon { font-size: 3em; color: #D9534F; margin-bottom: 1em; }
+    .black-white-tool .file-input { display: none; }
+    .black-white-tool .upload-btn { background: #D9534F; color: #fff; border: none; border-radius: 0.5em; padding: 1em 2em; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+    .black-white-tool .upload-btn:hover { background: #c9302c; }
+    .black-white-tool .choose-file-btn { background: #D9534F; color: #fff; border: none; border-radius: 0.5em; padding: 1em 2em; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+    .black-white-tool .choose-file-btn:hover { background: #c9302c; }
+    .black-white-tool .upload-area h3 { color: #333; margin-bottom: 1em; font-weight: 600; }
+    .black-white-tool .upload-area p { color: #666; margin-bottom: 1em; }
+    .black-white-tool .upload-area input[type="file"] { display: none; }
+    .black-white-tool .form-group { margin: 1.2em 0; }
+    .black-white-tool .form-label { font-weight: 600; margin-bottom: 0.5em; display: block; }
+    .black-white-tool .form-input { width: 100%; padding: 0.8em; border: 2px solid #EAE3D5; border-radius: 0.5em; font-size: 1em; margin-bottom: 1em; }
+    .black-white-tool .process-btn { background: #228B22; color: #fff; border: none; border-radius: 0.5em; padding: 1em 2em; font-weight: 600; cursor: pointer; transition: all 0.2s; width: 100%; font-size: 1.1em; }
+    .black-white-tool .process-btn:hover { background: #1e7e1e; }
+    .black-white-tool .result-section { margin-top: 2em; text-align: center; }
+    .black-white-tool .preview-image { max-width: 100%; max-height: 300px; border-radius: 0.5em; margin: 1em 0; }
+    .black-white-tool .preview-section { margin-top: 2em; text-align: center; display: none; }
+    .black-white-tool .preview-section h3 { color: #4682B4; margin-bottom: 1em; }
+    .black-white-tool .uploaded-preview { max-width: 100%; max-height: 300px; border-radius: 0.5em; margin: 1em 0; border: 2px solid #EAE3D5; }
+    .black-white-tool .clear-btn { background: #6c757d; color: #fff; border: none; border-radius: 0.5em; padding: 0.8em 1.5em; font-weight: 600; cursor: pointer; transition: all 0.2s; margin-left: 1em; }
+    .black-white-tool .clear-btn:hover { background: #5a6268; }
+    .black-white-tool .controls-section { display: none; margin: 2em 0; background: #FDFBF5; border-radius: 0.7em; padding: 1.2em; border: 1px solid #FFEAA7; }
+    .black-white-tool .controls-section h3 { color: #4682B4; margin-bottom: 1em; font-weight: 600; }
+    .black-white-tool .color-control { margin-bottom: 1.5em; }
+    .black-white-tool .color-control label { display: block; margin-bottom: 0.5em; color: #333; font-weight: 600; }
+    .black-white-tool .color-control input[type="color"] { width: 60px; height: 40px; border: 2px solid #EAE3D5; border-radius: 0.5em; cursor: pointer; padding: 0; }
+    .black-white-tool .output-preview { background: #FDFBF5; border-radius: 0.7em; padding: 1.2em; text-align: center; margin: 2em 0; border: 1px solid #FFEAA7; }
+    .black-white-tool .output-preview h3 { color: #4682B4; margin-bottom: 1em; font-weight: 600; }
+    .black-white-tool #live-preview-canvas { max-width: 100%; height: auto; border: 2px solid #EAE3D5; border-radius: 0.5em; margin: 1em 0; background: #fff; }
+    .black-white-tool .output-card { display: none; margin-top: 1.5em; }
+    .black-white-tool .btn-download { background: #228B22; color: #fff; border: none; border-radius: 0.5em; padding: 1em 2em; font-weight: 600; cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-block; margin-right: 1em; font-size: 1.1em; }
+    .black-white-tool .btn-download:hover { background: #1e7e1e; color: #fff; text-decoration: none; }
+    .black-white-tool .example-section { background: #FDFBF5; border: 1px solid #FFEAA7; border-radius: 0.7em; padding: 1.2em; margin: 2em 0; }
+    .black-white-tool .example-section h3 { color: #4682B4; margin-bottom: 0.5em; }
+    .black-white-tool .example-img { max-width: 120px; border-radius: 0.4em; margin: 0.5em; border: 1px solid #eee; }
+    .black-white-tool .feature-list { background: #FDFBF5; border-radius: 0.7em; padding: 1.2em; margin: 2em 0; border: 1px solid #FFEAA7; }
+    .black-white-tool .feature-list h3 { color: #4682B4; margin-bottom: 1em; font-weight: 600; }
+    .black-white-tool .feature-list ul { list-style: none; padding: 0; }
+    .black-white-tool .feature-list li { color: #333; margin-bottom: 0.7em; padding-left: 1.5em; position: relative; }
+    .black-white-tool .feature-list li:before { content: "✓"; color: #4682B4; font-weight: bold; position: absolute; left: 0; }
+    .black-white-tool .related-links { margin-top: 2em; font-size: 1em; }
+    .black-white-tool .related-links a { color: #D9534F; text-decoration: underline; margin-right: 1.2em; }
+    .black-white-tool .related-links a:hover { color: #357abd; }
+    .black-white-tool .step-list { margin: 1.2em 0 1.2em 1.2em; padding: 0; }
+    .black-white-tool .step-list li { margin-bottom: 0.7em; }
+    .black-white-tool .sr-only { position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden; }
+    .black-white-tool .upload-progress-bar { display: none; width: 100%; background: #F0F8FF; border-radius: 0.5em; margin-top: 1.2em; height: 1.5em; overflow: hidden; border: 1px solid #B0C4DE; position: relative; }
+    .black-white-tool .upload-progress-fill { height: 100%; width: 0; background: linear-gradient(90deg, #D9534F, #F0AD4E, #5BC0DE, #5CB85C, #A569BD); transition: width 0.2s; }
+    .black-white-tool .upload-progress-text { position: absolute; left: 50%; top: 0; transform: translateX(-50%); color: #333; font-weight: 600; line-height: 1.5em; font-size: 1em; }
+
+    @media (max-width: 600px) { .black-white-tool .reduce-size-container { padding: 1em 0.2em; } }
+  </style>
+</head>
+<body>
+<main>
+  <div class="black-white-tool">
+    <div class="reduce-size-container">
+    <header>
+      <h1 class="handwritten text-5xl text-[#D9534F] mb-4">Black & White Image Converter</h1>
+      <p style="font-size:1.2em; margin-bottom:1em;">Transform your photos into stunning black and white images with custom tinting. Fast, privacy-first, and free. No files are stored.</p>
+    </header>
+    <nav class="related-links" aria-label="Related image tools">
+      <strong>Related:</strong>
+      <a href="#image-compressor">Image Compressor</a>
+      <a href="#image-converter">Image Converter</a>
+      <a href="#grayscale-image">Grayscale Image</a>
+      <a href="#watermark-images">Watermark Images</a>
+    </nav>
+    <section aria-labelledby="instructions-title">
+      <div style="background:#FFF3CD; border:1px solid #FFD700; border-radius:0.7em; padding:1em; margin-bottom:1.2em; color:#B8860B; font-weight:bold; font-size:1.1em;">
+        🎨 <b>Transform your photos into stunning black & white masterpieces!</b> Create classic, vintage, or custom-tinted monochrome images with professional quality.
+      </div>
+
+      <section aria-labelledby="instructions-title" style="background: #F8FBFF; border-radius: 0.7em; padding: 1.5em; margin: 2em 0; border: 1px solid #4682B4;">
+        <h2 id="instructions-title" style="color:#4682B4; margin-bottom: 1em; font-size: 1.5em;">How to Use</h2>
+        <ol class="step-list" style="margin-left: 1.5em; line-height: 1.6;">
+          <li><strong style="color: #4682B4">Upload Your Image:</strong>
+            <ul style="margin: 0.5em 0 0.5em 1.5em; color: #666;">
+              <li>Drag & drop your photo into the upload area</li>
+              <li>Or click "Choose File" to browse</li>
+              <li>Supports JPG, PNG, and other common formats</li>
+            </ul>
+          </li>
+          <li><strong style="color: #4682B4">Customize Your Effect:</strong>
+            <ul style="margin: 0.5em 0 0.5em 1.5em; color: #666;">
+              <li>Choose a tint color for custom monochrome effects</li>
+              <li>Adjust settings to achieve your desired look</li>
+              <li>Preview changes in real-time</li>
+            </ul>
+          </li>
+          <li><strong style="color: #4682B4">Save Your Creation:</strong>
+            <ul style="margin: 0.5em 0 0.5em 1.5em; color: #666;">
+              <li>Click "Download" to save your black & white image</li>
+              <li>Original quality maintained</li>
+              <li>No watermarks added</li>
+            </ul>
+          </li>
+        </ol>
+      </section>
+    
+      <section class="example-section" style="background: #FDFBF5; border: 1px solid #FFEAA7; border-radius: 0.7em; padding: 1.5em; margin: 2em 0;">
+        <h3 style="color: #4682B4; margin-bottom: 1em;">Creative Effects Guide</h3>
+        
+        <div style="margin-bottom: 1.5em;">
+          <h4 style="color: #FF6B6B; margin-bottom: 0.5em;">🎭 Classic Black & White</h4>
+          <ul style="color: #666; margin-left: 1.2em;">
+            <li>Pure black and white for timeless photos</li>
+            <li>Perfect for portraits and architecture</li>
+            <li>Maximum contrast for dramatic effect</li>
+          </ul>
+        </div>
+        
+        <div style="margin-bottom: 1.5em;">
+          <h4 style="color: #FF6B6B; margin-bottom: 0.5em;">🌅 Vintage Sepia</h4>
+          <ul style="color: #666; margin-left: 1.2em;">
+            <li>Warm brown tints for antique look</li>
+            <li>Ideal for landscape photography</li>
+            <li>Creates nostalgic atmosphere</li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 style="color: #FF6B6B; margin-bottom: 0.5em;">💡 Pro Tips</h4>
+          <ul style="color: #666; margin-left: 1.2em;">
+            <li>High contrast images work best</li>
+            <li>Try different tint colors for unique effects</li>
+            <li>Experiment with cool and warm tones</li>
+            <li>Consider the mood you want to create</li>
+            <li>White tint creates classic black & white photos</li>
+        <li>Sepia tint (#DEB887) gives a vintage, warm look</li>
+        <li>Blue tint creates cool, modern monochrome effects</li>
+        <li>All processing is done in your browser for privacy</li>
+          </ul>
+        </div>
+      </section>
+        
+      </ul>
+    </section>
+    <section aria-labelledby="privacy-title">
+      <h2 id="privacy-title" style="color:#D9534F;">Privacy Notice</h2>
+      <div style="background: #FFF3CD; border: 1px solid #FFEAA7; border-radius: 0.5em; padding: 1em; margin: 1em 0; font-size: 0.95em; color: #856404;">
+        <strong>🔒 Your files are never uploaded or stored. All processing happens in your browser.</strong>
+      </div>
+    </section>
+    <section aria-labelledby="black-white-converter-title">
+      <h2 id="black-white-converter-title" class="sr-only">Black & White Converter Interface</h2>
+      <div class="upload-area" id="upload-area" tabindex="0" aria-label="Upload photo area. Drag and drop or click to select a photo.">
+        <div class="upload-icon" aria-hidden="true">🖼️</div>
+        <h3>Drag & Drop your photo here</h3>
+        <p>or click to browse files</p>
+        <input type="file" id="file-input" class="file-input" accept="image/*" aria-label="Choose photo file">
+        <button class="upload-btn" id="choose-file-btn" style="display:block; margin: 0 auto 1.5em auto;" aria-label="Choose File">Choose File</button>
+        
+        <!-- Progress bar added here -->
+        <div class="upload-progress-bar" id="upload-progress-bar">
+          <div class="upload-progress-fill" id="upload-progress-fill"></div>
+          <span class="upload-progress-text" id="upload-progress-text">Uploading: 0%</span>
+        </div>
+      </div>
+
+      <!-- Preview Section -->
+      <div class="preview-section" id="preview-section">
+        <h3><i class="fas fa-image"></i> Uploaded Image <button class="clear-btn" id="clear-btn">Clear</button></h3>
+        <img id="preview-image" alt="Uploaded preview" class="uploaded-preview">
+      </div>
+
+      <!-- Image Description Section -->
+      <div class="image-description" id="image-description" style="display: none; background: #E8F5E8; border: 2px solid #5CB85C; border-radius: 0.7em; padding: 1.2em; margin: 1.5em 0; text-align: center;">
+        <div style="font-size: 1.5em; color: #228B22; margin-bottom: 0.5em;">📸</div>
+        <div style="font-size: 1.1em; color: #228B22; font-weight: 600; margin-bottom: 0.5em;">Image Uploaded Successfully!</div>
+        <div style="color: #666; font-size: 0.95em;" id="image-info">Ready for black & white conversion</div>
+      </div>
+
+      <!-- Controls Section -->
+      <div class="controls-section" id="controls-section">
+        <h3><i class="fas fa-sliders-h"></i> Conversion Settings</h3>
+        
+        <div class="color-control">
+          <label for="bw-color">Black & White Tint Color:</label>
+          <input type="color" id="bw-color" value="#FFFFFF">
+        </div>
+        
+        <div class="form-group">
+          <button class="clear-btn" id="clear-form-btn">Clear Form</button>
+        </div>
+      </div>
+
+      <!-- Output Preview -->
+      <div class="output-preview" id="output-preview" style="display: none;">
+        <h3><i class="fas fa-eye"></i> Live Preview</h3>
+        <canvas id="live-preview-canvas" width="413" height="531"></canvas>
+        
+        <div class="output-card" id="output-card">
+          <a href="#" class="btn-download" id="download-link">
+            <i class="fas fa-download"></i> Download Black & White Image
+          </a>
+          <button class="clear-btn" id="download-clear-btn">Start Over</button>
+        </div>
+      </div>
+
+      <!-- Features -->
+      <div class="feature-list">
+        <h3><i class="fas fa-star"></i> Key Features</h3>
+        <ul>
+          <li>Instant black and white conversion</li>
+          <li>Custom tint color options</li>
+          <li>Live preview before download</li>
+          <li>High-quality output</li>
+          <li>Privacy-first - no uploads stored</li>
+          <li>Works on all devices</li>
+          <li>No registration required</li>
+        </ul>
+      </div>
+    </section>
+    </div> <!-- Close black-white-tool wrapper -->
+  </div>
+</main>
+
+<script>
+// Black & White Image Tool - Clean initialization
+(function() {
+  'use strict';
+  
+  let uploadedImage = null;
+  let previewImage = null;
+  let bwColor = '#FFFFFF';
+  let isInitialized = false;
+  let isProcessing = false; // Added to manage process state
+
+  // Global initialization function for the main app
+  window.initializeBlackWhiteImageTool = function() {
+    console.log('🎨 Initializing Black & White tool...');
+    reset();
+    init();
+  };
+
+  function reset() {
+    console.log('Resetting tool state...');
+    uploadedImage = null;
+    previewImage = null;
+    bwColor = '#FFFFFF';
+    isInitialized = false;
+    isProcessing = false;
+    
+    // Reset UI elements
+    const elements = {
+      uploadArea: document.getElementById('upload-area'),
+      previewSection: document.getElementById('preview-section'),
+      controlsSection: document.getElementById('controls-section'),
+      outputPreview: document.getElementById('output-preview'),
+      imageDescription: document.getElementById('image-description'),
+      bwColorInput: document.getElementById('bw-color'),
+      fileInput: document.getElementById('file-input'),
+      outputCard: document.getElementById('output-card'),
+      uploadProgressBar: document.getElementById('upload-progress-bar'),
+      previewImg: document.getElementById('preview-image'),
+      downloadLink: document.getElementById('download-link')
+    };
+    
+    if (elements.uploadArea) elements.uploadArea.style.display = 'block';
+    if (elements.previewSection) elements.previewSection.style.display = 'none';
+    if (elements.controlsSection) elements.controlsSection.style.display = 'none';
+    if (elements.outputPreview) elements.outputPreview.style.display = 'none';
+    if (elements.imageDescription) elements.imageDescription.style.display = 'none';
+    if (elements.outputCard) elements.outputCard.style.display = 'none';
+    if (elements.uploadProgressBar) elements.uploadProgressBar.style.display = 'none';
+
+    if (elements.bwColorInput) elements.bwColorInput.value = '#FFFFFF';
+    if (elements.fileInput) elements.fileInput.value = '';
+    if (elements.previewImg) elements.previewImg.src = '';
+    if (elements.downloadLink) elements.downloadLink.href = '#';
+
+    // Clear canvas
+    const canvas = document.getElementById('live-preview-canvas');
+    if (canvas) {
+      const ctx = canvas.getContext('2d');
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = '#fff';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+    }
+  }
+
+  function init() {
+    if (isInitialized) {
+      console.log('Already initialized');
+      return;
+    }
+
+    console.log('Setting up event listeners...');
+    
+    // Get elements
+    const uploadArea = document.getElementById('upload-area');
+    const fileInput = document.getElementById('file-input');
+    const chooseFileBtn = document.getElementById('choose-file-btn');
+    const bwColorInput = document.getElementById('bw-color');
+    
+    if (!uploadArea || !fileInput || !chooseFileBtn) {
+      console.error('Critical elements missing:', {
+        uploadArea: !!uploadArea,
+        fileInput: !!fileInput,
+        chooseFileBtn: !!chooseFileBtn
+      });
+      setTimeout(init, 100); // Retry
+      return;
+    }
+
+    // Remove old listeners by cloning to prevent duplicates
+    [uploadArea, fileInput, chooseFileBtn].forEach(el => {
+      if (el && el.parentNode) {
+        const newEl = el.cloneNode(true);
+        el.parentNode.replaceChild(newEl, el);
+      }
+    });
+
+    // Re-get elements after cloning
+    const newUploadArea = document.getElementById('upload-area');
+    const newFileInput = document.getElementById('file-input');
+    const newChooseFileBtn = document.getElementById('choose-file-btn');
+    const newBwColorInput = document.getElementById('bw-color');
+    const newDownloadLink = document.getElementById('download-link');
+
+    // Click handlers
+    if (newChooseFileBtn) {
+      newChooseFileBtn.onclick = function(e) {
+        e.preventDefault();
+        if (!isProcessing) {
+          console.log('🖱️ Choose file clicked');
+          newFileInput.click();
+        }
+      };
+    }
+
+    if (newUploadArea) {
+      newUploadArea.onclick = function(e) {
+        if (e.target !== newChooseFileBtn && !isProcessing) {
+          console.log('🖱️ Upload area clicked');
+          newFileInput.click();
+        }
+      };
+    }
+
+    // File input change
+    if (newFileInput) {
+      newFileInput.onchange = function(e) {
+        if (e.target.files.length > 0) {
+          const file = e.target.files[0];
+          console.log('📁 File selected:', file.name);
+          if (!isProcessing) {
+            startUploadProgress(file);
+          }
+          e.target.value = '';
+        }
+      };
+    }
+
+    // Color input
+    if (newBwColorInput) {
+      newBwColorInput.oninput = function(e) {
+        bwColor = e.target.value;
+        updatePreview();
+      };
+    }
+
+    // Drag and drop
+    if (newUploadArea) {
+      newUploadArea.ondragover = function(e) {
+        e.preventDefault();
+        if (!isProcessing) {
+          newUploadArea.style.backgroundColor = '#F0F8FF';
+          newUploadArea.style.borderColor = '#4682B4';
+        }
+      };
+
+      newUploadArea.ondragleave = function(e) {
+        newUploadArea.style.backgroundColor = '#FDFBF5';
+        newUploadArea.style.borderColor = '#D9534F';
+      };
+
+      newUploadArea.ondrop = function(e) {
+        e.preventDefault();
+        newUploadArea.style.backgroundColor = '#FDFBF5';
+        newUploadArea.style.borderColor = '#D9534F';
+        if (!isProcessing && e.dataTransfer.files.length > 0) {
+          startUploadProgress(e.dataTransfer.files[0]);
+        }
+      };
+    }
+
+    // Clear buttons
+    ['clear-btn', 'clear-form-btn', 'download-clear-btn'].forEach(id => {
+      const btn = document.getElementById(id);
+      if (btn) btn.onclick = reset;
+    });
+
+    // Download button
+    if (newDownloadLink) {
+      newDownloadLink.onclick = function(e) {
+        e.preventDefault();
+        downloadImage();
+      };
+    }
+
+    isInitialized = true;
+    console.log('✅ Black & White tool initialized successfully');
+  }
+
+  function startUploadProgress(file) {
+    if (isProcessing) return;
+    const uploadProgressBar = document.getElementById('upload-progress-bar');
+    const uploadProgressFill = document.getElementById('upload-progress-fill');
+    const uploadProgressText = document.getElementById('upload-progress-text');
+    
+    if (!uploadProgressBar || !uploadProgressFill || !uploadProgressText) {
+      handleFile(file);
+      return;
+    }
+
+    // Hide other sections while "uploading"
+    const previewSection = document.getElementById('preview-section');
+    const controlsSection = document.getElementById('controls-section');
+    const outputPreview = document.getElementById('output-preview');
+    if (previewSection) previewSection.style.display = 'none';
+    if (controlsSection) controlsSection.style.display = 'none';
+    if (outputPreview) outputPreview.style.display = 'none';
+    
+    isProcessing = true;
+    uploadProgressBar.style.display = 'block';
+    uploadProgressFill.style.width = '0%';
+    uploadProgressText.textContent = 'Uploading: 0%';
+
+    let percent = 0;
+    const duration = 800 + Math.random() * 400; // 0.8s - 1.2s
+    const start = Date.now();
+    function animate() {
+      percent = Math.min(100, Math.round(((Date.now() - start) / duration) * 100));
+      uploadProgressFill.style.width = percent + '%';
+      uploadProgressText.textContent = 'Uploading: ' + percent + '%';
+      if (percent < 100) {
+        requestAnimationFrame(animate);
+      } else {
+        setTimeout(() => {
+          uploadProgressBar.style.display = 'none';
+          handleFile(file);
+        }, 200);
+      }
+    }
+    animate();
+  }
+
+  function handleFile(file) {
+    if (!file.type.startsWith('image/')) {
+      alert('❌ Please upload a valid image file.');
+      isProcessing = false;
+      return;
+    }
+    
+    if (file.size > 10 * 1024 * 1024) {
+      alert('❌ File size must be less than 10 MB.');
+      isProcessing = false;
+      return;
+    }
+
+    uploadedImage = file;
+    const reader = new FileReader();
+    
+    reader.onload = function(e) {
+      const previewImg = document.getElementById('preview-image');
+      if (previewImg) previewImg.src = e.target.result;
+      
+      const uploadArea = document.getElementById('upload-area');
+      const previewSection = document.getElementById('preview-section');
+      const controlsSection = document.getElementById('controls-section');
+      const outputPreview = document.getElementById('output-preview');
+      const imageDescription = document.getElementById('image-description');
+      const imageInfo = document.getElementById('image-info');
+      
+      if (uploadArea) uploadArea.style.display = 'none';
+      if (previewSection) previewSection.style.display = 'block';
+      if (controlsSection) controlsSection.style.display = 'block';
+      if (outputPreview) outputPreview.style.display = 'block';
+      
+      if (imageDescription) {
+        imageDescription.style.display = 'block';
+        if (imageInfo) {
+          const fileSize = (file.size / 1024).toFixed(1);
+          imageInfo.textContent = `${file.name} (${fileSize} KB) - Ready for conversion`;
+        }
+      }
+      
+      previewImage = new Image();
+      previewImage.onload = updatePreview;
+      previewImage.onerror = () => {
+        alert('Error loading image. Please try a different file.');
+        isProcessing = false;
+      };
+      previewImage.src = e.target.result;
+      
+      isProcessing = false;
+    };
+    
+    reader.onerror = () => {
+      alert('Error reading file. Please try again.');
+      isProcessing = false;
+    };
+
+    reader.readAsDataURL(file);
+  }
+
+  function updatePreview() {
+    const canvas = document.getElementById('live-preview-canvas');
+    if (!canvas || !previewImage) return;
+    
+    const ctx = canvas.getContext('2d');
+    const w = 413, h = 531;
+    
+    ctx.clearRect(0, 0, w, h);
+    ctx.fillStyle = '#fff';
+    ctx.fillRect(0, 0, w, h);
+    
+    ctx.drawImage(previewImage, 0, 0, w, h);
+    const imageData = ctx.getImageData(0, 0, w, h);
+    const data = imageData.data;
+    
+    const tint = hexToRgb(bwColor);
+    for (let i = 0; i < data.length; i += 4) {
+      const gray = (data[i] + data[i+1] + data[i+2]) / 3;
+      data[i] = gray * (tint.r / 255);
+      data[i+1] = gray * (tint.g / 255);
+      data[i+2] = gray * (tint.b / 255);
+    }
+    
+    ctx.putImageData(imageData, 0, 0);
+    
+    const outputCard = document.getElementById('output-card');
+    if (outputCard) outputCard.style.display = 'block';
+  }
+
+  function hexToRgb(hex) {
+    hex = hex.replace('#', '');
+    if (hex.length === 3) {
+      hex = hex.split('').map(x => x + x).join('');
+    }
+    const num = parseInt(hex, 16);
+    return {
+      r: (num >> 16) & 255,
+      g: (num >> 8) & 255,
+      b: num & 255
+    };
+  }
+
+  function downloadImage() {
+    if (!uploadedImage) {
+      alert('❌ Please upload an image first.');
+      return;
+    }
+    
+    const canvas = document.getElementById('live-preview-canvas');
+    if (!canvas) return;
+    
+    canvas.toBlob(function(blob) {
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `black-white-${uploadedImage.name.split('.')[0]}.png`;
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(() => {
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      }, 100);
+    }, 'image/png');
+  }
+
+  // Auto-initialize if DOM is ready
+  if (document.readyState !== 'loading') {
+    setTimeout(init, 50);
+  } else {
+    document.addEventListener('DOMContentLoaded', function() {
+      setTimeout(init, 50);
+    });
+  }
+
+})();
+</script>
+</body>
+</html>

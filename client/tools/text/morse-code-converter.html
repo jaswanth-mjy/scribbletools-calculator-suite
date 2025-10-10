@@ -1,0 +1,337 @@
+<!-- File: tools/text/morse-code-converter.html -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.77/Tone.js"></script>
+<style>
+    .mc-container { max-width: 700px; margin: 0 auto; }
+    .mc-textarea { background-color: #FDFBF5; border: 2px solid #EAE3D5; border-radius: 0.5rem; padding: 1rem; width: 100%; color: #4A4A4A; font-family: monospace; font-size: 1.1rem; resize: none; min-height: 80px; max-height: 180px; overflow: auto; }
+    .mc-textarea:focus { outline: none; border-color: #D9534F; box-shadow: 0 0 0 3px rgba(217, 83, 79, 0.2); }
+    .mc-controls-bar { display: flex; flex-wrap: wrap; gap: 0.7rem 1.2rem; align-items: center; justify-content: center; margin: 1.5rem 0 0.5rem 0; }
+    .mc-btn { background: #fff; color: #D9534F; border: 2px solid #D9534F; border-radius: 0.5rem; padding: 0.5rem 1.2rem; font-weight: 600; font-size: 1.1rem; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 0.5rem; }
+    .mc-btn.active, .mc-btn:hover { background: #D9534F; color: #fff; }
+    .mc-sliders-row { display: flex; flex-wrap: wrap; gap: 1.2rem; align-items: center; justify-content: center; margin: 1.2rem 0 0.5rem 0; }
+    .mc-slider-label { font-weight: 600; color: #9CA3AF; font-size: 0.98rem; margin-right: 0.3rem; }
+    .mc-slider { width: 120px; accent-color: #D9534F; }
+    .mc-utility-bar { margin-top: 2.5rem; display: flex; gap: 1.2rem; justify-content: center; }
+    .mc-utility-button { background-color: #fff; color: #D9534F; font-weight: 600; border: 2px solid #D9534F; cursor: pointer; padding: 0.7rem 2rem; border-radius: 0.5rem; transition: all 0.2s; font-size: 1.1rem; }
+    .mc-utility-button:hover { background-color: #D9534F; color: #fff; }
+    .mc-output-box { margin: 2rem auto 0 auto; background: #fff; border: 2px solid #D9534F; border-radius: 0.7rem; padding: 1.2rem 1rem; min-height: 80px; color: #333; font-size: 1.15rem; font-family: 'Fira Code', monospace; letter-spacing: 1px; word-break: break-word; overflow: auto; max-width: 700px; width: 90%; text-align: left; }
+    .mc-convert-bar { display: flex; gap: 1.2rem; justify-content: center; margin: 1.2rem 0 0.5rem 0; }
+    .mc-convert-btn { background: #fff; color: #D9534F; border: 2px solid #D9534F; border-radius: 0.5rem; padding: 0.5rem 1.2rem; font-weight: 600; font-size: 1.1rem; cursor: pointer; transition: all 0.2s; }
+    .mc-convert-btn.active, .mc-convert-btn:hover { background: #D9534F; color: #fff; }
+    .mc-controls-bar.hidden { display: none !important; }
+    .mc-sliders-row.hidden { display: none !important; }
+</style>
+<div class="mc-container">
+    <h2 class="handwritten text-5xl text-[#D9534F] mb-4">Morse Code Converter</h2>
+    <div class="mb-6 p-6 bg-amber-50/70 rounded-lg border border-amber-200">
+        <p class="text-lg text-gray-800 font-bold mb-2">The Morse Code tool lets you convert text to Morse code, play it as sound, light, or vibration, and customize speed, pitch, and volume. Save your Morse as audio, share a link, or use it for creative gifts like T-shirts, mugs, clocks, and cards. Perfect for learning, fun, accessibility, or sending secret messages!</p>
+        <ul class="list-disc list-inside text-gray-700 text-base">
+            <li>Convert text to and from Morse code</li>
+            <li>Play, pause, stop, repeat, and loop Morse code as sound</li>
+            <li>Toggle sound, light, and vibration (if supported)</li>
+            <li>Configure speed (WPM), pitch (Hz), and volume</li>
+            <li>Applications: learning Morse, fun, accessibility, secret messages and more</li>
+        </ul>
+    </div>
+    <label for="mc-text-input" class="block text-lg font-medium text-gray-700 mb-2">Input:</label>
+    <textarea id="mc-text-input" class="mc-textarea" rows="5" placeholder="Type text or Morse code here..."></textarea>
+    <div class="mc-convert-bar">
+        <button id="mc-to-morse-btn" class="mc-convert-btn active">Text to Morse</button>
+        <button id="mc-to-text-btn" class="mc-convert-btn">Morse to Text</button>
+    </div>
+    <label for="mc-morse-output" class="block text-lg font-medium text-gray-700 mb-2">Output:</label>
+    <textarea id="mc-morse-output" class="mc-textarea" rows="5" readonly placeholder="The translated message appears here..."></textarea>
+    <div class="mc-controls-bar" id="mc-controls-bar">
+        <button id="mc-play-btn" class="mc-btn" title="Play">▶️ Play</button>
+        <button id="mc-stop-btn" class="mc-btn" title="Stop">⏹️ Stop</button>
+        <button id="mc-sound-btn" class="mc-btn active" title="Sound">🔊 Sound</button>
+        <button id="mc-light-btn" class="mc-btn active" title="Light">💡 Light</button>
+    </div>
+    <div class="mc-sliders-row" id="mc-sliders-row">
+        <label for="mc-speed" class="mc-slider-label">Speed</label>
+        <input id="mc-speed" class="mc-slider" type="range" min="10" max="40" value="24">
+        <label for="mc-pitch" class="mc-slider-label">Pitch</label>
+        <input id="mc-pitch" class="mc-slider" type="range" min="200" max="1200" value="550">
+        <label for="mc-volume" class="mc-slider-label">Volume</label>
+        <input id="mc-volume" class="mc-slider" type="range" min="0" max="100" value="80">
+    </div>
+    <div class="mc-utility-bar">
+        <button id="mc-copy" class="mc-utility-button">Copy</button>
+        <button id="mc-download" class="mc-utility-button">Download</button>
+        <button id="mc-clear" class="mc-utility-button">Clear</button>
+    </div>
+</div>
+<script>
+// Morse code map
+const morseMap = {
+    'A': '.-',    'B': '-...',  'C': '-.-.',  'D': '-..',   'E': '.',
+    'F': '..-.',  'G': '--.',   'H': '....',  'I': '..',    'J': '.---',
+    'K': '-.-',   'L': '.-..',  'M': '--',    'N': '-.',    'O': '---',
+    'P': '.--.',  'Q': '--.-',  'R': '.-.',   'S': '...',   'T': '-',
+    'U': '..-',   'V': '...-',  'W': '.--',   'X': '-..-',  'Y': '-.--',
+    'Z': '--..',  '0': '-----', '1': '.----', '2': '..---', '3': '...--',
+    '4': '....-', '5': '.....', '6': '-....', '7': '--...', '8': '---..',
+    '9': '----.', '.': '.-.-.-', ',': '--..--', '?': '..--..', "'": '.----.',
+    '!': '-.-.--', '/': '-..-.', '(': '-.--.', ')': '-.--.-', '&': '.-...',
+    ':': '---...', ';': '-.-.-.', '=': '-...-', '+': '.-.-.', '-': '-....-',
+    '_': '..--.-', '"': '.-..-.', '$': '...-..-', '@': '.--.-.', ' ': '/'
+};
+const reverseMorseMap = Object.fromEntries(Object.entries(morseMap).map(([k,v])=>[v,k]));
+
+// Improved Morse encoding: preserve word boundaries
+function encodeMorse(text) {
+    return text
+        .toUpperCase()
+        .split(' ')
+        .map(word =>
+            word.split('').map(c => morseMap[c] || '').join(' ')
+        )
+        .join(' / ');
+}
+
+// Improved Morse decoding: handle word boundaries and unknown codes
+function decodeMorse(morse) {
+    return morse
+        .trim()
+        .split(' / ')
+        .map(
+            word => word
+                .split(' ')
+                .map(code => reverseMorseMap[code] || '')
+                .join('')
+        )
+        .join(' ');
+}
+
+function initializeMorseCodeTool() {
+    const textInput = document.getElementById('mc-text-input');
+    const morseOutput = document.getElementById('mc-morse-output');
+    const playBtn = document.getElementById('mc-play-btn');
+    const stopBtn = document.getElementById('mc-stop-btn');
+    const soundBtn = document.getElementById('mc-sound-btn');
+    const lightBtn = document.getElementById('mc-light-btn');
+    const copyBtn = document.getElementById('mc-copy');
+    const downloadBtn = document.getElementById('mc-download');
+    const clearBtn = document.getElementById('mc-clear');
+    const toMorseBtn = document.getElementById('mc-to-morse-btn');
+    const toTextBtn = document.getElementById('mc-to-text-btn');
+    const sliders = {
+        speed: document.getElementById('mc-speed'),
+        pitch: document.getElementById('mc-pitch'),
+        volume: document.getElementById('mc-volume'),
+    };
+    const controlsBar = document.getElementById('mc-controls-bar');
+    const slidersRow = document.getElementById('mc-sliders-row');
+    let synth;
+    let isPlaying = false;
+
+    // Utility function to reset play button state
+    function resetPlayButton() {
+        isPlaying = false;
+        playBtn.disabled = false;
+        playBtn.textContent = '▶️ Play';
+    }
+
+    // Helper: Show/hide playback controls
+    function setPlaybackControlsVisible(visible) {
+        if (visible) {
+            controlsBar.classList.remove('hidden');
+            slidersRow.classList.remove('hidden');
+        } else {
+            controlsBar.classList.add('hidden');
+            slidersRow.classList.add('hidden');
+        }
+    }
+
+    // Conversion direction logic
+    function activateToMorse() {
+        morseOutput.value = encodeMorse(textInput.value);
+        toMorseBtn.classList.add('active');
+        toTextBtn.classList.remove('active');
+        setPlaybackControlsVisible(true);
+    }
+    function activateToText() {
+        morseOutput.value = decodeMorse(textInput.value);
+        toTextBtn.classList.add('active');
+        toMorseBtn.classList.remove('active');
+        setPlaybackControlsVisible(false);
+    }
+
+    toMorseBtn.addEventListener('click', activateToMorse);
+    toTextBtn.addEventListener('click', activateToText);
+
+    // Auto-convert on input for better user experience
+    textInput.addEventListener('input', () => {
+        if (toMorseBtn.classList.contains('active')) {
+            morseOutput.value = encodeMorse(textInput.value);
+        } else if (toTextBtn.classList.contains('active')) {
+            morseOutput.value = decodeMorse(textInput.value);
+        }
+    });
+
+    soundBtn.addEventListener('click', () => soundBtn.classList.toggle('active'));
+    lightBtn.addEventListener('click', () => lightBtn.classList.toggle('active'));
+
+    if (copyBtn) copyBtn.addEventListener('click', () => {
+        navigator.clipboard.writeText(morseOutput.value).then(() => {
+            const orig = copyBtn.textContent;
+            copyBtn.textContent = 'Copied!';
+            setTimeout(() => { copyBtn.textContent = orig; }, 2000);
+        });
+    });
+    if (downloadBtn) downloadBtn.addEventListener('click', () => {
+        const blob = new Blob([morseOutput.value], { type: 'text/plain' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'morse-code.txt';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    });
+    if (clearBtn) clearBtn.addEventListener('click', () => {
+        textInput.value = '';
+        morseOutput.value = '';
+    });
+
+    // Playback logic
+    async function playSignal() {
+        // Only allow playback if in Text to Morse mode
+        if (!toMorseBtn.classList.contains('active')) return;
+        if (isPlaying) return;
+        
+        isPlaying = true;
+        playBtn.disabled = true;
+        playBtn.textContent = '⏸️ Playing...';
+        
+        try {
+            // Initialize Tone.js if needed
+            if (Tone.context.state !== 'running') {
+                await Tone.start();
+            }
+            
+            if (!synth) {
+                synth = new Tone.Synth({
+                    oscillator: {
+                        type: 'sine'
+                    },
+                    envelope: {
+                        attack: 0.01,
+                        decay: 0.1,
+                        sustain: 0.3,
+                        release: 0.01
+                    }
+                }).toDestination();
+            }
+            
+            const morseCode = morseOutput.value;
+            if (!morseCode.trim()) {
+                // Reset button immediately if no morse code
+                resetPlayButton();
+                return;
+            }
+            
+            const wpm = parseInt(sliders.speed.value);
+            const dotDuration = 1.2 / wpm; // Duration of a dot in seconds
+            const pitch = parseInt(sliders.pitch.value);
+            const volumeDb = -60 + (parseInt(sliders.volume.value) * 60 / 100); // Convert 0-100 to -60dB to 0dB
+            
+            synth.volume.value = volumeDb;
+            
+            let currentTime = Tone.now() + 0.1; // Small delay to ensure everything is ready
+            let totalDuration = 0; // Track total playback duration
+            
+            for (let i = 0; i < morseCode.length; i++) {
+                const char = morseCode[i];
+                
+                if (char === '.') {
+                    // Dot: short beep
+                    if (soundBtn.classList.contains('active')) {
+                        synth.triggerAttackRelease(pitch, dotDuration, currentTime);
+                    }
+                    currentTime += dotDuration + (dotDuration * 0.5); // Dot + inter-element gap
+                    
+                } else if (char === '-') {
+                    // Dash: long beep (3 times dot duration)
+                    if (soundBtn.classList.contains('active')) {
+                        synth.triggerAttackRelease(pitch, dotDuration * 3, currentTime);
+                    }
+                    currentTime += (dotDuration * 3) + (dotDuration * 0.5); // Dash + inter-element gap
+                    
+                } else if (char === ' ') {
+                    // Space between letters (3 dot durations total, minus 1 we already added)
+                    currentTime += dotDuration * 2.5;
+                    
+                } else if (char === '/') {
+                    // Space between words (7 dot durations total, minus gaps already added)
+                    currentTime += dotDuration * 6;
+                }
+            }
+            
+            totalDuration = currentTime - Tone.now();
+            
+            // Schedule the end of playback
+            Tone.Transport.scheduleOnce(() => {
+                resetPlayButton();
+                Tone.Transport.stop();
+            }, currentTime);
+            
+            // Start the transport
+            Tone.Transport.start();
+            
+            // Also set a timeout as a backup to ensure button resets
+            setTimeout(() => {
+                if (isPlaying) {
+                    resetPlayButton();
+                    Tone.Transport.stop();
+                }
+            }, totalDuration * 1000 + 1000); // Add 1 second buffer
+            
+        } catch (error) {
+            console.error('Audio playback error:', error);
+            resetPlayButton();
+            alert('Audio playback failed. Please try again or check your browser settings.');
+        }
+    }
+    
+    function stopSignal() {
+        try {
+            Tone.Transport.cancel();
+            Tone.Transport.stop();
+            if (synth) {
+                synth.triggerRelease();
+            }
+            resetPlayButton();
+        } catch (error) {
+            console.error('Error stopping audio:', error);
+            // Even if there's an error, reset the UI state
+            resetPlayButton();
+        }
+    }
+    playBtn.addEventListener('click', () => {
+        if (isPlaying) {
+            stopSignal();
+        } else {
+            playSignal();
+        }
+    });
+    stopBtn.addEventListener('click', stopSignal);
+
+    // Initialize: default to Text to Morse mode
+    setPlaybackControlsVisible(true);
+    
+    // Add click handler to unlock audio context on first user interaction
+    document.addEventListener('click', function unlockAudio() {
+        if (Tone.context.state !== 'running') {
+            Tone.start().then(() => {
+                console.log('Audio context started');
+            }).catch(err => {
+                console.error('Failed to start audio context:', err);
+            });
+        }
+        // Remove the listener after first interaction
+        document.removeEventListener('click', unlockAudio);
+    }, { once: true });
+}
+initializeMorseCodeTool();
+</script>

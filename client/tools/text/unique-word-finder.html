@@ -1,0 +1,132 @@
+<!-- File: tools/text/unique-word-finder.html -->
+<style>
+    .rdl-textarea {
+        background-color: #FDFBF5;
+        border: 2px solid #EAE3D5;
+        border-radius: 0.5rem;
+        padding: 1rem;
+        width: 90%;
+        min-width: 320px;
+        max-width: 700px;
+        height: 100px;
+        color: #4A4A4A;
+        font-size: 1.1rem;
+        line-height: 1.6;
+        transition: all 0.2s;
+        resize: none;
+        overflow: auto;
+        box-sizing: border-box;
+        margin: 0 auto 1.2rem auto;
+        display: block;
+    }
+    .rdl-textarea:focus {
+        outline: none;
+        border-color: #D9534F;
+        box-shadow: 0 0 0 3px rgba(217, 83, 79, 0.2);
+    }
+    .rdl-utility-bar {
+        margin-top: 2.5rem;
+        display: flex;
+        gap: 1.2rem;
+        justify-content: center;
+    }
+    .rdl-utility-button {
+        background-color: #fff;
+        color: #D9534F;
+        font-weight: 600;
+        border: 2px solid #D9534F;
+        cursor: pointer;
+        padding: 0.7rem 2rem;
+        border-radius: 0.5rem;
+        transition: all 0.2s;
+        font-size: 1.1rem;
+    }
+    .rdl-utility-button:hover {
+        background-color: #D9534F;
+        color: #fff;
+    }
+    .rdl-output-box {
+        margin: 2rem auto 0 auto;
+        background: #fff;
+        border: 2px solid #D9534F;
+        border-radius: 0.7rem;
+        padding: 1.2rem 1rem;
+        min-height: 80px;
+        color: #333;
+        font-size: 1.15rem;
+        font-family: 'Fira Code', monospace;
+        letter-spacing: 1px;
+        word-break: break-word;
+        overflow: auto;
+        max-width: 700px;
+        width: 90%;
+        text-align: left;
+    }
+    .unique-btn-bar {
+        display: flex;
+        justify-content: center;
+        gap: 1.2rem;
+        margin: 1.5rem 0 0.5rem 0;
+    }
+</style>
+<div>
+    <h2 class="handwritten text-5xl text-[#D9534F] mb-4">Unique Word Finder</h2>
+    <div class="mb-6 p-6 bg-amber-50/70 rounded-lg border border-amber-200">
+        <p class="text-lg text-gray-800 font-bold mb-2">Find all unique words in your text. Useful for vocabulary analysis, writing, and text processing.</p>
+        <ul class="list-disc list-inside text-gray-700 text-base">
+            <li>Extracts and lists all unique words (case-insensitive)</li>
+            <li>Applications: vocabulary analysis, writing, text processing</li>
+        </ul>
+    </div>
+    <textarea id="unique-input" class="rdl-textarea" placeholder="Paste or type your text here..."></textarea>
+    <div class="unique-btn-bar">
+        <button id="unique-find" class="rdl-utility-button">Find Unique Words</button>
+    </div>
+    <div class="rdl-output-box" id="unique-output"></div>
+    <div class="rdl-utility-bar">
+        <button id="unique-copy" class="rdl-utility-button">Copy</button>
+        <button id="unique-download" class="rdl-utility-button">Download</button>
+        <button id="unique-clear" class="rdl-utility-button">Clear</button>
+    </div>
+</div>
+<script>
+function findUniqueWords(text) {
+    const words = text.toLowerCase().match(/\b\w+\b/g) || [];
+    const unique = Array.from(new Set(words));
+    return unique.join(', ');
+}
+function initializeUniqueWordFinder() {
+    const input = document.getElementById('unique-input');
+    const output = document.getElementById('unique-output');
+    const btnFind = document.getElementById('unique-find');
+    const btnCopy = document.getElementById('unique-copy');
+    const btnDownload = document.getElementById('unique-download');
+    const btnClear = document.getElementById('unique-clear');
+    btnFind.addEventListener('click', () => {
+        output.textContent = findUniqueWords(input.value);
+    });
+    btnCopy.addEventListener('click', () => {
+        navigator.clipboard.writeText(output.textContent).then(() => {
+            const orig = btnCopy.textContent;
+            btnCopy.textContent = 'Copied!';
+            setTimeout(() => { btnCopy.textContent = orig; }, 2000);
+        });
+    });
+    btnDownload.addEventListener('click', () => {
+        const blob = new Blob([output.textContent], { type: 'text/plain' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'unique-words.txt';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    });
+    btnClear.addEventListener('click', () => {
+        input.value = '';
+        output.textContent = '';
+    });
+}
+initializeUniqueWordFinder();
+</script>

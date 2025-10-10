@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mortgage Payoff Calculator - Calculate Early Mortgage Payoff & Interest Savings</title>
+    <meta name="description" content="Free mortgage payoff calculator to see how extra payments can pay off your mortgage early. Calculate interest savings and payoff time with extra principal payments.">
+    <meta name="keywords" content="mortgage payoff calculator, early mortgage payoff, extra payment calculator, mortgage prepayment calculator, mortgage interest savings">
+    <meta name="author" content="ScribbleTools">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://scribbletools.net/client/tools/financial/mortgage-payoff-calculator.html">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://scribbletools.net/client/tools/financial/mortgage-payoff-calculator.html">
+    <meta property="og:title" content="Mortgage Payoff Calculator - Calculate Early Mortgage Payoff">
+    <meta property="og:description" content="Calculate how extra mortgage payments can save interest and pay off your loan early. Free mortgage payoff calculator with instant results.">
+    <meta property="og:image" content="https://scribbletools.net/assets/og-image.svg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://scribbletools.net/client/tools/financial/mortgage-payoff-calculator.html">
+    <meta property="twitter:title" content="Mortgage Payoff Calculator - Calculate Early Mortgage Payoff">
+    <meta property="twitter:description" content="Calculate how extra mortgage payments can save interest and pay off your loan early. Free calculator.">
+    <meta property="twitter:image" content="https://scribbletools.net/assets/og-image.svg">
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Mortgage Payoff Calculator",
+      "description": "Free online mortgage payoff calculator to calculate early payoff scenarios and interest savings with extra payments",
+      "url": "https://scribbletools.net/client/tools/financial/mortgage-payoff-calculator.html",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Web Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "ScribbleTools"
+      }
+    }
+    </script>
+    <style>
+        body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; }
+        .calc-container { max-width: 420px; margin: 3em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2em 1.5em 2.5em 1.5em; }
+        .handwritten { font-family: 'Caveat', cursive; }
+        .calc-label { font-weight: 600; margin-bottom: 0.5em; display: block; }
+        .calc-input { width: 100%; padding: 1em; border: 2px solid #EAE3D5; border-radius: 0.7em; font-size: 1.2em; margin-bottom: 1em; background: #FDFBF5; text-align: center; font-family: 'Fira Code', monospace; }
+        .calc-btn { background: #fff; color: #D9534F; border: 2px solid #D9534F; border-radius: 0.5em; padding: 0.7em 2em; font-weight: 600; font-size: 1.1em; cursor: pointer; transition: all 0.2s; margin-bottom: 1em; }
+        .calc-btn:hover { background: #D9534F; color: #fff; }
+        .calc-result { background: #FDFBF5; border: 2px solid #D9534F; border-radius: 0.7em; padding: 1em; font-size: 1.25em; color: #D9534F; min-height: 1.7em; margin-bottom: 1em; text-align: center; font-family: 'Fira Code', monospace; font-weight: bold; max-height: 300px; overflow-y: auto; word-break: break-word; transition: height 0.2s; }
+        .calc-desc { width: 100%; margin-top: 2em; background:#FDFBF5; border:2px solid #EAE3D5; border-radius:0.9em; padding:1.2em 1em; font-size:1.08em; color:#333; line-height:1.7; }
+        .calc-desc strong { color: #D9534F; font-size: 1.12em; }
+        @media (max-width: 600px) { .calc-container { padding: 1em 0.2em; } }
+    </style>
+</head>
+<body>
+<div class="calc-container">
+    <h2 class="handwritten text-5xl text-[#D9534F] mb-4">Mortgage Payoff Calculator</h2>
+    <label class="calc-label">Current Loan Balance ($):</label>
+    <input id="balance" class="calc-input" type="number" min="0" placeholder="e.g. 200000">
+    <label class="calc-label">Interest Rate (%):</label>
+    <input id="rate" class="calc-input" type="number" min="0" step="0.01" placeholder="e.g. 5">
+    <label class="calc-label">Monthly Payment ($):</label>
+    <input id="payment" class="calc-input" type="number" min="0" placeholder="e.g. 1200">
+    <button id="calc-btn" class="calc-btn">Calculate</button>
+    <div class="calc-result" id="calc-result"></div>
+</div>
+<div class="calc-desc" style="max-width: fit-content; margin: 2.5em auto 0 auto;">
+    <strong style="font-size:1.18em; color:#D9534F;">About the Mortgage Payoff Calculator</strong><br><br>
+    Instantly estimate how long it will take to pay off your mortgage and how much interest you’ll pay. Enter your current balance, interest rate, and monthly payment to see your payoff time and total interest. Great for homeowners, budgeting, or planning extra payments.<br><br>
+    <b>Note:</b> The data used in this calculator was last updated on July 30, 2024, and may change in the future.<br><br>
+    <b>Use Cases:</b>
+    <ul style="margin-left:1.2em;">
+        <li>Estimate your mortgage payoff date</li>
+        <li>See how extra payments affect your loan</li>
+        <li>Plan for refinancing or early payoff</li>
+        <li>Check homework or prepare for finance class</li>
+    </ul>
+</div>
+<script>
+function showResult(str) {
+    document.getElementById('calc-result').innerHTML = str;
+}
+document.getElementById('calc-btn').addEventListener('click', function() {
+    let balance = parseFloat(document.getElementById('balance').value);
+    let rate = parseFloat(document.getElementById('rate').value);
+    let payment = parseFloat(document.getElementById('payment').value);
+    if (isNaN(balance) || isNaN(rate) || isNaN(payment) || balance <= 0 || rate < 0 || payment <= 0) {
+        showResult('Please enter valid values for all fields.');
+        return;
+    }
+    let monthlyRate = rate / 100 / 12;
+    let n = Math.log(payment / (payment - balance * monthlyRate)) / Math.log(1 + monthlyRate);
+    let totalInterest = payment * n - balance;
+    showResult(`<b>Months to Payoff:</b> ${Math.ceil(n)}<br><b>Total Interest:</b> $${totalInterest.toFixed(2)}`);
+});
+</script>
+</body>
+</html>

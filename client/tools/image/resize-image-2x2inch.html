@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resize Image to 2×2 Inches - Perfect for Passport Photos</title>
+  <meta name="description" content="Resize your images to exactly 2×2 inches with customizable DPI. Perfect for passport photos, ID cards, and professional documents.">
+  <meta name="keywords" content="resize image, 2x2 inch, passport photo, ID card, photo resizer">
+  <meta name="author" content="YourName">
+  
+  <style>
+    .resize-2x2-tool body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; }
+    .resize-2x2-tool main { display: block; }
+    .resize-2x2-tool .reduce-size-container { max-width: 800px; margin: 3em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2em 1.5em 2.5em 1.5em; }
+    .resize-2x2-tool .handwritten { font-family: 'Caveat', cursive; }
+    .resize-2x2-tool .upload-area { border: 3px dashed #D9534F; border-radius: 1em; padding: 3em 2em; text-align: center; margin: 2em 0; background: #FDFBF5; transition: all 0.3s; cursor: pointer; }
+    .resize-2x2-tool .upload-area:hover { background: #F0F8FF; border-color: #4682B4; }
+    .resize-2x2-tool .upload-icon { font-size: 3em; color: #D9534F; margin-bottom: 1em; }
+    .resize-2x2-tool .file-input { display: none; }
+    .resize-2x2-tool .upload-btn { background: #D9534F; color: #fff; border: none; border-radius: 0.5em; padding: 1em 2em; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+    .resize-2x2-tool .upload-btn:hover { background: #c9302c; }
+    .resize-2x2-tool .choose-file-btn { background: #D9534F; color: #fff; border: none; border-radius: 0.5em; padding: 1em 2em; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+    .resize-2x2-tool .choose-file-btn:hover { background: #c9302c; }
+    .resize-2x2-tool .upload-area h3 { color: #333; margin-bottom: 1em; font-weight: 600; }
+    .resize-2x2-tool .upload-area p { color: #666; margin-bottom: 1em; }
+    .resize-2x2-tool .upload-area input[type="file"] { display: none; }
+    .resize-2x2-tool .form-group { margin: 1.2em 0; }
+    .resize-2x2-tool .form-label { font-weight: 600; margin-bottom: 0.5em; display: block; }
+    .resize-2x2-tool .form-input { width: 100%; padding: 0.8em; border: 2px solid #EAE3D5; border-radius: 0.5em; font-size: 1em; margin-bottom: 1em; }
+    .resize-2x2-tool .form-select { width: 100%; padding: 0.8em; border: 2px solid #EAE3D5; border-radius: 0.5em; font-size: 1em; margin-bottom: 1em; }
+    .resize-2x2-tool .process-btn { background: #228B22; color: #fff; border: none; border-radius: 0.5em; padding: 1em 2em; font-weight: 600; cursor: pointer; transition: all 0.2s; width: 100%; font-size: 1.1em; }
+    .resize-2x2-tool .process-btn:hover { background: #1e7e1e; }
+    .resize-2x2-tool .result-section { margin-top: 2em; text-align: center; }
+    .resize-2x2-tool .preview-image { max-width: 100%; max-height: 300px; border-radius: 0.5em; margin: 1em 0; }
+    .resize-2x2-tool .preview-section { margin-top: 2em; text-align: center; display: none; }
+    .resize-2x2-tool .preview-section h3 { color: #4682B4; margin-bottom: 1em; }
+    .resize-2x2-tool .uploaded-preview { max-width: 100%; max-height: 300px; border-radius: 0.5em; margin: 1em 0; border: 2px solid #EAE3D5; }
+    .resize-2x2-tool .clear-btn { background: #6c757d; color: #fff; border: none; border-radius: 0.5em; padding: 0.8em 1.5em; font-weight: 600; cursor: pointer; transition: all 0.2s; margin-left: 1em; }
+    .resize-2x2-tool .clear-btn:hover { background: #5a6268; }
+    .resize-2x2-tool .controls-section { display: none; margin: 2em 0; background: #FDFBF5; border-radius: 0.7em; padding: 1.2em; border: 1px solid #FFEAA7; }
+    .resize-2x2-tool .controls-section h3 { color: #4682B4; margin-bottom: 1em; font-weight: 600; }
+    .resize-2x2-tool .control-group { margin-bottom: 1.5em; }
+    .resize-2x2-tool .control-group label { display: block; margin-bottom: 0.5em; color: #333; font-weight: 600; }
+    .resize-2x2-tool .control-group select, .control-group input { width: 100%; padding: 0.8em; border: 2px solid #EAE3D5; border-radius: 0.5em; font-size: 1em; }
+    .resize-2x2-tool .output-preview { background: #FDFBF5; border-radius: 0.7em; padding: 1.2em; text-align: center; margin: 2em 0; border: 1px solid #FFEAA7; }
+    .resize-2x2-tool .output-preview h3 { color: #4682B4; margin-bottom: 1em; font-weight: 600; }
+    .resize-2x2-tool #live-preview-canvas { max-width: 100%; height: auto; border: 2px solid #EAE3D5; border-radius: 0.5em; margin: 1em 0; background: #fff; }
+    .resize-2x2-tool .output-card { display: none; margin-top: 1.5em; }
+    .resize-2x2-tool .btn-download { background: #228B22; color: #fff; border: none; border-radius: 0.5em; padding: 1em 2em; font-weight: 600; cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-block; margin-right: 1em; font-size: 1.1em; }
+    .resize-2x2-tool .btn-download:hover { background: #1e7e1e; color: #fff; text-decoration: none; }
+    .resize-2x2-tool .example-section { background: #FDFBF5; border: 1px solid #FFEAA7; border-radius: 0.7em; padding: 1.2em; margin: 2em 0; }
+    .resize-2x2-tool .example-section h3 { color: #4682B4; margin-bottom: 0.5em; }
+    .resize-2x2-tool .feature-list { background: #FDFBF5; border-radius: 0.7em; padding: 1.2em; margin: 2em 0; border: 1px solid #FFEAA7; }
+    .resize-2x2-tool .feature-list h3 { color: #4682B4; margin-bottom: 1em; font-weight: 600; }
+    .resize-2x2-tool .feature-list ul { list-style: none; padding: 0; }
+    .resize-2x2-tool .feature-list li { color: #333; margin-bottom: 0.7em; padding-left: 1.5em; position: relative; }
+    .resize-2x2-tool .feature-list li:before { content: "✓"; color: #4682B4; font-weight: bold; position: absolute; left: 0; }
+    .resize-2x2-tool .related-links { margin-top: 2em; font-size: 1em; }
+    .resize-2x2-tool .related-links a { color: #D9534F; text-decoration: underline; margin-right: 1.2em; }
+    .resize-2x2-tool .related-links a:hover { color: #357abd; }
+    .resize-2x2-tool .step-list { margin: 1.2em 0 1.2em 1.2em; padding: 0; }
+    .resize-2x2-tool .step-list li { margin-bottom: 0.7em; }
+    .resize-2x2-tool .sr-only { position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden; }
+    @media (max-width: 600px) { .resize-2x2-tool .reduce-size-container { padding: 1em 0.2em; } }
+  </style>
+</head>
+<body>
+<main>
+  <div class="resize-2x2-tool">
+    <div class="reduce-size-container">
+    <header>
+      <h1 class="handwritten text-5xl text-[#D9534F] mb-4">Resize Image to 2×2 Inches</h1>
+      <p style="font-size:1.2em; margin-bottom:1em;">Resize your images to exactly 2×2 inches with customizable DPI. Perfect for passport photos, ID cards, and professional documents. Fast, privacy-first, and free.</p>
+    </header>
+    <nav class="related-links" aria-label="Related image tools">
+      <strong>Related:</strong>
+      <a href="#resize-image-3x4">3×4 Resize</a>
+      <a href="#resize-image-35mm-45mm">35mm×45mm</a>
+      <a href="#image-compressor">Image Compressor</a>
+      <a href="#super-resolution">Super Resolution</a>
+    </nav>
+    <section aria-labelledby="instructions-title">
+      <div style="background:#FFF3CD; border:1px solid #FFD700; border-radius:0.7em; padding:1em; margin-bottom:1.2em; color:#B8860B; font-weight:bold; font-size:1.1em;">
+        📸 <b>Resize your images to perfect 2×2 inches with customizable DPI settings.</b> Ideal for passport photos, ID cards, small portraits, and professional documents requiring precise dimensions.
+      </div>
+      <h2 id="instructions-title" style="margin-top:2em; color:#228B22;">How to Use</h2>
+      <ol class="step-list">
+        <li><strong>Upload</strong> your image by dragging it into the box or clicking <b>Choose File</b>.</li>
+        <li>Select your preferred <strong>DPI setting</strong> and fit mode for the best results.</li>
+        <li>Preview your resized image and click <strong>Download</strong> to save your result.</li>
+      </ol>
+    </section>
+    <section class="example-section" aria-labelledby="examples-title">
+      <h3 id="examples-title">DPI Settings</h3>
+      <ul style="margin-top:1em;">
+        <li>72 DPI: Best for web use and digital display</li>
+        <li>150 DPI: Good quality for basic printing needs</li>
+        <li>300 DPI: High quality for professional printing</li>
+        <li>600 DPI: Maximum quality for professional photography</li>
+      </ul>
+    </section>
+    <section aria-labelledby="privacy-title">
+      <h2 id="privacy-title" style="color:#D9534F;">Privacy Notice</h2>
+      <div style="background: #FFF3CD; border: 1px solid #FFEAA7; border-radius: 0.5em; padding: 1em; margin: 1em 0; font-size: 0.95em; color: #856404;">
+        <strong>🔒 Your files are never uploaded or stored. All processing happens in your browser.</strong>
+      </div>
+    </section>
+    <section aria-labelledby="resize-2x2-converter-title">
+      <h2 id="resize-2x2-converter-title" class="sr-only">2×2 Inch Resize Interface</h2>
+      <div class="upload-area" id="upload-area" tabindex="0" aria-label="Upload photo area. Drag and drop or click to select a photo.">
+        <div class="upload-icon" aria-hidden="true">📸</div>
+        <h3>Drag & Drop your photo here</h3>
+        <p>or click to browse files</p>
+        <input type="file" id="file-input" class="file-input" accept="image/*" aria-label="Choose photo file">
+        <button class="upload-btn" id="choose-file-btn" style="display:block; margin: 0 auto 1.5em auto;" aria-label="Choose File">Choose File</button>
+      </div>
+
+      <!-- Preview Section -->
+      <div class="preview-section" id="preview-section">
+        <h3><i class="fas fa-image"></i> Uploaded Image <button class="clear-btn" id="clear-btn">Clear</button></h3>
+        <img id="preview-image" alt="Uploaded preview" class="uploaded-preview">
+      </div>
+
+      <!-- Image Description Section -->
+      <div class="image-description" id="image-description" style="display: none; background: #E8F5E8; border: 2px solid #5CB85C; border-radius: 0.7em; padding: 1.2em; margin: 1.5em 0; text-align: center;">
+        <div style="font-size: 1.5em; color: #228B22; margin-bottom: 0.5em;">📸</div>
+        <div style="font-size: 1.1em; color: #228B22; font-weight: 600; margin-bottom: 0.5em;">Image Uploaded Successfully!</div>
+        <div style="color: #666; font-size: 0.95em;" id="image-info">Ready for 2×2 inch resizing</div>
+      </div>
+
+      <!-- Controls Section -->
+      <div class="controls-section" id="controls-section">
+        <h3><i class="fas fa-sliders-h"></i> 2×2 Inch Resize Settings</h3>
+        
+        <div class="control-group">
+          <label for="dpi-setting">Print Quality (DPI):</label>
+          <select id="dpi-setting" class="form-select">
+            <option value="72">72 DPI (Web/Screen)</option>
+            <option value="150">150 DPI (Good Print)</option>
+            <option value="300" selected>300 DPI (High Quality Print)</option>
+            <option value="600">600 DPI (Professional)</option>
+          </select>
+        </div>
+        
+        <div class="control-group">
+          <label for="fit-mode">Fit Mode:</label>
+          <select id="fit-mode" class="form-select">
+            <option value="crop" selected>Crop to Fill (maintains aspect ratio)</option>
+            <option value="stretch">Stretch to Fit (may distort image)</option>
+            <option value="contain">Fit Inside (maintains aspect ratio, adds borders)</option>
+          </select>
+        </div>
+        
+        <div class="control-group">
+          <label for="background-color">Background Color (for borders):</label>
+          <input type="color" id="background-color" value="#FFFFFF" style="width: 100%; height: 50px; border: 2px solid #EAE3D5; border-radius: 0.5em;">
+        </div>
+        
+        <div class="form-group">
+          <button class="clear-btn" id="clear-form-btn">Clear Form</button>
+        </div>
+      </div>
+
+      <!-- Output Preview -->
+      <div class="output-preview" id="output-preview" style="display: none;">
+        <h3><i class="fas fa-eye"></i> Live Preview - 2×2 Inches</h3>
+        <canvas id="live-preview-canvas" width="144" height="144"></canvas>
+        
+        <div class="output-card" id="output-card">
+          <a href="#" class="btn-download" id="download-link">
+            <i class="fas fa-download"></i> Download 2×2 Inch Image
+          </a>
+          <button class="clear-btn" id="download-clear-btn">Start Over</button>
+        </div>
+      </div>
+
+      <!-- Features -->
+      <div class="feature-list">
+        <h3><i class="fas fa-star"></i> Key Features</h3>
+        <ul>
+          <li>Perfect 2×2 inch dimensions for passport photos</li>
+          <li>Customizable DPI settings for print quality</li>
+          <li>Multiple fit modes for different needs</li>
+          <li>Background color selection for borders</li>
+          <li>Privacy-first - no uploads stored</li>
+          <li>High-quality output</li>
+          <li>Works on all devices</li>
+        </ul>
+      </div>
+    </section>
+    </div>
+  </div>
+</main>
+
+<script>
+// Resize to 2×2 Inches Tool - Clean initialization based on working black-white pattern
+(function() {
+  'use strict';
+  
+  let uploadedImage = null;
+  let previewImage = null;
+  let dpiSetting = 300;
+  let fitMode = 'crop';
+  let backgroundColor = '#FFFFFF';
+  let isInitialized = false;
+
+  // Global initialization function for the main app
+  window.initializeResize2x2Tool = function() {
+    console.log('📸 Initializing Resize 2×2 Inches tool...');
+    reset();
+    init();
+  };
+
+  function reset() {
+    console.log('Resetting tool state...');
+    uploadedImage = null;
+    previewImage = null;
+    dpiSetting = 300;
+    fitMode = 'crop';
+    backgroundColor = '#FFFFFF';
+    isInitialized = false;
+    
+    // Reset UI elements
+    const elements = {
+      uploadArea: document.getElementById('upload-area'),
+      previewSection: document.getElementById('preview-section'),
+      controlsSection: document.getElementById('controls-section'),
+      outputPreview: document.getElementById('output-preview'),
+      imageDescription: document.getElementById('image-description'),
+      dpiSelect: document.getElementById('dpi-setting'),
+      fitModeSelect: document.getElementById('fit-mode'),
+      backgroundInput: document.getElementById('background-color'),
+      fileInput: document.getElementById('file-input'),
+      outputCard: document.getElementById('output-card')
+    };
+    
+    if (elements.uploadArea) elements.uploadArea.style.display = 'block';
+    if (elements.previewSection) elements.previewSection.style.display = 'none';
+    if (elements.controlsSection) elements.controlsSection.style.display = 'none';
+    if (elements.outputPreview) elements.outputPreview.style.display = 'none';
+    if (elements.imageDescription) elements.imageDescription.style.display = 'none';
+    if (elements.outputCard) elements.outputCard.style.display = 'none';
+    
+    if (elements.dpiSelect) elements.dpiSelect.value = '300';
+    if (elements.fitModeSelect) elements.fitModeSelect.value = 'crop';
+    if (elements.backgroundInput) elements.backgroundInput.value = '#FFFFFF';
+    if (elements.fileInput) elements.fileInput.value = '';
+    
+    // Clear canvas
+    const canvas = document.getElementById('live-preview-canvas');
+    if (canvas) {
+      const ctx = canvas.getContext('2d');
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = '#fff';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+    }
+  }
+
+  function init() {
+    if (isInitialized) {
+      console.log('Already initialized');
+      return;
+    }
+
+    console.log('Setting up event listeners...');
+    
+    // Get elements
+    const uploadArea = document.getElementById('upload-area');
+    const fileInput = document.getElementById('file-input');
+    const chooseFileBtn = document.getElementById('choose-file-btn');
+    const dpiSelect = document.getElementById('dpi-setting');
+    const fitModeSelect = document.getElementById('fit-mode');
+    const backgroundInput = document.getElementById('background-color');
+    
+    if (!uploadArea || !fileInput || !chooseFileBtn) {
+      console.error('Critical elements missing:', {
+        uploadArea: !!uploadArea,
+        fileInput: !!fileInput,
+        chooseFileBtn: !!chooseFileBtn
+      });
+      setTimeout(init, 100); // Retry
+      return;
+    }
+
+    // Remove old listeners by cloning
+    [uploadArea, fileInput, chooseFileBtn].forEach(el => {
+      if (el && el.parentNode) {
+        const newEl = el.cloneNode(true);
+        el.parentNode.replaceChild(newEl, el);
+      }
+    });
+
+    // Re-get elements after cloning
+    const newUploadArea = document.getElementById('upload-area');
+    const newFileInput = document.getElementById('file-input');
+    const newChooseFileBtn = document.getElementById('choose-file-btn');
+    const newDpiSelect = document.getElementById('dpi-setting');
+    const newFitModeSelect = document.getElementById('fit-mode');
+    const newBackgroundInput = document.getElementById('background-color');
+
+    // Click handlers
+    if (newChooseFileBtn) {
+      newChooseFileBtn.onclick = function(e) {
+        console.log('🖱️ Choose file clicked');
+        e.preventDefault();
+        newFileInput.click();
+      };
+    }
+
+    if (newUploadArea) {
+      newUploadArea.onclick = function(e) {
+        console.log('🖱️ Upload area clicked');
+        if (e.target !== newChooseFileBtn) {
+          newFileInput.click();
+        }
+      };
+    }
+
+    // File input change
+    if (newFileInput) {
+      newFileInput.onchange = function(e) {
+        console.log('📁 File selected:', e.target.files.length);
+        if (e.target.files.length > 0) {
+          handleFile(e.target.files[0]);
+        }
+      };
+    }
+
+    // Control changes
+    if (newDpiSelect) {
+      newDpiSelect.onchange = function(e) {
+        dpiSetting = parseInt(e.target.value);
+        updatePreview();
+      };
+    }
+
+    if (newFitModeSelect) {
+      newFitModeSelect.onchange = function(e) {
+        fitMode = e.target.value;
+        updatePreview();
+      };
+    }
+
+    if (newBackgroundInput) {
+      newBackgroundInput.onchange = function(e) {
+        backgroundColor = e.target.value;
+        updatePreview();
+      };
+    }
+
+    // Drag and drop
+    if (newUploadArea) {
+      newUploadArea.ondragover = function(e) {
+        e.preventDefault();
+        newUploadArea.style.backgroundColor = '#F0F8FF';
+      };
+
+      newUploadArea.ondragleave = function(e) {
+        newUploadArea.style.backgroundColor = '#FDFBF5';
+      };
+
+      newUploadArea.ondrop = function(e) {
+        e.preventDefault();
+        newUploadArea.style.backgroundColor = '#FDFBF5';
+        const files = e.dataTransfer.files;
+        if (files.length > 0) {
+          handleFile(files[0]);
+        }
+      };
+    }
+
+    // Clear buttons
+    ['clear-btn', 'clear-form-btn', 'download-clear-btn'].forEach(id => {
+      const btn = document.getElementById(id);
+      if (btn) btn.onclick = reset;
+    });
+
+    // Download button
+    const downloadLink = document.getElementById('download-link');
+    if (downloadLink) {
+      downloadLink.onclick = function(e) {
+        e.preventDefault();
+        downloadImage();
+      };
+    }
+
+    isInitialized = true;
+    console.log('✅ Resize 2×2 Inches tool initialized successfully');
+  }
+
+  function handleFile(file) {
+    console.log('📷 Processing file:', file.name);
+    
+    if (!file.type.startsWith('image/')) {
+      alert('❌ Please upload a valid image file.');
+      return;
+    }
+
+    uploadedImage = file;
+    const reader = new FileReader();
+    
+    reader.onload = function(e) {
+      // Update preview image
+      const previewImg = document.getElementById('preview-image');
+      if (previewImg) previewImg.src = e.target.result;
+      
+      // Show/hide sections
+      const uploadArea = document.getElementById('upload-area');
+      const previewSection = document.getElementById('preview-section');
+      const controlsSection = document.getElementById('controls-section');
+      const outputPreview = document.getElementById('output-preview');
+      const imageDescription = document.getElementById('image-description');
+      const imageInfo = document.getElementById('image-info');
+      
+      if (uploadArea) uploadArea.style.display = 'none';
+      if (previewSection) previewSection.style.display = 'block';
+      if (controlsSection) controlsSection.style.display = 'block';
+      if (outputPreview) outputPreview.style.display = 'block';
+      
+      if (imageDescription) {
+        imageDescription.style.display = 'block';
+        if (imageInfo) {
+          const fileSize = (file.size / 1024).toFixed(1);
+          imageInfo.textContent = `${file.name} (${fileSize} KB) - Ready for 2×2 inch resizing`;
+        }
+      }
+      
+      // Load image for processing
+      previewImage = new Image();
+      previewImage.onload = updatePreview;
+      previewImage.src = e.target.result;
+    };
+    
+    reader.readAsDataURL(file);
+  }
+
+  function updatePreview() {
+    const canvas = document.getElementById('live-preview-canvas');
+    if (!canvas || !previewImage) return;
+    
+    const ctx = canvas.getContext('2d');
+    
+    // Calculate dimensions for 2×2 inches at selected DPI
+    const inches = 2;
+    const pixelSize = inches * dpiSetting;
+    canvas.width = pixelSize;
+    canvas.height = pixelSize;
+    
+    // Clear canvas with background color
+    ctx.fillStyle = backgroundColor;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    
+    // Calculate scaling and positioning based on fit mode
+    let sx = 0, sy = 0, sw = previewImage.width, sh = previewImage.height;
+    let dx = 0, dy = 0, dw = canvas.width, dh = canvas.height;
+    
+    if (fitMode === 'crop') {
+      // Crop to fill - maintain aspect ratio, crop excess
+      const scale = Math.max(canvas.width / previewImage.width, canvas.height / previewImage.height);
+      const scaledWidth = previewImage.width * scale;
+      const scaledHeight = previewImage.height * scale;
+      
+      dx = (canvas.width - scaledWidth) / 2;
+      dy = (canvas.height - scaledHeight) / 2;
+      dw = scaledWidth;
+      dh = scaledHeight;
+    } else if (fitMode === 'stretch') {
+      // Stretch to fit - fill entire canvas (may distort)
+      // Use default values (already set above)
+    } else if (fitMode === 'contain') {
+      // Fit inside - maintain aspect ratio, fit completely
+      const scale = Math.min(canvas.width / previewImage.width, canvas.height / previewImage.height);
+      dw = previewImage.width * scale;
+      dh = previewImage.height * scale;
+      dx = (canvas.width - dw) / 2;
+      dy = (canvas.height - dh) / 2;
+    }
+    
+    ctx.drawImage(previewImage, sx, sy, sw, sh, dx, dy, dw, dh);
+    
+    // Show download button
+    const outputCard = document.getElementById('output-card');
+    if (outputCard) outputCard.style.display = 'block';
+  }
+
+  function downloadImage() {
+    if (!uploadedImage) {
+      alert('❌ Please upload an image first.');
+      return;
+    }
+    
+    const canvas = document.getElementById('live-preview-canvas');
+    if (!canvas) return;
+    
+    canvas.toBlob(function(blob) {
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `2x2inch-${dpiSetting}dpi-${uploadedImage.name.split('.')[0]}.png`;
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(() => {
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      }, 100);
+    }, 'image/png');
+  }
+
+  // Auto-initialize if DOM is ready
+  if (document.readyState !== 'loading') {
+    setTimeout(init, 50);
+  } else {
+    document.addEventListener('DOMContentLoaded', function() {
+      setTimeout(init, 50);
+    });
+  }
+
+})();
+</script>
+</body>
+</html>

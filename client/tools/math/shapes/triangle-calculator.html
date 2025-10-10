@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Triangle Calculator</title>
+    <style>
+        body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; }
+        .geo-calc-container { max-width: 400px; margin: 3em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2em 1.5em 2.5em 1.5em; }
+        .handwritten { font-family: 'Caveat', cursive; }
+        .geo-calc-label { font-weight: 600; margin-bottom: 0.5em; display: block; }
+        .geo-calc-input, .geo-calc-select { width: 100%; padding: 1em; border: 2px solid #EAE3D5; border-radius: 0.7em; font-size: 1.1em; margin-bottom: 1em; background: #FDFBF5; text-align: center; font-family: 'Fira Code', monospace; }
+        .geo-calc-btn { background: #fff; color: #D9534F; border: 2px solid #D9534F; border-radius: 0.5em; padding: 0.7em 2em; font-weight: 600; font-size: 1.1em; cursor: pointer; transition: all 0.2s; margin-bottom: 1em; }
+        .geo-calc-btn:hover { background: #D9534F; color: #fff; }
+        .geo-calc-result { background: #FDFBF5; border: 2px solid #D9534F; border-radius: 0.7em; padding: 1em; font-size: 1.18em; color: #D9534F; min-height: 1.7em; margin-bottom: 1em; text-align: center; font-family: 'Fira Code', monospace; font-weight: bold; max-height: 300px; overflow-y: auto; word-break: break-word; transition: height 0.2s; }
+        .input-group { margin-bottom: 1em; }
+        .radio-group { display: flex; gap: 1em; margin-bottom: 1em; flex-wrap: wrap; }
+        .radio-option { display: flex; align-items: center; gap: 0.5em; }
+        .radio-option input[type="radio"] { margin: 0; }
+        .input-row { display: flex; gap: 1em; }
+        .input-row .geo-calc-input { flex: 1; }
+        .geo-calc-desc { max-width: fit-content; margin: 2.5em auto 0 auto; background:#FDFBF5; border:2px solid #EAE3D5; border-radius:0.9em; padding:1.2em 1em; font-size:1.08em; color:#333; line-height:1.7; }
+        @media (max-width: 600px) { 
+            .geo-calc-container { padding: 1em 0.2em; }
+            .input-row { flex-direction: column; gap: 0; }
+            .radio-group { flex-direction: column; gap: 0.5em; }
+        }
+    </style>
+</head>
+<body>
+<div class="geo-calc-container">
+    <h2 class="handwritten text-5xl text-[#D9534F] mb-4">Triangle Calculator</h2>
+    
+    <div class="input-group">
+        <label class="geo-calc-label">Triangle Type:</label>
+        <div class="radio-group">
+            <div class="radio-option">
+                <input type="radio" id="right-triangle" name="triangle-type" value="right" checked>
+                <label for="right-triangle">Right Triangle</label>
+            </div>
+            <div class="radio-option">
+                <input type="radio" id="general-triangle" name="triangle-type" value="general">
+                <label for="general-triangle">General Triangle</label>
+            </div>
+            <div class="radio-option">
+                <input type="radio" id="equilateral-triangle" name="triangle-type" value="equilateral">
+                <label for="equilateral-triangle">Equilateral Triangle</label>
+            </div>
+        </div>
+    </div>
+    
+    <div id="input-fields">
+        <!-- Dynamic input fields will be added here -->
+    </div>
+    
+    <button type="button" class="geo-calc-btn" onclick="calculateTriangle()">Calculate Triangle</button>
+    <div class="geo-calc-result" id="result">Select triangle type and enter values</div>
+</div>
+
+<div class="geo-calc-desc">
+    <strong style="font-size:1.18em; color:#D9534F;">About the Triangle Calculator</strong><br><br>
+    Calculate area, perimeter, and other properties for different types of triangles.<br><br>
+    <b>Formulas:</b>
+    <ul style="margin-left:1.2em; margin-bottom:0.7em;">
+        <li>Right Triangle: <code>A = ½ × base × height</code></li>
+        <li>General Triangle (Heron's): <code>A = √[s(s-a)(s-b)(s-c)]</code></li>
+        <li>Equilateral: <code>A = (√3/4) × side²</code></li>
+        <li>Perimeter: <code>P = a + b + c</code></li>
+    </ul>
+    <b>Use Cases:</b>
+    <ul style="margin-left:1.2em;">
+        <li>Geometry homework and construction projects</li>
+        <li>Engineering and architectural calculations</li>
+        <li>Land surveying and area measurements</li>
+        <li>Educational purposes and math verification</li>
+    </ul>
+</div>
+
+<script>
+function updateInputFields() {
+    const triangleType = document.querySelector('input[name="triangle-type"]:checked').value;
+    const inputFields = document.getElementById('input-fields');
+    
+    let html = '';
+    
+    switch(triangleType) {
+        case 'right':
+            html = `
+                <div class="input-group">
+                    <label class="geo-calc-label">Base (a):</label>
+                    <input id="base" class="geo-calc-input" type="number" min="0" step="any" placeholder="Enter base length">
+                </div>
+                <div class="input-group">
+                    <label class="geo-calc-label">Height (h):</label>
+                    <input id="height" class="geo-calc-input" type="number" min="0" step="any" placeholder="Enter height">
+                </div>
+            `;
+            break;
+            
+        case 'general':
+            html = `
+                <div class="input-group">
+                    <label class="geo-calc-label">Side lengths:</label>
+                    <div class="input-row">
+                        <input id="side-a" class="geo-calc-input" type="number" min="0" step="any" placeholder="Side a">
+                        <input id="side-b" class="geo-calc-input" type="number" min="0" step="any" placeholder="Side b">
+                        <input id="side-c" class="geo-calc-input" type="number" min="0" step="any" placeholder="Side c">
+                    </div>
+                </div>
+            `;
+            break;
+            
+        case 'equilateral':
+            html = `
+                <div class="input-group">
+                    <label class="geo-calc-label">Side length:</label>
+                    <input id="side" class="geo-calc-input" type="number" min="0" step="any" placeholder="Enter side length">
+                </div>
+            `;
+            break;
+    }
+    
+    inputFields.innerHTML = html;
+    document.getElementById('result').textContent = 'Enter values to calculate triangle properties';
+}
+
+function formatNumber(num) {
+    if (Math.abs(num) < 1e-10) return '0';
+    if (Math.abs(num) >= 1e10) return num.toExponential(6);
+    return parseFloat(num.toFixed(8)).toString();
+}
+
+function calculateTriangle() {
+    const triangleType = document.querySelector('input[name="triangle-type"]:checked').value;
+    let area, perimeter, result;
+    
+    // Track calculator usage
+    if (typeof window.parent.trackCalculatorUsage === 'function') {
+        window.parent.trackCalculatorUsage('Triangle Calculator', `calculate_${triangleType}`);
+    }
+    
+    try {
+        switch(triangleType) {
+            case 'right':
+                const base = parseFloat(document.getElementById('base').value);
+                const height = parseFloat(document.getElementById('height').value);
+                
+                if (isNaN(base) || isNaN(height) || base <= 0 || height <= 0) {
+                    document.getElementById('result').textContent = 'Please enter positive values for base and height.';
+                    return;
+                }
+                
+                area = 0.5 * base * height;
+                const hypotenuse = Math.sqrt(base * base + height * height);
+                perimeter = base + height + hypotenuse;
+                
+                result = `
+<strong>Right Triangle Properties:</strong>
+
+• Base: ${formatNumber(base)}
+• Height: ${formatNumber(height)}
+• Hypotenuse: ${formatNumber(hypotenuse)}
+• Area: ${formatNumber(area)}
+• Perimeter: ${formatNumber(perimeter)}
+
+<strong>Calculations:</strong>
+• Hypotenuse = √(base² + height²) = √(${formatNumber(base)}² + ${formatNumber(height)}²) = ${formatNumber(hypotenuse)}
+• Area = ½ × base × height = ½ × ${formatNumber(base)} × ${formatNumber(height)} = ${formatNumber(area)}
+• Perimeter = ${formatNumber(base)} + ${formatNumber(height)} + ${formatNumber(hypotenuse)} = ${formatNumber(perimeter)}
+                `.trim();
+                break;
+                
+            case 'general':
+                const a = parseFloat(document.getElementById('side-a').value);
+                const b = parseFloat(document.getElementById('side-b').value);
+                const c = parseFloat(document.getElementById('side-c').value);
+                
+                if (isNaN(a) || isNaN(b) || isNaN(c) || a <= 0 || b <= 0 || c <= 0) {
+                    document.getElementById('result').textContent = 'Please enter positive values for all three sides.';
+                    return;
+                }
+                
+                // Check triangle inequality
+                if (a + b <= c || a + c <= b || b + c <= a) {
+                    document.getElementById('result').textContent = 'Invalid triangle: The sum of any two sides must be greater than the third side.';
+                    return;
+                }
+                
+                // Heron's formula
+                const s = (a + b + c) / 2; // semi-perimeter
+                area = Math.sqrt(s * (s - a) * (s - b) * (s - c));
+                perimeter = a + b + c;
+                
+                result = `
+<strong>General Triangle Properties:</strong>
+
+• Side a: ${formatNumber(a)}
+• Side b: ${formatNumber(b)}
+• Side c: ${formatNumber(c)}
+• Area: ${formatNumber(area)}
+• Perimeter: ${formatNumber(perimeter)}
+• Semi-perimeter (s): ${formatNumber(s)}
+
+<strong>Calculations (Heron's Formula):</strong>
+• s = (a + b + c) / 2 = ${formatNumber(s)}
+• Area = √[s(s-a)(s-b)(s-c)] = ${formatNumber(area)}
+• Perimeter = a + b + c = ${formatNumber(perimeter)}
+                `.trim();
+                break;
+                
+            case 'equilateral':
+                const side = parseFloat(document.getElementById('side').value);
+                
+                if (isNaN(side) || side <= 0) {
+                    document.getElementById('result').textContent = 'Please enter a positive value for the side length.';
+                    return;
+                }
+                
+                area = (Math.sqrt(3) / 4) * side * side;
+                perimeter = 3 * side;
+                const height_eq = (Math.sqrt(3) / 2) * side;
+                
+                result = `
+<strong>Equilateral Triangle Properties:</strong>
+
+• Side length: ${formatNumber(side)}
+• Height: ${formatNumber(height_eq)}
+• Area: ${formatNumber(area)}
+• Perimeter: ${formatNumber(perimeter)}
+
+<strong>Calculations:</strong>
+• Height = (√3/2) × side = ${formatNumber(height_eq)}
+• Area = (√3/4) × side² = ${formatNumber(area)}
+• Perimeter = 3 × side = ${formatNumber(perimeter)}
+                `.trim();
+                break;
+        }
+        
+        document.getElementById('result').innerHTML = result;
+        
+    } catch (error) {
+        document.getElementById('result').textContent = 'Error in calculation. Please check your inputs.';
+    }
+}
+
+// Update input fields when triangle type changes
+document.querySelectorAll('input[name="triangle-type"]').forEach(radio => {
+    radio.addEventListener('change', updateInputFields);
+});
+
+// Initialize with right triangle inputs
+updateInputFields();
+
+// Allow Enter key to calculate (delegate event)
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' && e.target.classList.contains('geo-calc-input')) {
+        calculateTriangle();
+    }
+});
+</script>
+</body>
+</html>

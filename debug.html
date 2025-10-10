@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug ScribbleTools</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+    <div class="min-h-screen flex flex-col">
+        <!-- Header -->
+        <header class="w-full bg-white shadow-sm border-b border-gray-200 relative z-50">
+            <div class="container mx-auto flex justify-between items-center py-4 px-4">
+                <h1 class="text-3xl text-red-500 font-bold">ScribbleTools Debug</h1>
+                
+                <!-- Hamburger Menu Button -->
+                <button id="hamburger-toggle" class="p-2 hover:bg-gray-100 rounded-lg transition-colors" title="Open menu">
+                    <svg class="w-6 h-6 text-gray-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Hamburger Menu -->
+            <div id="hamburger-menu" class="fixed inset-0 bg-white z-40 transform translate-x-full transition-transform duration-300 ease-in-out overflow-y-auto">
+                <div class="flex justify-between items-center p-4 border-b border-gray-200">
+                    <h2 class="text-2xl text-red-500 font-bold">Menu</h2>
+                    <button id="hamburger-close" class="p-2 hover:bg-gray-100 rounded-lg transition-colors" title="Close menu">
+                        <svg class="w-6 h-6 text-gray-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+                
+                <div class="p-4">
+                    <div class="space-y-2">
+                        <a href="#test1" class="hamburger-nav-link block px-4 py-3 rounded-lg hover:bg-gray-50 transition-colors">Test Link 1</a>
+                        <a href="#test2" class="hamburger-nav-link block px-4 py-3 rounded-lg hover:bg-gray-50 transition-colors">Test Link 2</a>
+                        <a href="#about" class="hamburger-nav-link block px-4 py-3 rounded-lg hover:bg-gray-50 transition-colors">About</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        <!-- Main Content -->
+        <main class="flex-grow container mx-auto px-4 py-8">
+            <div id="app-container" class="w-full bg-white p-8 rounded-lg shadow-md">
+                <h1 class="text-2xl font-bold mb-4">ScribbleTools Debug Page</h1>
+                <div id="debug-info" class="mb-4 p-4 bg-blue-50 rounded-lg">
+                    <h3 class="font-semibold text-blue-800 mb-2">Debug Information:</h3>
+                    <ul id="debug-list" class="text-sm text-blue-700 space-y-1">
+                        <li>Page loaded</li>
+                    </ul>
+                </div>
+                <p class="text-gray-600">Testing the new hamburger menu layout.</p>
+                <div class="mt-4">
+                    <button id="test-btn" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Test Button</button>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <script>
+        function addDebug(message) {
+            const debugList = document.getElementById('debug-list');
+            const li = document.createElement('li');
+            li.textContent = `${new Date().toLocaleTimeString()}: ${message}`;
+            debugList.appendChild(li);
+            console.log('DEBUG:', message);
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            addDebug('DOM loaded');
+            
+            const hamburgerToggle = document.getElementById('hamburger-toggle');
+            const hamburgerMenu = document.getElementById('hamburger-menu');
+            const hamburgerClose = document.getElementById('hamburger-close');
+            const testBtn = document.getElementById('test-btn');
+            
+            if (hamburgerToggle && hamburgerMenu) {
+                addDebug('Hamburger elements found');
+                
+                // Open hamburger menu
+                hamburgerToggle.addEventListener('click', function() {
+                    addDebug('Hamburger toggle clicked');
+                    hamburgerMenu.classList.remove('translate-x-full');
+                    hamburgerMenu.classList.add('translate-x-0');
+                    document.body.style.overflow = 'hidden';
+                });
+                
+                // Close hamburger menu
+                function closeHamburgerMenu() {
+                    addDebug('Closing hamburger menu');
+                    hamburgerMenu.classList.add('translate-x-full');
+                    hamburgerMenu.classList.remove('translate-x-0');
+                    document.body.style.overflow = '';
+                }
+                
+                if (hamburgerClose) {
+                    hamburgerClose.addEventListener('click', closeHamburgerMenu);
+                }
+                
+                // Close menu when clicking on overlay
+                hamburgerMenu.addEventListener('click', function(e) {
+                    if (e.target === hamburgerMenu) {
+                        closeHamburgerMenu();
+                    }
+                });
+                
+                // Handle navigation links
+                const navLinks = hamburgerMenu.querySelectorAll('.hamburger-nav-link');
+                navLinks.forEach(link => {
+                    link.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        const href = this.getAttribute('href');
+                        addDebug(`Navigation clicked: ${href}`);
+                        closeHamburgerMenu();
+                        
+                        // Simple routing
+                        const appContainer = document.getElementById('app-container');
+                        if (href === '#about') {
+                            appContainer.innerHTML = `
+                                <h1 class="text-2xl font-bold mb-4">About ScribbleTools</h1>
+                                <p class="text-gray-600">This is the about page.</p>
+                                <button onclick="location.hash='#home'" class="mt-4 bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">Back to Home</button>
+                            `;
+                        } else {
+                            appContainer.innerHTML = `
+                                <h1 class="text-2xl font-bold mb-4">Test Page: ${href}</h1>
+                                <p class="text-gray-600">You clicked on ${href}</p>
+                                <button onclick="location.hash='#home'" class="mt-4 bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">Back to Home</button>
+                            `;
+                        }
+                    });
+                });
+                
+                addDebug('Event listeners attached successfully');
+            } else {
+                addDebug('ERROR: Hamburger elements not found');
+            }
+            
+            if (testBtn) {
+                testBtn.addEventListener('click', function() {
+                    addDebug('Test button clicked - JavaScript is working!');
+                });
+            }
+        });
+        
+        // Simple routing
+        window.addEventListener('hashchange', function() {
+            const hash = window.location.hash || '#home';
+            addDebug(`Hash changed to: ${hash}`);
+            
+            if (hash === '#home' || hash === '') {
+                document.getElementById('app-container').innerHTML = `
+                    <h1 class="text-2xl font-bold mb-4">ScribbleTools Debug Page</h1>
+                    <div id="debug-info" class="mb-4 p-4 bg-blue-50 rounded-lg">
+                        <h3 class="font-semibold text-blue-800 mb-2">Debug Information:</h3>
+                        <ul id="debug-list" class="text-sm text-blue-700 space-y-1">
+                            <li>Back to home page</li>
+                        </ul>
+                    </div>
+                    <p class="text-gray-600">Testing the new hamburger menu layout.</p>
+                    <div class="mt-4">
+                        <button id="test-btn" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Test Button</button>
+                    </div>
+                `;
+            }
+        });
+    </script>
+</body>
+</html>

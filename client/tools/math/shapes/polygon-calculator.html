@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Polygon Calculator</title>
+    <style>
+        body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; }
+        .geo-calc-container { max-width: 400px; margin: 3em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2em 1.5em 2.5em 1.5em; }
+        .handwritten { font-family: 'Caveat', cursive; }
+        .geo-calc-label { font-weight: 600; margin-bottom: 0.5em; display: block; }
+        .geo-calc-input, .geo-calc-select { width: 100%; padding: 1em; border: 2px solid #EAE3D5; border-radius: 0.7em; font-size: 1.1em; margin-bottom: 1em; background: #FDFBF5; text-align: center; font-family: 'Fira Code', monospace; }
+        .geo-calc-btn { background: #fff; color: #D9534F; border: 2px solid #D9534F; border-radius: 0.5em; padding: 0.7em 2em; font-weight: 600; font-size: 1.1em; cursor: pointer; transition: all 0.2s; margin-bottom: 1em; }
+        .geo-calc-btn:hover { background: #D9534F; color: #fff; }
+        .geo-calc-result { background: #FDFBF5; border: 2px solid #D9534F; border-radius: 0.7em; padding: 1em; font-size: 1.18em; color: #D9534F; min-height: 1.7em; margin-bottom: 1em; text-align: center; font-family: 'Fira Code', monospace; font-weight: bold; max-height: 300px; overflow-y: auto; word-break: break-word; transition: height 0.2s; }
+        .input-group { margin-bottom: 1em; }
+        .input-row { display: flex; gap: 1em; }
+        .input-row .geo-calc-input { flex: 1; }
+        .geo-calc-desc { max-width: fit-content; margin: 2.5em auto 0 auto; background:#FDFBF5; border:2px solid #EAE3D5; border-radius:0.9em; padding:1.2em 1em; font-size:1.08em; color:#333; line-height:1.7; }
+        @media (max-width: 600px) { 
+            .geo-calc-container { padding: 1em 0.2em; }
+            .input-row { flex-direction: column; gap: 0; }
+        }
+    </style>
+</head>
+<body>
+<div class="geo-calc-container">
+    <h2 class="handwritten text-5xl text-[#D9534F] mb-4">Regular Polygon Calculator</h2>
+    
+    <div class="input-group">
+        <label class="geo-calc-label">Polygon Type:</label>
+        <select id="polygon-type" class="geo-calc-select" onchange="updateInputs()">
+            <option value="custom">Custom (enter number of sides)</option>
+            <option value="3">Triangle (3 sides)</option>
+            <option value="4">Square (4 sides)</option>
+            <option value="5">Pentagon (5 sides)</option>
+            <option value="6">Hexagon (6 sides)</option>
+            <option value="7">Heptagon (7 sides)</option>
+            <option value="8">Octagon (8 sides)</option>
+            <option value="9">Nonagon (9 sides)</option>
+            <option value="10">Decagon (10 sides)</option>
+            <option value="12">Dodecagon (12 sides)</option>
+        </select>
+    </div>
+    
+    <div class="input-group" id="sides-input-group">
+        <label class="geo-calc-label">Number of sides (n):</label>
+        <input id="sides-input" class="geo-calc-input" type="number" min="3" step="1" placeholder="Enter number of sides (≥ 3)">
+    </div>
+    
+    <div class="input-group">
+        <label class="geo-calc-label">Side length:</label>
+        <input id="side-length" class="geo-calc-input" type="number" min="0" step="any" placeholder="Enter side length">
+    </div>
+    
+    <button type="button" class="geo-calc-btn" onclick="calculatePolygon()">Calculate Polygon</button>
+    <div class="geo-calc-result" id="result">Select polygon type and enter side length</div>
+</div>
+
+<div class="geo-calc-desc">
+    <strong style="font-size:1.18em; color:#D9534F;">About the Regular Polygon Calculator</strong><br><br>
+    Calculate area, perimeter, angles, and other properties of regular polygons from the side length.<br><br>
+    <b>Formulas:</b>
+    <ul style="margin-left:1.2em; margin-bottom:0.7em;">
+        <li>Area: <code>A = (n × s²) / (4 × tan(π/n))</code></li>
+        <li>Perimeter: <code>P = n × s</code></li>
+        <li>Interior Angle: <code>θ = (n-2) × 180° / n</code></li>
+        <li>Exterior Angle: <code>φ = 360° / n</code></li>
+        <li>Apothem: <code>a = s / (2 × tan(π/n))</code></li>
+        <li>Circumradius: <code>R = s / (2 × sin(π/n))</code></li>
+    </ul>
+    <b>Use Cases:</b>
+    <ul style="margin-left:1.2em;">
+        <li>Architecture and engineering design</li>
+        <li>Geometry homework and education</li>
+        <li>Game development and graphics</li>
+        <li>Art and design projects</li>
+    </ul>
+</div>
+
+<script>
+function getPolygonName(n) {
+    const names = {
+        3: 'Triangle', 4: 'Square', 5: 'Pentagon', 6: 'Hexagon',
+        7: 'Heptagon', 8: 'Octagon', 9: 'Nonagon', 10: 'Decagon',
+        11: 'Hendecagon', 12: 'Dodecagon'
+    };
+    return names[n] || `${n}-gon`;
+}
+
+function updateInputs() {
+    const polygonType = document.getElementById('polygon-type').value;
+    const sidesInputGroup = document.getElementById('sides-input-group');
+    const sidesInput = document.getElementById('sides-input');
+    
+    if (polygonType === 'custom') {
+        sidesInputGroup.style.display = 'block';
+        sidesInput.value = '';
+    } else {
+        sidesInputGroup.style.display = 'none';
+        sidesInput.value = polygonType;
+    }
+    
+    document.getElementById('result').textContent = 'Enter side length to calculate polygon properties';
+}
+
+function formatNumber(num) {
+    if (Math.abs(num) < 1e-10) return '0';
+    if (Math.abs(num) >= 1e10) return num.toExponential(6);
+    return parseFloat(num.toFixed(8)).toString();
+}
+
+function calculatePolygon() {
+    const sidesInput = document.getElementById('sides-input').value;
+    const sideLength = parseFloat(document.getElementById('side-length').value);
+    const n = parseInt(sidesInput);
+    
+    if (isNaN(n) || n < 3) {
+        document.getElementById('result').textContent = 'Please enter a valid number of sides (3 or more).';
+        return;
+    }
+    
+    if (isNaN(sideLength) || sideLength <= 0) {
+        document.getElementById('result').textContent = 'Please enter a positive side length.';
+        return;
+    }
+    
+    try {
+        // Calculate polygon properties
+        const polygonName = getPolygonName(n);
+        const perimeter = n * sideLength;
+        
+        // Convert to radians for calculations
+        const angleRad = Math.PI / n;
+        
+        // Area using the standard formula
+        const area = (n * sideLength * sideLength) / (4 * Math.tan(angleRad));
+        
+        // Apothem (distance from center to middle of any side)
+        const apothem = sideLength / (2 * Math.tan(angleRad));
+        
+        // Circumradius (distance from center to any vertex)
+        const circumradius = sideLength / (2 * Math.sin(angleRad));
+        
+        // Angles in degrees
+        const interiorAngle = (n - 2) * 180 / n;
+        const exteriorAngle = 360 / n;
+        const centralAngle = 360 / n;
+        
+        const result = `
+<strong>${polygonName} Properties:</strong>
+
+• Number of sides (n): ${n}
+• Side length (s): ${formatNumber(sideLength)}
+• Perimeter: ${formatNumber(perimeter)}
+• Area: ${formatNumber(area)}
+
+<strong>Radii:</strong>
+• Apothem (inradius): ${formatNumber(apothem)}
+• Circumradius: ${formatNumber(circumradius)}
+
+<strong>Angles:</strong>
+• Interior angle: ${formatNumber(interiorAngle)}°
+• Exterior angle: ${formatNumber(exteriorAngle)}°
+• Central angle: ${formatNumber(centralAngle)}°
+
+<strong>Calculations:</strong>
+• Perimeter = n × s = ${n} × ${formatNumber(sideLength)} = ${formatNumber(perimeter)}
+• Area = (n × s²) / (4 × tan(π/n)) = ${formatNumber(area)}
+• Apothem = s / (2 × tan(π/n)) = ${formatNumber(apothem)}
+• Circumradius = s / (2 × sin(π/n)) = ${formatNumber(circumradius)}
+        `.trim();
+        
+        document.getElementById('result').innerHTML = result;
+        
+    } catch (error) {
+        document.getElementById('result').textContent = 'Error in calculation. Please check your inputs.';
+    }
+}
+
+// Initialize
+updateInputs();
+
+// Allow Enter key to calculate
+document.getElementById('sides-input').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') {
+        calculatePolygon();
+    }
+});
+
+document.getElementById('side-length').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') {
+        calculatePolygon();
+    }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate Signature - ScribbleTools</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Caveat:wght@400;500;600;700&family=Dancing+Script:wght@400;500;600;700&family=Great+Vibes&family=Alex+Brush&family=Allura&family=Berkshire+Swash&family=Clicker+Script&family=Homemade+Apple&family=Kaushan+Script&family=Marck+Script&family=Montez&family=Mr+De+Haviland&family=Petit+Formal+Script&family=Playball&family=Satisfy&family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Poppins', sans-serif; }
+        .result-card { background: linear-gradient(135deg, #f0fff4 0%, #dcfce7 100%); border: 1px solid #bbf7d0; }
+        .conversion-success-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: #E8F5E8;
+            border: 2px solid #5CB85C;
+            border-radius: 0.7em;
+            padding: 1.2em 1em 1.5em 1em;
+            margin-bottom: 1em;
+            margin-top: 0.5em;
+            box-shadow: 0 2px 12px #eae3d5;
+        }
+        .success-icon {
+            font-size: 2.2em;
+            color: #5CB85C;
+            margin-bottom: 0.3em;
+        }
+        .success-message {
+            font-size: 1.15em;
+            color: #228B22;
+            font-family: 'Caveat', cursive;
+            margin-bottom: 0.7em;
+            text-align: center;
+        }
+        .download-btn {
+            background: linear-gradient(135deg, #5CB85C 0%, #228B22 100%);
+            color: #fff;
+            border: none;
+            border-radius: 0.5em;
+            padding: 0.9em 2em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-block;
+            margin-top: 0.5em;
+            margin-bottom: 0.2em;
+            font-size: 1.08em;
+            box-shadow: 0 2px 12px #eae3d5;
+        }
+        .download-btn:hover {
+            background: #1e7e1e;
+        }
+        .canvas-container { 
+            border: 2px solid #e5e7eb; 
+            border-radius: 0.5rem; 
+            background: white; 
+            position: relative; 
+            overflow: hidden; 
+        }
+        #signatureCanvas { 
+            cursor: crosshair; 
+            touch-action: none; 
+        }
+        .tool-btn { 
+            padding: 0.5rem 1rem; 
+            border: 1px solid #d1d5db; 
+            background: white; 
+            border-radius: 0.375rem; 
+            cursor: pointer; 
+            transition: all 0.2s; 
+        }
+        .tool-btn:hover { background: #f3f4f6; }
+        .tool-btn.active { 
+            background: #3b82f6; 
+            color: white; 
+            border-color: #3b82f6; 
+        }
+        .color-picker { 
+            width: 40px; 
+            height: 40px; 
+            border: 2px solid #e5e7eb; 
+            border-radius: 0.375rem; 
+            cursor: pointer; 
+        }
+        .font-preview { 
+            font-size: 1.2rem; 
+            padding: 0.5rem; 
+            border: 1px solid #e5e7eb; 
+            border-radius: 0.375rem; 
+            cursor: pointer; 
+            transition: all 0.2s; 
+        }
+        .font-preview:hover { background: #f3f4f6; }
+        .font-preview.selected { 
+            background: #3b82f6; 
+            color: white; 
+            border-color: #3b82f6; 
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="container mx-auto px-4 py-8 max-w-6xl">
+        <div class="text-center mb-8">
+            <h2 class="handwritten text-5xl" style="color:#D9534F; font-family: 'Caveat', cursive; margin-bottom: 0.5em;">Generate Signature</h2>
+            <p class="text-gray-600 text-lg">Create beautiful digital signatures with custom fonts and colors</p>
+        </div>
+
+        <!-- Privacy/Disclaimer Notice (match Reduce Image Size) -->
+        <div style="background: #FFF3CD; border: 1px solid #FFEAA7; border-radius: 0.5em; padding: 1em; margin: 1em 0; font-size: 0.98em; color: #856404; max-width: 700px; margin-left:auto; margin-right:auto;">
+            <strong>🔒 Privacy Notice:</strong> Your signatures are created locally in your browser. No data is uploaded to our servers. All data is automatically deleted after 10 minutes.
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <!-- Left Panel - Tools -->
+            <div class="lg:col-span-1">
+                <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Signature Options</h3>
+                    
+                    <!-- Text Input -->
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Your Name</label>
+                        <input type="text" id="signatureText" placeholder="Enter your name" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                    </div>
+
+                    <!-- Font Selection -->
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Font Style</label>
+                        <div class="grid grid-cols-2 gap-2 max-h-48 overflow-y-auto">
+                            <div class="font-preview" data-font="Caveat" style="font-family: 'Caveat', cursive;">Caveat</div>
+                            <div class="font-preview" data-font="Dancing Script" style="font-family: 'Dancing Script', cursive;">Dancing Script</div>
+                            <div class="font-preview" data-font="Great Vibes" style="font-family: 'Great Vibes', cursive;">Great Vibes</div>
+                            <div class="font-preview" data-font="Alex Brush" style="font-family: 'Alex Brush', cursive;">Alex Brush</div>
+                            <div class="font-preview" data-font="Allura" style="font-family: 'Allura', cursive;">Allura</div>
+                            <div class="font-preview" data-font="Berkshire Swash" style="font-family: 'Berkshire Swash', cursive;">Berkshire</div>
+                            <div class="font-preview" data-font="Clicker Script" style="font-family: 'Clicker Script', cursive;">Clicker</div>
+                            <div class="font-preview" data-font="Homemade Apple" style="font-family: 'Homemade Apple', cursive;">Homemade</div>
+                            <div class="font-preview" data-font="Kaushan Script" style="font-family: 'Kaushan Script', cursive;">Kaushan</div>
+                            <div class="font-preview" data-font="Marck Script" style="font-family: 'Marck Script', cursive;">Marck</div>
+                            <div class="font-preview" data-font="Montez" style="font-family: 'Montez', cursive;">Montez</div>
+                            <div class="font-preview" data-font="Mr De Haviland" style="font-family: 'Mr De Haviland', cursive;">De Haviland</div>
+                            <div class="font-preview" data-font="Petit Formal Script" style="font-family: 'Petit Formal Script', cursive;">Petit</div>
+                            <div class="font-preview" data-font="Playball" style="font-family: 'Playball', cursive;">Playball</div>
+                            <div class="font-preview" data-font="Satisfy" style="font-family: 'Satisfy', cursive;">Satisfy</div>
+                            <div class="font-preview" data-font="Tangerine" style="font-family: 'Tangerine', cursive;">Tangerine</div>
+                        </div>
+                    </div>
+
+                    <!-- Font Size -->
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Font Size: <span id="fontSizeValue">48</span>px</label>
+                        <input type="range" id="fontSize" min="20" max="120" value="48" class="w-full">
+                    </div>
+
+                    <!-- Color Selection -->
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Color</label>
+                        <div class="grid grid-cols-6 gap-2 mb-2">
+                            <div class="color-picker bg-black" data-color="#000000"></div>
+                            <div class="color-picker bg-blue-600" data-color="#2563eb"></div>
+                            <div class="color-picker bg-red-600" data-color="#dc2626"></div>
+                            <div class="color-picker bg-green-600" data-color="#16a34a"></div>
+                            <div class="color-picker bg-purple-600" data-color="#9333ea"></div>
+                            <div class="color-picker bg-gray-600" data-color="#4b5563"></div>
+                        </div>
+                        <input type="color" id="customColor" value="#000000" class="w-full h-10 border border-gray-300 rounded-lg">
+                    </div>
+
+                    <!-- Background Options -->
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Background</label>
+                        <select id="bgType" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            <option value="transparent">Transparent</option>
+                            <option value="white">White</option>
+                            <option value="custom">Custom Color</option>
+                        </select>
+                        <input type="color" id="bgColor" value="#ffffff" class="w-full h-10 border border-gray-300 rounded-lg mt-2 hidden">
+                    </div>
+
+                    <!-- Canvas Size -->
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Canvas Size</label>
+                        <select id="canvasSize" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            <option value="400x200">Small (400×200)</option>
+                            <option value="600x300" selected>Medium (600×300)</option>
+                            <option value="800x400">Large (800×400)</option>
+                            <option value="1000x500">Extra Large (1000×500)</option>
+                        </select>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="space-y-2">
+                        <button id="generateBtn" class="w-full bg-blue-500 text-white py-3 px-6 rounded-lg hover:bg-blue-600 transition-colors font-semibold">
+                            Generate Signature
+                        </button>
+                        <button id="clearBtn" class="w-full bg-gray-500 text-white py-2 px-6 rounded-lg hover:bg-gray-600 transition-colors">
+                            Clear Canvas
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Center Panel - Canvas -->
+            <div class="lg:col-span-2">
+                <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Signature Canvas</h3>
+                    
+                    <div class="canvas-container mx-auto" id="canvasContainer">
+                        <canvas id="signatureCanvas" width="600" height="300"></canvas>
+                    </div>
+
+                    <div class="text-center mt-4">
+                        <p class="text-sm text-gray-500">Click and drag to draw your signature, or use the text generator above</p>
+                        <button id="generateCanvasBtn" style="background:#228B22; color:#fff; border:none; border-radius:0.5em; padding:1em 2em; font-weight:600; cursor:pointer; transition:all 0.2s; font-size:1.1em; margin-top:1.2em;" class="reduce-btn">Generate from Canvas</button>
+                    </div>
+                </div>
+
+                <!-- Results Section -->
+                <div class="bg-white rounded-lg shadow-lg p-6 hidden" id="resultSection">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Your Signature</h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6" id="resultGrid"></div>
+                    
+                    <div id="downloadSection" class="text-center"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function initializeGenerateSignature() {
+            const canvas = document.getElementById('signatureCanvas');
+            const ctx = canvas.getContext('2d');
+            const signatureText = document.getElementById('signatureText');
+            const fontSize = document.getElementById('fontSize');
+            const fontSizeValue = document.getElementById('fontSizeValue');
+            const canvasSize = document.getElementById('canvasSize');
+            const bgType = document.getElementById('bgType');
+            const bgColor = document.getElementById('bgColor');
+            const generateBtn = document.getElementById('generateBtn');
+            const clearBtn = document.getElementById('clearBtn');
+            const resultSection = document.getElementById('resultSection');
+            const resultGrid = document.getElementById('resultGrid');
+            const downloadSection = document.getElementById('downloadSection');
+
+            let isDrawing = false;
+            let selectedFont = 'Caveat';
+            let selectedColor = '#000000';
+            let canvasWidth = 600;
+            let canvasHeight = 300;
+
+            // Initialize canvas
+            function initCanvas() {
+                canvas.width = canvasWidth;
+                canvas.height = canvasHeight;
+                ctx.fillStyle = 'white';
+                ctx.fillRect(0, 0, canvasWidth, canvasHeight);
+                ctx.strokeStyle = selectedColor;
+                ctx.lineWidth = 2;
+                ctx.lineCap = 'round';
+                ctx.lineJoin = 'round';
+            }
+
+            // Initialize
+            initCanvas();
+
+            // Font selection
+            document.querySelectorAll('.font-preview').forEach(preview => {
+                preview.addEventListener('click', () => {
+                    document.querySelectorAll('.font-preview').forEach(p => p.classList.remove('selected'));
+                    preview.classList.add('selected');
+                    selectedFont = preview.dataset.font;
+                });
+            });
+
+            // Color selection
+            document.querySelectorAll('.color-picker').forEach(picker => {
+                picker.addEventListener('click', () => {
+                    selectedColor = picker.dataset.color;
+                    document.getElementById('customColor').value = selectedColor;
+                    ctx.strokeStyle = selectedColor;
+                });
+            });
+
+            // Custom color
+            document.getElementById('customColor').addEventListener('change', (e) => {
+                selectedColor = e.target.value;
+                ctx.strokeStyle = selectedColor;
+            });
+
+            // Font size
+            fontSize.addEventListener('input', (e) => {
+                fontSizeValue.textContent = e.target.value;
+            });
+
+            // Canvas size
+            canvasSize.addEventListener('change', (e) => {
+                const [width, height] = e.target.value.split('x').map(Number);
+                canvasWidth = width;
+                canvasHeight = height;
+                initCanvas();
+            });
+
+            // Background type
+            bgType.addEventListener('change', (e) => {
+                const bgColorInput = document.getElementById('bgColor');
+                if (e.target.value === 'custom') {
+                    bgColorInput.classList.remove('hidden');
+                } else {
+                    bgColorInput.classList.add('hidden');
+                }
+            });
+
+            // Drawing functionality
+            canvas.addEventListener('mousedown', startDrawing);
+            canvas.addEventListener('mousemove', draw);
+            canvas.addEventListener('mouseup', stopDrawing);
+            canvas.addEventListener('mouseout', stopDrawing);
+
+            // Touch support
+            canvas.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                const touch = e.touches[0];
+                const rect = canvas.getBoundingClientRect();
+                const x = touch.clientX - rect.left;
+                const y = touch.clientY - rect.top;
+                startDrawing({ clientX: x, clientY: y });
+            });
+
+            canvas.addEventListener('touchmove', (e) => {
+                e.preventDefault();
+                const touch = e.touches[0];
+                const rect = canvas.getBoundingClientRect();
+                const x = touch.clientX - rect.left;
+                const y = touch.clientY - rect.top;
+                draw({ clientX: x, clientY: y });
+            });
+
+            canvas.addEventListener('touchend', stopDrawing);
+
+            function startDrawing(e) {
+                isDrawing = true;
+                const rect = canvas.getBoundingClientRect();
+                ctx.beginPath();
+                ctx.moveTo(e.clientX - rect.left, e.clientY - rect.top);
+            }
+
+            function draw(e) {
+                if (!isDrawing) return;
+                const rect = canvas.getBoundingClientRect();
+                ctx.lineTo(e.clientX - rect.left, e.clientY - rect.top);
+                ctx.stroke();
+            }
+
+            function stopDrawing() {
+                isDrawing = false;
+            }
+
+            // Generate text signature
+            generateBtn.addEventListener('click', () => {
+                const text = signatureText.value.trim();
+                if (!text) {
+                    alert('Please enter your name');
+                    return;
+                }
+
+                // Clear canvas
+                ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+
+                // Set background
+                if (bgType.value === 'transparent') {
+                    ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+                } else if (bgType.value === 'white') {
+                    ctx.fillStyle = 'white';
+                    ctx.fillRect(0, 0, canvasWidth, canvasHeight);
+                } else {
+                    ctx.fillStyle = bgColor.value;
+                    ctx.fillRect(0, 0, canvasWidth, canvasHeight);
+                }
+
+                // Set text properties
+                ctx.fillStyle = selectedColor;
+                ctx.font = `${fontSize.value}px "${selectedFont}", cursive`;
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+
+                // Draw text
+                ctx.fillText(text, canvasWidth / 2, canvasHeight / 2);
+
+                displayResults();
+            });
+
+            // Generate from Canvas (freehand)
+            const generateCanvasBtn = document.getElementById('generateCanvasBtn');
+            if (generateCanvasBtn) {
+                generateCanvasBtn.addEventListener('click', () => {
+                    displayResults();
+                });
+            }
+
+            // Clear canvas
+            clearBtn.addEventListener('click', () => {
+                ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+                if (bgType.value !== 'transparent') {
+                    ctx.fillStyle = bgType.value === 'white' ? 'white' : bgColor.value;
+                    ctx.fillRect(0, 0, canvasWidth, canvasHeight);
+                }
+            });
+
+            function displayResults() {
+                canvas.toBlob((blob) => {
+                    if (blob) {
+                        const size = (blob.size / 1024).toFixed(2);
+                        
+                        resultGrid.innerHTML = `
+                            <div class="result-card rounded-lg p-4">
+                                <h4 class="font-semibold text-gray-700">📏 Dimensions</h4>
+                                <div class="text-2xl font-bold text-green-600">${canvasWidth} × ${canvasHeight}px</div>
+                            </div>
+                            <div class="result-card rounded-lg p-4">
+                                <h4 class="font-semibold text-gray-700">📊 File Size</h4>
+                                <div class="text-2xl font-bold text-blue-600">${size} KB</div>
+                            </div>
+                            <div class="result-card rounded-lg p-4">
+                                <h4 class="font-semibold text-gray-700">🎨 Font Used</h4>
+                                <div class="text-lg font-bold text-purple-600">${selectedFont}</div>
+                            </div>
+                        `;
+
+                        // Download options
+                        const url = URL.createObjectURL(blob);
+                        downloadSection.innerHTML = `
+                            <div class="conversion-success-card">
+                                <div class="success-icon">✅</div>
+                                <div class="success-message">Your signature has been <b>successfully generated!</b></div>
+                                <a href="${url}" download="signature.png" class="download-btn">Download PNG</a>
+                                <button onclick="downloadAsJPG()" class="download-btn">Download JPG</button>
+                                <button onclick="downloadAsSVG()" class="download-btn">Download SVG</button>
+                            </div>
+                        `;
+
+                        resultSection.classList.remove('hidden');
+                    }
+                }, 'image/png');
+            }
+
+            // Download as JPG
+            window.downloadAsJPG = function() {
+                const tempCanvas = document.createElement('canvas');
+                const tempCtx = tempCanvas.getContext('2d');
+                tempCanvas.width = canvasWidth;
+                tempCanvas.height = canvasHeight;
+                
+                // Set white background for JPG
+                tempCtx.fillStyle = 'white';
+                tempCtx.fillRect(0, 0, canvasWidth, canvasHeight);
+                
+                // Draw the original canvas
+                tempCtx.drawImage(canvas, 0, 0);
+                
+                tempCanvas.toBlob((blob) => {
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = 'signature.jpg';
+                    a.click();
+                }, 'image/jpeg', 0.9);
+            };
+
+            // Download as SVG
+            window.downloadAsSVG = function() {
+                const text = signatureText.value.trim();
+                const svg = `
+                    <svg width="${canvasWidth}" height="${canvasHeight}" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="100%" height="100%" fill="${bgType.value === 'transparent' ? 'none' : (bgType.value === 'white' ? 'white' : bgColor.value)}"/>
+                        <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" 
+                              font-family="${selectedFont}, cursive" font-size="${fontSize.value}" 
+                              fill="${selectedColor}">${text}</text>
+                    </svg>
+                `;
+                
+                const blob = new Blob([svg], { type: 'image/svg+xml' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'signature.svg';
+                a.click();
+            };
+        }
+
+        // SPA-friendly: Use a local flag on the canvas container to prevent double listeners, but allow re-init on navigation
+        function spaInitGenerateSignature() {
+            const canvasContainer = document.getElementById('canvasContainer');
+            if (!canvasContainer) return;
+            if (!canvasContainer.__generateSignatureInit) {
+                initializeGenerateSignature();
+                canvasContainer.__generateSignatureInit = true;
+            }
+        }
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', spaInitGenerateSignature);
+        } else {
+            spaInitGenerateSignature();
+        }
+        // Expose function globally for SPA compatibility
+        window.initializeGenerateSignature = initializeGenerateSignature;
+        window.spaInitGenerateSignature = spaInitGenerateSignature;
+    </script>
+</body>
+</html>

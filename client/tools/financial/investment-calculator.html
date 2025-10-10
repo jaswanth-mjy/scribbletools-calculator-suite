@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Investment Calculator - Free Investment Return & Growth Calculator</title>
+    <meta name="description" content="Free investment calculator to calculate investment returns and portfolio growth. Analyze your investment performance with compound returns and regular contributions.">
+    <meta name="keywords" content="investment calculator, investment return calculator, portfolio calculator, investment growth, ROI calculator, compound investment calculator">
+    <meta name="author" content="ScribbleTools">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://scribbletools.net/client/tools/financial/investment-calculator.html">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://scribbletools.net/client/tools/financial/investment-calculator.html">
+    <meta property="og:title" content="Investment Calculator - Free Investment Return & Growth Calculator">
+    <meta property="og:description" content="Calculate investment returns and portfolio growth with our free investment calculator. Analyze compound returns and investment performance.">
+    <meta property="og:image" content="https://scribbletools.net/assets/og-image.svg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://scribbletools.net/client/tools/financial/investment-calculator.html">
+    <meta property="twitter:title" content="Investment Calculator - Free Investment Return & Growth Calculator">
+    <meta property="twitter:description" content="Calculate investment returns and portfolio growth with our free investment calculator. Instant results.">
+    <meta property="twitter:image" content="https://scribbletools.net/assets/og-image.svg">
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Investment Calculator",
+      "description": "Free online investment calculator for calculating investment returns, portfolio growth, and compound investment performance",
+      "url": "https://scribbletools.net/client/tools/financial/investment-calculator.html",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Web Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "ScribbleTools"
+      }
+    }
+    </script>
+    <style>
+        body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; }
+        .calc-container { max-width: 420px; margin: 3em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2em 1.5em 2.5em 1.5em; }
+        .handwritten { font-family: 'Caveat', cursive; }
+        .calc-label { font-weight: 600; margin-bottom: 0.5em; display: block; }
+        .calc-input { width: 100%; padding: 1em; border: 2px solid #EAE3D5; border-radius: 0.7em; font-size: 1.2em; margin-bottom: 1em; background: #FDFBF5; text-align: center; font-family: 'Fira Code', monospace; }
+        .calc-btn { background: #fff; color: #D9534F; border: 2px solid #D9534F; border-radius: 0.5em; padding: 0.7em 2em; font-weight: 600; font-size: 1.1em; cursor: pointer; transition: all 0.2s; margin-bottom: 1em; }
+        .calc-btn:hover { background: #D9534F; color: #fff; }
+        .calc-result { background: #FDFBF5; border: 2px solid #D9534F; border-radius: 0.7em; padding: 1em; font-size: 1.25em; color: #D9534F; min-height: 1.7em; margin-bottom: 1em; text-align: center; font-family: 'Fira Code', monospace; font-weight: bold; max-height: 300px; overflow-y: auto; word-break: break-word; transition: height 0.2s; }
+        .calc-desc { width: 100%; margin-top: 2em; background:#FDFBF5; border:2px solid #EAE3D5; border-radius:0.9em; padding:1.2em 1em; font-size:1.08em; color:#333; line-height:1.7; }
+        .calc-desc strong { color: #D9534F; font-size: 1.12em; }
+        @media (max-width: 600px) { .calc-container { padding: 1em 0.2em; } }
+    </style>
+</head>
+<body>
+<div class="calc-container">
+    <h2 class="handwritten text-5xl text-[#D9534F] mb-4">Investment Calculator</h2>
+    <label class="calc-label">Initial Investment ($):</label>
+    <input id="principal" class="calc-input" type="number" min="0" placeholder="e.g. 10000">
+    <label class="calc-label">Annual Contribution ($):</label>
+    <input id="contribution" class="calc-input" type="number" min="0" placeholder="e.g. 2000">
+    <label class="calc-label">Annual Return Rate (%):</label>
+    <input id="rate" class="calc-input" type="number" min="0" step="0.01" placeholder="e.g. 7">
+    <label class="calc-label">Years:</label>
+    <input id="years" class="calc-input" type="number" min="1" placeholder="e.g. 20">
+    <button id="calc-btn" class="calc-btn">Calculate</button>
+    <div class="calc-result" id="calc-result"></div>
+</div>
+<div class="calc-desc" style="max-width: fit-content; margin: 2.5em auto 0 auto;">
+    <strong style="font-size:1.18em; color:#D9534F;">About the Investment Calculator</strong><br><br>
+    Instantly estimate how your investments can grow over time with regular contributions and compound returns. Enter your starting amount, annual contribution, return rate, and years to see your future balance. Great for retirement, college, or any savings goal.<br><br>
+    
+    <h3 style="color:#D9534F; margin-top:2em;">How to Use the Investment Calculator</h3>
+    <ol style="margin-left:1.2em;">
+        <li><strong>Initial Investment:</strong> Enter the amount you're starting with (lump sum)</li>
+        <li><strong>Annual Contribution:</strong> Input how much you plan to add each year</li>
+        <li><strong>Annual Return Rate:</strong> Enter expected average annual return (historical S&P 500: ~10%)</li>
+        <li><strong>Investment Period:</strong> Input how many years you plan to invest</li>
+        <li><strong>Calculate:</strong> See your projected final balance and total returns</li>
+    </ol>
+    
+    <h3 style="color:#D9534F; margin-top:2em;">Example Investment Growth</h3>
+    <p style="background:#f8f9fa; padding:15px; border-radius:5px;">
+        <strong>Scenario:</strong> $10,000 initial + $2,000/year for 25 years at 8% return<br>
+        <strong>Your Contributions:</strong> $60,000 total ($10,000 + $50,000 annual)<br>
+        <strong>Final Balance:</strong> $236,559<br>
+        <strong>Investment Gains:</strong> $176,559 (nearly 3x your contributions!)<br>
+        <em>Compound growth accelerates dramatically over time.</em>
+    </p>
+    
+    <h3 style="color:#D9534F; margin-top:2em;">Investment Account Types</h3>
+    <ul style="margin-left:1.2em;">
+        <li><strong>Taxable Brokerage:</strong> No contribution limits, flexible withdrawals, taxed on gains</li>
+        <li><strong>401(k)/403(b):</strong> Employer plans with potential matching, tax-deferred growth</li>
+        <li><strong>Traditional IRA:</strong> Tax-deductible contributions, taxed on withdrawal</li>
+        <li><strong>Roth IRA:</strong> After-tax contributions, tax-free growth and withdrawals</li>
+        <li><strong>529 Plans:</strong> Tax-advantaged education savings with state tax benefits</li>
+    </ul>
+    
+    <h3 style="color:#D9534F; margin-top:2em;">Asset Classes & Expected Returns</h3>
+    <div style="background:#f8f9fa; padding:15px; border-radius:5px;">
+        <strong>Historical Annual Returns (1926-2023):</strong><br>
+        • Large Company Stocks: ~10.1%<br>
+        • Small Company Stocks: ~12.1%<br>
+        • International Stocks: ~8.7%<br>
+        • Government Bonds: ~5.4%<br>
+        • Corporate Bonds: ~6.1%<br>
+        • Treasury Bills: ~3.3%<br>
+        <em>Higher returns come with higher risk and volatility.</em>
+    </div>
+    
+    <h3 style="color:#D9534F; margin-top:2em;">Smart Investment Strategies</h3>
+    <ul style="margin-left:1.2em;">
+        <li><strong>Dollar-Cost Averaging:</strong> Invest fixed amounts regularly to reduce timing risk</li>
+        <li><strong>Diversification:</strong> Spread investments across different asset classes and sectors</li>
+        <li><strong>Index Fund Investing:</strong> Low-cost way to own entire market segments</li>
+        <li><strong>Asset Allocation:</strong> Balance stocks and bonds based on age and risk tolerance</li>
+        <li><strong>Rebalancing:</strong> Periodically adjust portfolio back to target allocation</li>
+        <li><strong>Tax-Loss Harvesting:</strong> Sell losing investments to offset taxable gains</li>
+    </ul>
+    
+    <h3 style="color:#D9534F; margin-top:2em;">The Power of Starting Early</h3>
+    <div style="background:#f8f9fa; padding:15px; border-radius:5px;">
+        <strong>$200/month invested at 8% annual return:</strong><br>
+        • Start at age 25 (40 years): $622,447<br>
+        • Start at age 35 (30 years): $271,743<br>
+        • Start at age 45 (20 years): $117,804<br>
+        <em>Starting 10 years earlier more than doubles your retirement savings!</em>
+    </div>
+    
+    <h3 style="color:#D9534F; margin-top:2em;">Common Investment Mistakes to Avoid</h3>
+    <ul style="margin-left:1.2em;">
+        <li><strong>Trying to Time the Market:</strong> Consistent investing beats market timing</li>
+        <li><strong>Emotional Investing:</strong> Don't panic sell during market downturns</li>
+        <li><strong>High Fees:</strong> Expense ratios above 1% significantly reduce returns</li>
+        <li><strong>Over-diversification:</strong> Too many similar funds provide no additional benefit</li>
+        <li><strong>Ignoring Inflation:</strong> Your money needs to grow faster than inflation</li>
+        <li><strong>Not Maximizing Tax Advantages:</strong> Use retirement accounts before taxable investing</li>
+    </ul>
+    
+    <h3 style="color:#D9534F; margin-top:2em;">Risk vs Return Guidelines</h3>
+    <ul style="margin-left:1.2em;">
+        <li><strong>Conservative (3-5%):</strong> CDs, government bonds, stable value funds</li>
+        <li><strong>Moderate (5-8%):</strong> Balanced funds, dividend stocks, corporate bonds</li>
+        <li><strong>Aggressive (8-12%):</strong> Growth stocks, small-cap funds, emerging markets</li>
+        <li><strong>Rule of Thumb:</strong> Higher potential returns always come with higher risk</li>
+    </ul>
+    
+    <b>Note:</b> The data used in this calculator was last updated on July 30, 2024, and may change in the future.<br><br>
+    <b>Use Cases:</b>
+    <ul style="margin-left:1.2em;">
+        <li>Plan for retirement, college, or big purchases</li>
+        <li>Compare different investment strategies and time horizons</li>
+        <li>See the impact of regular contributions vs lump sum investing</li>
+        <li>Calculate the effect of different return rates on your goals</li>
+        <li>Understand how compound interest accelerates wealth building</li>
+        <li>Evaluate whether you're saving enough for financial goals</li>
+    </ul>
+</div>
+<script>
+function showResult(str) {
+    document.getElementById('calc-result').innerHTML = str;
+}
+document.getElementById('calc-btn').addEventListener('click', function() {
+    let principal = parseFloat(document.getElementById('principal').value);
+    let contribution = parseFloat(document.getElementById('contribution').value);
+    let rate = parseFloat(document.getElementById('rate').value);
+    let years = parseInt(document.getElementById('years').value);
+    if (isNaN(principal) || isNaN(contribution) || isNaN(rate) || isNaN(years) || principal < 0 || contribution < 0 || rate < 0 || years <= 0) {
+        showResult('Please enter valid values for all fields.');
+        return;
+    }
+    let r = rate / 100;
+    let future = principal * Math.pow(1 + r, years);
+    for (let i = 1; i <= years; i++) {
+        future += contribution * Math.pow(1 + r, years - i);
+    }
+    showResult(`<b>Future Value:</b> $${future.toFixed(2)}`);
+});
+</script>
+</body>
+</html>

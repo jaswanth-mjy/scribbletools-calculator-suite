@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Interest Calculator - Free Simple & Compound Interest Calculator</title>
+    <meta name="description" content="Free interest calculator for simple and compound interest calculations. Calculate interest earnings, loan costs, and investment returns with different compounding periods.">
+    <meta name="keywords" content="interest calculator, simple interest calculator, compound interest, interest rate calculator, loan interest calculator, savings interest">
+    <meta name="author" content="ScribbleTools">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://scribbletools.net/client/tools/financial/interest-calculator.html">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://scribbletools.net/client/tools/financial/interest-calculator.html">
+    <meta property="og:title" content="Interest Calculator - Free Simple & Compound Interest Calculator">
+    <meta property="og:description" content="Calculate simple and compound interest with our free interest calculator. Get instant results for loans, savings, and investments.">
+    <meta property="og:image" content="https://scribbletools.net/assets/og-image.svg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://scribbletools.net/client/tools/financial/interest-calculator.html">
+    <meta property="twitter:title" content="Interest Calculator - Free Simple & Compound Interest Calculator">
+    <meta property="twitter:description" content="Calculate simple and compound interest with our free interest calculator. Instant results for financial planning.">
+    <meta property="twitter:image" content="https://scribbletools.net/assets/og-image.svg">
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Interest Calculator",
+      "description": "Free online interest calculator for simple and compound interest calculations on loans, savings, and investments",
+      "url": "https://scribbletools.net/client/tools/financial/interest-calculator.html",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Web Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "ScribbleTools"
+      }
+    }
+    </script>
+    <style>
+        body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; }
+        .calc-container { max-width: 420px; margin: 3em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2em 1.5em 2.5em 1.5em; }
+        .handwritten { font-family: 'Caveat', cursive; }
+        .calc-label { font-weight: 600; margin-bottom: 0.5em; display: block; }
+        .calc-input { width: 100%; padding: 1em; border: 2px solid #EAE3D5; border-radius: 0.7em; font-size: 1.2em; margin-bottom: 1em; background: #FDFBF5; text-align: center; font-family: 'Fira Code', monospace; }
+        .calc-btn { background: #fff; color: #D9534F; border: 2px solid #D9534F; border-radius: 0.5em; padding: 0.7em 2em; font-weight: 600; font-size: 1.1em; cursor: pointer; transition: all 0.2s; margin-bottom: 1em; }
+        .calc-btn:hover { background: #D9534F; color: #fff; }
+        .calc-result { background: #FDFBF5; border: 2px solid #D9534F; border-radius: 0.7em; padding: 1em; font-size: 1.25em; color: #D9534F; min-height: 1.7em; margin-bottom: 1em; text-align: center; font-family: 'Fira Code', monospace; font-weight: bold; max-height: 300px; overflow-y: auto; word-break: break-word; transition: height 0.2s; }
+        .calc-desc { width: 100%; margin-top: 2em; background:#FDFBF5; border:2px solid #EAE3D5; border-radius:0.9em; padding:1.2em 1em; font-size:1.08em; color:#333; line-height:1.7; }
+        .calc-desc strong { color: #D9534F; font-size: 1.12em; }
+        @media (max-width: 600px) { .calc-container { padding: 1em 0.2em; } }
+    </style>
+</head>
+<body>
+<div class="calc-container">
+    <h2 class="handwritten text-5xl text-[#D9534F] mb-4">Interest Calculator</h2>
+    <label class="calc-label">Principal Amount ($):</label>
+    <input id="principal" class="calc-input" type="number" min="0" placeholder="e.g. 5000">
+    <label class="calc-label">Interest Rate (% per year):</label>
+    <input id="rate" class="calc-input" type="number" min="0" step="0.01" placeholder="e.g. 4">
+    <label class="calc-label">Years:</label>
+    <input id="years" class="calc-input" type="number" min="1" placeholder="e.g. 3">
+    <button id="calc-btn" class="calc-btn">Calculate</button>
+    <div class="calc-result" id="calc-result"></div>
+</div>
+<div class="calc-desc" style="max-width: fit-content; margin: 2.5em auto 0 auto;">
+    <strong style="font-size:1.18em; color:#D9534F;">About the Interest Calculator</strong><br><br>
+    Instantly calculate the interest earned or paid on any amount, for any rate and time period. Enter your principal, interest rate, and years to see the total interest and final amount. Great for savings, loans, or quick financial planning.<br><br>
+    <b>Note:</b> The data used in this calculator was last updated on July 30, 2024, and may change in the future.<br><br>
+    <b>Use Cases:</b>
+    <ul style="margin-left:1.2em;">
+        <li>Estimate interest earned on savings or investments</li>
+        <li>Calculate interest paid on loans or credit cards</li>
+        <li>Compare different interest rates or time periods</li>
+        <li>Check homework or prepare for finance class</li>
+    </ul>
+</div>
+<script>
+function showResult(str) {
+    document.getElementById('calc-result').innerHTML = str;
+}
+document.getElementById('calc-btn').addEventListener('click', function() {
+    let principal = parseFloat(document.getElementById('principal').value);
+    let rate = parseFloat(document.getElementById('rate').value);
+    let years = parseInt(document.getElementById('years').value);
+    if (isNaN(principal) || isNaN(rate) || isNaN(years) || principal <= 0 || rate < 0 || years <= 0) {
+        showResult('Please enter valid values for all fields.');
+        return;
+    }
+    let interest = principal * rate / 100 * years;
+    let total = principal + interest;
+    showResult(`<b>Total Interest:</b> $${interest.toFixed(2)}<br><b>Final Amount:</b> $${total.toFixed(2)}`);
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,1775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Optimization -->
+    <title>Age Calculator - Calculate Your Exact Age Online Free | ScribbleTools</title>
+    <meta name="description" content="Free online age calculator to find your exact age in years, months, days, hours, and minutes. Calculate age differences, upcoming birthdays, and fun age facts instantly.">
+    <meta name="keywords" content="age calculator, calculate age, how old am I, age difference calculator, birthday calculator, exact age, age in days, age in years">
+    <meta name="author" content="ScribbleTools">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://jaswanth-mjy.github.io/allinone.github.io/client/tools/other/age-calculator.html">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://jaswanth-mjy.github.io/allinone.github.io/client/tools/other/age-calculator.html">
+    <meta property="og:title" content="Age Calculator - Calculate Your Exact Age Online Free">
+    <meta property="og:description" content="Free online age calculator to find your exact age in years, months, days, hours, and minutes. Calculate age differences and fun age facts instantly.">
+    <meta property="og:site_name" content="ScribbleTools">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://jaswanth-mjy.github.io/allinone.github.io/client/tools/other/age-calculator.html">
+    <meta property="twitter:title" content="Age Calculator - Calculate Your Exact Age Online Free">
+    <meta property="twitter:description" content="Free online age calculator to find your exact age in years, months, days, hours, and minutes.">
+    
+    <!-- Structured Data (Schema.org) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Age Calculator",
+        "description": "Free online age calculator to calculate exact age in years, months, days, hours, and minutes",
+        "url": "https://jaswanth-mjy.github.io/allinone.github.io/client/tools/other/age-calculator.html",
+        "applicationCategory": "UtilityApplication",
+        "operatingSystem": "Any",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "ScribbleTools"
+        },
+        "featureList": [
+            "Calculate exact age in years, months, days",
+            "Calculate age in hours and minutes", 
+            "Calculate age differences between dates",
+            "Birthday countdown timer",
+            "Fun age facts and statistics"
+        ]
+    }
+    </script>
+    <style>
+        /* Age Calculator - Modern Styling with Personality! 🎂 */
+        .age-calculator-tool body { 
+            font-family: 'Poppins', sans-serif; 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+            color: #333; 
+            margin: 0; 
+            padding: 0; 
+            min-height: 100vh;
+        }
+        
+        .age-calculator-tool main { 
+            display: block; 
+        }
+        
+        .age-calculator-tool .age-calc-container { 
+            max-width: 900px; 
+            margin: 2em auto; 
+            background: rgba(255, 255, 255, 0.95); 
+            border-radius: 2em; 
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15); 
+            padding: 3em 2em; 
+            position: relative;
+            overflow: hidden;
+            -webkit-backdrop-filter: blur(20px);
+            backdrop-filter: blur(20px);
+        }
+        
+        .age-calculator-tool .age-calc-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #667eea, #764ba2, #4ecdc4, #45b7d1, #96ceb4);
+            border-radius: 2em 2em 0 0;
+        }
+        
+        .age-calculator-tool .handwritten { 
+            font-family: 'Caveat', cursive; 
+        }
+        
+        /* Enhanced Main Title */
+        .age-calculator-tool .main-title { 
+            font-family: 'Caveat', cursive;
+            font-size: 4em; 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.3em; 
+            text-align: center;
+            position: relative;
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .age-calculator-tool .main-description { 
+            font-size: 1.3em; 
+            margin-bottom: 2em; 
+            color: #666; 
+            text-align: center;
+            line-height: 1.6;
+            font-weight: 500;
+        }
+        
+        /* Form Container Enhancement */
+        .age-calculator-tool .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 2.5em;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 250, 252, 0.9) 100%);
+            border-radius: 2em;
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.1);
+            -webkit-backdrop-filter: blur(15px);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .age-calculator-tool .form-container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(102, 126, 234, 0.05) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+            pointer-events: none;
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Enhanced Label Styling */
+        .age-calculator-tool .age-label {
+            display: block;
+            font-size: 1.2em;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 15px;
+            text-align: left;
+            padding-left: 8px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .age-calculator-tool .age-label::before {
+            content: '🎂';
+            margin-right: 10px;
+            font-size: 1.3em;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+        }
+        
+        /* Modern Input Styling */
+        .age-calculator-tool .age-input { 
+            width: 100%; 
+            padding: 20px; 
+            border: 3px solid #e2e8f0; 
+            border-radius: 1.5em; 
+            font-size: 1.3em; 
+            margin-bottom: 1.5em; 
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%); 
+            text-align: center; 
+            font-family: 'Poppins', sans-serif; 
+            font-weight: 600;
+            box-sizing: border-box;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            color: #1e293b;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .age-calculator-tool .age-input:hover {
+            border-color: #667eea;
+            box-shadow: 0 12px 40px rgba(102, 126, 234, 0.15);
+            transform: translateY(-3px);
+            background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
+        }
+        
+        .age-calculator-tool .age-input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 6px rgba(102, 126, 234, 0.2), 0 15px 50px rgba(102, 126, 234, 0.25);
+            transform: translateY(-3px);
+            background: linear-gradient(135deg, #ffffff 0%, #eef2ff 100%);
+        }
+        
+        /* Enhanced Calendar Icon */
+        .age-calculator-tool .age-input::-webkit-calendar-picker-indicator {
+            cursor: pointer;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="%23667eea" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01M16 18h.01"/></svg>') no-repeat center;
+            width: 32px;
+            height: 32px;
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: all 0.3s ease;
+            opacity: 0.8;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+        }
+        
+        .age-calculator-tool .age-input::-webkit-calendar-picker-indicator:hover {
+            opacity: 1;
+            transform: translateY(-50%) scale(1.15);
+        }
+        
+        /* Beautiful Date Field Styling */
+        .age-calculator-tool .age-input::-webkit-datetime-edit-year-field {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 10px;
+            font-weight: 700;
+            margin: 0 6px;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .age-calculator-tool .age-input::-webkit-datetime-edit-month-field {
+            background: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%);
+            color: white;
+            padding: 8px 10px;
+            border-radius: 8px;
+            font-weight: 600;
+            margin: 0 4px;
+            box-shadow: 0 4px 12px rgba(78, 205, 196, 0.4);
+        }
+        
+        .age-calculator-tool .age-input::-webkit-datetime-edit-day-field {
+            background: linear-gradient(135deg, #45b7d1 0%, #2196f3 100%);
+            color: white;
+            padding: 8px 10px;
+            border-radius: 8px;
+            font-weight: 600;
+            margin: 0 4px;
+            box-shadow: 0 4px 12px rgba(69, 183, 209, 0.4);
+        }
+        
+        /* Enhanced Focus States */
+        .age-calculator-tool .age-input:focus::-webkit-datetime-edit-year-field {
+            background: linear-gradient(135deg, #5a67d8 0%, #667eea 100%);
+            transform: scale(1.08);
+        }
+        
+        .age-calculator-tool .age-input:focus::-webkit-datetime-edit-month-field {
+            background: linear-gradient(135deg, #38b2ac 0%, #4ecdc4 100%);
+            transform: scale(1.08);
+        }
+        
+        .age-calculator-tool .age-input:focus::-webkit-datetime-edit-day-field {
+            background: linear-gradient(135deg, #3182ce 0%, #45b7d1 100%);
+            transform: scale(1.08);
+        }
+        
+        /* Modern Button Design */
+        .age-calculator-tool .age-btn { 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff; 
+            border: none; 
+            border-radius: 1.5em; 
+            padding: 20px 40px; 
+            font-weight: 700; 
+            font-size: 1.3em; 
+            cursor: pointer; 
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
+            margin: 1.5em 0; 
+            width: 100%; 
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.3);
+            font-family: 'Poppins', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .age-calculator-tool .age-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.6s;
+        }
+        
+        .age-calculator-tool .age-btn:hover::before {
+            left: 100%;
+        }
+        
+        .age-calculator-tool .age-btn:hover { 
+            background: linear-gradient(135deg, #5a67d8 0%, #667eea 100%);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 50px rgba(102, 126, 234, 0.4);
+        }
+        
+        .age-calculator-tool .age-btn:active {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+        
+        .age-calculator-tool .age-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        /* Input Group Styling */
+        .age-calculator-tool .input-group {
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .age-calculator-tool .input-group:last-of-type {
+            margin-bottom: 40px;
+        }
+        
+        /* Results Section Enhancement */
+        .age-calculator-tool .age-result { 
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); 
+            border: 3px solid #667eea; 
+            border-radius: 1.5em; 
+            padding: 2.5em; 
+            margin: 2em 0; 
+            display: none;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .age-calculator-tool .age-result::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2, #4ecdc4, #45b7d1);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .age-calculator-tool .age-calc-container {
+                margin: 1em;
+                padding: 2em 1.5em;
+            }
+            
+            .age-calculator-tool .main-title {
+                font-size: 3em;
+            }
+            
+            .age-calculator-tool .form-container {
+                padding: 2em 1.5em;
+            }
+            
+            .age-calculator-tool .age-input {
+                font-size: 1.1em;
+                padding: 18px;
+            }
+            
+            .age-calculator-tool .age-btn {
+                font-size: 1.1em;
+                padding: 18px 35px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .age-calculator-tool .main-title {
+                font-size: 2.5em;
+            }
+            
+            .age-calculator-tool .main-description {
+                font-size: 1.1em;
+            }
+            
+            .age-calculator-tool .age-input {
+                font-size: 1em;
+                padding: 16px;
+            }
+        }
+        
+        /* Enhanced label styling */
+        .age-label {
+            display: block;
+            font-size: 1.1em;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 12px;
+            text-align: left;
+            padding-left: 4px;
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        
+        .age-label::before {
+            content: '📅';
+            margin-right: 8px;
+            font-size: 1.2em;
+        }
+        
+        /* Beautiful form container */
+        .form-container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 30px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 250, 252, 0.9) 100%);
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Input group styling */
+        .input-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+        
+        .input-group:last-of-type {
+            margin-bottom: 35px;
+        }
+        
+        /* Date selector container */
+        .date-selector-container {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+        
+        /* Enhanced date select styling */
+        .date-select {
+            flex: 1;
+            padding: 16px 20px;
+            border: 3px solid #e0e7ff;
+            border-radius: 16px;
+            font-size: 1.1em;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            color: #1e293b;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            appearance: none;
+            position: relative;
+        }
+        
+        .date-select:hover {
+            border-color: #4f46e5;
+            box-shadow: 0 8px 30px rgba(79, 70, 229, 0.15);
+            transform: translateY(-2px);
+        }
+        
+        .date-select:focus {
+            outline: none;
+            border-color: #4f46e5;
+            box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.2), 0 8px 30px rgba(79, 70, 229, 0.25);
+            transform: translateY(-2px);
+        }
+        
+        /* Special styling for different select types */
+        .year-select {
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            color: white;
+            border-color: #4f46e5;
+        }
+        
+        .year-select:hover {
+            background: linear-gradient(135deg, #3730a3 0%, #6b21a8 100%);
+        }
+        
+        .month-select {
+            background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+            color: white;
+            border-color: #06b6d4;
+        }
+        
+        .month-select:hover {
+            background: linear-gradient(135deg, #0e7490 0%, #0c4a6e 100%);
+        }
+        
+        .day-select {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            border-color: #10b981;
+        }
+        
+        .day-select:hover {
+            background: linear-gradient(135deg, #047857 0%, #064e3b 100%);
+        }
+        
+        /* Custom dropdown arrow */
+        .date-select::after {
+            content: '▼';
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            pointer-events: none;
+            color: currentColor;
+            font-size: 0.8em;
+        }
+        
+        /* Hide the native date inputs */
+        .hidden-input {
+            display: none;
+        }
+        
+        .age-btn { 
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: #fff; 
+            border: none; 
+            border-radius: 16px; 
+            padding: 18px 32px; 
+            font-weight: 700; 
+            font-size: 1.2em; 
+            cursor: pointer; 
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+            margin: 1em 0; 
+            width: 100%; 
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.3);
+            font-family: 'Poppins', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .age-btn:hover { 
+            background: linear-gradient(135deg, #047857 0%, #065f46 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(16, 185, 129, 0.4);
+        }
+        
+        .age-btn:active {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.3);
+        }
+        
+        .age-result { 
+            background: #FDFBF5; 
+            border: 2px solid #228B22; 
+            border-radius: 0.7em; 
+            padding: 1.5em; 
+            margin: 1.5em 0; 
+            display: none; 
+        }
+        
+        .main-title { 
+            font-size: 3em; 
+            color: #FF6B6B; 
+            margin-bottom: 0.5em; 
+            text-align: center; 
+        }
+        
+        .main-description { 
+            font-size: 1.2em; 
+            margin-bottom: 2em; 
+            color: #666; 
+            text-align: center; 
+        }
+        
+        .age-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+            gap: 1em; 
+            margin: 1.5em 0; 
+        }
+        
+        .age-card { 
+            background: #F0F8FF; 
+            border: 1px solid #B0C4DE; 
+            border-radius: 0.7em; 
+            padding: 1.5em; 
+            text-align: center; 
+            transition: transform 0.2s; 
+        }
+        
+        .age-card:hover { 
+            transform: translateY(-3px); 
+        }
+        
+        .age-card h4 { 
+            color: #4682B4; 
+            margin: 0 0 0.5em 0; 
+        }
+        
+        .age-card .value { 
+            font-size: 1.5em; 
+            font-weight: bold; 
+            color: #D9534F; 
+        }
+        
+        .fun-section { 
+            background: #FFF8DC; 
+            border: 1px solid #FFD700; 
+            border-radius: 0.7em; 
+            padding: 1.5em; 
+            margin: 1.5em 0; 
+        }
+        
+        .fun-section h3 { 
+            color: #DAA520; 
+            margin: 0 0 1em 0; 
+        }
+        
+        .fun-item { 
+            padding: 0.8em; 
+            margin: 0.5em 0; 
+            background: white; 
+            border-radius: 0.5em; 
+            border-left: 4px solid #FFD700; 
+        }
+        
+        .milestone-section { 
+            background: #E8F5E8; 
+            border: 1px solid #90EE90; 
+            border-radius: 0.7em; 
+            padding: 1.5em; 
+            margin: 1.5em 0; 
+        }
+        
+        .milestone-section h3 { 
+            color: #228B22; 
+            margin: 0 0 1em 0; 
+        }
+        
+        .milestone-item { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 1em; 
+            margin: 0.5em 0; 
+            background: white; 
+            border-radius: 0.5em; 
+        }
+        
+        .milestone-item.achieved { 
+            background: #E8F5E8; 
+            border-left: 4px solid #228B22; 
+        }
+        
+        .wisdom-section { 
+            background: #F0F0FF; 
+            border: 1px solid #9370DB; 
+            border-radius: 0.7em; 
+            padding: 1.5em; 
+            margin: 1.5em 0; 
+        }
+        
+        .wisdom-section h3 { 
+            color: #9370DB; 
+            margin: 0 0 1em 0; 
+        }
+        
+        .wisdom-quote { 
+            font-style: italic; 
+            font-size: 1.1em; 
+            text-align: center; 
+            padding: 1em; 
+            background: white; 
+            border-radius: 0.5em; 
+            border-left: 4px solid #9370DB; 
+        }
+        
+        .about-section { 
+            max-width: fit-content; 
+            margin: 2.5em auto 0 auto; 
+            background: #FDFBF5; 
+            border: 2px solid #EAE3D5; 
+            border-radius: 0.9em; 
+            padding: 1.5em 1.2em; 
+            font-size: 1.08em; 
+            color: #333; 
+            line-height: 1.7; 
+        }
+        
+        .about-title { 
+            font-size: 1.18em; 
+            color: #D9534F; 
+        }
+        
+        .feature-list { 
+            margin-left: 1.2em; 
+        }
+        
+        /* Roast Mode and Confirmation Styles */
+        .age-calculator-tool .roast-mode {
+            background: linear-gradient(135deg, #fff1f0 0%, #ffe8e6 100%);
+            border: 2px solid #ff6b6b;
+            border-radius: 1.5em;
+            animation: roastPulse 2s infinite alternate;
+        }
+        
+        @keyframes roastPulse {
+            0% { box-shadow: 0 8px 30px rgba(255, 107, 107, 0.2); }
+            100% { box-shadow: 0 12px 40px rgba(255, 107, 107, 0.4); }
+        }
+        
+        .age-calculator-tool .roast-message {
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+        
+        .age-calculator-tool .confirmation-buttons {
+            display: flex;
+            gap: 15px;
+            margin: 25px 0;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .age-calculator-tool .confirm-btn,
+        .age-calculator-tool .fix-btn {
+            padding: 15px 25px;
+            border: none;
+            border-radius: 1.2em;
+            font-size: 1.1em;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            color: white;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            position: relative;
+            overflow: hidden;
+            min-width: 200px;
+        }
+        
+        .age-calculator-tool .confirm-btn:hover {
+            background: linear-gradient(135deg, #dc3545 0%, #a71e2a 100%) !important;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(220, 53, 69, 0.4);
+        }
+        
+        .age-calculator-tool .fix-btn:hover {
+            background: linear-gradient(135deg, #28a745 0%, #1e7e34 100%) !important;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(40, 167, 69, 0.4);
+        }
+        
+        /* Past Date Results Styling */
+        .age-calculator-tool .retrospective-result {
+            background: linear-gradient(135deg, #e8f4f8 0%, #dbeafe 100%);
+            border: 2px solid #60a5fa;
+            border-radius: 1.5em;
+        }
+        
+        .age-calculator-tool .past-date {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 2px solid #f59e0b;
+        }
+        
+        .age-calculator-tool .retrospective {
+            background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%);
+            border: 2px solid #a855f7;
+            border-radius: 1.2em;
+            margin: 20px 0;
+            padding: 20px;
+        }
+        
+        .age-calculator-tool .time-travel-note {
+            background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+            border: 2px solid #10b981;
+            border-radius: 1.5em;
+            margin-top: 25px;
+        }
+        
+        .age-calculator-tool .time-travel-note .wisdom-quote {
+            font-size: 1.05em;
+            color: #065f46;
+        }
+        
+        /* Mobile Responsiveness for New Elements */
+        @media (max-width: 768px) {
+            .age-calculator-tool .confirmation-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .age-calculator-tool .confirm-btn,
+            .age-calculator-tool .fix-btn {
+                width: 90%;
+                margin: 8px 0;
+            }
+            
+            .age-calculator-tool .roast-message {
+                font-size: 1.05em;
+            }
+        }
+
+        /* SEO Content Styling */
+        .age-calculator-tool .seo-content {
+            margin-top: 3em;
+            padding: 2em;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 1em;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .age-calculator-tool .seo-content h2 {
+            color: #667eea;
+            margin-bottom: 1em;
+            font-size: 1.8em;
+        }
+
+        .age-calculator-tool .seo-content h3 {
+            color: #764ba2;
+            margin: 1.5em 0 0.8em 0;
+            font-size: 1.4em;
+        }
+
+        .age-calculator-tool .seo-content ul,
+        .age-calculator-tool .seo-content ol {
+            margin: 1em 0;
+            padding-left: 1.5em;
+        }
+
+        .age-calculator-tool .seo-content li {
+            margin-bottom: 0.5em;
+        }
+
+        .age-calculator-tool .seo-content strong {
+            color: #667eea;
+        }
+
+    </style>
+</head>
+<body>
+<main>
+  <div class="age-calculator-tool">
+<div class="age-calc-container">
+    <h1 class="handwritten main-title">🎂 Age Calculator: How Ancient Are You?</h1>
+    <p class="main-description">Discover exactly how long you've been surviving on this chaotic planet and making questionable life choices! 😄💀<br>
+    <small>Warning: Results may cause existential dread, midlife crisis, or sudden urge to lie about your age! 🤥</small></p>
+    
+    <div class="form-container">
+        <div class="input-group">
+            <label class="age-label">When did your reign of chaos begin? (Birth Date) 👶💥</label>
+            <div class="date-selector-container">
+                <select id="birth-year" class="date-select year-select" title="Select birth year">
+                    <option value="">Year</option>
+                </select>
+                <select id="birth-month" class="date-select month-select" title="Select birth month">
+                    <option value="">Month</option>
+                    <option value="01">January</option>
+                    <option value="02">February</option>
+                    <option value="03">March</option>
+                    <option value="04">April</option>
+                    <option value="05">May</option>
+                    <option value="06">June</option>
+                    <option value="07">July</option>
+                    <option value="08">August</option>
+                    <option value="09">September</option>
+                    <option value="10">October</option>
+                    <option value="11">November</option>
+                    <option value="12">December</option>
+                </select>
+                <select id="birth-day" class="date-select day-select" title="Select birth day">
+                    <option value="">Day</option>
+                </select>
+            </div>
+            <input type="date" id="birth-date" class="age-input hidden-input" title="Hidden native date input">
+        </div>
+        
+        <div class="input-group">
+            <label class="age-label">How ancient do you want to feel? (Target Date - Auto-set to Today!) 📅😈</label>
+            <div class="date-selector-container">
+                <select id="target-year" class="date-select year-select" title="Select target year">
+                    <option value="">Year</option>
+                </select>
+                <select id="target-month" class="date-select month-select" title="Select target month">
+                    <option value="">Month</option>
+                    <option value="01">January</option>
+                    <option value="02">February</option>
+                    <option value="03">March</option>
+                    <option value="04">April</option>
+                    <option value="05">May</option>
+                    <option value="06">June</option>
+                    <option value="07">July</option>
+                    <option value="08">August</option>
+                    <option value="09">September</option>
+                    <option value="10">October</option>
+                    <option value="11">November</option>
+                    <option value="12">December</option>
+                </select>
+                <select id="target-day" class="date-select day-select" title="Select target day">
+                    <option value="">Day</option>
+                </select>
+            </div>
+            <input type="date" id="target-date" class="age-input hidden-input" title="Hidden native date input">
+        </div>
+        
+        <button id="calculate-btn" class="age-btn">🎂 Reveal My Shameful Age & Life Regrets!</button>
+    </div>
+    
+    <div id="age-result" class="age-result">
+        <!-- Results will be dynamically inserted here -->
+    </div>
+</div>
+
+<div class="about-section">
+    <strong class="about-title">About This Brutal Age Reality Check 💀</strong><br><br>
+    <strong>What is this digital torture device?</strong><br>
+    A sophisticated tool designed to calculate your exact age and brutally remind you that time stops for no one! Perfect for triggering existential crises and making you question all your life choices! 😅💔<br><br>
+    <strong>Features (aka Ways We'll Roast You):</strong>
+    <ul class="feature-list">
+        <li>Exact age calculation that'll make you weep</li>
+        <li>Savage observations about your time on this chaotic planet</li>
+        <li>Life milestone tracking (to see what you've failed to achieve)</li>
+        <li>Brutally honest age-related "wisdom"</li>
+        <li>Statistics that will make you feel positively ancient</li>
+        <li>Next birthday countdown (because denial has an expiration date)</li>
+        <li>Fun facts that'll make you question your life decisions</li>
+        <li>Milestones that highlight your descent into old age</li>
+    </ul>
+    <em>Side effects may include: Sudden urge to buy anti-aging cream, lying about your age at parties, and inappropriate emotional attachment to your youth. Use responsibly! 🧴💊</em>
+</div>
+
+<script>
+(function() {
+    'use strict';
+    
+    // Age calculation functions (because math is hard when you're old... and getting older by the second! 🧓⏰)
+    
+    function calculatePreciseAge(birthDate, targetDate = new Date()) {
+        const birth = new Date(birthDate);
+        const target = new Date(targetDate);
+        
+        // Check if someone is trying to calculate age from the future (time travelers welcome, but please explain how!)
+        if (birth > target) {
+            return null; // Sorry, we don't do negative ages here - this isn't Benjamin Button! 🔄
+        }
+        
+        let years = target.getFullYear() - birth.getFullYear();
+        let months = target.getMonth() - birth.getMonth();
+        let days = target.getDate() - birth.getDate();
+        
+        // Handle day overflow (because calendars are confusing and whoever invented them was clearly sadistic)
+        if (days < 0) {
+            months--;
+            const lastMonth = new Date(target.getFullYear(), target.getMonth(), 0);
+            days += lastMonth.getDate();
+        }
+        
+        // Handle month overflow (because time is a social construct designed to make us feel bad)
+        if (months < 0) {
+            years--;
+            months += 12;
+        }
+        
+        return { years, months, days }; // Here's your existential crisis served on a silver platter! 🍽️
+    }
+    
+    function calculateTotalDays(birthDate, targetDate = new Date()) {
+        const birth = new Date(birthDate);
+        const target = new Date(targetDate);
+        const diffTime = Math.abs(target - birth);
+        return Math.ceil(diffTime / (1000 * 60 * 60 * 24)); // Converting milliseconds to days (because apparently we measure life in tiny increments now)
+    }
+    
+    function getNextBirthday(birthDate, fromDate = new Date()) {
+        const birth = new Date(birthDate);
+        const from = new Date(fromDate);
+        
+        let nextBirthday = new Date(from.getFullYear(), birth.getMonth(), birth.getDate());
+        
+        // If birthday already passed this year, move to next year (time waits for no one, how rude!)
+        if (nextBirthday <= from) {
+            nextBirthday.setFullYear(from.getFullYear() + 1);
+        }
+        
+        const diffTime = nextBirthday - from;
+        return Math.ceil(diffTime / (1000 * 60 * 60 * 24)); // Days until you're officially another year closer to... well, you know 💀
+    }
+    
+    // Fun fact generators (the most important part!)
+    
+    function getFunnyAgeWisdom(age) {
+        const wisdoms = [
+            "You're not old, you're just chronologically gifted! 🎁",
+            "Age is just a number... a really big, scary number that follows you everywhere. �",
+            "You're like a fine wine - you get better with age (and probably give more headaches). 🍷",
+            "Congratulations on surviving another year of questionable life choices and bad decisions! 🎉",
+            "You're not aging, you're just increasing in vintage value! 📈",
+            "Remember when staying up past 10 PM was exciting? Now it's called 'irresponsible'. 😴",
+            "You've officially reached the age where 'sleeping wrong' is a legitimate sports injury. 💤",
+            "At your age, your back goes out more often than you do on dates! 🚪💔",
+            "You know you're getting old when you get more excited about new sponges than new relationships. 🧽❤️",
+            "Age is like underwear - it creeps up on you when you're not paying attention! 👙",
+            "You're at the age where your knees predict the weather better than meteorologists! 🦵⛈️",
+            "Congratulations! You're now old enough to make dad jokes (even if you're not a dad). 👨‍👧‍👦",
+            "You've reached the magical age where you grunt when getting up from chairs! 🪑😤",
+            "At this point, your body is basically held together by ibuprofen and determination! 💊💪",
+            "You're like a classic car - vintage, requires special maintenance, and makes weird noises! 🚗",
+            "Age has given you the wisdom to know better... but the stubbornness to do it anyway! �"
+        ];
+        
+        // Select wisdom based on age (because roasting by age is an art form)
+        if (age < 13) return "You're still young enough to think adults know what they're doing! 🤭 (Spoiler: they don't)";
+        if (age < 18) return "You're at the perfect age to think you know everything! 🧠 (You definitely don't, but that's the fun part)";
+        if (age < 25) return "Old enough to know better, still young enough to do incredibly stupid things anyway! 😈🔥";
+        if (age < 30) return "Welcome to the age where you start making involuntary noises when sitting down! 🪑😮‍💨";
+        if (age < 35) return "You're now at the perfect age to start lying about your age at parties! 🤥🎉";
+        if (age < 40) return "Congratulations! You're entering the 'I should probably have my life together by now' panic phase! 😅";
+        if (age < 50) return "You've reached the age where you get excited about comfortable shoes and early bedtimes! 👟😴";
+        if (age < 60) return "Welcome to vintage status! You're like a fine cheese - aged and occasionally smelly! 🧀";
+        if (age < 70) return "You're now officially allowed to complain about 'kids these days' without irony! 👴👵";
+        
+        return wisdoms[Math.floor(Math.random() * wisdoms.length)];
+    }
+    
+    function getAgeBasedFacts(totalDays, age) {
+        // Calculate some ridiculous but absolutely true statistics (math doesn't lie, but it sure is savage!)
+        const seconds = totalDays * 24 * 60 * 60;
+        const heartbeats = Math.round(seconds * 1.2); // Average 72 bpm (that poor overworked heart!)
+        const breaths = Math.round(seconds / 4); // Average 15 breaths per minute (basically hyperventilating through life)
+        const blinks = Math.round(seconds / 6); // Average 10 blinks per minute (so many missed opportunities!)
+        const steps = Math.round(totalDays * 7500); // Average steps per day (most of them to the fridge)
+        const sleepHours = Math.round(totalDays * 8); // 8 hours of sleep per day (the only time you're not embarrassing yourself)
+        
+        return [
+            `🫀 Your heart has beaten approximately ${heartbeats.toLocaleString()} times (and somehow hasn't given up on you yet!)`,
+            `💨 You've taken about ${breaths.toLocaleString()} breaths (most of them wasted on complaining)`,
+            `👁️ You've blinked roughly ${blinks.toLocaleString()} times (that's a lot of mini-blackouts to avoid reality!)`,
+            `🚶 You've probably walked about ${steps.toLocaleString()} steps (or just paced around anxiously ${Math.round(steps/100).toLocaleString()} times)`,
+            `😴 You've slept for approximately ${sleepHours.toLocaleString()} hours (the most productive time of your life!)`,
+            `📅 You've survived ${Math.round(totalDays/7).toLocaleString()} weeks of Mondays (you deserve a medal for this!)`,
+            `🍕 Assuming you eat pizza once a week, you've consumed about ${Math.round(totalDays/7).toLocaleString()} pizzas (and regretted none of them)`,
+            `☕ If you drink coffee daily, you've had roughly ${totalDays.toLocaleString()} cups of liquid motivation (aka legal addiction)`,
+            `🎂 You've blown out candles ${age} times (and made ${age} wishes that the universe completely ignored)`,
+            `🛏️ You've said "just 5 more minutes" approximately ${Math.round(totalDays * 2).toLocaleString()} times (and meant none of them)`,
+            `📱 You've probably checked your phone ${Math.round(totalDays * 96).toLocaleString()} times (because addiction is real)`,
+            `🚽 You've used the bathroom roughly ${Math.round(totalDays * 6).toLocaleString()} times (the throne calls!)`,
+            `😤 You've probably said "I'm fine" while clearly not being fine about ${Math.round(totalDays / 3).toLocaleString()} times`,
+            `🍫 You've likely eaten ${Math.round(totalDays / 10).toLocaleString()} pieces of chocolate (for emotional support, obviously)`
+        ];
+    }
+    
+    function getLifeMilestones(age) {
+        const milestones = [
+            { age: 0, text: "👶 Started crying for no apparent reason (and never really stopped)", achieved: age >= 0 },
+            { age: 1, text: "🚶 Learned to walk (and immediately started running into everything)", achieved: age >= 1 },
+            { age: 3, text: "🎨 Discovered the joy of drawing on walls (artistic rebellion phase)", achieved: age >= 3 },
+            { age: 5, text: "🎒 Started school (goodbye, blissful ignorance and afternoon naps!)", achieved: age >= 5 },
+            { age: 10, text: "🔟 Hit double digits (officially old enough to feel ancient)", achieved: age >= 10 },
+            { age: 13, text: "😤 Became a teenager (started knowing absolutely everything about everything)", achieved: age >= 13 },
+            { age: 16, text: "🚗 Became legally dangerous with a 2-ton metal death machine!", achieved: age >= 16 },
+            { age: 18, text: "🗳️ Became an adult (tax responsibilities and existential dread included)", achieved: age >= 18 },
+            { age: 21, text: "🍺 Legally allowed to make even more questionable decisions", achieved: age >= 21 },
+            { age: 25, text: "🏠 Car insurance finally got cheaper (because you're 'mature' now)", achieved: age >= 25 },
+            { age: 30, text: "🎯 Officially entered the 'I should have my life together by now' panic phase", achieved: age >= 30 },
+            { age: 35, text: "🤷 Reached the age where you stop pretending to like clubbing", achieved: age >= 35 },
+            { age: 40, text: "🤔 Started saying 'kids these days' unironically (and meaning it)", achieved: age >= 40 },
+            { age: 45, text: "👓 Began holding menus at arm's length to read them", achieved: age >= 45 },
+            { age: 50, text: "📖 Became wise enough to know you don't know anything (enlightenment!)", achieved: age >= 50 },
+            { age: 55, text: "🛏️ Started getting excited about new mattresses and pillows", achieved: age >= 55 },
+            { age: 60, text: "💊 Became a walking pharmacy (pills for everything!)", achieved: age >= 60 },
+            { age: 65, text: "🏆 Earned the official right to complain about absolutely everything", achieved: age >= 65 },
+            { age: 70, text: "🎯 Mastered the art of the disapproving look", achieved: age >= 70 },
+            { age: 80, text: "👑 Achieved legendary status (and stopped caring what anyone thinks)", achieved: age >= 80 },
+            { age: 90, text: "🦉 Became the wise elder everyone pretends to listen to", achieved: age >= 90 },
+            { age: 100, text: "🎊 Reached ultimate boss level (and probably forgot how you got here)", achieved: age >= 100 }
+        ];
+        
+        return milestones;
+    }
+    
+    // DOM elements and initialization
+    let birthDateInput, targetDateInput, calculateBtn, resultDiv;
+    let birthYearSelect, birthMonthSelect, birthDaySelect;
+    let targetYearSelect, targetMonthSelect, targetDaySelect;
+    
+    // Populate year dropdown with range (automatically handles future years)
+    function populateYearDropdown(selectElement, startYear, endYear) {
+        selectElement.innerHTML = '<option value="">Year</option>';
+        // Populate years in descending order (newest first)
+        for (let year = endYear; year >= startYear; year--) {
+            const option = document.createElement('option');
+            option.value = year;
+            option.textContent = year;
+            selectElement.appendChild(option);
+        }
+    }
+    
+    // Populate day dropdown based on selected month and year (automatically handles leap years!)
+    function populateDayDropdown(daySelect, year, month) {
+        // JavaScript automatically calculates correct days including leap years
+        const daysInMonth = new Date(year, month, 0).getDate();
+        daySelect.innerHTML = '<option value="">Day</option>';
+        
+        for (let day = 1; day <= daysInMonth; day++) {
+            const option = document.createElement('option');
+            const dayString = String(day).padStart(2, '0');
+            option.value = dayString;
+            option.textContent = day;
+            daySelect.appendChild(option);
+        }
+    }
+    
+    // Update hidden date input when dropdowns change
+    function updateHiddenDateInput(hiddenInput, yearSelect, monthSelect, daySelect) {
+        const year = yearSelect.value;
+        const month = monthSelect.value;
+        const day = daySelect.value;
+        
+        if (year && month && day) {
+            hiddenInput.value = `${year}-${month}-${day}`;
+        } else {
+            hiddenInput.value = '';
+        }
+        
+        // Hide results when date changes
+        if (resultDiv && resultDiv.style.display === 'block') {
+            resultDiv.style.display = 'none';
+        }
+    }
+    
+    // Set dropdown values from date string
+    function setDropdownsFromDate(dateString, yearSelect, monthSelect, daySelect) {
+        if (dateString) {
+            const [year, month, day] = dateString.split('-');
+            yearSelect.value = year;
+            monthSelect.value = month;
+            daySelect.value = day;
+        }
+    }
+    
+    function initializeAgeCalculator() {
+        // Wait a moment to ensure DOM is fully ready (because timing is everything!)
+        setTimeout(() => {
+            // Grab all the DOM elements (like grabbing life by the horns, but safer)
+            birthDateInput = document.getElementById('birth-date');
+            targetDateInput = document.getElementById('target-date');
+            calculateBtn = document.getElementById('calculate-btn');
+            resultDiv = document.getElementById('age-result');
+            
+            // Grab dropdown elements
+            birthYearSelect = document.getElementById('birth-year');
+            birthMonthSelect = document.getElementById('birth-month');
+            birthDaySelect = document.getElementById('birth-day');
+            targetYearSelect = document.getElementById('target-year');
+            targetMonthSelect = document.getElementById('target-month');
+            targetDaySelect = document.getElementById('target-day');
+            
+            // Double-check that elements exist (paranoid programming!)
+            if (!birthDateInput || !targetDateInput || !calculateBtn || !resultDiv ||
+                !birthYearSelect || !birthMonthSelect || !birthDaySelect ||
+                !targetYearSelect || !targetMonthSelect || !targetDaySelect) {
+                console.error('Age Calculator: Some DOM elements not found!');
+                return;
+            }
+            
+            // Populate year dropdowns with automatic year updates
+            const currentYear = new Date().getFullYear();
+            
+            // Birth year: 1900 to current year (can't be born in the future!)
+            populateYearDropdown(birthYearSelect, 1900, currentYear);
+            
+            // Target year: current year to current year + 10 (for future age calculations)
+            // This automatically updates every year - in 2025 shows 2025-2035, in 2026 shows 2026-2036, etc.
+            populateYearDropdown(targetYearSelect, currentYear, currentYear + 10);
+            
+            // Set today's date as default target
+            const today = new Date();
+            const todayString = today.getFullYear() + '-' + 
+                               String(today.getMonth() + 1).padStart(2, '0') + '-' + 
+                               String(today.getDate()).padStart(2, '0');
+            
+            // Set target date to today in hidden input first
+            targetDateInput.value = todayString;
+            
+            // Populate target day dropdown for current month BEFORE setting dropdown values
+            populateDayDropdown(targetDaySelect, today.getFullYear(), today.getMonth() + 1);
+            
+            // NOW set the dropdown values after day dropdown is populated
+            setDropdownsFromDate(todayString, targetYearSelect, targetMonthSelect, targetDaySelect);
+            
+            // Add visual confirmation that today's date is set as default
+            console.log('Age Calculator: Target date defaulted to today:', todayString);
+            
+            // Verify the dropdowns are actually set
+            setTimeout(() => {
+                const yearSet = targetYearSelect.value;
+                const monthSet = targetMonthSelect.value;
+                const daySet = targetDaySelect.value;
+                console.log('Age Calculator: Dropdown values set to:', { year: yearSet, month: monthSet, day: daySet });
+                
+                if (!yearSet || !monthSet || !daySet) {
+                    console.warn('Age Calculator: Some dropdown values not set properly! Retrying...');
+                    // Retry setting the values
+                    setDropdownsFromDate(todayString, targetYearSelect, targetMonthSelect, targetDaySelect);
+                }
+            }, 200);
+            
+            // Add event listeners for dropdown interactions
+            
+            // Birth date dropdowns
+            birthYearSelect.addEventListener('change', function() {
+                if (this.value && birthMonthSelect.value) {
+                    populateDayDropdown(birthDaySelect, this.value, birthMonthSelect.value);
+                }
+                updateHiddenDateInput(birthDateInput, birthYearSelect, birthMonthSelect, birthDaySelect);
+            });
+            
+            birthMonthSelect.addEventListener('change', function() {
+                if (birthYearSelect.value && this.value) {
+                    populateDayDropdown(birthDaySelect, birthYearSelect.value, this.value);
+                }
+                updateHiddenDateInput(birthDateInput, birthYearSelect, birthMonthSelect, birthDaySelect);
+            });
+            
+            birthDaySelect.addEventListener('change', function() {
+                updateHiddenDateInput(birthDateInput, birthYearSelect, birthMonthSelect, birthDaySelect);
+            });
+            
+            // Target date dropdowns
+            targetYearSelect.addEventListener('change', function() {
+                if (this.value && targetMonthSelect.value) {
+                    populateDayDropdown(targetDaySelect, this.value, targetMonthSelect.value);
+                }
+                updateHiddenDateInput(targetDateInput, targetYearSelect, targetMonthSelect, targetDaySelect);
+            });
+            
+            targetMonthSelect.addEventListener('change', function() {
+                if (targetYearSelect.value && this.value) {
+                    populateDayDropdown(targetDaySelect, targetYearSelect.value, this.value);
+                }
+                updateHiddenDateInput(targetDateInput, targetYearSelect, targetMonthSelect, targetDaySelect);
+            });
+            
+            targetDaySelect.addEventListener('change', function() {
+                updateHiddenDateInput(targetDateInput, targetYearSelect, targetMonthSelect, targetDaySelect);
+            });
+            
+            // Set reasonable date constraints
+            birthDateInput.max = todayString;
+            
+            // Set a reasonable min date (120 years ago) for birth date
+            const minDate = new Date();
+            minDate.setFullYear(minDate.getFullYear() - 120);
+            const minDateString = minDate.getFullYear() + '-' + 
+                                 String(minDate.getMonth() + 1).padStart(2, '0') + '-' + 
+                                 String(minDate.getDate()).padStart(2, '0');
+            birthDateInput.min = minDateString;
+            
+            // Add event listeners - results only show when button is clicked!
+            calculateBtn.addEventListener('click', calculateAndDisplayAge);
+            
+            // Hide results initially when inputs change (user needs to submit)
+            birthDateInput.addEventListener('change', function() {
+                if (resultDiv.style.display === 'block') {
+                    resultDiv.style.display = 'none';
+                }
+            });
+            
+            targetDateInput.addEventListener('change', function() {
+                if (resultDiv.style.display === 'block') {
+                    resultDiv.style.display = 'none';
+                }
+            });
+            
+            console.log('Age Calculator initialized successfully! 🎂');
+        }, 100);
+    }
+    
+    function calculateAndDisplayAge() {
+        // Add loading state to button (because anticipation makes everything more dramatic!)
+        const originalText = calculateBtn.innerHTML;
+        calculateBtn.innerHTML = '⏳ Calculating Your Wisdom Level...';
+        calculateBtn.disabled = true;
+        
+        // Hide previous results (nobody wants to see old embarrassing numbers!)
+        resultDiv.style.display = 'none';
+        
+        setTimeout(() => {
+            const birthDate = birthDateInput.value;
+            let targetDate = targetDateInput.value;
+            
+            // Validation (because users do the most ridiculous things and we have to baby-proof everything)
+            if (!birthDate) {
+                resultDiv.innerHTML = `
+                    <div class="wisdom-section">
+                        <h3>🎂 Oops! Missing Birth Date!</h3>
+                        <div class="wisdom-quote">
+                            Hey there! 😊 Looks like you forgot to tell me when your amazing journey began! 
+                            <br><br>
+                            Please pick your birth date first so I can calculate all the wonderful things about your age! 
+                            <br><br>
+                            Don't worry, I won't judge... much! 😉✨
+                        </div>
+                    </div>
+                `;
+                resultDiv.style.display = 'block';
+                resultDiv.scrollIntoView({ behavior: 'smooth' });
+                birthDateInput.focus();
+                // Restore button (give them another chance to disappoint us)
+                calculateBtn.innerHTML = originalText;
+                calculateBtn.disabled = false;
+                return;
+            }
+            
+            // If no target date, set to today (because living in the present is apparently hard)
+            if (!targetDate) {
+                const today = new Date();
+                targetDate = today.getFullYear() + '-' + 
+                            String(today.getMonth() + 1).padStart(2, '0') + '-' + 
+                            String(today.getDate()).padStart(2, '0');
+                targetDateInput.value = targetDate;
+            }
+        
+        // Additional validation for date format (because apparently basic date input is rocket science)
+        const birthDateObj = new Date(birthDate);
+        const targetDateObj = new Date(targetDate);
+        
+        if (isNaN(birthDateObj.getTime())) {
+            resultDiv.innerHTML = `
+                <div class="wisdom-section">
+                    <h3>📅 Date Format Confusion!</h3>
+                    <div class="wisdom-quote">
+                        Hmm, that birth date looks a bit wonky! 🤔 
+                        <br><br>
+                        Could you double-check your birth date? Make sure all the dropdowns have a value selected.
+                        <br><br>
+                        Even computers need properly formatted dates to work their magic! ✨📱
+                    </div>
+                </div>
+            `;
+            resultDiv.style.display = 'block';
+            resultDiv.scrollIntoView({ behavior: 'smooth' });
+            birthDateInput.focus();
+            calculateBtn.innerHTML = originalText;
+            calculateBtn.disabled = false;
+            return;
+        }
+        
+        if (isNaN(targetDateObj.getTime())) {
+            resultDiv.innerHTML = `
+                <div class="wisdom-section">
+                    <h3>📅 Target Date Hiccup!</h3>
+                    <div class="wisdom-quote">
+                        Oops! The target date seems a bit confused! 😅 
+                        <br><br>
+                        Please make sure you've selected a proper date for when you want to know your age.
+                        <br><br>
+                        I promise I'm good at math, but only with real dates! 🤓📊
+                    </div>
+                </div>
+            `;
+            resultDiv.style.display = 'block';
+            resultDiv.scrollIntoView({ behavior: 'smooth' });
+            targetDateInput.focus();
+            calculateBtn.innerHTML = originalText;
+            calculateBtn.disabled = false;
+            return;
+        }
+        
+        // Check if target date is actually after birth date (because logic matters!)
+        if (targetDateObj <= birthDateObj) {
+            resultDiv.innerHTML = `
+                <div class="wisdom-section">
+                    <h3>⏰ Time Logic Check!</h3>
+                    <div class="wisdom-quote">
+                        Hold on there, time explorer! � 
+                        <br><br>
+                        Your target date needs to be AFTER your birth date! I can't calculate how old you'll be before you were born! 
+                        <br><br>
+                        That would be some serious time-travel wizardry! ⚡🔮
+                    </div>
+                </div>
+            `;
+            resultDiv.style.display = 'block';
+            resultDiv.scrollIntoView({ behavior: 'smooth' });
+            targetDateInput.focus();
+            calculateBtn.innerHTML = originalText;
+            calculateBtn.disabled = false;
+            return;
+        }
+        
+        // Check if target date is before today (present date is reversed with target date)
+        const today = new Date();
+        today.setHours(0, 0, 0, 0); // Reset time to compare dates only
+        const targetDateCopy = new Date(targetDateObj);
+        targetDateCopy.setHours(0, 0, 0, 0); // Reset time to compare dates only
+        
+        if (targetDateCopy < today) {
+            // Store the calculation in a closure for confirmation
+            const confirmAndCalculate = () => {
+                // Calculate age for the past date
+                const age = calculatePreciseAge(birthDate, targetDate);
+                
+                if (!age) {
+                    resultDiv.innerHTML = `
+                        <div class="wisdom-section">
+                            <h3>🕰️ Time Logic Error!</h3>
+                            <div class="wisdom-quote">
+                                Wait... something's not right with these dates! 🤔
+                                <br><br>
+                                Please double-check your birth date and target date.
+                            </div>
+                        </div>
+                    `;
+                    resultDiv.style.display = 'block';
+                    resultDiv.scrollIntoView({ behavior: 'smooth' });
+                    calculateBtn.innerHTML = originalText;
+                    calculateBtn.disabled = false;
+                    return;
+                }
+                
+                try {
+                    const totalDays = calculateTotalDays(birthDate, targetDate);
+                    const funFacts = getAgeBasedFacts(totalDays, age.years);
+                    const milestones = getLifeMilestones(age.years);
+                    const wisdom = getFunnyAgeWisdom(age.years);
+                    
+                    // Display results for past date
+                    resultDiv.innerHTML = `
+                        <div class="wisdom-section retrospective-result">
+                            <h3>🕰️ Time Machine Results!</h3>
+                            <div class="wisdom-quote">
+                                Alright, you convinced me! Here's what your age was on ${targetDate}... 
+                                Hope you're ready for some time-travel nostalgia! 🚀✨
+                            </div>
+                        </div>
+                        
+                        <div class="age-grid">
+                            <div class="age-card past-date">
+                                <h4>🎂 Your Age on ${targetDate}</h4>
+                                <div class="value">${age.years} years, ${age.months} months, ${age.days} days</div>
+                            </div>
+                            <div class="age-card past-date">
+                                <h4>📅 Days You Had Lived</h4>
+                                <div class="value">${totalDays.toLocaleString()} days</div>
+                            </div>
+                            <div class="age-card past-date">
+                                <h4>⏰ Hours You Had Survived</h4>
+                                <div class="value">${(totalDays * 24).toLocaleString()} hours</div>
+                            </div>
+                            <div class="age-card past-date">
+                                <h4>🧓 Wisdom Level Back Then</h4>
+                                <div class="value">${age.years < 30 ? 'Young Grasshopper' : age.years < 50 ? 'Getting There' : age.years < 70 ? 'Wise Soul' : 'Elder Sage'}</div>
+                            </div>
+                        </div>
+                        
+                        <div class="fun-section retrospective">
+                            <h3>🎉 What Was True Back Then</h3>
+                            ${funFacts.map(fact => `<div class="fun-item">${fact}</div>`).join('')}
+                        </div>
+                        
+                        <div class="milestone-section retrospective">
+                            <h3>🏆 Life Achievements You Had Unlocked</h3>
+                            ${milestones.map(milestone => `
+                                <div class="milestone-item ${milestone.achieved ? 'achieved' : ''}">
+                                    <span>${milestone.text}</span>
+                                    <span>${milestone.achieved ? '✅ Already Done' : '⏳ Still Waiting'}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                        
+                        <div class="wisdom-section retrospective">
+                            <h3>💭 Throwback Wisdom</h3>
+                            <div class="wisdom-quote">${wisdom}</div>
+                        </div>
+                        
+                        <div class="wisdom-section time-travel-note">
+                            <div class="wisdom-quote">
+                                <strong>🎭 Time Travel Complete!</strong> 
+                                <br><br>
+                                There you go! That's exactly how old you were on ${targetDate}. 
+                                Funny how time works - you were the same age then as you were... then! 😄
+                                <br><br>
+                                <em>Now, if you want to see how ancient you'll be in the future, pick a date ahead of today! 🚀</em>
+                            </div>
+                        </div>
+                    `;
+                    
+                    resultDiv.style.display = 'block';
+                    resultDiv.scrollIntoView({ behavior: 'smooth' });
+                    calculateBtn.innerHTML = originalText;
+                    calculateBtn.disabled = false;
+                    
+                } catch (error) {
+                    console.error('Past date calculation error:', error);
+                    resultDiv.innerHTML = `
+                        <div class="wisdom-section">
+                            <h3>🤖 Calculation Hiccup!</h3>
+                            <div class="wisdom-quote">
+                                Oops! Something went wrong with the time travel calculation! 😅
+                                <br><br>
+                                Please try again with different dates!
+                            </div>
+                        </div>
+                    `;
+                    resultDiv.style.display = 'block';
+                    resultDiv.scrollIntoView({ behavior: 'smooth' });
+                    calculateBtn.innerHTML = originalText;
+                    calculateBtn.disabled = false;
+                }
+            };
+            
+            // Show roast message with confirmation option
+            resultDiv.innerHTML = `
+                <div class="wisdom-section roast-mode">
+                    <h3>🎭 Hold Up There, Time Traveler! 🕰️</h3>
+                    <div class="wisdom-quote roast-message">
+                        <strong>Seriously?!</strong> You picked <strong>${targetDate}</strong> which is in the past! 😂
+                        <br><br>
+                        🔥 <strong>Roast Mode Activated:</strong> Are you trying to relive your glory days? 
+                        Missing the good old times when you were younger and more innocent? 
+                        Or did you just accidentally mix up your dates like you mix up your left and right shoes? 👟👟
+                        <br><br>
+                        🤔 <strong>But hey...</strong> Maybe you actually WANT to know how old you were back then? 
+                        (Though spoiler alert: you were exactly the age you were on that exact date... shocking revelation, I know! 🤯)
+                        <br><br>
+                        <strong>🎯 So, what's it gonna be?</strong>
+                        <br><br>
+                        <div class="confirmation-buttons">
+                            <button id="confirm-past-date" class="age-btn confirm-btn" style="margin-right: 15px; background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);">
+                                😤 YES, I meant ${targetDate}! Calculate it anyway!
+                            </button>
+                            <button id="fix-date" class="age-btn fix-btn" style="background: linear-gradient(135deg, #27ae60 0%, #229954 100%);">
+                                😅 Oops! Let me pick a future date instead
+                            </button>
+                        </div>
+                        <br>
+                        <em style="color: #7f8c8d; font-size: 0.95em;">
+                            💡 Pro tip: For maximum entertainment, pick a future date and see how ancient you'll become! 
+                            But if you're feeling nostalgic, I won't judge... much! �
+                        </em>
+                    </div>
+                </div>
+            `;
+            
+            resultDiv.style.display = 'block';
+            resultDiv.scrollIntoView({ behavior: 'smooth' });
+            
+            // Add event listeners for confirmation buttons
+            setTimeout(() => {
+                const confirmBtn = document.getElementById('confirm-past-date');
+                const fixBtn = document.getElementById('fix-date');
+                
+                if (confirmBtn) {
+                    confirmBtn.addEventListener('click', confirmAndCalculate);
+                }
+                
+                if (fixBtn) {
+                    fixBtn.addEventListener('click', () => {
+                        // Reset to today's date
+                        const today = new Date();
+                        const todayString = today.getFullYear() + '-' + 
+                                           String(today.getMonth() + 1).padStart(2, '0') + '-' + 
+                                           String(today.getDate()).padStart(2, '0');
+                        
+                        targetDateInput.value = todayString;
+                        setDropdownsFromDate(todayString, targetYearSelect, targetMonthSelect, targetDaySelect);
+                        
+                        resultDiv.innerHTML = `
+                            <div class="wisdom-section">
+                                <h3>✅ Date Fixed!</h3>
+                                <div class="wisdom-quote">
+                                    Perfect! I've set your target date to today (${todayString}). 
+                                    <br><br>
+                                    Now click the calculate button again, or change it to any future date you're curious about! 
+                                    <br><br>
+                                    Time to see how wise you've become! 🧠✨
+                                </div>
+                            </div>
+                        `;
+                        
+                        setTimeout(() => {
+                            resultDiv.style.display = 'none';
+                        }, 3000);
+                    });
+                }
+            }, 100);
+            
+            calculateBtn.innerHTML = originalText;
+            calculateBtn.disabled = false;
+            return;
+        }
+        
+        const age = calculatePreciseAge(birthDate, targetDate);
+        
+        if (!age) {
+            resultDiv.innerHTML = `
+                <div class="wisdom-section">
+                    <h3>🕰️ Future Birth Alert!</h3>
+                    <div class="wisdom-quote">
+                        Whoa there, time traveler! 🌟
+                        <br><br>
+                        Your birth date seems to be in the future! Unless you're Benjamin Button or have some secret time powers... 
+                        <br><br>
+                        How about we stick to dates that have actually happened? 😄⏰
+                    </div>
+                </div>
+            `;
+            resultDiv.style.display = 'block';
+            resultDiv.scrollIntoView({ behavior: 'smooth' });
+            birthDateInput.focus();
+            calculateBtn.innerHTML = originalText;
+            calculateBtn.disabled = false;
+            return;
+        }
+        
+        try {
+            const totalDays = calculateTotalDays(birthDate, targetDate);
+            const nextBirthdayDays = getNextBirthday(birthDate, targetDate);
+            const funFacts = getAgeBasedFacts(totalDays, age.years);
+            const milestones = getLifeMilestones(age.years);
+            const wisdom = getFunnyAgeWisdom(age.years);
+            
+            // Display all the glorious details of their existence
+            resultDiv.innerHTML = `
+                <div class="age-grid">
+                    <div class="age-card">
+                        <h4>🎂 Your Exact Age</h4>
+                        <div class="value">${age.years} years, ${age.months} months, ${age.days} days</div>
+                    </div>
+                    <div class="age-card">
+                        <h4>📅 Total Days on Earth</h4>
+                        <div class="value">${totalDays.toLocaleString()} days</div>
+                    </div>
+                    <div class="age-card">
+                        <h4>⏰ Total Hours Survived</h4>
+                        <div class="value">${(totalDays * 24).toLocaleString()} hours</div>
+                    </div>
+                    <div class="age-card">
+                        <h4>⏱️ Total Minutes Experienced</h4>
+                        <div class="value">${(totalDays * 24 * 60).toLocaleString()} minutes</div>
+                    </div>
+                    <div class="age-card">
+                        <h4>🎁 Next Birthday In</h4>
+                        <div class="value">${nextBirthdayDays} days</div>
+                    </div>
+                    <div class="age-card">
+                        <h4>🧓 Wisdom Level</h4>
+                        <div class="value">${age.years < 30 ? 'Novice' : age.years < 50 ? 'Intermediate' : age.years < 70 ? 'Expert' : 'Master'}</div>
+                    </div>
+                </div>
+                
+                <div class="fun-section">
+                    <h3>🎉 Absolutely Useless But True Facts</h3>
+                    ${funFacts.map(fact => `<div class="fun-item">${fact}</div>`).join('')}
+                </div>
+                
+                <div class="milestone-section">
+                    <h3>🏆 Life Achievement Unlocked</h3>
+                    ${milestones.map(milestone => `
+                        <div class="milestone-item ${milestone.achieved ? 'achieved' : ''}">
+                            <span>${milestone.text}</span>
+                            <span>${milestone.achieved ? '✅ Completed' : '⏳ Coming Soon'}</span>
+                        </div>
+                    `).join('')}
+                </div>
+                
+                <div class="wisdom-section">
+                    <h3>💡 Age-Appropriate Wisdom</h3>
+                    <div class="wisdom-quote">${wisdom}</div>
+                </div>
+            `;
+            
+            resultDiv.style.display = 'block';
+            
+            // Smooth scroll to results (because scrolling is fun!)
+            resultDiv.scrollIntoView({ behavior: 'smooth' });
+            
+            // Restore button state
+            calculateBtn.innerHTML = originalText;
+            calculateBtn.disabled = false;
+            
+        } catch (error) {
+            console.error('Age calculation error:', error);
+            resultDiv.innerHTML = `
+                <div class="wisdom-section">
+                    <h3>🤖 Oops! Calculation Hiccup!</h3>
+                    <div class="wisdom-quote">
+                        Something went a bit wonky with the age calculation! 😅
+                        <br><br>
+                        Don't worry, it's not you - it's me! Please try again and I'll do my best to get it right this time! 
+                        <br><br>
+                        Even smart computers have their off days! 🤖�
+                    </div>
+                </div>
+            `;
+            resultDiv.style.display = 'block';
+            resultDiv.scrollIntoView({ behavior: 'smooth' });
+            // Restore button state on error too
+            calculateBtn.innerHTML = originalText;
+            calculateBtn.disabled = false;
+        }
+        }, 800); // Small delay for better UX
+    }
+    
+    // Initialize when DOM is loaded (the responsible way)
+    document.addEventListener('DOMContentLoaded', initializeAgeCalculator);
+    
+    // Expose globally for dynamic loading (because sharing is caring)
+    window.initializeAgeCalculator = initializeAgeCalculator;
+    
+})();
+</script>
+
+<!-- SEO Content Section -->
+<section class="seo-content">
+    <h2>Free Online Age Calculator - Calculate Your Exact Age</h2>
+    <p>Our <strong>free age calculator</strong> helps you determine your exact age in years, months, days, hours, and even minutes. Whether you need to calculate your age for official documents, birthday planning, or just curiosity, this tool provides accurate results instantly.</p>
+    
+    <h3>How to Use the Age Calculator</h3>
+    <ol>
+        <li>Select your birth year from the dropdown menu</li>
+        <li>Choose your birth month</li>
+        <li>Pick your birth day</li>
+        <li>Click "Calculate Age" to get your results</li>
+    </ol>
+    
+    <h3>Age Calculator Features</h3>
+    <ul>
+        <li><strong>Exact Age:</strong> Get your age in years, months, and days</li>
+        <li><strong>Age in Days:</strong> Find out how many days you've been alive</li>
+        <li><strong>Age in Hours:</strong> Calculate your age down to the hour</li>
+        <li><strong>Birthday Countdown:</strong> See how many days until your next birthday</li>
+        <li><strong>Fun Facts:</strong> Discover interesting statistics about your age</li>
+    </ul>
+    
+    <h3>Why Use Our Age Calculator?</h3>
+    <p>This <strong>online age calculator</strong> is perfect for:</p>
+    <ul>
+        <li>Filling out forms that require exact age</li>
+        <li>Planning birthday celebrations</li>
+        <li>Calculating age differences between people</li>
+        <li>Finding out how many days old you are</li>
+        <li>Academic or research purposes</li>
+    </ul>
+    
+    <p>Our age calculator is completely free, requires no registration, and works on all devices. Calculate your age accurately and discover fun facts about your time on Earth!</p>
+</section>
+
+  </div>
+</main>
+</body>
+</html>

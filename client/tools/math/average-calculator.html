@@ -1,0 +1,98 @@
+<!-- File: tools/math/average-calculator.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Average/Mean Calculator</title>
+    <style>
+        body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; }
+        .avg-calc-container { max-width: 400px; margin: 3em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2em 1.5em 2.5em 1.5em; }
+        .handwritten { font-family: 'Caveat', cursive; }
+        .avg-calc-label { font-weight: 600; margin-bottom: 0.5em; display: block; }
+        .avg-calc-input { width: 100%; padding: 1em; border: 2px solid #EAE3D5; border-radius: 0.7em; font-size: 1.2em; margin-bottom: 1em; background: #FDFBF5; text-align: center; font-family: 'Fira Code', monospace; }
+        .avg-calc-btn { background: #fff; color: #D9534F; border: 2px solid #D9534F; border-radius: 0.5em; padding: 0.7em 2em; font-weight: 600; font-size: 1.1em; cursor: pointer; transition: all 0.2s; margin-bottom: 1em; }
+        .avg-calc-btn:hover { background: #D9534F; color: #fff; }
+        .avg-calc-result { background: #FDFBF5; border: 2px solid #D9534F; border-radius: 0.7em; padding: 1em; font-size: 1.25em; color: #D9534F; min-height: 1.7em; margin-bottom: 1em; text-align: center; font-family: 'Fira Code', monospace; font-weight: bold; max-height: 300px; overflow-y: auto; word-break: break-word; transition: height 0.2s; }
+        .avg-calc-desc { width: 100%; margin-top: 2em; background:#FDFBF5; border:2px solid #EAE3D5; border-radius:0.9em; padding:1.2em 1em; font-size:1.08em; color:#333; line-height:1.7; }
+        .avg-calc-desc strong { color: #D9534F; font-size: 1.12em; }
+        @media (max-width: 600px) { .avg-calc-container { padding: 1em 0.2em; } }
+    </style>
+</head>
+<body>
+<div class="avg-calc-container">
+    <h2 class="handwritten text-5xl text-[#D9534F] mb-4">Average/Mean Calculator</h2>
+    <label class="avg-calc-label">Enter numbers separated by commas (e.g. <code>5, 10, 15, 20</code>):</label>
+    <input id="avg-input" class="avg-calc-input" placeholder="e.g. 5, 10, 15, 20">
+    <button id="avg-calc-calc" class="avg-calc-btn">Calculate</button>
+    <div class="avg-calc-result" id="avg-calc-result"></div>
+</div>
+<div class="avg-calc-desc" style="max-width: 540px; margin: 2.5em auto 0 auto; background:#FDFBF5; border:2px solid #EAE3D5; border-radius:0.9em; padding:1.2em 1em; font-size:1.08em; color:#333; line-height:1.7;">
+    <strong style="font-size:1.18em; color:#D9534F;">About the Average/Mean Calculator</strong><br><br>
+    Enter a list of numbers to instantly calculate the average (arithmetic mean). Supports decimals and negative numbers.<br><br>
+    <b>Features:</b>
+    <ul style="margin-left:1.2em; margin-bottom:0.7em;">
+        <li>Calculates the arithmetic mean of any list of numbers</li>
+        <li>Supports decimals, negatives, and large lists</li>
+        <li>Responsive, mobile-friendly, and distraction-free</li>
+        <li>Instant feedback for invalid input</li>
+    </ul>
+    <b>Use Cases:</b>
+    <ul style="margin-left:1.2em;">
+        <li>Find the average of test scores, grades, or results</li>
+        <li>Calculate mean for statistics, science, or business</li>
+        <li>Check homework or perform quick math for school, college, or tutoring</li>
+        <li>Average expenses, prices, or measurements</li>
+    </ul>
+    <b>Why use this calculator?</b> No ads, no clutter, no tracking—just a beautiful, reliable average calculator you can use anywhere.<br>
+</div>
+<script>
+function showResult(str) {
+    document.getElementById('avg-calc-result').textContent = str;
+}
+document.getElementById('avg-calc-calc').addEventListener('click', function() {
+    let val = document.getElementById('avg-input').value.trim();
+    if (!val) return showResult('Enter numbers separated by commas.');
+    
+    // Split by comma and clean up
+    let inputs = val.split(',');
+    let nums = [];
+    let invalidInputs = [];
+    
+    for (let i = 0; i < inputs.length; i++) {
+        let input = inputs[i].trim();
+        if (input === '') continue; // Skip empty strings
+        
+        let num = parseFloat(input);
+        if (isNaN(num)) {
+            invalidInputs.push(input);
+        } else if (!isFinite(num)) {
+            invalidInputs.push(input + ' (infinity/invalid)');
+        } else {
+            nums.push(num);
+        }
+    }
+    
+    if (invalidInputs.length > 0) {
+        return showResult(`Invalid inputs: ${invalidInputs.join(', ')}. Please use only numbers.`);
+    }
+    
+    if (nums.length === 0) {
+        return showResult('No valid numbers found. Please enter at least one number.');
+    }
+    
+    let sum = nums.reduce((a, b) => a + b, 0);
+    let avg = sum / nums.length;
+    
+    // Format the result nicely
+    let formattedNums = nums.map(n => n.toString()).join(', ');
+    let formattedAvg = Math.round(avg * 1000000) / 1000000; // Round to 6 decimal places
+    
+    showResult(`Average of [${formattedNums}] = ${formattedAvg} (Sum: ${sum}, Count: ${nums.length})`);
+});
+document.getElementById('avg-input').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') {
+        document.getElementById('avg-calc-calc').click();
+    }
+});
+</script>
+</html>

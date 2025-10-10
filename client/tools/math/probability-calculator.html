@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Probability Calculator</title>
+    <style>
+        body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; }
+        .geo-calc-container { max-width: 400px; margin: 3em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2em 1.5em 2.5em 1.5em; }
+        .handwritten { font-family: 'Caveat', cursive; }
+        .geo-calc-label { font-weight: 600; margin-bottom: 0.5em; display: block; }
+        .geo-calc-input { width: 100%; padding: 1em; border: 2px solid #EAE3D5; border-radius: 0.7em; font-size: 1.1em; margin-bottom: 1em; background: #FDFBF5; text-align: center; font-family: 'Fira Code', monospace; }
+        .geo-calc-btn { background: #fff; color: #D9534F; border: 2px solid #D9534F; border-radius: 0.5em; padding: 0.7em 2em; font-weight: 600; font-size: 1.1em; cursor: pointer; transition: all 0.2s; margin-bottom: 1em; }
+        .geo-calc-btn:hover { background: #D9534F; color: #fff; }
+        .geo-calc-result { background: #FDFBF5; border: 2px solid #D9534F; border-radius: 0.7em; padding: 1em; font-size: 1.18em; color: #D9534F; min-height: 1.7em; margin-bottom: 1em; text-align: center; font-family: 'Fira Code', monospace; font-weight: bold; max-height: 300px; overflow-y: auto; word-break: break-word; transition: height 0.2s; }
+        @media (max-width: 600px) { .geo-calc-container { padding: 1em 0.2em; } }
+    </style>
+</head>
+<body>
+<div class="geo-calc-container">
+    <h2 class="handwritten text-5xl text-[#D9534F] mb-4">Probability Calculator</h2>
+    <label class="geo-calc-label" for="favorable">Number of Favorable Outcomes:</label>
+    <input class="geo-calc-input" id="favorable" type="number" min="0" placeholder="e.g. 3">
+    <label class="geo-calc-label" for="total">Total Number of Outcomes:</label>
+    <input class="geo-calc-input" id="total" type="number" min="1" placeholder="e.g. 8">
+    <button type="button" class="geo-calc-btn" onclick="calculateProbability()">Calculate Probability</button>
+    <div class="geo-calc-result" id="result"></div>
+</div>
+<div class="geo-calc-desc" style="max-width: fit-content; margin: 2.5em auto 0 auto; background:#FDFBF5; border:2px solid #EAE3D5; border-radius:0.9em; padding:1.2em 1em; font-size:1.08em; color:#333; line-height:1.7;">
+    <strong style="font-size:1.18em; color:#D9534F;">About Probability</strong><br><br>
+    <b>Probability:</b> The measure of how likely an event is to occur, expressed as a number between 0 (impossible) and 1 (certain).<br><br>
+    <b>Formula:</b>
+    <ul style="margin-left:1.2em; margin-bottom:0.7em;">
+        <li>Probability of an event: <code>P(A) = \frac{\text{Number of Favorable Outcomes}}{\text{Total Number of Outcomes}}</code></li>
+    </ul>
+    <b>Use Cases:</b>
+    <ul style="margin-left:1.2em;">
+        <li>Games of chance (dice, cards, coins)</li>
+        <li>Risk assessment and statistics</li>
+        <li>Everyday decision making</li>
+    </ul>
+</div>
+<script>
+function calculateProbability() {
+    const favorable = parseFloat(document.getElementById('favorable').value);
+    const total = parseFloat(document.getElementById('total').value);
+    if (isNaN(favorable) || isNaN(total) || favorable < 0 || total <= 0 || favorable > total) {
+        document.getElementById('result').textContent = 'Please enter valid numbers (favorable ≤ total, total > 0).';
+        return;
+    }
+    const probability = favorable / total;
+    document.getElementById('result').innerHTML = `<b>Probability:</b> ${probability} <br><b>As a percentage:</b> ${(probability*100).toFixed(2)}%`;
+}
+</script>
+</body>
+</html>

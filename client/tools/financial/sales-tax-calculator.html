@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sales Tax Calculator – Online Tool</title>
+  <meta name="description" content="Calculate sales tax for any purchase amount. Supports all provinces and states. Fast, privacy-first, and free. No files are stored.">
+  <meta name="keywords" content="sales tax calculator, tax calculator, GST HST, online tool, privacy, free">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Open Graph for SEO/social -->
+  <meta property="og:title" content="Sales Tax Calculator – Online Tool">
+  <meta property="og:description" content="Calculate sales tax for any purchase amount. Supports all provinces and states. Fast, privacy-first, and free. No files are stored.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://scribbletools.org/assets/og-sales-tax-calculator.png">
+  <meta property="og:url" content="https://scribbletools.org/tools/financial/sales-tax-calculator.html">
+  <link rel="canonical" href="https://scribbletools.org/tools/financial/sales-tax-calculator.html">
+  <style>
+    body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; }
+    main { display: block; }
+    .reduce-size-container { max-width: 800px; margin: 3em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2em 1.5em 2.5em 1.5em; }
+    .handwritten { font-family: 'Caveat', cursive; }
+    .form-group { margin: 1.2em 0; }
+    .form-label { font-weight: 600; margin-bottom: 0.5em; display: block; }
+    .form-input { width: 100%; padding: 0.8em; border: 2px solid #EAE3D5; border-radius: 0.5em; font-size: 1em; margin-bottom: 1em; }
+    .form-select { width: 100%; padding: 0.8em; border: 2px solid #EAE3D5; border-radius: 0.5em; font-size: 1em; margin-bottom: 1em; }
+    .calculate-btn { background: #228B22; color: #fff; border: none; border-radius: 0.5em; padding: 1em 2em; font-weight: 600; cursor: pointer; transition: all 0.2s; width: 100%; font-size: 1.1em; }
+    .calculate-btn:hover { background: #1e7e1e; }
+    .result-section { margin-top: 2em; text-align: center; }
+    .result-card { background: #F0F8FF; border: 2px solid #4682B4; border-radius: 0.7em; padding: 1.5em; margin: 1em 0; }
+    .result-value { font-size: 1.8em; font-weight: bold; color: #D9534F; margin: 0.5em 0; }
+    .example-section { background: #FDFBF5; border: 1px solid #FFEAA7; border-radius: 0.7em; padding: 1.2em; margin: 2em 0; }
+    .example-section h3 { color: #4682B4; margin-bottom: 0.5em; }
+    .related-links { margin-top: 2em; font-size: 1em; }
+    .related-links a { color: #D9534F; text-decoration: underline; margin-right: 1.2em; }
+    .related-links a:hover { color: #357abd; }
+    .step-list { margin: 1.2em 0 1.2em 1.2em; padding: 0; }
+    .step-list li { margin-bottom: 0.7em; }
+    .sr-only { position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden; }
+    @media (max-width: 600px) { .reduce-size-container { padding: 1em 0.2em; } }
+  </style>
+</head>
+<body>
+<main>
+  <div class="reduce-size-container">
+    <header>
+      <h1 class="handwritten text-5xl text-[#D9534F] mb-4">Sales Tax Calculator</h1>
+      <p style="font-size:1.2em; margin-bottom:1em;">Calculate sales tax for any purchase amount. Supports all provinces and states. Fast, privacy-first, and free. No files are stored.</p>
+    </header>
+    <nav class="related-links" aria-label="Related financial tools">
+      <strong>Related:</strong>
+      <a href="income-tax-calculator.html">Income Tax Calculator</a>
+      <a href="discount-calculator.html">Discount Calculator</a>
+      <a href="tip-calculator.html">Tip Calculator</a>
+      <a href="percentage-calculator.html">Percentage Calculator</a>
+    </nav>
+    <section aria-labelledby="instructions-title">
+      <div style="background:#FFF3CD; border:1px solid #FFD700; border-radius:0.7em; padding:1em; margin-bottom:1.2em; color:#B8860B; font-weight:bold; font-size:1.1em;">
+        ⚠️ <b>Tax rates are current as of 2024</b> and may change. Verify with local authorities for the most current rates.
+      </div>
+      <h2 id="instructions-title" style="margin-top:2em; color:#228B22;">How to Use</h2>
+      <ol class="step-list">
+        <li><strong>Enter</strong> the purchase amount before tax.</li>
+        <li><strong>Select</strong> your location or enter a custom tax rate.</li>
+        <li>Click <strong>Calculate</strong> to see the tax amount and total cost.</li>
+      </ol>
+    </section>
+    <section class="example-section" aria-labelledby="examples-title">
+      <h3 id="examples-title">Example</h3>
+      <ul style="margin-top:1em;">
+        <li>Purchase: $100.00 in Ontario, Canada (13% HST)</li>
+        <li>Tax: $13.00, Total: $113.00</li>
+        <li>Works with any currency and location</li>
+      </ul>
+    </section>
+    <section aria-labelledby="privacy-title">
+      <h2 id="privacy-title" style="color:#D9534F;">Privacy Notice</h2>
+      <div style="background: #FFF3CD; border: 1px solid #FFEAA7; border-radius: 0.5em; padding: 1em; margin: 1em 0; font-size: 0.95em; color: #856404;">
+        <strong>🔒 All calculations are done in your browser. No data is sent to servers or stored.</strong>
+      </div>
+    </section>
+    <section aria-labelledby="calculator-title">
+      <h2 id="calculator-title" class="sr-only">Sales Tax Calculator Interface</h2>
+      <form id="tax-form" autocomplete="off">
+        <div class="form-group">
+          <label class="form-label" for="purchase-amount">Purchase Amount (before tax):
+            <span title="Enter the cost of your purchase before sales tax." style="cursor:help; color:#4682B4;">&#9432;</span>
+          </label>
+          <input type="number" id="purchase-amount" class="form-input" placeholder="100.00" min="0" step="0.01" aria-label="Purchase Amount">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="location">Location:
+            <span title="Select your location for automatic tax rates." style="cursor:help; color:#4682B4;">&#9432;</span>
+          </label>
+          <select id="location" class="form-select" aria-label="Location">
+            <option value="">Select Location...</option>
+            <optgroup label="Canada">
+              <option value="5">Alberta (5% GST)</option>
+              <option value="12">British Columbia (12% GST+PST)</option>
+              <option value="12">Manitoba (12% GST+PST)</option>
+              <option value="15">New Brunswick (15% HST)</option>
+              <option value="15">Newfoundland (15% HST)</option>
+              <option value="5">Northwest Territories (5% GST)</option>
+              <option value="15">Nova Scotia (15% HST)</option>
+              <option value="5">Nunavut (5% GST)</option>
+              <option value="13">Ontario (13% HST)</option>
+              <option value="15">Prince Edward Island (15% HST)</option>
+              <option value="9.975">Quebec (9.975% GST+QST)</option>
+              <option value="11">Saskatchewan (11% GST+PST)</option>
+              <option value="5">Yukon (5% GST)</option>
+            </optgroup>
+            <optgroup label="United States">
+              <option value="0">Alaska (0%)</option>
+              <option value="4">Hawaii (4.166%)</option>
+              <option value="6">Wyoming (5.34%)</option>
+              <option value="7">Delaware (0%)</option>
+              <option value="0">Montana (0%)</option>
+              <option value="0">New Hampshire (0%)</option>
+              <option value="0">Oregon (0%)</option>
+              <option value="6.35">Connecticut (6.35%)</option>
+              <option value="8.25">California (8.25%)</option>
+              <option value="8.25">Texas (8.25%)</option>
+              <option value="8">New York (8%)</option>
+              <option value="6.25">Massachusetts (6.25%)</option>
+              <option value="7">Florida (7%)</option>
+            </optgroup>
+            <option value="custom">Custom Rate...</option>
+          </select>
+        </div>
+        <div class="form-group" id="custom-rate-group" style="display: none;">
+          <label class="form-label" for="custom-rate">Custom Tax Rate (%):
+            <span title="Enter your local sales tax rate as a percentage." style="cursor:help; color:#4682B4;">&#9432;</span>
+          </label>
+          <input type="number" id="custom-rate" class="form-input" placeholder="8.25" min="0" max="50" step="0.01" aria-label="Custom Tax Rate">
+        </div>
+        <button class="calculate-btn" id="calculate-btn" type="button" aria-label="Calculate Sales Tax">Calculate Tax</button>
+      </form>
+      <div class="result-section" id="result-section" style="display: none;">
+        <div class="conversion-success-card" style="display:inline-block; margin-top:1em; background:#E8F5E8; border:2px solid #5CB85C; border-radius:0.7em; padding:1.2em 1em 1.5em 1em; margin-bottom:1em; box-shadow:0 2px 12px #eae3d5;">
+          <div class="success-icon" style="font-size:2.2em; color:#5CB85C; margin-bottom:0.3em;">✅</div>
+          <div class="success-message" style="font-size:1.15em; color:#228B22; font-family:'Caveat',cursive; margin-bottom:0.7em; text-align:center;">Your tax calculation is ready!</div>
+          <div id="results-display" style="text-align: left;"></div>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+<script>
+function initializeSalesTaxCalculator() {
+  const locationSelect = document.getElementById('location');
+  const customRateGroup = document.getElementById('custom-rate-group');
+  const calculateBtn = document.getElementById('calculate-btn');
+  const resultSection = document.getElementById('result-section');
+  const resultsDisplay = document.getElementById('results-display');
+
+  locationSelect.addEventListener('change', function() {
+    if (this.value === 'custom') {
+      customRateGroup.style.display = 'block';
+    } else {
+      customRateGroup.style.display = 'none';
+    }
+  });
+
+  calculateBtn.addEventListener('click', function() {
+    const purchaseAmount = parseFloat(document.getElementById('purchase-amount').value);
+    const location = document.getElementById('location').value;
+    const customRate = parseFloat(document.getElementById('custom-rate').value);
+
+    if (!purchaseAmount || purchaseAmount <= 0) {
+      alert('Please enter a valid purchase amount.');
+      return;
+    }
+
+    let taxRate = 0;
+    let locationName = '';
+
+    if (location === 'custom') {
+      if (!customRate || customRate < 0) {
+        alert('Please enter a valid custom tax rate.');
+        return;
+      }
+      taxRate = customRate;
+      locationName = `Custom Rate (${customRate}%)`;
+    } else if (location) {
+      taxRate = parseFloat(location);
+      const selectedOption = locationSelect.options[locationSelect.selectedIndex];
+      locationName = selectedOption.text;
+    } else {
+      alert('Please select a location or enter a custom rate.');
+      return;
+    }
+
+    // Calculate tax and total
+    const taxAmount = purchaseAmount * (taxRate / 100);
+    const totalAmount = purchaseAmount + taxAmount;
+
+    // Display results
+    resultsDisplay.innerHTML = `
+      <div class="result-card">
+        <h4>Purchase Amount</h4>
+        <div class="result-value">$${purchaseAmount.toFixed(2)}</div>
+      </div>
+      <div class="result-card">
+        <h4>Sales Tax (${taxRate}%)</h4>
+        <div class="result-value">$${taxAmount.toFixed(2)}</div>
+      </div>
+      <div class="result-card">
+        <h4>Total Amount</h4>
+        <div class="result-value">$${totalAmount.toFixed(2)}</div>
+      </div>
+      <div style="margin-top: 1em; font-size: 0.9em; color: #666;">
+        <p><strong>Location:</strong> ${locationName}</p>
+        <p><strong>Effective Rate:</strong> ${((taxAmount/purchaseAmount)*100).toFixed(2)}%</p>
+      </div>
+    `;
+
+    resultSection.style.display = 'block';
+  });
+}
+
+// SPA/Router support
+if (window.initializeSalesTaxCalculator === undefined) {
+  window.initializeSalesTaxCalculator = initializeSalesTaxCalculator;
+}
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initializeSalesTaxCalculator);
+} else {
+  initializeSalesTaxCalculator();
+}
+</script>
+</body>
+</html>

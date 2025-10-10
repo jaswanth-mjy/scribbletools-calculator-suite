@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Area Calculator</title>
+    <style>
+        body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; }
+        .geo-calc-container { max-width: 400px; margin: 3em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2em 1.5em 2.5em 1.5em; }
+        .handwritten { font-family: 'Caveat', cursive; }
+        .geo-calc-label { font-weight: 600; margin-bottom: 0.5em; display: block; }
+        .geo-calc-input, .geo-calc-select { width: 100%; padding: 1em; border: 2px solid #EAE3D5; border-radius: 0.7em; font-size: 1.1em; margin-bottom: 1em; background: #FDFBF5; text-align: center; font-family: 'Fira Code', monospace; }
+        .geo-calc-btn { background: #fff; color: #D9534F; border: 2px solid #D9534F; border-radius: 0.5em; padding: 0.7em 2em; font-weight: 600; font-size: 1.1em; cursor: pointer; transition: all 0.2s; margin-bottom: 1em; }
+        .geo-calc-btn:hover { background: #D9534F; color: #fff; }
+        .geo-calc-result { background: #FDFBF5; border: 2px solid #D9534F; border-radius: 0.7em; padding: 1em; font-size: 1.18em; color: #D9534F; min-height: 1.7em; margin-bottom: 1em; text-align: center; font-family: 'Fira Code', monospace; font-weight: bold; max-height: 300px; overflow-y: auto; word-break: break-word; transition: height 0.2s; }
+        .geo-calc-desc { max-width: fit-content; margin: 2.5em auto 0 auto; background:#FDFBF5; border:2px solid #EAE3D5; border-radius:0.9em; padding:1.2em 1em; font-size:1.08em; color:#333; line-height:1.7; }
+        @media (max-width: 600px) { .geo-calc-container { padding: 1em 0.2em; } }
+    </style>
+</head>
+<body>
+<div class="geo-calc-container">
+    <h2 class="handwritten text-5xl text-[#D9534F] mb-4">Area Calculator</h2>
+    <label class="geo-calc-label" for="shape">Select Shape:</label>
+    <select id="shape" class="geo-calc-select" onchange="updateInputs()">
+        <option value="rectangle">Rectangle</option>
+        <option value="square">Square</option>
+        <option value="circle">Circle</option>
+        <option value="triangle">Triangle</option>
+        <option value="ellipse">Oval / Ellipse</option>
+        <option value="pentagon">Pentagon</option>
+        <option value="hexagon">Hexagon</option>
+        <option value="octagon">Octagon</option>
+        <option value="parallelogram">Parallelogram</option>
+        <option value="rhombus">Rhombus</option>
+        <option value="kite">Kite</option>
+        <option value="trapezium">Trapezoid</option>
+    </select>
+    <form id="inputs"></form>
+    <button type="button" class="geo-calc-btn" onclick="calculateArea()">Calculate Area</button>
+    <div class="geo-calc-result" id="result"></div>
+</div>
+
+<div class="geo-calc-desc" style="width: 100%;">
+    <strong style="font-size:1.18em; color:#D9534F;">About This Calculator & Use Cases</strong><br><br>
+    <p style="margin-bottom: 1em;">This tool provides a quick and easy way to calculate the area of various common geometric shapes. Below are some practical examples of how it can be used in daily life. 📐</p>
+    
+    <ul style="list-style-position: inside; padding-left: 0.5em; text-align: left;">
+        <li style="margin-bottom: 0.5em;"><strong>Students & Teachers:</strong> Quickly verify homework answers, prepare lesson plans, or visualize how changing a dimension (like a circle's radius) affects its total area.</li>
+        <li style="margin-bottom: 0.5em;"><strong>Home Improvement & DIY:</strong> Estimate the amount of paint for a wall (rectangle), tiles for a floor (square), or fabric for a round tablecloth (circle).</li>
+        <li style="margin-bottom: 0.5em;"><strong>Landscaping & Gardening:</strong> Calculate the amount of sod or seed needed for a lawn, the space required for a circular garden bed, or the footprint of a hexagonal gazebo.</li>
+        <li style="margin-bottom: 0.5em;"><strong>Construction & Real Estate:</strong> Get rapid area estimates for floor plans, land plots (approximated by shapes), or material requirements on a job site.</li>
+        <li style="margin-bottom: 0.5em;"><strong>Crafts & Hobbies:</strong> Determine the material needed for projects like building a kite, designing a quilt with geometric patterns, or creating custom-shaped decorations.</li>
+    </ul>
+</div>
+
+
+<script>
+// The script for calculations does not require MathJax to run
+function updateInputs() {
+    const shape = document.getElementById('shape').value;
+    const inputs = document.getElementById('inputs');
+    let html = '';
+    
+    switch (shape) {
+        case 'rectangle':
+            html += '<label class="geo-calc-label" for="length">Length:</label>';
+            html += '<input class="geo-calc-input" type="number" id="length" min="0" step="any" placeholder="Enter length">';
+            html += '<label class="geo-calc-label" for="width">Width:</label>';
+            html += '<input class="geo-calc-input" type="number" id="width" min="0" step="any" placeholder="Enter width">';
+            break;
+        case 'square':
+        case 'pentagon':
+        case 'hexagon':
+        case 'octagon':
+            html += `<label class="geo-calc-label" for="side">Side:</label>`;
+            html += `<input class="geo-calc-input" type="number" id="side" min="0" step="any" placeholder="Enter side length">`;
+            break;
+        case 'circle':
+            html += '<label class="geo-calc-label" for="radius">Radius:</label>';
+            html += '<input class="geo-calc-input" type="number" id="radius" min="0" step="any" placeholder="Enter radius">';
+            break;
+        case 'triangle':
+            html += '<label class="geo-calc-label" for="base">Base:</label>';
+            html += '<input class="geo-calc-input" type="number" id="base" min="0" step="any" placeholder="Enter base">';
+            html += '<label class="geo-calc-label" for="height">Height:</label>';
+            html += '<input class="geo-calc-input" type="number" id="height" min="0" step="any" placeholder="Enter height">';
+            break;
+        case 'ellipse':
+            html += '<label class="geo-calc-label" for="a">Semi-major Axis (a):</label>';
+            html += '<input class="geo-calc-input" type="number" id="a" min="0" step="any" placeholder="Enter semi-major axis">';
+            html += '<label class="geo-calc-label" for="b">Semi-minor Axis (b):</label>';
+            html += '<input class="geo-calc-input" type="number" id="b" min="0" step="any" placeholder="Enter semi-minor axis">';
+            break;
+        case 'parallelogram':
+            html += '<label class="geo-calc-label" for="base">Base:</label>';
+            html += '<input class="geo-calc-input" type="number" id="base" min="0" step="any" placeholder="Enter base">';
+            html += '<label class="geo-calc-label" for="height">Height:</label>';
+            html += '<input class="geo-calc-input" type="number" id="height" min="0" step="any" placeholder="Enter height">';
+            break;
+        case 'rhombus':
+        case 'kite':
+            html += '<label class="geo-calc-label" for="d1">Diagonal 1 (p):</label>';
+            html += '<input class="geo-calc-input" type="number" id="d1" min="0" step="any" placeholder="Enter diagonal 1">';
+            html += '<label class="geo-calc-label" for="d2">Diagonal 2 (q):</label>';
+            html += '<input class="geo-calc-input" type="number" id="d2" min="0" step="any" placeholder="Enter diagonal 2">';
+            break;
+        case 'trapezium':
+            html += '<label class="geo-calc-label" for="base1">Base 1 (a):</label>';
+            html += '<input class="geo-calc-input" type="number" id="base1" min="0" step="any" placeholder="Enter base 1">';
+            html += '<label class="geo-calc-label" for="base2">Base 2 (b):</label>';
+            html += '<input class="geo-calc-input" type="number" id="base2" min="0" step="any" placeholder="Enter base 2">';
+            html += '<label class="geo-calc-label" for="height">Height:</label>';
+            html += '<input class="geo-calc-input" type="number" id="height" min="0" step="any" placeholder="Enter height">';
+            break;
+    }
+    inputs.innerHTML = html;
+}
+
+function calculateArea() {
+    const shape = document.getElementById('shape').value;
+    const resultDiv = document.getElementById('result');
+    let area = null;
+    let inputsValid = true;
+
+    try {
+        switch (shape) {
+            case 'rectangle': {
+                const length = parseFloat(document.getElementById('length').value);
+                const width = parseFloat(document.getElementById('width').value);
+                if (length > 0 && width > 0) area = length * width;
+                else inputsValid = false;
+                break;
+            }
+            case 'square': {
+                const side = parseFloat(document.getElementById('side').value);
+                if (side > 0) area = side * side;
+                else inputsValid = false;
+                break;
+            }
+            case 'circle': {
+                const radius = parseFloat(document.getElementById('radius').value);
+                if (radius > 0) area = Math.PI * radius * radius;
+                else inputsValid = false;
+                break;
+            }
+            case 'triangle': {
+                const base = parseFloat(document.getElementById('base').value);
+                const height = parseFloat(document.getElementById('height').value);
+                if (base > 0 && height > 0) area = 0.5 * base * height;
+                else inputsValid = false;
+                break;
+            }
+            case 'ellipse': {
+                const a = parseFloat(document.getElementById('a').value);
+                const b = parseFloat(document.getElementById('b').value);
+                if (a > 0 && b > 0) area = Math.PI * a * b;
+                else inputsValid = false;
+                break;
+            }
+            case 'pentagon': {
+                const side = parseFloat(document.getElementById('side').value);
+                if (side > 0) area = (5 * side * side) / (4 * Math.tan(Math.PI / 5));
+                else inputsValid = false;
+                break;
+            }
+            case 'hexagon': {
+                const side = parseFloat(document.getElementById('side').value);
+                if (side > 0) area = (3 * Math.sqrt(3) * side * side) / 2;
+                else inputsValid = false;
+                break;
+            }
+            case 'octagon': {
+                const side = parseFloat(document.getElementById('side').value);
+                if (side > 0) area = 2 * (1 + Math.sqrt(2)) * side * side;
+                else inputsValid = false;
+                break;
+            }
+            case 'parallelogram': {
+                const base = parseFloat(document.getElementById('base').value);
+                const height = parseFloat(document.getElementById('height').value);
+                if (base > 0 && height > 0) area = base * height;
+                else inputsValid = false;
+                break;
+            }
+            case 'rhombus':
+            case 'kite': {
+                const d1 = parseFloat(document.getElementById('d1').value);
+                const d2 = parseFloat(document.getElementById('d2').value);
+                if (d1 > 0 && d2 > 0) area = 0.5 * d1 * d2;
+                else inputsValid = false;
+                break;
+            }
+            case 'trapezium': {
+                const base1 = parseFloat(document.getElementById('base1').value);
+                const base2 = parseFloat(document.getElementById('base2').value);
+                const height = parseFloat(document.getElementById('height').value);
+                if (base1 > 0 && base2 > 0 && height > 0) area = 0.5 * (base1 + base2) * height;
+                else inputsValid = false;
+                break;
+            }
+        }
+
+        if (!inputsValid || area === null) {
+            resultDiv.innerHTML = 'Please enter valid positive numbers.';
+        } else {
+            resultDiv.innerHTML = `Area: ${area.toFixed(4)} sq. units`;
+        }
+    } catch (e) {
+        resultDiv.innerHTML = 'Error in calculation. Check inputs.';
+    }
+}
+
+// Initialize inputs for the default shape on page load
+updateInputs();
+</script>
+</body>
+</html>

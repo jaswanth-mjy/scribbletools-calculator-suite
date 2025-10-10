@@ -1,0 +1,129 @@
+<!-- File: tools/text/remove-duplicate-lines.html -->
+<style>
+    .rdl-textarea {
+        background-color: #FDFBF5;
+        border: 2px solid #EAE3D5;
+        border-radius: 0.5rem;
+        padding: 1rem;
+        width: 90%;
+        min-width: 320px;
+        max-width: 700px;
+        height: 100px;
+        color: #4A4A4A;
+        font-size: 1.1rem;
+        line-height: 1.6;
+        transition: all 0.2s;
+        resize: none;
+        overflow: auto;
+        box-sizing: border-box;
+        margin: 0 auto 1.2rem auto;
+        display: block;
+    }
+    .rdl-textarea:focus {
+        outline: none;
+        border-color: #D9534F;
+        box-shadow: 0 0 0 3px rgba(217, 83, 79, 0.2);
+    }
+    .rdl-utility-bar {
+        margin-top: 2.5rem;
+        display: flex;
+        gap: 1.2rem;
+        justify-content: center;
+    }
+    .rdl-utility-button {
+        background-color: #fff;
+        color: #D9534F;
+        font-weight: 600;
+        border: 2px solid #D9534F;
+        cursor: pointer;
+        padding: 0.7rem 2rem;
+        border-radius: 0.5rem;
+        transition: all 0.2s;
+        font-size: 1.1rem;
+    }
+    .rdl-utility-button:hover {
+        background-color: #D9534F;
+        color: #fff;
+    }
+    .rdl-output-box {
+        margin: 2rem auto 0 auto;
+        background: #fff;
+        border: 2px solid #D9534F;
+        border-radius: 0.7rem;
+        padding: 1.2rem 1rem;
+        min-height: 80px;
+        color: #333;
+        font-size: 1.15rem;
+        font-family: 'Fira Code', monospace;
+        letter-spacing: 1px;
+        word-break: break-word;
+        overflow: auto;
+        max-width: 700px;
+        width: 90%;
+        text-align: left;
+    }
+</style>
+<div>
+    <h2 class="handwritten text-5xl text-[#D9534F] mb-4">Remove Duplicate Lines</h2>
+    <div class="mb-6 p-6 bg-amber-50/70 rounded-lg border border-amber-200">
+        <p class="text-lg text-gray-800 font-bold mb-2">The Remove Duplicate Lines tool helps you clean up your text by removing repeated lines. Perfect for code, lists, logs, or any text where you want only unique lines to remain. Paste your text, click the button, and get a deduplicated result instantly!</p>
+        <ul class="list-disc list-inside text-gray-700 text-base">
+            <li>Remove duplicate lines from any text</li>
+            <li>Works for code, lists, logs, and more</li>
+            <li>Applications: data cleaning, code review, list management, and more</li>
+        </ul>
+    </div>
+    <textarea id="rdl-input" class="rdl-textarea" placeholder="Paste or type your text here..."></textarea>
+    <div style="text-align:center;margin:1.5rem 0;">
+        <button id="rdl-remove" class="rdl-utility-button">Remove Duplicates</button>
+    </div>
+    <div class="rdl-output-box" id="rdl-output"></div>
+    <div class="rdl-utility-bar">
+        <button id="rdl-copy" class="rdl-utility-button">Copy</button>
+        <button id="rdl-download" class="rdl-utility-button">Download</button>
+        <button id="rdl-clear" class="rdl-utility-button">Clear</button>
+    </div>
+</div>
+<script>
+function initializeRemoveDuplicateLines() {
+    const input = document.getElementById('rdl-input');
+    const output = document.getElementById('rdl-output');
+    const btnRemove = document.getElementById('rdl-remove');
+    const btnCopy = document.getElementById('rdl-copy');
+    const btnDownload = document.getElementById('rdl-download');
+    const btnClear = document.getElementById('rdl-clear');
+    btnRemove.addEventListener('click', () => {
+        const lines = input.value.split(/\r?\n/);
+        const seen = new Set();
+        const unique = lines.filter(line => {
+            if (seen.has(line)) return false;
+            seen.add(line);
+            return true;
+        });
+        output.textContent = unique.join('\n');
+    });
+    btnCopy.addEventListener('click', () => {
+        navigator.clipboard.writeText(output.textContent).then(() => {
+            const orig = btnCopy.textContent;
+            btnCopy.textContent = 'Copied!';
+            setTimeout(() => { btnCopy.textContent = orig; }, 2000);
+        });
+    });
+    btnDownload.addEventListener('click', () => {
+        const blob = new Blob([output.textContent], { type: 'text/plain' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'unique-lines.txt';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    });
+    btnClear.addEventListener('click', () => {
+        input.value = '';
+        output.textContent = '';
+    });
+}
+initializeRemoveDuplicateLines();
+</script>

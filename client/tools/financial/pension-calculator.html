@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pension Calculator - Free Pension Planning & Retirement Income Calculator</title>
+    <meta name="description" content="Free pension calculator to estimate your retirement pension income. Calculate pension benefits, contributions, and retirement planning with defined benefit plans.">
+    <meta name="keywords" content="pension calculator, pension planning, retirement pension, pension benefits calculator, defined benefit calculator, pension income calculator">
+    <meta name="author" content="ScribbleTools">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://scribbletools.net/client/tools/financial/pension-calculator.html">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://scribbletools.net/client/tools/financial/pension-calculator.html">
+    <meta property="og:title" content="Pension Calculator - Free Pension Planning & Retirement Income Calculator">
+    <meta property="og:description" content="Calculate your pension benefits and retirement income with our free pension calculator. Plan your retirement with defined benefit calculations.">
+    <meta property="og:image" content="https://scribbletools.net/assets/og-image.svg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://scribbletools.net/client/tools/financial/pension-calculator.html">
+    <meta property="twitter:title" content="Pension Calculator - Free Pension Planning & Retirement Income Calculator">
+    <meta property="twitter:description" content="Calculate your pension benefits and retirement income with our free pension calculator. Retirement planning made easy.">
+    <meta property="twitter:image" content="https://scribbletools.net/assets/og-image.svg">
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Pension Calculator",
+      "description": "Free online pension calculator for estimating retirement pension income and planning defined benefit pension calculations",
+      "url": "https://scribbletools.net/client/tools/financial/pension-calculator.html",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Web Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "ScribbleTools"
+      }
+    }
+    </script>
+    <style>
+        body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; }
+        .calc-container { max-width: 420px; margin: 3em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2em 1.5em 2.5em 1.5em; }
+        .handwritten { font-family: 'Caveat', cursive; }
+        .calc-label { font-weight: 600; margin-bottom: 0.5em; display: block; }
+        .calc-input { width: 100%; padding: 1em; border: 2px solid #EAE3D5; border-radius: 0.7em; font-size: 1.2em; margin-bottom: 1em; background: #FDFBF5; text-align: center; font-family: 'Fira Code', monospace; }
+        .calc-btn { background: #fff; color: #D9534F; border: 2px solid #D9534F; border-radius: 0.5em; padding: 0.7em 2em; font-weight: 600; font-size: 1.1em; cursor: pointer; transition: all 0.2s; margin-bottom: 1em; }
+        .calc-btn:hover { background: #D9534F; color: #fff; }
+        .calc-result { background: #FDFBF5; border: 2px solid #D9534F; border-radius: 0.7em; padding: 1em; font-size: 1.25em; color: #D9534F; min-height: 1.7em; margin-bottom: 1em; text-align: center; font-family: 'Fira Code', monospace; font-weight: bold; max-height: 300px; overflow-y: auto; word-break: break-word; transition: height 0.2s; }
+        .calc-desc { width: 100%; margin-top: 2em; background:#FDFBF5; border:2px solid #EAE3D5; border-radius:0.9em; padding:1.2em 1em; font-size:1.08em; color:#333; line-height:1.7; }
+        .calc-desc strong { color: #D9534F; font-size: 1.12em; }
+        @media (max-width: 600px) { .calc-container { padding: 1em 0.2em; } }
+    </style>
+</head>
+<body>
+<div class="calc-container">
+    <h2 class="handwritten text-5xl text-[#D9534F] mb-4">Pension Calculator</h2>
+    <label class="calc-label">Annual Pension Contribution ($):</label>
+    <input id="contribution" class="calc-input" type="number" min="0" placeholder="e.g. 5000">
+    <label class="calc-label">Years of Contribution:</label>
+    <input id="years" class="calc-input" type="number" min="1" placeholder="e.g. 30">
+    <label class="calc-label">Expected Annual Return (%):</label>
+    <input id="rate" class="calc-input" type="number" min="0" step="0.01" placeholder="e.g. 6">
+    <button id="calc-btn" class="calc-btn">Calculate</button>
+    <div class="calc-result" id="calc-result"></div>
+</div>
+<div class="calc-desc" style="max-width: fit-content; margin: 2.5em auto 0 auto;">
+    <strong style="font-size:1.18em; color:#D9534F;">About the Pension Calculator</strong><br><br>
+    Calculate your expected pension benefits based on years of service, final salary, and pension plan details. Enter your employment information to estimate monthly and annual pension payments. Perfect for retirement planning and comparing pension options.<br><br>
+    
+    <h3 style="color:#D9534F; margin-top:2em;">How to Use the Pension Calculator</h3>
+    <ol style="margin-left:1.2em;">
+        <li><strong>Final Average Salary:</strong> Enter your highest average salary (typically last 3-5 years)</li>
+        <li><strong>Years of Service:</strong> Input your total years of employment with the pension plan</li>
+        <li><strong>Pension Multiplier:</strong> Enter the benefit multiplier (usually 1.5% to 3% per year)</li>
+        <li><strong>Retirement Age:</strong> Input your planned retirement age</li>
+        <li><strong>Vesting Period:</strong> Enter minimum years required for pension eligibility</li>
+        <li><strong>Calculate:</strong> View your estimated monthly and annual pension payments</li>
+    </ol>
+    
+    <h3 style="color:#D9534F; margin-top:2em;">Types of Pension Plans</h3>
+    <div style="background:#f8f9fa; padding:15px; border-radius:5px;">
+        <strong>Defined Benefit Plans:</strong><br>
+        • <strong>Traditional Pensions:</strong> Fixed monthly payments for life<br>
+        • <strong>Cash Balance Plans:</strong> Account-based with guaranteed returns<br>
+        • <strong>Government Pensions:</strong> Federal, state, and local employee plans<br>
+        • <strong>Military Pensions:</strong> Service-based retirement benefits<br>
+        • <strong>Union Pensions:</strong> Multi-employer pension funds<br>
+        • <strong>Corporate Pensions:</strong> Company-sponsored defined benefit plans<br>
+        <em>Most provide guaranteed income but are becoming less common!</em>
+    </div>
+    
+    <h3 style="color:#D9534F; margin-top:2em;">Pension Calculation Methods</h3>
+    <ul style="margin-left:1.2em;">
+        <li><strong>Final Average Pay:</strong> Based on highest 3-5 years of salary</li>
+        <li><strong>Career Average:</strong> Uses average salary over entire career</li>
+        <li><strong>Flat Benefit:</strong> Fixed dollar amount per year of service</li>
+        <li><strong>Unit Benefit:</strong> Percentage of pay times years of service</li>
+        <li><strong>Step-Rate:</strong> Different rates for different service periods</li>
+        <li><strong>Social Security Integration:</strong> Coordinates with Social Security benefits</li>
+    </ul>
+    
+    <h3 style="color:#D9534F; margin-top:2em;">Understanding Vesting Schedules</h3>
+    <div style="background:#f8f9fa; padding:15px; border-radius:5px;">
+        <strong>Vesting Types:</strong><br><br>
+        <strong>Cliff Vesting:</strong><br>
+        • 0% vested until completion of vesting period<br>
+        • 100% vested after meeting minimum years<br>
+        • Common periods: 5 years for private, 10 years for government<br><br>
+        <strong>Graded Vesting:</strong><br>
+        • Gradual vesting over multiple years<br>
+        • Example: 20% per year starting after 3 years<br>
+        • Provides partial benefits for early leavers<br>
+        <em>Always check your specific plan's vesting schedule!</em>
+    </div>
+    
+    <h3 style="color:#D9534F; margin-top:2em;">Factors Affecting Pension Benefits</h3>
+    <ul style="margin-left:1.2em;">
+        <li><strong>Years of Service:</strong> More years = higher monthly payments</li>
+        <li><strong>Final Salary:</strong> Higher ending salary increases benefits</li>
+        <li><strong>Pension Multiplier:</strong> Plan-specific percentage per year of service</li>
+        <li><strong>Retirement Age:</strong> Early retirement may reduce benefits</li>
+        <li><strong>Cost of Living Adjustments:</strong> Annual increases to maintain purchasing power</li>
+        <li><strong>Integration with Social Security:</strong> May reduce pension payments</li>
+        <li><strong>Survivor Benefits:</strong> Options for spouse/beneficiary payments</li>
+    </ul>
+    
+    <h3 style="color:#D9534F; margin-top:2em;">Early Retirement Considerations</h3>
+    <ul style="margin-left:1.2em;">
+        <li><strong>Reduced Benefits:</strong> Typically 5-7% reduction per year before normal retirement</li>
+        <li><strong>Rule of 85/90:</strong> Some plans allow full benefits if age + service = 85 or 90</li>
+        <li><strong>Minimum Age Requirements:</strong> Usually 55-62 for early retirement eligibility</li>
+        <li><strong>Health Insurance Bridge:</strong> Some plans provide coverage until Medicare eligibility</li>
+        <li><strong>Lump Sum Options:</strong> May be available instead of monthly payments</li>
+        <li><strong>Penalty Calculations:</strong> Actuarial reductions for early withdrawal</li>
+    </ul>
+    
+    <h3 style="color:#D9534F; margin-top:2em;">Pension vs 401(k) Comparison</h3>
+    <div style="background:#f8f9fa; padding:15px; border-radius:5px;">
+        <strong>Pension Plan Advantages:</strong><br>
+        • Guaranteed monthly income for life<br>
+        • No investment risk for employee<br>
+        • Professional management of investments<br>
+        • Often includes survivor benefits<br>
+        • May include cost-of-living adjustments<br><br>
+        <strong>401(k) Plan Advantages:</strong><br>
+        • Portable between employers<br>
+        • Employee controls investment choices<br>
+        • Potential for higher returns<br>
+        • Lump sum withdrawal options<br>
+        • Earlier access to funds (with penalties)<br>
+        <em>Many employees now have both types of retirement plans!</em>
+    </div>
+    
+    <h3 style="color:#D9534F; margin-top:2em;">Survivor Benefit Options</h3>
+    <ul style="margin-left:1.2em;">
+        <li><strong>Joint and Survivor Annuity:</strong> Continues payments to spouse after death</li>
+        <li><strong>50% Survivor Benefit:</strong> Spouse receives half of monthly pension</li>
+        <li><strong>75% Survivor Benefit:</strong> Spouse receives three-quarters of monthly pension</li>
+        <li><strong>100% Survivor Benefit:</strong> Full pension continues to spouse</li>
+        <li><strong>Life Only:</strong> Highest monthly payment but no survivor benefits</li>
+        <li><strong>Period Certain:</strong> Guarantees payments for specific number of years</li>
+        <li><strong>Pop-Up Feature:</strong> Returns to higher payment if spouse dies first</li>
+    </ul>
+    
+    <h3 style="color:#D9534F; margin-top:2em;">Pension Plan Health Assessment</h3>
+    <div style="background:#f8f9fa; padding:15px; border-radius:5px;">
+        <strong>Warning Signs of Pension Problems:</strong><br>
+        • Underfunded pension plans (less than 80% funded)<br>
+        • Company financial difficulties<br>
+        • Benefit cuts or freezes<br>
+        • Increased employee contributions<br>
+        • Plan termination announcements<br><br>
+        <strong>Protecting Your Pension:</strong><br>
+        • Monitor annual funding notices<br>
+        • Stay informed about plan changes<br>
+        • Consider supplemental retirement savings<br>
+        • Understand PBGC insurance limits<br>
+        <em>PBGC protects most private pensions up to annual limits!</em>
+    </div>
+    
+    <h3 style="color:#D9534F; margin-top:2em;">Government Employee Pensions</h3>
+    <ul style="margin-left:1.2em;">
+        <li><strong>Federal Employees:</strong> FERS (Federal Employee Retirement System)</li>
+        <li><strong>Military Personnel:</strong> Military Retirement System with 20-year minimum</li>
+        <li><strong>State Employees:</strong> Vary by state, often well-funded</li>
+        <li><strong>Teachers:</strong> State teacher retirement systems</li>
+        <li><strong>Police/Fire:</strong> Often have enhanced benefits and earlier retirement</li>
+        <li><strong>Social Security Integration:</strong> Most coordinate with Social Security</li>
+    </ul>
+    
+    <h3 style="color:#D9534F; margin-top:2em;">Lump Sum vs Annuity Decision</h3>
+    <div style="background:#f8f9fa; padding:15px; border-radius:5px;">
+        <strong>Choose Lump Sum If:</strong><br>
+        • You want investment control<br>
+        • You have long life expectancy<br>
+        • You're concerned about plan solvency<br>
+        • You want to leave inheritance<br>
+        • You have other guaranteed income sources<br><br>
+        <strong>Choose Annuity If:</strong><br>
+        • You want guaranteed monthly income<br>
+        • You're not comfortable managing investments<br>
+        • You need steady cash flow<br>
+        • You have spouse who needs survivor benefits<br>
+        • You're concerned about outliving your money<br>
+        <em>This decision is usually irrevocable - choose carefully!</em>
+    </div>
+    
+    <h3 style="color:#D9534F; margin-top:2em;">Tax Implications of Pensions</h3>
+    <ul style="margin-left:1.2em;">
+        <li><strong>Ordinary Income Tax:</strong> Pension payments taxed at regular income rates</li>
+        <li><strong>State Tax Considerations:</strong> Some states don't tax pension income</li>
+        <li><strong>Federal Tax Withholding:</strong> Required on monthly payments</li>
+        <li><strong>Lump Sum Taxation:</strong> May push you into higher tax bracket</li>
+        <li><strong>Rollover Options:</strong> Lump sums can be rolled to IRA</li>
+        <li><strong>Required Minimum Distributions:</strong> Must start at age 73</li>
+    </ul>
+    
+    <h3 style="color:#D9534F; margin-top:2em;">Planning Strategies</h3>
+    <ul style="margin-left:1.2em;">
+        <li><strong>Maximize Final Salary:</strong> Work overtime or get promotions in final years</li>
+        <li><strong>Purchase Service Credit:</strong> Buy years for military service or leaves</li>
+        <li><strong>Understand Benefit Formulas:</strong> Know how each year affects your pension</li>
+        <li><strong>Plan Retirement Timing:</strong> Consider health insurance and Social Security</li>
+        <li><strong>Coordinate with Spouse:</strong> Plan retirement timing together</li>
+        <li><strong>Supplement with Savings:</strong> 401(k), IRA, and personal investments</li>
+        <li><strong>Consider Part-Time Work:</strong> Bridge employment during early retirement</li>
+    </ul>
+    
+    <b>Note:</b> The data used in this calculator was last updated on July 30, 2024, and may change in the future. Actual pension benefits depend on your specific plan terms and conditions.<br><br>
+    <b>Use Cases:</b>
+    <ul style="margin-left:1.2em;">
+        <li>Estimate your expected monthly and annual pension payments</li>
+        <li>Compare the value of working additional years</li>
+        <li>Evaluate early retirement vs normal retirement benefits</li>
+        <li>Plan your overall retirement income strategy</li>
+        <li>Understand how salary increases affect pension benefits</li>
+        <li>Compare pension options with other retirement plans</li>
+    </ul>
+</div>
+<script>
+function showResult(str) {
+    document.getElementById('calc-result').innerHTML = str;
+}
+document.getElementById('calc-btn').addEventListener('click', function() {
+    let contribution = parseFloat(document.getElementById('contribution').value);
+    let years = parseInt(document.getElementById('years').value);
+    let rate = parseFloat(document.getElementById('rate').value);
+    if (isNaN(contribution) || isNaN(years) || isNaN(rate) || contribution < 0 || years <= 0 || rate < 0) {
+        showResult('Please enter valid values for all fields.');
+        return;
+    }
+    let r = rate / 100;
+    let future = 0;
+    for (let i = 1; i <= years; i++) {
+        future += contribution * Math.pow(1 + r, years - i);
+    }
+    showResult(`<b>Estimated Pension at Retirement:</b> $${future.toFixed(2)}`);
+});
+</script>
+</body>
+</html>

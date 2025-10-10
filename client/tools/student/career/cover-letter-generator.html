@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cover Letter Generator - ScribbleTools</title>
+    <meta name="description" content="Create professional cover letters instantly with our free generator. ATS-friendly templates, real-time preview, and PDF download. Part of ScribbleTools suite.">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Caveat:wght@400;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { 
+            font-family: 'Poppins', sans-serif; 
+            background: #F8F4E8; 
+            color: #333; 
+            margin: 0; 
+            padding: 20px; 
+            line-height: 1.6;
+        }
+        .main-container { 
+            max-width: 900px; 
+            margin: 0 auto; 
+            background: #fff; 
+            border-radius: 1.2em; 
+            box-shadow: 0 4px 24px #eae3d5; 
+            overflow: hidden;
+        }
+        .main-container .handwritten { 
+            font-family: 'Caveat', cursive; 
+            color: #D9534F;
+            text-align: center;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        .header-section {
+            background: linear-gradient(135deg, #D9534F 0%, #c9302c 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        .header-section h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+        .header-section p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 1rem;
+        }
+        .desktop-notice {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 0.5rem;
+            padding: 0.8rem 1.2rem;
+            margin: 1rem 0 2rem 0;
+            font-size: 0.95rem;
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+        }
+        .desktop-notice i {
+            margin-right: 0.5rem;
+            color: #fff;
+        }
+        .btn-primary {
+            background: #fff;
+            color: #D9534F;
+            border: 2px solid #D9534F;
+            border-radius: 0.5em;
+            padding: 0.8rem 2rem;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            display: inline-block;
+            margin: 0.5rem;
+        }
+        .btn-primary:hover {
+            background: #D9534F;
+            color: #fff;
+            transform: translateY(-2px);
+        }
+        .content-section {
+            padding: 2rem;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        .feature-card {
+            background: #FDFBF5;
+            border: 2px solid #EAE3D5;
+            border-radius: 0.7rem;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .feature-card:hover {
+            border-color: #D9534F;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(217, 83, 79, 0.2);
+        }
+        .feature-icon {
+            font-size: 2.5rem;
+            color: #D9534F;
+            margin-bottom: 1rem;
+        }
+        .feature-title {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+        .feature-desc {
+            color: #666;
+            font-size: 0.95rem;
+        }
+        .section-title {
+            font-family: 'Caveat', cursive;
+            color: #D9534F;
+            font-size: 2.2rem;
+            font-weight: 600;
+            text-align: center;
+            margin: 2rem 0 1rem 0;
+        }
+        .use-cases-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        .use-case {
+            background: #F0F8FF;
+            border: 1px solid #B0C4DE;
+            border-radius: 0.5rem;
+            padding: 1.2rem;
+            text-align: center;
+        }
+        .use-case-icon {
+            font-size: 2rem;
+            margin-bottom: 0.8rem;
+        }
+        .use-case h4 {
+            color: #333;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        .use-case p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        .faq-section {
+            background: #FDFBF5;
+            border: 2px solid #EAE3D5;
+            border-radius: 0.9rem;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+        .faq-item {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #EAE3D5;
+        }
+        .faq-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+        .faq-question {
+            font-weight: 600;
+            color: #D9534F;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        .faq-answer {
+            color: #333;
+            line-height: 1.6;
+        }
+        .cta-section {
+            text-align: center;
+            margin: 2rem 0;
+        }
+        .cta-description {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+        .cta-button {
+            font-size: 1.2rem;
+            padding: 1rem 2.5rem;
+        }
+        .use-case-students { color: #5CB85C; }
+        .use-case-professionals { color: #5BC0DE; }
+        .use-case-changers { color: #A569BD; }
+        .use-case-freelancers { color: #F0AD4E; }
+        @media (max-width: 600px) {
+            body { padding: 10px; }
+            .main-container { border-radius: 0.8rem; }
+            .header-section { padding: 1.5rem; }
+            .content-section { padding: 1.5rem; }
+            .main-container .handwritten { font-size: 2.2rem; }
+            .header-section h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <!-- Header Section -->
+                <div class="header-section">
+            <h1>Cover Letter Generator</h1>
+            <p>Create compelling, personalized cover letters that complement your resume perfectly</p>
+            <div class="desktop-notice">
+                <i class="fas fa-desktop"></i>
+                <span>💡 <strong>Best Experience:</strong> Use on desktop/laptop for optimal editing and formatting</span>
+            </div>
+            <button data-action="launch-app" class="btn-primary">
+                <i class="fas fa-edit"></i> Start Writing Now
+            </button>
+        </div>
+
+        <div class="content-section">
+            <!-- Features Section -->
+            <h2 class="section-title">Why Choose Our Cover Letter Generator?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-robot"></i></div>
+                    <div class="feature-title">ATS-Friendly Format</div>
+                    <div class="feature-desc">Optimized for Applicant Tracking Systems to ensure your cover letter passes initial screening and reaches human recruiters.</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-palette"></i></div>
+                    <div class="feature-title">Customizable Templates</div>
+                    <div class="feature-desc">Professional, industry-specific templates that can be easily customized to match your personal style and job requirements.</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-file-pdf"></i></div>
+                    <div class="feature-title">Instant PDF Download</div>
+                    <div class="feature-desc">Generate and download professional PDF cover letters instantly. Perfect formatting for email attachments and online applications.</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-eye"></i></div>
+                    <div class="feature-title">Real-time Preview</div>
+                    <div class="feature-desc">See your cover letter update in real-time as you type. Make adjustments instantly and ensure perfect formatting.</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                    <div class="feature-title">Privacy Protected</div>
+                    <div class="feature-desc">Your data stays on your device. No sign-up required, no data storage on our servers. Complete privacy guaranteed.</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-mobile-alt"></i></div>
+                    <div class="feature-title">Mobile Responsive</div>
+                    <div class="feature-desc">Create and edit cover letters on any device. Fully responsive design works perfectly on desktop, tablet, and mobile phones.</div>
+                </div>
+            </div>
+
+            <!-- Use Cases Section -->
+            <h2 class="section-title">Perfect for Every Job Seeker</h2>
+            <div class="use-cases-grid">
+                <div class="use-case">
+                    <div class="use-case-icon use-case-students"><i class="fas fa-graduation-cap"></i></div>
+                    <h4>Students & New Graduates</h4>
+                    <p>Create compelling cover letters that highlight your potential, academic achievements, and enthusiasm for entry-level positions.</p>
+                </div>
+                <div class="use-case">
+                    <div class="use-case-icon use-case-professionals"><i class="fas fa-briefcase"></i></div>
+                    <h4>Working Professionals</h4>
+                    <p>Showcase your experience and achievements with professional cover letters that demonstrate your value to potential employers.</p>
+                </div>
+                <div class="use-case">
+                    <div class="use-case-icon use-case-changers"><i class="fas fa-route"></i></div>
+                    <h4>Career Changers</h4>
+                    <p>Craft compelling narratives that bridge your past experience with your new career direction and demonstrate transferable skills.</p>
+                </div>
+                <div class="use-case">
+                    <div class="use-case-icon use-case-freelancers"><i class="fas fa-laptop-code"></i></div>
+                    <h4>Freelancers & Consultants</h4>
+                    <p>Create professional proposals and cover letters for client projects that highlight your expertise and unique value proposition.</p>
+                </div>
+            </div>
+
+            <!-- FAQ Section -->
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="faq-section">
+                <div class="faq-item">
+                    <div class="faq-question"><i class="fas fa-question-circle"></i> Is the cover letter generator really free?</div>
+                    <div class="faq-answer">Yes! Our cover letter generator is completely free to use. You can create unlimited cover letters, download them as PDFs, and there are no hidden costs or premium features locked behind a paywall.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question"><i class="fas fa-question-circle"></i> Do I need to create an account or sign up?</div>
+                    <div class="faq-answer">No account creation required! You can start building your cover letter immediately. Your data stays on your device and is not stored on our servers, ensuring complete privacy.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question"><i class="fas fa-question-circle"></i> Are the cover letter templates ATS-friendly?</div>
+                    <div class="faq-answer">Absolutely! All our templates are designed to be ATS (Applicant Tracking System) friendly. They use standard formatting, clear section headers, and readable fonts that ATS systems can easily parse.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question"><i class="fas fa-question-circle"></i> Can I customize the cover letter templates?</div>
+                    <div class="faq-answer">Yes! You can customize every aspect of your cover letter including content, formatting, greeting style, and closing. The real-time preview shows changes instantly as you type.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question"><i class="fas fa-question-circle"></i> What file formats can I download my cover letter in?</div>
+                    <div class="faq-answer">You can download your cover letter as a high-quality PDF file, which is the standard format preferred by employers and ATS systems. The PDF maintains perfect formatting across all devices and platforms.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question"><i class="fas fa-question-circle"></i> Can I use this on my mobile device?</div>
+                    <div class="faq-answer">Yes! Our cover letter generator is fully responsive and works perfectly on smartphones and tablets. You can create, edit, and download cover letters from any device with an internet connection.</div>
+                </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div class="cta-section">
+                <h2 class="section-title">Ready to Create Your Perfect Cover Letter?</h2>
+                <p class="cta-description">Join thousands of job seekers who have successfully landed interviews using our professional cover letter generator.</p>
+                <button data-action="launch-app" class="btn-primary cta-button">
+                    <i class="fas fa-rocket"></i> Get Started Now - It's Free!
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /**
+         * Opens the cover letter generator app in a new tab.
+         * Handles button states, path resolution, and popup blocking.
+         * @param {HTMLButtonElement} button - The button that was clicked.
+         * @param {string} targetFileName - The name of the HTML file to open (e.g., 'cover-letter-generator-app.html').
+         * @param {string} toolName - The display name of the tool (e.g., 'Cover Letter Generator').
+         */
+        function launchTool(button, targetFileName, toolName) {
+            console.log(`🚀 Launching ${toolName} - Target: ${targetFileName}`, button);
+            
+            // Ensure button parameter is valid
+            if (!button) {
+                console.warn('⚠️ Button parameter is null or undefined');
+                button = event ? event.target : null;
+            }
+            
+            // Add visual feedback with better error handling
+            if (button) {
+                try {
+                    const originalText = button.innerHTML;
+                    button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Opening...';
+                    button.disabled = true;
+                    button.style.opacity = '0.7';
+                    
+                    // Reset button after short delay
+                    setTimeout(() => {
+                        try {
+                            if (button) button.innerHTML = originalText;
+                            button.disabled = false;
+                            button.style.opacity = '1';
+                        } catch (resetError) {
+                            console.warn('⚠️ Error resetting button state:', resetError.message);
+                        }
+                    }, 2000); // Increased delay for better UX
+                } catch (domError) {
+                    console.warn('⚠️ Error updating button appearance:', domError.message);
+                }
+            }
+            
+            // Get the correct path for the app with GitHub Pages and main site context support
+            const currentPath = window.location.pathname;
+            let finalPath;
+            
+            // Check if we're on GitHub Pages
+            const isGitHubPages = window.location.hostname.includes('github.io');
+            const repoName = 'allinone.github.io';
+            
+            // Check if we're loaded within the main site (hash routing) or standalone
+            const isMainSiteContext = window.location.hash && window.location.hash.includes('cover-letter-generator');
+            const isStandalone = currentPath.includes('/client/tools/student/career/');
+            
+            console.log('Context detection:', {
+                currentPath,
+                isGitHubPages,
+                isMainSiteContext,
+                isStandalone,
+                currentHash: window.location.hash
+            });
+            
+            if (isStandalone) {
+                // Direct access to cover letter generator - app is in same directory
+                const basePath = currentPath.substring(0, currentPath.lastIndexOf('/') + 1);
+                finalPath = basePath + targetFileName;
+            } else if (isMainSiteContext) {
+                // Loaded via main site hash routing - use full path
+                if (isGitHubPages) {
+                    finalPath = `/${repoName}/client/tools/student/career/${targetFileName}`;
+                } else {
+                    finalPath = `/client/tools/student/career/${targetFileName}`;
+                }
+            } else {
+                // Fallback - determine based on GitHub Pages
+                if (isGitHubPages) {
+                    finalPath = `/${repoName}/client/tools/student/career/${targetFileName}`;
+                } else {
+                    finalPath = `/client/tools/student/career/${targetFileName}`;
+                }
+            }
+            
+            console.log(`Opening ${toolName} in new tab:`, finalPath);
+            
+            // Always open in new tab
+            try {
+                const newWindow = window.open(finalPath, '_blank', 'noopener,noreferrer');
+                if (newWindow) {
+                    newWindow.focus();
+                    console.log(`✅ ${toolName} opened in new tab`);
+                } else {
+                    console.log('❌ Popup blocked - please allow popups for this site');
+                    if (button) button.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Popup Blocked';
+                }
+            } catch (e) {
+                console.error(`❌ Failed to open new tab for ${toolName}:`, e.message);
+                if (button) button.innerHTML = '<i class="fas fa-exclamation-circle"></i> Error';
+            }
+            
+            return false;
+        }
+
+        /**
+         * Initializes the cover letter generator by setting up event listeners and performing checks.
+         * This function is designed to be called when the content is loaded dynamically.
+         */
+        function initializeCoverLetterGenerator() {
+            // Idempotency check: Ensure this runs only once.
+            if (window.coverLetterGeneratorInitialized) {
+                console.log('📄 Cover Letter Generator already initialized. Skipping.');
+                return;
+            }
+            window.coverLetterGeneratorInitialized = true;
+            // This function will be called by the main router in index.html
+            // We use a small timeout to ensure the DOM is fully ready after being injected.
+            setTimeout(() => {
+                const appButtons = document.querySelectorAll('[data-action="launch-app"]');
+                appButtons.forEach(btn => {
+                    btn.addEventListener('click', () => launchTool(btn, 'cover-letter-generator-app.html', 'Cover Letter Generator'));
+                });
+            }, 0);
+
+            console.log('📄 Cover Letter Generator (ScribbleTools) landing page loaded');
+            console.log('Current URL:', window.location.href);
+            console.log('Current pathname:', window.location.pathname);
+            
+            // Test if the app file exists
+            const currentPath = window.location.pathname;
+            let appPath;
+            
+            if (currentPath.includes('/client/tools/student/career/')) {
+                // Direct access - app is in same directory
+                const basePath = currentPath.substring(0, currentPath.lastIndexOf('/') + 1);
+                appPath = basePath + 'cover-letter-generator-app.html';
+            } else {
+                // Loaded via main site - need full path
+                appPath = '/client/tools/student/career/cover-letter-generator-app.html';
+            }
+            
+            console.log('Testing app accessibility at:', appPath);
+            
+            fetch(appPath, { method: 'HEAD' })
+                .then(response => {
+                    if (response.ok) {
+                        console.log('✅ Cover letter generator app is accessible.');
+                    } else { 
+                        console.warn(`❌ Cover letter generator app not found at: ${appPath} (Status: ${response.status})`);
+                        const buttons = document.querySelectorAll('button[onclick*="openCoverLetterGenerator"]');
+                        buttons.forEach(btn => {
+                            btn.style.opacity = '0.5';
+                            btn.title = `Cover letter generator app not found (${response.status})`;
+                            btn.disabled = true;
+                        });
+                    }
+                })
+                .catch(error => {
+                    console.error('❌ Error checking app accessibility:', error.message);
+                });
+        }
+        
+        // Auto-initialize if called directly (standalone mode)
+        // When loaded dynamically via the main router, index.html is responsible for calling initializeCoverLetterGenerator().
+        if (window.location.pathname.includes('cover-letter-generator.html')) {
+            document.addEventListener('DOMContentLoaded', initializeCoverLetterGenerator);
+        }
+    </script>
+</body>
+</html>

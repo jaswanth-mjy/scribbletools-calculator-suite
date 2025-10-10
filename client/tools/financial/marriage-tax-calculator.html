@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Marriage Tax Calculator - Calculate Marriage Tax Penalty or Bonus</title>
+    <meta name="description" content="Free marriage tax calculator to determine if you'll face a marriage tax penalty or bonus. Compare filing jointly vs separately for married couples.">
+    <meta name="keywords" content="marriage tax calculator, marriage penalty calculator, married filing jointly, married filing separately, tax penalty calculator">
+    <meta name="author" content="ScribbleTools">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://scribbletools.net/client/tools/financial/marriage-tax-calculator.html">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://scribbletools.net/client/tools/financial/marriage-tax-calculator.html">
+    <meta property="og:title" content="Marriage Tax Calculator - Calculate Marriage Tax Penalty or Bonus">
+    <meta property="og:description" content="Calculate marriage tax penalty or bonus with our free calculator. Compare filing jointly vs separately for optimal tax strategy.">
+    <meta property="og:image" content="https://scribbletools.net/assets/og-image.svg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://scribbletools.net/client/tools/financial/marriage-tax-calculator.html">
+    <meta property="twitter:title" content="Marriage Tax Calculator - Calculate Marriage Tax Penalty or Bonus">
+    <meta property="twitter:description" content="Calculate marriage tax penalty or bonus with our free calculator. Optimize your filing strategy.">
+    <meta property="twitter:image" content="https://scribbletools.net/assets/og-image.svg">
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Marriage Tax Calculator",
+      "description": "Free online marriage tax calculator for determining marriage tax penalty or bonus when filing jointly vs separately",
+      "url": "https://scribbletools.net/client/tools/financial/marriage-tax-calculator.html",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Web Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "ScribbleTools"
+      }
+    }
+    </script>
+    <style>
+        body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; }
+        .calc-container { max-width: 420px; margin: 3em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2em 1.5em 2.5em 1.5em; }
+        .handwritten { font-family: 'Caveat', cursive; }
+        .calc-label { font-weight: 600; margin-bottom: 0.5em; display: block; }
+        .calc-input { width: 100%; padding: 1em; border: 2px solid #EAE3D5; border-radius: 0.7em; font-size: 1.2em; margin-bottom: 1em; background: #FDFBF5; text-align: center; font-family: 'Fira Code', monospace; }
+        .calc-btn { background: #fff; color: #D9534F; border: 2px solid #D9534F; border-radius: 0.5em; padding: 0.7em 2em; font-weight: 600; font-size: 1.1em; cursor: pointer; transition: all 0.2s; margin-bottom: 1em; }
+        .calc-btn:hover { background: #D9534F; color: #fff; }
+        .calc-result { background: #FDFBF5; border: 2px solid #D9534F; border-radius: 0.7em; padding: 1em; font-size: 1.25em; color: #D9534F; min-height: 1.7em; margin-bottom: 1em; text-align: center; font-family: 'Fira Code', monospace; font-weight: bold; max-height: 300px; overflow-y: auto; word-break: break-word; transition: height 0.2s; }
+        .calc-desc { width: 100%; margin-top: 2em; background:#FDFBF5; border:2px solid #EAE3D5; border-radius:0.9em; padding:1.2em 1em; font-size:1.08em; color:#333; line-height:1.7; }
+        .calc-desc strong { color: #D9534F; font-size: 1.12em; }
+        @media (max-width: 600px) { .calc-container { padding: 1em 0.2em; } }
+    </style>
+</head>
+<body>
+<div class="calc-container">
+    <h2 class="handwritten text-5xl text-[#D9534F] mb-4">Marriage Tax Calculator</h2>
+    <label class="calc-label">Your Income ($):</label>
+    <input id="income1" class="calc-input" type="number" min="0" placeholder="e.g. 50000">
+    <label class="calc-label">Spouse's Income ($):</label>
+    <input id="income2" class="calc-input" type="number" min="0" placeholder="e.g. 40000">
+    <button id="calc-btn" class="calc-btn">Calculate</button>
+    <div class="calc-result" id="calc-result"></div>
+</div>
+<div class="calc-desc" style="max-width: fit-content; margin: 2.5em auto 0 auto;">
+    <strong style="font-size:1.18em; color:#D9534F;">About the Marriage Tax Calculator</strong><br><br>
+    Instantly estimate the difference in federal income tax if you file jointly as a married couple versus separately as singles. Enter both incomes to see if you get a marriage bonus or penalty. Great for tax planning, budgeting, or understanding how marriage affects your taxes.<br><br>
+    <b>Note:</b> The data used in this calculator was last updated on July 30, 2024, and may change in the future.<br><br>
+    <b>Use Cases:</b>
+    <ul style="margin-left:1.2em;">
+        <li>Compare taxes for married vs. single filing</li>
+        <li>Plan for marriage or major life changes</li>
+        <li>Understand the marriage bonus or penalty</li>
+        <li>Check homework or prepare for finance class</li>
+    </ul>
+</div>
+<script>
+function showResult(str) {
+    document.getElementById('calc-result').innerHTML = str;
+}
+document.getElementById('calc-btn').addEventListener('click', function() {
+    let income1 = parseFloat(document.getElementById('income1').value);
+    let income2 = parseFloat(document.getElementById('income2').value);
+    if (isNaN(income1) || isNaN(income2) || income1 < 0 || income2 < 0) {
+        showResult('Please enter valid incomes.');
+        return;
+    }
+    // 2024 US federal brackets (simplified, not legal advice)
+    let brackets = {
+        single: [ [11000, 0.1], [44725, 0.12], [95375, 0.22], [182100, 0.24], [231250, 0.32], [578125, 0.35], [Infinity, 0.37] ],
+        married: [ [22000, 0.1], [89450, 0.12], [190750, 0.22], [364200, 0.24], [462500, 0.32], [693750, 0.35], [Infinity, 0.37] ]
+    };
+    function calcTax(income, status) {
+        let tax = 0, prev = 0;
+        for (let [limit, rate] of brackets[status]) {
+            if (income > limit) {
+                tax += (limit - prev) * rate;
+                prev = limit;
+            } else {
+                tax += (income - prev) * rate;
+                break;
+            }
+        }
+        return tax;
+    }
+    let singleTax = calcTax(income1, 'single') + calcTax(income2, 'single');
+    let marriedTax = calcTax(income1 + income2, 'married');
+    let diff = marriedTax - singleTax;
+    showResult(`<b>Married Filing Jointly Tax:</b> $${marriedTax.toFixed(2)}<br><b>Separate (Single) Tax:</b> $${singleTax.toFixed(2)}<br><b>Marriage Bonus/Penalty:</b> $${diff.toFixed(2)}`);
+});
+</script>
+</body>
+</html>

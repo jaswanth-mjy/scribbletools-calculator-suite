@@ -1,0 +1,129 @@
+<!-- File: tools/math/confidence-interval-calculator.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Confidence Interval Calculator</title>
+    <style>
+        body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; }
+        .calc-container { max-width: 400px; margin: 3em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2em 1.5em 2.5em 1.5em; }
+        .handwritten { font-family: 'Caveat', cursive; }
+        .calc-label { font-weight: 600; margin-bottom: 0.5em; display: block; }
+        .calc-input { width: 100%; padding: 1em; border: 2px solid #EAE3D5; border-radius: 0.7em; font-size: 1.2em; margin-bottom: 1em; background: #FDFBF5; text-align: center; font-family: 'Fira Code', monospace; }
+        .calc-btn { background: #fff; color: #D9534F; border: 2px solid #D9534F; border-radius: 0.5em; padding: 0.7em 2em; font-weight: 600; font-size: 1.1em; cursor: pointer; transition: all 0.2s; margin-bottom: 1em; }
+        .calc-btn:hover { background: #D9534F; color: #fff; }
+        .calc-result { background: #FDFBF5; border: 2px solid #D9534F; border-radius: 0.7em; padding: 1em; font-size: 1.25em; color: #D9534F; min-height: 1.7em; margin-bottom: 1em; text-align: center; font-family: 'Fira Code', monospace; font-weight: bold; max-height: 300px; overflow-y: auto; word-break: break-word; transition: height 0.2s; }
+        .calc-desc { width: 100%; margin-top: 2em; background:#FDFBF5; border:2px solid #EAE3D5; border-radius:0.9em; padding:1.2em 1em; font-size:1.08em; color:#333; line-height:1.7; }
+        .calc-desc strong { color: #D9534F; font-size: 1.12em; }
+        @media (max-width: 600px) { .calc-container { padding: 1em 0.2em; } }
+    </style>
+</head>
+<body>
+<div class="calc-container">
+    <h2 class="handwritten text-5xl text-[#D9534F] mb-4">Confidence Interval Calculator</h2>
+    <label class="calc-label">Sample Mean (x̄):</label>
+    <input id="mean-input" class="calc-input" type="number" placeholder="e.g. 50">
+    <label class="calc-label">Sample Standard Deviation (s):</label>
+    <input id="stddev-input" class="calc-input" type="number" placeholder="e.g. 8">
+    <label class="calc-label">Sample Size (n):</label>
+    <input id="n-input" class="calc-input" type="number" placeholder="e.g. 30">
+    <label class="calc-label">Confidence Level (%):</label>
+    <input id="conf-level-input" class="calc-input" type="number" placeholder="e.g. 95">
+    <button id="calc-btn" class="calc-btn">Calculate</button>
+    <div class="calc-result" id="calc-result"></div>
+</div>
+<div class="calc-desc" style="max-width: fit-content; margin: 2.5em auto 0 auto;">
+    <strong style="font-size:1.18em; color:#D9534F;">About the Confidence Interval Calculator</strong><br><br>
+    This tool helps you estimate a range (interval) where a true population value is likely to fall, based on your sample data. It calculates confidence intervals for any confidence level between 50% and 99.99%, making it perfect for surveys, experiments, and research when you want to show the uncertainty or reliability of your results.<br><br>
+    <b>Enhanced Features:</b>
+    <ul style="margin-left:1.2em;">
+        <li><b>Any Confidence Level:</b> Supports 50% to 99.99% (not just 90%, 95%, 99%)</li>
+        <li><b>Precise Z-scores:</b> Uses advanced inverse normal distribution calculations</li>
+        <li><b>Detailed Results:</b> Shows margin of error, confidence interval, and Z-score</li>
+        <li><b>Common Levels:</b> Optimized for 90%, 95%, 99%, 99.9% confidence levels</li>
+    </ul>
+    <b>Use Cases:</b>
+    <ul style="margin-left:1.2em;">
+        <li>Reporting uncertainty in survey or poll results</li>
+        <li>Showing the reliability of scientific or medical studies</li>
+        <li>Making business or policy decisions with data</li>
+        <li>Understanding the margin of error in statistics</li>
+    </ul>
+</div>
+<script>
+function showResult(str) {
+    document.getElementById('calc-result').textContent = str;
+}
+function getZ(confLevel) {
+    // Standard Z-values for common confidence levels
+    if (confLevel === 90) return 1.645;
+    if (confLevel === 95) return 1.96;
+    if (confLevel === 99) return 2.576;
+    if (confLevel === 99.9) return 3.291;
+    
+    // For other levels, calculate using inverse normal distribution approximation
+    if (confLevel < 50 || confLevel > 99.99) return NaN;
+    
+    // Convert confidence level to alpha
+    const alpha = (100 - confLevel) / 100;
+    const p = 1 - alpha / 2; // Two-tailed test
+    
+    // Approximate inverse normal using Beasley-Springer-Moro algorithm
+    function invNorm(p) {
+        const a = [0, -3.969683028665376e+01, 2.209460984245205e+02, -2.759285104469687e+02, 1.383577518672690e+02, -3.066479806614716e+01, 2.506628277459239e+00];
+        const b = [0, -5.447609879822406e+01, 1.615858368580409e+02, -1.556989798598866e+02, 6.680131188771972e+01, -1.328068155288572e+01];
+        const c = [0, -7.784894002430293e-03, -3.223964580411365e-01, -2.400758277161838e+00, -2.549732539343734e+00, 4.374664141464968e+00, 2.938163982698783e+00];
+        const d = [0, 7.784695709041462e-03, 3.224671290700398e-01, 2.445134137142996e+00, 3.754408661907416e+00];
+        
+        const pLow = 0.02425;
+        const pHigh = 1 - pLow;
+        let q, r, val;
+        
+        if (p < pLow) {
+            q = Math.sqrt(-2 * Math.log(p));
+            val = (((((c[1] * q + c[2]) * q + c[3]) * q + c[4]) * q + c[5]) * q + c[6]) / ((((d[1] * q + d[2]) * q + d[3]) * q + d[4]) * q + 1);
+        } else if (p <= pHigh) {
+            q = p - 0.5;
+            r = q * q;
+            val = (((((a[1] * r + a[2]) * r + a[3]) * r + a[4]) * r + a[5]) * r + a[6]) * q / (((((b[1] * r + b[2]) * r + b[3]) * r + b[4]) * r + b[5]) * r + 1);
+        } else {
+            q = Math.sqrt(-2 * Math.log(1 - p));
+            val = -(((((c[1] * q + c[2]) * q + c[3]) * q + c[4]) * q + c[5]) * q + c[6]) / ((((d[1] * q + d[2]) * q + d[3]) * q + d[4]) * q + 1);
+        }
+        
+        return val;
+    }
+    
+    return Math.abs(invNorm(p));
+}
+document.getElementById('calc-btn').addEventListener('click', function() {
+    let mean = parseFloat(document.getElementById('mean-input').value);
+    let stddev = parseFloat(document.getElementById('stddev-input').value);
+    let n = parseInt(document.getElementById('n-input').value);
+    let confLevel = parseFloat(document.getElementById('conf-level-input').value);
+    if (isNaN(mean) || isNaN(stddev) || isNaN(n) || isNaN(confLevel)) return showResult('Please enter all values.');
+    if (n <= 1) return showResult('Sample size must be greater than 1.');
+    if (confLevel < 50 || confLevel > 99.99) return showResult('Confidence level must be between 50% and 99.99%.');
+    
+    let z = getZ(confLevel);
+    if (isNaN(z)) return showResult('Invalid confidence level.');
+    
+    let margin = z * (stddev / Math.sqrt(n));
+    let lower = mean - margin;
+    let upper = mean + margin;
+    showResult(`${confLevel}% Confidence Interval:\n${mean.toFixed(6)} ± ${margin.toFixed(6)}\n[${lower.toFixed(6)}, ${upper.toFixed(6)}]\n\nZ-score: ${z.toFixed(4)}`);
+});
+document.getElementById('mean-input').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') document.getElementById('calc-btn').click();
+});
+document.getElementById('stddev-input').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') document.getElementById('calc-btn').click();
+});
+document.getElementById('n-input').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') document.getElementById('calc-btn').click();
+});
+document.getElementById('conf-level-input').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') document.getElementById('calc-btn').click();
+});
+</script>
+</html>

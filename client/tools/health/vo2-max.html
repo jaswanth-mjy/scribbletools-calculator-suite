@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VO2 Max Estimator</title>
+    <style>
+        body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; }
+        .calc-container { max-width: 420px; margin: 3em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2em 1.5em 2.5em 1.5em; }
+        .handwritten { font-family: 'Caveat', cursive; }
+        .calc-label { font-weight: 600; margin-bottom: 0.5em; display: block; }
+        .calc-input { width: 100%; padding: 1em; border: 2px solid #EAE3D5; border-radius: 0.7em; font-size: 1.2em; margin-bottom: 1em; background: #FDFBF5; text-align: center; font-family: 'Fira Code', monospace; }
+        .calc-btn { background: #fff; color: #D9534F; border: 2px solid #D9534F; border-radius: 0.5em; padding: 0.7em 2em; font-weight: 600; font-size: 1.1em; cursor: pointer; transition: all 0.2s; margin-bottom: 1em; }
+        .calc-btn:hover { background: #D9534F; color: #fff; }
+        .calc-result { background: #FDFBF5; border: 2px solid #D9534F; border-radius: 0.7em; padding: 1em; font-size: 1.25em; color: #D9534F; min-height: 1.7em; margin-bottom: 1em; text-align: center; font-family: 'Fira Code', monospace; font-weight: bold; max-height: 300px; overflow-y: auto; word-break: break-word; transition: height 0.2s; }
+        .calc-desc { width: 100%; margin-top: 2em; background:#FDFBF5; border:2px solid #EAE3D5; border-radius:0.9em; padding:1.2em 1em; font-size:1.08em; color:#333; line-height:1.7; }
+        .calc-desc strong { color: #D9534F; font-size: 1.12em; }
+        @media (max-width: 600px) { .calc-container { padding: 1em 0.2em; } }
+    </style>
+</head>
+<body>
+<div class="calc-container">
+    <h2 class="handwritten text-5xl text-[#D9534F] mb-4">VO2 Max Estimator</h2>
+    <label class="calc-label">Test Type:</label>
+    <select id="testType" class="calc-input">
+        <option value="cooper">Cooper 12-min Test</option>
+        <option value="rockport">Rockport Walking Test</option>
+        <option value="custom">Custom Distance Run</option>
+    </select>
+    <label class="calc-label">Distance (meters):</label>
+    <input id="distance" class="calc-input" type="number" min="0" placeholder="e.g. 2400 (Cooper test)">
+    <label class="calc-label">Time - Minutes:</label>
+    <input id="minutes" class="calc-input" type="number" min="0" placeholder="12 (Cooper test)">
+    <label class="calc-label">Time - Seconds:</label>
+    <input id="seconds" class="calc-input" type="number" min="0" max="59" placeholder="0">
+    <label class="calc-label">Age (years):</label>
+    <input id="age" class="calc-input" type="number" min="0" placeholder="e.g. 30">
+    <label class="calc-label">Weight (kg):</label>
+    <input id="weight" class="calc-input" type="number" min="0" placeholder="e.g. 70">
+    <label class="calc-label">Gender:</label>
+    <select id="gender" class="calc-input">
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+    </select>
+    <button id="calc-btn" class="calc-btn">Calculate VO2 Max</button>
+    <div class="calc-result" id="calc-result"></div>
+</div>
+<div class="calc-desc" style="max-width: fit-content; margin: 2.5em auto 0 auto;">
+    <strong style="font-size:1.18em; color:#D9534F;">About the VO2 Max Estimator</strong><br><br>
+    Calculate your VO2 Max using multiple validated testing protocols. VO2 Max measures your body's maximum oxygen consumption and is the gold standard for aerobic fitness.<br><br>
+    <b>Test Types:</b>
+    <ul style="margin-left:1.2em;">
+        <li><b>Cooper 12-min:</b> Distance covered in 12 minutes</li>
+        <li><b>Rockport Walking:</b> 1-mile walk with heart rate</li>
+        <li><b>Custom Distance:</b> Any distance run at maximum effort</li>
+    </ul><br>
+    <b>VO2 Max Categories (ml/kg/min):</b>
+    <ul style="margin-left:1.2em;">
+        <li><b>Excellent:</b> >50 (men), >45 (women)</li>
+        <li><b>Good:</b> 43-50 (men), 36-45 (women)</li>
+        <li><b>Average:</b> 35-42 (men), 27-35 (women)</li>
+        <li><b>Below Average:</b> <35 (men), <27 (women)</li>
+    </ul>
+</div>
+<script>
+function showResult(str) {
+    document.getElementById('calc-result').innerHTML = str;
+}
+document.getElementById('calc-btn').addEventListener('click', function() {
+    let testType = document.getElementById('testType').value;
+    let distance = parseFloat(document.getElementById('distance').value);
+    let minutes = parseInt(document.getElementById('minutes').value) || 0;
+    let seconds = parseInt(document.getElementById('seconds').value) || 0;
+    let age = parseInt(document.getElementById('age').value);
+    let weight = parseFloat(document.getElementById('weight').value);
+    let gender = document.getElementById('gender').value;
+    
+    if (isNaN(distance) || distance <= 0) {
+        showResult('Please enter a valid distance.');
+        return;
+    }
+    
+    if (minutes === 0 && seconds === 0) {
+        showResult('Please enter a valid time.');
+        return;
+    }
+    
+    let totalTimeMinutes = minutes + (seconds / 60);
+    let vo2Max = 0;
+    let formula = '';
+    
+    if (testType === 'cooper') {
+        // Cooper 12-minute test formula
+        vo2Max = (distance - 504.9) / 44.73;
+        formula = 'Cooper 12-min Test';
+    } else if (testType === 'rockport') {
+        // Rockport Walking Test (simplified - without heart rate)
+        if (isNaN(age) || isNaN(weight)) {
+            showResult('Please enter age and weight for Rockport test.');
+            return;
+        }
+        let timeSeconds = totalTimeMinutes * 60;
+        if (gender === 'male') {
+            vo2Max = 483 / timeSeconds;
+        } else {
+            vo2Max = 483 / timeSeconds - 3.5;
+        }
+        formula = 'Rockport Walking Test (simplified)';
+    } else {
+        // Jack Daniels formula for any distance
+        let velocityMPS = distance / (totalTimeMinutes * 60); // meters per second
+        let velocityMPM = velocityMPS * 60; // meters per minute
+        vo2Max = -4.6 + 0.182258 * velocityMPM + 0.000104 * Math.pow(velocityMPM, 2);
+        formula = 'Jack Daniels Formula';
+    }
+    
+    // Determine fitness category
+    let category = '';
+    if (gender === 'male') {
+        if (vo2Max > 50) category = 'Excellent';
+        else if (vo2Max >= 43) category = 'Good';
+        else if (vo2Max >= 35) category = 'Average';
+        else category = 'Below Average';
+    } else {
+        if (vo2Max > 45) category = 'Excellent';
+        else if (vo2Max >= 36) category = 'Good';
+        else if (vo2Max >= 27) category = 'Average';
+        else category = 'Below Average';
+    }
+    
+    let result = `<b>VO2 Max:</b> ${vo2Max.toFixed(1)} ml/kg/min<br><br>
+                  <b>Fitness Level:</b> ${category}<br>
+                  <b>Method:</b> ${formula}<br><br>
+                  <b>Test Details:</b><br>
+                  Distance: ${distance}m<br>
+                  Time: ${minutes}:${seconds.toString().padStart(2, '0')}`;
+    
+    showResult(result);
+});
+</script>
+</body>
+</html>

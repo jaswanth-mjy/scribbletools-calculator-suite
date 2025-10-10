@@ -1,0 +1,149 @@
+<!-- File: tools/text/text-dedenter.html -->
+<style>
+    .rdl-textarea {
+        background-color: #FDFBF5;
+        border: 2px solid #EAE3D5;
+        border-radius: 0.5rem;
+        padding: 1rem;
+        width: 90%;
+        min-width: 320px;
+        max-width: 700px;
+        height: 100px;
+        color: #4A4A4A;
+        font-size: 1.1rem;
+        line-height: 1.6;
+        transition: all 0.2s;
+        resize: none;
+        overflow: auto;
+        box-sizing: border-box;
+        margin: 0 auto 1.2rem auto;
+        display: block;
+    }
+    .rdl-textarea:focus {
+        outline: none;
+        border-color: #D9534F;
+        box-shadow: 0 0 0 3px rgba(217, 83, 79, 0.2);
+    }
+    .rdl-utility-bar {
+        margin-top: 2.5rem;
+        display: flex;
+        gap: 1.2rem;
+        justify-content: center;
+    }
+    .rdl-utility-button {
+        background-color: #fff;
+        color: #D9534F;
+        font-weight: 600;
+        border: 2px solid #D9534F;
+        cursor: pointer;
+        padding: 0.7rem 2rem;
+        border-radius: 0.5rem;
+        transition: all 0.2s;
+        font-size: 1.1rem;
+    }
+    .rdl-utility-button:hover {
+        background-color: #D9534F;
+        color: #fff;
+    }
+    .rdl-output-box {
+        margin: 2rem auto 0 auto;
+        background: #fff;
+        border: 2px solid #D9534F;
+        border-radius: 0.7rem;
+        padding: 1.2rem 1rem;
+        min-height: 80px;
+        color: #333;
+        font-size: 1.15rem;
+        font-family: 'Fira Code', monospace;
+        letter-spacing: 1px;
+        word-break: break-word;
+        overflow: auto;
+        max-width: 700px;
+        width: 90%;
+        text-align: left;
+    }
+    .dedent-btn-bar {
+        display: flex;
+        justify-content: center;
+        gap: 1.2rem;
+        margin: 1.5rem 0 0.5rem 0;
+    }
+</style>
+<div>
+    <h2 class="handwritten text-5xl text-[#D9534F] mb-4">Text Dedenter</h2>
+    <div class="mb-6 p-6 bg-amber-50/70 rounded-lg border border-amber-200">
+        <p class="text-lg text-gray-800 font-bold mb-2">The Text Dedenter tool automatically removes the minimum common leading spaces from every line in your text. This is perfect for cleaning up code, fixing markdown, or normalizing any indented content pasted from emails, editors, or websites.</p>
+        <ul class="list-disc list-inside text-gray-700 text-base mb-2">
+            <li><b>Smart Dedent:</b> Detects and removes the smallest shared indentation from all non-empty lines, preserving your text’s structure.</li>
+            <li><b>Great for Code & Markdown:</b> Instantly fixes code blocks, markdown, or text copied from editors that add unwanted spaces.</li>
+            <li><b>Universal:</b> Works with any indented text—code, lists, documentation, emails, and more.</li>
+        </ul>
+        <p class="text-base text-gray-700 mb-2"><b>How to use:</b></p>
+        <ol class="list-decimal list-inside text-gray-700 text-base mb-2">
+            <li>Paste or type your indented text into the input box below.</li>
+            <li>Click <b>Dedent</b> to remove the common leading spaces from all lines.</li>
+            <li>View the dedented result in the output area.</li>
+            <li>Use <b>Copy</b> to copy the result, <b>Download</b> to save as a file, or <b>Clear</b> to reset.</li>
+        </ol>
+        <p class="text-base text-gray-700"><b>Example uses:</b> Clean up code for sharing, fix markdown blocks, normalize text pasted from emails or websites, or prepare content for documentation.</p>
+    </div>
+    <textarea id="dedent-input" class="rdl-textarea" placeholder="Paste or type your text here..."></textarea>
+    <div class="dedent-btn-bar">
+        <button id="dedent-btn" class="rdl-utility-button">Dedent</button>
+    </div>
+    <div class="rdl-output-box" id="dedent-output"></div>
+    <div class="rdl-utility-bar">
+        <button id="dedent-copy" class="rdl-utility-button">Copy</button>
+        <button id="dedent-download" class="rdl-utility-button">Download</button>
+        <button id="dedent-clear" class="rdl-utility-button">Clear</button>
+    </div>
+</div>
+<script>
+function initializeTextDedenter() {
+    const input = document.getElementById('dedent-input');
+    const output = document.getElementById('dedent-output');
+    const btnDedent = document.getElementById('dedent-btn');
+    const btnCopy = document.getElementById('dedent-copy');
+    const btnDownload = document.getElementById('dedent-download');
+    const btnClear = document.getElementById('dedent-clear');
+    btnDedent.addEventListener('click', () => {
+        const lines = input.value.split(/\r?\n/);
+        let minIndent = null;
+        for (const line of lines) {
+            if (line.trim() === '') continue;
+            const match = line.match(/^\s*/);
+            if (match) {
+                const indent = match[0].length;
+                if (minIndent === null || indent < minIndent) {
+                    minIndent = indent;
+                }
+            }
+        }
+        const result = lines.map(line => line.slice(minIndent || 0)).join('\n');
+        output.textContent = result;
+    });
+    btnCopy.addEventListener('click', () => {
+        navigator.clipboard.writeText(output.textContent).then(() => {
+            const orig = btnCopy.textContent;
+            btnCopy.textContent = 'Copied!';
+            setTimeout(() => { btnCopy.textContent = orig; }, 2000);
+        });
+    });
+    btnDownload.addEventListener('click', () => {
+        const blob = new Blob([output.textContent], { type: 'text/plain' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'dedented-text.txt';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    });
+    btnClear.addEventListener('click', () => {
+        input.value = '';
+        output.textContent = '';
+    });
+}
+initializeTextDedenter();
+</script>

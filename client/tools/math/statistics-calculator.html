@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statistics Calculator</title>
+    <style>
+        body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; }
+        .geo-calc-container { max-width: 400px; margin: 3em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2em 1.5em 2.5em 1.5em; }
+        .handwritten { font-family: 'Caveat', cursive; }
+        .geo-calc-label { font-weight: 600; margin-bottom: 0.5em; display: block; }
+        .geo-calc-input { width: 100%; padding: 1em; border: 2px solid #EAE3D5; border-radius: 0.7em; font-size: 1.1em; margin-bottom: 1em; background: #FDFBF5; text-align: center; font-family: 'Fira Code', monospace; }
+        .geo-calc-btn { background: #fff; color: #D9534F; border: 2px solid #D9534F; border-radius: 0.5em; padding: 0.7em 2em; font-weight: 600; font-size: 1.1em; cursor: pointer; transition: all 0.2s; margin-bottom: 1em; }
+        .geo-calc-btn:hover { background: #D9534F; color: #fff; }
+        .geo-calc-result { background: #FDFBF5; border: 2px solid #D9534F; border-radius: 0.7em; padding: 1em; font-size: 1.18em; color: #D9534F; min-height: 1.7em; margin-bottom: 1em; text-align: center; font-family: 'Fira Code', monospace; font-weight: bold; max-height: 300px; overflow-y: auto; word-break: break-word; transition: height 0.2s; }
+        @media (max-width: 600px) { .geo-calc-container { padding: 1em 0.2em; } }
+    </style>
+</head>
+<body>
+<div class="geo-calc-container">
+    <h2 class="handwritten text-5xl text-[#D9534F] mb-4">Statistics Calculator</h2>
+    <label class="geo-calc-label" for="numbers">Enter numbers separated by commas:</label>
+    <input class="geo-calc-input" id="numbers" placeholder="e.g. 5, 10, 15, 20">
+    <button type="button" class="geo-calc-btn" onclick="calculateStats()">Calculate</button>
+    <div class="geo-calc-result" id="result"></div>
+</div>
+<div class="geo-calc-desc" style="max-width: fit-content; margin: 2.5em auto 0 auto; background:#FDFBF5; border:2px solid #EAE3D5; border-radius:0.9em; padding:1.2em 1em; font-size:1.08em; color:#333; line-height:1.7;">
+    <strong style="font-size:1.18em; color:#D9534F;">About Statistics</strong><br><br>
+    <b>Mean:</b> The average of a set of numbers.<br>
+    <b>Median:</b> The middle value when the numbers are sorted.<br>
+    <b>Mode:</b> The number(s) that appear most frequently.<br>
+    <b>Range:</b> The difference between the largest and smallest values.<br>
+    <b>Variance:</b> The average of the squared differences from the mean.<br>
+    <b>Standard Deviation:</b> The square root of the variance.<br><br>
+    <b>Formulas:</b>
+    <ul style="margin-left:1.2em; margin-bottom:0.7em;">
+        <li>Mean: <code>μ = (x₁ + x₂ + ... + xₙ) / n</code></li>
+        <li>Median: Middle value (or average of two middle values if n is even)</li>
+        <li>Mode: Most frequent value(s)</li>
+        <li>Range: <code>max(x) - min(x)</code></li>
+        <li>Variance: <code>σ² = Σ(xᵢ - μ)² / n</code></li>
+        <li>Standard Deviation: <code>σ = √σ²</code></li>
+    </ul>
+    <b>Use Cases:</b>
+    <ul style="margin-left:1.2em;">
+        <li>Summarizing and analyzing data sets</li>
+        <li>Comparing distributions</li>
+        <li>Descriptive statistics in research and business</li>
+    </ul>
+</div>
+<script>
+function calculateStats() {
+    const input = document.getElementById('numbers').value;
+    if (!input.trim()) {
+        document.getElementById('result').textContent = 'Please enter a list of numbers.';
+        return;
+    }
+    const nums = input.split(',').map(x => parseFloat(x.trim())).filter(x => !isNaN(x));
+    if (nums.length < 1) {
+        document.getElementById('result').textContent = 'Enter at least one valid number.';
+        return;
+    }
+    nums.sort((a, b) => a - b);
+    const mean = nums.reduce((a, b) => a + b, 0) / nums.length;
+    const median = nums.length % 2 === 0 ? (nums[nums.length/2-1] + nums[nums.length/2]) / 2 : nums[Math.floor(nums.length/2)];
+    const mode = (() => {
+        const freq = {};
+        nums.forEach(n => freq[n] = (freq[n]||0)+1);
+        const maxFreq = Math.max(...Object.values(freq));
+        const modes = Object.keys(freq).filter(k => freq[k] === maxFreq);
+        return modes.length === nums.length ? 'No mode' : modes.join(', ');
+    })();
+    const range = Math.max(...nums) - Math.min(...nums);
+    const variance = nums.reduce((a, b) => a + Math.pow(b - mean, 2), 0) / nums.length;
+    const stddev = Math.sqrt(variance);
+    document.getElementById('result').innerHTML = `<b>Mean:</b> ${mean}<br><b>Median:</b> ${median}<br><b>Mode:</b> ${mode}<br><b>Range:</b> ${range}<br><b>Standard Deviation:</b> ${stddev}<br><b>Variance:</b> ${variance}`;
+}
+</script>
+</body>
+</html>

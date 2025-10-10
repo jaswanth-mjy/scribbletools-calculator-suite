@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Percent Off Calculator - Free Discount Tool</title>
+  <meta name="description" content="Calculate the final price after a percentage discount. Easy to use for sales, promotions, and markdowns.">
+  
+  <style>
+    .percent-off-tool body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; }
+    .percent-off-tool main { display: block; }
+    .percent-off-tool .reduce-size-container { max-width: 800px; margin: 3em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2em 1.5em 2.5em 1.5em; }
+    .percent-off-tool .handwritten { font-family: 'Caveat', cursive; }
+    .percent-off-tool .form-group { margin: 1.2em 0; }
+    .percent-off-tool .form-label { font-weight: 600; margin-bottom: 0.5em; display: block; color: #4682B4; }
+    .percent-off-tool .form-input { width: 100%; padding: 0.8em; border: 2px solid #EAE3D5; border-radius: 0.5em; font-size: 1em; margin-bottom: 1em; background: #fff; }
+    .percent-off-tool .process-btn { background: #228B22; color: #fff; border: none; border-radius: 0.5em; padding: 1em 2em; font-weight: 600; cursor: pointer; transition: all 0.2s; width: 100%; font-size: 1.1em; }
+    .percent-off-tool .process-btn:hover { background: #1e7e1e; }
+    .percent-off-tool .clear-btn { background: #6c757d; color: #fff; border: none; border-radius: 0.5em; padding: 0.8em 1.5em; font-weight: 600; cursor: pointer; transition: all 0.2s; margin-top: 1em; }
+    .percent-off-tool .clear-btn:hover { background: #5a6268; }
+    .percent-off-tool .results-section { display: none; margin-top: 2em; text-align: center; }
+    .percent-off-tool .results-section h3 { color: #4682B4; margin-bottom: 1em; }
+    .percent-off-tool .result-display { background: #FDFBF5; border-radius: 0.7em; padding: 1.2em; border: 1px solid #FFEAA7; }
+    .percent-off-tool .step-list { margin: 1.2em 0 1.2em 1.2em; padding: 0; }
+    .percent-off-tool .step-list li { margin-bottom: 0.7em; color: #666; }
+    .percent-off-tool .step-list li strong { color: #4682B4; }
+  </style>
+</head>
+<body>
+<main>
+  <div class="percent-off-tool">
+    <div class="reduce-size-container">
+      <header>
+        <h1 style="font-family: 'Caveat', cursive; font-size: 3em; color: #FF6B6B; margin-bottom: 0.5em;">Percent Off Calculator</h1>
+        <p style="font-size:1.2em; margin-bottom:1em;">Quickly find out the final price after a discount. Perfect for shopping and sales.</p>
+      </header>
+
+      <section aria-labelledby="instructions-title" style="background: #F8FBFF; border-radius: 0.7em; padding: 1.5em; margin: 2em 0; border: 1px solid #4682B4;">
+        <h2 id="instructions-title" style="color:#4682B4; margin-bottom: 1em; font-size: 1.5em;">How to Use</h2>
+        <ol class="step-list" style="margin-left: 1.5em; line-height: 1.6;">
+          <li><strong style="color: #4682B4">Enter Original Price:</strong>
+            <ul style="margin: 0.5em 0 0.5em 1.5em; color: #666;">
+              <li>Input the item's original price.</li>
+            </ul>
+          </li>
+          <li><strong style="color: #4682B4">Enter Discount Percentage:</strong>
+            <ul style="margin: 0.5em 0 0.5em 1.5em; color: #666;">
+              <li>Input the percentage off (e.g., 25 for 25%).</li>
+            </ul>
+          </li>
+          <li><strong style="color: #4682B4">Calculate:</strong>
+            <ul style="margin: 0.5em 0 0.5em 1.5em; color: #666;">
+              <li>Click "Calculate Discount" to see the final price and the amount you save.</li>
+            </ul>
+          </li>
+        </ol>
+      </section>
+
+      <div class="tool-interface">
+        <div class="form-group">
+          <label for="original-price" class="form-label">Original Price ($):</label>
+          <input type="number" id="original-price" class="form-input" placeholder="e.g., 100" />
+        </div>
+        <div class="form-group">
+          <label for="percent-off" class="form-label">Percent Off (%):</label>
+          <input type="number" id="percent-off" class="form-input" placeholder="e.g., 25" />
+        </div>
+        <div class="form-group">
+          <button class="process-btn" id="process-btn">Calculate Discount</button>
+          <button class="clear-btn" id="clear-btn">Clear</button>
+        </div>
+      </div>
+
+      <div class="results-section" id="results-section">
+        <h3>Discount Details</h3>
+        <div class="result-display">
+            <p><strong>Final Price:</strong> <span id="final-price"></span></p>
+            <p><strong>You Save:</strong> <span id="amount-saved"></span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script>
+(function() {
+  'use strict';
+
+  window.initializePercentOffTool = function() {
+    init();
+  };
+
+  function init() {
+    document.getElementById('process-btn').onclick = calculateDiscount;
+    document.getElementById('clear-btn').onclick = reset;
+  }
+
+  function reset() {
+    document.getElementById('original-price').value = '';
+    document.getElementById('percent-off').value = '';
+    document.getElementById('results-section').style.display = 'none';
+    document.getElementById('final-price').textContent = '';
+    document.getElementById('amount-saved').textContent = '';
+  }
+
+  function calculateDiscount() {
+    const originalPrice = parseFloat(document.getElementById('original-price').value);
+    const percentOff = parseFloat(document.getElementById('percent-off').value);
+
+    if (isNaN(originalPrice) || isNaN(percentOff) || originalPrice < 0 || percentOff < 0) {
+      alert('Please enter valid positive numbers for price and percent off.');
+      return;
+    }
+
+    const amountSaved = originalPrice * (percentOff / 100);
+    const finalPrice = originalPrice - amountSaved;
+
+    document.getElementById('final-price').textContent = `$${finalPrice.toFixed(2)}`;
+    document.getElementById('amount-saved').textContent = `$${amountSaved.toFixed(2)}`;
+    document.getElementById('results-section').style.display = 'block';
+  }
+
+  if (document.readyState !== 'loading') {
+    setTimeout(init, 50);
+  } else {
+    document.addEventListener('DOMContentLoaded', () => setTimeout(init, 50));
+  }
+
+})();
+</script>
+</body>
+</html>

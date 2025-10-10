@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Remove Image Background - Free Photo Tool</title>
+  <meta name="description" content="Remove background from your photos in the browser using open-source AI. Fast, private, and free. No API.">
+  
+  <style>
+    .remove-bg-tool body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; }
+    .remove-bg-tool main { display: block; }
+    .remove-bg-tool .reduce-size-container { max-width: 800px; margin: 3em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2em 1.5em 2.5em 1.5em; }
+    .remove-bg-tool .handwritten { font-family: 'Caveat', cursive; }
+    .remove-bg-tool .upload-area { border: 3px dashed #D9534F; border-radius: 1em; padding: 3em 2em; text-align: center; margin: 2em 0; background: #FDFBF5; transition: all 0.3s; cursor: pointer; }
+    .remove-bg-tool .upload-area:hover { background: #F0F8FF; border-color: #4682B4; }
+    .remove-bg-tool .upload-icon { font-size: 3em; color: #D9534F; margin-bottom: 1em; text-align: center; }
+    .remove-bg-tool .file-input { display: none; }
+    .remove-bg-tool .upload-btn { background: #D9534F; color: #fff; border: none; border-radius: 0.5em; padding: 1em 2em; font-weight: 600; cursor: pointer; transition: all 0.2s; display: block; margin: 0 auto 1.5em auto; }
+    .remove-bg-tool .upload-btn:hover { background: #c9302c; }
+    .remove-bg-tool .choose-file-btn { background: #D9534F; color: #fff; border: none; border-radius: 0.5em; padding: 1em 2em; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+    .remove-bg-tool .choose-file-btn:hover { background: #c9302c; }
+    .remove-bg-tool .preview-section { margin-top: 2em; text-align: center; display: none; }
+    .remove-bg-tool .preview-section h3 { color: #4682B4; margin-bottom: 1em; }
+    .remove-bg-tool .uploaded-preview { max-width: 100%; max-height: 300px; border-radius: 0.5em; margin: 1em 0; border: 2px solid #EAE3D5; }
+    .remove-bg-tool .controls-section { display: none; margin: 2em 0; background: #FDFBF5; border-radius: 0.7em; padding: 1.2em; border: 1px solid #FFEAA7; }
+    .remove-bg-tool .controls-section h3 { color: #4682B4; margin-bottom: 1em; font-weight: 600; }
+    .remove-bg-tool .form-group { margin: 1.2em 0; }
+    .remove-bg-tool .process-btn { background: #228B22; color: #fff; border: none; border-radius: 0.5em; padding: 1em 2em; font-weight: 600; cursor: pointer; transition: all 0.2s; width: 100%; font-size: 1.1em; }
+    .remove-bg-tool .process-btn:hover { background: #1e7e1e; }
+    .remove-bg-tool .clear-btn { background: #6c757d; color: #fff; border: none; border-radius: 0.5em; padding: 0.8em 1.5em; font-weight: 600; cursor: pointer; transition: all 0.2s; margin-left: 1em; }
+    .remove-bg-tool .clear-btn:hover { background: #5a6268; }
+    .remove-bg-tool .output-preview { background: #FDFBF5; border-radius: 0.7em; padding: 1.2em; text-align: center; margin: 2em 0; border: 1px solid #FFEAA7; display: none; }
+    .remove-bg-tool .output-preview h3 { color: #4682B4; margin-bottom: 1em; font-weight: 600; }
+    .remove-bg-tool .preview-image { max-width: 100%; max-height: 300px; border-radius: 0.5em; margin: 1em 0; border: 2px solid #EAE3D5; background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAKklEQVQYV2N89+4dAzYwiqigoIjNBEVFReYZM2ZQZgLjKKKiooLNBKSLqQAAVaYFBmKrAigAAAAASUVORK5CYII=') repeat; }
+    .remove-bg-tool .output-card { display: none; margin-top: 1.5em; }
+    .remove-bg-tool .btn-download { background: #228B22; color: #fff; border: none; border-radius: 0.5em; padding: 1em 2em; font-weight: 600; cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-block; margin-right: 1em; font-size: 1.1em; }
+    .remove-bg-tool .btn-download:hover { background: #1e7e1e; color: #fff; text-decoration: none; }
+    .remove-bg-tool .related-links { margin-top: 2em; font-size: 1em; }
+    .remove-bg-tool .related-links a { color: #D9534F; text-decoration: underline; margin-right: 1.2em; }
+    .remove-bg-tool .related-links a:hover { color: #4682B4; }
+    .remove-bg-tool .recent-tools { margin: 1em 0; padding: 1.2em; background: #FDFBF5; border-radius: 0.7em; font-size: 0.95em; border: 1px solid #FFEAA7; }
+    .remove-bg-tool .recent-tools strong { color: #4682B4; }
+    .remove-bg-tool .recent-tools a { color: #D9534F; text-decoration: none; margin: 0 0.5em; }
+    .remove-bg-tool .recent-tools a:hover { color: #4682B4; text-decoration: underline; }
+    .remove-bg-tool .recent-tools-list { margin-left: 0.5em; }
+    .remove-bg-tool .sr-only { position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden; }
+    .remove-bg-tool .instructions { background: #FFF3CD; border: 1px solid #FFD700; border-radius: 0.7em; padding: 1em; margin-bottom: 1.2em; color: #B8860B; font-weight: bold; font-size: 1.1em; }
+    .remove-bg-tool .tool-description h2 { color: #4682B4; margin-bottom: 1em; }
+    @media (max-width: 600px) { 
+      .remove-bg-tool .reduce-size-container { padding: 1em 0.2em; }
+      .remove-bg-tool .recent-tools { padding: 1em; }
+      .remove-bg-tool .recent-tools-list { display: flex; flex-wrap: wrap; gap: 0.5em; margin-top: 0.5em; }
+    }
+  </style>
+</head>
+<body>
+<main>
+  <div class="remove-bg-tool">
+    <div class="reduce-size-container">
+      <header>
+        <h1 style="font-family: 'Caveat', cursive; font-size: 3em; color: #FF6B6B; margin-bottom: 0.5em;">Remove Image Background</h1>
+        <p style="font-size:1.2em; margin-bottom:1em;">Pro-quality cutouts using open-source AI in your browser. Fast, privacy-first, and free. No API.</p>
+  </header>
+
+      <div style="margin-bottom: 1.5em;">
+        <span style="color: #666;">Related:</span>
+        <a href="#image-compressor" style="color: #FF6B6B; text-decoration: none; margin: 0 0.5em;">Image Compressor</a>
+        <a href="#image-converter" style="color: #FF6B6B; text-decoration: none; margin: 0 0.5em;">Image Converter</a>
+        <a href="#watermark-images" style="color: #FF6B6B; text-decoration: none; margin: 0 0.5em;">Watermark Images</a>
+      </div>
+
+      <div style="background:#FFF3CD; border:1px solid #FFD700; border-radius:0.7em; padding:1em; margin-bottom:1.2em; color:#B8860B; font-weight:bold; font-size:1.1em;">
+        ✨ <b>Edge-aware high-precision segmentation.</b> All processing happens locally; your image never leaves your device.
+  </div>
+
+      <section aria-labelledby="instructions-title" style="background: #F8FBFF; border-radius: 0.7em; padding: 1.5em; margin: 2em 0; border: 1px solid #4682B4;">
+        <h2 id="instructions-title" style="color:#4682B4; margin-bottom: 1em; font-size: 1.5em;">How to Use</h2>
+        <ol class="step-list" style="margin-left: 1.5em; line-height: 1.6;">
+          <li><strong style="color: #4682B4">Upload Your Photo:</strong>
+            <ul style="margin: 0.5em 0 0.5em 1.5em; color: #666;">
+              <li>Drag & drop your image into the upload area</li>
+              <li>Or click "Choose File" to browse</li>
+              <li>Supports JPG and PNG</li>
+            </ul>
+          </li>
+          <li><strong style="color: #4682B4">Process:</strong>
+            <ul style="margin: 0.5em 0 0.5em 1.5em; color: #666;">
+              <li>Click "Remove Background"</li>
+              <li>First use loads the model (can take ~20s on slow network)</li>
+            </ul>
+          </li>
+          <li><strong style="color: #4682B4">Save:</strong>
+            <ul style="margin: 0.5em 0 0.5em 1.5em; color: #666;">
+              <li>Preview result</li>
+              <li>Download transparent PNG</li>
+            </ul>
+          </li>
+    </ol>
+  </section>
+
+      <section style="margin-top: 2em;">
+        <h2 style="color:#FF6B6B; margin-bottom: 0.5em;">Privacy Notice</h2>
+        <div style="background: #FFF3CD; border: 1px solid #FFD700; border-radius: 0.7em; padding: 1em; margin-bottom: 1.2em; color: #B8860B;">
+          <strong style="font-size: 1.1em;">🔒 Your files are never uploaded or stored. All processing happens in your browser.</strong>
+    </div>
+  </section>
+
+      <div class="tool-interface">
+        <div class="upload-area" id="upload-area" tabindex="0" aria-label="Upload photo area. Drag and drop or click to select a photo." 
+             ondragover="handleDragOver(event)" 
+             ondragleave="handleDragLeave(event)" 
+             ondrop="handleDrop(event)">
+          <div class="upload-icon" aria-hidden="true">🖼️</div>
+          <h3>Drag & Drop your photo here</h3>
+          <p>or click to browse files</p>
+          <input type="file" id="file-input" class="file-input" accept="image/jpeg,image/png,image/webp">
+          <button class="upload-btn" id="choose-file-btn" onclick="document.getElementById('file-input').click()">Choose File</button>
+          <div id="upload-progress-bar" style="display:none; width:100%; background:#F0F8FF; border-radius:0.5em; margin-top:1.2em; height:1.5em; overflow:hidden; border:1px solid #B0C4DE; position:relative;">
+            <div id="upload-progress-fill" style="height:100%; width:0; background:linear-gradient(90deg,#D9534F,#F0AD4E,#5BC0DE,#5CB85C,#A569BD); transition:width 0.2s;"></div>
+            <span id="upload-progress-text" style="position:absolute; left:50%; top:0; transform:translateX(-50%); color:#333; font-weight:600; line-height:1.5em; font-size:1em;">Uploading: 0%</span>
+          </div>
+          <div id="error-message" style="display:none; color: #dc3545; margin-top: 1em; padding: 0.5em; background: #f8d7da; border-radius: 0.5em; border: 1px solid #f5c6cb;"></div>
+        </div>
+      </div>
+
+      <div class="image-description" id="image-description" style="display: none; background: #E8F5E8; border: 2px solid #5CB85C; border-radius: 0.7em; padding: 1.2em; margin: 1.5em 0; text-align: center;">
+        <div style="font-size: 1.5em; color: #228B22; margin-bottom: 0.5em;">📸</div>
+        <div style="font-size: 1.1em; color: #228B22; font-weight: 600; margin-bottom: 0.5em;">Image Uploaded Successfully!</div>
+        <div style="color: #666; font-size: 0.95em;" id="image-info">Ready to remove background</div>
+  </div>
+
+      <div class="preview-section" id="preview-section">
+        <h3>Uploaded Image <button class="clear-btn" id="clear-btn">Clear</button></h3>
+        <img id="preview-image" class="uploaded-preview">
+  </div>
+
+      <div class="controls-section" id="controls-section">
+        <h3>Background Removal</h3>
+        <div class="form-group">
+          <button class="process-btn" id="process-btn">Remove Background</button>
+        </div>
+        <div id="processing" style="display:none; margin-top: 0.8em; background:#FFF3CD; border:1px solid #FFD700; border-radius:0.7em; padding:0.8em; color:#B8860B; font-weight:600; text-align:center;">
+          <span id="processingText">Loading AI model...</span>
+        </div>
+      </div>
+
+      <div class="output-preview" id="output-preview">
+        <h3>Result Preview</h3>
+        <img id="result-image" class="preview-image" />
+        
+        <div class="output-card" id="output-card">
+          <a href="#" class="btn-download" id="download-link" download="image-no-background.png">Download PNG</a>
+          <button class="clear-btn" id="download-clear-btn">Start Over</button>
+        </div>
+      </div>
+
+      <div class="feature-list" style="background: #F8F9FA; border-radius: 0.7em; padding: 1.2em; margin: 1.5em 0;">
+        <h2 style="color: #4682B4; margin-bottom: 1em;">Key Features</h2>
+        <ul>
+          <li>On-device AI background removal</li>
+          <li>Transparent PNG output</li>
+          <li>High-quality results</li>
+          <li>Privacy-first - no uploads stored</li>
+          <li>Works on all devices</li>
+          <li>No registration required</li>
+        </ul>
+      </div>
+      <nav class="recent-tools" aria-label="Recently used tools" style="background: #F8F9FA; border-radius: 0.7em; padding: 1.2em; margin: 1.5em 0;">
+        <strong>Recent Tools:</strong>
+        <div class="recent-tools-list" style="display: inline-block;">
+          <a href="/client/tools/image/black-white-image.html">Black & White Image</a>
+          <a href="/client/tools/image/image-color-picker.html">Color Picker</a>
+          <a href="/client/tools/image/grayscale-image.html">Grayscale</a>
+          <span class="separator" style="margin: 0 0.5em; color: #999;">•</span>
+          <a href="#" id="clear-recent" style="color: #D9534F; font-size: 0.9em;">Clear History</a>
+        </div>
+      </nav>
+    </div>
+  </div>
+</main>
+
+<script>
+(function() {
+  const sources = [
+    'https://cdn.jsdelivr.net/npm/rembg-js@2.1.0/dist/bundle.min.js',
+    'https://cdn.jsdelivr.net/npm/rembg-js/dist/bundle.min.js',
+    'https://unpkg.com/rembg-js@2.1.0/dist/bundle.min.js',
+    'https://unpkg.com/rembg-js/dist/bundle.min.js'
+  ];
+  function loadSequential(index) {
+    if (index >= sources.length) { console.warn('All rembg-js sources failed to load.'); return; }
+    const s = document.createElement('script');
+    s.src = sources[index];
+    s.async = true;
+    s.crossOrigin = 'anonymous';
+    s.onload = function() { console.log('✅ rembg-js loaded from', sources[index]); };
+    s.onerror = function() { console.warn('Failed to load', sources[index]); setTimeout(function(){ loadSequential(index + 1); }, 100); };
+    document.head.appendChild(s);
+  }
+  loadSequential(0);
+})();
+</script>
+<script>
+(function() {
+  'use strict';
+
+  let uploadedImage = null;
+  let isInitialized = false;
+  let isProcessing = false;
+  let processedBlob = null;
+
+  // Handle drag and drop events
+  window.handleDragOver = function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    if (!isProcessing) {
+      document.getElementById('upload-area').style.backgroundColor = '#F0F8FF';
+      document.getElementById('upload-area').style.borderColor = '#4682B4';
+    }
+  };
+
+  window.handleDragLeave = function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    document.getElementById('upload-area').style.backgroundColor = '#FDFBF5';
+    document.getElementById('upload-area').style.borderColor = '#D9534F';
+  };
+
+  window.handleDrop = function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    document.getElementById('upload-area').style.backgroundColor = '#FDFBF5';
+    document.getElementById('upload-area').style.borderColor = '#D9534F';
+    
+    if (!isProcessing && e.dataTransfer.files.length > 0) {
+      handleFile(e.dataTransfer.files[0]);
+    }
+  };
+
+  window.initializeRemoveImageBackgroundTool = function() {
+    if (isInitialized) { console.log('✅ Remove Background Tool initialized successfully'); return; }
+    console.log('🧼 Initializing Remove Background Tool...');
+    reset();
+    init();
+
+    // Add file input change handler
+    const fileInput = document.getElementById('file-input');
+    if (fileInput) {
+      fileInput.addEventListener('change', function(e) {
+        if (e.target.files.length > 0) {
+          handleFile(e.target.files[0]);
+        }
+      });
+    }
+  };
+
+  function reset() {
+    const elements = {
+      uploadArea: document.getElementById('upload-area'),
+      previewSection: document.getElementById('preview-section'),
+      controlsSection: document.getElementById('controls-section'),
+      outputPreview: document.getElementById('output-preview'),
+      imageDescription: document.getElementById('image-description'),
+      fileInput: document.getElementById('file-input'),
+      resultImage: document.getElementById('result-image'),
+      processing: document.getElementById('processing'),
+      processingText: document.getElementById('processingText'),
+      downloadLink: document.getElementById('download-link')
+    };
+
+    if (elements.uploadArea) elements.uploadArea.style.display = 'block';
+    if (elements.previewSection) elements.previewSection.style.display = 'none';
+    if (elements.controlsSection) elements.controlsSection.style.display = 'none';
+    if (elements.outputPreview) elements.outputPreview.style.display = 'none';
+    if (elements.imageDescription) elements.imageDescription.style.display = 'none';
+    if (elements.processing) elements.processing.style.display = 'none';
+    if (elements.fileInput) elements.fileInput.value = '';
+    if (elements.resultImage) elements.resultImage.src = '';
+    if (elements.downloadLink) elements.downloadLink.href = '#';
+    processedBlob = null;
+  }
+
+  function init() {
+    if (isInitialized) return;
+
+    const uploadArea = document.getElementById('upload-area');
+    const fileInput = document.getElementById('file-input');
+    const chooseFileBtn = document.getElementById('choose-file-btn');
+
+    if (!uploadArea || !fileInput || !chooseFileBtn) {
+      setTimeout(init, 100);
+      return;
+    }
+
+    [uploadArea, fileInput, chooseFileBtn].forEach(el => {
+      if (el && el.parentNode) {
+        const newEl = el.cloneNode(true);
+        el.parentNode.replaceChild(newEl, el);
+      }
+    });
+
+    const newUploadArea = document.getElementById('upload-area');
+    const newFileInput = document.getElementById('file-input');
+    const newChooseFileBtn = document.getElementById('choose-file-btn');
+
+    if (newChooseFileBtn) {
+      newChooseFileBtn.onclick = function(e) {
+        e.preventDefault();
+        if (!isProcessing) newFileInput.click();
+      };
+    }
+
+    if (newUploadArea) {
+      newUploadArea.onclick = function(e) {
+        if (e.target !== newChooseFileBtn && !isProcessing) newFileInput.click();
+      };
+    }
+
+    if (newFileInput) {
+      newFileInput.onchange = function(e) {
+        if (e.target.files.length > 0) {
+          const file = e.target.files[0];
+          startUploadProgress(file);
+          e.target.value = '';
+        }
+      };
+    }
+
+    if (newUploadArea) {
+      newUploadArea.ondragover = function(e) {
+        e.preventDefault();
+        if (!isProcessing) {
+          newUploadArea.style.backgroundColor = '#F0F8FF';
+          newUploadArea.style.borderColor = '#4682B4';
+        }
+      };
+      newUploadArea.ondragleave = function() {
+        newUploadArea.style.backgroundColor = '#FDFBF5';
+        newUploadArea.style.borderColor = '#D9534F';
+      };
+      newUploadArea.ondrop = function(e) {
+        e.preventDefault();
+        newUploadArea.style.backgroundColor = '#FDFBF5';
+        newUploadArea.style.borderColor = '#D9534F';
+        if (!isProcessing && e.dataTransfer.files.length > 0) {
+          startUploadProgress(e.dataTransfer.files[0]);
+        }
+      };
+    }
+
+    const processBtn = document.getElementById('process-btn');
+    if (processBtn) processBtn.onclick = processImage;
+
+    ['clear-btn', 'download-clear-btn'].forEach(id => {
+      const btn = document.getElementById(id);
+      if (btn) btn.onclick = reset;
+    });
+
+    const downloadLink = document.getElementById('download-link');
+    if (downloadLink) {
+      downloadLink.onclick = function(e) {
+        if (!processedBlob) {
+          e.preventDefault();
+          alert('Please process an image first');
+        }
+      };
+    }
+
+    isInitialized = true;
+    console.log('✅ Remove Background Tool initialized successfully');
+  }
+
+  function startUploadProgress(file) {
+    if (isProcessing) return;
+    const uploadProgressBar = document.getElementById('upload-progress-bar');
+    const uploadProgressFill = document.getElementById('upload-progress-fill');
+    const uploadProgressText = document.getElementById('upload-progress-text');
+
+    const previewSection = document.getElementById('preview-section');
+    const controlsSection = document.getElementById('controls-section');
+    const outputPreview = document.getElementById('output-preview');
+    if (previewSection) previewSection.style.display = 'none';
+    if (controlsSection) controlsSection.style.display = 'none';
+    if (outputPreview) outputPreview.style.display = 'none';
+
+    if (!uploadProgressBar || !uploadProgressFill || !uploadProgressText) {
+      handleFile(file);
+      return;
+    }
+
+    uploadProgressBar.style.display = 'block';
+    uploadProgressFill.style.width = '0%';
+    uploadProgressText.textContent = 'Uploading: 0%';
+
+    let percent = 0;
+    const duration = 800 + Math.random() * 400;
+    const start = Date.now();
+    function animate() {
+      percent = Math.min(100, Math.round(((Date.now() - start) / duration) * 100));
+      uploadProgressFill.style.width = percent + '%';
+      uploadProgressText.textContent = 'Uploading: ' + percent + '%';
+      if (percent < 100) {
+        requestAnimationFrame(animate);
+      } else {
+        setTimeout(() => {
+          uploadProgressBar.style.display = 'none';
+          handleFile(file);
+        }, 200);
+      }
+    }
+    animate();
+  }
+
+  function showError(message) {
+    const errorDiv = document.getElementById('error-message');
+    if (errorDiv) {
+      errorDiv.textContent = message;
+      errorDiv.style.display = 'block';
+      setTimeout(() => {
+        errorDiv.style.display = 'none';
+      }, 5000);
+    }
+  }
+
+  function handleFile(file) {
+    const errorDiv = document.getElementById('error-message');
+    if (errorDiv) errorDiv.style.display = 'none';
+    
+    if (isProcessing) {
+      showError('❌ Please wait for the current process to complete');
+      return;
+    }
+    isProcessing = true;
+
+    // Validate file is provided
+    if (!file) {
+      showError('❌ No file was selected');
+      isProcessing = false;
+      return;
+    }
+
+    // Validate file type
+    const allowedTypes = ['image/jpeg', 'image/png', 'image/webp'];
+    if (!allowedTypes.includes(file.type.toLowerCase())) {
+      showError('❌ Only JPEG, PNG, and WebP images are supported');
+      isProcessing = false;
+      return;
+    }
+
+    // Validate file size
+    const maxSize = 15 * 1024 * 1024; // 15 MB
+    if (file.size > maxSize) {
+      const sizeMB = (file.size / (1024 * 1024)).toFixed(1);
+      showError(`❌ File size (${sizeMB} MB) exceeds the 15 MB limit. Try compressing the image first`);
+      isProcessing = false;
+      return;
+    }
+
+    // Validate file is not empty
+    if (file.size === 0) {
+      showError('❌ The selected file appears to be empty');
+      isProcessing = false;
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      uploadedImage = new Image();
+      uploadedImage.onload = function() {
+        const previewImage = document.getElementById('preview-image');
+        const imageInfo = document.getElementById('image-info');
+        const imageDescription = document.getElementById('image-description');
+
+        previewImage.src = e.target.result;
+        if (imageInfo) {
+          const fileSize = (file.size / 1024).toFixed(1);
+          imageInfo.textContent = `${file.name} (${fileSize} KB) - Ready to remove background`;
+        }
+
+        document.getElementById('preview-section').style.display = 'block';
+        document.getElementById('controls-section').style.display = 'block';
+        document.getElementById('upload-area').style.display = 'none';
+        if (imageDescription) imageDescription.style.display = 'block';
+
+        isProcessing = false;
+      };
+      uploadedImage.onerror = function() {
+        alert('Error loading image. Please try a different file.');
+        isProcessing = false;
+      };
+      uploadedImage.src = e.target.result;
+    };
+    reader.onerror = function() {
+      alert('Error reading file. Please try again.');
+      isProcessing = false;
+    };
+    reader.readAsDataURL(file);
+  }
+
+  async function processImage() {
+    if (!uploadedImage) {
+      alert('❌ Please upload an image first');
+      return;
+    }
+    if (isProcessing) return;
+    isProcessing = true;
+
+    // Handle extremely large images by resizing first
+    const maxDimension = 2048; // Max dimension for processing
+    let imageToProcess = uploadedImage;
+    if (uploadedImage.naturalWidth > maxDimension || uploadedImage.naturalHeight > maxDimension) {
+      const canvas = document.createElement('canvas');
+      const scale = maxDimension / Math.max(uploadedImage.naturalWidth, uploadedImage.naturalHeight);
+      canvas.width = uploadedImage.naturalWidth * scale;
+      canvas.height = uploadedImage.naturalHeight * scale;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(uploadedImage, 0, 0, canvas.width, canvas.height);
+      const resizedImage = new Image();
+      await new Promise(resolve => {
+        resizedImage.onload = resolve;
+        resizedImage.src = canvas.toDataURL();
+      });
+      imageToProcess = resizedImage;
+    }
+
+    const processing = document.getElementById('processing');
+    const processingText = document.getElementById('processingText');
+    processing.style.display = 'block';
+    processingText.textContent = 'Loading AI model (first use may take 20-30s)...';
+
+    try {
+      // Prefer rembg if available
+      if (typeof window.Rembg !== 'undefined') {
+        processingText.textContent = 'Processing with high-precision model...';
+        const dataUrl = document.getElementById('preview-image').src;
+        const resultUrl = await window.Rembg.remove(dataUrl, {
+          progress: p => { processingText.textContent = 'AI precision cutout: ' + Math.round(p * 100) + '%'; }
+        });
+
+        const resp = await fetch(resultUrl);
+        let blob = await resp.blob();
+        // Try local edge refinement (U2Netp via ONNX Runtime Web)
+        blob = await tryRefineEdges(blob).catch(()=>blob) || blob;
+        await showBlobResult(blob);
+      } else if (await ensureSelfieSegLoaded()) {
+        // High-quality Google Selfie Segmentation fallback (fast, lightweight)
+        processingText.textContent = 'Processing with Google Selfie Segmentation...';
+        let blob = await removeBgWithSelfieSeg();
+        blob = await tryRefineEdges(blob).catch(()=>blob) || blob;
+        await showBlobResult(blob);
+      } else {
+        // Last resort: BodyPix
+        processingText.textContent = 'Loading fallback model (BodyPix)...';
+        await ensureBodyPixLoaded();
+        processingText.textContent = 'Segmenting person...';
+        let blob = await removeBgWithBodyPix();
+        blob = await tryRefineEdges(blob).catch(()=>blob) || blob;
+        await showBlobResult(blob);
+      }
+    } catch (e) {
+      console.error(e);
+      processingText.textContent = 'Error: ' + (e && e.message ? e.message : e);
+    } finally {
+      isProcessing = false;
+    }
+  }
+
+  async function showBlobResult(blob) {
+    const processing = document.getElementById('processing');
+    const resultImage = document.getElementById('result-image');
+    const outputPreview = document.getElementById('output-preview');
+    const outputCard = document.getElementById('output-card');
+    const downloadLink = document.getElementById('download-link');
+
+    // Verify blob integrity
+    if (!blob || blob.size === 0) {
+      alert('❌ Processing failed: Invalid result. Please try again.');
+      processing.style.display = 'none';
+      isProcessing = false;
+      return;
+    }
+
+    try {
+      // Verify the processed image loads correctly
+      const testLoad = new Image();
+      await new Promise((resolve, reject) => {
+        testLoad.onload = resolve;
+        testLoad.onerror = reject;
+        testLoad.src = URL.createObjectURL(blob);
+      });
+
+      processedBlob = blob;
+      const objectUrl = URL.createObjectURL(blob);
+      resultImage.src = objectUrl;
+      downloadLink.href = objectUrl;
+      
+      // Add file extension based on output format
+      const fileName = 'image-no-background.png';
+      downloadLink.download = fileName;
+
+      const existingSuccess = outputPreview.querySelector('[data-success]');
+      if (existingSuccess) existingSuccess.remove();
+      const successMsg = document.createElement('div');
+      successMsg.setAttribute('data-success', '');
+      successMsg.style.cssText = 'background: #E8F5E8; border: 2px solid #5CB85C; border-radius: 0.7em; padding: 1.2em; margin: 1.5em 0; text-align: center;';
+      successMsg.innerHTML = '<div style="font-size: 1.5em; color: #228B22; margin-bottom: 0.5em;">✅</div><div style="font-size: 1.1em; color: #228B22; font-weight: 600; margin-bottom: 0.5em;">Success!</div><div style=\"color: #666; font-size: 0.95em;\">Background removed successfully. Click the download button below to save your image.</div>';
+      outputPreview.insertBefore(successMsg, outputCard);
+
+      outputPreview.style.display = 'block';
+      outputCard.style.display = 'block';
+      processing.style.display = 'none';
+    } catch (error) {
+      showError('❌ Error processing the image. Please try again.');
+      console.error('Error displaying result:', error);
+      processing.style.display = 'none';
+    }
+  }
+
+  // --- Fallback: TensorFlow.js BodyPix ---
+  async function ensureBodyPixLoaded() {
+    if (window.bodyPix && window.tf) return;
+    // Load tfjs core and body-pix sequentially
+    await loadScriptOnce('https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.20.0/dist/tf.min.js');
+    await loadScriptOnce('https://cdn.jsdelivr.net/npm/@tensorflow-models/body-pix@2.2.0/dist/body-pix.min.js');
+  }
+
+  function loadScriptOnce(src) {
+    return new Promise((resolve, reject) => {
+      if (document.querySelector('script[src="' + src + '"]')) return resolve();
+      const s = document.createElement('script');
+      s.src = src; s.async = true; s.crossOrigin = 'anonymous';
+      s.onload = () => resolve();
+      s.onerror = () => reject(new Error('Failed to load ' + src));
+      document.head.appendChild(s);
+    });
+  }
+
+  // --- Edge Refinement: U2Netp via ONNX Runtime Web ---
+  async function ensureOnnxRuntime() {
+    if (window.ort) return;
+    await loadScriptOnce('https://cdn.jsdelivr.net/npm/onnxruntime-web@1.18.0/dist/ort.min.js');
+  }
+
+  async function tryRefineEdges(inputBlob) {
+    try {
+      await ensureOnnxRuntime();
+      // Prefer local models; try MODNet then U2Net
+      const localCandidates = [
+        '/client/vendor/models/modnet.onnx',
+        '/client/vendor/models/u2net.onnx'
+      ];
+      let session = null;
+      for (const url of localCandidates) {
+        try {
+          session = await ort.InferenceSession.create(url, { executionProviders: ['wasm'] });
+          console.log('✅ Loaded local edge model:', url);
+          break;
+        } catch (e) { console.warn('Edge model not found/failed:', url); }
+      }
+      if (!session) throw new Error('No local edge model available');
+
+      // Prepare input tensor: resize to 320x320, normalize to [0,1]
+      const inImg = await createImageBitmap(inputBlob);
+      const resized = document.createElement('canvas');
+      resized.width = 320; resized.height = 320;
+      const rctx = resized.getContext('2d');
+      rctx.drawImage(inImg, 0, 0, 320, 320);
+      const { data: rgba } = rctx.getImageData(0, 0, 320, 320);
+      const chw = new Float32Array(1 * 3 * 320 * 320);
+      for (let i = 0, p = 0; i < rgba.length; i += 4, p++) {
+        const r = rgba[i] / 255, g = rgba[i + 1] / 255, b = rgba[i + 2] / 255;
+        const x = p;
+        chw[0 * 320 * 320 + x] = r;
+        chw[1 * 320 * 320 + x] = g;
+        chw[2 * 320 * 320 + x] = b;
+      }
+      const input = new ort.Tensor('float32', chw, [1, 3, 320, 320]);
+      const inputName = (session.inputNames && session.inputNames[0]) || 'input' || 'x';
+      const outputMap = await session.run({ [inputName]: input });
+      const outName = (session.outputNames && session.outputNames[0]) || Object.keys(outputMap)[0];
+      const out = outputMap[outName]; // 1x1x320x320 or similar
+      const mask = out.data;
+
+      // Upscale mask to original size and blend alpha with existing transparency
+      const w = inImg.width, h = inImg.height;
+      const mcan = document.createElement('canvas');
+      mcan.width = 320; mcan.height = 320;
+      const mctx = mcan.getContext('2d');
+      const maskImg = mctx.createImageData(320, 320);
+      for (let i = 0; i < 320 * 320; i++) {
+        const v = Math.max(0, Math.min(255, Math.round(mask[i] * 255)));
+        maskImg.data[i * 4 + 0] = v;
+        maskImg.data[i * 4 + 1] = v;
+        maskImg.data[i * 4 + 2] = v;
+        maskImg.data[i * 4 + 3] = 255;
+      }
+      mctx.putImageData(maskImg, 0, 0);
+
+      const up = document.createElement('canvas');
+      up.width = w; up.height = h;
+      const upctx = up.getContext('2d');
+      upctx.drawImage(mcan, 0, 0, w, h);
+      const upData = upctx.getImageData(0, 0, w, h).data;
+
+      const base = document.createElement('canvas');
+      base.width = w; base.height = h;
+      const bctx = base.getContext('2d');
+      bctx.drawImage(inImg, 0, 0);
+      const baseData = bctx.getImageData(0, 0, w, h);
+      const bd = baseData.data;
+
+      // Build grayscale alpha from upscaled matte
+      const alpha = new Uint8ClampedArray(w * h);
+      for (let i = 0; i < w * h; i++) alpha[i] = upData[i * 4];
+
+      // Edge-aware refinement: small morphological open/close + gaussian blur
+      const refined = edgeRefineAlpha(alpha, w, h);
+
+      for (let i = 0; i < w * h; i++) {
+        const aIndex = i * 4 + 3;
+        // Blend current alpha with refined matte (take max to preserve FG)
+        bd[aIndex] = Math.max(bd[aIndex], refined[i]);
+      }
+      bctx.putImageData(baseData, 0, 0);
+
+      return await new Promise(resolve => base.toBlob(b => resolve(b), 'image/png'));
+    } catch (e) {
+      console.warn('Edge refinement skipped:', e);
+      return inputBlob;
+    }
+  }
+
+  // Lightweight edge-aware alpha refinement
+  function edgeRefineAlpha(alpha, width, height) {
+    // 1) Morphological open (erode then dilate) to remove halos
+    const eroded = morph(alpha, width, height, 1, 'erode');
+    const opened = morph(eroded, width, height, 1, 'dilate');
+    // 2) Morphological close (dilate then erode) to fill small gaps
+    const dil = morph(opened, width, height, 1, 'dilate');
+    const closed = morph(dil, width, height, 1, 'erode');
+    // 3) Gentle gaussian blur for soft edges
+    const blurred = gaussianBlur(closed, width, height, 1.2);
+    // 4) Contrast stretch to keep edges crisp
+    for (let i = 0; i < blurred.length; i++) {
+      let v = blurred[i] / 255;
+      v = Math.min(1, Math.max(0, (v - 0.05) * 1.15));
+      blurred[i] = Math.round(v * 255);
+    }
+    return blurred;
+  }
+
+  function morph(src, w, h, radius, type) {
+    const dst = new Uint8ClampedArray(src.length);
+    const comp = type === 'erode' ? 255 : 0;
+    for (let y = 0; y < h; y++) {
+      for (let x = 0; x < w; x++) {
+        let v = comp;
+        for (let dy = -radius; dy <= radius; dy++) {
+          const yy = Math.min(h - 1, Math.max(0, y + dy));
+          for (let dx = -radius; dx <= radius; dx++) {
+            const xx = Math.min(w - 1, Math.max(0, x + dx));
+            const p = src[yy * w + xx];
+            if (type === 'erode') v = Math.min(v, p); else v = Math.max(v, p);
+          }
+        }
+        dst[y * w + x] = v;
+      }
+    }
+    return dst;
+  }
+
+  function gaussianBlur(src, w, h, sigma) {
+    const kernelSize = Math.max(3, (Math.ceil(sigma * 3) * 2 + 1));
+    const kernel = new Float32Array(kernelSize);
+    const half = (kernelSize - 1) / 2;
+    let sum = 0;
+    for (let i = 0; i < kernelSize; i++) {
+      const x = i - half; const val = Math.exp(-(x * x) / (2 * sigma * sigma));
+      kernel[i] = val; sum += val;
+    }
+    for (let i = 0; i < kernelSize; i++) kernel[i] /= sum;
+
+    const tmp = new Float32Array(w * h);
+    const out = new Uint8ClampedArray(w * h);
+
+    // Horizontal
+    for (let y = 0; y < h; y++) {
+      for (let x = 0; x < w; x++) {
+        let acc = 0;
+        for (let k = -half; k <= half; k++) {
+          const xx = Math.min(w - 1, Math.max(0, x + k));
+          acc += src[y * w + xx] * kernel[k + half];
+        }
+        tmp[y * w + x] = acc;
+      }
+    }
+    // Vertical
+    for (let x = 0; x < w; x++) {
+      for (let y = 0; y < h; y++) {
+        let acc = 0;
+        for (let k = -half; k <= half; k++) {
+          const yy = Math.min(h - 1, Math.max(0, y + k));
+          acc += tmp[yy * w + x] * kernel[k + half];
+        }
+        out[y * w + x] = Math.round(acc);
+      }
+    }
+    return out;
+  }
+
+  // --- Preferred Fallback: MediaPipe Selfie Segmentation ---
+  async function ensureSelfieSegLoaded() {
+    if (window.SelfieSegmentation) return true;
+    try {
+      await loadScriptOnce('https://cdn.jsdelivr.net/npm/@mediapipe/selfie_segmentation/selfie_segmentation.js');
+      return !!window.SelfieSegmentation;
+    } catch (e) {
+      try {
+        await loadScriptOnce('https://unpkg.com/@mediapipe/selfie_segmentation/selfie_segmentation.js');
+        return !!window.SelfieSegmentation;
+      } catch (e2) {
+        return false;
+      }
+    }
+  }
+
+  async function removeBgWithSelfieSeg() {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const imgEl = document.getElementById('preview-image');
+        const seg = new SelfieSegmentation({ locateFile: (file) => `https://cdn.jsdelivr.net/npm/@mediapipe/selfie_segmentation/${file}` });
+        seg.setOptions({ modelSelection: 1 });
+        seg.onResults(async (results) => {
+          try {
+            const srcW = imgEl.naturalWidth || imgEl.width;
+            const srcH = imgEl.naturalHeight || imgEl.height;
+            const out = document.createElement('canvas');
+            out.width = srcW; out.height = srcH;
+            const octx = out.getContext('2d');
+
+            // results.segmentationMask is a canvas; use it as alpha mask
+            const maskSource = results.segmentationMask; // may be Image/Canvas/Video
+
+            // Draw original
+            octx.drawImage(imgEl, 0, 0, srcW, srcH);
+
+            // Get imageData and apply mask as alpha with feathering
+            const imgData = octx.getImageData(0, 0, srcW, srcH);
+            const data = imgData.data;
+
+            // Normalize mask source to a canvas at src size
+            const mcan = document.createElement('canvas');
+            mcan.width = srcW; mcan.height = srcH;
+            const mctx = mcan.getContext('2d');
+            mctx.drawImage(maskSource, 0, 0, srcW, srcH);
+            const maskPixels = mctx.getImageData(0, 0, srcW, srcH).data;
+
+            // Apply alpha; feather edges by mapping grayscale to alpha
+            for (let i = 0, p = 0; i < data.length; i += 4, p += 4) {
+              const m = maskPixels[p]; // R channel
+              const alpha = Math.min(255, Math.max(0, m));
+              data[i + 3] = alpha; // set alpha
+            }
+            octx.putImageData(imgData, 0, 0);
+
+            out.toBlob(b => b ? resolve(b) : reject(new Error('Failed to create PNG')), 'image/png');
+          } catch (err) { reject(err); }
+        });
+        await seg.initialize();
+        await seg.send({ image: imgEl });
+      } catch (e) { reject(e); }
+    });
+  }
+
+  async function removeBgWithBodyPix() {
+    // Load model
+    const net = await bodyPix.load({ architecture: 'MobileNetV1', outputStride: 16, multiplier: 0.75, quantBytes: 2 });
+    const imgEl = document.getElementById('preview-image');
+
+    // Segment person; if no person, try generic part segmentation to still get a mask
+    const segmentation = await net.segmentPerson(imgEl, {
+      internalResolution: 'medium',
+      segmentationThreshold: 0.7
+    });
+
+    // Build alpha mask
+    const off = document.createElement('canvas');
+    off.width = imgEl.naturalWidth || imgEl.width; 
+    off.height = imgEl.naturalHeight || imgEl.height;
+    const octx = off.getContext('2d');
+    octx.drawImage(imgEl, 0, 0, off.width, off.height);
+    const imgData = octx.getImageData(0, 0, off.width, off.height);
+    const data = imgData.data;
+    const mask = segmentation.data;
+    for (let i = 0; i < mask.length; i++) {
+      const aIndex = i * 4 + 3;
+      data[aIndex] = mask[i] ? 255 : 0; // Keep person, remove background
+    }
+    octx.putImageData(imgData, 0, 0);
+
+    return await new Promise(resolve => off.toBlob(b => resolve(b), 'image/png'));
+  }
+
+  // Recent tools
+  const RECENT_TOOLS_KEY = 'recentImageTools';
+  const MAX_RECENT_TOOLS = 4;
+  function initRecentTools() {
+    const clearRecentBtn = document.getElementById('clear-recent');
+    if (clearRecentBtn) {
+      clearRecentBtn.onclick = function(e) {
+        e.preventDefault();
+        localStorage.removeItem(RECENT_TOOLS_KEY);
+        updateRecentToolsList();
+      };
+    }
+    const currentToolData = { name: 'Remove Background', url: window.location.pathname };
+    addToRecentTools(currentToolData);
+    updateRecentToolsList();
+  }
+  function addToRecentTools(toolData) {
+    let recentTools = JSON.parse(localStorage.getItem(RECENT_TOOLS_KEY) || '[]');
+    recentTools = recentTools.filter(tool => tool.url !== toolData.url);
+    recentTools.unshift(toolData);
+    recentTools = recentTools.slice(0, MAX_RECENT_TOOLS);
+    localStorage.setItem(RECENT_TOOLS_KEY, JSON.stringify(recentTools));
+  }
+  function updateRecentToolsList() {
+    const recentToolsList = document.querySelector('.recent-tools-list');
+    if (!recentToolsList) return;
+    const recentTools = JSON.parse(localStorage.getItem(RECENT_TOOLS_KEY) || '[]');
+    if (recentTools.length === 0) {
+      recentToolsList.innerHTML = '<span style="color: #666;">No recent tools</span>';
+      return;
+    }
+    const toolLinks = recentTools
+      .filter(tool => tool.url !== window.location.pathname)
+      .map(tool => `<a href="${tool.url}">${tool.name}</a>`)
+      .join('<span class="separator" style="margin: 0 0.5em; color: #999;">•</span>');
+    recentToolsList.innerHTML = toolLinks + 
+      '<span class="separator" style="margin: 0 0.5em; color: #999;">•</span>' +
+      '<a href="#" id="clear-recent" style="color: #D9534F; font-size: 0.9em;">Clear History</a>';
+    const clearRecentBtn = document.getElementById('clear-recent');
+    if (clearRecentBtn) {
+      clearRecentBtn.onclick = function(e) {
+        e.preventDefault();
+        localStorage.removeItem(RECENT_TOOLS_KEY);
+        updateRecentToolsList();
+      };
+    }
+  }
+
+  const originalInit = init;
+  init = function() {
+    originalInit();
+    initRecentTools();
+  };
+
+  if (document.readyState !== 'loading') {
+    setTimeout(init, 50);
+  } else {
+    document.addEventListener('DOMContentLoaded', function() { setTimeout(init, 50); });
+  }
+})();
+
+// Legacy auto-boot support
+if (typeof window !== 'undefined' && window.location && window.location.hash.includes('remove-image-background')) {
+  setTimeout(function(){
+    if (window.initializeRemoveImageBackgroundTool) {
+      try { window.initializeRemoveImageBackgroundTool(); } catch(e) { console.warn(e); }
+    }
+  }, 200);
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,267 @@
+<!-- File: tools/text/add-line-numbers.html -->
+<style>
+    .ln-textarea {
+        background-color: #FDFBF5;
+        border: 2px solid #EAE3D5;
+        border-radius: 0.5rem;
+        padding: 1rem;
+        width: 100%;
+        min-height: 120px;
+        color: #4A4A4A;
+        font-size: 1.1rem;
+        line-height: 1.6;
+        transition: all 0.2s;
+    }
+    .ln-textarea:focus {
+        outline: none;
+        border-color: #D9534F;
+        box-shadow: 0 0 0 3px rgba(217, 83, 79, 0.2);
+    }
+    .ln-options-box {
+        margin-top: 1.5rem;
+        padding: 1.5rem;
+        background-color: #FDFBF5;
+        border-radius: 0.5rem;
+        border: 1px solid #EAE3D5;
+    }
+    .ln-button-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 0.75rem;
+    }
+    .ln-button {
+        background-color: #fff;
+        color: #4A4A4A;
+        padding: 0.75rem 1rem;
+        border-radius: 0.5rem;
+        font-weight: 600;
+        border: 1px solid #DCD5C3;
+        cursor: pointer;
+        transition: all 0.2s;
+        text-align: center;
+    }
+    .ln-button:hover {
+        background-color: #EFEAE0;
+        border-color: #C8BFAC;
+    }
+    .ln-button:active {
+        transform: scale(0.98);
+        background-color: #EAE3D5;
+    }
+    .ln-utility-bar {
+        margin-top: 1.5rem;
+        padding-top: 1.5rem;
+        border-top: 2px dashed #DCD5C3;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .ln-utility-button {
+        background-color: transparent;
+        color: #D9534F;
+        font-weight: 600;
+        border: none;
+        cursor: pointer;
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+    }
+    .ln-utility-button:hover {
+        background-color: #FDFBF5;
+    }
+    .ln-status-bar {
+        font-size: 0.9rem;
+        color: #888;
+    }
+    .ln-result-area {
+        margin-top: 1.5rem;
+        background: #fff;
+        border: 1px solid #EAE3D5;
+        border-radius: 0.5rem;
+        padding: 1rem;
+        min-height: 80px;
+        font-size: 1.05rem;
+        color: #333;
+        white-space: pre-wrap;
+        word-break: break-word;
+    }
+    .ln-input-group {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+        margin-bottom: 1rem;
+        flex-wrap: wrap;
+    }
+    .ln-input-group label {
+        font-size: 0.95rem;
+        color: #555;
+        font-weight: 500;
+    }
+    .ln-input {
+        border: 1px solid #DCD5C3;
+        border-radius: 0.375rem;
+        padding: 0.4rem 0.7rem;
+        font-size: 1rem;
+        width: 100px;
+    }
+</style>
+<div>
+    <h2 class="handwritten text-5xl text-[#D9534F] mb-4">Add Line Numbers</h2>
+    <div class="mb-6 p-6 bg-amber-50/70 rounded-lg border border-amber-200">
+        <p class="text-lg text-gray-800 font-bold mb-2">The Add Line Numbers tool makes it easy to add sequential numbering to your text for reference, review, or sharing. Whether you’re preparing code snippets, legal documents, meeting notes, or poetry, this tool gives you full control over how line numbers are added. Choose your starting number, step, and format; add numbers as a prefix or suffix; and even number only non-empty lines or lines matching a pattern. Advanced options let you reset numbering at blank lines, pad numbers for alignment, or remove existing line numbers. Perfect for coders, writers, editors, teachers, and anyone who needs to organize or reference text by line.</p>
+        <ul class="list-disc list-inside text-gray-700 text-base">
+            <li>Add simple or custom-formatted line numbers</li>
+            <li>Custom start, step, prefix, suffix, and padding</li>
+            <li>Number only non-empty lines or lines matching a pattern</li>
+            <li>Remove existing line numbers</li>
+            <li>Reset numbering at blank lines or custom markers</li>
+            <li>Number paragraphs instead of lines</li>
+            <li>Applications: code, legal docs, poetry, meeting notes, data, and more</li>
+        </ul>
+    </div>
+    <p class="text-gray-600 mb-6">
+        Add sequential numbering to your text for reference, review, or sharing. Choose from a variety of numbering and formatting options below.
+    </p>
+    <textarea id="ln-input" class="ln-textarea" placeholder="Type or paste your text here..."></textarea>
+    <div class="ln-options-box">
+        <div class="ln-input-group">
+            <label for="ln-start">Start:</label>
+            <input id="ln-start" class="ln-input" type="number" min="0" max="10000" value="1">
+            <label for="ln-step">Step:</label>
+            <input id="ln-step" class="ln-input" type="number" min="1" max="1000" value="1">
+            <label for="ln-format">Format:</label>
+            <input id="ln-format" class="ln-input" type="text" placeholder="e.g. 001, 1., (1), [1]">
+            <label for="ln-prefix">Prefix:</label>
+            <input id="ln-prefix" class="ln-input" type="text" placeholder="">
+            <label for="ln-suffix">Suffix:</label>
+            <input id="ln-suffix" class="ln-input" type="text" placeholder="">
+            <label for="ln-pad">Pad:</label>
+            <input id="ln-pad" class="ln-input" type="number" min="1" max="10" value="2">
+        </div>
+        <div class="ln-button-grid">
+            <button id="ln-add-numbers" class="ln-button">Add Line Numbers</button>
+            <button id="ln-add-nonempty" class="ln-button">Number Non-Empty Lines</button>
+            <button id="ln-add-pattern" class="ln-button">Number Lines by Pattern</button>
+            <button id="ln-remove-numbers" class="ln-button">Remove Line Numbers</button>
+            <button id="ln-reset-at-blank" class="ln-button">Reset at Blank Lines</button>
+            <button id="ln-number-paragraphs" class="ln-button">Number Paragraphs</button>
+        </div>
+    </div>
+    <div class="ln-result-area" id="ln-result"></div>
+    <div class="ln-utility-bar">
+        <div class="ln-status-bar">
+            <span>Chars: <strong id="ln-char-count" class="text-gray-600">0</strong></span> |
+            <span>Words: <strong id="ln-word-count" class="text-gray-600">0</strong></span>
+        </div>
+        <div>
+            <button id="ln-copy" class="ln-utility-button">Copy</button>
+            <button id="ln-download" class="ln-utility-button">Download</button>
+            <button id="ln-clear" class="ln-utility-button">Clear</button>
+        </div>
+    </div>
+</div>
+<script>
+function initializeLineNumbers() {
+    const lnInput = document.getElementById('ln-input');
+    const lnResult = document.getElementById('ln-result');
+    const lnCharCount = document.getElementById('ln-char-count');
+    const lnWordCount = document.getElementById('ln-word-count');
+    const lnStart = document.getElementById('ln-start');
+    const lnStep = document.getElementById('ln-step');
+    const lnFormat = document.getElementById('ln-format');
+    const lnPrefix = document.getElementById('ln-prefix');
+    const lnSuffix = document.getElementById('ln-suffix');
+    const lnPad = document.getElementById('ln-pad');
+
+    function updateStats() {
+        const text = lnInput.value;
+        lnCharCount.textContent = text.length;
+        lnWordCount.textContent = text.trim().split(/\s+/).filter(Boolean).length;
+    }
+    function showResult(str) {
+        lnResult.textContent = str;
+    }
+    function padNum(num, len) {
+        return num.toString().padStart(len, '0');
+    }
+    function formatNum(num, fmt) {
+        if (!fmt) return num;
+        return fmt.replace(/\[?0+\]?/, padNum(num, lnPad.value)).replace(/\(\d+\)/, '('+num+')').replace(/\[\d+\]/, '['+num+']').replace(/\d+\./, num+'.');
+    }
+    document.getElementById('ln-add-numbers').addEventListener('click', function() {
+        const lines = lnInput.value.split(/\r?\n/);
+        let n = parseInt(lnStart.value, 10) || 1;
+        const step = parseInt(lnStep.value, 10) || 1;
+        const fmt = lnFormat.value;
+        const prefix = lnPrefix.value || '';
+        const suffix = lnSuffix.value || '';
+        const pad = parseInt(lnPad.value, 10) || 2;
+        showResult(lines.map(line => prefix + padNum(n, pad) + suffix + ' ' + line).map((l, i) => l).join('\n'));
+    });
+    document.getElementById('ln-add-nonempty').addEventListener('click', function() {
+        const lines = lnInput.value.split(/\r?\n/);
+        let n = parseInt(lnStart.value, 10) || 1;
+        const step = parseInt(lnStep.value, 10) || 1;
+        const pad = parseInt(lnPad.value, 10) || 2;
+        showResult(lines.map(line => line.trim() ? padNum(n += step - step, pad) + ' ' + line : line).join('\n'));
+    });
+    document.getElementById('ln-add-pattern').addEventListener('click', function() {
+        const pattern = prompt('Enter pattern (regex):');
+        if (!pattern) return;
+        const regex = new RegExp(pattern);
+        const lines = lnInput.value.split(/\r?\n/);
+        let n = parseInt(lnStart.value, 10) || 1;
+        const step = parseInt(lnStep.value, 10) || 1;
+        const pad = parseInt(lnPad.value, 10) || 2;
+        showResult(lines.map(line => regex.test(line) ? padNum(n += step - step, pad) + ' ' + line : line).join('\n'));
+    });
+    document.getElementById('ln-remove-numbers').addEventListener('click', function() {
+        showResult(lnInput.value.replace(/^\s*\d+[.)\]]?\s*/gm, ''));
+    });
+    document.getElementById('ln-reset-at-blank').addEventListener('click', function() {
+        const lines = lnInput.value.split(/\r?\n/);
+        let n = parseInt(lnStart.value, 10) || 1;
+        const step = parseInt(lnStep.value, 10) || 1;
+        const pad = parseInt(lnPad.value, 10) || 2;
+        let out = [];
+        lines.forEach(line => {
+            if (line.trim() === '') { n = parseInt(lnStart.value, 10) || 1; out.push(line); }
+            else { out.push(padNum(n, pad) + ' ' + line); n += step; }
+        });
+        showResult(out.join('\n'));
+    });
+    document.getElementById('ln-number-paragraphs').addEventListener('click', function() {
+        const paras = lnInput.value.split(/\n{2,}/);
+        let n = parseInt(lnStart.value, 10) || 1;
+        const step = parseInt(lnStep.value, 10) || 1;
+        const pad = parseInt(lnPad.value, 10) || 2;
+        showResult(paras.map(p => padNum(n += step - step, pad) + ' ' + p).join('\n\n'));
+    });
+    lnInput.addEventListener('input', updateStats);
+    document.getElementById('ln-copy').addEventListener('click', function() {
+        navigator.clipboard.writeText(lnResult.textContent).then(() => {
+            const btn = document.getElementById('ln-copy');
+            const orig = btn.textContent;
+            btn.textContent = 'Copied!';
+            setTimeout(() => { btn.textContent = orig; }, 2000);
+        });
+    });
+    document.getElementById('ln-download').addEventListener('click', function() {
+        const blob = new Blob([lnResult.textContent], { type: 'text/plain' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'add-line-numbers.txt';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    });
+    document.getElementById('ln-clear').addEventListener('click', function() {
+        lnInput.value = '';
+        lnResult.textContent = '';
+        updateStats();
+    });
+    updateStats();
+}
+initializeLineNumbers();
+</script>

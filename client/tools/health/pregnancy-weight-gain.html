@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weight Gain During Pregnancy</title>
+    <style>
+        body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; }
+        .calc-container { max-width: 420px; margin: 3em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2em 1.5em 2.5em 1.5em; }
+        .handwritten { font-family: 'Caveat', cursive; }
+        .calc-label { font-weight: 600; margin-bottom: 0.5em; display: block; }
+        .calc-input, .calc-select { width: 100%; padding: 1em; border: 2px solid #EAE3D5; border-radius: 0.7em; font-size: 1.2em; margin-bottom: 1em; background: #FDFBF5; text-align: center; font-family: 'Fira Code', monospace; }
+        .calc-btn { background: #fff; color: #D9534F; border: 2px solid #D9534F; border-radius: 0.5em; padding: 0.7em 2em; font-weight: 600; font-size: 1.1em; cursor: pointer; transition: all 0.2s; margin-bottom: 1em; }
+        .calc-btn:hover { background: #D9534F; color: #fff; }
+        .calc-result { background: #FDFBF5; border: 2px solid #D9534F; border-radius: 0.7em; padding: 1em; font-size: 1.25em; color: #D9534F; min-height: 1.7em; margin-bottom: 1em; text-align: center; font-family: 'Fira Code', monospace; font-weight: bold; max-height: 300px; overflow-y: auto; word-break: break-word; transition: height 0.2s; }
+        .calc-desc { width: 100%; margin-top: 2em; background:#FDFBF5; border:2px solid #EAE3D5; border-radius:0.9em; padding:1.2em 1em; font-size:1.08em; color:#333; line-height:1.7; }
+        .calc-desc strong { color: #D9534F; font-size: 1.12em; }
+        @media (max-width: 600px) { .calc-container { padding: 1em 0.2em; } }
+    </style>
+</head>
+<body>
+<div class="calc-container">
+    <h2 class="handwritten text-5xl text-[#D9534F] mb-4">Weight Gain During Pregnancy</h2>
+    <label class="calc-label">Pre-pregnancy Weight (kg):</label>
+    <input id="weight" class="calc-input" type="number" min="0" placeholder="e.g. 65">
+    <label class="calc-label">Height (cm):</label>
+    <input id="height" class="calc-input" type="number" min="0" placeholder="e.g. 165">
+    <button id="calc-btn" class="calc-btn">Calculate</button>
+    <div class="calc-result" id="calc-result"></div>
+</div>
+<div class="calc-desc" style="max-width: fit-content; margin: 2.5em auto 0 auto;">
+    <strong style="font-size:1.18em; color:#D9534F;">About the Weight Gain During Pregnancy Calculator</strong><br><br>
+    Instantly estimate a healthy weight gain range for your pregnancy based on your pre-pregnancy weight and height. Enter your details to see a recommended weight gain range. Great for expectant parents, planning, or learning about pregnancy health.<br><br>
+    <b>Note:</b> The data used in this calculator was last updated on July 30, 2024, and may change in the future.<br><br>
+    <b>Use Cases:</b>
+    <ul style="margin-left:1.2em;">
+        <li>Track healthy weight gain during pregnancy</li>
+        <li>Compare recommended ranges for different BMIs</li>
+        <li>Plan for prenatal care and nutrition</li>
+        <li>Check homework or prepare for health class</li>
+    </ul>
+</div>
+<script>
+function showResult(str) {
+    document.getElementById('calc-result').innerHTML = str;
+}
+document.getElementById('calc-btn').addEventListener('click', function() {
+    let weight = parseFloat(document.getElementById('weight').value);
+    let height = parseFloat(document.getElementById('height').value);
+    if (isNaN(weight) || isNaN(height) || weight <= 0 || height <= 0) {
+        showResult('Please enter valid values for all fields.');
+        return;
+    }
+    let bmi = weight / Math.pow(height / 100, 2);
+    let range = '';
+    if (bmi < 18.5) range = '12.5–18 kg (underweight)';
+    else if (bmi < 25) range = '11.5–16 kg (normal weight)';
+    else if (bmi < 30) range = '7–11.5 kg (overweight)';
+    else range = '5–9 kg (obese)';
+    showResult(`<b>Recommended Weight Gain:</b> ${range}`);
+});
+</script>
+</body>
+</html>

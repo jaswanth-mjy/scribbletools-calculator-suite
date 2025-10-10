@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Overweight Status Analyzer</title>
+    <style>
+        body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; }
+        .calc-container { max-width: 420px; margin: 3em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2em 1.5em 2.5em 1.5em; }
+        .handwritten { font-family: 'Caveat', cursive; }
+        .calc-label { font-weight: 600; margin-bottom: 0.5em; display: block; }
+        .calc-input { width: 100%; padding: 1em; border: 2px solid #EAE3D5; border-radius: 0.7em; font-size: 1.2em; margin-bottom: 1em; background: #FDFBF5; text-align: center; font-family: 'Fira Code', monospace; }
+        .calc-btn { background: #fff; color: #D9534F; border: 2px solid #D9534F; border-radius: 0.5em; padding: 0.7em 2em; font-weight: 600; font-size: 1.1em; cursor: pointer; transition: all 0.2s; margin-bottom: 1em; }
+        .calc-btn:hover { background: #D9534F; color: #fff; }
+        .calc-result { background: #FDFBF5; border: 2px solid #D9534F; border-radius: 0.7em; padding: 1em; font-size: 1.25em; color: #D9534F; min-height: 1.7em; margin-bottom: 1em; text-align: center; font-family: 'Fira Code', monospace; font-weight: bold; max-height: 300px; overflow-y: auto; word-break: break-word; transition: height 0.2s; }
+        .calc-desc { width: 100%; margin-top: 2em; background:#FDFBF5; border:2px solid #EAE3D5; border-radius:0.9em; padding:1.2em 1em; font-size:1.08em; color:#333; line-height:1.7; }
+        .calc-desc strong { color: #D9534F; font-size: 1.12em; }
+        @media (max-width: 600px) { .calc-container { padding: 1em 0.2em; } }
+    </style>
+</head>
+<body>
+<div class="calc-container">
+    <h2 class="handwritten text-5xl text-[#D9534F] mb-4">Overweight Status Analyzer</h2>
+    <label class="calc-label">Weight (kg):</label>
+    <input id="weight" class="calc-input" type="number" min="0" placeholder="e.g. 85">
+    <label class="calc-label">Height (cm):</label>
+    <input id="height" class="calc-input" type="number" min="0" placeholder="e.g. 170">
+    <button id="calc-btn" class="calc-btn">Check</button>
+    <div class="calc-result" id="calc-result"></div>
+</div>
+<div class="calc-desc" style="max-width: fit-content; margin: 2.5em auto 0 auto;">
+    <strong style="font-size:1.18em; color:#D9534F;">About the Overweight Status Analyzer</strong><br><br>
+    Instantly check if your BMI is in the overweight or obese range. Enter your weight and height to see your BMI and risk category. Great for health, wellness, or learning about healthy weight.<br><br>
+    <b>Note:</b> The data used in this calculator was last updated on July 30, 2024, and may change in the future.<br><br>
+    <b>Use Cases:</b>
+    <ul style="margin-left:1.2em;">
+        <li>Check if you are at risk for overweight or obesity</li>
+        <li>Track your BMI for health and wellness</li>
+        <li>Compare BMI for different ages or heights</li>
+        <li>Check homework or prepare for health class</li>
+    </ul>
+</div>
+<script>
+function showResult(str) {
+    document.getElementById('calc-result').innerHTML = str;
+}
+document.getElementById('calc-btn').addEventListener('click', function() {
+    let weight = parseFloat(document.getElementById('weight').value);
+    let height = parseFloat(document.getElementById('height').value);
+    if (isNaN(weight) || isNaN(height) || weight <= 0 || height <= 0) {
+        showResult('Please enter valid values for all fields.');
+        return;
+    }
+    let bmi = weight / Math.pow(height / 100, 2);
+    let risk = bmi >= 30 ? 'Obese' : bmi >= 25 ? 'Overweight' : 'Normal or Below';
+    showResult(`<b>BMI:</b> ${bmi.toFixed(2)}<br><b>Risk Category:</b> ${risk}`);
+});
+</script>
+</body>
+</html>

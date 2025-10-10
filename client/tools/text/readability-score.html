@@ -1,0 +1,178 @@
+<!-- File: tools/text/readability-score.html -->
+<style>
+    .rdl-textarea {
+        background-color: #FDFBF5;
+        border: 2px solid #EAE3D5;
+        border-radius: 0.5rem;
+        padding: 1rem;
+        width: 90%;
+        min-width: 320px;
+        max-width: 700px;
+        height: 100px;
+        color: #4A4A4A;
+        font-size: 1.1rem;
+        line-height: 1.6;
+        transition: all 0.2s;
+        resize: none;
+        overflow: auto;
+        box-sizing: border-box;
+        margin: 0 auto 1.2rem auto;
+        display: block;
+    }
+    .rdl-textarea:focus {
+        outline: none;
+        border-color: #D9534F;
+        box-shadow: 0 0 0 3px rgba(217, 83, 79, 0.2);
+    }
+    .rdl-utility-bar {
+        margin-top: 2.5rem;
+        display: flex;
+        gap: 1.2rem;
+        justify-content: center;
+    }
+    .rdl-utility-button {
+        background-color: #fff;
+        color: #D9534F;
+        font-weight: 600;
+        border: 2px solid #D9534F;
+        cursor: pointer;
+        padding: 0.7rem 2rem;
+        border-radius: 0.5rem;
+        transition: all 0.2s;
+        font-size: 1.1rem;
+    }
+    .rdl-utility-button:hover {
+        background-color: #D9534F;
+        color: #fff;
+    }
+    .rdl-output-box {
+        margin: 2rem auto 0 auto;
+        background: #fff;
+        border: 2px solid #D9534F;
+        border-radius: 0.7rem;
+        padding: 1.2rem 1rem;
+        min-height: 80px;
+        color: #333;
+        font-size: 1.15rem;
+        font-family: 'Fira Code', monospace;
+        letter-spacing: 1px;
+        word-break: break-word;
+        overflow: auto;
+        max-width: 700px;
+        width: 90%;
+        text-align: left;
+    }
+    .readability-btn-bar {
+        display: flex;
+        justify-content: center;
+        gap: 1.2rem;
+        margin: 1.5rem 0 0.5rem 0;
+    }
+    .readability-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 1rem;
+    }
+    .readability-table th, .readability-table td {
+        border: 1px solid #EAE3D5;
+        padding: 0.5rem 1rem;
+        text-align: left;
+    }
+    .readability-table th {
+        background: #FDFBF5;
+        color: #D9534F;
+    }
+</style>
+<div>
+    <h2 class="handwritten text-5xl text-[#D9534F] mb-4">Readability Score</h2>
+    <div class="mb-6 p-6 bg-amber-50/70 rounded-lg border border-amber-200">
+        <p class="text-lg text-gray-800 font-bold mb-2">Calculate readability scores for your text: Flesch Reading Ease, Flesch-Kincaid Grade Level, and Gunning Fog Index. Useful for writers, educators, and content creators.</p>
+        <ul class="list-disc list-inside text-gray-700 text-base">
+            <li>Flesch Reading Ease</li>
+            <li>Flesch-Kincaid Grade Level</li>
+            <li>Gunning Fog Index</li>
+            <li>Applications: writing, education, content creation</li>
+        </ul>
+    </div>
+    <textarea id="readability-input" class="rdl-textarea" placeholder="Paste or type your text here..."></textarea>
+    <div class="readability-btn-bar">
+        <button id="readability-analyze" class="rdl-utility-button">Analyze</button>
+    </div>
+    <div class="rdl-output-box" id="readability-output"></div>
+    <div class="rdl-utility-bar">
+        <button id="readability-copy" class="rdl-utility-button">Copy</button>
+        <button id="readability-download" class="rdl-utility-button">Download</button>
+        <button id="readability-clear" class="rdl-utility-button">Clear</button>
+    </div>
+</div>
+<script>
+function countSyllables(word) {
+    word = word.toLowerCase();
+    if(word.length <= 3) return 1;
+    word = word.replace(/(?:[^laeiouy]es|ed|[^laeiouy]e)$/, '');
+    word = word.replace(/^y/, '');
+    const matches = word.match(/[aeiouy]{1,2}/g);
+    return matches ? matches.length : 1;
+}
+function readabilityScores(text) {
+    const sentences = text.split(/[.!?]+/).filter(Boolean);
+    const words = text.match(/\b\w+\b/g) || [];
+    const syllables = words.reduce((acc, w) => acc + countSyllables(w), 0);
+    const wordCount = words.length;
+    const sentenceCount = sentences.length || 1;
+    const syllableCount = syllables;
+    const avgWordsPerSentence = wordCount / sentenceCount;
+    const avgSyllablesPerWord = syllableCount / wordCount;
+    // Flesch Reading Ease
+    const flesch = 206.835 - 1.015 * avgWordsPerSentence - 84.6 * avgSyllablesPerWord;
+    // Flesch-Kincaid Grade Level
+    const fleschKincaid = 0.39 * avgWordsPerSentence + 11.8 * avgSyllablesPerWord - 15.59;
+    // Gunning Fog Index
+    const complexWords = words.filter(w => countSyllables(w) >= 3).length;
+    const gunningFog = 0.4 * (avgWordsPerSentence + (100 * complexWords / wordCount));
+    let table = `<table class='readability-table'><tr><th>Score</th><th>Value</th></tr>`;
+    table += `<tr><td>Flesch Reading Ease</td><td>${flesch.toFixed(2)}</td></tr>`;
+    table += `<tr><td>Flesch-Kincaid Grade Level</td><td>${fleschKincaid.toFixed(2)}</td></tr>`;
+    table += `<tr><td>Gunning Fog Index</td><td>${gunningFog.toFixed(2)}</td></tr>`;
+    table += `</table>`;
+    return table;
+}
+function initializeReadabilityScore() {
+    const input = document.getElementById('readability-input');
+    const output = document.getElementById('readability-output');
+    const btnAnalyze = document.getElementById('readability-analyze');
+    const btnCopy = document.getElementById('readability-copy');
+    const btnDownload = document.getElementById('readability-download');
+    const btnClear = document.getElementById('readability-clear');
+    btnAnalyze.addEventListener('click', () => {
+        output.innerHTML = readabilityScores(input.value);
+    });
+    btnCopy.addEventListener('click', () => {
+        const temp = document.createElement('textarea');
+        temp.value = output.innerText;
+        document.body.appendChild(temp);
+        temp.select();
+        document.execCommand('copy');
+        document.body.removeChild(temp);
+        const orig = btnCopy.textContent;
+        btnCopy.textContent = 'Copied!';
+        setTimeout(() => { btnCopy.textContent = orig; }, 2000);
+    });
+    btnDownload.addEventListener('click', () => {
+        const blob = new Blob([output.innerText], { type: 'text/plain' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'readability-score.txt';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    });
+    btnClear.addEventListener('click', () => {
+        input.value = '';
+        output.innerHTML = '';
+    });
+}
+initializeReadabilityScore();
+</script>

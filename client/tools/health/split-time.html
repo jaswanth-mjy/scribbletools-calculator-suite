@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Split Time Tool</title>
+    <style>
+        body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; }
+        .calc-container { max-width: 420px; margin: 3em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2em 1.5em 2.5em 1.5em; }
+        .handwritten { font-family: 'Caveat', cursive; }
+        .calc-label { font-weight: 600; margin-bottom: 0.5em; display: block; }
+        .calc-input { width: 100%; padding: 1em; border: 2px solid #EAE3D5; border-radius: 0.7em; font-size: 1.2em; margin-bottom: 1em; background: #FDFBF5; text-align: center; font-family: 'Fira Code', monospace; }
+        .calc-btn { background: #fff; color: #D9534F; border: 2px solid #D9534F; border-radius: 0.5em; padding: 0.7em 2em; font-weight: 600; font-size: 1.1em; cursor: pointer; transition: all 0.2s; margin-bottom: 1em; }
+        .calc-btn:hover { background: #D9534F; color: #fff; }
+        .calc-result { background: #FDFBF5; border: 2px solid #D9534F; border-radius: 0.7em; padding: 1em; font-size: 1.25em; color: #D9534F; min-height: 1.7em; margin-bottom: 1em; text-align: center; font-family: 'Fira Code', monospace; font-weight: bold; max-height: 300px; overflow-y: auto; word-break: break-word; transition: height 0.2s; }
+        .calc-desc { width: 100%; margin-top: 2em; background:#FDFBF5; border:2px solid #EAE3D5; border-radius:0.9em; padding:1.2em 1em; font-size:1.08em; color:#333; line-height:1.7; }
+        .calc-desc strong { color: #D9534F; font-size: 1.12em; }
+        @media (max-width: 600px) { .calc-container { padding: 1em 0.2em; } }
+    </style>
+</head>
+<body>
+<div class="calc-container">
+    <h2 class="handwritten text-5xl text-[#D9534F] mb-4">Split Time Tool</h2>
+    <label class="calc-label">Total Distance:</label>
+    <input id="distance" class="calc-input" type="number" min="0" step="0.1" placeholder="e.g. 10">
+    <label class="calc-label">Distance Unit:</label>
+    <select id="distanceUnit" class="calc-input">
+        <option value="km">Kilometers</option>
+        <option value="miles">Miles</option>
+        <option value="meters">Meters</option>
+    </select>
+    <label class="calc-label">Total Time - Hours:</label>
+    <input id="hours" class="calc-input" type="number" min="0" placeholder="0">
+    <label class="calc-label">Total Time - Minutes:</label>
+    <input id="minutes" class="calc-input" type="number" min="0" placeholder="50">
+    <label class="calc-label">Total Time - Seconds:</label>
+    <input id="seconds" class="calc-input" type="number" min="0" placeholder="0">
+    <label class="calc-label">Split Type:</label>
+    <select id="splitType" class="calc-input">
+        <option value="equal">Equal Distance Splits</option>
+        <option value="time">Equal Time Intervals</option>
+    </select>
+    <label class="calc-label">Number of Splits:</label>
+    <input id="splits" class="calc-input" type="number" min="1" max="20" placeholder="e.g. 5">
+    <button id="calc-btn" class="calc-btn">Calculate Splits</button>
+    <div class="calc-result" id="calc-result"></div>
+</div>
+<div class="calc-desc" style="max-width: fit-content; margin: 2.5em auto 0 auto;">
+    <strong style="font-size:1.18em; color:#D9534F;">About the Split Time Tool</strong><br><br>
+    Calculate precise split times for races, training intervals, or workout planning. Choose between equal distance splits or equal time intervals with detailed breakdowns.<br><br>
+    <b>Split Types:</b>
+    <ul style="margin-left:1.2em;">
+        <li><b>Equal Distance:</b> Same distance per split (e.g., 1km splits in 10k race)</li>
+        <li><b>Equal Time:</b> Same time per interval (e.g., 5-minute intervals)</li>
+    </ul><br>
+    <b>Use Cases:</b>
+    <ul style="margin-left:1.2em;">
+        <li>Plan pacing strategy for races</li>
+        <li>Track interval training sessions</li>
+        <li>Analyze performance over race segments</li>
+        <li>Set goals for each split or interval</li>
+    </ul>
+</div>
+<script>
+function showResult(str) {
+    document.getElementById('calc-result').innerHTML = str;
+}
+document.getElementById('calc-btn').addEventListener('click', function() {
+    let distance = parseFloat(document.getElementById('distance').value);
+    let distanceUnit = document.getElementById('distanceUnit').value;
+    let hours = parseInt(document.getElementById('hours').value) || 0;
+    let minutes = parseInt(document.getElementById('minutes').value) || 0;
+    let seconds = parseInt(document.getElementById('seconds').value) || 0;
+    let splits = parseInt(document.getElementById('splits').value);
+    let splitType = document.getElementById('splitType').value;
+    
+    if (isNaN(distance) || distance <= 0) {
+        showResult('Please enter a valid distance.');
+        return;
+    }
+    
+    if (hours === 0 && minutes === 0 && seconds === 0) {
+        showResult('Please enter a valid time.');
+        return;
+    }
+    
+    if (isNaN(splits) || splits <= 0 || splits > 20) {
+        showResult('Please enter a valid number of splits (1-20).');
+        return;
+    }
+    
+    // Convert total time to seconds
+    let totalSeconds = (hours * 3600) + (minutes * 60) + seconds;
+    
+    function formatTime(seconds) {
+        let h = Math.floor(seconds / 3600);
+        let m = Math.floor((seconds % 3600) / 60);
+        let s = Math.round(seconds % 60);
+        if (h > 0) return `${h}:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+        return `${m}:${s.toString().padStart(2, '0')}`;
+    }
+    
+    let result = `<b>Total:</b> ${distance} ${distanceUnit} in ${formatTime(totalSeconds)}<br><br>`;
+    
+    if (splitType === 'equal') {
+        // Equal distance splits
+        let splitDistance = distance / splits;
+        let splitTime = totalSeconds / splits;
+        
+        result += `<b>Each Split:</b> ${splitDistance.toFixed(2)} ${distanceUnit}<br>`;
+        result += `<b>Target Time:</b> ${formatTime(splitTime)}<br><br>`;
+        result += `<b>Split Breakdown:</b><br>`;
+        
+        let cumulativeTime = 0;
+        for (let i = 1; i <= splits; i++) {
+            cumulativeTime += splitTime;
+            result += `Split ${i}: ${formatTime(cumulativeTime)}<br>`;
+        }
+    } else {
+        // Equal time intervals
+        let splitTime = totalSeconds / splits;
+        let splitDistance = distance / splits;
+        
+        result += `<b>Each Interval:</b> ${formatTime(splitTime)}<br>`;
+        result += `<b>Target Distance:</b> ${splitDistance.toFixed(2)} ${distanceUnit}<br><br>`;
+        result += `<b>Interval Breakdown:</b><br>`;
+        
+        let cumulativeDistance = 0;
+        for (let i = 1; i <= splits; i++) {
+            cumulativeDistance += splitDistance;
+            result += `${formatTime(splitTime * i)}: ${cumulativeDistance.toFixed(2)} ${distanceUnit}<br>`;
+        }
+    }
+    
+    showResult(result);
+});
+</script>
+</body>
+</html>

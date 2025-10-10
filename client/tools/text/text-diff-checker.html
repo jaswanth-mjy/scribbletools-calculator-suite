@@ -1,0 +1,172 @@
+<!-- File: tools/text/text-diff-checker.html -->
+<style>
+    .rdl-textarea {
+        background-color: #FDFBF5;
+        border: 2px solid #EAE3D5;
+        border-radius: 0.5rem;
+        padding: 1rem;
+        width: 90%;
+        min-width: 320px;
+        max-width: 700px;
+        height: 100px;
+        color: #4A4A4A;
+        font-size: 1.1rem;
+        line-height: 1.6;
+        transition: all 0.2s;
+        resize: none;
+        overflow: auto;
+        box-sizing: border-box;
+        margin: 0 auto 1.2rem auto;
+        display: block;
+    }
+    .rdl-textarea:focus {
+        outline: none;
+        border-color: #D9534F;
+        box-shadow: 0 0 0 3px rgba(217, 83, 79, 0.2);
+    }
+    .rdl-utility-bar {
+        margin-top: 2.5rem;
+        display: flex;
+        gap: 1.2rem;
+        justify-content: center;
+    }
+    .rdl-utility-button {
+        background-color: #fff;
+        color: #D9534F;
+        font-weight: 600;
+        border: 2px solid #D9534F;
+        cursor: pointer;
+        padding: 0.7rem 2rem;
+        border-radius: 0.5rem;
+        transition: all 0.2s;
+        font-size: 1.1rem;
+    }
+    .rdl-utility-button:hover {
+        background-color: #D9534F;
+        color: #fff;
+    }
+    .rdl-output-box {
+        margin: 2rem auto 0 auto;
+        background: #fff;
+        border: 2px solid #D9534F;
+        border-radius: 0.7rem;
+        padding: 1.2rem 1rem;
+        min-height: 80px;
+        color: #333;
+        font-size: 1.15rem;
+        font-family: 'Fira Code', monospace;
+        letter-spacing: 1px;
+        word-break: break-word;
+        overflow: auto;
+        max-width: 700px;
+        width: 90%;
+        text-align: left;
+    }
+    .diff-inputs {
+        display: flex;
+        gap: 2rem;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    .diff-btn-bar {
+        display: flex;
+        justify-content: center;
+        gap: 1.2rem;
+        margin: 1.5rem 0 0.5rem 0;
+    }
+    .diff-insert { background: #d4f7d4; }
+    .diff-delete { background: #ffd6d6; text-decoration: line-through; }
+</style>
+<div>
+    <h2 class="handwritten text-5xl text-[#D9534F] mb-4">Text Diff Checker</h2>
+    <div class="mb-6 p-6 bg-amber-50/70 rounded-lg border border-amber-200">
+        <p class="text-lg text-gray-800 font-bold mb-2">The Text Diff Checker tool lets you compare two blocks of text and instantly see the differences. Perfect for code review, document editing, or checking changes between versions.</p>
+        <ul class="list-disc list-inside text-gray-700 text-base mb-2">
+            <li><b>Side-by-Side Comparison:</b> Paste two texts and see what’s added, removed, or changed.</li>
+            <li><b>Highlights Differences:</b> Insertions and deletions are color-coded for clarity.</li>
+            <li><b>Great for:</b> Code review, proofreading, version control, and more.</li>
+        </ul>
+        <p class="text-base text-gray-700 mb-2"><b>How to use:</b></p>
+        <ol class="list-decimal list-inside text-gray-700 text-base mb-2">
+            <li>Paste or type your original text in the left box and the modified text in the right box.</li>
+            <li>Click <b>Compare</b> to see the differences highlighted below.</li>
+            <li>Use <b>Copy</b> to copy the diff result, <b>Download</b> to save as a file, or <b>Clear</b> to reset.</li>
+        </ol>
+        <p class="text-base text-gray-700"><b>Example uses:</b> Compare code changes, check document edits, review assignments, or spot differences in any text.</p>
+    </div>
+    <div class="diff-inputs">
+        <textarea id="diff-input-a" class="rdl-textarea" placeholder="Original text..."></textarea>
+        <textarea id="diff-input-b" class="rdl-textarea" placeholder="Modified text..."></textarea>
+    </div>
+    <div class="diff-btn-bar">
+        <button id="diff-compare" class="rdl-utility-button">Compare</button>
+    </div>
+    <div class="rdl-output-box" id="diff-output"></div>
+    <div class="rdl-utility-bar">
+        <button id="diff-copy" class="rdl-utility-button">Copy</button>
+        <button id="diff-download" class="rdl-utility-button">Download</button>
+        <button id="diff-clear" class="rdl-utility-button">Clear</button>
+    </div>
+</div>
+<script>
+// Simple line-based diff
+function diffLines(a, b) {
+    const aLines = a.split(/\r?\n/);
+    const bLines = b.split(/\r?\n/);
+    let i = 0, j = 0;
+    let result = '';
+    while (i < aLines.length || j < bLines.length) {
+        if (i < aLines.length && j < bLines.length && aLines[i] === bLines[j]) {
+            result += aLines[i] + '\n';
+            i++; j++;
+        } else if (j < bLines.length && (i >= aLines.length || aLines[i] !== bLines[j])) {
+            result += '<span class="diff-insert">' + bLines[j] + '</span>\n';
+            j++;
+        } else if (i < aLines.length && (j >= bLines.length || aLines[i] !== bLines[j])) {
+            result += '<span class="diff-delete">' + aLines[i] + '</span>\n';
+            i++;
+        }
+    }
+    return result;
+}
+function initializeTextDiffChecker() {
+    const inputA = document.getElementById('diff-input-a');
+    const inputB = document.getElementById('diff-input-b');
+    const output = document.getElementById('diff-output');
+    const btnCompare = document.getElementById('diff-compare');
+    const btnCopy = document.getElementById('diff-copy');
+    const btnDownload = document.getElementById('diff-download');
+    const btnClear = document.getElementById('diff-clear');
+    btnCompare.addEventListener('click', () => {
+        output.innerHTML = diffLines(inputA.value, inputB.value);
+    });
+    btnCopy.addEventListener('click', () => {
+        const temp = document.createElement('textarea');
+        temp.value = output.innerText;
+        document.body.appendChild(temp);
+        temp.select();
+        document.execCommand('copy');
+        document.body.removeChild(temp);
+        const orig = btnCopy.textContent;
+        btnCopy.textContent = 'Copied!';
+        setTimeout(() => { btnCopy.textContent = orig; }, 2000);
+    });
+    btnDownload.addEventListener('click', () => {
+        const blob = new Blob([output.innerText], { type: 'text/plain' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'text-diff.txt';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    });
+    btnClear.addEventListener('click', () => {
+        inputA.value = '';
+        inputB.value = '';
+        output.innerHTML = '';
+    });
+}
+initializeTextDiffChecker();
+</script>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Running Pace Calculator</title>
+    <style>
+        body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; }
+        .calc-container { max-width: 420px; margin: 3em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2em 1.5em 2.5em 1.5em; }
+        .handwritten { font-family: 'Caveat', cursive; }
+        .calc-label { font-weight: 600; margin-bottom: 0.5em; display: block; }
+        .calc-input { width: 100%; padding: 1em; border: 2px solid #EAE3D5; border-radius: 0.7em; font-size: 1.2em; margin-bottom: 1em; background: #FDFBF5; text-align: center; font-family: 'Fira Code', monospace; }
+        .calc-btn { background: #fff; color: #D9534F; border: 2px solid #D9534F; border-radius: 0.5em; padding: 0.7em 2em; font-weight: 600; font-size: 1.1em; cursor: pointer; transition: all 0.2s; margin-bottom: 1em; }
+        .calc-btn:hover { background: #D9534F; color: #fff; }
+        .calc-result { background: #FDFBF5; border: 2px solid #D9534F; border-radius: 0.7em; padding: 1em; font-size: 1.25em; color: #D9534F; min-height: 1.7em; margin-bottom: 1em; text-align: center; font-family: 'Fira Code', monospace; font-weight: bold; max-height: 300px; overflow-y: auto; word-break: break-word; transition: height 0.2s; }
+        .calc-desc { width: 100%; margin-top: 2em; background:#FDFBF5; border:2px solid #EAE3D5; border-radius:0.9em; padding:1.2em 1em; font-size:1.08em; color:#333; line-height:1.7; }
+        .calc-desc strong { color: #D9534F; font-size: 1.12em; }
+        @media (max-width: 600px) { .calc-container { padding: 1em 0.2em; } }
+    </style>
+</head>
+<body>
+<div class="calc-container">
+    <h2 class="handwritten text-5xl text-[#D9534F] mb-4">Running Pace Calculator</h2>
+    <label class="calc-label">Distance:</label>
+    <input id="distance" class="calc-input" type="number" min="0" step="0.1" placeholder="e.g. 5">
+    <label class="calc-label">Distance Unit:</label>
+    <select id="distanceUnit" class="calc-input">
+        <option value="km">Kilometers</option>
+        <option value="miles">Miles</option>
+    </select>
+    <label class="calc-label">Time - Hours:</label>
+    <input id="hours" class="calc-input" type="number" min="0" max="23" placeholder="0">
+    <label class="calc-label">Time - Minutes:</label>
+    <input id="minutes" class="calc-input" type="number" min="0" max="59" placeholder="30">
+    <label class="calc-label">Time - Seconds:</label>
+    <input id="seconds" class="calc-input" type="number" min="0" max="59" placeholder="0">
+    <button id="calc-btn" class="calc-btn">Calculate Pace</button>
+    <div class="calc-result" id="calc-result"></div>
+</div>
+<div class="calc-desc" style="max-width: fit-content; margin: 2.5em auto 0 auto;">
+    <strong style="font-size:1.18em; color:#D9534F;">About the Running Pace Calculator</strong><br><br>
+    Calculate your running pace per kilometer or mile with precise time tracking. Enter your distance and time to get detailed pace analysis for training and racing.<br><br>
+    <b>Pace Formats Calculated:</b>
+    <ul style="margin-left:1.2em;">
+        <li><b>Per Kilometer:</b> Minutes and seconds per km</li>
+        <li><b>Per Mile:</b> Minutes and seconds per mile</li>
+        <li><b>Speed:</b> Kilometers or miles per hour</li>
+        <li><b>Total Time:</b> Complete duration breakdown</li>
+    </ul><br>
+    <b>Use Cases:</b>
+    <ul style="margin-left:1.2em;">
+        <li>Plan race strategies and pacing</li>
+        <li>Track training progress over time</li>
+        <li>Compare performance across distances</li>
+        <li>Set goal times for upcoming races</li>
+    </ul>
+</div>
+<script>
+function showResult(str) {
+    document.getElementById('calc-result').innerHTML = str;
+}
+document.getElementById('calc-btn').addEventListener('click', function() {
+    let distance = parseFloat(document.getElementById('distance').value);
+    let distanceUnit = document.getElementById('distanceUnit').value;
+    let hours = parseInt(document.getElementById('hours').value) || 0;
+    let minutes = parseInt(document.getElementById('minutes').value) || 0;
+    let seconds = parseInt(document.getElementById('seconds').value) || 0;
+    
+    if (isNaN(distance) || distance <= 0) {
+        showResult('Please enter a valid distance.');
+        return;
+    }
+    
+    if (hours === 0 && minutes === 0 && seconds === 0) {
+        showResult('Please enter a valid time.');
+        return;
+    }
+    
+    // Convert total time to seconds
+    let totalSeconds = (hours * 3600) + (minutes * 60) + seconds;
+    let totalMinutes = totalSeconds / 60;
+    
+    // Calculate pace in seconds per distance unit
+    let paceSeconds = totalSeconds / distance;
+    let paceMinutes = Math.floor(paceSeconds / 60);
+    let remainingSeconds = Math.round(paceSeconds % 60);
+    
+    // Calculate speed
+    let speed = distance / (totalSeconds / 3600);
+    
+    // Convert pace to other units if needed
+    let kmPace, milePace, kmSpeed, mileSpeed;
+    
+    if (distanceUnit === 'km') {
+        kmPace = `${paceMinutes}:${remainingSeconds.toString().padStart(2, '0')}`;
+        milePace = `${Math.floor(paceSeconds * 1.60934 / 60)}:${Math.round((paceSeconds * 1.60934) % 60).toString().padStart(2, '0')}`;
+        kmSpeed = speed.toFixed(2);
+        mileSpeed = (speed / 1.60934).toFixed(2);
+    } else {
+        milePace = `${paceMinutes}:${remainingSeconds.toString().padStart(2, '0')}`;
+        kmPace = `${Math.floor(paceSeconds / 1.60934 / 60)}:${Math.round((paceSeconds / 1.60934) % 60).toString().padStart(2, '0')}`;
+        mileSpeed = speed.toFixed(2);
+        kmSpeed = (speed * 1.60934).toFixed(2);
+    }
+    
+    let result = `<b>Total Time:</b> ${hours}h ${minutes}m ${seconds}s<br><br>
+                  <b>Pace per KM:</b> ${kmPace} min/km<br>
+                  <b>Pace per Mile:</b> ${milePace} min/mile<br><br>
+                  <b>Speed:</b> ${kmSpeed} km/h<br>
+                  <b>Speed:</b> ${mileSpeed} mph`;
+    
+    showResult(result);
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>401K Calculator - Free Retirement Planning Tool | Calculate Your 401K Growth</title>
+    <meta name="description" content="Free 401K calculator to estimate your retirement savings growth. Calculate future 401K value with employer matching, contributions, and investment returns. Plan your retirement today!">
+    <meta name="keywords" content="401k calculator, retirement calculator, 401k planning, employer match calculator, retirement savings, investment calculator, pension planning">
+    <meta name="author" content="ScribbleTools">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://scribbletools.net/client/tools/financial/401k-calculator.html">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://scribbletools.net/client/tools/financial/401k-calculator.html">
+    <meta property="og:title" content="401K Calculator - Free Retirement Planning Tool">
+    <meta property="og:description" content="Calculate your 401K growth with employer matching and investment returns. Free retirement planning calculator with instant results.">
+    <meta property="og:image" content="https://scribbletools.net/assets/og-image.svg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://scribbletools.net/client/tools/financial/401k-calculator.html">
+    <meta property="twitter:title" content="401K Calculator - Free Retirement Planning Tool">
+    <meta property="twitter:description" content="Calculate your 401K growth with employer matching and investment returns. Free retirement planning calculator.">
+    <meta property="twitter:image" content="https://scribbletools.net/assets/og-image.svg">
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "401K Calculator",
+      "description": "Free online 401K calculator to estimate retirement savings growth with employer matching and investment returns",
+      "url": "https://scribbletools.net/client/tools/financial/401k-calculator.html",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Web Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "ScribbleTools"
+      }
+    }
+    </script>
+    <style>
+        body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; }
+        .calc-container { max-width: 420px; margin: 3em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2em 1.5em 2.5em 1.5em; }
+        .handwritten { font-family: 'Caveat', cursive; }
+        .calc-label { font-weight: 600; margin-bottom: 0.5em; display: block; }
+        .calc-input { width: 100%; padding: 1em; border: 2px solid #EAE3D5; border-radius: 0.7em; font-size: 1.2em; margin-bottom: 1em; background: #FDFBF5; text-align: center; font-family: 'Fira Code', monospace; }
+        .calc-btn { background: #fff; color: #D9534F; border: 2px solid #D9534F; border-radius: 0.5em; padding: 0.7em 2em; font-weight: 600; font-size: 1.1em; cursor: pointer; transition: all 0.2s; margin-bottom: 1em; }
+        .calc-btn:hover { background: #D9534F; color: #fff; }
+        .calc-result { background: #FDFBF5; border: 2px solid #D9534F; border-radius: 0.7em; padding: 1em; font-size: 1.25em; color: #D9534F; min-height: 1.7em; margin-bottom: 1em; text-align: center; font-family: 'Fira Code', monospace; font-weight: bold; max-height: 300px; overflow-y: auto; word-break: break-word; transition: height 0.2s; }
+        .calc-desc { width: 100%; margin-top: 2em; background:#FDFBF5; border:2px solid #EAE3D5; border-radius:0.9em; padding:1.2em 1em; font-size:1.08em; color:#333; line-height:1.7; }
+        .calc-desc strong { color: #D9534F; font-size: 1.12em; }
+        @media (max-width: 600px) { .calc-container { padding: 1em 0.2em; } }
+    </style>
+</head>
+<body>
+<div class="calc-container">
+    <h2 class="handwritten text-5xl text-[#D9534F] mb-4">401K Calculator</h2>
+    <label class="calc-label">Current 401K Balance:</label>
+    <input id="balance" class="calc-input" type="number" min="0" placeholder="e.g. 20000">
+    <label class="calc-label">Annual Contribution ($):</label>
+    <input id="contribution" class="calc-input" type="number" min="0" placeholder="e.g. 6000">
+    <label class="calc-label">Employer Match (%):</label>
+    <input id="match" class="calc-input" type="number" min="0" max="100" placeholder="e.g. 50">
+    <label class="calc-label">Annual Salary ($):</label>
+    <input id="salary" class="calc-input" type="number" min="0" placeholder="e.g. 50000">
+    <label class="calc-label">Expected Annual Return (%):</label>
+    <input id="return" class="calc-input" type="number" min="0" step="0.01" placeholder="e.g. 7">
+    <label class="calc-label">Years to Grow:</label>
+    <input id="years" class="calc-input" type="number" min="1" placeholder="e.g. 30">
+    <button id="calc-btn" class="calc-btn">Calculate</button>
+    <div class="calc-result" id="calc-result"></div>
+</div>
+<div class="calc-desc" style="max-width: fit-content; margin: 2.5em auto 0 auto;">
+    <strong style="font-size:1.18em; color:#D9534F;">About the 401K Calculator</strong><br><br>
+    
+    The 401K Calculator helps you estimate how much your retirement account will grow over time, including the powerful effect of employer matching and compound interest. This tool is essential for retirement planning and understanding how small changes in contributions can lead to significant differences in your retirement savings.<br><br>
+    
+    <strong style="color:#D9534F;">What is a 401K?</strong><br>
+    A 401K is an employer-sponsored retirement savings plan that allows you to save for retirement with pre-tax dollars. Many employers offer matching contributions, which is essentially free money added to your retirement savings.<br><br>
+    
+    <strong style="color:#D9534F;">How to Use This Calculator:</strong><br>
+    <ol style="margin-left:1.2em; line-height:1.6;">
+        <li><strong>Current 401K Balance:</strong> Enter your existing 401K balance (enter 0 if starting fresh)</li>
+        <li><strong>Annual Contribution:</strong> How much you plan to contribute yearly (e.g., $6,000)</li>
+        <li><strong>Employer Match:</strong> Your employer's matching percentage (e.g., 50% means they match 50 cents per dollar)</li>
+        <li><strong>Annual Salary:</strong> Your gross annual income used to calculate employer match limits</li>
+        <li><strong>Expected Return:</strong> Average annual return percentage (historically 7-10% for stock market)</li>
+        <li><strong>Years to Grow:</strong> How many years until retirement</li>
+        <li><strong>Click Calculate:</strong> See your projected retirement balance</li>
+    </ol><br>
+    
+    <strong style="color:#D9534F;">What You'll Discover:</strong><br>
+    <ul style="margin-left:1.2em; line-height:1.6;">
+        <li><strong>Future Account Value:</strong> Your estimated 401K balance at retirement</li>
+        <li><strong>Employer Match Impact:</strong> How much free money you'll receive from your employer</li>
+        <li><strong>Compound Growth:</strong> How your money grows exponentially over time</li>
+        <li><strong>Contribution Strategy:</strong> Whether you're saving enough for retirement</li>
+    </ul><br>
+    
+    <strong style="color:#D9534F;">Perfect For:</strong><br>
+    <ul style="margin-left:1.2em; line-height:1.6;">
+        <li><strong>New Employees:</strong> Understanding your 401K benefits and planning contributions</li>
+        <li><strong>Career Changes:</strong> Evaluating 401K options with new employers</li>
+        <li><strong>Retirement Planning:</strong> Seeing if you're on track for your retirement goals</li>
+        <li><strong>Contribution Optimization:</strong> Finding the right balance between current needs and future security</li>
+        <li><strong>Employer Match Maximization:</strong> Ensuring you don't leave free money on the table</li>
+    </ul><br>
+    
+    <strong style="color:#D9534F;">Pro Tips for 401K Success:</strong><br>
+    <ul style="margin-left:1.2em; line-height:1.6;">
+        <li><strong>Always get full employer match:</strong> It's an instant 100% return on investment</li>
+        <li><strong>Start early:</strong> Time is your most powerful wealth-building tool</li>
+        <li><strong>Increase contributions with raises:</strong> Gradually boost your savings rate</li>
+        <li><strong>Consider catch-up contributions:</strong> If you're 50+, you can contribute extra</li>
+        <li><strong>Review annually:</strong> Adjust contributions based on life changes</li>
+    </ul><br>
+    
+    <strong style="color:#D9534F;">Common 401K Scenarios:</strong><br>
+    <ul style="margin-left:1.2em; line-height:1.6;">
+        <li><strong>Starting at 25:</strong> Small contributions can grow to $1M+ by retirement</li>
+        <li><strong>Maximizing match:</strong> If employer matches 50% up to 6%, contribute at least 6%</li>
+        <li><strong>Playing catch-up:</strong> Starting later? Higher contributions can still build substantial savings</li>
+    </ul><br>
+    
+    <b>Note:</b> This calculator provides estimates for planning purposes. Actual returns will vary based on market conditions, investment choices, and fees. Consider consulting with financial advisors for personalized retirement strategies.
+</div>
+<script>
+function showResult(str) {
+    document.getElementById('calc-result').innerHTML = str;
+}
+document.getElementById('calc-btn').addEventListener('click', function() {
+    let balance = parseFloat(document.getElementById('balance').value);
+    let contribution = parseFloat(document.getElementById('contribution').value);
+    let match = parseFloat(document.getElementById('match').value);
+    let salary = parseFloat(document.getElementById('salary').value);
+    let annualReturn = parseFloat(document.getElementById('return').value);
+    let years = parseInt(document.getElementById('years').value);
+    if (isNaN(balance) || isNaN(contribution) || isNaN(match) || isNaN(salary) || isNaN(annualReturn) || isNaN(years) || balance < 0 || contribution < 0 || match < 0 || match > 100 || salary < 0 || annualReturn < 0 || years <= 0) {
+        showResult('Please enter valid values for all fields.');
+        return;
+    }
+    let employerMatch = Math.min(contribution, salary * (match / 100));
+    let totalAnnual = contribution + employerMatch;
+    let r = annualReturn / 100;
+    let future = balance;
+    for (let i = 0; i < years; i++) {
+        future = (future + totalAnnual) * (1 + r);
+    }
+    showResult(`<b>Estimated 401K at Retirement:</b> $${future.toFixed(2)}`);
+});
+</script>
+</body>
+</html>

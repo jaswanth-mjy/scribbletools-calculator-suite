@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amortization Calculator - Free Loan Amortization Schedule Calculator</title>
+    <meta name="description" content="Free amortization calculator to create loan payment schedules. Calculate principal and interest breakdown for mortgages, car loans, and personal loans.">
+    <meta name="keywords" content="amortization calculator, loan amortization schedule, mortgage amortization, loan payment schedule, principal and interest calculator">
+    <meta name="author" content="ScribbleTools">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://scribbletools.net/client/tools/financial/amortization-calculator.html">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://scribbletools.net/client/tools/financial/amortization-calculator.html">
+    <meta property="og:title" content="Amortization Calculator - Free Loan Amortization Schedule Calculator">
+    <meta property="og:description" content="Create detailed loan amortization schedules with our free calculator. See principal and interest breakdown for any loan.">
+    <meta property="og:image" content="https://scribbletools.net/assets/og-image.svg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://scribbletools.net/client/tools/financial/amortization-calculator.html">
+    <meta property="twitter:title" content="Amortization Calculator - Free Loan Amortization Schedule Calculator">
+    <meta property="twitter:description" content="Create detailed loan amortization schedules with our free calculator. Principal and interest breakdown.">
+    <meta property="twitter:image" content="https://scribbletools.net/assets/og-image.svg">
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Amortization Calculator",
+      "description": "Free online amortization calculator for creating detailed loan payment schedules and principal/interest breakdowns",
+      "url": "https://scribbletools.net/client/tools/financial/amortization-calculator.html",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Web Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "ScribbleTools"
+      }
+    }
+    </script>
+    <style>
+        body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; }
+        .calc-container { max-width: 420px; margin: 3em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2em 1.5em 2.5em 1.5em; }
+        .handwritten { font-family: 'Caveat', cursive; }
+        .calc-label { font-weight: 600; margin-bottom: 0.5em; display: block; }
+        .calc-input { width: 100%; padding: 1em; border: 2px solid #EAE3D5; border-radius: 0.7em; font-size: 1.2em; margin-bottom: 1em; background: #FDFBF5; text-align: center; font-family: 'Fira Code', monospace; }
+        .calc-btn { background: #fff; color: #D9534F; border: 2px solid #D9534F; border-radius: 0.5em; padding: 0.7em 2em; font-weight: 600; font-size: 1.1em; cursor: pointer; transition: all 0.2s; margin-bottom: 1em; }
+        .calc-btn:hover { background: #D9534F; color: #fff; }
+        .calc-result { background: #FDFBF5; border: 2px solid #D9534F; border-radius: 0.7em; padding: 1em; font-size: 1.25em; color: #D9534F; min-height: 1.7em; margin-bottom: 1em; text-align: center; font-family: 'Fira Code', monospace; font-weight: bold; max-height: 300px; overflow-y: auto; word-break: break-word; transition: height 0.2s; }
+        .calc-desc { width: 100%; margin-top: 2em; background:#FDFBF5; border:2px solid #EAE3D5; border-radius:0.9em; padding:1.2em 1em; font-size:1.08em; color:#333; line-height:1.7; }
+        .calc-desc strong { color: #D9534F; font-size: 1.12em; }
+        .calc-title { font-size: 1.18em; color: #D9534F; }
+        @media (max-width: 600px) { .calc-container { padding: 1em 0.2em; } }
+        .calc-list { margin-left: 1.2em; }
+        .calc-desc-centered {
+            max-width: fit-content;
+            margin: 2.5em auto 0 auto;
+        }
+    </style>
+</head>
+<body>
+<div class="calc-container">
+    <h2 class="handwritten text-5xl text-[#D9534F] mb-4">Amortization Calculator</h2>
+    <label class="calc-label">Loan Amount:</label>
+    <input id="amount" class="calc-input" type="number" min="0" placeholder="e.g. 250000">
+    <label class="calc-label">Interest Rate (% per year):</label>
+    <input id="rate" class="calc-input" type="number" min="0" step="0.01" placeholder="e.g. 5">
+   <div class="calc-desc calc-desc-centered">
+    <input id="years" class="calc-input" type="number" min="1" placeholder="e.g. 30">
+    <button id="calc-btn" class="calc-btn">Calculate</button>
+    <div class="calc-result" id="calc-result"></div>
+   <div class="calc-desc calc-desc-centered">
+        <strong style="font-size:1.18em; color:#D9534F;">About the Amortization Calculator</strong><br><br>
+        
+        The Amortization Calculator helps you understand how your loan payments are structured over time. It shows you exactly how much of each payment goes toward principal (reducing your debt) versus interest, and provides a complete payment schedule for mortgages, auto loans, personal loans, and other installment loans.<br><br>
+        
+        <strong style="color:#D9534F;">What is Loan Amortization?</strong><br>
+        Amortization is the process of paying off a loan through regular monthly payments over a set period. Each payment includes both principal and interest, with early payments containing more interest and later payments containing more principal.<br><br>
+        
+        <strong style="color:#D9534F;">How to Use This Calculator:</strong><br>
+        <ol style="margin-left:1.2em; line-height:1.6;">
+            <li><strong>Enter Loan Amount:</strong> The total amount you're borrowing (e.g., $250,000 for a home)</li>
+            <li><strong>Enter Interest Rate:</strong> Your annual interest rate as a percentage (e.g., 5.5%)</li>
+            <li><strong>Enter Loan Term:</strong> The number of years to repay the loan (e.g., 30 years)</li>
+            <li><strong>Click Calculate:</strong> Get your monthly payment and total interest costs instantly</li>
+        </ol><br>
+        
+        <strong style="color:#D9534F;">What You'll Learn:</strong><br>
+        <ul style="margin-left:1.2em; line-height:1.6;">
+            <li><strong>Monthly Payment Amount:</strong> Your exact monthly payment including principal and interest</li>
+            <li><strong>Total Interest Cost:</strong> How much you'll pay in interest over the life of the loan</li>
+            <li><strong>Total Payments:</strong> The complete amount you'll pay including principal and interest</li>
+            <li><strong>Payment Breakdown:</strong> Understanding how payments are allocated between principal and interest</li>
+        </ul><br>
+        
+        <strong style="color:#D9534F;">Perfect For:</strong><br>
+        <ul style="margin-left:1.2em; line-height:1.6;">
+            <li><strong>Home Buyers:</strong> Calculate mortgage payments for different loan amounts</li>
+            <li><strong>Car Shoppers:</strong> Determine auto loan payments and total costs</li>
+            <li><strong>Personal Loans:</strong> Understand payment schedules for debt consolidation or major purchases</li>
+            <li><strong>Refinancing Decisions:</strong> Compare current loan terms with potential new terms</li>
+            <li><strong>Budget Planning:</strong> Ensure loan payments fit comfortably in your monthly budget</li>
+        </ul><br>
+        
+        <strong style="color:#D9534F;">Pro Tips:</strong><br>
+        <ul style="margin-left:1.2em; line-height:1.6;">
+            <li>Try different loan terms to see how they affect your monthly payment</li>
+            <li>Compare interest rates to understand potential savings</li>
+            <li>Consider the total interest cost, not just the monthly payment</li>
+            <li>Use this tool before applying for loans to set realistic expectations</li>
+        </ul><br>
+        
+        <b>Note:</b> This calculator provides estimates for planning purposes. Actual loan terms may vary based on lender requirements, fees, and other factors. Always consult with qualified financial professionals for personalized advice.
+    </div>
+<script>
+function showResult(str) {
+    document.getElementById('calc-result').innerHTML = str;
+}
+document.getElementById('calc-btn').addEventListener('click', function() {
+    let amount = parseFloat(document.getElementById('amount').value);
+    let rate = parseFloat(document.getElementById('rate').value);
+    let years = parseInt(document.getElementById('years').value);
+    if (isNaN(amount) || isNaN(rate) || isNaN(years) || amount <= 0 || rate < 0 || years <= 0) {
+        showResult('Please enter valid values for all fields.');
+        return;
+    }
+    let monthlyRate = rate / 100 / 12;
+    let n = years * 12;
+    let payment = monthlyRate === 0 ? amount / n : (amount * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -n));
+    showResult(`<b>Monthly Payment:</b> $${payment.toFixed(2)}<br><b>Total Payments:</b> $${(payment*n).toFixed(2)}<br><b>Total Interest:</b> $${(payment*n-amount).toFixed(2)}`);
+});
+</script>
+</body>
+</html>

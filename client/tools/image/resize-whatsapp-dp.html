@@ -1,0 +1,1307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resize Image for WhatsApp DP - Free Profile Picture Tool</title>
+  <meta name="description" content="Resize and fit your image perfectly for a WhatsApp profile picture (DP). Avoid cropping and create a square DP with a custom background. Free and easy.">
+  
+  <style>
+    .resize-whatsapp-dp-tool body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; }
+    .resize-whatsapp-dp-tool main { display: block; }
+    .resize-whatsapp-dp-tool .reduce-size-container { max-width: 800px; margin: 3em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2em 1.5em 2.5em 1.5em; }
+    .resize-whatsapp-dp-tool .handwritten { font-family: 'Caveat', cursive; }
+    .resize-whatsapp-dp-tool .upload-area { border: 3px dashed #D9534F; border-radius: 1em; padding: 3em 2em; text-align: center; margin: 2em 0; background: #FDFBF5; transition: all 0.3s; cursor: pointer; }
+    .resize-whatsapp-dp-tool .upload-area:hover { background: #F0F8FF; border-color: #4682B4; }
+    .resize-whatsapp-dp-tool .upload-icon { font-size: 3em; color: #D9534F; margin-bottom: 1em; text-align: center; }
+    .resize-whatsapp-dp-tool .file-input { display: none; }
+    .resize-whatsapp-dp-tool .upload-btn { background: #D9534F; color: #fff; border: none; border-radius: 0.5em; padding: 1em 2em; font-weight: 600; cursor: pointer; transition: all 0.2s; display: block; margin: 0 auto 1.5em auto; }
+    .resize-whatsapp-dp-tool .upload-btn:hover { background: #c9302c; }
+    .resize-whatsapp-dp-tool .choose-file-btn { background: #D9534F; color: #fff; border: none; border-radius: 0.5em; padding: 1em 2em; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+    .resize-whatsapp-dp-tool .choose-file-btn:hover { background: #c9302c; }
+    .resize-whatsapp-dp-tool .preview-section { margin-top: 2em; text-align: center; display: none; }
+    .resize-whatsapp-dp-tool .preview-section h3 { color: #4682B4; margin-bottom: 1em; }
+    .resize-whatsapp-dp-tool .uploaded-preview { max-width: 100%; max-height: 300px; border-radius: 0.5em; margin: 1em 0; border: 2px solid #EAE3D5; }
+    .resize-whatsapp-dp-tool .controls-section { display: none; margin: 2em 0; background: #FDFBF5; border-radius: 0.7em; padding: 1.2em; border: 1px solid #FFEAA7; }
+    .resize-whatsapp-dp-tool .controls-section h3 { color: #4682B4; margin-bottom: 1em; font-weight: 600; }
+    .resize-whatsapp-dp-tool .form-group { margin: 1.2em 0; }
+    .resize-whatsapp-dp-tool .form-label { font-weight: 600; margin-bottom: 0.5em; display: block; color: #4682B4; }
+    .resize-whatsapp-dp-tool .form-input { width: 100%; padding: 0.8em; border: 2px solid #EAE3D5; border-radius: 0.5em; font-size: 1em; margin-bottom: 1em; background: #fff; }
+    .resize-whatsapp-dp-tool .process-btn { 
+      background: linear-gradient(135deg, #228B22, #32CD32); 
+      color: #fff; 
+      border: none; 
+      border-radius: 0.8em; 
+      padding: 1.2em 2.5em; 
+      font-weight: 700; 
+      cursor: pointer; 
+      transition: all 0.3s ease; 
+      font-size: 1.1em; 
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      box-shadow: 0 4px 15px rgba(34, 139, 34, 0.3);
+      position: relative;
+      overflow: hidden;
+      margin: 0.5em;
+      min-width: 180px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5em;
+    }
+    
+    .resize-whatsapp-dp-tool .process-btn:hover { 
+      background: linear-gradient(135deg, #1e7e1e, #28a745);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(34, 139, 34, 0.4);
+    }
+    
+    .resize-whatsapp-dp-tool .process-btn:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 10px rgba(34, 139, 34, 0.3);
+    }
+    
+    .resize-whatsapp-dp-tool .process-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s;
+    }
+    
+    .resize-whatsapp-dp-tool .process-btn:hover::before {
+      left: 100%;
+    }
+    .resize-whatsapp-dp-tool .clear-btn { background: #6c757d; color: #fff; border: none; border-radius: 0.5em; padding: 0.8em 1.5em; font-weight: 600; cursor: pointer; transition: all 0.2s; margin-left: 1em; }
+    .resize-whatsapp-dp-tool .clear-btn:hover { background: #5a6268; }
+    .resize-whatsapp-dp-tool .output-preview { background: #FDFBF5; border-radius: 0.7em; padding: 1.2em; text-align: center; margin: 2em 0; border: 1px solid #FFEAA7; display: none; }
+    .resize-whatsapp-dp-tool .output-preview h3 { color: #4682B4; margin-bottom: 1em; font-weight: 600; }
+    .resize-whatsapp-dp-tool .preview-image { max-width: 100%; max-height: 300px; border-radius: 0.5em; margin: 1em 0; border: 2px solid #EAE3D5; }
+    .resize-whatsapp-dp-tool .output-card { display: none; margin-top: 1.5em; }
+    
+    /* Live Preview Layout */
+    .resize-whatsapp-dp-tool .live-preview-container {
+      display: none;
+      margin: 2em 0;
+      background: #FDFBF5;
+      border-radius: 0.7em;
+      padding: 1.5em;
+      border: 1px solid #FFEAA7;
+    }
+    
+    .resize-whatsapp-dp-tool .preview-comparison {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2em;
+      margin-top: 1.5em;
+    }
+    
+    .resize-whatsapp-dp-tool .preview-section-container {
+      text-align: center;
+    }
+    
+    .resize-whatsapp-dp-tool .preview-section-container h4 {
+      color: #4682B4;
+      margin-bottom: 1em;
+      font-size: 1.2em;
+      font-weight: 600;
+    }
+    
+    .resize-whatsapp-dp-tool .preview-section-container img,
+    .resize-whatsapp-dp-tool .preview-section-container canvas {
+      max-width: 100%;
+      max-height: 250px;
+      border-radius: 0.5em;
+      border: 2px solid #EAE3D5;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    
+    @media (max-width: 768px) {
+      .resize-whatsapp-dp-tool .preview-comparison {
+        grid-template-columns: 1fr;
+        gap: 1.5em;
+      }
+    }
+    .resize-whatsapp-dp-tool .btn-download { background: #228B22; color: #fff; border: none; border-radius: 0.5em; padding: 1em 2em; font-weight: 600; cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-block; margin-right: 1em; font-size: 1.1em; }
+    .resize-whatsapp-dp-tool .btn-download:hover { background: #1e7e1e; color: #fff; text-decoration: none; }
+    .resize-whatsapp-dp-tool .step-list { margin: 1.2em 0 1.2em 1.2em; padding: 0; }
+    .resize-whatsapp-dp-tool .step-list li { margin-bottom: 0.7em; color: #666; }
+    .resize-whatsapp-dp-tool .step-list li strong { color: #4682B4; }
+    
+    /* Key Features Section Styling */
+    .resize-whatsapp-dp-tool-features { max-width: 800px; margin: 3em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2em 1.5em; }
+    .resize-whatsapp-dp-tool-features h2 { color: #4682B4; margin-bottom: 1.5em; font-size: 2em; text-align: center; }
+    .resize-whatsapp-dp-tool .feature-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5em; margin: 2em 0; }
+    .resize-whatsapp-dp-tool .feature-item { display: flex; align-items: flex-start; padding: 1.2em; background: #F8F9FA; border-radius: 0.7em; border: 1px solid #E9ECEF; transition: all 0.3s; }
+    .resize-whatsapp-dp-tool .feature-item:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+    .resize-whatsapp-dp-tool .feature-icon { font-size: 2em; margin-right: 1em; color: #D9534F; }
+    .resize-whatsapp-dp-tool .feature-item strong { color: #4682B4; display: block; margin-bottom: 0.5em; font-size: 1.1em; }
+    .resize-whatsapp-dp-tool .feature-item p { color: #666; margin: 0; line-height: 1.4; }
+    
+    /* Recent Tools Section Styling */
+    .resize-whatsapp-dp-tool .recent-tools {
+      margin: 1em 0;
+      padding: 1.2em;
+      background: #FDFBF5;
+      border-radius: 0.7em;
+      font-size: 0.95em;
+      border: 1px solid #FFEAA7;
+    }
+    
+    .resize-whatsapp-dp-tool .recent-tools strong {
+      color: #4682B4;
+    }
+    
+    .resize-whatsapp-dp-tool .recent-tools a {
+      color: #D9534F;
+      text-decoration: none;
+      margin: 0 0.5em;
+    }
+    
+    .resize-whatsapp-dp-tool .recent-tools a:hover {
+      color: #4682B4;
+      text-decoration: underline;
+    }
+    
+    .resize-whatsapp-dp-tool .recent-tools-list {
+      margin-left: 0.5em;
+    }
+    
+    .resize-whatsapp-dp-tool .separator {
+      margin: 0 0.5em;
+      color: #999;
+    }
+    
+    .resize-whatsapp-dp-tool #clear-recent {
+      color: #D9534F !important;
+      font-size: 0.9em !important;
+    }
+    
+    @media (max-width: 768px) {
+      .resize-whatsapp-dp-tool .recent-tools {
+        padding: 1em;
+      }
+      
+      .resize-whatsapp-dp-tool .recent-tools-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5em;
+        margin-top: 0.5em;
+      }
+    }
+    
+    /* Hidden elements by default */
+    .resize-whatsapp-dp-tool #gradient-group { display: none; }
+    .resize-whatsapp-dp-tool #border-options { display: none; }
+    .resize-whatsapp-dp-tool #custom-size-group { display: none; }
+    .resize-whatsapp-dp-tool #jpeg-quality-group { display: none; }
+    .resize-whatsapp-dp-tool #clear-recent-history { display: none; }
+    
+    /* Preset buttons styling */
+    .resize-whatsapp-dp-tool .preset-buttons {
+      display: flex;
+      gap: 0.5em;
+      flex-wrap: wrap;
+      margin-top: 0.5em;
+    }
+    
+    .resize-whatsapp-dp-tool .preset-btn {
+      background: #e9ecef;
+      border: 2px solid #dee2e6;
+      padding: 0.5em 1em;
+      border-radius: 0.5em;
+      cursor: pointer;
+      font-size: 0.9em;
+      transition: all 0.3s ease;
+      color: #333;
+      font-weight: 500;
+    }
+    
+    .resize-whatsapp-dp-tool .preset-btn:hover {
+      background: #4682B4;
+      color: white;
+      border-color: #4682B4;
+      transform: translateY(-1px);
+    }
+    
+    /* Special button styling */
+    .resize-whatsapp-dp-tool #preview-btn {
+      background: linear-gradient(135deg, #FF6B6B, #FF8E8E) !important;
+      box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3) !important;
+    }
+    
+    .resize-whatsapp-dp-tool #preview-btn:hover {
+      background: linear-gradient(135deg, #ff5252, #ff7777) !important;
+      box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4) !important;
+    }
+    
+    .resize-whatsapp-dp-tool #reset-btn {
+      background: linear-gradient(135deg, #6c757d, #8a9196) !important;
+      box-shadow: 0 4px 15px rgba(108, 117, 125, 0.3) !important;
+    }
+    
+    .resize-whatsapp-dp-tool #reset-btn:hover {
+      background: linear-gradient(135deg, #5a6268, #777d83) !important;
+      box-shadow: 0 6px 20px rgba(108, 117, 125, 0.4) !important;
+    }
+    
+    /* Button container styling */
+    .resize-whatsapp-dp-tool .button-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1em;
+      justify-content: center;
+      align-items: center;
+      margin: 2em 0;
+      padding: 1em;
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 1em;
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    @media (max-width: 768px) {
+      .resize-whatsapp-dp-tool .button-group {
+        flex-direction: column;
+      }
+      
+      .resize-whatsapp-dp-tool .process-btn {
+        width: 100%;
+        min-width: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+<main>
+  <div class="resize-whatsapp-dp-tool">
+    <div class="reduce-size-container">
+      <header>
+        <h1 style="font-family: 'Caveat', cursive; font-size: 3em; color: #FF6B6B; margin-bottom: 0.5em;">Resize Image for WhatsApp DP</h1>
+        <p style="font-size:1.2em; margin-bottom:1em;">Create the perfect square profile picture for WhatsApp without cropping. Add a background color or blur effect to fit your entire photo. Fast, privacy-first, and always free. Trusted by millions.</p>
+      </header>
+
+      <div style="margin-bottom: 1.5em;">
+        <span style="color: #666;">Related:</span>
+        <a href="#circle-crop" style="color: #FF6B6B; text-decoration: none; margin: 0 0.5em;">Circle Crop</a>
+        <a href="#resize-instagram-nocrop" style="color: #FF6B6B; text-decoration: none; margin: 0 0.5em;">Instagram No Crop</a>
+        <a href="#resize-image-600x600" style="color: #FF6B6B; text-decoration: none; margin: 0 0.5em;">Resize 600x600</a>
+        <a href="#image-color-picker" style="color: #FF6B6B; text-decoration: none; margin: 0 0.5em;">Color Picker</a>
+      </div>
+
+      <div style="background:#FFF3CD; border:1px solid #FFD700; border-radius:0.7em; padding:1em; margin-bottom:1.2em; color:#B8860B; font-weight:bold; font-size:1.1em;">
+        📱 <b>Create perfect square WhatsApp DPs without losing any part of your image.</b> Add custom backgrounds or blur effects to make your photo fit perfectly in the square format.
+      </div>
+
+      <section aria-labelledby="instructions-title" style="background: #F8FBFF; border-radius: 0.7em; padding: 1.5em; margin: 2em 0; border: 1px solid #4682B4;">
+        <h2 id="instructions-title" style="color:#4682B4; margin-bottom: 1em; font-size: 1.5em;">How to Use</h2>
+        <ol class="step-list" style="margin-left: 1.5em; line-height: 1.6;">
+          <li><strong style="color: #4682B4">Upload Your Photo:</strong>
+            <ul style="margin: 0.5em 0 0.5em 1.5em; color: #666;">
+              <li>Drag & drop your photo into the upload area.</li>
+              <li>Or click "Choose File" to select it.</li>
+            </ul>
+          </li>
+          <li><strong style="color: #4682B4">Adjust Settings:</strong>
+            <ul style="margin: 0.5em 0 0.5em 1.5em; color: #666;">
+              <li>Choose a background color or a blur effect.</li>
+              <li>The image will be centered automatically.</li>
+            </ul>
+          </li>
+          <li><strong style="color: #4682B4">Create & Download:</strong>
+            <ul style="margin: 0.5em 0 0.5em 1.5em; color: #666;">
+              <li>Click "Create DP" to generate the square image.</li>
+              <li>Preview and click "Download" to save your new DP.</li>
+            </ul>
+          </li>
+        </ol>
+      </section>
+    
+      <section class="example-section" style="background: #FDFBF5; border: 1px solid #FFEAA7; border-radius: 0.7em; padding: 1.5em; margin: 2em 0;">
+        <h3 style="color: #4682B4; margin-bottom: 1em;">Common Uses & Pro Tips</h3>
+        
+        <div style="margin-bottom: 1.5em;">
+          <h4 style="color: #FF6B6B; margin-bottom: 0.5em;">📱 Social Media DPs</h4>
+          <ul style="color: #666; margin-left: 1.2em;">
+            <li>WhatsApp profile pictures - perfect square format</li>
+            <li>Instagram profile photos - avoid cropping</li>
+            <li>Twitter avatars - consistent branding</li>
+            <li>LinkedIn headshots - professional appearance</li>
+          </ul>
+        </div>
+        
+        <div style="margin-bottom: 1.5em;">
+          <h4 style="color: #FF6B6B; margin-bottom: 0.5em;">🎨 Background Options</h4>
+          <ul style="color: #666; margin-left: 1.2em;">
+            <li>Blur effect - artistic and modern look</li>
+            <li>Solid colors - clean and professional</li>
+            <li>White background - classic and versatile</li>
+            <li>Brand colors - consistent with your style</li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 style="color: #FF6B6B; margin-bottom: 0.5em;">💡 Pro Tips</h4>
+          <ul style="color: #666; margin-left: 1.2em;">
+            <li>Use blur for portraits to create depth</li>
+            <li>Choose contrasting colors for better visibility</li>
+            <li>Test your DP at small sizes before uploading</li>
+            <li>Keep faces centered for best results</li>
+          </ul>
+        </div>
+      </section>
+
+      <section style="margin-top: 2em;">
+        <h2 style="color:#FF6B6B; margin-bottom: 0.5em;">Privacy Notice</h2>
+        <div style="background: #FFF3CD; border: 1px solid #FFD700; border-radius: 0.7em; padding: 1em; margin-bottom: 1.2em; color: #B8860B;">
+            <strong style="font-size: 1.1em;">🔒 Your files are never uploaded or stored. All processing happens in your browser.</strong>
+        </div>
+      </section>
+
+      <div class="tool-interface">
+        <div class="upload-area" id="upload-area" tabindex="0" aria-label="Upload photo area. Drag and drop or click to select a photo.">
+          <div class="upload-icon" aria-hidden="true">🖼️</div>
+          <h3>Drag & Drop your photo here</h3>
+          <p>or click to browse files</p>
+          <input type="file" id="file-input" class="file-input" accept="image/*">
+          <button class="upload-btn" id="choose-file-btn">Choose File</button>
+          <div id="upload-progress-bar" style="display:none; width:100%; background:#F0F8FF; border-radius:0.5em; margin-top:1.2em; height:1.5em; overflow:hidden; border:1px solid #B0C4DE; position:relative;">
+            <div id="upload-progress-fill" style="height:100%; width:0; background:linear-gradient(90deg,#D9534F,#F0AD4E,#5BC0DE,#5CB85C,#A569BD); transition:width 0.2s;"></div>
+            <span id="upload-progress-text" style="position:absolute; left:50%; top:0; transform:translateX(-50%); color:#333; font-weight:600; line-height:1.5em; font-size:1em;">Uploading: 0%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="image-description" id="image-description" style="display: none; background: #E8F5E8; border: 2px solid #5CB85C; border-radius: 0.7em; padding: 1.2em; margin: 1.5em 0; text-align: center;">
+        <div style="font-size: 1.5em; color: #228B22; margin-bottom: 0.5em;">📱</div>
+        <div style="font-size: 1.1em; color: #228B22; font-weight: 600; margin-bottom: 0.5em;">Photo Uploaded Successfully!</div>
+        <div style="color: #666; font-size: 0.95em;" id="image-info">Ready for WhatsApp DP creation</div>
+      </div>
+
+      <div class="preview-section" id="preview-section">
+        <h3>Uploaded Photo <button class="clear-btn" id="clear-btn">Clear</button></h3>
+        <img id="preview-image" class="uploaded-preview">
+      </div>
+
+      <div class="controls-section" id="controls-section">
+        <h3>DP Settings</h3>
+        
+        <!-- Background Settings -->
+        <div class="form-group">
+            <label for="bg-type-select" class="form-label">Background Type:</label>
+            <select id="bg-type-select" class="form-input">
+                <option value="blur">Blur Background</option>
+                <option value="color">Solid Color</option>
+                <option value="gradient">Gradient Background</option>
+                <option value="transparent">Transparent</option>
+            </select>
+        </div>
+        
+        <div class="form-group" id="bg-color-group">
+            <label for="bg-color-input" class="form-label">Background Color:</label>
+            <input type="color" id="bg-color-input" class="form-input" value="#FFFFFF" />
+        </div>
+        
+        <div class="form-group" id="gradient-group">
+            <label for="gradient-color1" class="form-label">Gradient Color 1:</label>
+            <input type="color" id="gradient-color1" class="form-input" value="#FF6B6B" />
+            <label for="gradient-color2" class="form-label">Gradient Color 2:</label>
+            <input type="color" id="gradient-color2" class="form-input" value="#4ECDC4" />
+            <label for="gradient-direction" class="form-label">Gradient Direction:</label>
+            <select id="gradient-direction" class="form-input">
+                <option value="linear-horizontal">Horizontal</option>
+                <option value="linear-vertical">Vertical</option>
+                <option value="linear-diagonal">Diagonal</option>
+                <option value="radial">Radial</option>
+            </select>
+        </div>
+        
+        <!-- Image Position and Size -->
+        <div class="form-group">
+            <label for="image-size-slider" class="form-label">Image Size: <span id="image-size-value">100%</span></label>
+            <input type="range" id="image-size-slider" min="50" max="150" value="100" class="form-input" />
+        </div>
+        
+        <div class="form-group">
+            <label for="image-position-x" class="form-label">Horizontal Position: <span id="position-x-value">0px</span></label>
+            <input type="range" id="image-position-x" min="-100" max="100" value="0" class="form-input" />
+        </div>
+        
+        <div class="form-group">
+            <label for="image-position-y" class="form-label">Vertical Position: <span id="position-y-value">0px</span></label>
+            <input type="range" id="image-position-y" min="-100" max="100" value="0" class="form-input" />
+        </div>
+        
+        <!-- Image Effects -->
+        <div class="form-group">
+            <label for="brightness-slider" class="form-label">Brightness: <span id="brightness-value">100%</span></label>
+            <input type="range" id="brightness-slider" min="50" max="200" value="100" class="form-input" />
+        </div>
+        
+        <div class="form-group">
+            <label for="contrast-slider" class="form-label">Contrast: <span id="contrast-value">100%</span></label>
+            <input type="range" id="contrast-slider" min="50" max="200" value="100" class="form-input" />
+        </div>
+        
+        <div class="form-group">
+            <label for="saturation-slider" class="form-label">Saturation: <span id="saturation-value">100%</span></label>
+            <input type="range" id="saturation-slider" min="0" max="200" value="100" class="form-input" />
+        </div>
+        
+        <div class="form-group">
+            <label for="blur-intensity" class="form-label">Blur Intensity: <span id="blur-value">10px</span></label>
+            <input type="range" id="blur-intensity" min="0" max="50" value="10" class="form-input" />
+        </div>
+        
+        <!-- Border and Frame Options -->
+        <div class="form-group">
+            <label for="border-toggle" class="form-label">
+                <input type="checkbox" id="border-toggle" /> Add Border
+            </label>
+        </div>
+        
+        <div class="form-group" id="border-options">
+            <label for="border-width" class="form-label">Border Width: <span id="border-width-value">5px</span></label>
+            <input type="range" id="border-width" min="1" max="20" value="5" class="form-input" />
+            
+            <label for="border-color" class="form-label">Border Color:</label>
+            <input type="color" id="border-color" class="form-input" value="#FFFFFF" />
+            
+            <label for="border-style" class="form-label">Border Style:</label>
+            <select id="border-style" class="form-input">
+                <option value="solid">Solid</option>
+                <option value="dashed">Dashed</option>
+                <option value="dotted">Dotted</option>
+                <option value="double">Double</option>
+            </select>
+        </div>
+        
+        <!-- Output Settings -->
+        <div class="form-group">
+            <label for="output-size" class="form-label">Output Size:</label>
+            <select id="output-size" class="form-input">
+                <option value="512">512x512 (WhatsApp Default)</option>
+                <option value="640">640x640 (High Quality)</option>
+                <option value="1024">1024x1024 (Ultra HD)</option>
+                <option value="custom">Custom Size</option>
+            </select>
+        </div>
+        
+        <div class="form-group" id="custom-size-group">
+            <label for="custom-width" class="form-label">Custom Width:</label>
+            <input type="number" id="custom-width" class="form-input" value="512" min="100" max="2048" />
+            <label for="custom-height" class="form-label">Custom Height:</label>
+            <input type="number" id="custom-height" class="form-input" value="512" min="100" max="2048" />
+        </div>
+        
+        <div class="form-group">
+            <label for="output-format" class="form-label">Output Format:</label>
+            <select id="output-format" class="form-input">
+                <option value="png">PNG (Best Quality)</option>
+                <option value="jpeg">JPEG (Smaller Size)</option>
+                <option value="webp">WebP (Modern Format)</option>
+            </select>
+        </div>
+        
+        <div class="form-group" id="jpeg-quality-group">
+            <label for="jpeg-quality" class="form-label">JPEG Quality: <span id="quality-value">90%</span></label>
+            <input type="range" id="jpeg-quality" min="10" max="100" value="90" class="form-input" />
+        </div>
+        
+        <!-- Quick Presets -->
+        <div class="form-group">
+            <label class="form-label">Quick Presets:</label>
+            <div class="preset-buttons">
+                <button type="button" class="preset-btn" data-preset="whatsapp">📱 WhatsApp</button>
+                <button type="button" class="preset-btn" data-preset="instagram">📷 Instagram</button>
+                <button type="button" class="preset-btn" data-preset="linkedin">💼 LinkedIn</button>
+                <button type="button" class="preset-btn" data-preset="discord">🎮 Discord</button>
+                <button type="button" class="preset-btn" data-preset="professional">👔 Professional</button>
+                <button type="button" class="preset-btn" data-preset="creative">🎨 Creative</button>
+            </div>
+        </div>
+        
+        <div class="form-group">
+          <div class="button-group">
+            <button class="process-btn" id="process-btn">
+              <span>🚀</span> Create DP
+            </button>
+            <button type="button" class="process-btn" id="preview-btn">
+              <span>👁️</span> Live Preview
+            </button>
+            <button type="button" class="process-btn" id="reset-btn">
+              <span>🔄</span> Reset All
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Live Preview Section (side by side) -->
+      <div class="live-preview-container" id="live-preview-container">
+        <h3 style="color: #4682B4; text-align: center; margin-bottom: 1em;">Live Preview</h3>
+        <div class="preview-comparison">
+          <div class="preview-section-container">
+            <h4>📤 Original Image</h4>
+            <img id="live-original-image" src="" alt="Original image">
+          </div>
+          <div class="preview-section-container">
+            <h4>📱 WhatsApp DP Preview</h4>
+            <canvas id="live-preview-canvas" class="preview-image"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <div class="output-preview" id="output-preview">
+        <h3>Your WhatsApp DP</h3>
+        <canvas id="result-canvas" class="preview-image"></canvas>
+        <div class="output-card" id="output-card">
+          <a href="#" class="btn-download" id="download-link" download="whatsapp-dp.png">Download DP</a>
+          <button class="clear-btn" id="download-clear-btn">Start Over</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="resize-whatsapp-dp-tool-features">
+    <h2>🌟 Key Features</h2>
+    <div class="feature-list">
+      <div class="feature-item">
+        <span class="feature-icon">🔄</span>
+        <div>
+          <strong>Smart Resizing</strong>
+          <p>Automatically creates perfect square format for WhatsApp profile pictures</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <span class="feature-icon">🎨</span>
+        <div>
+          <strong>Background Options</strong>
+          <p>Choose from blur effect or solid colors to fill empty space</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <span class="feature-icon">📱</span>
+        <div>
+          <strong>Mobile Optimized</strong>
+          <p>Perfect dimensions for WhatsApp, Instagram, and other social media</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <span class="feature-icon">🔒</span>
+        <div>
+          <strong>100% Private</strong>
+          <p>All processing happens locally - your photos never leave your device</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <span class="feature-icon">💾</span>
+        <div>
+          <strong>High Quality</strong>
+          <p>Download your resized photo in original quality without compression</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <span class="feature-icon">⚡</span>
+        <div>
+          <strong>Instant Results</strong>
+          <p>No waiting time - see your square photo preview immediately</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+
+</main>
+
+<script>
+(function() {
+  'use strict';
+  
+  let uploadedImage = null;
+  let isInitialized = false;
+  let currentFile = null;
+
+  window.initializeResizeWhatsappDPTool = function() {
+    reset();
+    init();
+  };
+
+  function reset() {
+    uploadedImage = null;
+    currentFile = null;
+    isInitialized = false;
+    
+    const elements = {
+      uploadArea: document.getElementById('upload-area'),
+      previewSection: document.getElementById('preview-section'),
+      controlsSection: document.getElementById('controls-section'),
+      outputPreview: document.getElementById('output-preview'),
+      livePreviewContainer: document.getElementById('live-preview-container'),
+      fileInput: document.getElementById('file-input'),
+      outputCard: document.getElementById('output-card'),
+      resultCanvas: document.getElementById('result-canvas'),
+      imageDescription: document.getElementById('image-description'),
+      uploadProgressBar: document.getElementById('upload-progress-bar')
+    };
+    
+    if (elements.uploadArea) elements.uploadArea.style.display = 'block';
+    if (elements.previewSection) elements.previewSection.style.display = 'none';
+    if (elements.controlsSection) elements.controlsSection.style.display = 'none';
+    if (elements.outputPreview) elements.outputPreview.style.display = 'none';
+    if (elements.livePreviewContainer) elements.livePreviewContainer.style.display = 'none';
+    if (elements.outputCard) elements.outputCard.style.display = 'none';
+    if (elements.imageDescription) elements.imageDescription.style.display = 'none';
+    if (elements.uploadProgressBar) elements.uploadProgressBar.style.display = 'none';
+    
+    if (elements.fileInput) elements.fileInput.value = '';
+    if (elements.resultCanvas) {
+        const ctx = elements.resultCanvas.getContext('2d');
+        ctx.clearRect(0, 0, elements.resultCanvas.width, elements.resultCanvas.height);
+    }
+    
+    // Reset all form controls to defaults
+    resetAllSettings();
+  }
+
+  function init() {
+    if (isInitialized) return;
+
+    const uploadArea = document.getElementById('upload-area');
+    const fileInput = document.getElementById('file-input');
+    const chooseFileBtn = document.getElementById('choose-file-btn');
+    const bgTypeSelect = document.getElementById('bg-type-select');
+    const bgColorGroup = document.getElementById('bg-color-group');
+    const clearHistoryBtn = document.getElementById('clear-recent-history');
+
+    if (!uploadArea || !fileInput || !chooseFileBtn || !bgTypeSelect) {
+      setTimeout(init, 100);
+      return;
+    }
+
+    // File input and upload area event listeners
+    chooseFileBtn.onclick = (e) => { e.preventDefault(); fileInput.click(); };
+    uploadArea.onclick = (e) => { if (e.target !== chooseFileBtn) fileInput.click(); };
+    fileInput.onchange = (e) => { if (e.target.files.length > 0) handleFile(e.target.files[0]); };
+
+    // Drag and drop functionality
+    uploadArea.ondragover = (e) => { 
+      e.preventDefault(); 
+      uploadArea.classList.add('drag-over');
+    };
+    uploadArea.ondragleave = (e) => {
+      e.preventDefault();
+      if (!uploadArea.contains(e.relatedTarget)) {
+        uploadArea.classList.remove('drag-over');
+      }
+    };
+    uploadArea.ondrop = (e) => { 
+      e.preventDefault(); 
+      uploadArea.classList.remove('drag-over');
+      if (e.dataTransfer.files.length > 0) handleFile(e.dataTransfer.files[0]); 
+    };
+
+    // Keyboard support
+    uploadArea.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        fileInput.click();
+      }
+    });
+
+    // Background type selection
+    bgTypeSelect.onchange = () => {
+        bgColorGroup.style.display = bgTypeSelect.value === 'color' ? 'block' : 'none';
+        const gradientGroup = document.getElementById('gradient-group');
+        if (gradientGroup) {
+          gradientGroup.style.display = bgTypeSelect.value === 'gradient' ? 'block' : 'none';
+        }
+    };
+    bgTypeSelect.dispatchEvent(new Event('change'));
+
+    // Border toggle
+    const borderToggle = document.getElementById('border-toggle');
+    const borderOptions = document.getElementById('border-options');
+    if (borderToggle && borderOptions) {
+      borderToggle.onchange = () => {
+        borderOptions.style.display = borderToggle.checked ? 'block' : 'none';
+      };
+    }
+
+    // Output size selection
+    const outputSize = document.getElementById('output-size');
+    const customSizeGroup = document.getElementById('custom-size-group');
+    if (outputSize && customSizeGroup) {
+      outputSize.onchange = () => {
+        customSizeGroup.style.display = outputSize.value === 'custom' ? 'block' : 'none';
+      };
+    }
+
+    // Output format selection
+    const outputFormat = document.getElementById('output-format');
+    const jpegQualityGroup = document.getElementById('jpeg-quality-group');
+    if (outputFormat && jpegQualityGroup) {
+      outputFormat.onchange = () => {
+        jpegQualityGroup.style.display = outputFormat.value === 'jpeg' ? 'block' : 'none';
+      };
+    }
+
+    // Slider value updates
+    const sliderUpdates = [
+      { slider: 'image-size-slider', display: 'image-size-value', suffix: '%' },
+      { slider: 'image-position-x', display: 'position-x-value', suffix: 'px' },
+      { slider: 'image-position-y', display: 'position-y-value', suffix: 'px' },
+      { slider: 'brightness-slider', display: 'brightness-value', suffix: '%' },
+      { slider: 'contrast-slider', display: 'contrast-value', suffix: '%' },
+      { slider: 'saturation-slider', display: 'saturation-value', suffix: '%' },
+      { slider: 'blur-intensity', display: 'blur-value', suffix: 'px' },
+      { slider: 'border-width', display: 'border-width-value', suffix: 'px' },
+      { slider: 'jpeg-quality', display: 'quality-value', suffix: '%' }
+    ];
+
+    sliderUpdates.forEach(({ slider, display, suffix }) => {
+      const sliderEl = document.getElementById(slider);
+      const displayEl = document.getElementById(display);
+      if (sliderEl && displayEl) {
+        sliderEl.oninput = () => {
+          displayEl.textContent = sliderEl.value + suffix;
+        };
+      }
+    });
+
+    // Preset buttons
+    document.querySelectorAll('.preset-btn').forEach(btn => {
+      btn.onclick = () => applyPreset(btn.dataset.preset);
+    });
+
+    // Preview and reset buttons
+    const previewBtn = document.getElementById('preview-btn');
+    const resetBtn = document.getElementById('reset-btn');
+    
+    if (previewBtn) {
+      previewBtn.onclick = () => {
+        showLivePreview();
+      };
+    }
+    
+    if (resetBtn) {
+      resetBtn.onclick = () => {
+        reset();
+      };
+    }
+
+    // Button event listeners
+    document.getElementById('process-btn').onclick = () => {
+      processImage(false); // false means final output only
+    };
+    ['clear-btn', 'download-clear-btn'].forEach(id => {
+      const btn = document.getElementById(id);
+      if (btn) btn.onclick = reset;
+    });
+
+    // Clear history button
+    if (clearHistoryBtn) {
+      clearHistoryBtn.addEventListener('click', clearRecentHistory);
+    }
+
+    // Load recent tools
+    loadRecentTools();
+    
+    // Clear recent tools handler
+    const clearRecentBtn = document.getElementById('clear-recent');
+    if (clearRecentBtn) {
+      clearRecentBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        clearRecentHistory();
+      });
+    }
+
+    isInitialized = true;
+  }
+
+  function handleFile(file) {
+    if (!file.type.startsWith('image/')) {
+      alert('Please select a valid image file.');
+      return;
+    }
+
+    currentFile = file;
+    showUploadProgress();
+
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      simulateUploadProgress(() => {
+        uploadedImage = new Image();
+        uploadedImage.onload = function() {
+          showImageDescription(file);
+          document.getElementById('preview-image').src = e.target.result;
+          document.getElementById('preview-section').style.display = 'block';
+          document.getElementById('controls-section').style.display = 'block';
+          document.getElementById('upload-area').style.display = 'none';
+        };
+        uploadedImage.src = e.target.result;
+      });
+    };
+    reader.readAsDataURL(file);
+  }
+
+  function showUploadProgress() {
+    const progressBar = document.getElementById('upload-progress-bar');
+    const progressFill = document.getElementById('upload-progress-fill');
+    const progressText = document.getElementById('upload-progress-text');
+    
+    if (progressBar && progressFill && progressText) {
+      progressBar.style.display = 'block';
+      progressFill.style.width = '0%';
+      progressText.textContent = 'Uploading: 0%';
+    }
+  }
+
+  function simulateUploadProgress(callback) {
+    const progressFill = document.getElementById('upload-progress-fill');
+    const progressText = document.getElementById('upload-progress-text');
+    
+    if (!progressFill || !progressText) {
+      callback();
+      return;
+    }
+
+    let progress = 0;
+    const interval = setInterval(() => {
+      progress += Math.random() * 15;
+      if (progress >= 100) {
+        progress = 100;
+        clearInterval(interval);
+        setTimeout(() => {
+          const progressBar = document.getElementById('upload-progress-bar');
+          if (progressBar) progressBar.style.display = 'none';
+          callback();
+        }, 500);
+      }
+      
+      progressFill.style.width = progress + '%';
+      progressText.textContent = `Uploading: ${Math.round(progress)}%`;
+    }, 100);
+  }
+
+  function showImageDescription(file) {
+    const description = document.getElementById('image-description');
+    const imageInfo = document.getElementById('image-info');
+    
+    if (description && imageInfo) {
+      const sizeKB = Math.round(file.size / 1024);
+      imageInfo.textContent = `${file.name} (${sizeKB} KB) - Ready for WhatsApp DP creation`;
+      description.style.display = 'block';
+    }
+  }
+
+  function processImage(isLivePreview = false) {
+    if (!uploadedImage) {
+      alert('Please upload an image first.');
+      return;
+    }
+
+    const bgType = document.getElementById('bg-type-select').value;
+    const bgColor = document.getElementById('bg-color-input').value;
+    
+    // Get all control values
+    const gradientColor1 = document.getElementById('gradient-color1').value;
+    const gradientColor2 = document.getElementById('gradient-color2').value;
+    const gradientDirection = document.getElementById('gradient-direction').value;
+    const imageSize = parseFloat(document.getElementById('image-size-slider').value) / 100;
+    const positionX = parseFloat(document.getElementById('image-position-x').value);
+    const positionY = parseFloat(document.getElementById('image-position-y').value);
+    const brightness = parseFloat(document.getElementById('brightness-slider').value);
+    const contrast = parseFloat(document.getElementById('contrast-slider').value);
+    const saturation = parseFloat(document.getElementById('saturation-slider').value);
+    const blurIntensity = parseFloat(document.getElementById('blur-intensity').value);
+    const borderEnabled = document.getElementById('border-toggle').checked;
+    const borderWidth = parseFloat(document.getElementById('border-width').value);
+    const borderColor = document.getElementById('border-color').value;
+    const borderStyle = document.getElementById('border-style').value;
+    
+    // Get output settings
+    const outputSizeSelect = document.getElementById('output-size');
+    const outputFormat = document.getElementById('output-format').value;
+    const jpegQuality = parseFloat(document.getElementById('jpeg-quality').value) / 100;
+    
+    let size;
+    if (outputSizeSelect.value === 'custom') {
+      const customWidth = parseInt(document.getElementById('custom-width').value);
+      const customHeight = parseInt(document.getElementById('custom-height').value);
+      size = { width: customWidth, height: customHeight };
+    } else {
+      const sizeValue = parseInt(outputSizeSelect.value);
+      size = { width: sizeValue, height: sizeValue };
+    }
+
+    // Use appropriate canvas based on context
+    const canvasId = isLivePreview ? 'live-preview-canvas' : 'result-canvas';
+    const canvas = document.getElementById(canvasId);
+    canvas.width = size.width;
+    canvas.height = size.height;
+    const ctx = canvas.getContext('2d');
+
+    // Apply background
+    if (bgType === 'color') {
+      ctx.fillStyle = bgColor;
+      ctx.fillRect(0, 0, size.width, size.height);
+    } else if (bgType === 'gradient') {
+      // Create gradient
+      let gradient;
+      switch (gradientDirection) {
+        case 'linear-horizontal':
+          gradient = ctx.createLinearGradient(0, 0, size.width, 0);
+          break;
+        case 'linear-vertical':
+          gradient = ctx.createLinearGradient(0, 0, 0, size.height);
+          break;
+        case 'linear-diagonal':
+          gradient = ctx.createLinearGradient(0, 0, size.width, size.height);
+          break;
+        case 'radial':
+          gradient = ctx.createRadialGradient(
+            size.width / 2, size.height / 2, 0,
+            size.width / 2, size.height / 2, Math.max(size.width, size.height) / 2
+          );
+          break;
+      }
+      gradient.addColorStop(0, gradientColor1);
+      gradient.addColorStop(1, gradientColor2);
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, size.width, size.height);
+    } else if (bgType === 'blur') {
+      // Create blurred background
+      const tempCanvas = document.createElement('canvas');
+      const tempCtx = tempCanvas.getContext('2d');
+      tempCanvas.width = size.width;
+      tempCanvas.height = size.height;
+      
+      // Draw stretched image as background
+      tempCtx.drawImage(uploadedImage, 0, 0, size.width, size.height);
+      
+      // Apply blur
+      tempCtx.filter = `blur(${blurIntensity}px)`;
+      tempCtx.globalCompositeOperation = 'source-over';
+      tempCtx.drawImage(tempCanvas, 0, 0);
+      
+      // Draw to main canvas
+      ctx.drawImage(tempCanvas, 0, 0);
+    }
+    // transparent background doesn't need filling
+
+    // Calculate image dimensions and position
+    const imgAspect = uploadedImage.width / uploadedImage.height;
+    const canvasAspect = size.width / size.height;
+    
+    let drawWidth, drawHeight;
+    if (imgAspect > canvasAspect) {
+      drawHeight = size.height * imageSize;
+      drawWidth = drawHeight * imgAspect;
+    } else {
+      drawWidth = size.width * imageSize;
+      drawHeight = drawWidth / imgAspect;
+    }
+    
+    const x = (size.width - drawWidth) / 2 + positionX;
+    const y = (size.height - drawHeight) / 2 + positionY;
+    
+    // Apply image filters and draw
+    ctx.filter = `brightness(${brightness}%) contrast(${contrast}%) saturate(${saturation}%)`;
+    ctx.drawImage(uploadedImage, x, y, drawWidth, drawHeight);
+    ctx.filter = 'none';
+    
+    // Apply border if enabled
+    if (borderEnabled) {
+      ctx.strokeStyle = borderColor;
+      ctx.lineWidth = borderWidth;
+      
+      if (borderStyle === 'dashed') {
+        ctx.setLineDash([10, 5]);
+      } else if (borderStyle === 'dotted') {
+        ctx.setLineDash([2, 2]);
+      } else if (borderStyle === 'double') {
+        ctx.setLineDash([]);
+        ctx.strokeRect(borderWidth/2, borderWidth/2, size.width - borderWidth, size.height - borderWidth);
+        ctx.strokeRect(borderWidth*1.5, borderWidth*1.5, size.width - borderWidth*3, size.height - borderWidth*3);
+      } else {
+        ctx.setLineDash([]);
+        ctx.strokeRect(borderWidth/2, borderWidth/2, size.width - borderWidth, size.height - borderWidth);
+      }
+    }
+
+    if (!isLivePreview) {
+      // Add to recent tools and show final result only for Create DP
+      if (currentFile) {
+        addToRecentTools('WhatsApp DP Creator', 'resize-whatsapp-dp.html');
+      }
+      showResult(outputFormat, jpegQuality);
+    }
+  }
+
+  function showLivePreview() {
+    if (!uploadedImage) {
+      alert('Please upload an image first.');
+      return;
+    }
+
+    // Hide final output and show live preview
+    document.getElementById('output-preview').style.display = 'none';
+    document.getElementById('live-preview-container').style.display = 'block';
+    
+    // Set original image in live preview
+    const originalImg = document.getElementById('live-original-image');
+    originalImg.src = document.getElementById('preview-image').src;
+    
+    // Process and show preview
+    processImage(true);
+  }
+
+  function showResult(format = 'png', quality = 1) {
+    const canvas = document.getElementById('result-canvas');
+    const downloadLink = document.getElementById('download-link');
+    
+    if (!canvas || !downloadLink) return;
+    
+    const mimeType = format === 'jpeg' ? 'image/jpeg' : 
+                    format === 'webp' ? 'image/webp' : 'image/png';
+    const dataUrl = canvas.toDataURL(mimeType, quality);
+    
+    downloadLink.href = dataUrl;
+    downloadLink.download = `whatsapp-dp-${Date.now()}.${format}`;
+    
+    // Update the preview image
+    const previewImage = document.getElementById('preview-image');
+    if (previewImage) {
+      previewImage.src = dataUrl;
+    }
+    
+    // Hide live preview and show final output
+    document.getElementById('live-preview-container').style.display = 'none';
+    document.getElementById('output-preview').style.display = 'block';
+    document.getElementById('output-card').style.display = 'block';
+  }
+
+  function loadRecentTools() {
+    try {
+      const recentTools = JSON.parse(localStorage.getItem('recentTools') || '[]');
+      const recentToolsList = document.querySelector('.recent-tools-list');
+      
+      if (!recentToolsList) return;
+
+      // Clear existing dynamic tools
+      const dynamicTools = recentToolsList.querySelectorAll('.dynamic-tool');
+      dynamicTools.forEach(tool => tool.remove());
+
+      if (recentTools.length === 0) {
+        return; // Keep the default static tools
+      }
+
+      // Find the separator
+      const separator = recentToolsList.querySelector('.separator');
+      
+      // Add recent tools before the separator
+      recentTools.slice(0, 3).forEach(tool => { // Show only 3 recent tools
+        const toolLink = document.createElement('a');
+        toolLink.href = tool.fileName || '#';
+        toolLink.textContent = tool.name;
+        toolLink.className = 'dynamic-tool';
+        toolLink.title = `Used ${tool.timeAgo}`;
+        
+        if (separator) {
+          recentToolsList.insertBefore(toolLink, separator);
+        } else {
+          recentToolsList.appendChild(toolLink);
+        }
+      });
+      
+    } catch (error) {
+      console.error('Error loading recent tools:', error);
+    }
+  }
+
+  function addToRecentTools(toolName, fileName) {
+    try {
+      const recentTools = JSON.parse(localStorage.getItem('recentTools') || '[]');
+      const now = new Date();
+      
+      const newTool = {
+        name: toolName,
+        fileName: fileName,
+        timestamp: now.getTime(),
+        timeAgo: formatTimeAgo(now),
+        icon: '📱'
+      };
+
+      // Remove duplicates and add new tool at the beginning
+      const filteredTools = recentTools.filter(tool => 
+        !(tool.name === toolName && tool.fileName === fileName)
+      );
+      
+      filteredTools.unshift(newTool);
+      
+      // Keep only the last 10 tools
+      const limitedTools = filteredTools.slice(0, 10);
+      
+      localStorage.setItem('recentTools', JSON.stringify(limitedTools));
+      loadRecentTools(); // Update the display
+    } catch (error) {
+      console.error('Error saving to recent tools:', error);
+    }
+  }
+
+  function formatTimeAgo(date) {
+    const now = new Date();
+    const diffInSeconds = Math.floor((now - date) / 1000);
+    
+    if (diffInSeconds < 60) return 'Just now';
+    if (diffInSeconds < 3600) return `${Math.floor(diffInSeconds / 60)} minutes ago`;
+    if (diffInSeconds < 86400) return `${Math.floor(diffInSeconds / 3600)} hours ago`;
+    return `${Math.floor(diffInSeconds / 86400)} days ago`;
+  }
+
+  function clearRecentHistory() {
+    if (confirm('Are you sure you want to clear your recent tools history?')) {
+      localStorage.removeItem('recentTools');
+      loadRecentTools(); // Update the display
+    }
+  }
+
+  function applyPreset(preset) {
+    // Reset all controls first
+    resetAllSettings();
+    
+    const bgTypeSelect = document.getElementById('bg-type-select');
+    const bgColorInput = document.getElementById('bg-color-input');
+    const gradientColor1 = document.getElementById('gradient-color1');
+    const gradientColor2 = document.getElementById('gradient-color2');
+    const gradientDirection = document.getElementById('gradient-direction');
+    const borderToggle = document.getElementById('border-toggle');
+    const borderColor = document.getElementById('border-color');
+    const borderWidth = document.getElementById('border-width');
+    const outputSize = document.getElementById('output-size');
+    
+    switch (preset) {
+      case 'whatsapp':
+        if (bgTypeSelect) bgTypeSelect.value = 'color';
+        if (bgColorInput) bgColorInput.value = '#128C7E';
+        if (outputSize) outputSize.value = '512';
+        break;
+      case 'instagram':
+        if (bgTypeSelect) bgTypeSelect.value = 'gradient';
+        if (gradientColor1) gradientColor1.value = '#E1306C';
+        if (gradientColor2) gradientColor2.value = '#FD1D1D';
+        if (gradientDirection) gradientDirection.value = 'radial';
+        if (outputSize) outputSize.value = '640';
+        break;
+      case 'linkedin':
+        if (bgTypeSelect) bgTypeSelect.value = 'color';
+        if (bgColorInput) bgColorInput.value = '#0077B5';
+        if (borderToggle) borderToggle.checked = true;
+        if (borderColor) borderColor.value = '#FFFFFF';
+        if (borderWidth) borderWidth.value = '8';
+        break;
+      case 'discord':
+        if (bgTypeSelect) bgTypeSelect.value = 'color';
+        if (bgColorInput) bgColorInput.value = '#5865F2';
+        if (outputSize) outputSize.value = '512';
+        break;
+      case 'professional':
+        if (bgTypeSelect) bgTypeSelect.value = 'color';
+        if (bgColorInput) bgColorInput.value = '#2C3E50';
+        if (borderToggle) borderToggle.checked = true;
+        if (borderColor) borderColor.value = '#ECF0F1';
+        if (borderWidth) borderWidth.value = '6';
+        break;
+      case 'creative':
+        if (bgTypeSelect) bgTypeSelect.value = 'gradient';
+        if (gradientColor1) gradientColor1.value = '#FF6B6B';
+        if (gradientColor2) gradientColor2.value = '#4ECDC4';
+        if (gradientDirection) gradientDirection.value = 'linear-diagonal';
+        break;
+    }
+    
+    // Trigger change events to update UI
+    if (bgTypeSelect) bgTypeSelect.dispatchEvent(new Event('change'));
+    if (borderToggle) borderToggle.dispatchEvent(new Event('change'));
+    if (outputSize) outputSize.dispatchEvent(new Event('change'));
+  }
+
+  function resetAllSettings() {
+    // Reset all form inputs to default values
+    const resetValues = [
+      { id: 'bg-type-select', value: 'blur' },
+      { id: 'bg-color-input', value: '#FFFFFF' },
+      { id: 'gradient-color1', value: '#FF6B6B' },
+      { id: 'gradient-color2', value: '#4ECDC4' },
+      { id: 'gradient-direction', value: 'linear-horizontal' },
+      { id: 'image-size-slider', value: '100' },
+      { id: 'image-position-x', value: '0' },
+      { id: 'image-position-y', value: '0' },
+      { id: 'brightness-slider', value: '100' },
+      { id: 'contrast-slider', value: '100' },
+      { id: 'saturation-slider', value: '100' },
+      { id: 'blur-intensity', value: '10' },
+      { id: 'border-width', value: '5' },
+      { id: 'border-color', value: '#FFFFFF' },
+      { id: 'border-style', value: 'solid' },
+      { id: 'output-size', value: '512' },
+      { id: 'output-format', value: 'png' },
+      { id: 'jpeg-quality', value: '90' }
+    ];
+
+    resetValues.forEach(({ id, value }) => {
+      const element = document.getElementById(id);
+      if (element) {
+        element.value = value;
+      }
+    });
+
+    // Reset checkboxes
+    const borderToggle = document.getElementById('border-toggle');
+    if (borderToggle) borderToggle.checked = false;
+
+    // Update display values
+    const displayUpdates = [
+      { id: 'image-size-value', text: '100%' },
+      { id: 'position-x-value', text: '0px' },
+      { id: 'position-y-value', text: '0px' },
+      { id: 'brightness-value', text: '100%' },
+      { id: 'contrast-value', text: '100%' },
+      { id: 'saturation-value', text: '100%' },
+      { id: 'blur-value', text: '10px' },
+      { id: 'border-width-value', text: '5px' },
+      { id: 'quality-value', text: '90%' }
+    ];
+
+    displayUpdates.forEach(({ id, text }) => {
+      const element = document.getElementById(id);
+      if (element) {
+        element.textContent = text;
+      }
+    });
+
+    // Hide conditional groups
+    const hideGroups = ['gradient-group', 'border-options', 'custom-size-group', 'jpeg-quality-group'];
+    hideGroups.forEach(id => {
+      const element = document.getElementById(id);
+      if (element) {
+        element.style.display = 'none';
+      }
+    });
+  }
+
+  if (document.readyState !== 'loading') {
+    setTimeout(init, 50);
+  } else {
+    document.addEventListener('DOMContentLoaded', () => setTimeout(init, 50));
+  }
+
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,235 @@
+<!-- File: tools/text/change-font.html -->
+<style>
+    .cf-textarea {
+        background-color: #FDFBF5;
+        border: 2px solid #EAE3D5;
+        border-radius: 0.5rem;
+        padding: 1rem;
+        width: 100%;
+        min-height: 120px;
+        color: #4A4A4A;
+        font-size: 1.1rem;
+        line-height: 1.6;
+        transition: all 0.2s;
+    }
+    .cf-textarea:focus {
+        outline: none;
+        border-color: #D9534F;
+        box-shadow: 0 0 0 3px rgba(217, 83, 79, 0.2);
+    }
+    .cf-options-box {
+        margin-top: 1.5rem;
+        padding: 1.5rem;
+        background-color: #FDFBF5;
+        border-radius: 0.5rem;
+        border: 1px solid #EAE3D5;
+    }
+    .cf-utility-bar {
+        margin-top: 1.5rem;
+        padding-top: 1.5rem;
+        border-top: 2px dashed #DCD5C3;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .cf-utility-button {
+        background-color: transparent;
+        color: #D9534F;
+        font-weight: 600;
+        border: none;
+        cursor: pointer;
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+    }
+    .cf-utility-button:hover {
+        background-color: #FDFBF5;
+    }
+    .cf-status-bar {
+        font-size: 0.9rem;
+        color: #888;
+    }
+    .cf-preview {
+        margin-top: 1.5rem;
+        background: #fff;
+        border: 1px solid #EAE3D5;
+        border-radius: 0.5rem;
+        padding: 1rem;
+        min-height: 60px;
+        font-size: 1.2rem;
+        color: #333;
+        white-space: pre-wrap;
+        word-break: break-word;
+    }
+    .cf-font-select {
+        width: 100%;
+        padding: 0.5rem;
+        border-radius: 0.375rem;
+        border: 1px solid #DCD5C3;
+        font-size: 1rem;
+        margin-bottom: 1rem;
+    }
+</style>
+<div>
+    <h2 class="handwritten text-5xl text-[#D9534F] mb-4">Change Font</h2>
+    <div class="mb-6 p-6 bg-amber-50/70 rounded-lg border border-amber-200">
+        <p class="text-lg text-gray-800 font-bold mb-2">The Change Font tool lets you instantly transform your text into dozens of unique font styles for any purpose. Whether you want to make your social media posts stand out, create eye-catching headlines, design stylish nicknames, or just have fun with text, this tool gives you access to a huge variety of fonts. Choose from classic web fonts, bold, italic, monospace, cursive, and a wide range of creative Google Fonts. Preview your text in real time, copy or download the result, and use it anywhere you like. Perfect for designers, writers, students, and anyone who wants to add personality to their text.</p>
+        <ul class="list-disc list-inside text-gray-700 text-base">
+            <li>Preview and convert text to 50+ real font styles</li>
+            <li>Classic web fonts, Google Fonts, bold, italic, monospace, cursive, and more</li>
+            <li>Copy or download the styled text for use anywhere</li>
+            <li>Applications: social media, design, code, branding, memes, and more</li>
+        </ul>
+    </div>
+    <p class="text-gray-600 mb-6">
+        Instantly preview and convert your text to dozens of font styles. Select a style below and see your text transform in real time!
+    </p>
+    <textarea id="cf-input" class="cf-textarea" placeholder="Type or paste your text here..."></textarea>
+    <div class="cf-options-box">
+        <label for="cf-font-select" class="block font-semibold text-gray-700 mb-2">Choose a Font Style:</label>
+        <select id="cf-font-select" class="cf-font-select"></select>
+    </div>
+    <div class="cf-preview" id="cf-preview"></div>
+    <div class="cf-utility-bar">
+        <div class="cf-status-bar">
+            <span>Chars: <strong id="cf-char-count" class="text-gray-600">0</strong></span> |
+            <span>Words: <strong id="cf-word-count" class="text-gray-600">0</strong></span>
+        </div>
+        <div>
+            <button id="cf-copy" class="cf-utility-button">Copy</button>
+            <button id="cf-download" class="cf-utility-button">Download</button>
+            <button id="cf-clear" class="cf-utility-button">Clear</button>
+        </div>
+    </div>
+</div>
+<script>
+function initializeChangeFont() {
+    const cfInput = document.getElementById('cf-input');
+    const cfPreview = document.getElementById('cf-preview');
+    const cfFontSelect = document.getElementById('cf-font-select');
+    const cfCharCount = document.getElementById('cf-char-count');
+    const cfWordCount = document.getElementById('cf-word-count');
+    // 50+ web-safe and Google Fonts (curated for browser compatibility)
+    const fontStyles = [
+        {name: 'Default', family: 'inherit'},
+        {name: 'Serif', family: 'serif'},
+        {name: 'Sans-serif', family: 'sans-serif'},
+        {name: 'Monospace', family: 'monospace'},
+        {name: 'Cursive', family: 'cursive'},
+        {name: 'Fantasy', family: 'fantasy'},
+        {name: 'Arial', family: 'Arial, sans-serif'},
+        {name: 'Helvetica', family: 'Helvetica, Arial, sans-serif'},
+        {name: 'Times New Roman', family: 'Times New Roman, serif'},
+        {name: 'Georgia', family: 'Georgia, serif'},
+        {name: 'Verdana', family: 'Verdana, Geneva, sans-serif'},
+        {name: 'Tahoma', family: 'Tahoma, Geneva, sans-serif'},
+        {name: 'Trebuchet MS', family: 'Trebuchet MS, sans-serif'},
+        {name: 'Courier New', family: 'Courier New, monospace'},
+        {name: 'Lucida Console', family: 'Lucida Console, monospace'},
+        {name: 'Impact', family: 'Impact, fantasy'},
+        {name: 'Comic Sans MS', family: 'Comic Sans MS, cursive'},
+        {name: 'Brush Script MT', family: 'Brush Script MT, cursive'},
+        {name: 'Garamond', family: 'Garamond, serif'},
+        {name: 'Palatino', family: 'Palatino, serif'},
+        {name: 'Optima', family: 'Optima, sans-serif'},
+        // 30+ Google Fonts (widely used, visually distinct)
+        {name: 'Roboto', family: 'Roboto, sans-serif', google: 'Roboto'},
+        {name: 'Open Sans', family: 'Open Sans, sans-serif', google: 'Open+Sans'},
+        {name: 'Lato', family: 'Lato, sans-serif', google: 'Lato'},
+        {name: 'Montserrat', family: 'Montserrat, sans-serif', google: 'Montserrat'},
+        {name: 'Oswald', family: 'Oswald, sans-serif', google: 'Oswald'},
+        {name: 'Raleway', family: 'Raleway, sans-serif', google: 'Raleway'},
+        {name: 'Merriweather', family: 'Merriweather, serif', google: 'Merriweather'},
+        {name: 'Playfair Display', family: 'Playfair Display, serif', google: 'Playfair+Display'},
+        {name: 'PT Sans', family: 'PT Sans, sans-serif', google: 'PT+Sans'},
+        {name: 'PT Serif', family: 'PT Serif, serif', google: 'PT+Serif'},
+        {name: 'Quicksand', family: 'Quicksand, sans-serif', google: 'Quicksand'},
+        {name: 'Source Code Pro', family: 'Source Code Pro, monospace', google: 'Source+Code+Pro'},
+        {name: 'Ubuntu', family: 'Ubuntu, sans-serif', google: 'Ubuntu'},
+        {name: 'Inconsolata', family: 'Inconsolata, monospace', google: 'Inconsolata'},
+        {name: 'Dancing Script', family: 'Dancing Script, cursive', google: 'Dancing+Script'},
+        {name: 'Pacifico', family: 'Pacifico, cursive', google: 'Pacifico'},
+        {name: 'Bebas Neue', family: 'Bebas Neue, sans-serif', google: 'Bebas+Neue'},
+        {name: 'Orbitron', family: 'Orbitron, sans-serif', google: 'Orbitron'},
+        {name: 'Lobster', family: 'Lobster, cursive', google: 'Lobster'},
+        {name: 'Indie Flower', family: 'Indie Flower, cursive', google: 'Indie+Flower'},
+        {name: 'Shadows Into Light', family: 'Shadows Into Light, cursive', google: 'Shadows+Into+Light'},
+        {name: 'Bangers', family: 'Bangers, cursive', google: 'Bangers'},
+        {name: 'Anton', family: 'Anton, sans-serif', google: 'Anton'},
+        {name: 'Permanent Marker', family: 'Permanent Marker, cursive', google: 'Permanent+Marker'},
+        {name: 'Russo One', family: 'Russo One, sans-serif', google: 'Russo+One'},
+        {name: 'Fredoka One', family: 'Fredoka One, cursive', google: 'Fredoka+One'},
+        {name: 'Bitter', family: 'Bitter, serif', google: 'Bitter'},
+        {name: 'Cabin', family: 'Cabin, sans-serif', google: 'Cabin'},
+        {name: 'Arvo', family: 'Arvo, serif', google: 'Arvo'},
+        {name: 'Exo 2', family: 'Exo 2, sans-serif', google: 'Exo+2'},
+        {name: 'Rubik', family: 'Rubik, sans-serif', google: 'Rubik'},
+        {name: 'PT Mono', family: 'PT Mono, monospace', google: 'PT+Mono'},
+        {name: 'Zilla Slab', family: 'Zilla Slab, serif', google: 'Zilla+Slab'},
+        {name: 'Righteous', family: 'Righteous, cursive', google: 'Righteous'},
+        {name: 'Satisfy', family: 'Satisfy, cursive', google: 'Satisfy'},
+        {name: 'Fjalla One', family: 'Fjalla One, sans-serif', google: 'Fjalla+One'},
+        {name: 'Archivo Black', family: 'Archivo Black, sans-serif', google: 'Archivo+Black'},
+        {name: 'Quattrocento', family: 'Quattrocento, serif', google: 'Quattrocento'},
+        {name: 'Caveat', family: 'Caveat, cursive', google: 'Caveat'},
+        {name: 'Manrope', family: 'Manrope, sans-serif', google: 'Manrope'},
+        {name: 'Barlow', family: 'Barlow, sans-serif', google: 'Barlow'}
+    ];
+    fontStyles.forEach((f, i) => {
+        const opt = document.createElement('option');
+        opt.value = i;
+        opt.textContent = f.name;
+        cfFontSelect.appendChild(opt);
+    });
+    function loadGoogleFont(font) {
+        if (!font.google) return;
+        const id = 'cf-google-font-' + font.google;
+        if (document.getElementById(id)) return;
+        const link = document.createElement('link');
+        link.id = id;
+        link.rel = 'stylesheet';
+        link.href = `https://fonts.googleapis.com/css?family=${font.google.replace(/ /g, '+')}:400,700&display=swap`;
+        document.head.appendChild(link);
+    }
+    function updatePreview() {
+        const idx = parseInt(cfFontSelect.value, 10) || 0;
+        let text = cfInput.value;
+        const font = fontStyles[idx];
+        loadGoogleFont(font);
+        cfPreview.style.fontFamily = font.family;
+        cfPreview.textContent = text;
+        cfCharCount.textContent = text.length;
+        cfWordCount.textContent = text.trim().split(/\s+/).filter(Boolean).length;
+    }
+    cfInput.addEventListener('input', updatePreview);
+    cfFontSelect.addEventListener('change', updatePreview);
+    document.getElementById('cf-copy').addEventListener('click', function() {
+        const temp = document.createElement('textarea');
+        temp.value = cfPreview.innerText;
+        document.body.appendChild(temp);
+        temp.select();
+        document.execCommand('copy');
+        document.body.removeChild(temp);
+        const btn = document.getElementById('cf-copy');
+        const orig = btn.textContent;
+        btn.textContent = 'Copied!';
+        setTimeout(() => { btn.textContent = orig; }, 2000);
+    });
+    document.getElementById('cf-download').addEventListener('click', function() {
+        const blob = new Blob([cfPreview.innerText], { type: 'text/plain' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'changed-font-text.txt';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    });
+    document.getElementById('cf-clear').addEventListener('click', function() {
+        cfInput.value = '';
+        updatePreview();
+    });
+    updatePreview();
+}
+initializeChangeFont();
+</script>

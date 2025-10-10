@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Circle Calculator</title>
+    <style>
+        body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; }
+        .geo-calc-container { max-width: 400px; margin: 3em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2em 1.5em 2.5em 1.5em; }
+        .handwritten { font-family: 'Caveat', cursive; }
+        .geo-calc-label { font-weight: 600; margin-bottom: 0.5em; display: block; }
+        .geo-calc-input, .geo-calc-select { width: 100%; padding: 1em; border: 2px solid #EAE3D5; border-radius: 0.7em; font-size: 1.1em; margin-bottom: 1em; background: #FDFBF5; text-align: center; font-family: 'Fira Code', monospace; }
+        .geo-calc-btn { background: #fff; color: #D9534F; border: 2px solid #D9534F; border-radius: 0.5em; padding: 0.7em 2em; font-weight: 600; font-size: 1.1em; cursor: pointer; transition: all 0.2s; margin-bottom: 1em; }
+        .geo-calc-btn:hover { background: #D9534F; color: #fff; }
+        .geo-calc-result { background: #FDFBF5; border: 2px solid #D9534F; border-radius: 0.7em; padding: 1em; font-size: 1.18em; color: #D9534F; min-height: 1.7em; margin-bottom: 1em; text-align: center; font-family: 'Fira Code', monospace; font-weight: bold; max-height: 300px; overflow-y: auto; word-break: break-word; transition: height 0.2s; }
+        .input-group { margin-bottom: 1em; }
+        .radio-group { display: flex; gap: 1em; margin-bottom: 1em; }
+        .radio-option { display: flex; align-items: center; gap: 0.5em; }
+        .radio-option input[type="radio"] { margin: 0; }
+        .geo-calc-desc { max-width: fit-content; margin: 2.5em auto 0 auto; background:#FDFBF5; border:2px solid #EAE3D5; border-radius:0.9em; padding:1.2em 1em; font-size:1.08em; color:#333; line-height:1.7; }
+        @media (max-width: 600px) { .geo-calc-container { padding: 1em 0.2em; } }
+    </style>
+</head>
+<body>
+<div class="geo-calc-container">
+    <h2 class="handwritten text-5xl text-[#D9534F] mb-4">Circle Calculator</h2>
+    
+    <div class="input-group">
+        <label class="geo-calc-label">What do you know?</label>
+        <div class="radio-group">
+            <div class="radio-option">
+                <input type="radio" id="radius-input" name="input-type" value="radius" checked>
+                <label for="radius-input">Radius</label>
+            </div>
+            <div class="radio-option">
+                <input type="radio" id="diameter-input" name="input-type" value="diameter">
+                <label for="diameter-input">Diameter</label>
+            </div>
+            <div class="radio-option">
+                <input type="radio" id="circumference-input" name="input-type" value="circumference">
+                <label for="circumference-input">Circumference</label>
+            </div>
+            <div class="radio-option">
+                <input type="radio" id="area-input" name="input-type" value="area">
+                <label for="area-input">Area</label>
+            </div>
+        </div>
+    </div>
+    
+    <div class="input-group">
+        <label class="geo-calc-label" id="input-label">Enter radius:</label>
+        <input id="value-input" class="geo-calc-input" type="number" min="0" step="any" placeholder="Enter value">
+    </div>
+    
+    <button type="button" class="geo-calc-btn" onclick="calculateCircle()">Calculate</button>
+    <div class="geo-calc-result" id="result">Enter a value to see all circle properties</div>
+</div>
+
+<div class="geo-calc-desc">
+    <strong style="font-size:1.18em; color:#D9534F;">About the Circle Calculator</strong><br><br>
+    Calculate all properties of a circle from any known value: radius, diameter, circumference, or area.<br><br>
+    <b>Formulas:</b>
+    <ul style="margin-left:1.2em; margin-bottom:0.7em;">
+        <li>Circumference: <code>C = 2πr = πd</code></li>
+        <li>Area: <code>A = πr²</code></li>
+        <li>Diameter: <code>d = 2r</code></li>
+    </ul>
+    <b>Use Cases:</b>
+    <ul style="margin-left:1.2em;">
+        <li>Geometry homework and engineering calculations</li>
+        <li>Construction and design projects</li>
+        <li>Calculate material needed for circular objects</li>
+        <li>Convert between different circle measurements</li>
+    </ul>
+    <b>Why use this calculator?</b> No ads, no clutter, no tracking—just a reliable circle calculator for all your needs.<br>
+</div>
+
+<script>
+// Update input label based on selected radio button
+document.querySelectorAll('input[name="input-type"]').forEach(radio => {
+    radio.addEventListener('change', function() {
+        const label = document.getElementById('input-label');
+        const input = document.getElementById('value-input');
+        
+        switch(this.value) {
+            case 'radius':
+                label.textContent = 'Enter radius:';
+                input.placeholder = 'Enter radius value';
+                break;
+            case 'diameter':
+                label.textContent = 'Enter diameter:';
+                input.placeholder = 'Enter diameter value';
+                break;
+            case 'circumference':
+                label.textContent = 'Enter circumference:';
+                input.placeholder = 'Enter circumference value';
+                break;
+            case 'area':
+                label.textContent = 'Enter area:';
+                input.placeholder = 'Enter area value';
+                break;
+        }
+        input.value = '';
+        document.getElementById('result').textContent = 'Enter a value to see all circle properties';
+    });
+});
+
+function formatNumber(num) {
+    if (Math.abs(num) < 1e-10) return '0';
+    if (Math.abs(num) >= 1e10) return num.toExponential(6);
+    return parseFloat(num.toFixed(8)).toString();
+}
+
+function calculateCircle() {
+    const inputType = document.querySelector('input[name="input-type"]:checked').value;
+    const value = parseFloat(document.getElementById('value-input').value);
+    
+    if (isNaN(value) || value <= 0) {
+        document.getElementById('result').textContent = 'Please enter a positive number.';
+        return;
+    }
+    
+    let radius, diameter, circumference, area;
+    
+    try {
+        switch(inputType) {
+            case 'radius':
+                radius = value;
+                diameter = 2 * radius;
+                circumference = 2 * Math.PI * radius;
+                area = Math.PI * radius * radius;
+                break;
+                
+            case 'diameter':
+                diameter = value;
+                radius = diameter / 2;
+                circumference = Math.PI * diameter;
+                area = Math.PI * radius * radius;
+                break;
+                
+            case 'circumference':
+                circumference = value;
+                radius = circumference / (2 * Math.PI);
+                diameter = 2 * radius;
+                area = Math.PI * radius * radius;
+                break;
+                
+            case 'area':
+                area = value;
+                radius = Math.sqrt(area / Math.PI);
+                diameter = 2 * radius;
+                circumference = 2 * Math.PI * radius;
+                break;
+        }
+        
+        const result = `
+<strong>Circle Properties:</strong>
+
+• Radius (r): ${formatNumber(radius)}
+• Diameter (d): ${formatNumber(diameter)}
+• Circumference (C): ${formatNumber(circumference)}
+• Area (A): ${formatNumber(area)}
+
+<strong>Calculations:</strong>
+• C = 2πr = ${formatNumber(2)} × π × ${formatNumber(radius)} = ${formatNumber(circumference)}
+• A = πr² = π × ${formatNumber(radius)}² = ${formatNumber(area)}
+• d = 2r = ${formatNumber(diameter)}
+        `.trim();
+        
+        document.getElementById('result').innerHTML = result;
+        
+    } catch (error) {
+        document.getElementById('result').textContent = 'Error in calculation. Please check your input.';
+    }
+}
+
+// Allow Enter key to calculate
+document.getElementById('value-input').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') {
+        calculateCircle();
+    }
+});
+</script>
+</body>
+</html>

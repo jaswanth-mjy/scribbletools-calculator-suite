@@ -1,0 +1,293 @@
+<!-- File: tools/text/word-counter.html -->
+<style>
+    .wc-flex-row {
+        display: flex;
+        gap: 1.5rem;
+        align-items: flex-start;
+        justify-content: center;
+        margin-bottom: 1.2rem;
+        flex-wrap: wrap;
+    }
+    .wc-textarea {
+        background-color: #FDFBF5;
+        border: 2px solid #EAE3D5;
+        border-radius: 0.5rem;
+        padding: 1rem;
+        width: 420px;
+        height: 220px;
+        color: #4A4A4A;
+        font-size: 1.1rem;
+        line-height: 1.6;
+        transition: all 0.2s;
+        resize: none;
+        overflow: auto;
+        box-sizing: border-box;
+    }
+    .wc-textarea:focus {
+        outline: none;
+        border-color: #D9534F;
+        box-shadow: 0 0 0 3px rgba(217, 83, 79, 0.2);
+    }
+    .wc-power-bar-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-width: 80px;
+        min-height: 220px;
+        height: 220px;
+        justify-content: flex-end;
+    }
+    .wc-power-bar-track {
+        width: 24px;
+        height: 220px;
+        background: linear-gradient(to top, #EAE3D5, #fff);
+        border-radius: 12px;
+        position: relative;
+        box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+        border: 1px solid #DCD5C3;
+        margin-bottom: 0.5rem;
+    }
+    .wc-power-bar-inner {
+        position: absolute;
+        left: 0; bottom: 0;
+        width: 100%;
+        background: linear-gradient(0deg, #D9534F 0%, #F9A825 100%);
+        border-radius: 12px 12px 0 0;
+        transition: height 0.4s cubic-bezier(.68,-0.55,.27,1.55);
+        box-shadow: 0 2px 8px rgba(217,83,79,0.15);
+    }
+    .wc-power-icon {
+        font-size: 2.2rem;
+        color: #F9A825;
+        margin-bottom: -0.5rem;
+        filter: drop-shadow(0 2px 4px #D9534F33);
+        -webkit-user-select: none;
+        user-select: none;
+    }
+    .wc-stats-row {
+        display: flex;
+        gap: 1.2rem;
+        align-items: center;
+        justify-content: center;
+        margin: 1.2rem 0 1.2rem 0;
+    }
+    .wc-statbox {
+        background: #fff;
+        border-radius: 0.7rem;
+        padding: 0.7rem 1.2rem;
+        min-width: 90px;
+        text-align: center;
+        box-shadow: 0 2px 8px #D9534F11;
+        border: 2px solid #EAE3D5;
+        font-weight: bold;
+        font-size: 1.1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .wc-statbox.words { border-color: #1976d2; color: #1976d2; background: #e3f2fd; }
+    .wc-statbox.chars { border-color: #388e3c; color: #388e3c; background: #e8f5e9; }
+    .wc-statbox.sentences { border-color: #f57c00; color: #f57c00; background: #fff3e0; }
+    .wc-statbox.reading { border-color: #fbc02d; color: #fbc02d; background: #fffde7; }
+    .wc-platform-table {
+        width: 100%;
+        margin-top: 1rem;
+        border-collapse: collapse;
+        font-size: 0.98rem;
+    }
+    .wc-platform-table th, .wc-platform-table td {
+        padding: 0.5rem 0.75rem;
+        border-bottom: 1px solid #EAE3D5;
+        text-align: left;
+    }
+    .wc-platform-table th {
+        background: #FDFBF5;
+        font-weight: 700;
+    }
+    .wc-platform-table td.ok {
+        color: #388e3c;
+        font-weight: bold;
+    }
+    .wc-platform-table td.warn {
+        color: #D9534F;
+        font-weight: bold;
+    }
+    .wc-utility-bar {
+        margin-top: 2.5rem;
+        display: flex;
+        gap: 1.2rem;
+        justify-content: center;
+    }
+    .wc-utility-button {
+        background-color: #fff;
+        color: #D9534F;
+        font-weight: 600;
+        border: 2px solid #D9534F;
+        cursor: pointer;
+        padding: 0.7rem 2rem;
+        border-radius: 0.5rem;
+        transition: all 0.2s;
+        font-size: 1.1rem;
+    }
+    .wc-utility-button:hover {
+        background-color: #D9534F;
+        color: #fff;
+    }
+</style>
+<div>
+    <h2 class="handwritten text-5xl text-[#D9534F] mb-4">Word Counter Power-Up</h2>
+    <div class="mb-6 p-6 bg-amber-50/70 rounded-lg border border-amber-200">
+        <p class="text-lg text-gray-800 font-bold mb-2">The Word Counter tool is your all-in-one text analysis dashboard. Instantly count words, characters, sentences, and reading time. Watch the Power Bar rise as you type, and see if your text fits the limits for Instagram, Twitter, Reddit, and more. Whether you’re a writer, student, marketer, or social media pro, this tool helps you optimize your content for any platform.</p>
+        <ul class="list-disc list-inside text-gray-700 text-base">
+            <li>Counts words, characters, sentences, and reading time</li>
+            <li>Animated power bar rises with word count</li>
+            <li>Compares to limits for Instagram, Twitter, Reddit, Facebook, LinkedIn, Stack Overflow, WhatsApp, SMS, and more</li>
+            <li>Color-coded platform fit indicators</li>
+        </ul>
+    </div>
+   
+    <div class="wc-flex-row">
+        <textarea id="wc-input" class="wc-textarea" placeholder="Start scribbling here..."></textarea>
+        <div class="wc-power-bar-container">
+            <span class="wc-power-icon">⚡</span>
+            <div class="wc-power-bar-track">
+                <div id="wc-power-bar" class="wc-power-bar-inner" style="height:0%"></div>
+            </div>
+        </div>
+    </div>
+    <div class="wc-stats-row">
+        <div class="wc-statbox words">Words<br><span id="wc-words">0</span></div>
+        <div class="wc-statbox chars">Chars<br><span id="wc-chars">0</span></div>
+        <div class="wc-statbox sentences">Sentences<br><span id="wc-sentences">0</span></div>
+        <div class="wc-statbox reading">Reading<br><span id="wc-reading-time">~0s</span></div>
+    </div>
+    <details class="wc-accordion" style="max-width: 600px; margin: 0 auto;">
+        <summary>Show Platform Limits</summary>
+        <div class="wc-accordion-content">
+            <table class="wc-platform-table">
+                <thead><tr><th>Platform</th><th>Limit</th><th>Status</th></tr></thead>
+                <tbody id="wc-platforms"></tbody>
+            </table>
+        </div>
+    </details>
+    <div class="wc-utility-bar">
+        <button id="wc-copy-btn" class="wc-utility-button">Copy</button>
+        <button id="wc-download-btn" class="wc-utility-button">Download</button>
+        <button id="wc-clear-btn" class="wc-utility-button">Clear</button>
+    </div>
+</div>
+<script>
+function initializeWordCounter() {
+    const wcInput = document.getElementById('wc-input');
+    const wcBar = document.getElementById('wc-power-bar');
+    const wcWords = document.getElementById('wc-words');
+    const wcChars = document.getElementById('wc-chars');
+    const wcSentences = document.getElementById('wc-sentences');
+    const wcReading = document.getElementById('wc-reading-time');
+    const wcPlatforms = document.getElementById('wc-platforms');
+    const buttons = {
+        copy: document.getElementById('wc-copy-btn'),
+        download: document.getElementById('wc-download-btn'),
+        clear: document.getElementById('wc-clear-btn'),
+    };
+    const MAX_CHARS_FOR_BAR = 2500;
+    const platforms = [
+        {name: 'Instagram Caption', limit: 2200},
+        {name: 'Instagram Bio', limit: 150},
+        {name: 'Twitter/X Post', limit: 280},
+        {name: 'Reddit Post', limit: 40000},
+        {name: 'Facebook Post', limit: 63206},
+        {name: 'LinkedIn Post', limit: 3000},
+        {name: 'Stack Overflow Question', limit: 30000},
+        {name: 'WhatsApp Message', limit: 65536},
+        {name: 'SMS', limit: 160},
+        {name: 'YouTube Description', limit: 5000},
+        {name: 'Discord Message', limit: 2000},
+        {name: 'Telegram Message', limit: 4096},
+        {name: 'Pinterest Description', limit: 500},
+        {name: 'Snapchat Bio', limit: 80},
+        {name: 'GitHub Issue', limit: 65536},
+        {name: 'Medium Story', limit: 100000},
+        {name: 'TikTok Caption', limit: 2200},
+        {name: 'Tumblr Post', limit: 4096},
+        {name: 'Quora Answer', limit: 65000},
+        {name: 'Google My Business Post', limit: 1500}
+    ];
+    function getStats(text) {
+        const words = text.trim().split(/\s+/).filter(Boolean);
+        const chars = text.length;
+        const sentences = (text.match(/[.!?]+/g) || []).length;
+        return {words, chars, sentences};
+    }
+    function getReadingTime(wordCount) {
+        if (wordCount === 0) return '~0s';
+        
+        // Average reading speed: 200-250 words per minute
+        const avgWordsPerMinute = 225;
+        const totalMinutes = wordCount / avgWordsPerMinute;
+        
+        if (totalMinutes < 1) {
+            const seconds = Math.ceil(totalMinutes * 60);
+            return `~${seconds}s`;
+        } else if (totalMinutes < 60) {
+            const minutes = Math.ceil(totalMinutes);
+            return `~${minutes}m`;
+        } else {
+            const hours = Math.floor(totalMinutes / 60);
+            const minutes = Math.ceil(totalMinutes % 60);
+            if (minutes === 0) {
+                return `~${hours}h`;
+            } else {
+                return `~${hours}h ${minutes}m`;
+            }
+        }
+    }
+    function updateBar(charCount) {
+        const percent = Math.min(100, (charCount / MAX_CHARS_FOR_BAR) * 100);
+        wcBar.style.height = percent + '%';
+    }
+    function updatePlatforms(chars) {
+        wcPlatforms.innerHTML = '';
+        platforms.forEach(p => {
+            const ok = chars <= p.limit;
+            const tdClass = ok ? 'ok' : 'warn';
+            wcPlatforms.innerHTML += `<tr><td>${p.name}</td><td>${p.limit.toLocaleString()} chars</td><td class="${tdClass}">${ok ? 'OK' : 'Too Long'}</td></tr>`;
+        });
+    }
+    function updateStatsAll() {
+        const text = wcInput.value;
+        const stats = getStats(text);
+        wcWords.textContent = stats.words.length;
+        wcChars.textContent = stats.chars;
+        wcSentences.textContent = stats.sentences;
+        wcReading.textContent = getReadingTime(stats.words.length);
+        updateBar(stats.chars);
+        updatePlatforms(stats.chars);
+    }
+    buttons.copy.addEventListener('click', () => {
+        navigator.clipboard.writeText(wcInput.value).then(() => {
+            const originalText = buttons.copy.textContent;
+            buttons.copy.textContent = 'Copied!';
+            setTimeout(() => { buttons.copy.textContent = originalText; }, 2000);
+        });
+    });
+    buttons.download.addEventListener('click', () => {
+        const blob = new Blob([wcInput.value], { type: 'text/plain' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'counted-text.txt';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    });
+    buttons.clear.addEventListener('click', () => {
+        wcInput.value = '';
+        updateStatsAll();
+    });
+    wcInput.addEventListener('input', updateStatsAll);
+    updateStatsAll();
+}
+initializeWordCounter();
+</script>

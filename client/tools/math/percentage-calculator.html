@@ -1,0 +1,542 @@
+<!-- File: tools/math/percentage-calculator.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Percentage Calculator</title>
+    <style>
+        body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; }
+        .perc-calc-container { max-width: 700px; margin: 3em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2em 1.5em 2.5em 1.5em; }
+        .handwritten { font-family: 'Caveat', cursive; }
+        .perc-calc-label { font-weight: 600; margin-bottom: 0.5em; display: block; }
+        .perc-calc-input { width: 100%; padding: 1em; border: 2px solid #EAE3D5; border-radius: 0.7em; font-size: 1.2em; margin-bottom: 1em; background: #FDFBF5; text-align: center; font-family: 'Fira Code', monospace; }
+        .perc-calc-btn { background: #fff; color: #D9534F; border: 2px solid #D9534F; border-radius: 0.5em; padding: 0.7em 2em; font-weight: 600; font-size: 1.1em; cursor: pointer; transition: all 0.2s; margin-bottom: 1em; }
+        .perc-calc-btn:hover { background: #D9534F; color: #fff; }
+        .perc-calc-result { background: #FDFBF5; border: 2px solid #D9534F; border-radius: 0.7em; padding: 1em; font-size: 1.25em; color: #D9534F; min-height: 1.7em; margin-bottom: 1em; text-align: center; font-family: 'Fira Code', monospace; font-weight: bold; max-height: 600px; overflow-y: auto; word-break: break-word; transition: height 0.2s; }
+        .perc-calc-desc { width: 100%; margin-top: 2em; background:#FDFBF5; border:2px solid #EAE3D5; border-radius:0.9em; padding:1.2em 1em; font-size:1.08em; color:#333; line-height:1.7; }
+        .perc-calc-desc strong { color: #D9534F; font-size: 1.12em; }
+        
+        .result-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1em; margin: 1em 0; }
+        .result-card { background: #F0F8FF; border: 1px solid #B0C4DE; border-radius: 0.5em; padding: 1em; text-align: center; }
+        .result-card h4 { color: #4682B4; margin: 0 0 0.5em 0; }
+        .result-card .value { font-size: 1.5em; font-weight: bold; color: #D9534F; }
+        
+        .visual-bar { background: #E8F5E8; border: 1px solid #90EE90; border-radius: 0.5em; padding: 1em; margin: 1em 0; }
+        .visual-bar h4 { color: #228B22; margin: 0 0 0.5em 0; }
+        .bar-container { background: #f0f0f0; border-radius: 0.3em; height: 2rem; margin: 0.5em 0; position: relative; overflow: hidden; }
+        .bar-fill { background: linear-gradient(90deg, #4CAF50, #45a049); height: 100%; transition: width 0.5s; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; }
+        
+        .conversion-grid { background: #FFF8DC; border: 1px solid #FFD700; border-radius: 0.5em; padding: 1em; margin: 1em 0; }
+        .conversion-grid h4 { color: #DAA520; margin: 0 0 0.5em 0; }
+        .conversion-item { display: flex; justify-content: space-between; padding: 0.5em; margin: 0.2em 0; background: white; border-radius: 0.3em; }
+        
+        .examples { background: #F0FFF0; border: 1px solid #90EE90; border-radius: 0.5em; padding: 1em; margin: 1em 0; }
+        .examples h4 { color: #228B22; margin: 0 0 0.5em 0; }
+        .example-item { padding: 0.5em; margin: 0.2em 0; background: white; border-radius: 0.3em; border-left: 4px solid #228B22; }
+        
+        @media (max-width: 600px) { 
+            .perc-calc-container { padding: 1em 0.2em; }
+            .result-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+<div class="perc-calc-container">
+    <h2 class="handwritten text-5xl text-[#D9534F] mb-4">Percentage Calculator</h2>
+    <label class="perc-calc-label">Enter a percentage expression (e.g. <code>20% of 150</code>, <code>increase 80 by 15%</code>, <code>10 is what percent of 50</code>):</label>
+    <input id="perc-input" class="perc-calc-input" placeholder="e.g. 20% of 150 or 10 is what percent of 50">
+    <button id="perc-calc-calc" class="perc-calc-btn">Calculate</button>
+    <div class="perc-calc-result" id="perc-calc-result"></div>
+</div>
+<div class="perc-calc-desc" style="max-width: fit-content; margin: 2.5em auto 0 auto; background:#FDFBF5; border:2px solid #EAE3D5; border-radius:0.9em; padding:1.2em 1em; font-size:1.08em; color:#333; line-height:1.7;">
+    <strong style="font-size:1.18em; color:#D9534F;">About the Percentage Calculator</strong><br><br>
+    Enter any percentage expression (e.g. <code>20% of 150</code>, <code>increase 80 by 15%</code>, <code>decrease 200 by 10%</code>, <code>10 is what percent of 50</code>, <code>what is 15% of 80</code>).<br><br>
+    <b>Features:</b>
+    <ul style="margin-left:1.2em; margin-bottom:0.7em;">
+        <li>Find a percentage of a number (e.g. 20% of 150)</li>
+        <li>Increase/decrease a number by a percentage</li>
+        <li>Find what percent one number is of another</li>
+        <li>Find a number given a percent and a part</li>
+        <li>Convert between percent, decimal, and fraction</li>
+        <li>Responsive, mobile-friendly, and distraction-free</li>
+    </ul>
+    <b>Use Cases:</b>
+    <ul style="margin-left:1.2em;">
+        <li>Calculate discounts, tips, or taxes while shopping or dining</li>
+        <li>Find percent change (increase/decrease) in prices, scores, or values</li>
+        <li>Convert between percent, decimal, and fraction for school or work</li>
+        <li>Check homework or perform quick math for school, college, or tutoring</li>
+        <li>Calculate what percent one value is of another</li>
+    </ul>
+    <b>Why use this calculator?</b> No ads, no clutter, no tracking—just a beautiful, reliable percentage calculator you can use anywhere.<br>
+</div>
+<script>
+function showResult(str) {
+    document.getElementById('perc-calc-result').innerHTML = str;
+}
+
+function formatNumber(num) {
+    return parseFloat(num).toLocaleString('en-US', {
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 6
+    });
+}
+
+function getFraction(percent) {
+    const decimal = percent / 100;
+    const tolerance = 1.0E-6;
+    
+    let numerator = 1;
+    let denominator = 1;
+    
+    for (let d = 1; d <= 100; d++) {
+        for (let n = 1; n <= d; n++) {
+            if (Math.abs(n / d - decimal) < tolerance) {
+                return `${n}/${d}`;
+            }
+        }
+    }
+    
+    return `${percent}/100`;
+}
+
+function evaluatePercentExpr(expr) {
+    expr = expr.replace(/−/g, '-').toLowerCase();
+    let match;
+    let result = '';
+    
+    // "20% of 150"
+    if ((match = expr.match(/([\d.]+)%\s*of\s*([\d.]+)/))) {
+        let percent = parseFloat(match[1]);
+        let num = parseFloat(match[2]);
+        let result = percent / 100 * num;
+        
+        let output = `
+            <div class="result-grid">
+                <div class="result-card">
+                    <h4>📊 Percentage Calculation</h4>
+                    <div class="value">${formatNumber(percent)}% of ${formatNumber(num)}</div>
+                </div>
+                <div class="result-card">
+                    <h4>🎯 Result</h4>
+                    <div class="value">${formatNumber(result)}</div>
+                </div>
+                <div class="result-card">
+                    <h4>📈 Decimal Form</h4>
+                    <div class="value">${formatNumber(percent/100)}</div>
+                </div>
+                <div class="result-card">
+                    <h4>🔢 Fraction Form</h4>
+                    <div class="value">${getFraction(percent)}</div>
+                </div>
+            </div>
+            
+            <div class="visual-bar">
+                <h4>📊 Visual Representation</h4>
+                <div class="bar-container">
+                    <div class="bar-fill" style="width: ${percent}%">${percent}%</div>
+                </div>
+                <p>${formatNumber(result)} out of ${formatNumber(num)} (${percent}%)</p>
+            </div>
+            
+            <div class="conversion-grid">
+                <h4>🔄 Multiple Formats</h4>
+                <div class="conversion-item">
+                    <span>Percentage:</span>
+                    <span>${formatNumber(percent)}%</span>
+                </div>
+                <div class="conversion-item">
+                    <span>Decimal:</span>
+                    <span>${formatNumber(percent/100)}</span>
+                </div>
+                <div class="conversion-item">
+                    <span>Fraction:</span>
+                    <span>${getFraction(percent)}</span>
+                </div>
+                <div class="conversion-item">
+                    <span>Result:</span>
+                    <span>${formatNumber(result)}</span>
+                </div>
+            </div>
+        `;
+        
+        showResult(output);
+        return;
+    }
+    
+    // "increase 80 by 15%"
+    if ((match = expr.match(/increase\s*([\d.]+)\s*by\s*([\d.]+)%/))) {
+        let num = parseFloat(match[1]);
+        let percent = parseFloat(match[2]);
+        let increase = num * (percent / 100);
+        let result = num + increase;
+        
+        let output = `
+            <div class="result-grid">
+                <div class="result-card">
+                    <h4>📈 Increase Calculation</h4>
+                    <div class="value">${formatNumber(num)} + ${formatNumber(percent)}%</div>
+                </div>
+                <div class="result-card">
+                    <h4>🎯 New Value</h4>
+                    <div class="value">${formatNumber(result)}</div>
+                </div>
+                <div class="result-card">
+                    <h4>📊 Amount Increased</h4>
+                    <div class="value">+${formatNumber(increase)}</div>
+                </div>
+                <div class="result-card">
+                    <h4>📈 Growth Rate</h4>
+                    <div class="value">${formatNumber(percent)}%</div>
+                </div>
+            </div>
+            
+            <div class="visual-bar">
+                <h4>📊 Visual Growth</h4>
+                <div class="bar-container">
+                    <div class="bar-fill" style="width: ${(num/result)*100}%">Original</div>
+                </div>
+                <div class="bar-container">
+                    <div class="bar-fill" style="width: 100%; background: linear-gradient(90deg, #4CAF50, #45a049);">New Total</div>
+                </div>
+                <p>Original: ${formatNumber(num)} → New: ${formatNumber(result)} (+${formatNumber(increase)})</p>
+            </div>
+        `;
+        
+        showResult(output);
+        return;
+    }
+    
+    // "decrease 200 by 10%"
+    if ((match = expr.match(/decrease\s*([\d.]+)\s*by\s*([\d.]+)%/))) {
+        let num = parseFloat(match[1]);
+        let percent = parseFloat(match[2]);
+        let decrease = num * (percent / 100);
+        let result = num - decrease;
+        
+        let output = `
+            <div class="result-grid">
+                <div class="result-card">
+                    <h4>📉 Decrease Calculation</h4>
+                    <div class="value">${formatNumber(num)} - ${formatNumber(percent)}%</div>
+                </div>
+                <div class="result-card">
+                    <h4>🎯 New Value</h4>
+                    <div class="value">${formatNumber(result)}</div>
+                </div>
+                <div class="result-card">
+                    <h4>📊 Amount Decreased</h4>
+                    <div class="value">-${formatNumber(decrease)}</div>
+                </div>
+                <div class="result-card">
+                    <h4>📉 Reduction Rate</h4>
+                    <div class="value">${formatNumber(percent)}%</div>
+                </div>
+            </div>
+            
+            <div class="visual-bar">
+                <h4>📊 Visual Reduction</h4>
+                <div class="bar-container">
+                    <div class="bar-fill" style="width: 100%; background: linear-gradient(90deg, #f44336, #d32f2f);">Original</div>
+                </div>
+                <div class="bar-container">
+                    <div class="bar-fill" style="width: ${(result/num)*100}%; background: linear-gradient(90deg, #4CAF50, #45a049);">New Total</div>
+                </div>
+                <p>Original: ${formatNumber(num)} → New: ${formatNumber(result)} (-${formatNumber(decrease)})</p>
+            </div>
+        `;
+        
+        showResult(output);
+        return;
+    }
+    
+    // "10 is what percent of 50"
+    if ((match = expr.match(/([\d.]+)\s*is\s*what\s*percent\s*of\s*([\d.]+)/))) {
+        let part = parseFloat(match[1]);
+        let whole = parseFloat(match[2]);
+        if (whole === 0) {
+            showResult('❌ Error: Cannot divide by zero - the whole value cannot be zero');
+            return;
+        }
+        let percent = (part / whole) * 100;
+        
+        let output = `
+            <div class="result-grid">
+                <div class="result-card">
+                    <h4>🔍 Percentage Analysis</h4>
+                    <div class="value">${formatNumber(part)} of ${formatNumber(whole)}</div>
+                </div>
+                <div class="result-card">
+                    <h4>🎯 Percentage</h4>
+                    <div class="value">${formatNumber(percent)}%</div>
+                </div>
+                <div class="result-card">
+                    <h4>📊 Ratio</h4>
+                    <div class="value">${formatNumber(part)}:${formatNumber(whole)}</div>
+                </div>
+                <div class="result-card">
+                    <h4>🔢 Decimal</h4>
+                    <div class="value">${formatNumber(percent/100)}</div>
+                </div>
+            </div>
+            
+            <div class="visual-bar">
+                <h4>📊 Visual Proportion</h4>
+                <div class="bar-container">
+                    <div class="bar-fill" style="width: ${percent}%">${formatNumber(percent)}%</div>
+                </div>
+                <p>${formatNumber(part)} represents ${formatNumber(percent)}% of ${formatNumber(whole)}</p>
+            </div>
+            
+            <div class="examples">
+                <h4>💡 Understanding the Result</h4>
+                <div class="example-item">
+                    <strong>Part:</strong> ${formatNumber(part)} (the smaller number)
+                </div>
+                <div class="example-item">
+                    <strong>Whole:</strong> ${formatNumber(whole)} (the total or reference number)
+                </div>
+                <div class="example-item">
+                    <strong>Percentage:</strong> ${formatNumber(percent)}% (how much the part represents of the whole)
+                </div>
+            </div>
+        `;
+        
+        showResult(output);
+        return;
+    }
+    
+    // "what is 15% of 80"
+    if ((match = expr.match(/what\s*is\s*([\d.]+)%\s*of\s*([\d.]+)/))) {
+        let percent = parseFloat(match[1]);
+        let num = parseFloat(match[2]);
+        let result = percent / 100 * num;
+        
+        let output = `
+            <div class="result-grid">
+                <div class="result-card">
+                    <h4>🔍 Question</h4>
+                    <div class="value">What is ${formatNumber(percent)}% of ${formatNumber(num)}?</div>
+                </div>
+                <div class="result-card">
+                    <h4>🎯 Answer</h4>
+                    <div class="value">${formatNumber(result)}</div>
+                </div>
+                <div class="result-card">
+                    <h4>📊 Calculation</h4>
+                    <div class="value">${formatNumber(percent)}% × ${formatNumber(num)}</div>
+                </div>
+                <div class="result-card">
+                    <h4>🔢 Decimal Form</h4>
+                    <div class="value">${formatNumber(percent/100)} × ${formatNumber(num)}</div>
+                </div>
+            </div>
+            
+            <div class="visual-bar">
+                <h4>📊 Visual Representation</h4>
+                <div class="bar-container">
+                    <div class="bar-fill" style="width: ${percent}%">${formatNumber(percent)}%</div>
+                </div>
+                <p>${formatNumber(result)} is ${formatNumber(percent)}% of ${formatNumber(num)}</p>
+            </div>
+        `;
+        
+        showResult(output);
+        return;
+    }
+    
+    // "10 is 25% of what"
+    if ((match = expr.match(/([\d.]+)\s*is\s*([\d.]+)%\s*of\s*what/))) {
+        let part = parseFloat(match[1]);
+        let percent = parseFloat(match[2]);
+        if (percent === 0) {
+            showResult('❌ Error: Cannot divide by zero - percentage cannot be 0%');
+            return;
+        }
+        let whole = part * 100 / percent;
+        
+        let output = `
+            <div class="result-grid">
+                <div class="result-card">
+                    <h4>🔍 Reverse Calculation</h4>
+                    <div class="value">${formatNumber(part)} is ${formatNumber(percent)}% of what?</div>
+                </div>
+                <div class="result-card">
+                    <h4>🎯 Answer</h4>
+                    <div class="value">${formatNumber(whole)}</div>
+                </div>
+                <div class="result-card">
+                    <h4>📊 Verification</h4>
+                    <div class="value">${formatNumber(percent)}% of ${formatNumber(whole)} = ${formatNumber(part)}</div>
+                </div>
+                <div class="result-card">
+                    <h4>🔢 Formula</h4>
+                    <div class="value">Part ÷ Percentage × 100</div>
+                </div>
+            </div>
+            
+            <div class="visual-bar">
+                <h4>📊 Visual Verification</h4>
+                <div class="bar-container">
+                    <div class="bar-fill" style="width: ${percent}%">${formatNumber(percent)}%</div>
+                </div>
+                <p>${formatNumber(part)} represents ${formatNumber(percent)}% of ${formatNumber(whole)}</p>
+            </div>
+        `;
+        
+        showResult(output);
+        return;
+    }
+    
+    // "convert 0.25 to percent"
+    if ((match = expr.match(/convert\s*([\d.]+)\s*to\s*percent/))) {
+        let dec = parseFloat(match[1]);
+        let percent = dec * 100;
+        
+        let output = `
+            <div class="result-grid">
+                <div class="result-card">
+                    <h4>🔄 Decimal to Percent</h4>
+                    <div class="value">${formatNumber(dec)} → ${formatNumber(percent)}%</div>
+                </div>
+                <div class="result-card">
+                    <h4>📊 Percentage</h4>
+                    <div class="value">${formatNumber(percent)}%</div>
+                </div>
+                <div class="result-card">
+                    <h4>🔢 Original Decimal</h4>
+                    <div class="value">${formatNumber(dec)}</div>
+                </div>
+                <div class="result-card">
+                    <h4>📈 Calculation</h4>
+                    <div class="value">${formatNumber(dec)} × 100</div>
+                </div>
+            </div>
+            
+            <div class="visual-bar">
+                <h4>📊 Visual Conversion</h4>
+                <div class="bar-container">
+                    <div class="bar-fill" style="width: ${percent}%">${formatNumber(percent)}%</div>
+                </div>
+                <p>Decimal ${formatNumber(dec)} = ${formatNumber(percent)}%</p>
+            </div>
+        `;
+        
+        showResult(output);
+        return;
+    }
+    
+    // "convert 25% to decimal"
+    if ((match = expr.match(/convert\s*([\d.]+)%\s*to\s*decimal/))) {
+        let percent = parseFloat(match[1]);
+        let decimal = percent / 100;
+        
+        let output = `
+            <div class="result-grid">
+                <div class="result-card">
+                    <h4>🔄 Percent to Decimal</h4>
+                    <div class="value">${formatNumber(percent)}% → ${formatNumber(decimal)}</div>
+                </div>
+                <div class="result-card">
+                    <h4>🔢 Decimal</h4>
+                    <div class="value">${formatNumber(decimal)}</div>
+                </div>
+                <div class="result-card">
+                    <h4>📊 Original Percent</h4>
+                    <div class="value">${formatNumber(percent)}%</div>
+                </div>
+                <div class="result-card">
+                    <h4>📈 Calculation</h4>
+                    <div class="value">${formatNumber(percent)} ÷ 100</div>
+                </div>
+            </div>
+            
+            <div class="visual-bar">
+                <h4>📊 Visual Conversion</h4>
+                <div class="bar-container">
+                    <div class="bar-fill" style="width: ${percent}%">${formatNumber(percent)}%</div>
+                </div>
+                <p>Percent ${formatNumber(percent)}% = Decimal ${formatNumber(decimal)}</p>
+            </div>
+        `;
+        
+        showResult(output);
+        return;
+    }
+    
+    // "convert 1/4 to percent"
+    if ((match = expr.match(/convert\s*([\d]+)\/([\d]+)\s*to\s*percent/))) {
+        let n = parseFloat(match[1]);
+        let d = parseFloat(match[2]);
+        let percent = (n / d) * 100;
+        
+        let output = `
+            <div class="result-grid">
+                <div class="result-card">
+                    <h4>🔄 Fraction to Percent</h4>
+                    <div class="value">${n}/${d} → ${formatNumber(percent)}%</div>
+                </div>
+                <div class="result-card">
+                    <h4>📊 Percentage</h4>
+                    <div class="value">${formatNumber(percent)}%</div>
+                </div>
+                <div class="result-card">
+                    <h4>🔢 Original Fraction</h4>
+                    <div class="value">${n}/${d}</div>
+                </div>
+                <div class="result-card">
+                    <h4>📈 Calculation</h4>
+                    <div class="value">${n} ÷ ${d} × 100</div>
+                </div>
+            </div>
+            
+            <div class="visual-bar">
+                <h4>📊 Visual Conversion</h4>
+                <div class="bar-container">
+                    <div class="bar-fill" style="width: ${percent}%">${formatNumber(percent)}%</div>
+                </div>
+                <p>Fraction ${n}/${d} = ${formatNumber(percent)}%</p>
+            </div>
+        `;
+        
+        showResult(output);
+        return;
+    }
+    
+    // Safe calculation for basic mathematical expressions
+    try {
+        let cleanExpr = expr.replace(/%/g, '/100');
+        // Only allow safe mathematical operations
+        if (!/^[0-9+\-*/.() ]+$/.test(cleanExpr)) {
+            throw new Error('Invalid characters in expression');
+        }
+        
+        // Use Function constructor for safer evaluation (still limited)
+        let val = new Function('return ' + cleanExpr)();
+        
+        if (typeof val !== 'number' || !isFinite(val)) {
+            throw new Error('Invalid calculation result');
+        }
+        
+        showResult(`<div class="result-card"><h4>📊 Calculation Result</h4><div class="value">${expr} = ${formatNumber(val)}</div></div>`);
+    } catch (e) {
+        showResult('❌ Error: Invalid expression - please use only numbers and basic math operators (+, -, *, /, %)');
+    }
+}
+
+document.getElementById('perc-calc-calc').addEventListener('click', function() {
+    let expr = document.getElementById('perc-input').value;
+    if (!expr.trim()) return showResult('Enter a percentage expression.');
+    evaluatePercentExpr(expr);
+});
+
+document.getElementById('perc-input').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') {
+        let expr = document.getElementById('perc-input').value;
+        if (!expr.trim()) return showResult('Enter a percentage expression.');
+        evaluatePercentExpr(expr);
+    }
+});
+</script>
+</html>

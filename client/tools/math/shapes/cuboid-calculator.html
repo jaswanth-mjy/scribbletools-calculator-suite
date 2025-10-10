@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cuboid Calculator</title>
+    <style>
+        body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; }
+        .geo-calc-container { max-width: 400px; margin: 3em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2em 1.5em 2.5em 1.5em; }
+        .handwritten { font-family: 'Caveat', cursive; }
+        .geo-calc-label { font-weight: 600; margin-bottom: 0.5em; display: block; }
+        .geo-calc-input, .geo-calc-select { width: 100%; padding: 1em; border: 2px solid #EAE3D5; border-radius: 0.7em; font-size: 1.1em; margin-bottom: 1em; background: #FDFBF5; text-align: center; font-family: 'Fira Code', monospace; }
+        .geo-calc-btn { background: #fff; color: #D9534F; border: 2px solid #D9534F; border-radius: 0.5em; padding: 0.7em 2em; font-weight: 600; font-size: 1.1em; cursor: pointer; transition: all 0.2s; margin-bottom: 1em; }
+        .geo-calc-btn:hover { background: #D9534F; color: #fff; }
+        .geo-calc-result { background: #FDFBF5; border: 2px solid #D9534F; border-radius: 0.7em; padding: 1em; font-size: 1.18em; color: #D9534F; min-height: 1.7em; margin-bottom: 1em; text-align: center; font-family: 'Fira Code', monospace; font-weight: bold; max-height: 300px; overflow-y: auto; word-break: break-word; transition: height 0.2s; }
+        .input-group { margin-bottom: 1em; }
+        .dimension-inputs { display: grid; grid-template-columns: 1fr; gap: 0.5em; }
+        .geo-calc-desc { max-width: fit-content; margin: 2.5em auto 0 auto; background:#FDFBF5; border:2px solid #EAE3D5; border-radius:0.9em; padding:1.2em 1em; font-size:1.08em; color:#333; line-height:1.7; }
+        @media (max-width: 600px) { 
+            .geo-calc-container { padding: 1em 0.2em; }
+        }
+    </style>
+</head>
+<body>
+<div class="geo-calc-container">
+    <h2 class="handwritten text-5xl text-[#D9534F] mb-4">Cuboid Calculator</h2>
+    
+    <div class="input-group">
+        <label class="geo-calc-label">Cuboid Dimensions:</label>
+        <div class="dimension-inputs">
+            <input id="length" class="geo-calc-input" type="number" min="0" step="any" placeholder="Length">
+            <input id="width" class="geo-calc-input" type="number" min="0" step="any" placeholder="Width">
+            <input id="height" class="geo-calc-input" type="number" min="0" step="any" placeholder="Height">
+        </div>
+    </div>
+    
+    <button type="button" class="geo-calc-btn" onclick="calculateCuboid()">Calculate Cuboid</button>
+    <div class="geo-calc-result" id="result">Enter length, width, and height to calculate cuboid properties</div>
+</div>
+
+<div class="geo-calc-desc">
+    <strong style="font-size:1.18em; color:#D9534F;">About the Cuboid Calculator</strong><br><br>
+    Calculate volume and surface areas of a cuboid (rectangular prism) from its three dimensions.<br><br>
+    <b>Formulas:</b>
+    <ul style="margin-left:1.2em; margin-bottom:0.7em;">
+        <li>Volume: <code>V = length × width × height</code></li>
+        <li>Total Surface Area: <code>TSA = 2(lw + wh + hl)</code></li>
+        <li>Lateral Surface Area: <code>LSA = 2h(l + w)</code></li>
+        <li>Space Diagonal: <code>d = √(l² + w² + h²)</code></li>
+    </ul>
+    <b>Use Cases:</b>
+    <ul style="margin-left:1.2em;">
+        <li>Container and packaging calculations</li>
+        <li>Room volume and wall area calculations</li>
+        <li>Material estimation for boxes and tanks</li>
+        <li>Engineering and architectural planning</li>
+    </ul>
+    <b>Why use this calculator?</b> Complete cuboid analysis with detailed calculations and clear results.<br>
+</div>
+
+<script>
+function formatNumber(num) {
+    if (Math.abs(num) < 1e-10) return '0';
+    if (Math.abs(num) >= 1e10) return num.toExponential(6);
+    return parseFloat(num.toFixed(8)).toString();
+}
+
+function calculateCuboid() {
+    const length = parseFloat(document.getElementById('length').value);
+    const width = parseFloat(document.getElementById('width').value);
+    const height = parseFloat(document.getElementById('height').value);
+    
+    if (isNaN(length) || isNaN(width) || isNaN(height) || length <= 0 || width <= 0 || height <= 0) {
+        document.getElementById('result').textContent = 'Please enter positive numbers for all dimensions.';
+        return;
+    }
+    
+    try {
+        const volume = length * width * height;
+        const totalSurfaceArea = 2 * (length * width + width * height + height * length);
+        const lateralSurfaceArea = 2 * height * (length + width);
+        const diagonal = Math.sqrt(length * length + width * width + height * height);
+        
+        const result = `
+<strong>Cuboid Properties:</strong>
+
+• Length: ${formatNumber(length)}
+• Width: ${formatNumber(width)}
+• Height: ${formatNumber(height)}
+• Volume: ${formatNumber(volume)}
+• Total Surface Area: ${formatNumber(totalSurfaceArea)}
+• Lateral Surface Area: ${formatNumber(lateralSurfaceArea)}
+• Space Diagonal: ${formatNumber(diagonal)}
+
+<strong>Calculations:</strong>
+• Volume = l × w × h = ${formatNumber(length)} × ${formatNumber(width)} × ${formatNumber(height)} = ${formatNumber(volume)}
+• TSA = 2(lw + wh + hl) = 2(${formatNumber(length * width)} + ${formatNumber(width * height)} + ${formatNumber(height * length)}) = ${formatNumber(totalSurfaceArea)}
+• LSA = 2h(l + w) = 2 × ${formatNumber(height)} × (${formatNumber(length)} + ${formatNumber(width)}) = ${formatNumber(lateralSurfaceArea)}
+• Diagonal = √(l² + w² + h²) = ${formatNumber(diagonal)}
+        `.trim();
+        
+        document.getElementById('result').innerHTML = result;
+        
+    } catch (error) {
+        document.getElementById('result').textContent = 'Error in calculation. Please check your input.';
+    }
+}
+
+// Allow Enter key to calculate
+['length', 'width', 'height'].forEach(id => {
+    document.getElementById(id).addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+            calculateCuboid();
+        }
+    });
+});
+</script>
+</body>
+</html>

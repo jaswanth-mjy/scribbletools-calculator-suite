@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Convert Image DPI – Online Tool</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Change the DPI (dots per inch) of any image instantly. Fast, secure, and free. No upload limits, works offline in your browser.">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <style>
+    body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; margin: 0; }
+    .reduce-size-container { max-width: 800px; margin: 3em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2.5em 2em 2.5em 2em; }
+    .handwritten { font-family: 'Caveat', cursive; }
+    .main-btn { font-size: 1.2em; color: #fff; background: #4682B4; padding: 1.2em 2.5em; border-radius: 0.7em; text-decoration: none; font-weight: 700; box-shadow: 0 2px 8px #eae3d5; border: none; cursor: pointer; transition: background 0.2s; margin-top: 2.5em; }
+    .main-btn:hover { background: #357abd; }
+    .related-links { margin-top: 2em; font-size: 1em; }
+    .related-links a { color: #D9534F; text-decoration: underline; margin-right: 1.2em; }
+    .related-links a:hover { color: #357abd; }
+    .step-list { margin: 1.2em 0 1.2em 1.2em; padding: 0; }
+    .step-list li { margin-bottom: 0.7em; }
+    .example-section { background: #FDFBF5; border: 1px solid #FFEAA7; border-radius: 0.7em; padding: 1.2em; margin: 2em 0; }
+    .example-section h3 { color: #4682B4; margin-bottom: 0.5em; }
+    .example-img { max-width: 120px; border-radius: 0.4em; margin: 0.5em; border: 1px solid #eee; }
+    .privacy-section { margin: 2em 0; }
+    .privacy-section strong { color: #D9534F; }
+    .upload-area { border: 3px dashed #D9534F; border-radius: 1em; padding: 3em 2em; text-align: center; margin: 2em 0; background: #FDFBF5; transition: all 0.3s; cursor: pointer; }
+    .upload-area:hover { background: #F0F8FF; border-color: #4682B4; }
+    .upload-icon { font-size: 3em; color: #D9534F; margin-bottom: 1em; }
+    .file-input { display: none; }
+    .upload-btn { background: #D9534F; color: #fff; border: none; border-radius: 0.5em; padding: 1em 2em; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+    .upload-btn:hover { background: #c9302c; }
+    .upload-area.dragover { background: #F0F8FF; border-color: #4682B4; }
+    .preview-section { margin-top: 2em; text-align: center; display: none; }
+    .uploaded-preview { max-width: 100%; max-height: 300px; border-radius: 0.5em; margin: 1em 0; border: 2px solid #EAE3D5; }
+    .clear-btn { background: #6c757d; color: #fff; border: none; border-radius: 0.5em; padding: 0.8em 1.5em; cursor: pointer; margin-left: 1em; }
+    .dpi-result { margin: 2em 0; background: #FDFBF5; border: 1px solid #FFEAA7; border-radius: 0.7em; padding: 1.2em; text-align: center; font-size: 1.15em; }
+    .dpi-result strong { color: #4682B4; }
+    .form-group { margin: 1.2em 0; }
+    .form-label { font-weight: 600; margin-bottom: 0.5em; display: block; }
+    .form-input { width: 100%; padding: 0.8em; border: 2px solid #EAE3D5; border-radius: 0.5em; font-size: 1em; margin-bottom: 1em; }
+    .download-btn { background: #4682B4; color: #fff; border: none; border-radius: 0.5em; padding: 1em 2em; font-weight: 600; cursor: pointer; transition: all 0.2s; width: 100%; font-size: 1.1em; margin-top: 1.5em; max-width: 300px; }
+    .download-btn:hover { background: #357abd; }
+    .progress-bar { width: 100%; height: 20px; background-color: #f0f0f0; border-radius: 10px; overflow: hidden; margin: 1em 0; }
+    .progress-bar-fill { height: 100%; background-color: #4682B4; width: 0%; transition: width 0.3s ease-in-out; }
+    .status-text { color: #666; text-align: center; margin: 1em 0; }
+    .error-message { background: #FFE8E8; border: 2px solid #DC3545; border-radius: 0.7em; padding: 1.2em; margin: 1em 0; color: #DC3545; text-align: center; }
+    .success-message { background: #E8F5E8; border: 2px solid #28A745; border-radius: 0.7em; padding: 1.2em; margin: 1em 0; color: #28A745; text-align: center; }
+    @media (max-width: 600px) { .reduce-size-container { padding: 1em 0.2em; } }
+  </style>
+</head>
+<body>
+<main>
+  <div class="reduce-size-container">
+    <header>
+      <h1 class="handwritten text-5xl text-[#D9534F] mb-4">Convert Image DPI</h1>
+      <p style="font-size:1.2em; margin-bottom:1.2em;">Change the DPI (dots per inch) of any image instantly. Fast, privacy-first, and free. No files are stored.</p>
+    </header>
+    <nav class="related-links" aria-label="Related image tools">
+      <strong>Related:</strong>
+      <a href="#check-image-dpi">Check Image DPI</a>
+      <a href="#image-compressor">Image Compressor</a>
+      <a href="#image-converter">Image Converter</a>
+      <a href="#resize-image-pixel">Resize by Pixel</a>
+    </nav>
+    <section aria-labelledby="instructions-title" style="background: #F8FBFF; border-radius: 0.7em; padding: 1.5em; margin: 2em 0; border: 1px solid #4682B4;">
+      <h2 id="instructions-title" style="color:#4682B4; margin-bottom: 1em; font-size: 1.5em;">How to Use</h2>
+      <ol class="step-list" style="margin-left: 1.5em; line-height: 1.6;">
+        <li><strong style="color: #4682B4">Upload Your Image:</strong>
+          <ul style="margin: 0.5em 0 0.5em 1.5em; color: #666;">
+            <li>Drag & drop your image into the upload area</li>
+            <li>Or click "Choose File" to browse</li>
+            <li>Supports JPEG, PNG, and TIFF formats</li>
+          </ul>
+        </li>
+        <li><strong style="color: #4682B4">Set New DPI:</strong>
+          <ul style="margin: 0.5em 0 0.5em 1.5em; color: #666;">
+            <li>Enter your desired DPI value (10-1200)</li>
+            <li>Common values: 72, 150, 300, 600 DPI</li>
+            <li>Original dimensions maintained</li>
+          </ul>
+        </li>
+        <li><strong style="color: #4682B4">Download & Use:</strong>
+          <ul style="margin: 0.5em 0 0.5em 1.5em; color: #666;">
+            <li>Click "Download" to save your converted image</li>
+            <li>No quality loss during conversion</li>
+            <li>Ready for print or digital use</li>
+          </ul>
+        </li>
+      </ol>
+    </section>
+    
+    <section class="example-section" style="background: #FDFBF5; border: 1px solid #FFEAA7; border-radius: 0.7em; padding: 1.5em; margin: 2em 0;">
+      <h3 style="color: #4682B4; margin-bottom: 1em;">DPI Guide & Common Uses</h3>
+      
+      <div style="margin-bottom: 1.5em;">
+        <h4 style="color: #FF6B6B; margin-bottom: 0.5em;">🖨️ Print Requirements</h4>
+        <ul style="color: #666; margin-left: 1.2em;">
+          <li>Standard Printing: 300 DPI</li>
+          <li>Magazine Quality: 300-600 DPI</li>
+          <li>Billboard/Large Format: 100-150 DPI</li>
+          <li>Professional Photo: 300+ DPI</li>
+        </ul>
+      </div>
+      
+      <div style="margin-bottom: 1.5em;">
+        <h4 style="color: #FF6B6B; margin-bottom: 0.5em;">🌐 Digital Display</h4>
+        <ul style="color: #666; margin-left: 1.2em;">
+            <li>Web Images: 72 DPI</li>
+            <li>Digital Documents: 150 DPI</li>
+            <li>Screen Presentation: 96 DPI</li>
+            <li>Mobile Devices: 72-150 DPI</li>
+        </ul>
+      </div>
+      
+      <div>
+        <h4 style="color: #FF6B6B; margin-bottom: 0.5em;">💡 Pro Tips</h4>
+        <ul style="color: #666; margin-left: 1.2em;">
+            <li>Check printer requirements first</li>
+            <li>Higher DPI = Better print quality</li>
+            <li>Web images can use lower DPI</li>
+            <li>Consider file size vs. quality needs</li>
+        </ul>
+      </div>
+    </section>
+    <section class="privacy-section">
+      <h2 style="color:#D9534F;">Privacy Notice</h2>
+      <div style="background: #FFF3CD; border: 1px solid #FFEAA7; border-radius: 0.5em; padding: 1em; margin: 1em 0; font-size: 0.95em; color: #856404;">
+        <strong>🔒 Your files are never uploaded or stored. All processing happens in your browser.</strong>
+      </div>
+    </section>
+    <div class="upload-area" id="upload-area" tabindex="0" aria-label="Upload image area. Drag and drop or click to select an image.">
+      <div class="upload-icon" aria-hidden="true">🖼️</div>
+      <h3>Drag & Drop your image here</h3>
+      <p>or click to browse files</p>
+      <input type="file" id="file-input" class="file-input" accept="image/*" aria-label="Choose image file">
+      <button class="upload-btn" id="choose-file-btn" style="display:block; margin: 0 auto 1.5em auto;" aria-label="Choose File">Choose File</button>
+    </div>
+    <div class="preview-section" id="preview-section" style="display:none;">
+      <h3>Uploaded Image <button class="clear-btn" id="clear-btn" type="button">Clear</button></h3>
+      <img id="preview-image" class="uploaded-preview" alt="Uploaded image preview">
+    </div>
+    <form id="dpi-form" style="display:none; max-width:400px; margin:2em auto 0 auto;">
+      <div class="form-group">
+        <label class="form-label" for="new-dpi">New DPI:</label>
+        <input type="number" id="new-dpi" class="form-input" placeholder="e.g. 300" min="10" max="1200" required>
+      </div>
+      <button class="download-btn" id="download-btn" type="button">Download Image with New DPI</button>
+    </form>
+    <div id="dpi-result" class="dpi-result" style="display:none;"></div>
+    
+    <div class="output-preview" id="output-preview" style="display: none;">
+      <div class="progress-bar">
+        <div class="progress-bar-fill" id="progress-bar-fill"></div>
+      </div>
+      <div class="status-text" id="status-text">Processing...</div>
+    </div>
+    
+    <section class="feature-list" style="background: #FDFBF5; border-radius: 0.7em; padding: 1.2em; margin: 2em 0; border: 1px solid #FFEAA7;">
+      <h2 style="color: #4682B4; margin-bottom: 1em;">Key Features</h2>
+      <ul style="list-style: none; padding-left: 0;">
+        <li>✓ Change DPI without losing quality</li>
+        <li>✓ Convert to common print standards (72, 150, 300 DPI)</li>
+        <li>✓ Supports all image formats</li>
+        <li>✓ Preview before downloading</li>
+        <li>✓ Maintains original image dimensions</li>
+        <li>✓ Perfect for print preparation</li>
+      </ul>
+    </section>
+      <nav class="recent-tools" aria-label="Recently used tools" style="background: #F8F9FA; border-radius: 0.7em; padding: 1.2em; margin: 1.5em 0;">
+        <strong>Recent Tools:</strong>
+        <div class="recent-tools-list" style="display: inline-block;">
+          <a href="/client/tools/image/black-white-image.html">Black & White Image</a>
+          <a href="/client/tools/image/image-color-picker.html">Color Picker</a>
+          <a href="/client/tools/image/grayscale-image.html">Grayscale</a>
+          <span class="separator" style="margin: 0 0.5em; color: #999;">•</span>
+          <a href="#" id="clear-recent" style="color: #D9534F; font-size: 0.9em;">Clear History</a>
+        </div>
+      </nav>
+  </div>
+</main>
+<script>
+let uploadedImage = null;
+let imageType = '';
+const uploadArea = document.getElementById('upload-area');
+const fileInput = document.getElementById('file-input');
+const chooseFileBtn = document.getElementById('choose-file-btn');
+const dpiForm = document.getElementById('dpi-form');
+const newDpiInput = document.getElementById('new-dpi');
+const downloadBtn = document.getElementById('download-btn');
+const dpiResult = document.getElementById('dpi-result');
+const previewSection = document.getElementById('preview-section');
+const previewImage = document.getElementById('preview-image');
+const clearBtn = document.getElementById('clear-btn');
+const outputPreview = document.getElementById('output-preview');
+const progressBarFill = document.getElementById('progress-bar-fill');
+const statusText = document.getElementById('status-text');
+
+// Re-write event listeners using a better init pattern
+function init() {
+  clearBtn.addEventListener('click', clearAll);
+  
+  chooseFileBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    fileInput.click();
+  });
+  
+  uploadArea.addEventListener('click', (e) => {
+    if (e.target === uploadArea || e.target.parentElement === uploadArea) {
+      fileInput.click();
+    }
+  });
+
+  uploadArea.addEventListener('dragover', (e) => {
+    e.preventDefault();
+    uploadArea.classList.add('dragover');
+  });
+
+  uploadArea.addEventListener('dragleave', () => {
+    uploadArea.classList.remove('dragover');
+  });
+
+  uploadArea.addEventListener('drop', (e) => {
+    e.preventDefault();
+    uploadArea.classList.remove('dragover');
+    const files = e.dataTransfer.files;
+    if (files.length > 0) {
+      handleFile(files[0]);
+    }
+  });
+
+  fileInput.addEventListener('change', (e) => {
+    if (e.target.files.length > 0) {
+      handleFile(e.target.files[0]);
+      e.target.value = '';
+    }
+  });
+
+  downloadBtn.addEventListener('click', downloadImage);
+
+  // Recent tools functionality
+  const RECENT_TOOLS_KEY = 'recentImageTools';
+  const MAX_RECENT_TOOLS = 4;
+
+  function initRecentTools() {
+    const currentToolData = {
+      name: 'Convert DPI',
+      url: window.location.pathname
+    };
+    addToRecentTools(currentToolData);
+    updateRecentToolsList();
+    const clearRecentBtn = document.getElementById('clear-recent');
+    if (clearRecentBtn) {
+      clearRecentBtn.onclick = function(e) {
+        e.preventDefault();
+        localStorage.removeItem(RECENT_TOOLS_KEY);
+        updateRecentToolsList();
+      };
+    }
+  }
+
+  function addToRecentTools(toolData) {
+    let recentTools = JSON.parse(localStorage.getItem(RECENT_TOOLS_KEY) || '[]');
+    recentTools = recentTools.filter(tool => tool.url !== toolData.url);
+    recentTools.unshift(toolData);
+    recentTools = recentTools.slice(0, MAX_RECENT_TOOLS);
+    localStorage.setItem(RECENT_TOOLS_KEY, JSON.stringify(recentTools));
+  }
+
+  function updateRecentToolsList() {
+    const recentToolsList = document.querySelector('.recent-tools-list');
+    if (!recentToolsList) return;
+    const recentTools = JSON.parse(localStorage.getItem(RECENT_TOOLS_KEY) || '[]');
+    if (recentTools.length === 0) {
+      recentToolsList.innerHTML = '<span style="color: #666;">No recent tools</span>';
+      return;
+    }
+    const toolLinks = recentTools.filter(tool => tool.url !== window.location.pathname).map(tool => `<a href="${tool.url}">${tool.name}</a>`).join('<span class="separator" style="margin: 0 0.5em; color: #999;">•</span>');
+    recentToolsList.innerHTML = toolLinks + '<span class="separator" style="margin: 0 0.5em; color: #999;">•</span>' + '<a href="#" id="clear-recent" style="color: #D9534F; font-size: 0.9em;">Clear History</a>';
+    const clearRecentBtn = document.getElementById('clear-recent');
+    if (clearRecentBtn) {
+      clearRecentBtn.onclick = function(e) {
+        e.preventDefault();
+        localStorage.removeItem(RECENT_TOOLS_KEY);
+        updateRecentToolsList();
+      };
+    }
+  }
+
+  initRecentTools();
+}
+
+function handleFile(file) {
+  if (!file.type.startsWith('image/')) {
+    showError('Please upload a valid image file.');
+    return;
+  }
+  uploadedImage = file;
+  imageType = file.type;
+  dpiForm.style.display = 'block';
+  {
+    const url = URL.createObjectURL(file);
+    previewImage.onload = () => { try { URL.revokeObjectURL(url); } catch {} };
+    previewImage.src = url;
+  }
+  previewSection.style.display = 'block';
+  // Read DPI and dimensions
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    const buffer = e.target.result;
+    const arr = new Uint8Array(buffer);
+    let dpiX = '--', dpiY = '--';
+    let width = '--', height = '--';
+    // JPEG DPI
+    if (file.type === 'image/jpeg') {
+      for (let i = 0; i < arr.length - 1; i++) {
+        if (arr[i] === 0xFF && arr[i+1] === 0xE0) { // APP0 marker
+          let d = i + 13;
+          if (arr[d-2] === 0x4A && arr[d-1] === 0x46) { // 'JF'
+            dpiX = arr[d] * 256 + arr[d+1];
+            dpiY = arr[d+2] * 256 + arr[d+3];
+            break;
+          }
+        }
+      }
+    }
+    // PNG DPI
+    if (file.type === 'image/png') {
+      for (let i = 0; i < arr.length - 8; i++) {
+        if (arr[i] === 0x70 && arr[i+1] === 0x48 && arr[i+2] === 0x59 && arr[i+3] === 0x73) { // pHYs
+          let pxPerMX = (arr[i+4]<<24) | (arr[i+5]<<16) | (arr[i+6]<<8) | arr[i+7];
+          let pxPerMY = (arr[i+8]<<24) | (arr[i+9]<<16) | (arr[i+10]<<8) | arr[i+11];
+          dpiX = Math.round(pxPerMX / 39.3701);
+          dpiY = Math.round(pxPerMY / 39.3701);
+          break;
+        }
+      }
+    }
+    // TIFF DPI support
+    if (file.type === 'image/tiff' || file.name.toLowerCase().endsWith('.tiff') || file.name.toLowerCase().endsWith('.tif')) {
+      const view = new DataView(buffer);
+      const isLittleEndian = view.getUint16(0) === 0x4949;
+      if (isLittleEndian || view.getUint16(0) === 0x4D4D) {
+        const magic = view.getUint16(2, isLittleEndian);
+        if (magic === 42) {
+          const ifdOffset = view.getUint32(4, isLittleEndian);
+          if (ifdOffset < buffer.byteLength - 2) {
+            const numEntries = view.getUint16(ifdOffset, isLittleEndian);
+            for (let i = 0; i < numEntries; i++) {
+              const entryOffset = ifdOffset + 2 + (i * 12);
+              if (entryOffset + 12 <= buffer.byteLength) {
+                const tag = view.getUint16(entryOffset, isLittleEndian);
+                const type = view.getUint16(entryOffset + 2, isLittleEndian);
+                if (tag === 0x011A || tag === 0x011B) {
+                  let valueOffset = entryOffset + 8;
+                  if (type === 5) {
+                    const dataOffset = view.getUint32(valueOffset, isLittleEndian);
+                    if (dataOffset + 8 <= buffer.byteLength) {
+                      const numerator = view.getUint32(dataOffset, isLittleEndian);
+                      const denominator = view.getUint32(dataOffset + 4, isLittleEndian);
+                      const resolution = denominator > 0 ? numerator / denominator : 72;
+                      if (tag === 0x011A) dpiX = Math.round(resolution);
+                      if (tag === 0x011B) dpiY = Math.round(resolution);
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    const img = new window.Image();
+    img.onload = function() {
+      width = img.width;
+      height = img.height;
+      let dpiDisplay = (dpiX === dpiY || dpiY === '--') ? `${dpiX}` : `${dpiX} x ${dpiY}`;
+      dpiResult.innerHTML = `<div style="margin-bottom:0.3em;"><strong>Current DPI:</strong> ${dpiDisplay}</div><div><strong>Dimensions:</strong> ${width} x ${height} px</div>`;
+      dpiResult.style.display = 'block';
+      try { URL.revokeObjectURL(img.src); } catch {}
+    };
+    (function(){ const u = URL.createObjectURL(file); img.src = u; })();
+  };
+  reader.readAsArrayBuffer(file);
+}
+
+function clearAll() {
+  uploadedImage = null;
+  imageType = '';
+  fileInput.value = '';
+  dpiForm.style.display = 'none';
+  dpiResult.style.display = 'none';
+  previewSection.style.display = 'none';
+  outputPreview.style.display = 'none';
+}
+
+function downloadImage() {
+  if (!uploadedImage) {
+    showError('Please upload an image first.');
+    return;
+  }
+  const newDpi = parseInt(newDpiInput.value);
+  if (isNaN(newDpi) || newDpi < 10 || newDpi > 1200) {
+    showError('Please enter a valid DPI between 10 and 1200.');
+    return;
+  }
+
+  outputPreview.style.display = 'block';
+  progressBarFill.style.width = '0%';
+  statusText.textContent = 'Processing...';
+
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    const originalBuffer = e.target.result;
+    
+    if (imageType === 'image/png') {
+        try {
+            const convertedBlob = setPngDpi(originalBuffer, newDpi);
+            const url = URL.createObjectURL(convertedBlob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = uploadedImage.name.replace(/\.[^/.]+$/, '') + `-${newDpi}dpi.png`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            showSuccess(`Download complete! DPI set to ${newDpi}.`);
+        } catch (e) {
+            console.error(e);
+            showError('Failed to convert PNG. It might be corrupted or a non-standard format.');
+        } finally {
+            progressBarFill.style.width = '100%';
+            statusText.textContent = 'Done.';
+        }
+    } else {
+        showError('DPI conversion is only supported for PNG images at this time. JPEG and other formats are not supported in the browser.');
+        progressBarFill.style.width = '100%';
+        statusText.textContent = 'Done.';
+    }
+  };
+  reader.readAsArrayBuffer(uploadedImage);
+}
+
+function setPngDpi(arrayBuffer, dpi) {
+    const pngSignature = new Uint8Array([0x89, 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A]);
+    const pxPerMeter = Math.round(dpi / 0.0254);
+    const pHYsChunk = new ArrayBuffer(13);
+    const view = new DataView(pHYsChunk);
+    
+    view.setUint32(0, pxPerMeter, false); // Pixels per meter X
+    view.setUint32(4, pxPerMeter, false); // Pixels per meter Y
+    view.setUint8(8, 1); // Unit specifier: 1 = meter
+
+    const newChunk = new Uint8Array(17);
+    newChunk.set(new Uint8Array([0x70, 0x48, 0x59, 0x73]), 0); // 'pHYs'
+    newChunk.set(new Uint8Array(pHYsChunk), 4);
+
+    const crc = crc32(newChunk, 0, 13);
+    newChunk.set(new Uint8Array([(crc >> 24) & 0xff, (crc >> 16) & 0xff, (crc >> 8) & 0xff, crc & 0xff]), 13);
+
+    const originalData = new Uint8Array(arrayBuffer);
+    const newData = new Uint8Array(originalData.length + newChunk.length);
+    let offset = 8; // Skip PNG signature
+    let headerChunk = originalData.slice(8, offset + 12);
+    newData.set(pngSignature, 0);
+    newData.set(headerChunk, 8);
+    newData.set(newChunk, 20); // Insert after IHDR
+
+    let restOfFile = originalData.slice(offset + 12);
+    newData.set(restOfFile, 20 + newChunk.length);
+    
+    return new Blob([newData], { type: 'image/png' });
+}
+
+function crc32(buffer, offset, length) {
+    const table = new Uint32Array(256);
+    for (let i = 0; i < 256; i++) {
+        let c = i;
+        for (let j = 0; j < 8; j++) {
+            c = (c & 1) ? (0xEDB88320 ^ (c >>> 1)) : (c >>> 1);
+        }
+        table[i] = c;
+    }
+    
+    let crc = 0xFFFFFFFF;
+    for (let i = offset; i < offset + length; i++) {
+        crc = (crc >>> 8) ^ table[(crc ^ buffer[i]) & 0xFF];
+    }
+    return (crc ^ 0xFFFFFFFF) >>> 0;
+}
+
+
+function showError(message) {
+    const container = document.querySelector('.reduce-size-container');
+    const existingError = container.querySelector('.error-message');
+    if (existingError) existingError.remove();
+    const error = document.createElement('div');
+    error.className = 'error-message';
+    error.innerHTML = `❌ ${message}`;
+    container.insertBefore(error, document.getElementById('upload-area'));
+    setTimeout(() => error.remove(), 5000);
+}
+
+function showSuccess(message) {
+    const container = document.querySelector('.reduce-size-container');
+    const existingSuccess = container.querySelector('.success-message');
+    if (existingSuccess) existingSuccess.remove();
+    const success = document.createElement('div');
+    success.className = 'success-message';
+    success.innerHTML = `✅ ${message}`;
+    container.insertBefore(success, document.getElementById('upload-area'));
+    setTimeout(() => success.remove(), 5000);
+}
+
+// Expose initializers for SPA loader and provide robust auto-init
+window.initializeConvertDpiTool = function() { try { init(); } catch (e) { console.error('Convert DPI init error:', e); } };
+window.initializeTool = function() { try { init(); } catch (e) { console.error('Generic init error (Convert DPI):', e); } };
+
+if (document.readyState !== 'loading') {
+  setTimeout(init, 50);
+} else {
+  document.addEventListener('DOMContentLoaded', function(){ setTimeout(init, 50); });
+}
+</script>
+</body>
+</html>

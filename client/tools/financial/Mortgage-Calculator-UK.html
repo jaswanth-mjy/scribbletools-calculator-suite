@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UK Mortgage Calculator - Free Financial Tool</title>
+  <meta name="description" content="Calculate your monthly mortgage payments for UK properties. Includes options for repayment and interest-only mortgages.">
+  
+  <style>
+    .uk-mortgage-tool body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; }
+    .uk-mortgage-tool main { display: block; }
+    .uk-mortgage-tool .reduce-size-container { max-width: 800px; margin: 3em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2em 1.5em 2.5em 1.5em; }
+    .uk-mortgage-tool .handwritten { font-family: 'Caveat', cursive; }
+    .uk-mortgage-tool .form-group { margin: 1.2em 0; }
+    .uk-mortgage-tool .form-label { font-weight: 600; margin-bottom: 0.5em; display: block; color: #4682B4; }
+    .uk-mortgage-tool .form-input { width: 100%; padding: 0.8em; border: 2px solid #EAE3D5; border-radius: 0.5em; font-size: 1em; margin-bottom: 1em; background: #fff; }
+    .uk-mortgage-tool .process-btn { background: #228B22; color: #fff; border: none; border-radius: 0.5em; padding: 1em 2em; font-weight: 600; cursor: pointer; transition: all 0.2s; width: 100%; font-size: 1.1em; }
+    .uk-mortgage-tool .process-btn:hover { background: #1e7e1e; }
+    .uk-mortgage-tool .clear-btn { background: #6c757d; color: #fff; border: none; border-radius: 0.5em; padding: 0.8em 1.5em; font-weight: 600; cursor: pointer; transition: all 0.2s; margin-top: 1em; }
+    .uk-mortgage-tool .clear-btn:hover { background: #5a6268; }
+    .uk-mortgage-tool .results-section { display: none; margin-top: 2em; text-align: center; }
+    .uk-mortgage-tool .results-section h3 { color: #4682B4; margin-bottom: 1em; }
+    .uk-mortgage-tool .result-display { background: #FDFBF5; border-radius: 0.7em; padding: 1.2em; border: 1px solid #FFEAA7; }
+    .uk-mortgage-tool .step-list { margin: 1.2em 0 1.2em 1.2em; padding: 0; }
+    .uk-mortgage-tool .step-list li { margin-bottom: 0.7em; color: #666; }
+    .uk-mortgage-tool .step-list li strong { color: #4682B4; }
+  </style>
+</head>
+<body>
+<main>
+  <div class="uk-mortgage-tool">
+    <div class="reduce-size-container">
+      <header>
+        <h1 style="font-family: 'Caveat', cursive; font-size: 3em; color: #FF6B6B; margin-bottom: 0.5em;">UK Mortgage Calculator</h1>
+        <p style="font-size:1.2em; margin-bottom:1em;">Estimate your monthly mortgage payments for properties in the UK. Simple, fast, and accurate.</p>
+      </header>
+
+      <section aria-labelledby="instructions-title" style="background: #F8FBFF; border-radius: 0.7em; padding: 1.5em; margin: 2em 0; border: 1px solid #4682B4;">
+        <h2 id="instructions-title" style="color:#4682B4; margin-bottom: 1em; font-size: 1.5em;">How to Use</h2>
+        <ol class="step-list" style="margin-left: 1.5em; line-height: 1.6;">
+          <li><strong style="color: #4682B4">Enter Property and Loan Details:</strong>
+            <ul style="margin: 0.5em 0 0.5em 1.5em; color: #666;">
+              <li>Input the property price and your deposit amount.</li>
+              <li>Provide the annual interest rate and the mortgage term in years.</li>
+            </ul>
+          </li>
+          <li><strong style="color: #4682B4">Choose Mortgage Type:</strong>
+            <ul style="margin: 0.5em 0 0.5em 1.5em; color: #666;">
+              <li>Select either 'Repayment' or 'Interest Only'.</li>
+            </ul>
+          </li>
+          <li><strong style="color: #4682B4">Calculate:</strong>
+            <ul style="margin: 0.5em 0 0.5em 1.5em; color: #666;">
+              <li>Click "Calculate Payments" to see your monthly cost.</li>
+            </ul>
+          </li>
+        </ol>
+      </section>
+
+      <div class="tool-interface">
+        <div class="form-group">
+          <label for="property-price" class="form-label">Property Price (£):</label>
+          <input type="number" id="property-price" class="form-input" placeholder="e.g., 250000" />
+        </div>
+        <div class="form-group">
+          <label for="deposit-amount" class="form-label">Deposit Amount (£):</label>
+          <input type="number" id="deposit-amount" class="form-input" placeholder="e.g., 25000" />
+        </div>
+        <div class="form-group">
+          <label for="interest-rate" class="form-label">Interest Rate (%):</label>
+          <input type="number" id="interest-rate" class="form-input" placeholder="e.g., 3.5" />
+        </div>
+        <div class="form-group">
+          <label for="mortgage-term" class="form-label">Mortgage Term (Years):</label>
+          <input type="number" id="mortgage-term" class="form-input" placeholder="e.g., 25" />
+        </div>
+        <div class="form-group">
+            <label for="mortgage-type" class="form-label">Mortgage Type:</label>
+            <select id="mortgage-type" class="form-input">
+                <option value="repayment">Repayment</option>
+                <option value="interest_only">Interest Only</option>
+            </select>
+        </div>
+        <div class="form-group">
+          <button class="process-btn" id="process-btn">Calculate Payments</button>
+          <button class="clear-btn" id="clear-btn">Clear</button>
+        </div>
+      </div>
+
+      <div class="results-section" id="results-section">
+        <h3>Your Mortgage Estimate</h3>
+        <div class="result-display">
+            <p><strong>Monthly Payment:</strong> <span id="monthly-payment"></span></p>
+            <p><strong>Total to Repay:</strong> <span id="total-repayment"></span></p>
+            <p><strong>Total Interest:</strong> <span id="total-interest"></span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script>
+(function() {
+  'use strict';
+
+  window.initializeUKMortgageTool = function() {
+    init();
+  };
+
+  function init() {
+    document.getElementById('process-btn').onclick = calculateMortgage;
+    document.getElementById('clear-btn').onclick = reset;
+  }
+
+  function reset() {
+    document.getElementById('property-price').value = '';
+    document.getElementById('deposit-amount').value = '';
+    document.getElementById('interest-rate').value = '';
+    document.getElementById('mortgage-term').value = '';
+    document.getElementById('results-section').style.display = 'none';
+    document.getElementById('monthly-payment').textContent = '';
+    document.getElementById('total-repayment').textContent = '';
+    document.getElementById('total-interest').textContent = '';
+  }
+
+  function calculateMortgage() {
+    const propertyPrice = parseFloat(document.getElementById('property-price').value);
+    const depositAmount = parseFloat(document.getElementById('deposit-amount').value);
+    const annualInterestRate = parseFloat(document.getElementById('interest-rate').value);
+    const years = parseInt(document.getElementById('mortgage-term').value);
+    const mortgageType = document.getElementById('mortgage-type').value;
+
+    if (isNaN(propertyPrice) || isNaN(depositAmount) || isNaN(annualInterestRate) || isNaN(years) || propertyPrice <= 0 || depositAmount < 0 || annualInterestRate <= 0 || years <= 0) {
+      alert('Please enter valid positive numbers for all fields.');
+      return;
+    }
+
+    const loanAmount = propertyPrice - depositAmount;
+    if (loanAmount <= 0) {
+        alert('Deposit must be less than the property price.');
+        return;
+    }
+
+    const monthlyInterestRate = annualInterestRate / 100 / 12;
+    const numberOfPayments = years * 12;
+    
+    let monthlyPayment = 0;
+    let totalRepayment = 0;
+    let totalInterest = 0;
+
+    if (mortgageType === 'repayment') {
+        monthlyPayment = loanAmount * (monthlyInterestRate * Math.pow(1 + monthlyInterestRate, numberOfPayments)) / (Math.pow(1 + monthlyInterestRate, numberOfPayments) - 1);
+        totalRepayment = monthlyPayment * numberOfPayments;
+        totalInterest = totalRepayment - loanAmount;
+    } else { // interest_only
+        monthlyPayment = loanAmount * monthlyInterestRate;
+        totalRepayment = (monthlyPayment * numberOfPayments) + loanAmount;
+        totalInterest = monthlyPayment * numberOfPayments;
+    }
+
+    document.getElementById('monthly-payment').textContent = `£${monthlyPayment.toFixed(2)}`;
+    document.getElementById('total-repayment').textContent = `£${totalRepayment.toFixed(2)}`;
+    document.getElementById('total-interest').textContent = `£${totalInterest.toFixed(2)}`;
+    document.getElementById('results-section').style.display = 'block';
+  }
+
+  if (document.readyState !== 'loading') {
+    setTimeout(init, 50);
+  } else {
+    document.addEventListener('DOMContentLoaded', () => setTimeout(init, 50));
+  }
+
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!-- File: tools/math/unit-price-calculator.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Unit Price Calculator</title>
+    <style>
+        body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; }
+        .unit-calc-container { max-width: 400px; margin: 3em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2em 1.5em 2.5em 1.5em; }
+        .handwritten { font-family: 'Caveat', cursive; }
+        .unit-calc-label { font-weight: 600; margin-bottom: 0.5em; display: block; }
+        .unit-calc-input { width: 100%; padding: 1em; border: 2px solid #EAE3D5; border-radius: 0.7em; font-size: 1.2em; margin-bottom: 1em; background: #FDFBF5; text-align: center; font-family: 'Fira Code', monospace; }
+        .unit-calc-btn { background: #fff; color: #D9534F; border: 2px solid #D9534F; border-radius: 0.5em; padding: 0.7em 2em; font-weight: 600; font-size: 1.1em; cursor: pointer; transition: all 0.2s; margin-bottom: 1em; }
+        .unit-calc-btn:hover { background: #D9534F; color: #fff; }
+        .unit-calc-result { background: #FDFBF5; border: 2px solid #D9534F; border-radius: 0.7em; padding: 1em; font-size: 1.25em; color: #D9534F; min-height: 1.7em; margin-bottom: 1em; text-align: center; font-family: 'Fira Code', monospace; font-weight: bold; max-height: 300px; overflow-y: auto; word-break: break-word; transition: height 0.2s; }
+        .unit-calc-desc { width: 100%; margin-top: 2em; background:#FDFBF5; border:2px solid #EAE3D5; border-radius:0.9em; padding:1.2em 1em; font-size:1.08em; color:#333; line-height:1.7; }
+        .unit-calc-desc strong { color: #D9534F; font-size: 1.12em; }
+        @media (max-width: 600px) { .unit-calc-container { padding: 1em 0.2em; } }
+    </style>
+</head>
+<body>
+<div class="unit-calc-container">
+    <h2 class="handwritten text-5xl text-[#D9534F] mb-4">Unit Price Calculator</h2>
+    <label class="unit-calc-label">Enter total price and quantity (e.g. <code>12.99, 6</code>):</label>
+    <input id="unit-input" class="unit-calc-input" placeholder="e.g. 12.99, 6">
+    <button id="unit-calc-calc" class="unit-calc-btn">Calculate</button>
+    <div class="unit-calc-result" id="unit-calc-result"></div>
+</div>
+<div class="unit-calc-desc" style="max-width: 540px; margin: 2.5em auto 0 auto; background:#FDFBF5; border:2px solid #EAE3D5; border-radius:0.9em; padding:1.2em 1em; font-size:1.08em; color:#333; line-height:1.7;">
+    <strong style="font-size:1.18em; color:#D9534F;">About the Unit Price Calculator</strong><br><br>
+    Enter the total price and quantity to instantly calculate the unit price (cost per item, weight, or volume). Supports decimals and large numbers.<br><br>
+    <b>Features:</b>
+    <ul style="margin-left:1.2em; margin-bottom:0.7em;">
+        <li>Calculates cost per unit for any product or service</li>
+        <li>Supports decimals and large numbers</li>
+        <li>Responsive, mobile-friendly, and distraction-free</li>
+        <li>Instant feedback for invalid input</li>
+    </ul>
+    <b>Use Cases:</b>
+    <ul style="margin-left:1.2em;">
+        <li>Compare prices while shopping (e.g. cost per ounce, pound, or item)</li>
+        <li>Calculate price per unit for bulk purchases</li>
+        <li>Check deals and discounts for best value</li>
+        <li>Business, inventory, or cost analysis</li>
+    </ul>
+    <b>Why use this calculator?</b> No ads, no clutter, no tracking—just a beautiful, reliable unit price calculator you can use anywhere.<br>
+</div>
+<script>
+function showResult(str) {
+    document.getElementById('unit-calc-result').textContent = str;
+}
+document.getElementById('unit-calc-calc').addEventListener('click', function() {
+    let val = document.getElementById('unit-input').value.trim();
+    if (!val) return showResult('Enter total price and quantity.');
+    let parts = val.split(',').map(x => parseFloat(x.trim()));
+    if (parts.length < 2 || isNaN(parts[0]) || isNaN(parts[1]) || parts[1] === 0) return showResult('Invalid input.');
+    let price = parts[0], qty = parts[1];
+    let unit = price / qty;
+    showResult(`Total Price: ${price}\nQuantity: ${qty}\nUnit Price: ${unit}`);
+});
+document.getElementById('unit-input').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') {
+        document.getElementById('unit-calc-calc').click();
+    }
+});
+</script>
+</html>

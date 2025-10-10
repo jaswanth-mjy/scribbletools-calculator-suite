@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Canadian Mortgage Calculator – Online Tool</title>
+  <meta name="description" content="Calculate your Canadian mortgage payments with our comprehensive tool. Fast, privacy-first, and free. No files are stored.">
+  <meta name="keywords" content="canadian mortgage calculator, mortgage payment, canada, online tool, privacy, free">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Open Graph for SEO/social -->
+  <meta property="og:title" content="Canadian Mortgage Calculator – Online Tool">
+  <meta property="og:description" content="Calculate your Canadian mortgage payments with our comprehensive tool. Fast, privacy-first, and free. No files are stored.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://scribbletools.org/assets/og-canadian-mortgage-calculator.png">
+  <meta property="og:url" content="https://scribbletools.org/tools/financial/Canadian-Mortgage-Calculator.html">
+  <link rel="canonical" href="https://scribbletools.org/tools/financial/Canadian-Mortgage-Calculator.html">
+  <style>
+    body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; }
+    main { display: block; }
+    .reduce-size-container { max-width: 800px; margin: 3em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2em 1.5em 2.5em 1.5em; }
+    .handwritten { font-family: 'Caveat', cursive; }
+    .form-group { margin: 1.2em 0; }
+    .form-label { font-weight: 600; margin-bottom: 0.5em; display: block; }
+    .form-input { width: 100%; padding: 0.8em; border: 2px solid #EAE3D5; border-radius: 0.5em; font-size: 1em; margin-bottom: 1em; }
+    .form-select { width: 100%; padding: 0.8em; border: 2px solid #EAE3D5; border-radius: 0.5em; font-size: 1em; margin-bottom: 1em; }
+    .calculate-btn { background: #228B22; color: #fff; border: none; border-radius: 0.5em; padding: 1em 2em; font-weight: 600; cursor: pointer; transition: all 0.2s; width: 100%; font-size: 1.1em; }
+    .calculate-btn:hover { background: #1e7e1e; }
+    .result-section { margin-top: 2em; text-align: center; }
+    .result-card { background: #F0F8FF; border: 2px solid #4682B4; border-radius: 0.7em; padding: 1.5em; margin: 1em 0; }
+    .result-value { font-size: 1.8em; font-weight: bold; color: #D9534F; margin: 0.5em 0; }
+    .example-section { background: #FDFBF5; border: 1px solid #FFEAA7; border-radius: 0.7em; padding: 1.2em; margin: 2em 0; }
+    .example-section h3 { color: #4682B4; margin-bottom: 0.5em; }
+    .related-links { margin-top: 2em; font-size: 1em; }
+    .related-links a { color: #D9534F; text-decoration: underline; margin-right: 1.2em; }
+    .related-links a:hover { color: #357abd; }
+    .step-list { margin: 1.2em 0 1.2em 1.2em; padding: 0; }
+    .step-list li { margin-bottom: 0.7em; }
+    .sr-only { position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden; }
+    @media (max-width: 600px) { .reduce-size-container { padding: 1em 0.2em; } }
+  </style>
+</head>
+<body>
+<main>
+  <div class="reduce-size-container">
+    <header>
+      <h1 class="handwritten text-5xl text-[#D9534F] mb-4">Canadian Mortgage Calculator</h1>
+      <p style="font-size:1.2em; margin-bottom:1em;">Calculate your Canadian mortgage payments, total interest, and payment schedule. Fast, privacy-first, and free. No files are stored.</p>
+    </header>
+    <nav class="related-links" aria-label="Related financial tools">
+      <strong>Related:</strong>
+      <a href="mortgage-calculator.html">Mortgage Calculator</a>
+      <a href="amortization-calculator.html">Amortization Calculator</a>
+      <a href="loan-calculator.html">Loan Calculator</a>
+      <a href="interest-calculator.html">Interest Calculator</a>
+    </nav>
+    <section aria-labelledby="instructions-title">
+      <div style="background:#FFF3CD; border:1px solid #FFD700; border-radius:0.7em; padding:1em; margin-bottom:1.2em; color:#B8860B; font-weight:bold; font-size:1.1em;">
+        ⚠️ <b>Canadian specific calculations</b> including CMHC insurance and provincial tax considerations.
+      </div>
+      <h2 id="instructions-title" style="margin-top:2em; color:#228B22;">How to Use</h2>
+      <ol class="step-list">
+        <li><strong>Enter</strong> your home price, down payment, and interest rate.</li>
+        <li><strong>Select</strong> your amortization period and payment frequency.</li>
+        <li>Click <strong>Calculate</strong> to see your monthly payments and total costs.</li>
+      </ol>
+    </section>
+    <section class="example-section" aria-labelledby="examples-title">
+      <h3 id="examples-title">Example</h3>
+      <ul style="margin-top:1em;">
+        <li>Home Price: $500,000 CAD with 20% down payment</li>
+        <li>Interest Rate: 5.25% for 25-year amortization</li>
+        <li>Includes CMHC insurance if down payment is less than 20%</li>
+      </ul>
+    </section>
+
+    <!-- Educational Content -->
+    <section aria-labelledby="educational-content-title" style="background: #f8f9fa; border-left: 4px solid #28a745; padding: 1.5em; margin: 1.5em 0; border-radius: 0.5em;">
+      <h2 id="educational-content-title" style="color: #28a745; margin-bottom: 1em;">📚 Understanding Canadian Mortgages: Complete Guide</h2>
+      
+      <div style="margin-bottom: 1.5em;">
+        <h3 style="color: #495057; margin-bottom: 0.8em;">🏠 What is a Canadian Mortgage Calculator?</h3>
+        <p style="line-height: 1.6; color: #212529;">
+          A Canadian mortgage calculator is a specialized tool designed to help you understand the true cost of homeownership in Canada. Unlike US mortgages, Canadian mortgages have unique features including shorter term periods (typically 1-10 years), different compounding frequencies, and mandatory mortgage default insurance (CMHC) for down payments under 20%. This calculator accounts for these Canadian-specific factors to provide accurate payment estimates.
+        </p>
+      </div>
+
+      <div style="margin-bottom: 1.5em;">
+        <h3 style="color: #495057; margin-bottom: 0.8em;">📋 How to Use This Calculator</h3>
+        <ol style="line-height: 1.6; color: #212529; padding-left: 1.2em;">
+          <li><strong>Enter Home Price:</strong> Input the total purchase price of the property in Canadian dollars</li>
+          <li><strong>Set Down Payment:</strong> Enter your down payment amount (minimum 5% for homes under $500,000)</li>
+          <li><strong>Input Interest Rate:</strong> Enter the annual interest rate offered by your lender</li>
+          <li><strong>Choose Amortization:</strong> Select your total repayment period (15-30 years typical)</li>
+          <li><strong>Select Payment Frequency:</strong> Choose monthly, bi-weekly, or weekly payments</li>
+          <li><strong>Calculate:</strong> Click the calculate button to see your results including CMHC insurance if applicable</li>
+        </ol>
+      </div>
+
+      <div style="margin-bottom: 1.5em;">
+        <h3 style="color: #495057; margin-bottom: 0.8em;">💡 Real-World Example</h3>
+        <div style="background: #e9ecef; padding: 1em; border-radius: 0.375em; margin: 0.5em 0;">
+          <p style="margin: 0; line-height: 1.6; color: #212529;">
+            <strong>Scenario:</strong> You're buying a $600,000 home in Toronto with a $90,000 down payment (15%) at 5.5% interest for 25 years with monthly payments.
+            <br><br>
+            <strong>Results:</strong>
+            <br>• Monthly Payment: ~$3,084
+            <br>• CMHC Insurance: ~$14,280 (2.8% of loan amount)
+            <br>• Total Interest: ~$413,000 over 25 years
+            <br>• Total Cost: ~$927,000 including insurance
+          </p>
+        </div>
+      </div>
+
+      <div style="margin-bottom: 1.5em;">
+        <h3 style="color: #495057; margin-bottom: 0.8em;">🇨🇦 Canadian Mortgage Fundamentals</h3>
+        <div style="background: #fff; padding: 1em; border: 1px solid #dee2e6; border-radius: 0.375em; margin: 0.5em 0;">
+          <h4 style="color: #28a745; margin-bottom: 0.5em;">Down Payment Requirements:</h4>
+          <ul style="line-height: 1.6; color: #212529; margin: 0;">
+            <li>Minimum 5% for homes under $500,000</li>
+            <li>5% on first $500K + 10% on portion above $500K (up to $999,999)</li>
+            <li>20% minimum for homes $1 million and over</li>
+            <li>20% down payment avoids CMHC insurance</li>
+          </ul>
+        </div>
+        <div style="background: #fff; padding: 1em; border: 1px solid #dee2e6; border-radius: 0.375em; margin: 0.5em 0;">
+          <h4 style="color: #28a745; margin-bottom: 0.5em;">CMHC Insurance Premiums:</h4>
+          <ul style="line-height: 1.6; color: #212529; margin: 0;">
+            <li>5-9.99% down: 4.00% of loan amount</li>
+            <li>10-14.99% down: 3.10% of loan amount</li>
+            <li>15-19.99% down: 2.80% of loan amount</li>
+            <li>20%+ down: No insurance required</li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="margin-bottom: 1.5em;">
+        <h3 style="color: #495057; margin-bottom: 0.8em;">💰 Strategic Mortgage Planning</h3>
+        <div style="background: #f8f9fa; padding: 1em; border-left: 3px solid #ffc107; border-radius: 0.375em; margin: 0.5em 0;">
+          <h4 style="color: #856404; margin-bottom: 0.5em;">Payment Frequency Strategy:</h4>
+          <p style="line-height: 1.6; color: #212529; margin: 0;">
+            <strong>Accelerated Bi-weekly:</strong> Make 26 payments per year (equivalent to 13 monthly payments). This can save $50,000+ in interest and shave 4-6 years off a 25-year mortgage. Weekly payments offer even greater savings but require more frequent budget management.
+          </p>
+        </div>
+        <div style="background: #f8f9fa; padding: 1em; border-left: 3px solid #17a2b8; border-radius: 0.375em; margin: 0.5em 0;">
+          <h4 style="color: #0c5460; margin-bottom: 0.5em;">Amortization vs. Term:</h4>
+          <p style="line-height: 1.6; color: #212529; margin: 0;">
+            <strong>Amortization:</strong> Total time to pay off mortgage (25 years typical). <strong>Term:</strong> Length of current rate agreement (1-10 years). You'll renew multiple terms over your amortization period, allowing rate renegotiation every few years.
+          </p>
+        </div>
+      </div>
+
+      <div style="margin-bottom: 1.5em;">
+        <h3 style="color: #495057; margin-bottom: 0.8em;">🎯 Advanced Canadian Strategies</h3>
+        <div style="background: #e7f3ff; padding: 1em; border-radius: 0.375em; margin: 0.5em 0;">
+          <h4 style="color: #004085; margin-bottom: 0.5em;">First-Time Buyer Programs:</h4>
+          <ul style="line-height: 1.6; color: #212529; margin: 0;">
+            <li><strong>Home Buyers' Plan (HBP):</strong> Withdraw up to $35,000 from RRSP tax-free</li>
+            <li><strong>First-Time Home Buyer Incentive:</strong> Shared equity mortgage with government</li>
+            <li><strong>GST/HST New Housing Rebate:</strong> Rebate on new home purchases</li>
+            <li><strong>Land Transfer Tax Rebates:</strong> Provincial rebates for first-time buyers</li>
+          </ul>
+        </div>
+        <div style="background: #fff3cd; padding: 1em; border-radius: 0.375em; margin: 0.5em 0;">
+          <h4 style="color: #856404; margin-bottom: 0.5em;">Rate Negotiation Tips:</h4>
+          <ul style="line-height: 1.6; color: #212529; margin: 0;">
+            <li>Shop around with multiple lenders and mortgage brokers</li>
+            <li>Consider credit unions for competitive rates</li>
+            <li>Negotiate rate holds (90-120 days) while house hunting</li>
+            <li>Ask about rate discounts for existing banking relationships</li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="margin-bottom: 1.5em;">
+        <h3 style="color: #495057; margin-bottom: 0.8em;">⚠️ Important Considerations</h3>
+        <div style="background: #f8d7da; padding: 1em; border: 1px solid #f5c6cb; border-radius: 0.375em; margin: 0.5em 0;">
+          <h4 style="color: #721c24; margin-bottom: 0.5em;">Stress Test Requirements:</h4>
+          <p style="line-height: 1.6; color: #212529; margin: 0;">
+            You must qualify at the higher of your contract rate +2% or the Bank of Canada's benchmark rate. This ensures you can handle rate increases. Factor this into your affordability calculations and consider the impact of future rate changes on your budget.
+          </p>
+        </div>
+        <div style="background: #d4edda; padding: 1em; border: 1px solid #c3e6cb; border-radius: 0.375em; margin: 0.5em 0;">
+          <h4 style="color: #155724; margin-bottom: 0.5em;">Additional Costs to Budget:</h4>
+          <ul style="line-height: 1.6; color: #212529; margin: 0;">
+            <li>Property taxes (varies by municipality)</li>
+            <li>Home insurance (mandatory for mortgages)</li>
+            <li>Utilities and maintenance costs</li>
+            <li>Legal fees and home inspection</li>
+            <li>Moving expenses and immediate repairs</li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="background: #e9ecef; padding: 1em; border-radius: 0.375em; border-left: 4px solid #6c757d;">
+        <h4 style="color: #495057; margin-bottom: 0.5em;">💼 Professional Guidance</h4>
+        <p style="line-height: 1.6; color: #212529; margin: 0; font-style: italic;">
+          While this calculator provides accurate estimates, consider consulting with a mortgage broker or financial advisor familiar with Canadian regulations. They can help navigate provincial differences, find the best rates, and structure your mortgage for optimal long-term savings. This is especially important for complex situations like self-employment income or unique property types.
+        </p>
+      </div>
+    </section>
+
+    <section aria-labelledby="privacy-title">
+      <h2 id="privacy-title" style="color:#D9534F;">Privacy Notice</h2>
+      <div style="background: #FFF3CD; border: 1px solid #FFEAA7; border-radius: 0.5em; padding: 1em; margin: 1em 0; font-size: 0.95em; color: #856404;">
+        <strong>🔒 All calculations are done in your browser. No data is sent to servers or stored.</strong>
+      </div>
+    </section>
+    <section aria-labelledby="calculator-title">
+      <h2 id="calculator-title" class="sr-only">Mortgage Calculator Interface</h2>
+      <form id="mortgage-form" autocomplete="off">
+        <div class="form-group">
+          <label class="form-label" for="home-price">Home Price (CAD):
+            <span title="Total purchase price of the home." style="cursor:help; color:#4682B4;">&#9432;</span>
+          </label>
+          <input type="number" id="home-price" class="form-input" placeholder="500000" min="1" step="1000" aria-label="Home Price">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="down-payment">Down Payment (CAD):
+            <span title="Amount paid upfront. Minimum 5% for homes under $500k." style="cursor:help; color:#4682B4;">&#9432;</span>
+          </label>
+          <input type="number" id="down-payment" class="form-input" placeholder="100000" min="0" step="1000" aria-label="Down Payment">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="interest-rate">Annual Interest Rate (%):
+            <span title="Your mortgage interest rate per year." style="cursor:help; color:#4682B4;">&#9432;</span>
+          </label>
+          <input type="number" id="interest-rate" class="form-input" placeholder="5.25" min="0" max="30" step="0.01" aria-label="Interest Rate">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="amortization">Amortization Period:
+            <span title="Total time to pay off the mortgage." style="cursor:help; color:#4682B4;">&#9432;</span>
+          </label>
+          <select id="amortization" class="form-select" aria-label="Amortization Period">
+            <option value="15">15 years</option>
+            <option value="20">20 years</option>
+            <option value="25" selected>25 years</option>
+            <option value="30">30 years</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="payment-frequency">Payment Frequency:
+            <span title="How often you make payments." style="cursor:help; color:#4682B4;">&#9432;</span>
+          </label>
+          <select id="payment-frequency" class="form-select" aria-label="Payment Frequency">
+            <option value="monthly" selected>Monthly</option>
+            <option value="bi-weekly">Bi-weekly</option>
+            <option value="weekly">Weekly</option>
+          </select>
+        </div>
+        <button class="calculate-btn" id="calculate-btn" type="button" aria-label="Calculate Mortgage Payment">Calculate Mortgage</button>
+      </form>
+      <div class="result-section" id="result-section" style="display: none;">
+        <div class="conversion-success-card" style="display:inline-block; margin-top:1em; background:#E8F5E8; border:2px solid #5CB85C; border-radius:0.7em; padding:1.2em 1em 1.5em 1em; margin-bottom:1em; box-shadow:0 2px 12px #eae3d5;">
+          <div class="success-icon" style="font-size:2.2em; color:#5CB85C; margin-bottom:0.3em;">✅</div>
+          <div class="success-message" style="font-size:1.15em; color:#228B22; font-family:'Caveat',cursive; margin-bottom:0.7em; text-align:center;">Your mortgage calculation is ready!</div>
+          <div id="results-display" style="text-align: left;"></div>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+<script>
+function initializeCanadianMortgageCalculator() {
+  const form = document.getElementById('mortgage-form');
+  const calculateBtn = document.getElementById('calculate-btn');
+  const resultSection = document.getElementById('result-section');
+  const resultsDisplay = document.getElementById('results-display');
+
+  calculateBtn.addEventListener('click', function() {
+    const homePrice = parseFloat(document.getElementById('home-price').value);
+    const downPayment = parseFloat(document.getElementById('down-payment').value);
+    const interestRate = parseFloat(document.getElementById('interest-rate').value);
+    const amortizationYears = parseInt(document.getElementById('amortization').value);
+    const paymentFrequency = document.getElementById('payment-frequency').value;
+
+    if (!homePrice || !downPayment || !interestRate || homePrice <= 0 || downPayment < 0 || interestRate < 0) {
+      alert('Please enter valid values for all fields.');
+      return;
+    }
+
+    if (downPayment >= homePrice) {
+      alert('Down payment cannot be greater than or equal to home price.');
+      return;
+    }
+
+    // Calculate mortgage details
+    const loanAmount = homePrice - downPayment;
+    const downPaymentPercent = (downPayment / homePrice) * 100;
+    
+    // CMHC Insurance (if down payment < 20%)
+    let cmhcInsurance = 0;
+    if (downPaymentPercent < 20) {
+      if (downPaymentPercent >= 15) cmhcInsurance = loanAmount * 0.028;
+      else if (downPaymentPercent >= 10) cmhcInsurance = loanAmount * 0.031;
+      else cmhcInsurance = loanAmount * 0.04;
+    }
+
+    const totalLoanAmount = loanAmount + cmhcInsurance;
+    
+    // Payment calculations
+    const monthlyRate = interestRate / 100 / 12;
+    const totalMonths = amortizationYears * 12;
+    
+    let paymentsPerYear, periodsPerYear;
+    switch(paymentFrequency) {
+      case 'weekly': paymentsPerYear = 52; periodsPerYear = 52; break;
+      case 'bi-weekly': paymentsPerYear = 26; periodsPerYear = 26; break;
+      default: paymentsPerYear = 12; periodsPerYear = 12; break;
+    }
+    
+    const periodRate = interestRate / 100 / periodsPerYear;
+    const totalPeriods = amortizationYears * periodsPerYear;
+    
+    const payment = totalLoanAmount * (periodRate * Math.pow(1 + periodRate, totalPeriods)) / 
+                    (Math.pow(1 + periodRate, totalPeriods) - 1);
+    
+    const totalPaid = payment * totalPeriods;
+    const totalInterest = totalPaid - totalLoanAmount;
+
+    // Display results
+    resultsDisplay.innerHTML = `
+      <div class="result-card">
+        <h4>${paymentFrequency.charAt(0).toUpperCase() + paymentFrequency.slice(1)} Payment</h4>
+        <div class="result-value">$${payment.toFixed(2)} CAD</div>
+      </div>
+      <div class="result-card">
+        <h4>Principal Loan Amount</h4>
+        <div class="result-value">$${loanAmount.toFixed(2)} CAD</div>
+      </div>
+      ${cmhcInsurance > 0 ? `
+      <div class="result-card">
+        <h4>CMHC Insurance</h4>
+        <div class="result-value">$${cmhcInsurance.toFixed(2)} CAD</div>
+      </div>` : ''}
+      <div class="result-card">
+        <h4>Total Interest Paid</h4>
+        <div class="result-value">$${totalInterest.toFixed(2)} CAD</div>
+      </div>
+      <div class="result-card">
+        <h4>Total Amount Paid</h4>
+        <div class="result-value">$${totalPaid.toFixed(2)} CAD</div>
+      </div>
+      <div style="margin-top: 1em; font-size: 0.9em; color: #666;">
+        <p><strong>Down Payment:</strong> ${downPaymentPercent.toFixed(1)}% of home price</p>
+        <p><strong>Loan-to-Value Ratio:</strong> ${((totalLoanAmount/homePrice)*100).toFixed(1)}%</p>
+      </div>
+    `;
+
+    resultSection.style.display = 'block';
+  });
+}
+
+// SPA/Router support
+if (window.initializeCanadianMortgageCalculator === undefined) {
+  window.initializeCanadianMortgageCalculator = initializeCanadianMortgageCalculator;
+}
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initializeCanadianMortgageCalculator);
+} else {
+  initializeCanadianMortgageCalculator();
+}
+</script>
+</body>
+</html>

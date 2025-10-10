@@ -1,0 +1,67 @@
+<!-- File: tools/math/scientific-notation-converter.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Scientific Notation Converter</title>
+    <style>
+        body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; }
+        .sci-calc-container { max-width: 400px; margin: 3em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2em 1.5em 2.5em 1.5em; }
+        .handwritten { font-family: 'Caveat', cursive; }
+        .sci-calc-label { font-weight: 600; margin-bottom: 0.5em; display: block; }
+        .sci-calc-input { width: 100%; padding: 1em; border: 2px solid #EAE3D5; border-radius: 0.7em; font-size: 1.2em; margin-bottom: 1em; background: #FDFBF5; text-align: center; font-family: 'Fira Code', monospace; }
+        .sci-calc-btn { background: #fff; color: #D9534F; border: 2px solid #D9534F; border-radius: 0.5em; padding: 0.7em 2em; font-weight: 600; font-size: 1.1em; cursor: pointer; transition: all 0.2s; margin-bottom: 1em; }
+        .sci-calc-btn:hover { background: #D9534F; color: #fff; }
+        .sci-calc-result { background: #FDFBF5; border: 2px solid #D9534F; border-radius: 0.7em; padding: 1em; font-size: 1.25em; color: #D9534F; min-height: 1.7em; margin-bottom: 1em; text-align: center; font-family: 'Fira Code', monospace; font-weight: bold; max-height: 300px; overflow-y: auto; word-break: break-word; transition: height 0.2s; }
+        .sci-calc-desc { width: 100%; margin-top: 2em; background:#FDFBF5; border:2px solid #EAE3D5; border-radius:0.9em; padding:1.2em 1em; font-size:1.08em; color:#333; line-height:1.7; }
+        .sci-calc-desc strong { color: #D9534F; font-size: 1.12em; }
+        @media (max-width: 600px) { .sci-calc-container { padding: 1em 0.2em; } }
+    </style>
+</head>
+<body>
+<div class="sci-calc-container">
+    <h2 class="handwritten text-5xl text-[#D9534F] mb-4">Scientific Notation Converter</h2>
+    <label class="sci-calc-label">Enter a number or scientific notation (e.g. <code>123000</code> or <code>1.23e5</code>):</label>
+    <input id="sci-input" class="sci-calc-input" placeholder="e.g. 123000 or 1.23e5">
+    <button id="sci-calc-calc" class="sci-calc-btn">Convert</button>
+    <div class="sci-calc-result" id="sci-calc-result"></div>
+</div>
+<div class="sci-calc-desc" style="max-width: 540px; margin: 2.5em auto 0 auto; background:#FDFBF5; border:2px solid #EAE3D5; border-radius:0.9em; padding:1.2em 1em; font-size:1.08em; color:#333; line-height:1.7;">
+    <strong style="font-size:1.18em; color:#D9534F;">About the Scientific Notation Converter</strong><br><br>
+    Enter a number or scientific notation to instantly convert between standard and scientific notation. Supports very large and very small numbers.<br><br>
+    <b>Features:</b>
+    <ul style="margin-left:1.2em; margin-bottom:0.7em;">
+        <li>Converts between standard and scientific notation</li>
+        <li>Handles very large and very small numbers</li>
+        <li>Responsive, mobile-friendly, and distraction-free</li>
+        <li>Instant feedback for invalid input</li>
+    </ul>
+    <b>Use Cases:</b>
+    <ul style="margin-left:1.2em;">
+        <li>Convert numbers for science, engineering, or math</li>
+        <li>Check answers for homework, exams, or lab reports</li>
+        <li>Quickly switch between notations for calculations or presentations</li>
+        <li>Understand and compare very large or small values</li>
+    </ul>
+    <b>Why use this calculator?</b> No ads, no clutter, no tracking—just a beautiful, reliable scientific notation converter you can use anywhere.<br>
+</div>
+<script>
+function showResult(str) {
+    document.getElementById('sci-calc-result').textContent = str;
+}
+document.getElementById('sci-calc-calc').addEventListener('click', function() {
+    let val = document.getElementById('sci-input').value.trim();
+    if (!val) return showResult('Enter a number or scientific notation.');
+    let num = Number(val);
+    if (isNaN(num)) return showResult('Invalid input.');
+    let sci = num.toExponential();
+    let std = num.toLocaleString('fullwide', {useGrouping:false});
+    showResult(`${val} as scientific: ${sci}\n${val} as standard: ${std}`);
+});
+document.getElementById('sci-input').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') {
+        document.getElementById('sci-calc-calc').click();
+    }
+});
+</script>
+</html>

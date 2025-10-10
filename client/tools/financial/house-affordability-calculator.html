@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>House Affordability Calculator - How Much House Can I Afford? | Free Tool</title>
+    <meta name="description" content="Free house affordability calculator to determine how much house you can afford. Calculate your home buying budget based on income, debt, and down payment.">
+    <meta name="keywords" content="house affordability calculator, home affordability calculator, how much house can I afford, home buying calculator, mortgage affordability">
+    <meta name="author" content="ScribbleTools">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://scribbletools.net/client/tools/financial/house-affordability-calculator.html">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://scribbletools.net/client/tools/financial/house-affordability-calculator.html">
+    <meta property="og:title" content="House Affordability Calculator - How Much House Can I Afford?">
+    <meta property="og:description" content="Calculate how much house you can afford with our free home affordability calculator. Determine your home buying budget instantly.">
+    <meta property="og:image" content="https://scribbletools.net/assets/og-image.svg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://scribbletools.net/client/tools/financial/house-affordability-calculator.html">
+    <meta property="twitter:title" content="House Affordability Calculator - How Much House Can I Afford?">
+    <meta property="twitter:description" content="Calculate how much house you can afford with our free home affordability calculator. Instant results.">
+    <meta property="twitter:image" content="https://scribbletools.net/assets/og-image.svg">
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "House Affordability Calculator",
+      "description": "Free online house affordability calculator to determine home buying budget based on income, debt, and financial situation",
+      "url": "https://scribbletools.net/client/tools/financial/house-affordability-calculator.html",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Web Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "ScribbleTools"
+      }
+    }
+    </script>
+    <style>
+        body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; }
+        .calc-container { max-width: 420px; margin: 3em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2em 1.5em 2.5em 1.5em; }
+        .handwritten { font-family: 'Caveat', cursive; }
+        .calc-label { font-weight: 600; margin-bottom: 0.5em; display: block; }
+        .calc-input { width: 100%; padding: 1em; border: 2px solid #EAE3D5; border-radius: 0.7em; font-size: 1.2em; margin-bottom: 1em; background: #FDFBF5; text-align: center; font-family: 'Fira Code', monospace; }
+        .calc-btn { background: #fff; color: #D9534F; border: 2px solid #D9534F; border-radius: 0.5em; padding: 0.7em 2em; font-weight: 600; font-size: 1.1em; cursor: pointer; transition: all 0.2s; margin-bottom: 1em; }
+        .calc-btn:hover { background: #D9534F; color: #fff; }
+        .calc-result { background: #FDFBF5; border: 2px solid #D9534F; border-radius: 0.7em; padding: 1em; font-size: 1.25em; color: #D9534F; min-height: 1.7em; margin-bottom: 1em; text-align: center; font-family: 'Fira Code', monospace; font-weight: bold; max-height: 300px; overflow-y: auto; word-break: break-word; transition: height 0.2s; }
+        .calc-desc { width: 100%; margin-top: 2em; background:#FDFBF5; border:2px solid #EAE3D5; border-radius:0.9em; padding:1.2em 1em; font-size:1.08em; color:#333; line-height:1.7; }
+        .calc-desc strong { color: #D9534F; font-size: 1.12em; }
+        @media (max-width: 600px) { .calc-container { padding: 1em 0.2em; } }
+    </style>
+</head>
+<body>
+<div class="calc-container">
+    <h2 class="handwritten text-5xl text-[#D9534F] mb-4">House Affordability Calculator</h2>
+    <label class="calc-label">Annual Income ($):</label>
+    <input id="income" class="calc-input" type="number" min="0" placeholder="e.g. 80000">
+    <label class="calc-label">Down Payment ($):</label>
+    <input id="down" class="calc-input" type="number" min="0" placeholder="e.g. 20000">
+    <label class="calc-label">Monthly Debts ($):</label>
+    <input id="debts" class="calc-input" type="number" min="0" placeholder="e.g. 500">
+    <label class="calc-label">Interest Rate (%):</label>
+    <input id="rate" class="calc-input" type="number" min="0" step="0.01" placeholder="e.g. 6">
+    <label class="calc-label">Loan Term (years):</label>
+    <input id="years" class="calc-input" type="number" min="1" placeholder="e.g. 30">
+    <button id="calc-btn" class="calc-btn">Calculate</button>
+    <div class="calc-result" id="calc-result"></div>
+</div>
+<div class="calc-desc" style="max-width: fit-content; margin: 2.5em auto 0 auto;">
+    <strong style="font-size:1.18em; color:#D9534F;">About the House Affordability Calculator</strong><br><br>
+    Instantly estimate how much house you can afford based on your income, debts, down payment, and interest rate. Enter your details to see a suggested home price and monthly payment. Great for home buyers, budgeting, or planning your next move.<br><br>
+    
+    <h3 style="color:#D9534F; margin-top:2em;">How to Use the House Affordability Calculator</h3>
+    <ol style="margin-left:1.2em;">
+        <li><strong>Annual Income:</strong> Enter your gross annual household income</li>
+        <li><strong>Monthly Debts:</strong> Input total monthly debt payments (car loans, credit cards, etc.)</li>
+        <li><strong>Down Payment:</strong> Enter the amount you have available for down payment</li>
+        <li><strong>Interest Rate:</strong> Input current mortgage interest rate</li>
+        <li><strong>Loan Term:</strong> Choose your preferred mortgage length (typically 30 years)</li>
+        <li><strong>Calculate:</strong> See your estimated home price range and monthly payment</li>
+    </ol>
+    
+    <h3 style="color:#D9534F; margin-top:2em;">Affordability Rules of Thumb</h3>
+    <div style="background:#f8f9fa; padding:15px; border-radius:5px;">
+        <strong>Common Guidelines for Home Affordability:</strong><br>
+        • 28% Rule: Housing costs shouldn't exceed 28% of gross monthly income<br>
+        • 36% Rule: Total debt payments shouldn't exceed 36% of gross monthly income<br>
+        • 3x Rule: Home price shouldn't exceed 3-5 times annual income<br>
+        • 20% Down Payment: Traditional recommendation to avoid PMI<br>
+        • Emergency Fund: Keep 3-6 months expenses after home purchase<br>
+        <em>These are guidelines - your specific situation may vary!</em>
+    </div>
+    
+    <h3 style="color:#D9534F; margin-top:2em;">What's Included in Housing Costs</h3>
+    <ul style="margin-left:1.2em;">
+        <li><strong>Principal & Interest:</strong> Your monthly mortgage payment</li>
+        <li><strong>Property Taxes:</strong> Annual taxes divided by 12 (varies by location)</li>
+        <li><strong>Homeowners Insurance:</strong> Required coverage for the property</li>
+        <li><strong>PMI:</strong> Private mortgage insurance if down payment < 20%</li>
+        <li><strong>HOA Fees:</strong> Homeowners association dues (if applicable)</li>
+        <li><strong>Maintenance:</strong> Budget 1-3% of home value annually</li>
+        <li><strong>Utilities:</strong> Heat, electric, water, sewer, internet</li>
+    </ul>
+    
+    <h3 style="color:#D9534F; margin-top:2em;">Factors That Affect Affordability</h3>
+    <ul style="margin-left:1.2em;">
+        <li><strong>Credit Score:</strong> Higher scores qualify for better interest rates</li>
+        <li><strong>Debt-to-Income Ratio:</strong> Lower ratios allow for higher home prices</li>
+        <li><strong>Down Payment Size:</strong> Larger down payments reduce monthly costs</li>
+        <li><strong>Interest Rates:</strong> Lower rates increase purchasing power</li>
+        <li><strong>Loan Type:</strong> FHA, VA, conventional loans have different requirements</li>
+        <li><strong>Location:</strong> Property taxes and insurance vary by area</li>
+        <li><strong>Job Stability:</strong> Steady employment history improves approval odds</li>
+    </ul>
+    
+    <h3 style="color:#D9534F; margin-top:2em;">Down Payment Options</h3>
+    <div style="background:#f8f9fa; padding:15px; border-radius:5px;">
+        <strong>Down Payment Strategies:</strong><br>
+        • 20% Down: Avoids PMI, better rates, lower monthly payments<br>
+        • 10-15% Down: Balance between savings and monthly costs<br>
+        • 5-10% Down: Conventional loans available with PMI<br>
+        • 3% Down: First-time buyer programs, higher monthly costs<br>
+        • 0% Down: VA loans (veterans), USDA loans (rural areas)<br>
+        • Down Payment Assistance: State and local programs available<br>
+        <em>Larger down payments reduce total interest paid over loan life!</em>
+    </div>
+    
+    <h3 style="color:#D9534F; margin-top:2em;">First-Time Buyer Programs</h3>
+    <ul style="margin-left:1.2em;">
+        <li><strong>FHA Loans:</strong> 3.5% down, flexible credit requirements</li>
+        <li><strong>VA Loans:</strong> 0% down for eligible veterans and service members</li>
+        <li><strong>USDA Loans:</strong> 0% down for rural and suburban areas</li>
+        <li><strong>State Programs:</strong> Down payment assistance and grants</li>
+        <li><strong>Local Programs:</strong> City and county first-time buyer assistance</li>
+        <li><strong>Employer Programs:</strong> Some companies offer home buying assistance</li>
+    </ul>
+    
+    <h3 style="color:#D9534F; margin-top:2em;">Pre-Approval vs Pre-Qualification</h3>
+    <div style="background:#f8f9fa; padding:15px; border-radius:5px;">
+        <strong>Understanding the Difference:</strong><br><br>
+        <strong>Pre-Qualification:</strong><br>
+        • Quick estimate based on self-reported information<br>
+        • No credit check or document verification<br>
+        • Gives rough idea of affordability<br><br>
+        <strong>Pre-Approval:</strong><br>
+        • Thorough review of finances and credit<br>
+        • Document verification required<br>
+        • Conditional loan commitment from lender<br>
+        • Stronger position when making offers<br>
+        <em>Get pre-approved before serious house hunting!</em>
+    </div>
+    
+    <h3 style="color:#D9534F; margin-top:2em;">Hidden Costs of Home Buying</h3>
+    <ul style="margin-left:1.2em;">
+        <li><strong>Closing Costs:</strong> 2-5% of home price (origination, appraisal, title)</li>
+        <li><strong>Home Inspection:</strong> $300-$600 to identify potential issues</li>
+        <li><strong>Moving Expenses:</strong> Professional movers or truck rental</li>
+        <li><strong>Immediate Repairs:</strong> Issues discovered after move-in</li>
+        <li><strong>New Furniture:</strong> Larger home may need additional furnishings</li>
+        <li><strong>Higher Utilities:</strong> Larger space = higher heating/cooling costs</li>
+        <li><strong>Property Taxes:</strong> May increase after purchase if assessed value rises</li>
+    </ul>
+    
+    <h3 style="color:#D9534F; margin-top:2em;">Market Considerations</h3>
+    <ul style="margin-left:1.2em;">
+        <li><strong>Local Market Conditions:</strong> Seller's vs buyer's market affects strategy</li>
+        <li><strong>Seasonal Patterns:</strong> Spring/summer typically more competitive</li>
+        <li><strong>Interest Rate Trends:</strong> Rising rates reduce affordability</li>
+        <li><strong>Inventory Levels:</strong> Low inventory drives up prices</li>
+        <li><strong>Economic Factors:</strong> Job market, population growth affect demand</li>
+        <li><strong>Future Development:</strong> Planned construction may affect property values</li>
+    </ul>
+    
+    <h3 style="color:#D9534F; margin-top:2em;">When You Might Afford More or Less</h3>
+    <div style="background:#f8f9fa; padding:15px; border-radius:5px;">
+        <strong>Factors That May Increase Affordability:</strong><br>
+        • High credit score (740+)<br>
+        • Stable, increasing income<br>
+        • Large down payment (20%+)<br>
+        • Low debt-to-income ratio<br>
+        • Strong employment history<br><br>
+        <strong>Factors That May Decrease Affordability:</strong><br>
+        • Recent credit issues<br>
+        • Variable income or new job<br>
+        • High existing debt<br>
+        • Limited savings for emergencies<br>
+        <em>Lenders consider many factors beyond just income and debts!</em>
+    </div>
+    
+    <h3 style="color:#D9534F; margin-top:2em;">Rent vs Buy Analysis</h3>
+    <ul style="margin-left:1.2em;">
+        <li><strong>Break-Even Point:</strong> How long to recoup buying costs through equity</li>
+        <li><strong>Opportunity Cost:</strong> Could down payment earn more if invested?</li>
+        <li><strong>Flexibility:</strong> Renting offers more mobility</li>
+        <li><strong>Tax Benefits:</strong> Mortgage interest and property tax deductions</li>
+        <li><strong>Maintenance Responsibility:</strong> Owners handle all repairs and upkeep</li>
+        <li><strong>Market Risk:</strong> Home values can decline</li>
+        <li><strong>Forced Savings:</strong> Building equity through mortgage payments</li>
+    </ul>
+    
+    <b>Note:</b> The data used in this calculator was last updated on July 30, 2024, and may change in the future. Actual loan approval depends on many factors beyond this calculator's scope.<br><br>
+    <b>Use Cases:</b>
+    <ul style="margin-left:1.2em;">
+        <li>Estimate your realistic home buying budget before house hunting</li>
+        <li>Compare how different down payments affect affordable home prices</li>
+        <li>Evaluate the impact of paying off debts before buying</li>
+        <li>Plan for income increases and their effect on affordability</li>
+        <li>Understand how interest rate changes affect your budget</li>
+        <li>Determine if you're financially ready for homeownership</li>
+    </ul>
+</div>
+<script>
+function showResult(str) {
+    document.getElementById('calc-result').innerHTML = str;
+}
+document.getElementById('calc-btn').addEventListener('click', function() {
+    let income = parseFloat(document.getElementById('income').value);
+    let down = parseFloat(document.getElementById('down').value);
+    let debts = parseFloat(document.getElementById('debts').value);
+    let rate = parseFloat(document.getElementById('rate').value);
+    let years = parseInt(document.getElementById('years').value);
+    if (isNaN(income) || isNaN(down) || isNaN(debts) || isNaN(rate) || isNaN(years) || income <= 0 || down < 0 || debts < 0 || rate < 0 || years <= 0) {
+        showResult('Please enter valid values for all fields.');
+        return;
+    }
+    // 28% rule for housing, 36% for total debts
+    let maxHousing = income * 0.28 / 12;
+    let maxTotal = income * 0.36 / 12 - debts;
+    let payment = Math.min(maxHousing, maxTotal);
+    let r = rate / 100 / 12;
+    let n = years * 12;
+    let loan = payment * (1 - Math.pow(1 + r, -n)) / r;
+    let price = loan + down;
+    showResult(`<b>Estimated Home Price:</b> $${price.toFixed(2)}<br><b>Estimated Monthly Payment:</b> $${payment.toFixed(2)}`);
+});
+</script>
+</body>
+</html>

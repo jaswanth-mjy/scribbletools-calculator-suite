@@ -1,0 +1,358 @@
+<!DOCTYPE html><!DOCTYPE html>
+
+<html lang="en"><html lang="en">
+
+<head><head>
+
+    <meta charset="UTF-8">    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">    <m    <label class="calc-label">Interest Rate (%):</label>
+
+    <title>Mortgage Calculator - Free Home Loan Payment Calculator | Monthly Payments</title>    <input id="rate" class="calc-input" type="number" min="0" step="0.01" placeholder="e.g. 6.5">
+
+    <meta name="description" content="Free mortgage calculator to calculate monthly home loan payments. Get instant results for principal, interest, taxes, and insurance. Plan your home purchase today!">    <button id="calc-btn" class="calc-btn">Calculate</button>
+
+    <meta name="keywords" content="mortgage calculator, home loan calculator, monthly payment calculator, mortgage payment, home loan, real estate calculator, house payment">    <div class="calc-result" id="calc-result"></div>
+
+    <meta name="author" content="ScribbleTools"></div>
+
+    <meta name="robots" content="index, follow"><div class="calc-desc calc-desc--about">
+
+    <link rel="canonical" href="https://scribbletools.net/client/tools/financial/mortgage-calculator.html">    <strong class="calc-desc__title">About the Mortgage Calculator</strong><br><br>
+
+        
+
+    <!-- Open Graph / Facebook -->    The Mortgage Calculator helps you determine your monthly home loan payment and understand the total cost of homeownership. Whether you're a first-time buyer or considering refinancing, this tool provides essential information to make informed decisions about one of life's biggest financial commitments.<br><br>
+
+    <meta property="og:type" content="website">    
+
+    <meta property="og:url" content="https://scribbletools.net/client/tools/financial/mortgage-calculator.html">    <strong style="color:#D9534F;">How Mortgages Work:</strong><br>
+
+    <meta property="og:title" content="Mortgage Calculator - Free Home Loan Payment Calculator">    A mortgage is a loan secured by real estate that allows you to purchase a home by paying a portion upfront (down payment) and borrowing the rest. You then repay the loan with interest over a fixed period, typically 15-30 years.<br><br>
+
+    <meta property="og:description" content="Calculate your monthly mortgage payments with our free home loan calculator. Get instant results for your home purchase planning.">    
+
+    <meta property="og:image" content="https://scribbletools.net/assets/og-image.svg">    <strong style="color:#D9534F;">How to Use This Calculator:</strong><br>
+
+        <ol style="margin-left:1.2em; line-height:1.6;">
+
+    <!-- Twitter -->        <li><strong>Home Price:</strong> Enter the total purchase price of the home you're considering</li>
+
+    <meta property="twitter:card" content="summary_large_image">        <li><strong>Down Payment:</strong> Amount you'll pay upfront (typically 10-20% of home price)</li>
+
+    <meta property="twitter:url" content="https://scribbletools.net/client/tools/financial/mortgage-calculator.html">        <li><strong>Loan Term:</strong> Length of the mortgage in years (15, 20, or 30 years are common)</li>
+
+    <meta property="twitter:title" content="Mortgage Calculator - Free Home Loan Payment Calculator">        <li><strong>Interest Rate:</strong> Annual percentage rate (APR) offered by your lender</li>
+
+    <meta property="twitter:description" content="Calculate your monthly mortgage payments with our free home loan calculator. Instant results for home buyers.">        <li><strong>Click Calculate:</strong> See your monthly payment and total loan costs</li>
+
+    <meta property="twitter:image" content="https://scribbletools.net/assets/og-image.svg">    </ol><br>
+
+        
+
+    <!-- JSON-LD Structured Data -->    <strong style="color:#D9534F;">What You'll Learn:</strong><br>
+
+    <script type="application/ld+json">    <ul style="margin-left:1.2em; line-height:1.6;">
+
+    {        <li><strong>Monthly Payment:</strong> Your principal and interest payment amount</li>
+
+      "@context": "https://schema.org",        <li><strong>Total Interest:</strong> How much you'll pay in interest over the loan's life</li>
+
+      "@type": "WebApplication",        <li><strong>Total Cost:</strong> Complete amount paid including principal and interest</li>
+
+      "name": "Mortgage Calculator",        <li><strong>Loan Amount:</strong> How much you're actually borrowing after down payment</li>
+
+      "description": "Free online mortgage calculator for calculating monthly home loan payments including principal, interest, taxes, and insurance",    </ul><br>
+
+      "url": "https://scribbletools.net/client/tools/financial/mortgage-calculator.html",    
+
+      "applicationCategory": "FinanceApplication",    <strong style="color:#D9534F;">Perfect For:</strong><br>
+
+      "operatingSystem": "Web Browser",    <ul style="margin-left:1.2em; line-height:1.6;">
+
+      "offers": {        <li><strong>First-Time Buyers:</strong> Understanding what you can afford before house hunting</li>
+
+        "@type": "Offer",        <li><strong>Budget Planning:</strong> Ensuring mortgage payments fit your monthly budget</li>
+
+        "price": "0",        <li><strong>Refinancing Decisions:</strong> Comparing current payments with potential new rates</li>
+
+        "priceCurrency": "USD"        <li><strong>Loan Shopping:</strong> Comparing offers from different lenders</li>
+
+      },        <li><strong>Down Payment Planning:</strong> Seeing how different down payments affect monthly costs</li>
+
+      "creator": {    </ul><br>
+
+        "@type": "Organization",    
+
+        "name": "ScribbleTools"    <strong style="color:#D9534F;">Mortgage Tips:</strong><br>
+
+      }    <ul style="margin-left:1.2em; line-height:1.6;">
+
+    }        <li><strong>20% Down Payment:</strong> Avoids private mortgage insurance (PMI)</li>
+
+    </script>        <li><strong>Shorter Terms:</strong> 15-year loans have higher payments but save significant interest</li>
+
+    <style>        <li><strong>Rate Shopping:</strong> Even 0.25% difference can save thousands over time</li>
+
+        body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; }        <li><strong>Total Monthly Housing:</strong> Keep total housing costs under 28-30% of income</li>
+
+        .calc-container { max-width: 420px; margin: 3em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2em 1.5em 2.5em 1.5em; }        <li><strong>Additional Costs:</strong> Remember property taxes, insurance, and maintenance</li>
+
+        .handwritten { font-family: 'Caveat', cursive; }    </ul><br>
+
+        .calc-label { font-weight: 600; margin-bottom: 0.5em; display: block; }    
+
+        .calc-input { width: 100%; padding: 1em; border: 2px solid #EAE3D5; border-radius: 0.7em; font-size: 1.2em; margin-bottom: 1em; background: #FDFBF5; text-align: center; font-family: 'Fira Code', monospace; }    <strong style="color:#D9534F;">Common Scenarios:</strong><br>
+
+        .calc-btn { background: #fff; color: #D9534F; border: 2px solid #D9534F; border-radius: 0.5em; padding: 0.7em 2em; font-weight: 600; font-size: 1.1em; cursor: pointer; transition: all 0.2s; margin-bottom: 1em; }    <ul style="margin-left:1.2em; line-height:1.6;">
+
+        .calc-btn:hover { background: #D9534F; color: #fff; }        <li><strong>$300K Home, 20% down, 30-year:</strong> ~$1,265/month at 6% interest</li>
+
+        .calc-result { background: #FDFBF5; border: 2px solid #D9534F; border-radius: 0.7em; padding: 1em; font-size: 1.25em; color: #D9534F; min-height: 1.7em; margin-bottom: 1em; text-align: center; font-family: 'Fira Code', monospace; font-weight: bold; max-height: 300px; overflow-y: auto; word-break: break-word; transition: height 0.2s; }        <li><strong>$300K Home, 10% down, 30-year:</strong> ~$1,422/month at 6% interest (includes PMI estimate)</li>
+
+        .calc-desc { width: 100%; margin-top: 2em; background:#FDFBF5; border:2px solid #EAE3D5; border-radius:0.9em; padding:1.2em 1em; font-size:1.08em; color:#333; line-height:1.7; }        <li><strong>15-year vs 30-year:</strong> Higher monthly payment but 50-60% less total interest</li>
+
+        .calc-desc strong { color: #D9534F; font-size: 1.12em; }    </ul><br>
+
+        .calc-desc--about { max-width: fit-content; margin: 2.5em auto 0 auto; }    
+
+        @media (max-width: 600px) { .calc-container { padding: 1em 0.2em; } }    <b>Important:</b> This calculator shows principal and interest only. Your actual monthly payment will also include property taxes, homeowners insurance, and possibly PMI. Many lenders require these to be included in your monthly payment through an escrow account.
+
+    </style></div>wport" content="width=device-width, initial-scale=1">
+
+</head>    <title>Mortgage Calculator - Free Home Loan Payment Calculator | Monthly Payments</title>
+
+<body>    <meta name="description" content="Free mortgage calculator to calculate monthly home loan payments. Get instant results for principal, interest, taxes, and insurance. Plan your home purchase today!">
+
+<div class="calc-container">    <meta name="keywords" content="mortgage calculator, home loan calculator, monthly payment calculator, mortgage payment, home loan, real estate calculator, house payment">
+
+    <h2 class="handwritten text-5xl text-[#D9534F] mb-4">Mortgage Calculator</h2>    <meta name="author" content="ScribbleTools">
+
+    <label class="calc-label">Home Price ($):</label>    <meta name="robots" content="index, follow">
+
+    <input id="price" class="calc-input" type="number" min="0" placeholder="e.g. 350000">    <link rel="canonical" href="https://scribbletools.net/client/tools/financial/mortgage-calculator.html">
+
+    <label class="calc-label">Down Payment ($):</label>    
+
+    <input id="down" class="calc-input" type="number" min="0" placeholder="e.g. 50000">    <!-- Open Graph / Facebook -->
+
+    <label class="calc-label">Loan Term (years):</label>    <meta property="og:type" content="website">
+
+    <input id="years" class="calc-input" type="number" min="1" placeholder="e.g. 30">    <meta property="og:url" content="https://scribbletools.net/client/tools/financial/mortgage-calculator.html">
+
+    <label class="calc-label">Interest Rate (%):</label>    <meta property="og:title" content="Mortgage Calculator - Free Home Loan Payment Calculator">
+
+    <input id="rate" class="calc-input" type="number" min="0" step="0.01" placeholder="e.g. 6.5">    <meta property="og:description" content="Calculate your monthly mortgage payments with our free home loan calculator. Get instant results for your home purchase planning.">
+
+    <button id="calc-btn" class="calc-btn">Calculate</button>    <meta property="og:image" content="https://scribbletools.net/assets/og-image.svg">
+
+    <div class="calc-result" id="calc-result"></div>    
+
+</div>    <!-- Twitter -->
+
+<div class="calc-desc calc-desc--about">    <meta property="twitter:card" content="summary_large_image">
+
+    <strong style="font-size:1.18em; color:#D9534F;">About the Mortgage Calculator</strong><br><br>    <meta property="twitter:url" content="https://scribbletools.net/client/tools/financial/mortgage-calculator.html">
+
+        <meta property="twitter:title" content="Mortgage Calculator - Free Home Loan Payment Calculator">
+
+    The Mortgage Calculator helps you determine your monthly home loan payment and understand the total cost of homeownership. Whether you're a first-time buyer or considering refinancing, this tool provides essential information to make informed decisions about one of life's biggest financial commitments.<br><br>    <meta property="twitter:description" content="Calculate your monthly mortgage payments with our free home loan calculator. Instant results for home buyers.">
+
+        <meta property="twitter:image" content="https://scribbletools.net/assets/og-image.svg">
+
+    <h3 style="color:#D9534F; margin-top:2em;">How to Use the Mortgage Calculator</h3>    
+
+    <ol style="margin-left:1.2em;">    <!-- JSON-LD Structured Data -->
+
+        <li><strong>Home Price:</strong> Enter the total purchase price of the home you're considering</li>    <script type="application/ld+json">
+
+        <li><strong>Down Payment:</strong> Amount you'll pay upfront (typically 10-20% of home price)</li>    {
+
+        <li><strong>Loan Term:</strong> Length of the mortgage in years (15, 20, or 30 years are common)</li>      "@context": "https://schema.org",
+
+        <li><strong>Interest Rate:</strong> Annual percentage rate (APR) offered by your lender</li>      "@type": "WebApplication",
+
+        <li><strong>Click Calculate:</strong> See your monthly payment and total loan costs</li>      "name": "Mortgage Calculator",
+
+    </ol>      "description": "Free online mortgage calculator for calculating monthly home loan payments including principal, interest, taxes, and insurance",
+
+          "url": "https://scribbletools.net/client/tools/financial/mortgage-calculator.html",
+
+    <h3 style="color:#D9534F; margin-top:2em;">Example Mortgage Calculation</h3>      "applicationCategory": "FinanceApplication",
+
+    <p style="background:#f8f9fa; padding:15px; border-radius:5px;">      "operatingSystem": "Web Browser",
+
+        <strong>Scenario:</strong> $400,000 home with $80,000 down payment (20%)<br>      "offers": {
+
+        <strong>Loan Amount:</strong> $320,000<br>        "@type": "Offer",
+
+        <strong>Term:</strong> 30 years at 6.5% APR<br>        "price": "0",
+
+        <strong>Result:</strong> Monthly payment of $2,022, total interest of $407,920, total cost of $727,920<br>        "priceCurrency": "USD"
+
+        <em>This covers principal and interest only - add taxes, insurance, and PMI if applicable.</em>      },
+
+    </p>      "creator": {
+
+            "@type": "Organization",
+
+    <h3 style="color:#D9534F; margin-top:2em;">Understanding Mortgage Components</h3>        "name": "ScribbleTools"
+
+    <ul style="margin-left:1.2em;">      }
+
+        <li><strong>Principal:</strong> The amount you borrow to buy the home</li>    }
+
+        <li><strong>Interest:</strong> The cost of borrowing money, expressed as an annual percentage</li>    <style>
+
+        <li><strong>Property Taxes:</strong> Annual taxes paid to local government (varies by location)</li>        body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; }
+
+        <li><strong>Homeowners Insurance:</strong> Required coverage to protect the property</li>        .calc-container { max-width: 420px; margin: 3em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2em 1.5em 2.5em 1.5em; }
+
+        <li><strong>PMI (Private Mortgage Insurance):</strong> Required if down payment is less than 20%</li>        .handwritten { font-family: 'Caveat', cursive; }
+
+        <li><strong>HOA Fees:</strong> Monthly fees for homeowners association (if applicable)</li>        .calc-label { font-weight: 600; margin-bottom: 0.5em; display: block; }
+
+    </ul>        .calc-input { width: 100%; padding: 1em; border: 2px solid #EAE3D5; border-radius: 0.7em; font-size: 1.2em; margin-bottom: 1em; background: #FDFBF5; text-align: center; font-family: 'Fira Code', monospace; }
+
+            .calc-btn { background: #fff; color: #D9534F; border: 2px solid #D9534F; border-radius: 0.5em; padding: 0.7em 2em; font-weight: 600; font-size: 1.1em; cursor: pointer; transition: all 0.2s; margin-bottom: 1em; }
+
+    <h3 style="color:#D9534F; margin-top:2em;">Down Payment Strategies</h3>        .calc-btn:hover { background: #D9534F; color: #fff; }
+
+    <ul style="margin-left:1.2em;">        .calc-result { background: #FDFBF5; border: 2px solid #D9534F; border-radius: 0.7em; padding: 1em; font-size: 1.25em; color: #D9534F; min-height: 1.7em; margin-bottom: 1em; text-align: center; font-family: 'Fira Code', monospace; font-weight: bold; max-height: 300px; overflow-y: auto; word-break: break-word; transition: height 0.2s; }
+
+        <li><strong>20% Down:</strong> Avoids PMI, lower monthly payments, better loan terms</li>        .calc-desc { width: 100%; margin-top: 2em; background:#FDFBF5; border:2px solid #EAE3D5; border-radius:0.9em; padding:1.2em 1em; font-size:1.08em; color:#333; line-height:1.7; }
+
+        <li><strong>10-15% Down:</strong> Balance between savings and monthly costs</li>        .calc-desc strong { color: #D9534F; font-size: 1.12em; }
+
+        <li><strong>5-10% Down:</strong> Get into home sooner but higher monthly payments</li>        .calc-desc--about { max-width: fit-content; margin: 2.5em auto 0 auto; }
+
+        <li><strong>3% Down:</strong> First-time buyer programs, conventional loans available</li>        .calc-desc__title { font-size:1.18em; color:#D9534F; }
+
+        <li><strong>0% Down:</strong> VA loans for veterans, USDA loans for rural areas</li>        .calc-desc__list { margin-left:1.2em; }
+
+    </ul>        @media (max-width: 600px) { .calc-container { padding: 1em 0.2em; } }
+
+        </style>
+
+    <h3 style="color:#D9534F; margin-top:2em;">Mortgage Term Comparison</h3>    </style>
+
+    <div style="background:#f8f9fa; padding:15px; border-radius:5px;"></head>
+
+        <strong>$300,000 Loan at 6.5% Interest:</strong><br><body>
+
+        • 15-year term: $2,613/month, $170,340 total interest<br><div class="calc-container">
+
+        • 20-year term: $2,216/month, $231,840 total interest<br>    <h2 class="handwritten text-5xl text-[#D9534F] mb-4">Mortgage Calculator</h2>
+
+        • 30-year term: $1,896/month, $382,560 total interest<br>    <label class="calc-label">Home Price ($):</label>
+
+        <em>Shorter terms = higher payments but massive interest savings!</em>    <input id="price" class="calc-input" type="number" min="0" placeholder="e.g. 350000">
+
+    </div>    <label class="calc-label">Down Payment ($):</label>
+
+        <input id="down" class="calc-input" type="number" min="0" placeholder="e.g. 50000">
+
+    <h3 style="color:#D9534F; margin-top:2em;">Smart Home Buying Tips</h3>    <label class="calc-label">Loan Term (years):</label>
+
+    <ul style="margin-left:1.2em;">    <input id="years" class="calc-input" type="number" min="1" placeholder="e.g. 30">
+
+        <li><strong>Get Pre-approved:</strong> Know your budget and strengthen your offer</li>    <label class="calc-label">Interest Rate (%):</label>
+
+        <li><strong>Shop Multiple Lenders:</strong> Even 0.25% rate difference saves thousands</li><div class="calc-desc calc-desc--about">
+
+        <li><strong>Consider Total Monthly Cost:</strong> PITI should be under 28% of gross income</li>    <strong class="calc-desc__title">About the Mortgage Calculator</strong><br><br>
+
+        <li><strong>Factor in Closing Costs:</strong> Typically 2-5% of home purchase price</li>    Instantly estimate your monthly mortgage payment, total interest, and total cost for any home loan. Enter your home price, down payment, loan term, and interest rate to see your payment and total cost. Great for home buyers, budgeting, or comparing loan offers.<br><br>
+
+        <li><strong>Plan for Maintenance:</strong> Budget 1-3% of home value annually</li>    <b>Note:</b> The data used in this calculator was last updated on July 30, 2024, and may change in the future.<br><br>
+
+        <li><strong>Emergency Fund:</strong> Keep 3-6 months of payments in reserve</li>    <b>Use Cases:</b>
+
+    </ul>    <ul class="calc-desc__list">
+
+            <li>Estimate your monthly mortgage payment</li>
+
+    <h3 style="color:#D9534F; margin-top:2em;">When to Refinance</h3>        <li>Compare different loan terms or interest rates</li>
+
+    <ul style="margin-left:1.2em;">        <li>See how much interest you’ll pay over the life of the loan</li>
+
+        <li>Interest rates drop 1% or more below your current rate</li>        <li>Plan your budget for a new home or refinance</li>
+
+        <li>Your credit score has improved significantly</li>    </ul>
+
+        <li>You want to switch from adjustable to fixed rate</li></div>
+
+        <li>You want to remove PMI after building 20% equity</li>        <li>See how much interest you’ll pay over the life of the loan</li>
+
+        <li>You need to access home equity for improvements</li>        <li>Plan your budget for a new home or refinance</li>
+
+        <li>You want to change loan terms (15-year vs 30-year)</li>    </ul>
+
+    </ul></div>
+
+    <script>
+
+    <h3 style="color:#D9534F; margin-top:2em;">First-Time Buyer Programs</h3>function showResult(str) {
+
+    <div style="background:#f8f9fa; padding:15px; border-radius:5px;">    document.getElementById('calc-result').innerHTML = str;
+
+        <strong>Available Assistance Programs:</strong><br>}
+
+        • FHA Loans: 3.5% down, flexible credit requirements<br>document.getElementById('calc-btn').addEventListener('click', function() {
+
+        • VA Loans: 0% down for eligible veterans<br>    let price = parseFloat(document.getElementById('price').value);
+
+        • USDA Loans: 0% down for rural properties<br>    let down = parseFloat(document.getElementById('down').value);
+
+        • Conventional: 3% down programs available<br>    let years = parseInt(document.getElementById('years').value);
+
+        • State/Local Programs: Down payment assistance and grants<br>    let rate = parseFloat(document.getElementById('rate').value);
+
+        <em>Research programs in your area for additional savings!</em>    if (isNaN(price) || isNaN(down) || isNaN(years) || isNaN(rate) || price <= 0 || down < 0 || years <= 0 || rate < 0) {
+
+    </div>        showResult('Please enter valid values for all fields.');
+
+            return;
+
+    <b>Use Cases:</b>    }
+
+    <ul style="margin-left:1.2em;">    let loan = price - down;
+
+        <li>Estimate monthly mortgage payments before house hunting</li>    let monthlyRate = rate / 100 / 12;
+
+        <li>Compare different loan terms and interest rates</li>    let n = years * 12;
+
+        <li>Calculate the impact of various down payment amounts</li>    let payment = monthlyRate === 0 ? loan / n : (loan * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -n));
+
+        <li>Plan your home buying budget and timeline</li>    showResult(`<b>Monthly Payment:</b> $${payment.toFixed(2)}<br><b>Total Payments:</b> $${(payment*n).toFixed(2)}<br><b>Total Interest:</b> $${(payment*n-loan).toFixed(2)}`);
+
+        <li>Evaluate refinancing opportunities with current loan</li>});
+
+        <li>Understand total interest costs over loan lifetime</li></script>
+
+    </ul></body>
+
+</div></html>
+
+<script>
+function showResult(str) {
+    document.getElementById('calc-result').innerHTML = str;
+}
+document.getElementById('calc-btn').addEventListener('click', function() {
+    let price = parseFloat(document.getElementById('price').value);
+    let down = parseFloat(document.getElementById('down').value);
+    let years = parseInt(document.getElementById('years').value);
+    let rate = parseFloat(document.getElementById('rate').value);
+    if (isNaN(price) || isNaN(down) || isNaN(years) || isNaN(rate) || price <= 0 || down < 0 || years <= 0 || rate < 0) {
+        showResult('Please enter valid values for all fields.');
+        return;
+    }
+    let loan = price - down;
+    let monthlyRate = rate / 100 / 12;
+    let n = years * 12;
+    let payment = monthlyRate === 0 ? loan / n : (loan * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -n));
+    showResult(`<b>Monthly Payment:</b> $${payment.toFixed(2)}<br><b>Total Payments:</b> $${(payment*n).toFixed(2)}<br><b>Total Interest:</b> $${(payment*n-loan).toFixed(2)}`);
+});
+</script>
+</body>
+</html>

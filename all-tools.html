@@ -1,0 +1,148 @@
+<section class="p-4">
+  <div class="mb-6 text-center">
+    <h1 class="handwritten text-5xl text-[#D9534F] mb-2">All Tools Keymap</h1>
+    <p class="text-gray-600">Browse the complete list of tools grouped by category. Click a tool to open it.</p>
+  </div>
+
+  <div class="max-w-xl mx-auto mb-6">
+    <label class="block text-sm font-medium text-gray-700 mb-1" for="keymap-search">Filter tools</label>
+    <input id="keymap-search" type="text" placeholder="Type to filter (e.g., image, mortgage, json)" class="w-full p-3 border-2 border-gray-300 rounded-md focus:border-red-400 focus:ring-0" />
+  </div>
+
+  <div id="keymap-summary" class="text-center text-gray-700 mb-4"></div>
+  <div id="keymap-container" class="grid gap-6 md:grid-cols-2 lg:grid-cols-3"></div>
+</section>
+
+<script>
+(function() {
+  'use strict';
+
+  // Utility: Title Case for labels
+  function titleize(kebab) {
+    return kebab
+      .replace(/[-_]+/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim()
+      .replace(/\b\w/g, c => c.toUpperCase());
+  }
+
+  // Extract the routes object literal from index.html script content
+  function extractRoutesFromPage() {
+    const scripts = Array.from(document.scripts);
+    for (const s of scripts) {
+      const txt = s.textContent || '';
+      if (txt.includes('const routes') && txt.includes('#')) {
+        // Capture the object literal between the first '{' after '=' and the matching '}'
+        const match = txt.match(/const\s+routes\s*=\s*({[\s\S]*?});/);
+        if (!match) continue;
+        const objLiteral = match[1];
+        try {
+          // eslint-disable-next-line no-new-func
+          const parsed = Function('"use strict"; return (' + objLiteral + ');')();
+          if (parsed && typeof parsed === 'object') return parsed;
+        } catch (e) {
+          console.warn('Failed to parse routes from script:', e);
+        }
+      }
+    }
+    return null;
+  }
+
+  function categorize(hash, path) {
+    if (path === 'all-tools.html' || hash === '#all-tools') return null; // skip self
+    if (path.startsWith('client/tools/text/')) return 'Text Tools';
+    if (path.startsWith('client/tools/math/')) return 'Math Calculators';
+    if (path.startsWith('client/tools/financial/')) return 'Financial Calculators';
+    if (path.startsWith('client/tools/health/')) return 'Health & Fitness';
+    if (path.startsWith('client/tools/image/')) return 'Image & Media';
+    if (path.startsWith('client/tools/other/')) return 'General Utilities';
+    return 'Other';
+  }
+
+  function labelFor(hash, path) {
+    // Prefer filename from path for a cleaner label
+    try {
+      const file = path.split('/').pop().replace(/\.html$/i, '');
+      return titleize(file);
+    } catch {
+      return titleize(hash.replace(/^#/, ''));
+    }
+  }
+
+  function renderKeymap(routes) {
+    const container = document.getElementById('keymap-container');
+    const summary = document.getElementById('keymap-summary');
+    const searchInput = document.getElementById('keymap-search');
+
+    // Group by category
+    const groups = new Map();
+    let total = 0;
+    Object.entries(routes).forEach(([hash, path]) => {
+      const cat = categorize(hash, path);
+      if (!cat) return;
+      const item = { hash, path, label: labelFor(hash, path) };
+      if (!groups.has(cat)) groups.set(cat, []);
+      groups.get(cat).push(item);
+      total++;
+    });
+
+    // Sort categories and items
+    const order = ['Text Tools', 'Math Calculators', 'Financial Calculators', 'Health & Fitness', 'Image & Media', 'General Utilities', 'Other'];
+    const catEntries = Array.from(groups.entries()).sort((a, b) => order.indexOf(a[0]) - order.indexOf(b[0]));
+    catEntries.forEach(([cat, items]) => items.sort((a, b) => a.label.localeCompare(b.label)));
+
+    summary.textContent = `Found ${total} tools across ${catEntries.length} categories`;
+
+    function draw(filter = '') {
+      container.innerHTML = '';
+      const query = filter.trim().toLowerCase();
+      let shown = 0;
+
+      catEntries.forEach(([cat, items]) => {
+        const filtered = query
+          ? items.filter(it => it.label.toLowerCase().includes(query) || it.hash.toLowerCase().includes(query))
+          : items;
+        if (filtered.length === 0) return;
+
+        const card = document.createElement('div');
+        card.className = 'bg-white rounded-lg shadow-sm border border-gray-200 p-4';
+
+        const h3 = document.createElement('h3');
+        h3.className = 'font-bold text-gray-800 mb-3';
+        h3.textContent = `${cat} (${filtered.length})`;
+        card.appendChild(h3);
+
+        const list = document.createElement('ul');
+        list.className = 'space-y-1';
+
+        filtered.forEach(it => {
+          const li = document.createElement('li');
+          const a = document.createElement('a');
+          a.href = it.hash; // Let the main router handle navigation
+          a.textContent = it.label;
+          a.className = 'block px-2 py-1 rounded nav-link hover:bg-amber-50 hover:text-black text-gray-700';
+          li.appendChild(a);
+          list.appendChild(li);
+          shown++;
+        });
+
+        card.appendChild(list);
+        container.appendChild(card);
+      });
+
+      summary.textContent = `${shown} tool${shown === 1 ? '' : 's'} shown${query ? ' (filtered)' : ''}`;
+    }
+
+    searchInput.addEventListener('input', () => draw(searchInput.value));
+    draw('');
+  }
+
+  const routes = extractRoutesFromPage();
+  if (!routes) {
+    const container = document.getElementById('keymap-container');
+    container.innerHTML = '<div class="p-4 bg-red-50 border border-red-200 rounded text-red-700">Unable to load keymap. Routes not found in page script.</div>';
+    return;
+  }
+  renderKeymap(routes);
+})();
+</script>

@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Watermark Images</title>
+    <style>
+        body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; }
+        .reduce-size-container { max-width: 800px; margin: 3em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2em 1.5em 2.5em 1.5em; }
+        .handwritten { font-family: 'Caveat', cursive; }
+        .upload-area { border: 3px dashed #D9534F; border-radius: 1em; padding: 3em 2em; text-align: center; margin: 2em 0; background: #FDFBF5; transition: all 0.3s; cursor: pointer; }
+        .upload-area:hover { background: #F0F8FF; border-color: #4682B4; }
+        .upload-area.dragover { background: #E8F5E8; border-color: #228B22; }
+        .upload-icon { font-size: 3em; color: #D9534F; margin-bottom: 1em; }
+        .file-input { display: none; }
+        .upload-btn { background: #D9534F; color: #fff; border: none; border-radius: 0.5em; padding: 1em 2em; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+        .upload-btn:hover { background: #c9302c; }
+        .size-options { margin: 2em 0; }
+        .option-group { margin: 1em 0; }
+        .option-label { font-weight: 600; margin-bottom: 0.5em; display: block; }
+        .option-select, .option-input { width: 100%; padding: 0.8em; border: 2px solid #EAE3D5; border-radius: 0.5em; font-size: 1em; margin-bottom: 1em; }
+        .reduce-btn { background: #228B22; color: #fff; border: none; border-radius: 0.5em; padding: 1em 2em; font-weight: 600; cursor: pointer; transition: all 0.2s; width: 100%; font-size: 1.1em; }
+        .reduce-btn:hover { background: #1e7e1e; }
+        .reduce-btn:disabled { background: #ccc; cursor: not-allowed; }
+        .result-section { margin-top: 2em; }
+        .result-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1em; margin: 1em 0; }
+        .result-card { background: #F0F8FF; border: 1px solid #B0C4DE; border-radius: 0.5em; padding: 1em; text-align: center; }
+        .result-card h4 { color: #4682B4; margin: 0 0 0.5em 0; }
+        .result-card .value { font-size: 1.2em; font-weight: bold; color: #D9534F; }
+        .preview-comparison { background: #F0FFF0; border: 1px solid #90EE90; border-radius: 0.5em; padding: 1em; margin: 1em 0; }
+        .preview-comparison h4 { color: #228B22; margin: 0 0 0.5em 0; }
+        .preview-images { display: grid; grid-template-columns: 1fr 1fr; gap: 1em; margin: 1em 0; }
+        .preview-container { text-align: center; }
+        .preview-image { max-width: 100%; max-height: 200px; border-radius: 0.5em; margin: 0.5em 0; }
+        .download-section { background: #F0F8FF; border: 1px solid #B0C4DE; border-radius: 0.5em; padding: 1em; margin: 1em 0; text-align: center; }
+        .download-btn { background: #4682B4; color: #fff; border: none; border-radius: 0.5em; padding: 1em 2em; font-weight: 600; cursor: pointer; transition: all 0.2s; margin: 0.5em; }
+        .download-btn:hover { background: #357abd; }
+        .progress-bar { background: #f0f0f0; border-radius: 0.3em; height: 1rem; margin: 0.5em 0; overflow: hidden; }
+        .progress-fill { background: linear-gradient(90deg, #4CAF50, #45a049); height: 100%; transition: width 0.3s; }
+        .size-warning { color: #dc2626; font-weight: 500; }
+        .size-success { color: #059669; font-weight: 500; }
+        @media (max-width: 600px) { .reduce-size-container { padding: 1em 0.2em; } .result-grid { grid-template-columns: 1fr; } .preview-images { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+<div class="reduce-size-container">
+    <h2 class="handwritten text-5xl text-[#D9534F] mb-4">Watermark Images</h2>
+    <div class="upload-area" id="upload-area">
+        <div class="upload-icon">💧</div>
+        <h3>Drag & Drop your image here</h3>
+        <p>or click to browse files</p>
+        <div style="background: #FFF3CD; border: 1px solid #FFEAA7; border-radius: 0.5em; padding: 1em; margin: 1em 0; font-size: 0.9em; color: #856404;">
+            <strong>🔒 Privacy Notice:</strong> Your files are automatically deleted after 10 minutes. No screenshots or data are stored permanently.
+        </div>
+        <input type="file" id="file-input" class="file-input" accept="image/*">
+        <button class="upload-btn" id="choose-file-btn">Choose File</button>
+        <div id="upload-progress-bar" style="display:none; width:100%; background:#F0F8FF; border-radius:0.5em; margin-top:1.2em; height:1.5em; overflow:hidden; border:1px solid #B0C4DE; position:relative;">
+          <div id="upload-progress-fill" style="height:100%; width:0; background:linear-gradient(90deg,#D9534F,#F0AD4E,#5BC0DE,#5CB85C,#A569BD); transition:width 0.2s;"></div>
+          <span id="upload-progress-text" style="position:absolute; left:50%; top:0; transform:translateX(-50%); color:#333; font-weight:600; line-height:1.5em; font-size:1em;">Uploading: 0%</span>
+        </div>
+    </div>
+    <div class="size-options" id="size-options" style="display: none;">
+        <h3 style="color: #D9534F; margin-bottom: 1em;">Watermark Options</h3>
+        <div class="option-group">
+            <label class="option-label">Watermark Text:</label>
+            <input type="text" id="watermark-text" class="option-input" placeholder="Enter watermark text" value="Sample Watermark">
+        </div>
+        <div class="option-group">
+            <label class="option-label">Position:</label>
+            <select id="watermark-position" class="option-select">
+                <option value="bottom-right">Bottom Right</option>
+                <option value="bottom-left">Bottom Left</option>
+                <option value="top-right">Top Right</option>
+                <option value="top-left">Top Left</option>
+                <option value="center">Center</option>
+            </select>
+        </div>
+        <div class="option-group">
+            <label class="option-label">Opacity:</label>
+            <input type="range" id="watermark-opacity" class="option-input" min="0.1" max="1" step="0.05" value="0.3">
+            <span id="opacity-value">0.3</span>
+        </div>
+        <div class="option-group">
+            <label class="option-label">Font Style:</label>
+            <select id="watermark-font" class="option-select">
+                <option value="Poppins">Poppins</option>
+                <option value="Caveat">Caveat</option>
+                <option value="Dancing Script">Dancing Script</option>
+                <option value="Great Vibes">Great Vibes</option>
+                <option value="Alex Brush">Alex Brush</option>
+                <option value="Allura">Allura</option>
+                <option value="Berkshire Swash">Berkshire Swash</option>
+                <option value="Clicker Script">Clicker Script</option>
+                <option value="Homemade Apple">Homemade Apple</option>
+                <option value="Kaushan Script">Kaushan Script</option>
+                <option value="Marck Script">Marck Script</option>
+                <option value="Montez">Montez</option>
+                <option value="Mr De Haviland">Mr De Haviland</option>
+                <option value="Petit Formal Script">Petit Formal Script</option>
+                <option value="Playball">Playball</option>
+                <option value="Satisfy">Satisfy</option>
+                <option value="Tangerine">Tangerine</option>
+            </select>
+        </div>
+        <div class="option-group">
+            <label class="option-label">Font Size (px):</label>
+            <input type="number" id="watermark-font-size" class="option-input" min="10" max="200" value="36">
+        </div>
+        <div class="option-group">
+            <label class="option-label">Font Color:</label>
+            <div class="grid grid-cols-6 gap-2 mb-2">
+                <div class="color-picker" style="background:#D9534F;" data-color="#D9534F"></div>
+                <div class="color-picker" style="background:#228B22;" data-color="#228B22"></div>
+                <div class="color-picker" style="background:#4682B4;" data-color="#4682B4"></div>
+                <div class="color-picker" style="background:#000000;" data-color="#000000"></div>
+                <div class="color-picker" style="background:#ffffff; border:1px solid #ccc;" data-color="#ffffff"></div>
+                <div class="color-picker" style="background:#FFD700;" data-color="#FFD700"></div>
+            </div>
+            <input type="color" id="watermark-color" class="option-input" value="#D9534F">
+        </div>
+        <button class="reduce-btn" id="watermark-btn">Add Watermark</button>
+    </div>
+    <div class="result-section" id="result-section" style="display: none;">
+        <div class="result-grid" id="result-grid"></div>
+        <div class="preview-comparison" id="preview-comparison"></div>
+        <div class="download-section" id="download-section"></div>
+    </div>
+</div>
+<div style="max-width: fit-content; margin: 2.5em auto 0 auto; background:#FDFBF5; border:2px solid #EAE3D5; border-radius:0.9em; padding:1.2em 1em; font-size:1.08em; color:#333; line-height:1.7;">
+    <strong style="font-size:1.18em; color:#D9534F;">About the Watermark Tool</strong><br><br>
+    Add custom text watermarks to your images for branding, copyright, or security.<br><br>
+    <b>Features:</b>
+    <ul style="margin-left:1.2em;">
+        <li>Drag & drop interface for easy file selection</li>
+        <li>Custom watermark text, position, opacity, font size, and color</li>
+        <li>Before/after preview comparison</li>
+        <li>Instant download of watermarked images</li>
+    </ul>
+    <b>Use Cases:</b>
+    <ul style="margin-left:1.2em;">
+        <li>Brand your images for social media or web</li>
+        <li>Protect your work from unauthorized use</li>
+        <li>Add copyright or confidential marks</li>
+    </ul>
+    <b>Privacy:</b> All processing happens in your browser. Your images never leave your device. Files are automatically deleted after 10 minutes.<br>
+</div>
+<div id="loading-overlay" style="display:none; position:fixed; z-index:9999; top:0; left:0; width:100vw; height:100vh; background:rgba(255,255,255,0.92); align-items:center; justify-content:center;">
+  <div style="text-align:center;">
+    <div class="scribble-loader" aria-label="Processing, please wait...">
+      <div class="scribble-dot"></div>
+      <div class="scribble-dot"></div>
+      <div class="scribble-dot"></div>
+      <div class="scribble-dot"></div>
+      <div class="scribble-dot"></div>
+    </div>
+    <div style="font-family:'Caveat',cursive; font-size:2.2em; color:#D9534F; margin-top:1.2em;">Watermarking...</div>
+    <div style="font-size:1.1em; color:#333; margin-top:0.5em;">Please wait while we watermark your image.</div>
+  </div>
+</div>
+<style>
+.scribble-loader {
+  display: flex;
+  gap: 0.5em;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2em;
+}
+.scribble-dot {
+  width: 0.8em;
+  height: 0.8em;
+  background: #D9534F;
+  border-radius: 50%;
+  animation: scribble-bounce 1.4s ease-in-out infinite both;
+}
+.scribble-dot:nth-child(1) { animation-delay: -0.32s; }
+.scribble-dot:nth-child(2) { animation-delay: -0.16s; }
+.scribble-dot:nth-child(3) { animation-delay: 0s; }
+.scribble-dot:nth-child(4) { animation-delay: 0.16s; }
+.scribble-dot:nth-child(5) { animation-delay: 0.32s; }
+@keyframes scribble-bounce {
+  0%, 80%, 100% { transform: scale(0); }
+  40% { transform: scale(1); }
+}
+.conversion-success-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #E8F5E8;
+  border: 2px solid #5CB85C;
+  border-radius: 0.7em;
+  padding: 1.2em 1em 1.5em 1em;
+  margin-bottom: 1em;
+  margin-top: 0.5em;
+  box-shadow: 0 2px 12px #eae3d5;
+}
+.success-icon {
+  font-size: 2.2em;
+  color: #5CB85C;
+  margin-bottom: 0.3em;
+}
+.success-message {
+  font-size: 1.15em;
+  color: #228B22;
+  font-family: 'Caveat', cursive;
+  margin-bottom: 0.7em;
+  text-align: center;
+}
+.download-btn {
+  display: inline-block;
+  margin-top: 0.5em;
+  margin-bottom: 0.2em;
+  font-size: 1.08em;
+  padding: 0.9em 2em;
+}
+@media (max-width: 600px) { .preview-images { grid-template-columns: 1fr; } }
+</style>
+<script>
+(function() {
+let uploadedFile = null;
+let originalWidth = 0;
+let originalHeight = 0;
+const uploadArea = document.getElementById('upload-area');
+const fileInput = document.getElementById('file-input');
+const chooseFileBtn = document.getElementById('choose-file-btn');
+const uploadProgressBar = document.getElementById('upload-progress-bar');
+const uploadProgressFill = document.getElementById('upload-progress-fill');
+const uploadProgressText = document.getElementById('upload-progress-text');
+const sizeOptions = document.getElementById('size-options');
+const watermarkText = document.getElementById('watermark-text');
+const watermarkPosition = document.getElementById('watermark-position');
+const watermarkOpacity = document.getElementById('watermark-opacity');
+const opacityValue = document.getElementById('opacity-value');
+const watermarkFontSize = document.getElementById('watermark-font-size');
+const watermarkColor = document.getElementById('watermark-color');
+const watermarkBtn = document.getElementById('watermark-btn');
+const resultSection = document.getElementById('result-section');
+const resultGrid = document.getElementById('result-grid');
+const previewComparison = document.getElementById('preview-comparison');
+const downloadSection = document.getElementById('download-section');
+const loadingOverlay = document.getElementById('loading-overlay');
+chooseFileBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    fileInput.click();
+});
+uploadArea.addEventListener('click', (e) => {
+    if (e.target === uploadArea) {
+        fileInput.click();
+    }
+});
+uploadArea.addEventListener('dragover', (e) => {
+    e.preventDefault();
+    uploadArea.classList.add('dragover');
+});
+uploadArea.addEventListener('dragleave', () => {
+    uploadArea.classList.remove('dragover');
+});
+uploadArea.addEventListener('drop', (e) => {
+    e.preventDefault();
+    uploadArea.classList.remove('dragover');
+    const files = e.dataTransfer.files;
+    if (files.length > 0) {
+        startUploadProgress(files[0]);
+    }
+});
+fileInput.addEventListener('change', (e) => {
+    if (e.target.files.length > 0) {
+        startUploadProgress(e.target.files[0]);
+        fileInput.value = '';
+    }
+});
+function startUploadProgress(file) {
+    if (file.size < 10 * 1024) {
+        alert('File size must be at least 10 KB');
+        return;
+    }
+    if (file.size > 10 * 1024 * 1024) {
+        alert('File size must be less than 10 MB');
+        return;
+    }
+    sizeOptions.style.display = 'none';
+    resultSection.style.display = 'none';
+    uploadProgressBar.style.display = 'block';
+    uploadProgressBar.style.pointerEvents = 'auto';
+    uploadProgressFill.style.width = '0%';
+    uploadProgressText.textContent = 'Uploading: 0%';
+    let percent = 0;
+    const duration = 800 + Math.random()*400;
+    const start = Date.now();
+    function animate() {
+        percent = Math.min(100, Math.round(((Date.now()-start)/duration)*100));
+        uploadProgressFill.style.width = percent + '%';
+        uploadProgressText.textContent = 'Uploading: ' + percent + '%';
+        if (percent < 100) {
+            requestAnimationFrame(animate);
+        } else {
+            setTimeout(() => {
+                uploadProgressBar.style.display = 'none';
+                uploadProgressBar.style.pointerEvents = 'none';
+                handleFile(file);
+            }, 200);
+        }
+    }
+    animate();
+}
+function handleFile(file) {
+    uploadedFile = file;
+    const img = new Image();
+    img.onload = function() {
+        originalWidth = img.width;
+        originalHeight = img.height;
+        sizeOptions.style.display = 'block';
+    };
+    img.src = URL.createObjectURL(file);
+}
+watermarkOpacity.addEventListener('input', function() {
+    opacityValue.textContent = this.value;
+});
+watermarkBtn.addEventListener('click', addWatermark);
+function addWatermark() {
+    if (!uploadedFile) return;
+    const text = watermarkText.value || 'Sample Watermark';
+    const position = watermarkPosition.value;
+    const opacity = parseFloat(watermarkOpacity.value);
+    const fontSize = parseInt(watermarkFontSize.value);
+    const color = watermarkColor.value;
+    loadingOverlay.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    const img = new Image();
+    img.onload = function() {
+        canvas.width = img.width;
+        canvas.height = img.height;
+        ctx.drawImage(img, 0, 0);
+        ctx.globalAlpha = opacity;
+        ctx.font = `${fontSize}px 'Poppins', sans-serif`;
+        ctx.fillStyle = color;
+        ctx.textBaseline = 'bottom';
+        let x, y;
+        switch(position) {
+            case 'bottom-right':
+                x = canvas.width - ctx.measureText(text).width - 20;
+                y = canvas.height - 20;
+                break;
+            case 'bottom-left':
+                x = 20;
+                y = canvas.height - 20;
+                break;
+            case 'top-right':
+                x = canvas.width - ctx.measureText(text).width - 20;
+                y = fontSize + 20;
+                break;
+            case 'top-left':
+                x = 20;
+                y = fontSize + 20;
+                break;
+            case 'center':
+                x = (canvas.width - ctx.measureText(text).width) / 2;
+                y = (canvas.height + fontSize) / 2;
+                break;
+        }
+        ctx.fillText(text, x, y);
+        ctx.globalAlpha = 1.0;
+        canvas.toBlob((blob) => {
+            if (blob) {
+                displayResults(blob, img.width, img.height);
+            } else {
+                alert('Error processing image. Please try again.');
+            }
+            loadingOverlay.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }, 'image/png', 0.95);
+    };
+    img.src = URL.createObjectURL(uploadedFile);
+}
+function displayResults(blob, width, height) {
+    const originalSize = (uploadedFile.size / 1024).toFixed(2);
+    const finalSize = (blob.size / 1024).toFixed(2);
+    const sizeChange = ((blob.size - uploadedFile.size) / 1024).toFixed(2);
+    const sizeChangePercent = (((blob.size - uploadedFile.size) / uploadedFile.size) * 100).toFixed(1);
+    const sizeClass = parseFloat(sizeChange) > 0 ? 'size-success' : 'size-warning';
+    const sizeText = parseFloat(sizeChange) > 0 ? `+${sizeChange} KB` : `${Math.abs(sizeChange)} KB smaller`;
+    resultGrid.innerHTML = `
+        <div class="result-card">
+            <h4>📏 Dimensions</h4>
+            <div class="value">${width} × ${height}px</div>
+        </div>
+        <div class="result-card">
+            <h4>📊 Original Size</h4>
+            <div class="value">${originalSize} KB</div>
+        </div>
+        <div class="result-card">
+            <h4>📊 Final Size</h4>
+            <div class="value">${finalSize} KB</div>
+        </div>
+        <div class="result-card">
+            <h4>📈 Size Change</h4>
+            <div class="value ${sizeClass}">${sizeText} (${sizeChangePercent}%)</div>
+        </div>
+    `;
+    // Before & After Comparison
+    const originalUrl = URL.createObjectURL(uploadedFile);
+    const finalUrl = URL.createObjectURL(blob);
+    previewComparison.innerHTML = `
+        <h4>🖼️ Before & After Comparison</h4>
+        <div class="preview-images">
+            <div class="preview-container">
+                <h5>Original Image</h5>
+                <img src="${originalUrl}" alt="Original" class="preview-image">
+                <p>${originalSize} KB</p>
+            </div>
+            <div class="preview-container">
+                <h5>Watermarked Image</h5>
+                <img src="${finalUrl}" alt="Watermarked" class="preview-image">
+                <p>${finalSize} KB</p>
+            </div>
+        </div>
+    `;
+    // Download section
+    const url = URL.createObjectURL(blob);
+    const downloadLink = document.createElement('a');
+    downloadLink.href = url;
+    downloadLink.download = `watermarked_image.png`;
+    downloadLink.className = 'download-btn';
+    downloadLink.textContent = 'Download Watermarked Image';
+    downloadSection.innerHTML = `
+        <div class="conversion-success-card">
+            <div class="success-icon">✅</div>
+            <div class="success-message">Your image has been <b>successfully watermarked!</b></div>
+        </div>
+    `;
+    downloadSection.appendChild(downloadLink);
+    resultSection.style.display = 'block';
+}
+})();
+</script>
+</body>
+</html>
