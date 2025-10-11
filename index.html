@@ -1424,8 +1424,8 @@ header input {
             </div>
         </header>
             
-            <!-- Enhanced Hamburger Menu Window - Mobile Responsive (Hidden Off-Screen) -->
-            <div id="hamburger-menu" class="fixed top-24 -right-full w-80 sm:w-72 max-w-[calc(100vw-1rem)] bg-gradient-to-br from-white via-blue-50 to-purple-50 shadow-2xl rounded-2xl border border-purple-200 z-[60] transform translate-x-full translate-y-[-50px] opacity-0 scale-95 transition-all duration-500 ease-out backdrop-blur-sm">
+            <!-- Enhanced Hamburger Menu Window - Microscopic Hidden State -->
+            <div id="hamburger-menu" class="fixed top-24 -right-full w-1 h-1 sm:w-1 sm:h-1 max-w-[calc(100vw-1rem)] bg-gradient-to-br from-white via-blue-50 to-purple-50 shadow-2xl rounded-2xl border border-purple-200 z-[60] transform translate-x-full translate-y-[-50px] opacity-0 scale-[0.01] transition-all duration-500 ease-out backdrop-blur-sm overflow-hidden">
                 <!-- Menu Header with Gradient -->
                 <div class="flex justify-between items-center p-4 bg-gradient-to-r from-purple-600 via-pink-500 to-red-500 rounded-t-2xl relative">
                     <h3 class="font-bold text-white text-lg flex items-center">
@@ -5281,16 +5281,16 @@ header input {
             const hamburgerIcon = document.getElementById('hamburger-icon');
             
             if (hamburgerToggle && hamburgerMenu) {
-                // Open hamburger menu with enhanced slide-in animation
+                // Open hamburger menu with microscopic-to-full animation
                 hamburgerToggle.addEventListener('click', function() {
-                    hamburgerMenu.classList.remove('translate-x-full', 'translate-y-[-50px]', 'opacity-0', 'scale-95', '-right-full');
-                    hamburgerMenu.classList.add('translate-x-0', 'translate-y-0', 'opacity-100', 'scale-100', 'right-2', 'sm:right-4');
+                    hamburgerMenu.classList.remove('translate-x-full', 'translate-y-[-50px]', 'opacity-0', 'scale-[0.01]', '-right-full', 'w-1', 'h-1', 'sm:w-1', 'sm:h-1');
+                    hamburgerMenu.classList.add('translate-x-0', 'translate-y-0', 'opacity-100', 'scale-100', 'right-2', 'sm:right-4', 'w-80', 'sm:w-72');
                 });
                 
-                // Close hamburger menu with enhanced slide-out animation
+                // Close hamburger menu with full-to-microscopic animation
                 function closeHamburgerMenu() {
-                    hamburgerMenu.classList.add('translate-x-full', 'translate-y-[-50px]', 'opacity-0', 'scale-95', '-right-full');
-                    hamburgerMenu.classList.remove('translate-x-0', 'translate-y-0', 'opacity-100', 'scale-100', 'right-2', 'sm:right-4');
+                    hamburgerMenu.classList.add('translate-x-full', 'translate-y-[-50px]', 'opacity-0', 'scale-[0.01]', '-right-full', 'w-1', 'h-1', 'sm:w-1', 'sm:h-1');
+                    hamburgerMenu.classList.remove('translate-x-0', 'translate-y-0', 'opacity-100', 'scale-100', 'right-2', 'sm:right-4', 'w-80', 'sm:w-72');
                 }
                 
                 if (hamburgerClose) {
