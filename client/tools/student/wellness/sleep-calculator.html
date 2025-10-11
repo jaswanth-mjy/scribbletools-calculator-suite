@@ -3,198 +3,1249 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sleep Schedule Calculator - Student Tools</title>
+    
+    <!-- Enhanced SEO Meta Tags -->
+    <title>Sleep Calculator - Optimize Your Sleep Schedule | Student Wellness Tools</title>
+    <meta name="description" content="Calculate optimal bedtime and wake-up times based on sleep cycles. Get personalized sleep recommendations for better rest, improved focus, and academic success. Free student wellness tool.">
+    <meta name="keywords" content="sleep calculator, bedtime calculator, sleep schedule, sleep cycles, student wellness, sleep optimization, wake up time, sleep hygiene, REM sleep, academic performance">
+    <meta name="author" content="Student Tools Suite">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://studenttools.com/sleep-calculator">
+    <meta property="og:title" content="Sleep Calculator - Optimize Your Sleep Schedule">
+    <meta property="og:description" content="Calculate optimal bedtime and wake-up times based on natural sleep cycles. Improve your sleep quality and academic performance with science-based recommendations.">
+    <meta property="og:image" content="https://studenttools.com/assets/sleep-calculator-preview.jpg">
+    <meta property="og:site_name" content="Student Tools Suite">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://studenttools.com/sleep-calculator">
+    <meta name="twitter:title" content="Sleep Calculator - Optimize Your Sleep Schedule">
+    <meta name="twitter:description" content="Science-based sleep calculator for students. Find your optimal bedtime and wake-up schedule for better rest and academic success.">
+    <meta name="twitter:image" content="https://studenttools.com/assets/sleep-calculator-preview.jpg">
+    
+    <!-- Technical SEO -->
+    <link rel="canonical" href="https://studenttools.com/sleep-calculator">
+    <meta name="theme-color" content="#4A148C">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Caveat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Sleep Schedule Calculator",
+        "description": "Calculate optimal bedtime and wake-up times based on natural sleep cycles for better rest and academic performance.",
+        "url": "https://studenttools.com/sleep-calculator",
+        "applicationCategory": "HealthApplication",
+        "operatingSystem": "Web Browser",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "creator": {
+            "@type": "Organization",
+            "name": "Student Tools Suite"
+        },
+        "featureList": [
+            "Sleep cycle calculations based on 90-minute REM cycles",
+            "Optimal bedtime recommendations",
+            "Wake-up time optimization",
+            "Sleep quality improvement tips",
+            "Student-focused wellness guidance",
+            "Personalized sleep schedules"
+        ]
+    }
+    </script>
+    
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        /* CSS Variables for Sleep Calculator - Multiple scope definitions for maximum compatibility */
+        :root,
+        .sleep-calc-root,
+        .sleep-calc-main-container,
+        .sleep-calc-body,
+        body.sleep-calc-body,
+        html {
+            --sleep-calc-primary-color: #4A148C !important;
+            --sleep-calc-secondary-color: #7B1FA2 !important;
+            --sleep-calc-accent-color: #AB47BC !important;
+            --sleep-calc-success-color: #2E7D32 !important;
+            --sleep-calc-warning-color: #F57C00 !important;
+            --sleep-calc-error-color: #D32F2F !important;
+            --sleep-calc-text-primary: #212121 !important;
+            --sleep-calc-text-secondary: #757575 !important;
+            --sleep-calc-text-light: #BDBDBD !important;
+            --sleep-calc-surface: #FFFFFF !important;
+            --sleep-calc-surface-alt: #F5F5F5 !important;
+            --sleep-calc-border-color: #E0E0E0 !important;
+            --sleep-calc-border-light: #F5F5F5 !important;
+            --sleep-calc-shadow-sm: 0 2px 4px rgba(74, 20, 140, 0.1) !important;
+            --sleep-calc-shadow-md: 0 4px 8px rgba(74, 20, 140, 0.15) !important;
+            --sleep-calc-shadow-lg: 0 8px 16px rgba(74, 20, 140, 0.2) !important;
+            --sleep-calc-shadow-hover: 0 12px 24px rgba(74, 20, 140, 0.25) !important;
+            --sleep-calc-border-radius: 0.75rem !important;
+            --sleep-calc-transition-timing: cubic-bezier(0.4, 0, 0.2, 1) !important;
+            --sleep-calc-font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+            --sleep-calc-font-size-xs: 0.75rem !important;
+            --sleep-calc-font-size-sm: 0.875rem !important;
+            --sleep-calc-font-size-base: 1rem !important;
+            --sleep-calc-font-size-lg: 1.125rem !important;
+            --sleep-calc-font-size-xl: 1.25rem !important;
+            --sleep-calc-font-size-2xl: 1.5rem !important;
+            --sleep-calc-font-size-3xl: 1.875rem !important;
+            --sleep-calc-line-height: 1.5 !important;
+            --sleep-calc-spacing-xs: 0.5rem !important;
+            --sleep-calc-spacing-sm: 0.75rem !important;
+            --sleep-calc-spacing-md: 1rem !important;
+            --sleep-calc-spacing-lg: 1.5rem !important;
+            --sleep-calc-spacing-xl: 2rem !important;
+            --sleep-calc-spacing-2xl: 3rem !important;
         }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 20px;
+
+        /* Reset and Base Styles - Scoped to sleep calculator only */
+        .sleep-calc-root *, 
+        .sleep-calc-root *::before, 
+        .sleep-calc-root *::after {
+            box-sizing: border-box !important;
         }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            overflow: hidden;
+
+        .sleep-calc-root {
+            margin: 0 !important;
+            padding: 0 !important;
         }
-        
-        .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 30px;
-            text-align: center;
+
+        /* Revert margins and padding for sleep calc elements */
+        .sleep-calc-root .sleep-calc-main-container,
+        .sleep-calc-root .sleep-calc-header-section,
+        .sleep-calc-root .sleep-calc-content-section,
+        .sleep-calc-root .sleep-calc-calculator-grid,
+        .sleep-calc-root .sleep-calc-input-section,
+        .sleep-calc-root .sleep-calc-results-section,
+        .sleep-calc-root .sleep-calc-tips-section {
+            margin: revert !important;
+            padding: revert !important;
         }
-        
-        .header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            font-weight: 700;
+
+        .sleep-calc-body {
+            font-family: var(--sleep-calc-font-family, 'Poppins', sans-serif) !important;
+            font-family: 'Poppins', sans-serif !important;
+            background: transparent !important;
+            background-color: transparent !important;
         }
-        
-        .header p {
-            font-size: 1.1rem;
-            opacity: 0.9;
+
+        body.sleep-calc-body {
+            background: transparent !important;
+            background-color: transparent !important;
         }
-        
-        .content {
-            padding: 40px;
+
+        html {
+            background: transparent !important;
+            background-color: transparent !important;
         }
-        
-        .coming-soon {
-            text-align: center;
-            padding: 60px 20px;
+
+        /* Sleep Calculator Container - Works both standalone and embedded */
+        .sleep-calc-standalone-wrapper {
+            background: transparent !important;
+            min-height: 100vh !important;
+            line-height: var(--sleep-calc-line-height, 1.5) !important;
+            line-height: 1.5 !important;
+            color: var(--sleep-calc-text-primary, #212121) !important;
+            color: #212121 !important;
+            padding: var(--sleep-calc-spacing-md, 20px) !important;
+            padding: 20px !important;
+            margin: 0 !important;
+            
+            /* Mobile touch improvements */
+            -webkit-tap-highlight-color: transparent !important;
+            -webkit-touch-callout: none !important;
+            -webkit-user-select: none !important;
+            -moz-user-select: none !important;
+            -ms-user-select: none !important;
+            user-select: none !important;
         }
-        
-        .coming-soon-icon {
-            font-size: 5rem;
-            margin-bottom: 30px;
-            color: #667eea;
+
+        /* Allow text selection for inputs and content */
+        .sleep-calc-root input,
+        .sleep-calc-root select,
+        .sleep-calc-root textarea,
+        .sleep-calc-root p,
+        .sleep-calc-root h1,
+        .sleep-calc-root h2,
+        .sleep-calc-root h3 {
+            -webkit-user-select: text !important;
+            -moz-user-select: text !important;
+            -ms-user-select: text !important;
+            user-select: text !important;
         }
-        
-        .coming-soon h2 {
-            font-size: 2.5rem;
-            color: #333;
-            margin-bottom: 20px;
-            font-weight: 600;
+
+        /* When embedded, remove background and padding */
+        .sleep-calc-embedded .sleep-calc-standalone-wrapper {
+            background: none !important;
+            min-height: 0 !important;
+            padding: 0 !important;
         }
-        
-        .coming-soon p {
-            font-size: 1.2rem;
-            color: #666;
-            line-height: 1.6;
-            max-width: 600px;
-            margin: 0 auto 30px;
+
+        /* Main Container */
+        .sleep-calc-root .sleep-calc-main-container {
+            max-width: 1400px !important;
+            margin: 0 auto !important;
+            background: var(--sleep-calc-surface, #ffffff) !important;
+            background: #ffffff !important;
+            border-radius: var(--sleep-calc-border-radius, 30px) !important;
+            border-radius: 30px !important;
+            box-shadow: var(--sleep-calc-shadow-lg, 0 25px 50px rgba(74, 20, 140, 0.15)) !important;
+            box-shadow: 0 25px 50px rgba(74, 20, 140, 0.15) !important;
+            overflow: hidden !important;
+            position: relative !important;
         }
-        
-        .features-preview {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 40px;
+
+        /* Header Section */
+        .sleep-calc-root .sleep-calc-header-section {
+            background: linear-gradient(135deg, var(--sleep-calc-primary-color, #4A148C) 0%, var(--sleep-calc-secondary-color, #7B1FA2) 100%) !important;
+            background: linear-gradient(135deg, #4A148C 0%, #7B1FA2 100%) !important;
+            color: #ffffff !important;
+            padding: var(--sleep-calc-spacing-2xl, 3rem) var(--sleep-calc-spacing-xl, 2rem) !important;
+            padding: 3rem 2rem !important;
+            text-align: center !important;
+            position: relative !important;
+            overflow: hidden !important;
         }
-        
-        .feature-card {
-            background: #f8f9fa;
-            padding: 25px;
-            border-radius: 15px;
-            text-align: center;
-            border: 2px solid #e9ecef;
-            transition: all 0.3s ease;
+
+        .sleep-calc-root .sleep-calc-header-section::before {
+            content: '' !important;
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="sleep-calc-moon-pattern" patternUnits="userSpaceOnUse" width="20" height="20"><circle cx="10" cy="10" r="2" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23sleep-calc-moon-pattern)"/></svg>') !important;
+            opacity: 0.3 !important;
         }
-        
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            border-color: #667eea;
+
+        .sleep-calc-root .sleep-calc-header-section h1 {
+            font-family: 'Caveat', cursive !important;
+            font-size: var(--sleep-calc-font-size-3xl, 3rem) !important;
+            font-size: 3rem !important;
+            font-weight: 700 !important;
+            margin-bottom: var(--sleep-calc-spacing-md, 1rem) !important;
+            margin-bottom: 1rem !important;
+            color: #ffffff !important;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2) !important;
+            position: relative !important;
+            z-index: 2 !important;
         }
-        
-        .feature-icon {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            color: #667eea;
+
+        .sleep-calc-root .sleep-calc-header-section p {
+            font-size: var(--sleep-calc-font-size-lg, 1.125rem) !important;
+            font-size: 1.125rem !important;
+            opacity: 0.95 !important;
+            color: #ffffff !important;
+            max-width: 600px !important;
+            margin: 0 auto var(--sleep-calc-spacing-lg, 1.5rem) auto !important;
+            margin: 0 auto 1.5rem auto !important;
+            position: relative !important;
+            z-index: 2 !important;
         }
-        
-        .feature-card h3 {
-            font-size: 1.3rem;
-            color: #333;
-            margin-bottom: 10px;
+
+        .sleep-calc-root .sleep-calc-desktop-notice {
+            background: rgba(255, 255, 255, 0.2) !important;
+            border: 2px solid rgba(255, 255, 255, 0.3) !important;
+            border-radius: var(--sleep-calc-border-radius, 20px) !important;
+            border-radius: 20px !important;
+            padding: var(--sleep-calc-spacing-md, 1rem) var(--sleep-calc-spacing-lg, 1.5rem) !important;
+            padding: 1rem 1.5rem !important;
+            color: #ffffff !important;
+            font-weight: 500 !important;
+            max-width: 600px !important;
+            margin: var(--sleep-calc-spacing-lg, 1.5rem) auto 0 auto !important;
+            margin: 1.5rem auto 0 auto !important;
+            position: relative !important;
+            z-index: 2 !important;
+            -webkit-backdrop-filter: blur(10px) !important;
+            backdrop-filter: blur(10px) !important;
         }
-        
-        .feature-card p {
-            color: #666;
-            line-height: 1.5;
+
+        /* Content Section */
+        .sleep-calc-root .sleep-calc-content-section {
+            padding: var(--sleep-calc-spacing-2xl, 3rem) var(--sleep-calc-spacing-xl, 2rem) !important;
+            padding: 3rem 2rem !important;
         }
-        
-        .notify-btn {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-top: 20px;
+
+        /* Calculator Grid */
+        .sleep-calc-root .sleep-calc-calculator-grid {
+            display: grid !important;
+            grid-template-columns: 1fr 1fr !important;
+            gap: var(--sleep-calc-spacing-2xl, 3rem) !important;
+            gap: 3rem !important;
+            margin-bottom: var(--sleep-calc-spacing-2xl, 3rem) !important;
+            margin-bottom: 3rem !important;
         }
-        
-        .notify-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
-        }
-        
+
+        /* Mobile-first responsive grid */
         @media (max-width: 768px) {
-            .header h1 {
-                font-size: 2rem;
+            .sleep-calc-root .sleep-calc-calculator-grid {
+                grid-template-columns: 1fr !important;
+                gap: 2rem !important;
+                margin-bottom: 2rem !important;
+            }
+        }
+
+        /* Input Section */
+        .sleep-calc-root .sleep-calc-input-section {
+            background: var(--sleep-calc-surface, #ffffff) !important;
+            background: #ffffff !important;
+            border: 2px solid var(--sleep-calc-border-color, #e0e0e0) !important;
+            border: 2px solid #e0e0e0 !important;
+            border-radius: var(--sleep-calc-border-radius, 20px) !important;
+            border-radius: 20px !important;
+            padding: var(--sleep-calc-spacing-2xl, 2.5rem) !important;
+            padding: 2.5rem !important;
+            box-shadow: var(--sleep-calc-shadow-sm, 0 4px 6px rgba(74, 20, 140, 0.1)) !important;
+            box-shadow: 0 4px 6px rgba(74, 20, 140, 0.1) !important;
+        }
+
+        .sleep-calc-root .sleep-calc-input-section h2 {
+            color: var(--sleep-calc-primary-color, #4A148C) !important;
+            color: #4A148C !important;
+            font-size: var(--sleep-calc-font-size-xl, 1.5rem) !important;
+            font-size: 1.5rem !important;
+            font-weight: 600 !important;
+            margin-bottom: var(--sleep-calc-spacing-lg, 1.5rem) !important;
+            margin-bottom: 1.5rem !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: var(--sleep-calc-spacing-sm, 0.75rem) !important;
+            gap: 0.75rem !important;
+        }
+
+        /* Form Elements */
+        .sleep-calc-root .sleep-calc-form-group {
+            margin-bottom: var(--sleep-calc-spacing-lg, 1.5rem) !important;
+            margin-bottom: 1.5rem !important;
+        }
+
+        .sleep-calc-root .sleep-calc-form-label {
+            display: block !important;
+            color: var(--sleep-calc-text-primary, #212121) !important;
+            color: #212121 !important;
+            font-weight: 500 !important;
+            margin-bottom: var(--sleep-calc-spacing-sm, 0.75rem) !important;
+            margin-bottom: 0.75rem !important;
+            font-size: var(--sleep-calc-font-size-sm, 0.875rem) !important;
+            font-size: 0.875rem !important;
+        }
+
+        .sleep-calc-root .sleep-calc-form-input, 
+        .sleep-calc-root .sleep-calc-form-select {
+            width: 100% !important;
+            padding: var(--sleep-calc-spacing-md, 1rem) var(--sleep-calc-spacing-lg, 1.25rem) !important;
+            padding: 1rem 1.25rem !important;
+            border: 2px solid var(--sleep-calc-border-color, #e0e0e0) !important;
+            border: 2px solid #e0e0e0 !important;
+            border-radius: var(--sleep-calc-border-radius, 15px) !important;
+            border-radius: 15px !important;
+            font-size: var(--sleep-calc-font-size-base, 1rem) !important;
+            font-size: 1rem !important;
+            font-family: var(--sleep-calc-font-family, 'Poppins', sans-serif) !important;
+            font-family: 'Poppins', sans-serif !important;
+            transition: all 0.3s var(--sleep-calc-transition-timing, cubic-bezier(0.4, 0, 0.2, 1)) !important;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            background: var(--sleep-calc-surface, #ffffff) !important;
+            
+            /* Mobile improvements */
+            min-height: 48px !important;
+            -webkit-appearance: none !important;
+            -moz-appearance: none !important;
+            appearance: none !important;
+            outline: none !important;
+            -webkit-tap-highlight-color: transparent !important;
+            background: #ffffff !important;
+            color: var(--sleep-calc-text-primary, #212121) !important;
+            color: #212121 !important;
+        }
+
+        .sleep-calc-root .sleep-calc-form-input:focus, 
+        .sleep-calc-root .sleep-calc-form-select:focus {
+            outline: none !important;
+            border-color: var(--sleep-calc-primary-color, #4A148C) !important;
+            border-color: #4A148C !important;
+            box-shadow: 0 0 0 3px rgba(74, 20, 140, 0.1) !important;
+            transform: translateY(-1px) !important;
+        }
+
+        /* Buttons */
+        .sleep-calc-root .sleep-calc-btn-primary {
+            background: linear-gradient(135deg, var(--sleep-calc-primary-color, #4A148C) 0%, var(--sleep-calc-secondary-color, #7B1FA2) 100%) !important;
+            background: linear-gradient(135deg, #4A148C 0%, #7B1FA2 100%) !important;
+            color: #ffffff !important;
+            border: none !important;
+            padding: var(--sleep-calc-spacing-md, 1rem) var(--sleep-calc-spacing-xl, 2rem) !important;
+            padding: 1rem 2rem !important;
+            border-radius: var(--sleep-calc-border-radius, 18px) !important;
+            border-radius: 18px !important;
+            font-size: var(--sleep-calc-font-size-base, 1rem) !important;
+            font-size: 1rem !important;
+            font-weight: 600 !important;
+            cursor: pointer !important;
+            transition: all 0.3s var(--sleep-calc-transition-timing, cubic-bezier(0.4, 0, 0.2, 1)) !important;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            width: 100% !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            gap: var(--sleep-calc-spacing-sm, 0.75rem) !important;
+            gap: 0.75rem !important;
+            text-transform: uppercase !important;
+            letter-spacing: 0.5px !important;
+            
+            /* Mobile touch improvements */
+            min-height: 48px !important;
+            -webkit-tap-highlight-color: rgba(255, 255, 255, 0.2) !important;
+            touch-action: manipulation !important;
+        }
+
+        .sleep-calc-root .sleep-calc-btn-primary:hover {
+            transform: translateY(-2px) !important;
+            box-shadow: var(--sleep-calc-shadow-hover, 0 12px 24px rgba(74, 20, 140, 0.25)) !important;
+            box-shadow: 0 12px 24px rgba(74, 20, 140, 0.25) !important;
+        }
+
+        .sleep-calc-btn-secondary {
+            background: var(--sleep-calc-surface, #ffffff) !important;
+            color: var(--sleep-calc-primary-color, #4A148C) !important;
+            border: 2px solid var(--sleep-calc-primary-color, #4A148C) !important;
+            padding: var(--sleep-calc-spacing-sm, 0.75rem) var(--sleep-calc-spacing-lg, 1.5rem) !important;
+            border-radius: var(--sleep-calc-border-radius, 8px) !important;
+            font-size: var(--sleep-calc-font-size-sm, 0.875rem) !important;
+            font-weight: 600 !important;
+            cursor: pointer !important;
+            transition: all 0.3s var(--sleep-calc-transition-timing, cubic-bezier(0.4, 0, 0.2, 1)) !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: var(--sleep-calc-spacing-xs, 0.5rem) !important;
+        }
+
+        .sleep-calc-btn-secondary:hover {
+            background: var(--sleep-calc-primary-color, #4A148C) !important;
+            color: #ffffff !important;
+            transform: translateY(-1px) !important;
+        }
+
+        /* Results Section */
+        .sleep-calc-root .sleep-calc-results-section {
+            background: linear-gradient(135deg, var(--sleep-calc-surface-alt, #f8f9fa) 0%, var(--sleep-calc-surface, #ffffff) 100%) !important;
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%) !important;
+            border: 2px solid var(--sleep-calc-border-light, #f0f0f0) !important;
+            border: 2px solid #f0f0f0 !important;
+            border-radius: var(--sleep-calc-border-radius, 20px) !important;
+            border-radius: 20px !important;
+            padding: var(--sleep-calc-spacing-2xl, 2.5rem) !important;
+            padding: 2.5rem !important;
+            position: relative !important;
+            overflow: hidden !important;
+        }
+
+        .sleep-calc-root .sleep-calc-results-section::before {
+            content: '' !important;
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 4px !important;
+            background: linear-gradient(90deg, var(--sleep-calc-primary-color, #4A148C), var(--sleep-calc-accent-color, #AB47BC)) !important;
+            background: linear-gradient(90deg, #4A148C, #AB47BC) !important;
+        }
+
+        .sleep-calc-root .sleep-calc-results-section h2 {
+            color: var(--sleep-calc-primary-color, #4A148C) !important;
+            color: #4A148C !important;
+            font-size: var(--sleep-calc-font-size-xl, 1.5rem) !important;
+            font-size: 1.5rem !important;
+            font-weight: 600 !important;
+            margin-bottom: var(--sleep-calc-spacing-lg, 1.5rem) !important;
+            margin-bottom: 1.5rem !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: var(--sleep-calc-spacing-sm, 0.75rem) !important;
+            gap: 0.75rem !important;
+        }
+
+        /* Results Display */
+        .sleep-calc-result-grid {
+            display: grid !important;
+            gap: var(--sleep-calc-spacing-lg, 1.5rem) !important;
+        }
+
+        .sleep-calc-result-card {
+            background: var(--sleep-calc-surface, #ffffff) !important;
+            border: 1px solid var(--sleep-calc-border-color, #e0e0e0) !important;
+            border-radius: var(--sleep-calc-border-radius, 10px) !important;
+            padding: var(--sleep-calc-spacing-lg, 1.5rem) !important;
+            transition: all 0.3s var(--sleep-calc-transition-timing, cubic-bezier(0.4, 0, 0.2, 1)) !important;
+        }
+
+        .sleep-calc-result-card:hover {
+            box-shadow: var(--sleep-calc-shadow-md, 0 8px 16px rgba(74, 20, 140, 0.1)) !important;
+            transform: translateY(-2px) !important;
+        }
+
+        .sleep-calc-result-item {
+            display: flex !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+            padding: var(--sleep-calc-spacing-sm, 0.75rem) 0 !important;
+            border-bottom: 1px solid var(--sleep-calc-border-light, #f0f0f0) !important;
+        }
+
+        .sleep-calc-result-item:last-child {
+            border-bottom: none !important;
+            padding-bottom: 0 !important;
+        }
+
+        .sleep-calc-result-label {
+            color: var(--sleep-calc-text-secondary, #757575) !important;
+            font-weight: 500 !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: var(--sleep-calc-spacing-xs, 0.5rem) !important;
+        }
+
+        .sleep-calc-result-value {
+            color: var(--sleep-calc-primary-color, #4A148C) !important;
+            font-weight: 600 !important;
+            font-size: var(--sleep-calc-font-size-lg, 1.125rem) !important;
+        }
+
+        /* Sleep Schedule Display */
+        .sleep-calc-schedule-display {
+            background: linear-gradient(135deg, #E8F5E8 0%, #F0F8FF 100%) !important;
+            border: 2px solid var(--sleep-calc-success-color, #2E7D32) !important;
+            border-radius: var(--sleep-calc-border-radius, 12px) !important;
+            padding: var(--sleep-calc-spacing-lg, 1.5rem) !important;
+            margin: var(--sleep-calc-spacing-lg, 1.5rem) 0 !important;
+        }
+
+        .sleep-calc-schedule-title {
+            color: var(--sleep-calc-success-color, #2E7D32) !important;
+            font-size: var(--sleep-calc-font-size-lg, 1.125rem) !important;
+            font-weight: 600 !important;
+            margin-bottom: var(--sleep-calc-spacing-md, 1rem) !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: var(--sleep-calc-spacing-sm, 0.75rem) !important;
+        }
+
+        .sleep-calc-time-display {
+            display: flex !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+            margin: var(--sleep-calc-spacing-sm, 0.75rem) 0 !important;
+        }
+
+        .sleep-calc-time-item {
+            text-align: center !important;
+        }
+
+        .sleep-calc-time-label {
+            color: var(--sleep-calc-text-secondary, #757575) !important;
+            font-size: var(--sleep-calc-font-size-sm, 0.875rem) !important;
+            font-weight: 500 !important;
+        }
+
+        .sleep-calc-time-value {
+            color: var(--sleep-calc-success-color, #2E7D32) !important;
+            font-size: var(--sleep-calc-font-size-xl, 1.5rem) !important;
+            font-weight: 700 !important;
+            margin-top: var(--sleep-calc-spacing-xs, 0.5rem) !important;
+        }
+
+        /* Sleep Tips Section */
+        .sleep-calc-root .sleep-calc-tips-section {
+            background: var(--sleep-calc-surface, #ffffff) !important;
+            background: #ffffff !important;
+            border: 2px solid var(--sleep-calc-border-color, #e0e0e0) !important;
+            border: 2px solid #e0e0e0 !important;
+            border-radius: var(--sleep-calc-border-radius, 20px) !important;
+            border-radius: 20px !important;
+            padding: var(--sleep-calc-spacing-2xl, 2rem) !important;
+            padding: 2rem !important;
+            margin: var(--sleep-calc-spacing-2xl, 2rem) 0 !important;
+            margin: 2rem 0 !important;
+        }
+
+        .sleep-calc-root .sleep-calc-section-title {
+            color: var(--sleep-calc-primary-color, #4A148C) !important;
+            color: #4A148C !important;
+            font-size: var(--sleep-calc-font-size-2xl, 1.75rem) !important;
+            font-size: 1.75rem !important;
+            font-weight: 600 !important;
+            text-align: center !important;
+            margin-bottom: var(--sleep-calc-spacing-2xl, 2rem) !important;
+            margin-bottom: 2rem !important;
+            position: relative !important;
+        }
+
+        .sleep-calc-root .sleep-calc-section-title::after {
+            content: '' !important;
+            position: absolute !important;
+            bottom: -8px !important;
+            left: 50% !important;
+            transform: translateX(-50%) !important;
+            width: 60px !important;
+            height: 3px !important;
+            background: linear-gradient(90deg, var(--sleep-calc-primary-color, #4A148C), var(--sleep-calc-accent-color, #AB47BC)) !important;
+            background: linear-gradient(90deg, #4A148C, #AB47BC) !important;
+            border-radius: 2px !important;
+        }
+
+        /* Tips Grid */
+        .sleep-calc-root .sleep-calc-tips-grid {
+            display: grid !important;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
+            gap: var(--sleep-calc-spacing-lg, 1.5rem) !important;
+            gap: 1.5rem !important;
+        }
+
+        .sleep-calc-root .sleep-calc-tip-card {
+            background: var(--sleep-calc-surface-alt, #f8f9fa) !important;
+            background: #f8f9fa !important;
+            border: 1px solid var(--sleep-calc-border-light, #f0f0f0) !important;
+            border: 1px solid #f0f0f0 !important;
+            border-radius: var(--sleep-calc-border-radius, 16px) !important;
+            border-radius: 16px !important;
+            padding: var(--sleep-calc-spacing-lg, 1.5rem) !important;
+            padding: 1.5rem !important;
+            transition: all 0.3s var(--sleep-calc-transition-timing, cubic-bezier(0.4, 0, 0.2, 1)) !important;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            position: relative !important;
+            overflow: hidden !important;
+        }
+
+        .sleep-calc-root .sleep-calc-tip-card::before {
+            content: '' !important;
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 4px !important;
+            height: 100% !important;
+            background: linear-gradient(to bottom, var(--sleep-calc-primary-color, #4A148C), var(--sleep-calc-accent-color, #AB47BC)) !important;
+            background: linear-gradient(to bottom, #4A148C, #AB47BC) !important;
+        }
+
+        .sleep-calc-root .sleep-calc-tip-card:hover {
+            transform: translateY(-3px) !important;
+            box-shadow: var(--sleep-calc-shadow-md, 0 8px 16px rgba(74, 20, 140, 0.15)) !important;
+            box-shadow: 0 8px 16px rgba(74, 20, 140, 0.15) !important;
+        }
+
+        .sleep-calc-root .sleep-calc-tip-icon {
+            font-size: var(--sleep-calc-font-size-2xl, 2rem) !important;
+            font-size: 2rem !important;
+            color: var(--sleep-calc-primary-color, #4A148C) !important;
+            color: #4A148C !important;
+            margin-bottom: var(--sleep-calc-spacing-md, 1rem) !important;
+            margin-bottom: 1rem !important;
+        }
+
+        .sleep-calc-root .sleep-calc-tip-card h3 {
+            color: var(--sleep-calc-text-primary, #212121) !important;
+            color: #212121 !important;
+            font-size: var(--sleep-calc-font-size-lg, 1.125rem) !important;
+            font-size: 1.125rem !important;
+            font-weight: 600 !important;
+            margin-bottom: var(--sleep-calc-spacing-sm, 0.75rem) !important;
+            margin-bottom: 0.75rem !important;
+        }
+
+        .sleep-calc-tip-card p {
+            color: var(--sleep-calc-text-secondary, #757575) !important;
+            line-height: var(--sleep-calc-line-height, 1.6) !important;
+        }
+
+        /* Hidden class */
+        .sleep-calc-hidden {
+            display: none !important;
+        }
+
+        /* Placeholder Message */
+        .sleep-calc-placeholder-message {
+            text-align: center !important;
+            padding: var(--sleep-calc-spacing-2xl, 3rem) !important;
+            color: var(--sleep-calc-text-secondary, #757575) !important;
+        }
+
+        .sleep-calc-placeholder-icon {
+            font-size: 4rem !important;
+            color: var(--sleep-calc-border-color, #e0e0e0) !important;
+            margin-bottom: var(--sleep-calc-spacing-lg, 1.5rem) !important;
+        }
+
+        /* Responsive Design - Tablet */
+        @media (max-width: 1024px) {
+            .sleep-calc-root .sleep-calc-main-container {
+                max-width: 95% !important;
+                margin: 0 auto !important;
+            }
+
+            .sleep-calc-root .sleep-calc-calculator-grid {
+                gap: 2rem !important;
+            }
+
+            .sleep-calc-root .sleep-calc-tips-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+            }
+        }
+
+        /* Responsive Design - Mobile */
+        @media (max-width: 768px) {
+            .sleep-calc-standalone-wrapper {
+                padding: 0.5rem !important;
+                min-height: 0 !important;
+            }
+
+            .sleep-calc-root .sleep-calc-main-container {
+                border-radius: 20px !important;
+                margin: 0 !important;
+                box-shadow: 0 15px 35px rgba(74, 20, 140, 0.12) !important;
+            }
+
+            .sleep-calc-root .sleep-calc-header-section {
+                padding: 2rem 1.5rem !important;
+                text-align: center !important;
+            }
+
+            .sleep-calc-root .sleep-calc-header-section h1 {
+                font-size: 2.5rem !important;
+                margin-bottom: 0.75rem !important;
+                line-height: 1.2 !important;
+            }
+
+            .sleep-calc-root .sleep-calc-header-section p {
+                font-size: 1rem !important;
+                margin-bottom: 1rem !important;
+                line-height: 1.5 !important;
+            }
+
+            .sleep-calc-root .sleep-calc-desktop-notice {
+                padding: 0.75rem 1rem !important;
+                font-size: 0.9rem !important;
+                margin: 1rem auto 0 auto !important;
+                border-radius: 16px !important;
+            }
+
+            .sleep-calc-root .sleep-calc-content-section {
+                padding: 1.5rem !important;
+            }
+
+            .sleep-calc-calculator-grid {
+                grid-template-columns: 1fr !important;
+                gap: var(--sleep-calc-spacing-lg, 1.5rem) !important;
+                gap: 1.5rem !important;
+            }
+
+            .sleep-calc-root .sleep-calc-input-section,
+            .sleep-calc-root .sleep-calc-results-section,
+            .sleep-calc-root .sleep-calc-tips-section {
+                padding: var(--sleep-calc-spacing-lg, 1.5rem) !important;
+                padding: 1.5rem !important;
+                border-radius: 16px !important;
+                margin-bottom: 1rem !important;
+            }
+
+            .sleep-calc-root .sleep-calc-input-section h2 {
+                font-size: 1.3rem !important;
+                margin-bottom: 1rem !important;
+            }
+
+            .sleep-calc-root .sleep-calc-form-group {
+                margin-bottom: 1rem !important;
+            }
+
+            .sleep-calc-root .sleep-calc-form-label {
+                font-size: 0.85rem !important;
+                margin-bottom: 0.5rem !important;
+            }
+
+            .sleep-calc-root .sleep-calc-form-input,
+            .sleep-calc-root .sleep-calc-form-select {
+                padding: 0.875rem 1rem !important;
+                font-size: 0.95rem !important;
+                border-radius: 12px !important;
+            }
+
+            .sleep-calc-root .sleep-calc-btn-primary {
+                padding: 1rem 1.5rem !important;
+                font-size: 0.95rem !important;
+                border-radius: 14px !important;
             }
             
-            .coming-soon h2 {
-                font-size: 2rem;
+            .sleep-calc-root .sleep-calc-tips-grid {
+                grid-template-columns: 1fr !important;
+                gap: 1rem !important;
+            }
+
+            .sleep-calc-root .sleep-calc-tip-card {
+                padding: 1.25rem !important;
+                border-radius: 14px !important;
+            }
+
+            .sleep-calc-root .sleep-calc-section-title {
+                font-size: 1.5rem !important;
+                margin-bottom: 1.5rem !important;
+            }
+        }
+
+        /* Small Mobile Devices */
+        @media (max-width: 480px) {
+            .sleep-calc-standalone-wrapper {
+                padding: 0.25rem !important;
+            }
+
+            .sleep-calc-root .sleep-calc-main-container {
+                border-radius: 16px !important;
+            }
+
+            .sleep-calc-root .sleep-calc-header-section {
+                padding: 1.5rem 1rem !important;
+            }
+
+            .sleep-calc-root .sleep-calc-header-section h1 {
+                font-size: 2rem !important;
+                margin-bottom: 0.5rem !important;
+            }
+
+            .sleep-calc-root .sleep-calc-header-section p {
+                font-size: 0.9rem !important;
+            }
+
+            .sleep-calc-root .sleep-calc-desktop-notice {
+                padding: 0.625rem 0.875rem !important;
+                font-size: 0.85rem !important;
+                border-radius: 14px !important;
+            }
+
+            .sleep-calc-root .sleep-calc-content-section {
+                padding: 1rem !important;
+            }
+
+            .sleep-calc-root .sleep-calc-input-section,
+            .sleep-calc-root .sleep-calc-results-section,
+            .sleep-calc-root .sleep-calc-tips-section {
+                padding: 1.25rem !important;
+                border-radius: 14px !important;
+            }
+
+            .sleep-calc-root .sleep-calc-form-input,
+            .sleep-calc-root .sleep-calc-form-select {
+                padding: 0.75rem 0.875rem !important;
+                font-size: 0.9rem !important;
+                border-radius: 10px !important;
+            }
+
+            .sleep-calc-root .sleep-calc-btn-primary {
+                padding: 0.875rem 1.25rem !important;
+                font-size: 0.9rem !important;
+                border-radius: 12px !important;
+            }
+
+            .sleep-calc-root .sleep-calc-tip-card {
+                padding: 1rem !important;
+                border-radius: 12px !important;
             }
             
-            .content {
-                padding: 20px;
+            .sleep-calc-time-display {
+                flex-direction: column !important;
+                gap: var(--sleep-calc-spacing-md, 1rem) !important;
+                gap: 0.75rem !important;
             }
-            
-            .features-preview {
-                grid-template-columns: 1fr;
+
+            .sleep-calc-root .sleep-calc-section-title {
+                font-size: 1.3rem !important;
             }
         }
     </style>
 </head>
-<body>
-    <div class="container">
-        <div class="header">
-            <h1>😴 Sleep Schedule Calculator</h1>
-            <p>Optimal bedtime based on wake-up goals and sleep cycles</p>
+<body class="sleep-calc-body sleep-calc-root">
+    <div class="sleep-calc-standalone-wrapper sleep-calc-root">
+        <div class="sleep-calc-main-container">
+        <!-- Header Section -->
+        <div class="sleep-calc-header-section">
+            <h1><i class="fas fa-moon"></i> Sleep Calculator</h1>
+            <p>Calculate optimal bedtime and wake-up times based on natural sleep cycles. Improve your sleep quality and academic performance with science-based recommendations.</p>
+            <div class="sleep-calc-desktop-notice">
+                <i class="fas fa-bed" aria-hidden="true"></i>
+                <span>💤 <strong>Perfect for Students:</strong> Optimize your sleep schedule for better focus, memory, and academic success</span>
+            </div>
         </div>
-        
-        <div class="content">
-            <div class="coming-soon">
-                <div class="coming-soon-icon">🚀</div>
-                <h2>Coming Soon!</h2>
-                <p>We're building a smart sleep calculator that helps you optimize your sleep schedule based on natural sleep cycles, ensuring you wake up refreshed and ready for your academic challenges!</p>
-                
-                <div class="features-preview">
-                    <div class="feature-card">
-                        <div class="feature-icon">🌙</div>
-                        <h3>Sleep Cycle Analysis</h3>
-                        <p>Calculate optimal bedtime based on 90-minute sleep cycles</p>
-                    </div>
+
+        <div class="sleep-calc-content-section">
+            <!-- Calculator Section -->
+            <div class="sleep-calc-calculator-grid">
+                <div class="sleep-calc-input-section">
+                    <h2><i class="fas fa-clock"></i> Sleep Schedule Calculator</h2>
                     
-                    <div class="feature-card">
-                        <div class="feature-icon">⏰</div>
-                        <h3>Wake-up Optimization</h3>
-                        <p>Find the best wake-up times to feel refreshed and alert</p>
+                    <div class="sleep-calc-form-group">
+                        <label class="sleep-calc-form-label" for="sleep-calc-calculation-type">
+                            <i class="fas fa-cogs"></i> What do you want to calculate?
+                        </label>
+                        <select id="sleep-calc-calculation-type" class="sleep-calc-form-select" title="Select calculation type" onchange="sleepCalcToggleInputs()">
+                            <option value="bedtime">Bedtime (I know when I need to wake up)</option>
+                            <option value="waketime">Wake-up time (I know when I want to sleep)</option>
+                        </select>
                     </div>
-                    
-                    <div class="feature-card">
-                        <div class="feature-icon">📊</div>
-                        <h3>Sleep Tracking</h3>
-                        <p>Monitor your sleep patterns and quality over time</p>
+
+                    <!-- Bedtime Calculator Inputs -->
+                    <div id="sleep-calc-bedtime-inputs" class="sleep-calc-calculation-inputs">
+                        <div class="sleep-calc-form-group">
+                            <label class="sleep-calc-form-label" for="sleep-calc-wake-time">
+                                <i class="fas fa-sun"></i> Wake-up Time
+                            </label>
+                            <input type="time" id="sleep-calc-wake-time" class="sleep-calc-form-input" value="07:00">
+                        </div>
+                        
+                        <div class="sleep-calc-form-group">
+                            <label class="sleep-calc-form-label" for="sleep-calc-sleep-duration">
+                                <i class="fas fa-hourglass-half"></i> Desired Sleep Duration
+                            </label>
+                            <select id="sleep-calc-sleep-duration" class="sleep-calc-form-select" title="Select sleep duration">
+                                <option value="6">6 hours (minimum for adults)</option>
+                                <option value="7">7 hours (recommended minimum)</option>
+                                <option value="7.5">7.5 hours (5 sleep cycles)</option>
+                                <option value="8" selected>8 hours (recommended)</option>
+                                <option value="8.5">8.5 hours</option>
+                                <option value="9">9 hours (6 sleep cycles)</option>
+                                <option value="9.5">9.5 hours</option>
+                                <option value="10">10 hours (for teenagers)</option>
+                            </select>
+                        </div>
                     </div>
+
+                    <!-- Wake-time Calculator Inputs -->
+                    <div id="sleep-calc-waketime-inputs" class="sleep-calc-calculation-inputs sleep-calc-hidden">
+                        <div class="sleep-calc-form-group">
+                            <label class="sleep-calc-form-label" for="sleep-calc-bed-time">
+                                <i class="fas fa-moon"></i> Bedtime
+                            </label>
+                            <input type="time" id="sleep-calc-bed-time" class="sleep-calc-form-input" value="23:00">
+                        </div>
+                        
+                        <div class="sleep-calc-form-group">
+                            <label class="sleep-calc-form-label" for="sleep-calc-sleep-duration-wake">
+                                <i class="fas fa-hourglass-half"></i> Sleep Duration
+                            </label>
+                            <select id="sleep-calc-sleep-duration-wake" class="sleep-calc-form-select" title="Select sleep duration">
+                                <option value="6">6 hours</option>
+                                <option value="7">7 hours</option>
+                                <option value="7.5">7.5 hours (5 cycles)</option>
+                                <option value="8" selected>8 hours</option>
+                                <option value="8.5">8.5 hours</option>
+                                <option value="9">9 hours (6 cycles)</option>
+                                <option value="9.5">9.5 hours</option>
+                                <option value="10">10 hours</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="sleep-calc-form-group">
+                        <label class="sleep-calc-form-label" for="sleep-calc-fall-asleep-time">
+                            <i class="fas fa-stopwatch"></i> Time to Fall Asleep (minutes)
+                        </label>
+                        <select id="sleep-calc-fall-asleep-time" class="sleep-calc-form-select" title="Time to fall asleep">
+                            <option value="5">5 minutes (fast sleeper)</option>
+                            <option value="10">10 minutes</option>
+                            <option value="15" selected>15 minutes (average)</option>
+                            <option value="20">20 minutes</option>
+                            <option value="30">30 minutes (slow sleeper)</option>
+                            <option value="45">45 minutes (difficulty sleeping)</option>
+                        </select>
+                    </div>
+
+                    <button class="sleep-calc-btn-primary" onclick="sleepCalcCalculate()">
+                        <i class="fas fa-calculator"></i> Calculate Optimal Sleep Schedule
+                    </button>
+                </div>
+
+                <div class="sleep-calc-results-section">
+                    <h2><i class="fas fa-chart-line"></i> Your Sleep Schedule</h2>
                     
-                    <div class="feature-card">
-                        <div class="feature-icon">💡</div>
-                        <h3>Sleep Tips</h3>
-                        <p>Personalized recommendations for better sleep hygiene</p>
+                    <div id="sleep-calc-placeholder-message" class="sleep-calc-placeholder-message">
+                        <div class="sleep-calc-placeholder-icon">
+                            <i class="fas fa-bed"></i>
+                        </div>
+                        <p>Enter your sleep preferences to get personalized recommendations based on natural sleep cycles.</p>
+                    </div>
+
+                    <div id="sleep-calc-results-container" class="sleep-calc-hidden">
+                        <!-- Results will be displayed here -->
                     </div>
                 </div>
-                
-                <button class="notify-btn" onclick="alert('We\'ll notify you when this tool is ready!')">
-                    Notify Me When Ready
-                </button>
+            </div>
+
+            <!-- Sleep Tips Section -->
+            <div class="sleep-calc-tips-section">
+                <h2 class="sleep-calc-section-title">Sleep Optimization Tips for Students</h2>
+                <div class="sleep-calc-tips-grid">
+                    <div class="sleep-calc-tip-card">
+                        <div class="sleep-calc-tip-icon"><i class="fas fa-moon"></i></div>
+                        <h3>Consistent Sleep Schedule</h3>
+                        <p>Go to bed and wake up at the same time every day, even on weekends. This helps regulate your body's internal clock and improves sleep quality.</p>
+                    </div>
+                    
+                    <div class="sleep-calc-tip-card">
+                        <div class="sleep-calc-tip-icon"><i class="fas fa-mobile-alt"></i></div>
+                        <h3>Screen Time Before Bed</h3>
+                        <p>Avoid screens 1-2 hours before bedtime. Blue light from devices can disrupt your natural sleep-wake cycle and make it harder to fall asleep.</p>
+                    </div>
+                    
+                    <div class="sleep-calc-tip-card">
+                        <div class="sleep-calc-tip-icon"><i class="fas fa-coffee"></i></div>
+                        <h3>Caffeine Timing</h3>
+                        <p>Avoid caffeine 6-8 hours before bedtime. This includes coffee, tea, energy drinks, and chocolate. Caffeine can stay in your system for hours.</p>
+                    </div>
+                    
+                    <div class="sleep-calc-tip-card">
+                        <div class="sleep-calc-tip-icon"><i class="fas fa-thermometer-half"></i></div>
+                        <h3>Room Temperature</h3>
+                        <p>Keep your bedroom cool (60-67°F/15-19°C). A cooler room helps your body temperature drop naturally, signaling it's time to sleep.</p>
+                    </div>
+                    
+                    <div class="sleep-calc-tip-card">
+                        <div class="sleep-calc-tip-icon"><i class="fas fa-running"></i></div>
+                        <h3>Exercise Regularly</h3>
+                        <p>Regular physical activity can help you fall asleep faster and enjoy deeper sleep. Just avoid vigorous exercise close to bedtime.</p>
+                    </div>
+                    
+                    <div class="sleep-calc-tip-card">
+                        <div class="sleep-calc-tip-icon"><i class="fas fa-brain"></i></div>
+                        <h3>Sleep & Academic Performance</h3>
+                        <p>Quality sleep improves memory consolidation, focus, and problem-solving abilities. Students who get adequate sleep perform better academically.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+    </div>
+
+    <script>
+        function sleepCalcToggleInputs() {
+            const calculationType = document.getElementById('sleep-calc-calculation-type').value;
+            const bedtimeInputs = document.getElementById('sleep-calc-bedtime-inputs');
+            const waketimeInputs = document.getElementById('sleep-calc-waketime-inputs');
+            
+            if (calculationType === 'bedtime') {
+                bedtimeInputs.classList.remove('sleep-calc-hidden');
+                waketimeInputs.classList.add('sleep-calc-hidden');
+            } else {
+                bedtimeInputs.classList.add('sleep-calc-hidden');
+                waketimeInputs.classList.remove('sleep-calc-hidden');
+            }
+            
+            // Clear results when switching calculation type
+            document.getElementById('sleep-calc-placeholder-message').classList.remove('sleep-calc-hidden');
+            document.getElementById('sleep-calc-results-container').classList.add('sleep-calc-hidden');
+        }
+
+        function sleepCalcCalculate() {
+            const calculationType = document.getElementById('sleep-calc-calculation-type').value;
+            const fallAsleepTime = parseInt(document.getElementById('sleep-calc-fall-asleep-time').value);
+            
+            let bedtime, wakeTime, sleepDuration;
+            
+            if (calculationType === 'bedtime') {
+                const wakeTimeInput = document.getElementById('sleep-calc-wake-time').value;
+                sleepDuration = parseFloat(document.getElementById('sleep-calc-sleep-duration').value);
+                
+                if (!wakeTimeInput) {
+                    alert('Please enter a wake-up time.');
+                    return;
+                }
+                
+                wakeTime = sleepCalcParseTime(wakeTimeInput);
+                // Calculate bedtime by subtracting sleep duration and fall asleep time
+                bedtime = new Date(wakeTime.getTime() - (sleepDuration * 60 * 60 * 1000) - (fallAsleepTime * 60 * 1000));
+                
+            } else {
+                const bedTimeInput = document.getElementById('sleep-calc-bed-time').value;
+                sleepDuration = parseFloat(document.getElementById('sleep-calc-sleep-duration-wake').value);
+                
+                if (!bedTimeInput) {
+                    alert('Please enter a bedtime.');
+                    return;
+                }
+                
+                bedtime = sleepCalcParseTime(bedTimeInput);
+                // Calculate wake time by adding fall asleep time and sleep duration
+                wakeTime = new Date(bedtime.getTime() + (fallAsleepTime * 60 * 1000) + (sleepDuration * 60 * 60 * 1000));
+            }
+            
+            sleepCalcDisplayResults(bedtime, wakeTime, sleepDuration, fallAsleepTime, calculationType);
+        }
+
+        function sleepCalcParseTime(timeString) {
+            const [hours, minutes] = timeString.split(':').map(Number);
+            const date = new Date();
+            date.setHours(hours, minutes, 0, 0);
+            
+            // If the time results in yesterday (for bedtime calculation), add a day
+            if (date.getTime() < Date.now() - (12 * 60 * 60 * 1000)) {
+                date.setDate(date.getDate() + 1);
+            }
+            
+            return date;
+        }
+
+        function sleepCalcFormatTime(date) {
+            return date.toLocaleTimeString('en-US', {
+                hour: '2-digit',
+                minute: '2-digit',
+                hour12: true
+            });
+        }
+
+        function sleepCalcDisplayResults(bedtime, wakeTime, sleepDuration, fallAsleepTime, calculationType) {
+            const sleepCycles = Math.round(sleepDuration / 1.5);
+            const actualSleepTime = sleepDuration;
+            const timeInBed = sleepDuration + (fallAsleepTime / 60);
+            
+            // Calculate optimal bedtimes based on sleep cycles
+            const optimalBedtimes = [];
+            const baseWakeTime = wakeTime.getTime();
+            
+            // Generate bedtime options for 4, 5, and 6 sleep cycles
+            for (let cycles = 4; cycles <= 6; cycles++) {
+                const cycleDuration = cycles * 1.5; // 1.5 hours per cycle
+                const optimalBedtime = new Date(baseWakeTime - (cycleDuration * 60 * 60 * 1000) - (fallAsleepTime * 60 * 1000));
+                optimalBedtimes.push({
+                    cycles: cycles,
+                    duration: cycleDuration,
+                    bedtime: optimalBedtime,
+                    quality: cycles === 5 ? 'Recommended' : cycles === 6 ? 'Ideal' : 'Minimum'
+                });
+            }
+
+            const resultsContainer = document.getElementById('sleep-calc-results-container');
+            resultsContainer.innerHTML = `
+                <div class="sleep-calc-schedule-display">
+                    <div class="sleep-calc-schedule-title">
+                        <i class="fas fa-star"></i> Your Sleep Schedule
+                    </div>
+                    <div class="sleep-calc-time-display">
+                        <div class="sleep-calc-time-item">
+                            <div class="sleep-calc-time-label">Bedtime</div>
+                            <div class="sleep-calc-time-value">${sleepCalcFormatTime(bedtime)}</div>
+                        </div>
+                        <div style="font-size: 2rem; color: var(--sleep-calc-accent-color);">→</div>
+                        <div class="sleep-calc-time-item">
+                            <div class="sleep-calc-time-label">Wake Time</div>
+                            <div class="sleep-calc-time-value">${sleepCalcFormatTime(wakeTime)}</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="sleep-calc-result-grid">
+                    <div class="sleep-calc-result-card">
+                        <h4 style="color: var(--sleep-calc-primary-color); margin-bottom: 1rem;">
+                            <i class="fas fa-chart-bar"></i> Sleep Analysis
+                        </h4>
+                        <div class="sleep-calc-result-item">
+                            <span class="sleep-calc-result-label">
+                                <i class="fas fa-clock"></i> Total Sleep Time
+                            </span>
+                            <span class="sleep-calc-result-value">${sleepDuration} hours</span>
+                        </div>
+                        <div class="sleep-calc-result-item">
+                            <span class="sleep-calc-result-label">
+                                <i class="fas fa-recycle"></i> Sleep Cycles
+                            </span>
+                            <span class="sleep-calc-result-value">${sleepCycles} cycles</span>
+                        </div>
+                        <div class="sleep-calc-result-item">
+                            <span class="sleep-calc-result-label">
+                                <i class="fas fa-bed"></i> Time in Bed
+                            </span>
+                            <span class="sleep-calc-result-value">${timeInBed.toFixed(1)} hours</span>
+                        </div>
+                        <div class="sleep-calc-result-item">
+                            <span class="sleep-calc-result-label">
+                                <i class="fas fa-hourglass-start"></i> Fall Asleep Time
+                            </span>
+                            <span class="sleep-calc-result-value">${fallAsleepTime} minutes</span>
+                        </div>
+                    </div>
+                    
+                    <div class="sleep-calc-result-card">
+                        <h4 style="color: var(--sleep-calc-primary-color); margin-bottom: 1rem;">
+                            <i class="fas fa-lightbulb"></i> Alternative Bedtimes
+                        </h4>
+                        ${optimalBedtimes.map(option => `
+                            <div class="sleep-calc-result-item">
+                                <span class="sleep-calc-result-label">
+                                    <i class="fas fa-moon"></i> ${option.cycles} cycles (${option.quality})
+                                </span>
+                                <span class="sleep-calc-result-value">${sleepCalcFormatTime(option.bedtime)}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+                
+                <div style="background: linear-gradient(135deg, #E3F2FD 0%, #F3E5F5 100%); padding: 1.5rem; border-radius: 0.75rem; margin-top: 1.5rem; border-left: 4px solid var(--sleep-calc-primary-color);">
+                    <h4 style="color: var(--sleep-calc-primary-color); margin-bottom: 0.75rem;">
+                        <i class="fas fa-info-circle"></i> Sleep Quality Tips
+                    </h4>
+                    <p style="color: var(--sleep-calc-text-secondary); margin-bottom: 0.75rem;">
+                        ${sleepCalcGetSleepQualityTip(sleepDuration, sleepCycles)}
+                    </p>
+                    <p style="color: var(--sleep-calc-text-secondary); font-size: 0.875rem;">
+                        <strong>Remember:</strong> Consistency is key! Try to maintain this schedule every day, including weekends.
+                    </p>
+                </div>
+            `;
+            
+            // Hide placeholder and show results
+            document.getElementById('sleep-calc-placeholder-message').classList.add('sleep-calc-hidden');
+            resultsContainer.classList.remove('sleep-calc-hidden');
+        }
+
+        function sleepCalcGetSleepQualityTip(duration, cycles) {
+            if (duration < 7) {
+                return "You're getting less than the recommended 7-9 hours of sleep. Consider going to bed earlier to improve your academic performance and overall health.";
+            } else if (duration >= 7 && duration <= 9) {
+                if (cycles === 5 || cycles === 6) {
+                    return "Excellent! You're getting optimal sleep duration with complete sleep cycles. This schedule should help you wake up feeling refreshed.";
+                } else {
+                    return "Good sleep duration! For even better sleep quality, try adjusting your bedtime to complete full 90-minute sleep cycles.";
+                }
+            } else {
+                return "You're getting more than 9 hours of sleep. While this can be good, make sure you're not oversleeping, which can sometimes leave you feeling groggy.";
+            }
+        }
+
+        // Add enter key support and initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize the input toggle
+            sleepCalcToggleInputs();
+            
+            // Add event listeners for enter key
+            const inputs = ['sleep-calc-wake-time', 'sleep-calc-bed-time'];
+            inputs.forEach(function(inputId) {
+                const input = document.getElementById(inputId);
+                if (input) {
+                    input.addEventListener('keypress', function(e) {
+                        if (e.key === 'Enter') {
+                            sleepCalcCalculate();
+                        }
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>

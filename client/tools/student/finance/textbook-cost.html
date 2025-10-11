@@ -3,9 +3,1037 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Textbook Cost Optimizer - Student Tools</title>
+    <title>Textbook Cost Calculator - FREE Student Budget Tool | Track Book Expenses</title>
+    <meta name="description" content="Free textbook cost calculator! Track and calculate semester textbook expenses. Student-friendly budget planning tool. Manage book costs for college, university. 100% free calculator!">
+    <meta name="keywords" content="textbook cost calculator, textbook budget calculator, college textbook costs, university textbook expenses, student book calculator, textbook price tracker, semester book costs, educational expenses calculator, student budget tool, college budget planner, book expense tracker, textbook financial planning, student cost calculator, education budget tool, college expenses">
+    <meta name="author" content="AllInOne.Tools">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://allinone.tools/client/tools/student/finance/textbook-cost.html">
+    <meta property="og:title" content="Textbook Cost Calculator - FREE Student Budget Tool">
+    <meta property="og:description" content="Free textbook cost calculator! Track and calculate semester textbook expenses. Student-friendly budget planning tool. Manage book costs for college, university. 100% free!">
+    <meta property="og:image" content="https://allinone.tools/assets/og-image.svg">
+    <meta property="og:site_name" content="AllInOne.Tools">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://allinone.tools/client/tools/student/finance/textbook-cost.html">
+    <meta property="twitter:title" content="Textbook Cost Calculator - FREE Student Budget Tool">
+    <meta property="twitter:description" content="Free textbook cost calculator! Track and calculate semester textbook expenses. Student-friendly budget planning tool. 100% free!">
+    <meta property="twitter:image" content="https://allinone.tools/assets/og-image.svg">
+    
+    <!-- Additional SEO Meta Tags -->
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="AllInOne.Tools">
+    <meta name="generator" content="AllInOne.Tools">
+    <meta name="application-name" content="Textbook Cost Calculator">
+    <meta name="apple-mobile-web-app-title" content="Textbook Calc">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#667eea">
+    <meta name="msapplication-navbutton-color" content="#667eea">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#667eea">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://allinone.tools/client/tools/student/finance/textbook-cost.html">
+    
+    <!-- Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Student Textbook Cost Calculator Tool",
+      "description": "Free textbook cost calculator for students. Track and manage semester textbook expenses with budget planning features. Perfect for college and university students to plan educational costs.",
+      "url": "https://allinone.tools/client/tools/student/finance/textbook-cost.html",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "Any",
+      "permissions": "browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "featureList": [
+        "Textbook expense tracking",
+        "Semester cost calculation",
+        "Budget planning tool",
+        "Book condition tracking",
+        "Cost summary analytics",
+        "Student-friendly interface",
+        "College budget management",
+        "Educational expense planner",
+        "No registration required",
+        "Free textbook calculator"
+      ],
+      "provider": {
+        "@type": "Organization",
+        "name": "AllInOne.Tools",
+        "url": "https://allinone.tools"
+      },
+      "audience": {
+        "@type": "Audience",
+        "audienceType": "Students, College Students, University Students"
+      },
+      "educationalLevel": "Higher Education",
+      "category": "Education, Finance, Budget Planning"
+    }
+    </script>
+    <style>
+        /* Textbook Cost Calculator Specific Styles - All prefixed with 'textbook-calc-' to avoid conflicts */
+        /* Define variables on all possible containers to ensure they work when embedded */
+        .textbook-calc-root,
+        .textbook-calc-main-container,
+        .textbook-calc-body,
+        body.textbook-calc-body,
+        html {
+            --textbook-font-primary: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+            
+            /* Enhanced Color Palette - Using !important for embedded contexts */
+            --textbook-color-primary: #667eea !important;
+            --textbook-color-primary-dark: #5a6fd8 !important;
+            --textbook-color-secondary: #764ba2 !important;
+            --textbook-color-accent: #f39c12 !important;
+            --textbook-color-success: #28a745 !important;
+            --textbook-color-danger: #dc3545 !important;
+            
+            /* Background & Surface Colors */
+            --textbook-color-background: #f5f7fa !important;
+            --textbook-color-surface: #ffffff !important;
+            --textbook-color-surface-alt: #f8f9fa !important;
+            
+            /* Text Colors */
+            --textbook-color-text-primary: #2c3e50 !important;
+            --textbook-color-text-secondary: #6c757d !important;
+            --textbook-color-text-on-primary: #ffffff !important;
+            
+            /* Border & Shadow */
+            --textbook-color-border: #e9ecef !important;
+            --textbook-shadow-sm: 0 2px 4px rgba(0,0,0,0.08) !important;
+            --textbook-shadow-md: 0 4px 12px rgba(0,0,0,0.15) !important;
+            --textbook-shadow-lg: 0 8px 32px rgba(0,0,0,0.18) !important;
+        }
+
+        .textbook-calc-body { 
+            font-family: var(--textbook-font-primary); 
+            background: var(--textbook-color-background); 
+            color: var(--textbook-color-text-primary); 
+            margin: 0; 
+            padding: 20px; 
+            line-height: 1.7;
+            min-height: 100vh;
+            scroll-behavior: smooth;
+        }
+
+        .textbook-calc-main-container {
+            max-width: 1200px !important;
+            margin: 0 auto !important;
+            background: var(--textbook-color-surface) !important;
+            border-radius: 15px !important;
+            box-shadow: var(--textbook-shadow-lg) !important;
+            overflow: hidden !important;
+            border: 1px solid var(--textbook-color-border) !important;
+            position: relative !important;
+        }
+        
+        .textbook-calc-header {
+            background: linear-gradient(135deg, var(--textbook-color-primary) 0%, var(--textbook-color-secondary) 100%) !important;
+            color: var(--textbook-color-text-on-primary) !important;
+            padding: 30px !important;
+            text-align: center !important;
+        }
+        
+        .textbook-calc-header h1 {
+            font-size: 2.5rem !important;
+            margin-bottom: 15px !important;
+            font-weight: 700 !important;
+            color: var(--textbook-color-text-on-primary) !important;
+        }
+        
+        .textbook-calc-header p {
+            font-size: 1.1rem !important;
+            opacity: 0.9 !important;
+            color: var(--textbook-color-text-on-primary) !important;
+        }
+
+        .textbook-calc-content {
+            padding: 30px 40px !important;
+            background: var(--textbook-color-surface) !important;
+        }        /* Form Section */
+        .textbook-calc-form-section {
+            border-radius: 10px !important;
+            padding: 25px !important;
+            margin-bottom: 30px !important;
+            border: 1px solid var(--textbook-color-border) !important;
+            background: var(--textbook-color-surface) !important;
+        }
+        
+        .textbook-calc-form-title {
+            font-size: 1.5rem !important;
+            color: var(--textbook-color-text-primary) !important;
+            margin-bottom: 20px !important;
+            font-weight: 600 !important;
+            display: flex !important;
+            align-items: center !important;
+        }
+        
+        .textbook-calc-form-title::before {
+            content: "📚" !important;
+            margin-right: 10px !important;
+            font-size: 1.8rem !important;
+        }
+        
+        .textbook-calc-form-grid {
+            display: grid !important;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important;
+            gap: 20px !important;
+            margin-bottom: 20px !important;
+        }
+        
+        .textbook-calc-form-group {
+            display: flex !important;
+            flex-direction: column !important;
+        }
+        
+        .textbook-calc-form-group label {
+            font-weight: 600 !important;
+            color: var(--textbook-color-text-secondary) !important;
+            margin-bottom: 8px !important;
+            font-size: 0.95rem !important;
+        }
+        
+        .textbook-calc-form-group input, 
+        .textbook-calc-form-group select {
+            padding: 12px 15px !important;
+            border: 2px solid var(--textbook-color-border) !important;
+            border-radius: 10px !important;
+            font-size: 1rem !important;
+            transition: all 0.3s ease !important;
+            background: var(--textbook-color-surface) !important;
+        }
+        
+        .textbook-calc-form-group input:focus, 
+        .textbook-calc-form-group select:focus {
+            outline: none !important;
+            border-color: var(--textbook-color-primary) !important;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1) !important;
+        }
+        
+        .textbook-calc-btn-container {
+            display: flex !important;
+            gap: 15px !important;
+            flex-wrap: wrap !important;
+        }
+        
+        .textbook-calc-btn {
+            padding: 12px 25px !important;
+            border: none !important;
+            border-radius: 10px !important;
+            font-size: 1rem !important;
+            font-weight: 600 !important;
+            cursor: pointer !important;
+            transition: all 0.3s ease !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            gap: 8px !important;
+        }
+        
+        .textbook-calc-btn-primary {
+            background: linear-gradient(135deg, var(--textbook-color-primary) 0%, var(--textbook-color-secondary) 100%) !important;
+            color: var(--textbook-color-text-on-primary) !important;
+            box-shadow: var(--textbook-shadow-md) !important;
+        }
+        
+        .textbook-calc-btn-primary:hover {
+            transform: translateY(-2px) !important;
+            box-shadow: var(--textbook-shadow-lg) !important;
+        }
+        
+        .textbook-calc-btn-secondary {
+            background: var(--textbook-color-surface) !important;
+            color: var(--textbook-color-primary) !important;
+            border: 2px solid var(--textbook-color-primary) !important;
+        }
+        
+        .textbook-calc-btn-secondary:hover {
+            background: var(--textbook-color-surface-alt) !important;
+        }
+        
+        /* Summary Section */
+        .textbook-calc-summary-section {
+            background: linear-gradient(135deg, var(--textbook-color-primary) 0%, var(--textbook-color-secondary) 100%) !important;
+            color: var(--textbook-color-text-on-primary) !important;
+            border-radius: 15px !important;
+            padding: 25px !important;
+            margin-bottom: 30px !important;
+            box-shadow: var(--textbook-shadow-lg) !important;
+            display: flex !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+            flex-wrap: wrap !important;
+            gap: 20px !important;
+        }
+        
+        .textbook-calc-summary-item {
+            text-align: center !important;
+        }
+        
+        .textbook-calc-summary-value {
+            font-size: 2.5rem !important;
+            font-weight: 700 !important;
+            color: var(--textbook-color-text-on-primary) !important;
+            margin-bottom: 5px !important;
+        }
+        
+        .textbook-calc-summary-label {
+            font-size: 0.9rem !important;
+            opacity: 0.9 !important;
+            color: var(--textbook-color-text-on-primary) !important;
+            text-transform: uppercase !important;
+            letter-spacing: 1px !important;
+        }
+        
+        .summary-item {
+            text-align: center;
+        }
+        
+        .summary-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .summary-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        /* Textbook List */
+        .textbook-list {
+            margin-bottom: 30px;
+        }
+        
+        .list-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .list-title {
+            font-size: 1.5rem;
+            color: #333;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+        }
+        
+        .list-title::before {
+            content: "📖";
+            margin-right: 10px;
+            font-size: 1.8rem;
+        }
+        
+        .textbook-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .textbook-card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            border: 1px solid #e9ecef;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .textbook-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, #667eea, #764ba2);
+        }
+        
+        .textbook-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .textbook-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+            padding-right: 30px;
+        }
+        
+        .textbook-info {
+            margin-bottom: 15px;
+        }
+        
+        .textbook-info-item {
+            display: flex;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+            color: #666;
+        }
+        
+        .textbook-info-label {
+            font-weight: 600;
+            width: 80px;
+            flex-shrink: 0;
+        }
+        
+        .textbook-price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #667eea;
+            margin-top: 10px;
+            text-align: right;
+        }
+        
+        .textbook-actions {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            display: flex;
+            gap: 5px;
+        }
+        
+        .action-btn {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+        
+        .edit-btn {
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+        }
+        
+        .edit-btn:hover {
+            background: rgba(102, 126, 234, 0.2);
+            transform: scale(1.1);
+        }
+        
+        .delete-btn {
+            background: rgba(220, 53, 69, 0.1);
+            color: #dc3545;
+        }
+        
+        .delete-btn:hover {
+            background: rgba(220, 53, 69, 0.2);
+            transform: scale(1.1);
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #666;
+        }
+        
+        .empty-state-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            opacity: 0.5;
+        }
+        
+        .empty-state h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #555;
+        }
+        
+        .empty-state p {
+            font-size: 1rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        /* Notification */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: white;
+            padding: 20px 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            z-index: 1000;
+            transform: translateX(400px);
+            transition: transform 0.5s ease;
+            border-left: 5px solid #667eea;
+            max-width: 350px;
+        }
+        
+        .notification.show {
+            transform: translateX(0);
+        }
+        
+        .notification h3 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+        
+        .notification p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .notification button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .notification button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+        
+        /* Edit Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal.show {
+            display: flex;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            animation: modalFadeIn 0.3s ease;
+        }
+        
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .modal-title {
+            font-size: 1.5rem;
+            color: #333;
+            font-weight: 600;
+        }
+        
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #999;
+            transition: color 0.3s;
+        }
+        
+        .modal-close:hover {
+            color: #333;
+        }
+        
+        .modal-body {
+            margin-bottom: 20px;
+        }
+        
+        .modal-footer {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .summary-section {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .textbook-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .modal-content {
+                width: 95%;
+                padding: 20px;
+            }
+        }
+    </style>
 </head>
-<body>
-    <!-- Textbook Cost Optimizer Tool - To be implemented -->
+<body class="textbook-calc-body">
+    <div class="textbook-calc-main-container">
+        <div class="textbook-calc-header">
+            <h1>📚 Free Textbook Cost Calculator - Student Budget Tool</h1>
+            <p>Track, calculate and manage your textbook expenses for the semester. Perfect budget planning tool for college and university students to optimize educational costs.</p>
+        </div>
+        
+        <div class="textbook-calc-content">
+            <!-- Add Textbook Form -->
+            <div class="textbook-calc-form-section">
+                <h2 class="textbook-calc-form-title">Add New Textbook</h2>
+                <form id="textbookForm">
+                    <div class="textbook-calc-form-grid">
+                        <div class="textbook-calc-form-group">
+                            <label for="title">Title</label>
+                            <input type="text" id="title" required placeholder="Enter textbook title">
+                        </div>
+                        <div class="textbook-calc-form-group">
+                            <label for="author">Author</label>
+                            <input type="text" id="author" required placeholder="Enter author name">
+                        </div>
+                        <div class="textbook-calc-form-group">
+                            <label for="isbn">ISBN</label>
+                            <input type="text" id="isbn" placeholder="Enter ISBN (optional)">
+                        </div>
+                        <div class="textbook-calc-form-group">
+                            <label for="price">Price ($)</label>
+                            <input type="number" id="price" step="0.01" min="0" required placeholder="0.00">
+                        </div>
+                        <div class="textbook-calc-form-group">
+                            <label for="quantity">Quantity</label>
+                            <input type="number" id="quantity" min="1" value="1" required>
+                        </div>
+                        <div class="textbook-calc-form-group">
+                            <label for="condition">Condition</label>
+                            <select id="condition">
+                                <option value="new">New</option>
+                                <option value="used">Used</option>
+                                <option value="rental">Rental</option>
+                                <option value="digital">Digital</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="textbook-calc-btn-container">
+                        <button type="submit" class="textbook-calc-btn textbook-calc-btn-primary">
+                            <span>➕</span> Add Textbook
+                        </button>
+                        <button type="button" class="textbook-calc-btn textbook-calc-btn-secondary" onclick="clearForm()">
+                            <span>🗑️</span> Clear Form
+                        </button>
+                    </div>
+                </form>
+            </div>
+            
+            <!-- Summary Section -->
+            <div class="textbook-calc-summary-section">
+                <div class="textbook-calc-summary-item">
+                    <div class="textbook-calc-summary-value" id="totalBooks">0</div>
+                    <div class="textbook-calc-summary-label">Total Books</div>
+                </div>
+                <div class="textbook-calc-summary-item">
+                    <div class="textbook-calc-summary-value" id="totalCost">$0.00</div>
+                    <div class="textbook-calc-summary-label">Total Cost</div>
+                </div>
+                <div class="textbook-calc-summary-item">
+                    <div class="textbook-calc-summary-value" id="avgCost">$0.00</div>
+                    <div class="textbook-calc-summary-label">Average Cost</div>
+                </div>
+            </div>
+            
+            <!-- Textbook List -->
+            <div class="textbook-list">
+                <div class="list-header">
+                    <h2 class="list-title">Your Textbooks</h2>
+                    <div class="btn-container">
+                        <button class="btn btn-secondary" onclick="exportToCSV()">
+                            <span>📤</span> Export CSV
+                        </button>
+                        <button class="btn btn-secondary" onclick="clearAllTextbooks()">
+                            <span>🗑️</span> Clear All
+                        </button>
+                    </div>
+                </div>
+                
+                <div id="textbookContainer">
+                    <div class="empty-state">
+                        <div class="empty-state-icon">📚</div>
+                        <h3>No Textbooks Added Yet</h3>
+                        <p>Add your first textbook using the form above to start tracking your expenses.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Edit Modal -->
+    <div class="modal" id="editModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Edit Textbook</h3>
+                <button class="modal-close" onclick="closeEditModal()">✕</button>
+            </div>
+            <div class="modal-body">
+                <form id="editForm">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="editTitle">Title</label>
+                            <input type="text" id="editTitle" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="editAuthor">Author</label>
+                            <input type="text" id="editAuthor" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="editIsbn">ISBN</label>
+                            <input type="text" id="editIsbn">
+                        </div>
+                        <div class="form-group">
+                            <label for="editPrice">Price ($)</label>
+                            <input type="number" id="editPrice" step="0.01" min="0" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="editQuantity">Quantity</label>
+                            <input type="number" id="editQuantity" min="1" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="editCondition">Condition</label>
+                            <select id="editCondition">
+                                <option value="new">New</option>
+                                <option value="used">Used</option>
+                                <option value="rental">Rental</option>
+                                <option value="digital">Digital</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeEditModal()">Cancel</button>
+                <button class="btn btn-primary" onclick="saveEdit()">Save Changes</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Notification -->
+    <div class="notification" id="notification">
+        <h3 id="notificationTitle">Success!</h3>
+        <p id="notificationMessage">Textbook added successfully.</p>
+        <button onclick="closeNotification()">Got it!</button>
+    </div>
+    
+    <script>
+        let textbooks = [];
+        let editingIndex = -1;
+        
+        // Load textbooks from localStorage on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            loadTextbooks();
+        });
+        
+        // Form submission
+        document.getElementById('textbookForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            addTextbook();
+        });
+        
+        function addTextbook() {
+            const title = document.getElementById('title').value;
+            const author = document.getElementById('author').value;
+            const isbn = document.getElementById('isbn').value;
+            const price = parseFloat(document.getElementById('price').value);
+            const quantity = parseInt(document.getElementById('quantity').value);
+            const condition = document.getElementById('condition').value;
+            
+            const textbook = {
+                id: Date.now(),
+                title,
+                author,
+                isbn,
+                price,
+                quantity,
+                condition,
+                total: price * quantity
+            };
+            
+            textbooks.push(textbook);
+            saveTextbooks();
+            renderTextbooks();
+            updateSummary();
+            clearForm();
+            showNotification('Success!', 'Textbook added successfully.');
+        }
+        
+        function clearForm() {
+            document.getElementById('textbookForm').reset();
+        }
+        
+        function renderTextbooks() {
+            const container = document.getElementById('textbookContainer');
+            
+            if (textbooks.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-state-icon">📚</div>
+                        <h3>No Textbooks Added Yet</h3>
+                        <p>Add your first textbook using the form above to start tracking your expenses.</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            const grid = document.createElement('div');
+            grid.className = 'textbook-grid';
+            
+            textbooks.forEach((textbook, index) => {
+                const card = document.createElement('div');
+                card.className = 'textbook-card';
+                card.innerHTML = `
+                    <div class="textbook-actions">
+                        <button class="action-btn edit-btn" onclick="editTextbook(${index})" title="Edit">✏️</button>
+                        <button class="action-btn delete-btn" onclick="deleteTextbook(${index})" title="Delete">🗑️</button>
+                    </div>
+                    <h3 class="textbook-title">${textbook.title}</h3>
+                    <div class="textbook-info">
+                        <div class="textbook-info-item">
+                            <span class="textbook-info-label">Author:</span>
+                            <span>${textbook.author}</span>
+                        </div>
+                        ${textbook.isbn ? `
+                        <div class="textbook-info-item">
+                            <span class="textbook-info-label">ISBN:</span>
+                            <span>${textbook.isbn}</span>
+                        </div>
+                        ` : ''}
+                        <div class="textbook-info-item">
+                            <span class="textbook-info-label">Condition:</span>
+                            <span>${textbook.condition.charAt(0).toUpperCase() + textbook.condition.slice(1)}</span>
+                        </div>
+                        <div class="textbook-info-item">
+                            <span class="textbook-info-label">Quantity:</span>
+                            <span>${textbook.quantity}</span>
+                        </div>
+                    </div>
+                    <div class="textbook-price">$${textbook.total.toFixed(2)}</div>
+                `;
+                grid.appendChild(card);
+            });
+            
+            container.innerHTML = '';
+            container.appendChild(grid);
+        }
+        
+        function updateSummary() {
+            const totalBooks = textbooks.reduce((sum, book) => sum + book.quantity, 0);
+            const totalCost = textbooks.reduce((sum, book) => sum + book.total, 0);
+            const avgCost = totalBooks > 0 ? totalCost / totalBooks : 0;
+            
+            document.getElementById('totalBooks').textContent = totalBooks;
+            document.getElementById('totalCost').textContent = `$${totalCost.toFixed(2)}`;
+            document.getElementById('avgCost').textContent = `$${avgCost.toFixed(2)}`;
+        }
+        
+        function editTextbook(index) {
+            editingIndex = index;
+            const textbook = textbooks[index];
+            
+            document.getElementById('editTitle').value = textbook.title;
+            document.getElementById('editAuthor').value = textbook.author;
+            document.getElementById('editIsbn').value = textbook.isbn;
+            document.getElementById('editPrice').value = textbook.price;
+            document.getElementById('editQuantity').value = textbook.quantity;
+            document.getElementById('editCondition').value = textbook.condition;
+            
+            document.getElementById('editModal').classList.add('show');
+        }
+        
+        function closeEditModal() {
+            document.getElementById('editModal').classList.remove('show');
+            editingIndex = -1;
+        }
+        
+        function saveEdit() {
+            if (editingIndex === -1) return;
+            
+            textbooks[editingIndex] = {
+                ...textbooks[editingIndex],
+                title: document.getElementById('editTitle').value,
+                author: document.getElementById('editAuthor').value,
+                isbn: document.getElementById('editIsbn').value,
+                price: parseFloat(document.getElementById('editPrice').value),
+                quantity: parseInt(document.getElementById('editQuantity').value),
+                condition: document.getElementById('editCondition').value,
+                total: parseFloat(document.getElementById('editPrice').value) * parseInt(document.getElementById('editQuantity').value)
+            };
+            
+            saveTextbooks();
+            renderTextbooks();
+            updateSummary();
+            closeEditModal();
+            showNotification('Success!', 'Textbook updated successfully.');
+        }
+        
+        function deleteTextbook(index) {
+            if (confirm('Are you sure you want to delete this textbook?')) {
+                textbooks.splice(index, 1);
+                saveTextbooks();
+                renderTextbooks();
+                updateSummary();
+                showNotification('Deleted', 'Textbook removed from your list.');
+            }
+        }
+        
+        function clearAllTextbooks() {
+            if (textbooks.length === 0) {
+                showNotification('No Textbooks', 'There are no textbooks to clear.');
+                return;
+            }
+            
+            if (confirm('Are you sure you want to clear all textbooks? This action cannot be undone.')) {
+                textbooks = [];
+                saveTextbooks();
+                renderTextbooks();
+                updateSummary();
+                showNotification('Cleared', 'All textbooks have been removed.');
+            }
+        }
+        
+        function exportToCSV() {
+            if (textbooks.length === 0) {
+                showNotification('No Data', 'There are no textbooks to export.');
+                return;
+            }
+            
+            let csv = 'Title,Author,ISBN,Price,Quantity,Condition,Total\n';
+            
+            textbooks.forEach(book => {
+                csv += `"${book.title}","${book.author}","${book.isbn}",${book.price},${book.quantity},"${book.condition}",${book.total}\n`;
+            });
+            
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.setAttribute('hidden', '');
+            a.setAttribute('href', url);
+            a.setAttribute('download', `textbooks_${new Date().toISOString().slice(0, 10)}.csv`);
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            
+            showNotification('Exported', 'Your textbook list has been exported as CSV.');
+        }
+        
+        function saveTextbooks() {
+            localStorage.setItem('textbooks', JSON.stringify(textbooks));
+        }
+        
+        function loadTextbooks() {
+            const saved = localStorage.getItem('textbooks');
+            if (saved) {
+                textbooks = JSON.parse(saved);
+                renderTextbooks();
+                updateSummary();
+            }
+        }
+        
+        function showNotification(title, message) {
+            const notification = document.getElementById('notification');
+            document.getElementById('notificationTitle').textContent = title;
+            document.getElementById('notificationMessage').textContent = message;
+            notification.classList.add('show');
+            
+            setTimeout(() => {
+                closeNotification();
+            }, 5000);
+        }
+        
+        function closeNotification() {
+            document.getElementById('notification').classList.remove('show');
+        }
+        
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('editModal');
+            if (event.target === modal) {
+                closeEditModal();
+            }
+        }
+    </script>
+    
+    <!-- SEO Content Section -->
+    <div class="textbook-calc-content" style="margin-top: 0; border-top: 1px solid var(--textbook-color-border);">
+        <div class="textbook-calc-form-section">
+            <h2 class="textbook-calc-form-title" style="margin-bottom: 15px;">How to Use the Textbook Cost Calculator</h2>
+            <div style="color: var(--textbook-color-text-secondary); line-height: 1.6;">
+                <p><strong>1. Add Your Textbooks:</strong> Enter textbook details including title, author, ISBN, price, quantity, and condition.</p>
+                <p><strong>2. Track Expenses:</strong> Monitor your total textbook costs and average price per book in real-time.</p>
+                <p><strong>3. Budget Planning:</strong> Use the summary to plan your semester budget and compare textbook costs.</p>
+                <p><strong>4. Export Data:</strong> Download your textbook list as CSV for record keeping and financial planning.</p>
+            </div>
+        </div>
+        
+        <div class="textbook-calc-form-section">
+            <h3 style="color: var(--textbook-color-text-primary); margin-bottom: 10px;">💡 Money-Saving Tips for College Textbooks</h3>
+            <ul style="color: var(--textbook-color-text-secondary); line-height: 1.6; padding-left: 20px;">
+                <li><strong>Buy Used:</strong> Save 25-50% by purchasing used textbooks in good condition</li>
+                <li><strong>Rent Textbooks:</strong> Consider rental options for books you won't keep long-term</li>
+                <li><strong>Digital Editions:</strong> E-textbooks are often cheaper and more portable</li>
+                <li><strong>Compare Prices:</strong> Check multiple sources including campus bookstore, Amazon, Chegg</li>
+                <li><strong>Sell Back:</strong> Recoup costs by selling textbooks at semester end</li>
+            </ul>
+        </div>
+    </div>
 </body>
 </html>

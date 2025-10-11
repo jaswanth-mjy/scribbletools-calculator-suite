@@ -250,7 +250,6 @@ function openResumeBuilder(button) {
 
 1. **Advanced Features**
    - AI-powered resume suggestions
-   - Skills gap analysis
    - Industry-specific templates
    - ATS compatibility scoring
 

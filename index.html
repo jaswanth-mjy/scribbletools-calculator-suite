@@ -2285,10 +2285,8 @@ header input {
             // Student Tools - Career & Placement
             '#resume-builder': 'client/tools/student/career/resume-builder.html', 
             '#cover-letter-generator': 'client/tools/student/career/cover-letter-generator.html', 
-            '#interview-questions': 'client/tools/student/career/interview-questions.html', 
             '#salary-calculator': 'client/tools/student/career/salary-calculator.html', 
-            '#job-tracker': 'client/tools/student/career/job-tracker.html', 
-            '#skills-gap-analyzer': 'client/tools/student/career/skills-gap-analyzer.html',
+            '#job-tracker': 'client/tools/student/career/job-tracker.html',
             
             // Student Tools - Academic & Study
             '#gpa-calculator': 'client/tools/student/academic/gpa-calculator.html', 
@@ -2297,9 +2295,7 @@ header input {
             '#pomodoro-timer': 'client/tools/student/academic/pomodoro-timer.html', 
             '#assignment-tracker': 'client/tools/student/academic/assignment-tracker.html', 
             '#citation-generator': 'client/tools/student/academic/citation-generator.html', 
-            '#research-outline': 'client/tools/student/academic/research-outline.html', 
             '#flashcard-maker': 'client/tools/student/academic/flashcard-maker.html', 
-            '#note-templates': 'client/tools/student/academic/note-templates.html',
             
             // Student Tools - Financial & Budget
             '#student-budget': 'client/tools/student/finance/student-budget.html', 
@@ -2313,7 +2309,7 @@ header input {
             '#class-schedule-builder': 'client/tools/student/planning/class-schedule-builder.html', 
             '#semester-planner': 'client/tools/student/planning/semester-planner.html',
             '#daily-schedule-optimizer': 'client/tools/student/planning/daily-schedule-optimizer.html',
-            '#campus-walking-calculator': 'client/tools/student/planning/campus-walking-calculator.html',
+
             '#study-group-scheduler': 'client/tools/student/planning/study-group-scheduler.html',
             '#exam-schedule-organizer': 'client/tools/student/planning/exam-schedule-organizer.html',
             
@@ -3265,9 +3261,6 @@ header input {
                         } else if (path.includes('cover-letter-generator') && window.initializeCoverLetterGenerator) {
                             console.log('📄 Initializing Cover Letter Generator...');
                             window.initializeCoverLetterGenerator();
-                        } else if (path.includes('interview-questions') && window.initializeInterviewQuestions) {
-                            console.log('❓ Initializing Interview Questions...');
-                            window.initializeInterviewQuestions();
                         } else if (path.includes('job-tracker') && window.initializeJobTracker) {
                             console.log('📊 Initializing Job Application Tracker...');
                             window.initializeJobTracker();
