@@ -3303,6 +3303,9 @@ header input {
                         } else if (path.includes('goal-tracker') && window.initializeGoalTracker) {
                             console.log('🎯 Initializing Goal Progress Tracker...');
                             window.initializeGoalTracker();
+                        } else if (path.includes('procrastination-breaker') && window.initializeProcrastinationBreaker) {
+                            console.log('⚡ Initializing Procrastination Breaker...');
+                            window.initializeProcrastinationBreaker();
                         } else if (path.includes('focus-timer') && window.initializeFocusTimer) {
                             console.log('🧠 Initializing Focus Session Timer...');
                             window.initializeFocusTimer();
