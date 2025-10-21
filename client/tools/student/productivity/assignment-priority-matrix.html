@@ -3,198 +3,1518 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Assignment Priority Matrix - Student Tools</title>
+    
+    <!-- Enhanced SEO Meta Tags -->
+    <title>Assignment Priority Matrix - FREE Student Task Prioritization & Time Management Tool</title>
+    <meta name="description" content="FREE Assignment Priority Matrix for students to prioritize tasks using the Eisenhower Matrix (urgent vs important). Organize assignments, manage deadlines, and boost academic productivity with smart task categorization.">
+    <meta name="keywords" content="assignment priority matrix, Eisenhower matrix, task prioritization, student productivity, time management, urgent important matrix, deadline management, academic planning, task organization, student success">
+    <meta name="author" content="ScribbleTools">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://scribbletools.com/client/tools/student/productivity/assignment-priority-matrix.html">
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://scribbletools.com/client/tools/student/productivity/assignment-priority-matrix.html">
+    <meta property="og:title" content="Assignment Priority Matrix - FREE Student Task Prioritization Tool">
+    <meta property="og:description" content="FREE Assignment Priority Matrix for students to prioritize tasks using the Eisenhower Matrix. Organize assignments, manage deadlines, and boost academic productivity.">
+    <meta property="og:image" content="https://scribbletools.com/assets/og-image.svg">
+    <meta property="og:site_name" content="ScribbleTools">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://scribbletools.com/client/tools/student/productivity/assignment-priority-matrix.html">
+    <meta name="twitter:title" content="Assignment Priority Matrix - Student Task Prioritization Tool">
+    <meta name="twitter:description" content="Prioritize assignments using the proven Eisenhower Matrix method. Perfect for students managing multiple deadlines and academic tasks.">
+    <meta name="twitter:image" content="https://scribbletools.com/assets/og-image.svg">
+    
+    <!-- Technical SEO -->
+    <meta name="theme-color" content="#667eea">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Assignment Priority Matrix - Student Task Prioritization Tool",
+        "description": "Free online assignment priority matrix for students to prioritize tasks using the Eisenhower Matrix method, organize assignments, and manage academic deadlines effectively.",
+        "url": "https://scribbletools.com/client/tools/student/productivity/assignment-priority-matrix.html",
+        "applicationCategory": "ProductivityApplication",
+        "operatingSystem": "Any",
+        "permissions": "browser",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "featureList": [
+            "Eisenhower Matrix Implementation (Urgent vs Important)",
+            "Four-Quadrant Task Categorization",
+            "Assignment Deadline Tracking",
+            "Priority Level Assignment",
+            "Task Progress Monitoring",
+            "Academic Productivity Analytics",
+            "Time Management Optimization",
+            "Visual Task Organization",
+            "Study Schedule Integration",
+            "Academic Success Planning",
+            "Deadline Alert System",
+            "Task Completion Tracking"
+        ],
+        "audience": {
+            "@type": "EducationalAudience",
+            "educationalRole": "student"
+        },
+        "creator": {
+            "@type": "Organization",
+            "name": "ScribbleTools",
+            "url": "https://scribbletools.com"
+        },
+        "datePublished": "2024-01-01",
+        "dateModified": "2024-12-01",
+        "inLanguage": "en",
+        "isAccessibleForFree": true,
+        "educationalUse": "Task prioritization and time management",
+        "learningResourceType": "Interactive Tool",
+        "typicalAgeRange": "16-30"
+    }
+    </script>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Caveat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        /* Assignment Priority Matrix Specific Styles - All prefixed with 'matrix-' to avoid conflicts */
+        .matrix-root,
+        .matrix-main-container,
+        .matrix-body,
+        body.matrix-body,
+        html {
+            --matrix-font-primary: 'Poppins', sans-serif !important;
+            
+            /* Enhanced Color Palette */
+            --matrix-color-primary: #667eea !important;
+            --matrix-color-primary-dark: #5a6fd8 !important;
+            --matrix-color-secondary: #764ba2 !important;
+            --matrix-color-accent: #f39c12 !important;
+            --matrix-color-success: #28a745 !important;
+            --matrix-color-danger: #dc3545 !important;
+            --matrix-color-info: #17a2b8 !important;
+            
+            /* Background & Surface Colors */
+            --matrix-color-background: #f5f7fa !important;
+            --matrix-color-surface: #ffffff !important;
+            --matrix-color-surface-alt: #f8f9fa !important;
+            
+            /* Text Colors */
+            --matrix-color-text-primary: #2c3e50 !important;
+            --matrix-color-text-secondary: #6c757d !important;
+            --matrix-color-text-on-primary: #ffffff !important;
+            
+            /* Border & Shadow */
+            --matrix-color-border: #e9ecef !important;
+            --matrix-shadow-sm: 0 2px 4px rgba(0,0,0,0.08) !important;
+            --matrix-shadow-md: 0 4px 12px rgba(0,0,0,0.15) !important;
+            --matrix-shadow-lg: 0 8px 32px rgba(0,0,0,0.18) !important;
         }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+
+        .matrix-body { 
+            font-family: var(--matrix-font-primary); 
+            background: var(--matrix-color-background); 
+            color: var(--matrix-color-text-primary); 
+            margin: 0; 
+            padding: 20px; 
+            line-height: 1.7;
             min-height: 100vh;
-            padding: 20px;
+            scroll-behavior: smooth;
+        }
+
+        .matrix-main-container {
+            max-width: 1200px !important;
+            margin: 0 auto !important;
+            background: var(--matrix-color-surface) !important;
+            border-radius: 15px !important;
+            box-shadow: var(--matrix-shadow-lg) !important;
+            overflow: hidden !important;
+            border: 1px solid var(--matrix-color-border) !important;
+            position: relative !important;
         }
         
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
+        .matrix-header {
+            background: linear-gradient(135deg, var(--matrix-color-primary) 0%, var(--matrix-color-secondary) 100%) !important;
+            color: var(--matrix-color-text-on-primary) !important;
+            padding: 30px !important;
+            text-align: center !important;
+        }
+        
+        .matrix-header h1 {
+            font-size: 2.5rem !important;
+            margin-bottom: 15px !important;
+            font-weight: 700 !important;
+            color: var(--matrix-color-text-on-primary) !important;
+        }
+        
+        .matrix-header p {
+            font-size: 1.1rem !important;
+            opacity: 0.9 !important;
+            color: var(--matrix-color-text-on-primary) !important;
+        }
+
+        .matrix-content {
+            padding: 30px 40px !important;
+            background: var(--matrix-color-surface) !important;
+        }
+
+        /* Form Section */
+        .matrix-form-section {
+            border-radius: 10px !important;
+            padding: 25px !important;
+            margin-bottom: 30px !important;
+            border: 1px solid var(--matrix-color-border) !important;
+            background: var(--matrix-color-surface) !important;
+        }
+        
+        .matrix-form-title {
+            font-size: 1.5rem !important;
+            color: var(--matrix-color-text-primary) !important;
+            margin-bottom: 20px !important;
+            font-weight: 600 !important;
+            display: flex !important;
+            align-items: center !important;
+        }
+        
+        .matrix-form-title::before {
+            content: "📋" !important;
+            margin-right: 10px !important;
+            font-size: 1.8rem !important;
+        }
+        
+        .matrix-form-grid {
+            display: grid !important;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important;
+            gap: 20px !important;
+            margin-bottom: 20px !important;
+        }
+        
+        .matrix-form-group {
+            display: flex !important;
+            flex-direction: column !important;
+        }
+        
+        .matrix-form-group label {
+            font-weight: 600 !important;
+            color: var(--matrix-color-text-secondary) !important;
+            margin-bottom: 8px !important;
+            font-size: 0.95rem !important;
+        }
+        
+        .matrix-form-group input, 
+        .matrix-form-group select,
+        .matrix-form-group textarea {
+            padding: 12px 15px !important;
+            border: 2px solid var(--matrix-color-border) !important;
+            border-radius: 10px !important;
+            font-size: 1rem !important;
+            transition: all 0.3s ease !important;
+            background: var(--matrix-color-surface) !important;
+        }
+        
+        .matrix-form-group input:focus, 
+        .matrix-form-group select:focus,
+        .matrix-form-group textarea:focus {
+            outline: none !important;
+            border-color: var(--matrix-color-primary) !important;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1) !important;
+        }
+        
+        .matrix-form-group textarea {
+            min-height: 100px !important;
+            resize: vertical !important;
+        }
+        
+        .matrix-btn-container {
+            display: flex !important;
+            gap: 15px !important;
+            flex-wrap: wrap !important;
+        }
+        
+        .matrix-btn {
+            padding: 12px 25px !important;
+            border: none !important;
+            border-radius: 10px !important;
+            font-size: 1rem !important;
+            font-weight: 600 !important;
+            cursor: pointer !important;
+            transition: all 0.3s ease !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            gap: 8px !important;
+        }
+        
+        .matrix-btn-primary {
+            background: linear-gradient(135deg, var(--matrix-color-primary) 0%, var(--matrix-color-secondary) 100%) !important;
+            color: var(--matrix-color-text-on-primary) !important;
+            box-shadow: var(--matrix-shadow-md) !important;
+        }
+        
+        .matrix-btn-primary:hover {
+            transform: translateY(-2px) !important;
+            box-shadow: var(--matrix-shadow-lg) !important;
+        }
+        
+        .matrix-btn-secondary {
+            background: var(--matrix-color-surface) !important;
+            color: var(--matrix-color-primary) !important;
+            border: 2px solid var(--matrix-color-primary) !important;
+        }
+        
+        .matrix-btn-secondary:hover {
+            background: var(--matrix-color-surface-alt) !important;
+        }
+
+        /* Priority Matrix */
+        .priority-matrix {
+            margin-bottom: 30px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--matrix-shadow-md);
+        }
+        
+        .matrix-header-row {
+            display: grid;
+            grid-template-columns: 150px repeat(2, 1fr);
+            background: var(--matrix-color-surface-alt);
+        }
+        
+        .matrix-header-cell {
+            padding: 15px;
+            font-weight: 600;
+            text-align: center;
+            border: 1px solid var(--matrix-color-border);
+        }
+        
+        .matrix-grid {
+            display: grid;
+            grid-template-columns: 150px repeat(2, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+        }
+        
+        .matrix-cell {
+            min-height: 200px;
+            padding: 15px;
+            border: 1px solid var(--matrix-color-border);
+            position: relative;
+        }
+        
+        .matrix-label {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 5px 10px;
+            border-radius: 15px;
+            z-index: 1;
+        }
+        
+        .matrix-quadrant-1 {
+            background-color: rgba(220, 53, 69, 0.1);
+            border-color: rgba(220, 53, 69, 0.3);
+        }
+        
+        .matrix-quadrant-2 {
+            background-color: rgba(243, 156, 18, 0.1);
+            border-color: rgba(243, 156, 18, 0.3);
+        }
+        
+        .matrix-quadrant-3 {
+            background-color: rgba(40, 167, 69, 0.1);
+            border-color: rgba(40, 167, 69, 0.3);
+        }
+        
+        .matrix-quadrant-4 {
+            background-color: rgba(23, 162, 184, 0.1);
+            border-color: rgba(23, 162, 184, 0.3);
+        }
+        
+        .matrix-assignments {
+            margin-top: 30px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .matrix-assignment {
             background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            padding: 10px;
+            margin-bottom: 8px;
+            box-shadow: var(--matrix-shadow-sm);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        .matrix-assignment:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--matrix-shadow-md);
+        }
+        
+        .matrix-assignment-title {
+            font-weight: 600;
+            flex-grow: 1;
+        }
+        
+        .matrix-assignment-course {
+            font-size: 0.85rem;
+            color: var(--matrix-color-text-secondary);
+            margin-right: 10px;
+        }
+        
+        .matrix-assignment-date {
+            font-size: 0.85rem;
+            color: var(--matrix-color-text-secondary);
+            margin-right: 10px;
+        }
+        
+        .matrix-assignment-actions {
+            display: flex;
+            gap: 5px;
+        }
+        
+        .matrix-assignment-btn {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+        
+        .edit-btn {
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+        }
+        
+        .edit-btn:hover {
+            background: rgba(102, 126, 234, 0.2);
+        }
+        
+        .delete-btn {
+            background: rgba(220, 53, 69, 0.1);
+            color: #dc3545;
+        }
+        
+        .delete-btn:hover {
+            background: rgba(220, 53, 69, 0.2);
+        }
+        
+        .complete-btn {
+            background: rgba(40, 167, 69, 0.1);
+            color: #28a745;
+        }
+        
+        .complete-btn:hover {
+            background: rgba(40, 167, 69, 0.2);
+        }
+
+        /* Summary Section */
+        .matrix-summary-section {
+            background: linear-gradient(135deg, var(--matrix-color-primary) 0%, var(--matrix-color-secondary) 100%) !important;
+            color: var(--matrix-color-text-on-primary) !important;
+            border-radius: 15px !important;
+            padding: 25px !important;
+            margin-bottom: 30px !important;
+            box-shadow: var(--matrix-shadow-lg) !important;
+            display: flex !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+            flex-wrap: wrap !important;
+            gap: 20px !important;
+        }
+        
+        .matrix-summary-item {
+            text-align: center !important;
+        }
+        
+        .matrix-summary-value {
+            font-size: 2.5rem !important;
+            font-weight: 700 !important;
+            color: var(--matrix-color-text-on-primary) !important;
+            margin-bottom: 5px !important;
+        }
+        
+        .matrix-summary-label {
+            font-size: 0.9rem !important;
+            opacity: 0.9 !important;
+            color: var(--matrix-color-text-on-primary) !important;
+            text-transform: uppercase !important;
+            letter-spacing: 1px !important;
+        }
+
+        /* Assignment List */
+        .assignment-list {
+            margin-bottom: 30px;
+        }
+        
+        .list-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .list-title {
+            font-size: 1.5rem;
+            color: #333;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+        }
+        
+        .list-title::before {
+            content: "📝";
+            margin-right: 10px;
+            font-size: 1.8rem;
+        }
+        
+        .assignment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .assignment-card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            border: 1px solid #e9ecef;
+            transition: all 0.3s ease;
+            position: relative;
             overflow: hidden;
         }
         
-        .header {
-            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
-            color: white;
-            padding: 30px;
-            text-align: center;
+        .assignment-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
         }
         
-        .header h1 {
-            font-size: 2.5rem;
+        .assignment-card.quadrant-1::before {
+            background: #dc3545;
+        }
+        
+        .assignment-card.quadrant-2::before {
+            background: #f39c12;
+        }
+        
+        .assignment-card.quadrant-3::before {
+            background: #28a745;
+        }
+        
+        .assignment-card.quadrant-4::before {
+            background: #17a2b8;
+        }
+        
+        .assignment-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .assignment-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #333;
             margin-bottom: 10px;
-            font-weight: 700;
+            padding-right: 30px;
         }
         
-        .header p {
-            font-size: 1.1rem;
-            opacity: 0.9;
+        .assignment-info {
+            margin-bottom: 15px;
         }
         
-        .content {
-            padding: 40px;
+        .assignment-info-item {
+            display: flex;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+            color: #666;
         }
         
-        .coming-soon {
+        .assignment-info-label {
+            font-weight: 600;
+            width: 80px;
+            flex-shrink: 0;
+        }
+        
+        .assignment-priority {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+        
+        .priority-urgent {
+            background: rgba(220, 53, 69, 0.1);
+            color: #dc3545;
+        }
+        
+        .priority-high {
+            background: rgba(243, 156, 18, 0.1);
+            color: #f39c12;
+        }
+        
+        .priority-medium {
+            background: rgba(40, 167, 69, 0.1);
+            color: #28a745;
+        }
+        
+        .priority-low {
+            background: rgba(23, 162, 184, 0.1);
+            color: #17a2b8;
+        }
+        
+        .assignment-actions {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            display: flex;
+            gap: 5px;
+        }
+        
+        .empty-state {
             text-align: center;
             padding: 60px 20px;
-        }
-        
-        .coming-soon-icon {
-            font-size: 5rem;
-            margin-bottom: 30px;
-            color: #fcb69f;
-        }
-        
-        .coming-soon h2 {
-            font-size: 2.5rem;
-            color: #333;
-            margin-bottom: 20px;
-            font-weight: 600;
-        }
-        
-        .coming-soon p {
-            font-size: 1.2rem;
             color: #666;
-            line-height: 1.6;
-            max-width: 600px;
-            margin: 0 auto 30px;
         }
         
-        .features-preview {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 40px;
+        .empty-state-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            opacity: 0.5;
         }
         
-        .feature-card {
-            background: #f8f9fa;
-            padding: 25px;
+        .empty-state h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #555;
+        }
+        
+        .empty-state p {
+            font-size: 1rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        /* Notification */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: white;
+            padding: 20px 30px;
             border-radius: 15px;
-            text-align: center;
-            border: 2px solid #e9ecef;
-            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            z-index: 1000;
+            transform: translateX(400px);
+            transition: transform 0.5s ease;
+            border-left: 5px solid #667eea;
+            max-width: 350px;
         }
         
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            border-color: #fcb69f;
+        .notification.show {
+            transform: translateX(0);
         }
         
-        .feature-icon {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            color: #fcb69f;
-        }
-        
-        .feature-card h3 {
-            font-size: 1.3rem;
+        .notification h3 {
             color: #333;
             margin-bottom: 10px;
+            font-size: 1.3rem;
         }
         
-        .feature-card p {
+        .notification p {
             color: #666;
-            line-height: 1.5;
+            margin-bottom: 15px;
         }
         
-        .notify-btn {
-            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+        .notification button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             border: none;
-            padding: 15px 30px;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: 600;
+            padding: 8px 20px;
+            border-radius: 20px;
             cursor: pointer;
+            font-weight: 600;
             transition: all 0.3s ease;
-            margin-top: 20px;
         }
         
-        .notify-btn:hover {
+        .notification button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(252, 182, 159, 0.3);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
         }
         
+        /* Edit Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal.show {
+            display: flex;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            animation: modalFadeIn 0.3s ease;
+        }
+        
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .modal-title {
+            font-size: 1.5rem;
+            color: #333;
+            font-weight: 600;
+        }
+        
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #999;
+            transition: color 0.3s;
+        }
+        
+        .modal-close:hover {
+            color: #333;
+        }
+        
+        .modal-body {
+            margin-bottom: 20px;
+        }
+        
+        .modal-footer {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+        
+        /* Responsive Design */
         @media (max-width: 768px) {
             .header h1 {
-                font-size: 2rem;
-            }
-            
-            .coming-soon h2 {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
             
             .content {
                 padding: 20px;
             }
             
-            .features-preview {
+            .form-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            .summary-section {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .matrix-grid {
+                grid-template-columns: 100px repeat(2, 1fr);
+            }
+            
+            .assignment-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .modal-content {
+                width: 95%;
+                padding: 20px;
             }
         }
     </style>
 </head>
-<body>
-    <div class="container">
-        <div class="header">
+<body class="matrix-body">
+    <div class="matrix-main-container">
+        <div class="matrix-header">
             <h1>📋 Assignment Priority Matrix</h1>
-            <p>Eisenhower matrix for academic tasks - organize by urgency and importance</p>
+            <p>Organize your assignments by urgency and importance to prioritize effectively</p>
         </div>
         
-        <div class="content">
-            <div class="coming-soon">
-                <div class="coming-soon-icon">🚀</div>
-                <h2>Coming Soon!</h2>
-                <p>We're developing a powerful priority matrix tool based on the Eisenhower method, helping you categorize assignments by urgency and importance to focus on what matters most for your academic success!</p>
+        <div class="matrix-content">
+            <!-- SEO Content Section -->
+            <div class="matrix-form-section" style="margin-bottom: 25px;">
+                <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; border-radius: 10px; margin-bottom: 20px;">
+                    <h2 style="color: white; margin-top: 0;">📋 How to Use the Assignment Priority Matrix</h2>
+                    <p style="margin-bottom: 0; color: white;">Organize your assignments using the proven Eisenhower Matrix method. Categorize tasks by urgency and importance to focus on what matters most and improve your academic productivity.</p>
+                </div>
                 
-                <div class="features-preview">
-                    <div class="feature-card">
-                        <div class="feature-icon">📊</div>
-                        <h3>Eisenhower Matrix</h3>
-                        <p>Classic 2x2 matrix for urgent/important task categorization</p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 20px;">
+                    <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #667eea;">
+                        <h3 style="color: #2c3e50; margin-top: 0;">🎯 Prioritization Benefits</h3>
+                        <ul style="margin-bottom: 0; color: #6c757d;">
+                            <li>Better time management and focus</li>
+                            <li>Reduced academic stress and overwhelm</li>
+                            <li>Improved assignment completion rates</li>
+                            <li>Strategic approach to deadline management</li>
+                        </ul>
                     </div>
-                    
-                    <div class="feature-card">
-                        <div class="feature-icon">🎯</div>
-                        <h3>Smart Categorization</h3>
-                        <p>Automatically suggest priority levels based on deadlines and grades</p>
-                    </div>
-                    
-                    <div class="feature-card">
-                        <div class="feature-icon">🔄</div>
-                        <h3>Dynamic Updates</h3>
-                        <p>Priorities automatically adjust as deadlines approach</p>
-                    </div>
-                    
-                    <div class="feature-card">
-                        <div class="feature-icon">📈</div>
-                        <h3>Focus Recommendations</h3>
-                        <p>Get daily recommendations on which tasks to tackle first</p>
+                    <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #28a745;">
+                        <h3 style="color: #2c3e50; margin-top: 0;">📊 Matrix Categories</h3>
+                        <ul style="margin-bottom: 0; color: #6c757d;">
+                            <li><strong>Do First:</strong> Urgent + Important</li>
+                            <li><strong>Schedule:</strong> Important + Not Urgent</li>
+                            <li><strong>Delegate:</strong> Urgent + Not Important</li>
+                            <li><strong>Eliminate:</strong> Neither Urgent nor Important</li>
+                        </ul>
                     </div>
                 </div>
                 
-                <button class="notify-btn" onclick="alert('We\'ll notify you when this tool is ready!')">
-                    Notify Me When Ready
-                </button>
+                <div style="background: #e8f5e8; padding: 15px; border-radius: 8px; margin-bottom: 15px;">
+                    <h3 style="color: #2c3e50; margin-top: 0;">💡 Student Success Tips</h3>
+                    <p style="margin-bottom: 0; color: #6c757d;"><strong>Eisenhower Method:</strong> Focus on important tasks first. Urgent doesn't always mean important. <strong>Strategic Planning:</strong> Regularly review and adjust your matrix to stay on top of changing priorities and new assignments.</p>
+                </div>
+            </div>
+            
+            <!-- Add Assignment Form -->
+            <div class="matrix-form-section">
+                <h2 class="matrix-form-title">Add New Assignment</h2>
+                <form id="assignmentForm">
+                    <div class="matrix-form-grid">
+                        <div class="matrix-form-group">
+                            <label for="assignmentTitle">Assignment Title</label>
+                            <input type="text" id="assignmentTitle" required placeholder="e.g., Research Paper">
+                        </div>
+                        <div class="matrix-form-group">
+                            <label for="course">Course</label>
+                            <input type="text" id="course" required placeholder="e.g., Biology 101">
+                        </div>
+                        <div class="matrix-form-group">
+                            <label for="dueDate">Due Date</label>
+                            <input type="date" id="dueDate" required>
+                        </div>
+                        <div class="matrix-form-group">
+                            <label for="estimatedTime">Estimated Time (hours)</label>
+                            <input type="number" id="estimatedTime" min="0.5" step="0.5" required placeholder="e.g., 5">
+                        </div>
+                    </div>
+                    
+                    <div class="matrix-form-grid">
+                        <div class="matrix-form-group">
+                            <label for="urgency">Urgency (1-5)</label>
+                            <select id="urgency" required>
+                                <option value="">Select urgency</option>
+                                <option value="1">1 - Not Urgent</option>
+                                <option value="2">2 - Slightly Urgent</option>
+                                <option value="3">3 - Moderately Urgent</option>
+                                <option value="4">4 - Very Urgent</option>
+                                <option value="5">5 - Extremely Urgent</option>
+                            </select>
+                        </div>
+                        <div class="matrix-form-group">
+                            <label for="importance">Importance (1-5)</label>
+                            <select id="importance" required>
+                                <option value="">Select importance</option>
+                                <option value="1">1 - Not Important</option>
+                                <option value="2">2 - Slightly Important</option>
+                                <option value="3">3 - Moderately Important</option>
+                                <option value="4">4 - Very Important</option>
+                                <option value="5">5 - Extremely Important</option>
+                            </select>
+                        </div>
+                        <div class="matrix-form-group">
+                            <label for="assignmentType">Type</label>
+                            <select id="assignmentType" required>
+                                <option value="">Select type</option>
+                                <option value="essay">Essay</option>
+                                <option value="project">Project</option>
+                                <option value="exam">Exam</option>
+                                <option value="presentation">Presentation</option>
+                                <option value="reading">Reading</option>
+                                <option value="lab">Lab Report</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="matrix-form-group">
+                            <label for="completion">Completion (%)</label>
+                            <input type="number" id="completion" min="0" max="100" value="0" required>
+                        </div>
+                    </div>
+                    
+                    <div class="matrix-form-group">
+                        <label for="description">Description</label>
+                        <textarea id="description" rows="3" placeholder="Brief description of the assignment..."></textarea>
+                    </div>
+                    
+                    <div class="matrix-btn-container">
+                        <button type="submit" class="matrix-btn matrix-btn-primary">
+                            <span>➕</span> Add Assignment
+                        </button>
+                        <button type="button" class="matrix-btn matrix-btn-secondary" onclick="clearForm()">
+                            <span>🗑️</span> Clear Form
+                        </button>
+                    </div>
+                </form>
+            </div>
+            
+            <!-- Summary Section -->
+            <div class="matrix-summary-section">
+                <div class="matrix-summary-item">
+                    <div class="matrix-summary-value" id="totalAssignments">0</div>
+                    <div class="matrix-summary-label">Total Assignments</div>
+                </div>
+                <div class="matrix-summary-item">
+                    <div class="matrix-summary-value" id="urgentImportant">0</div>
+                    <div class="matrix-summary-label">Urgent & Important</div>
+                </div>
+                <div class="matrix-summary-item">
+                    <div class="matrix-summary-value" id="avgTime">0</div>
+                    <div class="matrix-summary-label">Avg Time (hrs)</div>
+                </div>
+                <div class="matrix-summary-item">
+                    <div class="matrix-summary-value" id="upcomingDeadlines">0</div>
+                    <div class="matrix-summary-label">Due This Week</div>
+                </div>
+            </div>
+            
+            <!-- Priority Matrix -->
+            <div class="priority-matrix">
+                <div class="matrix-header-row">
+                    <div class="matrix-header-cell"></div>
+                    <div class="matrix-header-cell">Low Importance</div>
+                    <div class="matrix-header-cell">High Importance</div>
+                </div>
+                <div class="matrix-grid">
+                    <div class="matrix-cell matrix-quadrant-4">
+                        <div class="matrix-label">Low Urgency</div>
+                        <div class="matrix-assignments" id="quadrant4">
+                            <!-- Assignments will be added here -->
+                        </div>
+                    </div>
+                    <div class="matrix-cell matrix-quadrant-3">
+                        <div class="matrix-label">Low Urgency</div>
+                        <div class="matrix-assignments" id="quadrant3">
+                            <!-- Assignments will be added here -->
+                        </div>
+                    </div>
+                    <div class="matrix-cell matrix-quadrant-2">
+                        <div class="matrix-label">High Urgency</div>
+                        <div class="matrix-assignments" id="quadrant2">
+                            <!-- Assignments will be added here -->
+                        </div>
+                    </div>
+                    <div class="matrix-cell matrix-quadrant-1">
+                        <div class="matrix-label">High Urgency</div>
+                        <div class="matrix-assignments" id="quadrant1">
+                            <!-- Assignments will be added here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Assignment List -->
+            <div class="assignment-list">
+                <div class="list-header">
+                    <h2 class="list-title">All Assignments</h2>
+                    <div class="btn-container">
+                        <button class="matrix-btn matrix-btn-secondary" onclick="exportToCSV()">
+                            <span>📤</span> Export CSV
+                        </button>
+                        <button class="matrix-btn matrix-btn-secondary" onclick="clearAllAssignments()">
+                            <span>🗑️</span> Clear All
+                        </button>
+                    </div>
+                </div>
+                
+                <div id="assignmentContainer">
+                    <div class="empty-state">
+                        <div class="empty-state-icon">📋</div>
+                        <h3>No Assignments Added Yet</h3>
+                        <p>Add your first assignment using the form above to start prioritizing your tasks.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+    
+    <!-- Edit Modal -->
+    <div class="modal" id="editModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Edit Assignment</h3>
+                <button class="modal-close" onclick="closeEditModal()">✕</button>
+            </div>
+            <div class="modal-body">
+                <form id="editForm">
+                    <div class="matrix-form-grid">
+                        <div class="matrix-form-group">
+                            <label for="editAssignmentTitle">Assignment Title</label>
+                            <input type="text" id="editAssignmentTitle" required>
+                        </div>
+                        <div class="matrix-form-group">
+                            <label for="editCourse">Course</label>
+                            <input type="text" id="editCourse" required>
+                        </div>
+                        <div class="matrix-form-group">
+                            <label for="editDueDate">Due Date</label>
+                            <input type="date" id="editDueDate" required>
+                        </div>
+                        <div class="matrix-form-group">
+                            <label for="editEstimatedTime">Estimated Time (hours)</label>
+                            <input type="number" id="editEstimatedTime" min="0.5" step="0.5" required>
+                        </div>
+                    </div>
+                    
+                    <div class="matrix-form-grid">
+                        <div class="matrix-form-group">
+                            <label for="editUrgency">Urgency (1-5)</label>
+                            <select id="editUrgency" required>
+                                <option value="1">1 - Not Urgent</option>
+                                <option value="2">2 - Slightly Urgent</option>
+                                <option value="3">3 - Moderately Urgent</option>
+                                <option value="4">4 - Very Urgent</option>
+                                <option value="5">5 - Extremely Urgent</option>
+                            </select>
+                        </div>
+                        <div class="matrix-form-group">
+                            <label for="editImportance">Importance (1-5)</label>
+                            <select id="editImportance" required>
+                                <option value="1">1 - Not Important</option>
+                                <option value="2">2 - Slightly Important</option>
+                                <option value="3">3 - Moderately Important</option>
+                                <option value="4">4 - Very Important</option>
+                                <option value="5">5 - Extremely Important</option>
+                            </select>
+                        </div>
+                        <div class="matrix-form-group">
+                            <label for="editAssignmentType">Type</label>
+                            <select id="editAssignmentType" required>
+                                <option value="essay">Essay</option>
+                                <option value="project">Project</option>
+                                <option value="exam">Exam</option>
+                                <option value="presentation">Presentation</option>
+                                <option value="reading">Reading</option>
+                                <option value="lab">Lab Report</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="matrix-form-group">
+                            <label for="editCompletion">Completion (%)</label>
+                            <input type="number" id="editCompletion" min="0" max="100" required>
+                        </div>
+                    </div>
+                    
+                    <div class="matrix-form-group">
+                        <label for="editDescription">Description</label>
+                        <textarea id="editDescription" rows="3"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="matrix-btn matrix-btn-secondary" onclick="closeEditModal()">Cancel</button>
+                <button class="matrix-btn matrix-btn-primary" onclick="saveEdit()">Save Changes</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Notification -->
+    <div class="notification" id="notification">
+        <h3 id="notificationTitle">Success!</h3>
+        <p id="notificationMessage">Assignment added successfully.</p>
+        <button onclick="closeNotification()">Got it!</button>
+    </div>
+    
+    <script>
+        let assignments = [];
+        let editingIndex = -1;
+        
+        // Set today's date as default
+        document.getElementById('dueDate').valueAsDate = new Date();
+        
+        // Load assignments from localStorage on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            loadAssignments();
+        });
+        
+        // Form submission
+        document.getElementById('assignmentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            addAssignment();
+        });
+        
+        function addAssignment() {
+            const assignmentTitle = document.getElementById('assignmentTitle').value;
+            const course = document.getElementById('course').value;
+            const dueDate = document.getElementById('dueDate').value;
+            const estimatedTime = parseFloat(document.getElementById('estimatedTime').value);
+            const urgency = parseInt(document.getElementById('urgency').value);
+            const importance = parseInt(document.getElementById('importance').value);
+            const assignmentType = document.getElementById('assignmentType').value;
+            const completion = parseInt(document.getElementById('completion').value);
+            const description = document.getElementById('description').value;
+            
+            // Determine quadrant based on urgency and importance
+            let quadrant = 1; // Default to quadrant 1 (urgent & important)
+            
+            if (urgency >= 4 && importance >= 4) {
+                quadrant = 1; // Urgent & Important
+            } else if (urgency >= 4 && importance < 4) {
+                quadrant = 2; // Urgent & Not Important
+            } else if (urgency < 4 && importance >= 4) {
+                quadrant = 3; // Not Urgent & Important
+            } else {
+                quadrant = 4; // Not Urgent & Not Important
+            }
+            
+            const assignment = {
+                id: Date.now(),
+                assignmentTitle,
+                course,
+                dueDate,
+                estimatedTime,
+                urgency,
+                importance,
+                assignmentType,
+                completion,
+                description,
+                quadrant,
+                createdAt: new Date().toISOString()
+            };
+            
+            assignments.push(assignment);
+            saveAssignments();
+            renderAssignments();
+            updateMatrix();
+            updateSummary();
+            clearForm();
+            showNotification('Success!', 'Assignment added successfully.');
+        }
+        
+        function clearForm() {
+            document.getElementById('assignmentForm').reset();
+            document.getElementById('dueDate').valueAsDate = new Date();
+            document.getElementById('completion').value = 0;
+        }
+        
+        function renderAssignments() {
+            const container = document.getElementById('assignmentContainer');
+            
+            if (assignments.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-state-icon">📋</div>
+                        <h3>No Assignments Added Yet</h3>
+                        <p>Add your first assignment using the form above to start prioritizing your tasks.</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            const grid = document.createElement('div');
+            grid.className = 'assignment-grid';
+            
+            // Sort assignments by due date (closest first)
+            const sortedAssignments = [...assignments].sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate));
+            
+            sortedAssignments.forEach((assignment, index) => {
+                const originalIndex = assignments.findIndex(a => a.id === assignment.id);
+                const card = document.createElement('div');
+                card.className = `assignment-card quadrant-${assignment.quadrant}`;
+                
+                // Determine priority text
+                let priorityText = '';
+                let priorityClass = '';
+                
+                if (assignment.quadrant === 1) {
+                    priorityText = 'Do First';
+                    priorityClass = 'priority-urgent';
+                } else if (assignment.quadrant === 2) {
+                    priorityText = 'Delegate';
+                    priorityClass = 'priority-high';
+                } else if (assignment.quadrant === 3) {
+                    priorityText = 'Schedule';
+                    priorityClass = 'priority-medium';
+                } else {
+                    priorityText = 'Eliminate';
+                    priorityClass = 'priority-low';
+                }
+                
+                // Calculate days until due
+                const today = new Date();
+                today.setHours(0, 0, 0, 0);
+                const dueDate = new Date(assignment.dueDate);
+                const diffTime = dueDate - today;
+                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                
+                let dueText = '';
+                if (diffDays < 0) {
+                    dueText = `Overdue by ${Math.abs(diffDays)} day${Math.abs(diffDays) !== 1 ? 's' : ''}`;
+                } else if (diffDays === 0) {
+                    dueText = 'Due today';
+                } else if (diffDays === 1) {
+                    dueText = 'Due tomorrow';
+                } else {
+                    dueText = `Due in ${diffDays} days`;
+                }
+                
+                card.innerHTML = `
+                    <div class="assignment-actions">
+                        <button class="action-btn edit-btn" onclick="editAssignment(${originalIndex})" title="Edit">✏️</button>
+                        <button class="action-btn delete-btn" onclick="deleteAssignment(${originalIndex})" title="Delete">🗑️</button>
+                    </div>
+                    <h3 class="assignment-title">${assignment.assignmentTitle}</h3>
+                    <div class="assignment-info">
+                        <div class="assignment-info-item">
+                            <span class="assignment-info-label">Course:</span>
+                            <span>${assignment.course}</span>
+                        </div>
+                        <div class="assignment-info-item">
+                            <span class="assignment-info-label">Type:</span>
+                            <span>${assignment.assignmentType.charAt(0).toUpperCase() + assignment.assignmentType.slice(1)}</span>
+                        </div>
+                        <div class="assignment-info-item">
+                            <span class="assignment-info-label">Due:</span>
+                            <span>${dueText}</span>
+                        </div>
+                        <div class="assignment-info-item">
+                            <span class="assignment-info-label">Time:</span>
+                            <span>${assignment.estimatedTime} hours</span>
+                        </div>
+                    </div>
+                    <div class="assignment-priority ${priorityClass}">${priorityText}</div>
+                `;
+                grid.appendChild(card);
+            });
+            
+            container.innerHTML = '';
+            container.appendChild(grid);
+        }
+        
+        function updateMatrix() {
+            // Clear all quadrants
+            document.getElementById('quadrant1').innerHTML = '';
+            document.getElementById('quadrant2').innerHTML = '';
+            document.getElementById('quadrant3').innerHTML = '';
+            document.getElementById('quadrant4').innerHTML = '';
+            
+            // Sort assignments by due date (closest first)
+            const sortedAssignments = [...assignments].sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate));
+            
+            // Add assignments to appropriate quadrants
+            sortedAssignments.forEach(assignment => {
+                const quadrantElement = document.getElementById(`quadrant${assignment.quadrant}`);
+                
+                const assignmentElement = document.createElement('div');
+                assignmentElement.className = 'matrix-assignment';
+                
+                // Calculate days until due
+                const today = new Date();
+                today.setHours(0, 0, 0, 0);
+                const dueDate = new Date(assignment.dueDate);
+                const diffTime = dueDate - today;
+                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                
+                let dueText = '';
+                if (diffDays < 0) {
+                    dueText = `Overdue by ${Math.abs(diffDays)} day${Math.abs(diffDays) !== 1 ? 's' : ''}`;
+                } else if (diffDays === 0) {
+                    dueText = 'Due today';
+                } else if (diffDays === 1) {
+                    dueText = 'Due tomorrow';
+                } else {
+                    dueText = `Due in ${diffDays} days`;
+                }
+                
+                assignmentElement.innerHTML = `
+                    <div class="matrix-assignment-title">${assignment.assignmentTitle}</div>
+                    <div class="matrix-assignment-course">${assignment.course}</div>
+                    <div class="matrix-assignment-date">${dueText}</div>
+                    <div class="matrix-assignment-actions">
+                        <button class="matrix-assignment-btn complete-btn" onclick="completeAssignment(${assignment.id})" title="Complete">✓</button>
+                        <button class="matrix-assignment-btn edit-btn" onclick="editAssignmentById(${assignment.id})" title="Edit">✏️</button>
+                        <button class="matrix-assignment-btn delete-btn" onclick="deleteAssignmentById(${assignment.id})" title="Delete">🗑️</button>
+                    </div>
+                `;
+                
+                quadrantElement.appendChild(assignmentElement);
+            });
+        }
+        
+        function updateSummary() {
+            const totalAssignments = assignments.length;
+            const urgentImportant = assignments.filter(a => a.quadrant === 1).length;
+            
+            // Calculate average time
+            const avgTime = totalAssignments > 0 
+                ? (assignments.reduce((sum, a) => sum + a.estimatedTime, 0) / totalAssignments).toFixed(1)
+                : 0;
+            
+            // Calculate assignments due this week
+            const today = new Date();
+            const nextWeek = new Date(today);
+            nextWeek.setDate(today.getDate() + 7);
+            
+            const upcomingDeadlines = assignments.filter(a => {
+                const dueDate = new Date(a.dueDate);
+                return dueDate >= today && dueDate <= nextWeek;
+            }).length;
+            
+            document.getElementById('totalAssignments').textContent = totalAssignments;
+            document.getElementById('urgentImportant').textContent = urgentImportant;
+            document.getElementById('avgTime').textContent = avgTime;
+            document.getElementById('upcomingDeadlines').textContent = upcomingDeadlines;
+        }
+        
+        function editAssignment(index) {
+            editingIndex = index;
+            const assignment = assignments[index];
+            
+            document.getElementById('editAssignmentTitle').value = assignment.assignmentTitle;
+            document.getElementById('editCourse').value = assignment.course;
+            document.getElementById('editDueDate').value = assignment.dueDate;
+            document.getElementById('editEstimatedTime').value = assignment.estimatedTime;
+            document.getElementById('editUrgency').value = assignment.urgency;
+            document.getElementById('editImportance').value = assignment.importance;
+            document.getElementById('editAssignmentType').value = assignment.assignmentType;
+            document.getElementById('editCompletion').value = assignment.completion;
+            document.getElementById('editDescription').value = assignment.description;
+            
+            document.getElementById('editModal').classList.add('show');
+        }
+        
+        function editAssignmentById(id) {
+            const index = assignments.findIndex(a => a.id === id);
+            if (index !== -1) {
+                editAssignment(index);
+            }
+        }
+        
+        function closeEditModal() {
+            document.getElementById('editModal').classList.remove('show');
+            editingIndex = -1;
+        }
+        
+        function saveEdit() {
+            if (editingIndex === -1) return;
+            
+            const assignmentTitle = document.getElementById('editAssignmentTitle').value;
+            const course = document.getElementById('editCourse').value;
+            const dueDate = document.getElementById('editDueDate').value;
+            const estimatedTime = parseFloat(document.getElementById('editEstimatedTime').value);
+            const urgency = parseInt(document.getElementById('editUrgency').value);
+            const importance = parseInt(document.getElementById('editImportance').value);
+            const assignmentType = document.getElementById('editAssignmentType').value;
+            const completion = parseInt(document.getElementById('editCompletion').value);
+            const description = document.getElementById('editDescription').value;
+            
+            // Determine quadrant based on urgency and importance
+            let quadrant = 1; // Default to quadrant 1 (urgent & important)
+            
+            if (urgency >= 4 && importance >= 4) {
+                quadrant = 1; // Urgent & Important
+            } else if (urgency >= 4 && importance < 4) {
+                quadrant = 2; // Urgent & Not Important
+            } else if (urgency < 4 && importance >= 4) {
+                quadrant = 3; // Not Urgent & Important
+            } else {
+                quadrant = 4; // Not Urgent & Not Important
+            }
+            
+            assignments[editingIndex] = {
+                ...assignments[editingIndex],
+                assignmentTitle,
+                course,
+                dueDate,
+                estimatedTime,
+                urgency,
+                importance,
+                assignmentType,
+                completion,
+                description,
+                quadrant
+            };
+            
+            saveAssignments();
+            renderAssignments();
+            updateMatrix();
+            updateSummary();
+            closeEditModal();
+            showNotification('Success!', 'Assignment updated successfully.');
+        }
+        
+        function deleteAssignment(index) {
+            if (confirm('Are you sure you want to delete this assignment?')) {
+                assignments.splice(index, 1);
+                saveAssignments();
+                renderAssignments();
+                updateMatrix();
+                updateSummary();
+                showNotification('Deleted', 'Assignment removed from your list.');
+            }
+        }
+        
+        function deleteAssignmentById(id) {
+            const index = assignments.findIndex(a => a.id === id);
+            if (index !== -1) {
+                deleteAssignment(index);
+            }
+        }
+        
+        function completeAssignment(id) {
+            const index = assignments.findIndex(a => a.id === id);
+            if (index !== -1) {
+                assignments[index].completion = 100;
+                saveAssignments();
+                renderAssignments();
+                updateMatrix();
+                showNotification('Completed!', 'Assignment marked as completed.');
+            }
+        }
+        
+        function clearAllAssignments() {
+            if (assignments.length === 0) {
+                showNotification('No Assignments', 'There are no assignments to clear.');
+                return;
+            }
+            
+            if (confirm('Are you sure you want to clear all assignments? This action cannot be undone.')) {
+                assignments = [];
+                saveAssignments();
+                renderAssignments();
+                updateMatrix();
+                updateSummary();
+                showNotification('Cleared', 'All assignments have been removed.');
+            }
+        }
+        
+        function exportToCSV() {
+            if (assignments.length === 0) {
+                showNotification('No Data', 'There are no assignments to export.');
+                return;
+            }
+            
+            let csv = 'Assignment Title,Course,Due Date,Estimated Time,Urgency,Importance,Type,Completion (%),Description\n';
+            
+            assignments.forEach(assignment => {
+                csv += `"${assignment.assignmentTitle}","${assignment.course}","${assignment.dueDate}",${assignment.estimatedTime},${assignment.urgency},${assignment.importance},"${assignment.assignmentType}",${assignment.completion},"${assignment.description}"\n`;
+            });
+            
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.setAttribute('hidden', '');
+            a.setAttribute('href', url);
+            a.setAttribute('download', `assignments_${new Date().toISOString().slice(0, 10)}.csv`);
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            
+            showNotification('Exported', 'Your assignments have been exported as CSV.');
+        }
+        
+        function saveAssignments() {
+            localStorage.setItem('priorityMatrixAssignments', JSON.stringify(assignments));
+        }
+        
+        function loadAssignments() {
+            const saved = localStorage.getItem('priorityMatrixAssignments');
+            if (saved) {
+                assignments = JSON.parse(saved);
+                renderAssignments();
+                updateMatrix();
+                updateSummary();
+            }
+        }
+        
+        function showNotification(title, message) {
+            const notification = document.getElementById('notification');
+            document.getElementById('notificationTitle').textContent = title;
+            document.getElementById('notificationMessage').textContent = message;
+            notification.classList.add('show');
+            
+            setTimeout(() => {
+                closeNotification();
+            }, 5000);
+        }
+        
+        function closeNotification() {
+            document.getElementById('notification').classList.remove('show');
+        }
+        
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('editModal');
+            if (event.target === modal) {
+                closeEditModal();
+            }
+        }
+
+        // Initialize Assignment Priority Matrix when DOM is ready
+        function initializeAssignmentPriorityMatrix() {
+            // Set tomorrow's date as default due date
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            document.getElementById('dueDate').valueAsDate = tomorrow;
+            
+            // Load existing assignments from localStorage
+            loadAssignments();
+            
+            console.log('Assignment Priority Matrix initialized successfully');
+        }
+
+        // Auto-initialize when page loads
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initializeAssignmentPriorityMatrix);
+        } else {
+            initializeAssignmentPriorityMatrix();
+        }
+    </script>
+
+    <script>
+        // Global initialization for main app integration
+        if (typeof window.initializeAssignmentPriorityMatrix === 'undefined') {
+            window.initializeAssignmentPriorityMatrix = initializeAssignmentPriorityMatrix;
+        }
+    </script>
 </body>
 </html>

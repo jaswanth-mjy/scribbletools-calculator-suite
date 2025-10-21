@@ -1,252 +1,505 @@
 <!DOCTYPE html>
-<html lang="en-GB">
+<html lang="en">
 <head>
-  <!-- Primary Meta Tags -->
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>UK Mortgage Calculator | Free British Property Loan Calculator - Repayment & Interest Only</title>
-  <meta name="title" content="UK Mortgage Calculator | Free British Property Loan Calculator - Repayment & Interest Only">
-  <meta name="description" content="Calculate UK mortgage payments for British properties. Free mortgage calculator supporting repayment & interest-only mortgages. Includes stamp duty, deposit calculations for England, Scotland, Wales & Northern Ireland.">
-  <meta name="keywords" content="UK mortgage calculator, British mortgage, property calculator UK, house price calculator, mortgage payments UK, stamp duty calculator, UK property finance, British home loan, England mortgage, Scotland mortgage">
-  <meta name="robots" content="index, follow">
-  <meta name="language" content="English">
-  <meta name="author" content="UK Mortgage Calculator">
-  
-  <!-- Geographic Tags -->
-  <meta name="geo.region" content="GB">
-  <meta name="geo.placename" content="United Kingdom">
-  
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://allinone-tools.github.io/client/tools/financial/Mortgage-Calculator-UK.html">
-  <meta property="og:title" content="UK Mortgage Calculator | Free British Property Loan Calculator">
-  <meta property="og:description" content="Calculate UK mortgage payments for British properties. Free calculator supporting repayment & interest-only mortgages across England, Scotland, Wales & Northern Ireland.">
-  <meta property="og:image" content="https://allinone-tools.github.io/assets/og-image.svg">
-  <meta property="og:image:alt" content="UK Mortgage Calculator Tool">
-  <meta property="og:site_name" content="All-in-One Tools">
-  <meta property="og:locale" content="en_GB">
-  
-  <!-- Twitter -->
-  <meta property="twitter:card" content="summary_large_image">
-  <meta property="twitter:url" content="https://allinone-tools.github.io/client/tools/financial/Mortgage-Calculator-UK.html">
-  <meta property="twitter:title" content="UK Mortgage Calculator | Free British Property Loan Calculator">
-  <meta property="twitter:description" content="Calculate UK mortgage payments for British properties. Free calculator for repayment & interest-only mortgages.">
-  <meta property="twitter:image" content="https://allinone-tools.github.io/assets/og-image.svg">
-  <meta property="twitter:image:alt" content="UK Mortgage Calculator Tool">
-  
-  <!-- Additional SEO Meta Tags -->
-  <meta name="application-name" content="UK Mortgage Calculator">
-  <meta name="msapplication-TileColor" content="#228B22">
-  <meta name="theme-color" content="#228B22">
-  <link rel="canonical" href="https://allinone-tools.github.io/client/tools/financial/Mortgage-Calculator-UK.html">
-  
-  <!-- Preconnect for Performance -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  
-  <!-- JSON-LD Structured Data -->
-  <script type="application/ld+json">
-  {
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>UK Mortgage Calculator - Free Home Loan Tool | Calculate UK Mortgage Payments</title>
+    <meta name="description" content="Free UK mortgage calculator to calculate home loan payments and view amortization schedule. Includes Stamp Duty Land Tax calculations and UK-specific mortgage features.">
+    <meta name="keywords" content="UK mortgage calculator, mortgage calculator UK, Stamp Duty calculator, UK home loan, SDLT calculator, UK mortgage payments">
+    <meta name="author" content="ScribbleTools">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://scribbletools.net/client/tools/financial/uk-mortgage-calculator.html">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://scribbletools.net/client/tools/financial/uk-mortgage-calculator.html">
+    <meta property="og:title" content="UK Mortgage Calculator - Free Home Loan Tool">
+    <meta property="og:description" content="Calculate UK mortgage payments and view amortization schedule. Free tool with Stamp Duty Land Tax calculations.">
+    <meta property="og:image" content="https://scribbletools.net/assets/og-image.svg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://scribbletools.net/client/tools/financial/uk-mortgage-calculator.html">
+    <meta property="twitter:title" content="UK Mortgage Calculator - Free Home Loan Tool">
+    <meta property="twitter:description" content="Calculate UK mortgage payments and view amortization schedule. Free tool with Stamp Duty Land Tax calculations.">
+    <meta property="twitter:image" content="https://scribbletools.net/assets/og-image.svg">
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
       "@context": "https://schema.org",
-      "@type": ["WebApplication", "SoftwareApplication"],
+      "@type": "WebApplication",
       "name": "UK Mortgage Calculator",
-      "description": "Calculate mortgage payments for British properties across England, Scotland, Wales and Northern Ireland. Supports both repayment and interest-only mortgages with UK-specific calculations.",
-      "url": "https://allinone-tools.github.io/client/tools/financial/Mortgage-Calculator-UK.html",
+      "description": "Free online UK mortgage calculator to calculate home loan payments and view payment schedule",
+      "url": "https://scribbletools.net/client/tools/financial/uk-mortgage-calculator.html",
       "applicationCategory": "FinanceApplication",
       "operatingSystem": "Web Browser",
-      "permissions": "browser",
       "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "GBP"
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "GBP"
       },
       "creator": {
-          "@type": "Organization",
-          "name": "All-in-One Tools"
-      },
-      "featureList": [
-          "UK mortgage payment calculation",
-          "Repayment mortgage support",
-          "Interest-only mortgage calculation",
-          "British property finance",
-          "Deposit calculation",
-          "Monthly payment estimation",
-          "UK property market tool"
-      ],
-      "keywords": "UK mortgage, British property, mortgage calculator UK, house price calculator, property finance UK",
-      "mainEntity": {
-          "@type": "FinancialProduct",
-          "name": "UK Mortgage Calculation",
-          "description": "Mortgage payment calculations specific to the British property market and UK lending standards"
+        "@type": "Organization",
+        "name": "ScribbleTools"
       }
-  }
-  </script>
-  
-  <style>
-    .uk-mortgage-tool body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; }
-    .uk-mortgage-tool main { display: block; }
-    .uk-mortgage-tool .reduce-size-container { max-width: 800px; margin: 3em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2em 1.5em 2.5em 1.5em; }
-    .uk-mortgage-tool .handwritten { font-family: 'Caveat', cursive; }
-    .uk-mortgage-tool .form-group { margin: 1.2em 0; }
-    .uk-mortgage-tool .form-label { font-weight: 600; margin-bottom: 0.5em; display: block; color: #4682B4; }
-    .uk-mortgage-tool .form-input { width: 100%; padding: 0.8em; border: 2px solid #EAE3D5; border-radius: 0.5em; font-size: 1em; margin-bottom: 1em; background: #fff; }
-    .uk-mortgage-tool .process-btn { background: #228B22; color: #fff; border: none; border-radius: 0.5em; padding: 1em 2em; font-weight: 600; cursor: pointer; transition: all 0.2s; width: 100%; font-size: 1.1em; }
-    .uk-mortgage-tool .process-btn:hover { background: #1e7e1e; }
-    .uk-mortgage-tool .clear-btn { background: #6c757d; color: #fff; border: none; border-radius: 0.5em; padding: 0.8em 1.5em; font-weight: 600; cursor: pointer; transition: all 0.2s; margin-top: 1em; }
-    .uk-mortgage-tool .clear-btn:hover { background: #5a6268; }
-    .uk-mortgage-tool .results-section { display: none; margin-top: 2em; text-align: center; }
-    .uk-mortgage-tool .results-section h3 { color: #4682B4; margin-bottom: 1em; }
-    .uk-mortgage-tool .result-display { background: #FDFBF5; border-radius: 0.7em; padding: 1.2em; border: 1px solid #FFEAA7; }
-    .uk-mortgage-tool .step-list { margin: 1.2em 0 1.2em 1.2em; padding: 0; }
-    .uk-mortgage-tool .step-list li { margin-bottom: 0.7em; color: #666; }
-    .uk-mortgage-tool .step-list li strong { color: #4682B4; }
-  </style>
+    }
+    </script>
+    <style>
+        body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; }
+        .calc-container { max-width: 420px; margin: 3em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2em 1.5em 2.5em 1.5em; }
+        .handwritten { font-family: 'Caveat', cursive; }
+        .calc-label { font-weight: 600; margin-bottom: 0.5em; display: block; }
+        .calc-input { width: 100%; padding: 1em; border: 2px solid #EAE3D5; border-radius: 0.7em; font-size: 1.2em; margin-bottom: 1em; background: #FDFBF5; text-align: center; font-family: 'Fira Code', monospace; }
+        .calc-btn { background: #fff; color: #D9534F; border: 2px solid #D9534F; border-radius: 0.5em; padding: 0.7em 2em; font-weight: 600; font-size: 1.1em; cursor: pointer; transition: all 0.2s; margin-bottom: 1em; }
+        .calc-btn:hover { background: #D9534F; color: #fff; }
+        .calc-result { background: #FDFBF5; border: 2px solid #D9534F; border-radius: 0.7em; padding: 1em; font-size: 1.25em; color: #D9534F; min-height: 1.7em; margin-bottom: 1em; text-align: center; font-family: 'Fira Code', monospace; font-weight: bold; max-height: 300px; overflow-y: auto; word-break: break-word; transition: height 0.2s; }
+        .calc-desc { width: 100%; margin-top: 2em; background:#FDFBF5; border:2px solid #EAE3D5; border-radius:0.9em; padding:1.2em 1em; font-size:1.08em; color:#333; line-height:1.7; }
+        .calc-desc strong { color: #D9534F; font-size: 1.12em; }
+        @media (max-width: 600px) { .calc-container { padding: 1em 0.2em; } }
+        .amort-table { width: 100%; border-collapse: collapse; margin-top: 1em; font-size: 0.9em; }
+        .amort-table th, .amort-table td { padding: 0.5em; text-align: center; border-bottom: 1px solid #EAE3D5; }
+        .amort-table th { background: #D9534F; color: white; }
+        .amort-table tr:nth-child(even) { background: #FDFBF5; }
+        .download-btn { background: #5cb85c; color: white; border: 2px solid #5cb85c; }
+        .download-btn:hover { background: #4cae4c; border-color: #4cae4c; }
+        .info-message { background: #d9edf7; color: #31708f; border: 1px solid #bce8f1; border-radius: 0.5em; padding: 0.8em; margin-bottom: 1em; font-size: 0.95em; }
+        .toggle-section { margin-top: 1em; margin-bottom: 1em; }
+        .toggle-btn { background: #f0ad4e; color: white; border: 2px solid #f0ad4e; font-size: 0.9em; padding: 0.5em 1em; }
+        .toggle-btn:hover { background: #ec971f; border-color: #ec971f; }
+        .advanced-options { display: none; margin-top: 1em; padding: 1em; background: #FDFBF5; border: 1px solid #EAE3D5; border-radius: 0.7em; }
+        .down-payment-inputs { display: flex; gap: 0.5em; }
+        .down-payment-inputs .calc-input { flex: 1; margin-bottom: 0.5em; }
+        .payment-breakdown { display: flex; flex-wrap: wrap; gap: 0.5em; margin-top: 0.5em; }
+        .payment-item { flex: 1; min-width: 45%; background: white; padding: 0.5em; border-radius: 0.5em; border: 1px solid #EAE3D5; }
+        .sdtl-highlight { background: #e8f4f8; border: 1px solid #bce8f1; border-radius: 0.5em; padding: 0.8em; margin-top: 1em; }
+        .sdtl-highlight strong { color: #31708f; }
+    </style>
 </head>
 <body>
-<main>
-  <div class="uk-mortgage-tool">
-    <div class="reduce-size-container">
-      <header>
-        <h1 style="font-family: 'Caveat', cursive; font-size: 3em; color: #FF6B6B; margin-bottom: 0.5em;">UK Mortgage Calculator</h1>
-        <p style="font-size:1.2em; margin-bottom:1em;">Estimate your monthly mortgage payments for properties in the UK. Simple, fast, and accurate.</p>
-      </header>
-
-      <section aria-labelledby="instructions-title" style="background: #F8FBFF; border-radius: 0.7em; padding: 1.5em; margin: 2em 0; border: 1px solid #4682B4;">
-        <h2 id="instructions-title" style="color:#4682B4; margin-bottom: 1em; font-size: 1.5em;">How to Use</h2>
-        <ol class="step-list" style="margin-left: 1.5em; line-height: 1.6;">
-          <li><strong style="color: #4682B4">Enter Property and Loan Details:</strong>
-            <ul style="margin: 0.5em 0 0.5em 1.5em; color: #666;">
-              <li>Input the property price and your deposit amount.</li>
-              <li>Provide the annual interest rate and the mortgage term in years.</li>
-            </ul>
-          </li>
-          <li><strong style="color: #4682B4">Choose Mortgage Type:</strong>
-            <ul style="margin: 0.5em 0 0.5em 1.5em; color: #666;">
-              <li>Select either 'Repayment' or 'Interest Only'.</li>
-            </ul>
-          </li>
-          <li><strong style="color: #4682B4">Calculate:</strong>
-            <ul style="margin: 0.5em 0 0.5em 1.5em; color: #666;">
-              <li>Click "Calculate Payments" to see your monthly cost.</li>
-            </ul>
-          </li>
-        </ol>
-      </section>
-
-      <div class="tool-interface">
-        <div class="form-group">
-          <label for="property-price" class="form-label">Property Price (£):</label>
-          <input type="number" id="property-price" class="form-input" placeholder="e.g., 250000" />
-        </div>
-        <div class="form-group">
-          <label for="deposit-amount" class="form-label">Deposit Amount (£):</label>
-          <input type="number" id="deposit-amount" class="form-input" placeholder="e.g., 25000" />
-        </div>
-        <div class="form-group">
-          <label for="interest-rate" class="form-label">Interest Rate (%):</label>
-          <input type="number" id="interest-rate" class="form-input" placeholder="e.g., 3.5" />
-        </div>
-        <div class="form-group">
-          <label for="mortgage-term" class="form-label">Mortgage Term (Years):</label>
-          <input type="number" id="mortgage-term" class="form-input" placeholder="e.g., 25" />
-        </div>
-        <div class="form-group">
-            <label for="mortgage-type" class="form-label">Mortgage Type:</label>
-            <select id="mortgage-type" class="form-input">
-                <option value="repayment">Repayment</option>
-                <option value="interest_only">Interest Only</option>
-            </select>
-        </div>
-        <div class="form-group">
-          <button class="process-btn" id="process-btn">Calculate Payments</button>
-          <button class="clear-btn" id="clear-btn">Clear</button>
-        </div>
-      </div>
-
-      <div class="results-section" id="results-section">
-        <h3>Your Mortgage Estimate</h3>
-        <div class="result-display">
-            <p><strong>Monthly Payment:</strong> <span id="monthly-payment"></span></p>
-            <p><strong>Total to Repay:</strong> <span id="total-repayment"></span></p>
-            <p><strong>Total Interest:</strong> <span id="total-interest"></span></p>
-        </div>
-      </div>
+<div class="calc-container">
+    <h2 class="handwritten text-5xl text-[#D9534F] mb-4">UK Mortgage Calculator</h2>
+    <label class="calc-label">Property Price (£):</label>
+    <input id="propertyPrice" class="calc-input" type="number" min="0" placeholder="e.g. 300000">
+    
+    <label class="calc-label">Deposit:</label>
+    <div class="down-payment-inputs">
+        <input id="depositPercent" class="calc-input" type="number" min="0" max="100" step="0.1" placeholder="e.g. 15%">
+        <input id="depositAmount" class="calc-input" type="number" min="0" placeholder="e.g. 45000">
     </div>
-  </div>
-</main>
-
+    
+    <label class="calc-label">Mortgage Term (years):</label>
+    <input id="mortgageTerm" class="calc-input" type="number" min="1" placeholder="e.g. 25">
+    <label class="calc-label">Interest Rate (%):</label>
+    <input id="interestRate" class="calc-input" type="number" min="0" step="0.01" placeholder="e.g. 4.2">
+    
+    <div class="toggle-section">
+        <button id="toggleAdvanced" class="calc-btn toggle-btn">Show Advanced Options</button>
+        <div id="advancedOptions" class="advanced-options">
+            <label class="calc-label">First-Time Buyer?</label>
+            <select id="firstTimeBuyer" class="calc-input" style="height: auto; padding: 0.7em;">
+                <option value="no">No</option>
+                <option value="yes">Yes</option>
+            </select>
+            
+            <label class="calc-label">Property Type:</label>
+            <select id="propertyType" class="calc-input" style="height: auto; padding: 0.7em;">
+                <option value="residential">Residential</option>
+                <option value="buy-to-let">Buy-to-Let</option>
+            </select>
+            
+            <label class="calc-label">Mortgage Type:</label>
+            <select id="mortgageType" class="calc-input" style="height: auto; padding: 0.7em;">
+                <option value="repayment">Repayment</option>
+                <option value="interest-only">Interest-Only</option>
+            </select>
+            
+            <label class="calc-label">Arrangement Fee (£):</label>
+            <input id="arrangementFee" class="calc-input" type="number" min="0" placeholder="e.g. 999">
+            <label class="calc-label">Valuation Fee (£):</label>
+            <input id="valuationFee" class="calc-input" type="number" min="0" placeholder="e.g. 300">
+            <label class="calc-label">Legal Fees (£):</label>
+            <input id="legalFees" class="calc-input" type="number" min="0" placeholder="e.g. 1500">
+            <label class="calc-label">Monthly Buildings Insurance (£):</label>
+            <input id="buildingsInsurance" class="calc-input" type="number" min="0" placeholder="e.g. 30">
+        </div>
+    </div>
+    
+    <button id="calc-btn" class="calc-btn">Calculate</button>
+    <div id="info-message" class="info-message" style="display: none;"></div>
+    <button id="download-btn" class="calc-btn download-btn" style="display: none;">Download Excel Schedule</button>
+    <div class="calc-result" id="calc-result"></div>
+</div>
+<div class="calc-desc" style="max-width: fit-content; margin: 2.5em auto 0 auto;">
+    <strong style="font-size:1.18em; color:#D9534F;">About the UK Mortgage Calculator</strong><br><br>
+    
+    The UK Mortgage Calculator helps you estimate your monthly mortgage payments and understand the total cost of buying a property in the UK. This essential tool includes Stamp Duty Land Tax (SDLT) calculations and UK-specific mortgage features.<br><br>
+    
+    <strong style="color:#D9534F;">How UK Mortgages Work:</strong><br>
+    UK mortgages are loans specifically for purchasing property in the United Kingdom. The loan is secured by the property, meaning the lender can repossess if you fail to make payments. UK mortgages typically include principal and interest payments, with interest-only options also available.<br><br>
+    
+    <strong style="color:#D9534F;">Key UK Features:</strong><br>
+    <ul style="margin-left:1.2em; line-height:1.6;">
+        <li><strong>Stamp Duty Land Tax (SDLT):</strong> A tax on property purchases above £250,000</li>
+        <li><strong>First-Time Buyer Relief:</strong> Reduced SDLT for first-time buyers</li>
+        <li><strong>Buy-to-Let Mortgages:</strong> Special mortgages for investment properties</li>
+        <li><strong>Arrangement Fees:</strong> Common setup fees charged by UK lenders</li>
+        <li><strong>Repayment vs Interest-Only:</strong> Two main mortgage types in the UK</li>
+    </ul><br>
+    
+    <strong style="color:#D9534F;">How to Use This Calculator:</strong><br>
+    <ol style="margin-left:1.2em; line-height:1.6;">
+        <li><strong>Property Price:</strong> Enter the total purchase price of the property in pounds</li>
+        <li><strong>Deposit:</strong> Enter either the percentage or amount (the other will auto-calculate)</li>
+        <li><strong>Mortgage Term:</strong> Enter the mortgage term in years (typically 25-35 years in the UK)</li>
+        <li><strong>Interest Rate:</strong> Enter the annual mortgage interest rate</li>
+        <li><strong>Advanced Options:</strong> Include SDLT calculations, fees, and mortgage type</li>
+        <li><strong>Click Calculate:</strong> View your monthly payment and complete mortgage schedule</li>
+        <li><strong>Download Excel Schedule:</strong> Get the full payment schedule for your records</li>
+    </ol><br>
+    
+    <strong style="color:#D9534F;">What You'll Discover:</strong><br>
+    <ul style="margin-left:1.2em; line-height:1.6;">
+        <li><strong>Monthly Payment:</strong> Your total monthly mortgage payment</li>
+        <li><strong>Stamp Duty:</strong> The SDLT amount you'll need to pay</li>
+        <li><strong>Total Upfront Costs:</strong> Deposit, SDLT, and fees combined</li>
+        <li><strong>Total Interest:</strong> Total interest paid over the mortgage term</li>
+        <li><strong>Loan-to-Value (LTV):</strong> The percentage of the property value you're borrowing</li>
+    </ul><br>
+    
+    <strong style="color:#D9534F;">Perfect For:</strong><br>
+    <ul style="margin-left:1.2em; line-height:1.6;">
+        <li><strong>First-Time Buyers:</strong> Understanding SDLT relief and affordability</li>
+        <li><strong>Home Movers:</strong> Calculating costs for your next property purchase</li>
+        <li><strong>Buy-to-Let Investors:</strong> Evaluating potential rental properties</li>
+        <li><strong>Remortgaging:</strong> Comparing current mortgage with new options</li>
+        <li><strong>Financial Planning:</strong> Budgeting for property purchase in the UK</li>
+    </ul><br>
+    
+    <strong style="color:#D9534F;">Pro Tips for UK Mortgage Planning:</strong><br>
+    <ul style="margin-left:1.2em; line-height:1.6;">
+        <li><strong>Save at least 10% deposit:</strong> More deposit means better rates and lower LTV</li>
+        <li><strong>Consider all fees:</strong> Arrangement, valuation, and legal fees add up</li>
+        <li><strong>Check SDLT thresholds:</strong> Price just above a threshold can mean much higher tax</li>
+        <li><strong>Get a mortgage in principle:</strong> Know what you can borrow before house hunting</li>
+        <li><strong>Consider fixed vs variable:</strong> Fixed rates provide certainty, variable may be cheaper</li>
+    </ul><br>
+    
+    <strong style="color:#D9534F;">Common UK Mortgage Scenarios:</strong><br>
+    <ul style="margin-left:1.2em; line-height:1.6;">
+        <li><strong>First-Time Buyer:</strong> 5-10% deposit with SDLT relief</li>
+        <li><strong>Home Mover:</strong> 15-25% deposit on larger property</li>
+        <li><strong>Buy-to-Let Investor:</strong> 25% deposit with higher interest rates</li>
+        <li><strong>Remortgaging:</strong> Switching to better rate after initial fixed period</li>
+    </ul><br>
+    
+    <b>Note:</b> This calculator provides estimates for planning purposes. Actual mortgage terms and SDLT rates may vary based on current regulations, credit history, lender requirements, and other factors. Always consult with UK mortgage advisors for personalized advice.
+</div>
 <script>
-(function() {
-  'use strict';
+// Store amortization data globally for download
+let amortizationData = [];
 
-  window.initializeUKMortgageTool = function() {
-    init();
-  };
+function showResult(str) {
+    document.getElementById('calc-result').innerHTML = str;
+}
 
-  function init() {
-    document.getElementById('process-btn').onclick = calculateMortgage;
-    document.getElementById('clear-btn').onclick = reset;
-  }
+function showInfo(message) {
+    const infoElement = document.getElementById('info-message');
+    infoElement.textContent = message;
+    infoElement.style.display = 'block';
+    setTimeout(() => {
+        infoElement.style.display = 'none';
+    }, 3000);
+}
 
-  function reset() {
-    document.getElementById('property-price').value = '';
-    document.getElementById('deposit-amount').value = '';
-    document.getElementById('interest-rate').value = '';
-    document.getElementById('mortgage-term').value = '';
-    document.getElementById('results-section').style.display = 'none';
-    document.getElementById('monthly-payment').textContent = '';
-    document.getElementById('total-repayment').textContent = '';
-    document.getElementById('total-interest').textContent = '';
-  }
-
-  function calculateMortgage() {
-    const propertyPrice = parseFloat(document.getElementById('property-price').value);
-    const depositAmount = parseFloat(document.getElementById('deposit-amount').value);
-    const annualInterestRate = parseFloat(document.getElementById('interest-rate').value);
-    const years = parseInt(document.getElementById('mortgage-term').value);
-    const mortgageType = document.getElementById('mortgage-type').value;
-
-    if (isNaN(propertyPrice) || isNaN(depositAmount) || isNaN(annualInterestRate) || isNaN(years) || propertyPrice <= 0 || depositAmount < 0 || annualInterestRate <= 0 || years <= 0) {
-      alert('Please enter valid positive numbers for all fields.');
-      return;
+// Toggle advanced options
+document.getElementById('toggleAdvanced').addEventListener('click', function() {
+    const advancedOptions = document.getElementById('advancedOptions');
+    const toggleBtn = document.getElementById('toggleAdvanced');
+    
+    if (advancedOptions.style.display === 'none' || advancedOptions.style.display === '') {
+        advancedOptions.style.display = 'block';
+        toggleBtn.textContent = 'Hide Advanced Options';
+    } else {
+        advancedOptions.style.display = 'none';
+        toggleBtn.textContent = 'Show Advanced Options';
     }
+});
 
-    const loanAmount = propertyPrice - depositAmount;
-    if (loanAmount <= 0) {
-        alert('Deposit must be less than the property price.');
+// Auto-calculate deposit when one field changes
+document.getElementById('depositPercent').addEventListener('input', function() {
+    const propertyPrice = parseFloat(document.getElementById('propertyPrice').value) || 0;
+    const percent = parseFloat(this.value) || 0;
+    if (propertyPrice > 0 && percent > 0) {
+        const amount = propertyPrice * (percent / 100);
+        document.getElementById('depositAmount').value = amount.toFixed(2);
+    }
+});
+
+document.getElementById('depositAmount').addEventListener('input', function() {
+    const propertyPrice = parseFloat(document.getElementById('propertyPrice').value) || 0;
+    const amount = parseFloat(this.value) || 0;
+    if (propertyPrice > 0 && amount > 0) {
+        const percent = (amount / propertyPrice) * 100;
+        document.getElementById('depositPercent').value = percent.toFixed(2);
+    }
+});
+
+document.getElementById('propertyPrice').addEventListener('input', function() {
+    const propertyPrice = parseFloat(this.value) || 0;
+    const percent = parseFloat(document.getElementById('depositPercent').value) || 0;
+    if (propertyPrice > 0 && percent > 0) {
+        const amount = propertyPrice * (percent / 100);
+        document.getElementById('depositAmount').value = amount.toFixed(2);
+    }
+});
+
+// Calculate Stamp Duty Land Tax (SDLT)
+function calculateSDLT(propertyPrice, firstTimeBuyer, propertyType) {
+    let sdlt = 0;
+    
+    if (propertyType === 'buy-to-let') {
+        // Buy-to-let rates (3% surcharge on top of residential rates)
+        if (propertyPrice <= 250000) {
+            sdlt = propertyPrice * 0.03;
+        } else if (propertyPrice <= 925000) {
+            sdlt = 7500 + (propertyPrice - 250000) * 0.08;
+        } else if (propertyPrice <= 1500000) {
+            sdlt = 61250 + (propertyPrice - 925000) * 0.13;
+        } else {
+            sdlt = 136250 + (propertyPrice - 1500000) * 0.15;
+        }
+    } else {
+        // Residential property
+        if (firstTimeBuyer === 'yes') {
+            // First-time buyer relief
+            if (propertyPrice <= 425000) {
+                sdlt = 0;
+            } else if (propertyPrice <= 625000) {
+                sdlt = (propertyPrice - 425000) * 0.05;
+            } else {
+                // Above £625,000, no first-time buyer relief
+                if (propertyPrice <= 250000) {
+                    sdlt = 0;
+                } else if (propertyPrice <= 925000) {
+                    sdlt = (propertyPrice - 250000) * 0.05;
+                } else if (propertyPrice <= 1500000) {
+                    sdlt = 33750 + (propertyPrice - 925000) * 0.10;
+                } else {
+                    sdlt = 78750 + (propertyPrice - 1500000) * 0.12;
+                }
+            }
+        } else {
+            // Standard residential rates
+            if (propertyPrice <= 250000) {
+                sdlt = 0;
+            } else if (propertyPrice <= 925000) {
+                sdlt = (propertyPrice - 250000) * 0.05;
+            } else if (propertyPrice <= 1500000) {
+                sdlt = 33750 + (propertyPrice - 925000) * 0.10;
+            } else {
+                sdlt = 78750 + (propertyPrice - 1500000) * 0.12;
+            }
+        }
+    }
+    
+    return sdlt;
+}
+
+document.getElementById('calc-btn').addEventListener('click', function() {
+    let propertyPrice = parseFloat(document.getElementById('propertyPrice').value);
+    let depositPercent = parseFloat(document.getElementById('depositPercent').value) || 0;
+    let depositAmount = parseFloat(document.getElementById('depositAmount').value) || 0;
+    let mortgageTerm = parseInt(document.getElementById('mortgageTerm').value);
+    let interestRate = parseFloat(document.getElementById('interestRate').value);
+    let firstTimeBuyer = document.getElementById('firstTimeBuyer').value;
+    let propertyType = document.getElementById('propertyType').value;
+    let mortgageType = document.getElementById('mortgageType').value;
+    let arrangementFee = parseFloat(document.getElementById('arrangementFee').value) || 0;
+    let valuationFee = parseFloat(document.getElementById('valuationFee').value) || 0;
+    let legalFees = parseFloat(document.getElementById('legalFees').value) || 0;
+    let buildingsInsurance = parseFloat(document.getElementById('buildingsInsurance').value) || 0;
+    
+    if (isNaN(propertyPrice) || isNaN(mortgageTerm) || isNaN(interestRate) || 
+        propertyPrice <= 0 || mortgageTerm <= 0 || interestRate < 0) {
+        showResult('Please enter valid values for all required fields.');
         return;
     }
-
-    const monthlyInterestRate = annualInterestRate / 100 / 12;
-    const numberOfPayments = years * 12;
     
-    let monthlyPayment = 0;
-    let totalRepayment = 0;
-    let totalInterest = 0;
-
-    if (mortgageType === 'repayment') {
-        monthlyPayment = loanAmount * (monthlyInterestRate * Math.pow(1 + monthlyInterestRate, numberOfPayments)) / (Math.pow(1 + monthlyInterestRate, numberOfPayments) - 1);
-        totalRepayment = monthlyPayment * numberOfPayments;
-        totalInterest = totalRepayment - loanAmount;
-    } else { // interest_only
-        monthlyPayment = loanAmount * monthlyInterestRate;
-        totalRepayment = (monthlyPayment * numberOfPayments) + loanAmount;
-        totalInterest = monthlyPayment * numberOfPayments;
+    // Ensure we have deposit values
+    if (depositPercent > 0 && depositAmount === 0) {
+        depositAmount = propertyPrice * (depositPercent / 100);
+    } else if (depositAmount > 0 && depositPercent === 0) {
+        depositPercent = (depositAmount / propertyPrice) * 100;
     }
+    
+    // Calculate loan amount
+    let loanAmount = propertyPrice - depositAmount;
+    
+    if (loanAmount <= 0) {
+        showResult('Deposit cannot be greater than or equal to property price.');
+        return;
+    }
+    
+    // Calculate SDLT
+    let sdlt = calculateSDLT(propertyPrice, firstTimeBuyer, propertyType);
+    
+    // Calculate monthly mortgage payment
+    let monthlyRate = interestRate / 100 / 12;
+    let numPayments = mortgageTerm * 12;
+    let monthlyPayment = 0;
+    
+    if (mortgageType === 'repayment') {
+        monthlyPayment = loanAmount * (monthlyRate * Math.pow(1 + monthlyRate, numPayments)) / 
+                         (Math.pow(1 + monthlyRate, numPayments) - 1);
+    } else {
+        // Interest-only - only pay interest each month
+        monthlyPayment = loanAmount * monthlyRate;
+    }
+    
+    // Calculate total payment and total interest
+    let totalPayment = monthlyPayment * numPayments;
+    let totalInterest = 0;
+    
+    if (mortgageType === 'repayment') {
+        totalInterest = totalPayment - loanAmount;
+    } else {
+        totalInterest = totalPayment;
+        // For interest-only, the capital is due at the end
+        totalPayment += loanAmount;
+    }
+    
+    // Calculate total upfront costs
+    let totalUpfrontCosts = depositAmount + sdlt + arrangementFee + valuationFee + legalFees;
+    
+    // Generate amortization schedule
+    let balance = loanAmount;
+    amortizationData = []; // Reset data
+    let amortizationHTML = `
+        <div style="margin-bottom: 1em;">
+            <b>Property Price:</b> £${propertyPrice.toFixed(2)}<br>
+            <b>Deposit:</b> £${depositAmount.toFixed(2)} (${depositPercent.toFixed(2)}%)<br>
+            <b>Loan Amount:</b> £${loanAmount.toFixed(2)}<br>
+            <b>Loan-to-Value (LTV):</b> ${(100 - depositPercent).toFixed(2)}%<br><br>
+            
+            <div class="sdtl-highlight">
+                <strong>Stamp Duty Land Tax:</strong> £${sdlt.toFixed(2)}<br>
+                ${firstTimeBuyer === 'yes' ? '<strong>First-Time Buyer Relief Applied</strong>' : ''}
+            </div>
+            
+            <div style="margin-top: 1em;">
+                <b>Monthly Payment:</b> £${monthlyPayment.toFixed(2)}<br>
+                <b>Total Upfront Costs:</b> £${totalUpfrontCosts.toFixed(2)}<br>
+                <b>Total Payment:</b> £${totalPayment.toFixed(2)}<br>
+                <b>Total Interest:</b> £${totalInterest.toFixed(2)}
+            </div>
+            
+            <div style="margin-top: 1em;">
+                <b>Arrangement Fee:</b> £${arrangementFee.toFixed(2)}<br>
+                <b>Valuation Fee:</b> £${valuationFee.toFixed(2)}<br>
+                <b>Legal Fees:</b> £${legalFees.toFixed(2)}<br>
+                <b>Monthly Buildings Insurance:</b> £${buildingsInsurance.toFixed(2)}
+            </div>
+        </div>
+        <table class="amort-table">
+            <thead>
+                <tr>
+                    <th>Month</th>
+                    <th>Payment</th>
+                    <th>Principal</th>
+                    <th>Interest</th>
+                    <th>Balance</th>
+                </tr>
+            </thead>
+            <tbody>
+    `;
+    
+    for (let month = 1; month <= numPayments; month++) {
+        let interestPayment = balance * monthlyRate;
+        let principalPayment = 0;
+        
+        if (mortgageType === 'repayment') {
+            principalPayment = monthlyPayment - interestPayment;
+            
+            // Adjust for last payment to avoid negative balance
+            if (month === numPayments) {
+                principalPayment = balance;
+                monthlyPayment = principalPayment + interestPayment;
+            }
+            
+            balance -= principalPayment;
+        } else {
+            // Interest-only - balance remains the same
+            principalPayment = 0;
+        }
+        
+        // Store data for Excel download
+        amortizationData.push({
+            month: month,
+            payment: monthlyPayment,
+            principal: principalPayment,
+            interest: interestPayment,
+            balance: balance < 0 ? 0 : balance
+        });
+        
+        amortizationHTML += `
+            <tr>
+                <td>${month}</td>
+                <td>£${monthlyPayment.toFixed(2)}</td>
+                <td>£${principalPayment.toFixed(2)}</td>
+                <td>£${interestPayment.toFixed(2)}</td>
+                <td>£${balance.toFixed(2)}</td>
+            </tr>
+        `;
+        
+        // Only show first 12 months in the preview
+        if (month === 12 && numPayments > 12) {
+            amortizationHTML += `
+                <tr>
+                    <td colspan="5">... Showing first 12 months of ${numPayments} months ...</td>
+                </tr>
+            `;
+            break;
+        }
+    }
+    
+    amortizationHTML += `
+            </tbody>
+        </table>
+    `;
+    
+    showResult(amortizationHTML);
+    document.getElementById('download-btn').style.display = 'block';
+});
 
-    document.getElementById('monthly-payment').textContent = `£${monthlyPayment.toFixed(2)}`;
-    document.getElementById('total-repayment').textContent = `£${totalRepayment.toFixed(2)}`;
-    document.getElementById('total-interest').textContent = `£${totalInterest.toFixed(2)}`;
-    document.getElementById('results-section').style.display = 'block';
-  }
-
-  if (document.readyState !== 'loading') {
-    setTimeout(init, 50);
-  } else {
-    document.addEventListener('DOMContentLoaded', () => setTimeout(init, 50));
-  }
-
-})();
+// Download amortization schedule as Excel
+document.getElementById('download-btn').addEventListener('click', function() {
+    if (amortizationData.length === 0) {
+        showInfo('No data available. Please calculate first.');
+        return;
+    }
+    
+    // Create CSV content
+    let csvContent = "data:text/csv;charset=utf-8,";
+    csvContent += "Month,Payment,Principal,Interest,Balance\n";
+    
+    amortizationData.forEach(row => {
+        csvContent += `${row.month},${row.payment.toFixed(2)},${row.principal.toFixed(2)},${row.interest.toFixed(2)},${row.balance.toFixed(2)}\n`;
+    });
+    
+    // Create download link
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", "uk_mortgage_schedule.csv");
+    
+    // Append to body and trigger click
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    
+    showInfo('UK mortgage schedule downloaded successfully!');
+});
 </script>
 </body>
 </html>

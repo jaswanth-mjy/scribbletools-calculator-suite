@@ -102,7 +102,7 @@
     .circle-crop-tool .clear-btn { background: #6c757d; color: #fff; border: none; border-radius: 0.5em; padding: 0.8em 1.5em; font-weight: 600; cursor: pointer; transition: all 0.2s; margin: 1em; }
     .circle-crop-tool .clear-btn:hover { background: #5a6268; }
     .circle-crop-tool .cropper-container { text-align: center; margin: 2em 0; }
-    .circle-crop-tool #main-canvas { background: #fff; border: 1px solid #EAE3D5; border-radius: 1em; box-shadow: 0 2px 8px #eae3d5; max-width: 100%; }
+    .circle-crop-tool #main-canvas { background: #fff; border: 1px solid #EAE3D5; border-radius: 1em; box-shadow: 0 2px 8px #eae3d5; max-width: 100%; height: auto; display: block; margin: 0 auto; }
     .circle-crop-tool .slider-group { margin: 1.5em 0; display: flex; align-items: center; justify-content: center; gap: 1em; }
     .circle-crop-tool .slider-group label { font-weight: 600; }
     .circle-crop-tool .slider-group input[type=range] { width: 180px; }
@@ -314,10 +314,12 @@
     if (elements.fileInput) elements.fileInput.value = '';
     if (elements.circleRadiusSlider) elements.circleRadiusSlider.value = 150;
     
-    // Clear canvases
+    // Clear canvases and reset to default size
     const mainCanvas = document.getElementById('main-canvas');
     const previewCanvas = document.getElementById('preview-canvas');
     if (mainCanvas) {
+      mainCanvas.width = 400;
+      mainCanvas.height = 400;
       const ctx = mainCanvas.getContext('2d');
       ctx.clearRect(0, 0, mainCanvas.width, mainCanvas.height);
     }
@@ -469,16 +471,50 @@
         const mainCanvas = document.getElementById('main-canvas');
         const circleRadiusSlider = document.getElementById('circle-radius');
         
+        // Dynamically resize canvas to maintain image aspect ratio
+        if (mainCanvas) {
+          const maxCanvasSize = 600; // Maximum canvas size for display
+          const imgAspectRatio = imgObj.width / imgObj.height;
+          
+          let canvasWidth, canvasHeight;
+          
+          if (imgAspectRatio > 1) {
+            // Landscape image
+            canvasWidth = Math.min(maxCanvasSize, imgObj.width);
+            canvasHeight = canvasWidth / imgAspectRatio;
+          } else {
+            // Portrait or square image
+            canvasHeight = Math.min(maxCanvasSize, imgObj.height);
+            canvasWidth = canvasHeight * imgAspectRatio;
+          }
+          
+          // Ensure minimum size
+          if (canvasWidth < 300) {
+            canvasWidth = 300;
+            canvasHeight = canvasWidth / imgAspectRatio;
+          }
+          if (canvasHeight < 300) {
+            canvasHeight = 300;
+            canvasWidth = canvasHeight * imgAspectRatio;
+          }
+          
+          mainCanvas.width = canvasWidth;
+          mainCanvas.height = canvasHeight;
+          
+          // Center circle and update slider range
+          circle.x = canvasWidth / 2;
+          circle.y = canvasHeight / 2;
+          circle.r = Math.min(canvasWidth, canvasHeight) / 4;
+          
+          // Update slider max value based on canvas size
+          if (circleRadiusSlider) {
+            circleRadiusSlider.max = Math.min(canvasWidth, canvasHeight) / 2;
+            circleRadiusSlider.value = circle.r;
+          }
+        }
+        
         if (cropperContainer) cropperContainer.style.display = 'block';
         if (previewSection) previewSection.style.display = 'block';
-        
-        // Center circle
-        if (mainCanvas) {
-          circle.x = mainCanvas.width / 2;
-          circle.y = mainCanvas.height / 2;
-          circle.r = Math.min(mainCanvas.width, mainCanvas.height) / 3;
-        }
-        if (circleRadiusSlider) circleRadiusSlider.value = circle.r;
         
         drawMainCanvas();
         drawPreviewCanvas();
@@ -557,7 +593,36 @@
     
     const mainCtx = mainCanvas.getContext('2d');
     mainCtx.clearRect(0, 0, mainCanvas.width, mainCanvas.height);
-    mainCtx.drawImage(imgObj, 0, 0, mainCanvas.width, mainCanvas.height);
+    
+    // Draw image maintaining aspect ratio and filling the canvas
+    const canvasAspect = mainCanvas.width / mainCanvas.height;
+    const imgAspect = imgObj.width / imgObj.height;
+    
+    let drawWidth, drawHeight, offsetX = 0, offsetY = 0;
+    
+    if (imgAspect > canvasAspect) {
+      // Image is wider than canvas ratio - fit by height
+      drawHeight = mainCanvas.height;
+      drawWidth = drawHeight * imgAspect;
+      offsetX = (mainCanvas.width - drawWidth) / 2;
+    } else {
+      // Image is taller than canvas ratio - fit by width
+      drawWidth = mainCanvas.width;
+      drawHeight = drawWidth / imgAspect;
+      offsetY = (mainCanvas.height - drawHeight) / 2;
+    }
+    
+    mainCtx.drawImage(imgObj, offsetX, offsetY, drawWidth, drawHeight);
+    
+    // Draw semi-transparent overlay outside circle
+    mainCtx.save();
+    mainCtx.fillStyle = 'rgba(0, 0, 0, 0.5)';
+    mainCtx.fillRect(0, 0, mainCanvas.width, mainCanvas.height);
+    mainCtx.globalCompositeOperation = 'destination-out';
+    mainCtx.beginPath();
+    mainCtx.arc(circle.x, circle.y, circle.r, 0, 2 * Math.PI);
+    mainCtx.fill();
+    mainCtx.restore();
     
     // Draw circle overlay
     mainCtx.save();
@@ -582,10 +647,43 @@
 
   function drawPreviewCanvas() {
     const previewCanvas = document.getElementById('preview-canvas');
-    if (!previewCanvas || !imgObj) return;
+    const mainCanvas = document.getElementById('main-canvas');
+    if (!previewCanvas || !imgObj || !mainCanvas) return;
     
     const previewCtx = previewCanvas.getContext('2d');
     previewCtx.clearRect(0, 0, previewCanvas.width, previewCanvas.height);
+    
+    // Calculate how the image is positioned in the main canvas
+    const canvasAspect = mainCanvas.width / mainCanvas.height;
+    const imgAspect = imgObj.width / imgObj.height;
+    
+    let drawWidth, drawHeight, offsetX = 0, offsetY = 0;
+    
+    if (imgAspect > canvasAspect) {
+      // Image is wider than canvas ratio - fit by height
+      drawHeight = mainCanvas.height;
+      drawWidth = drawHeight * imgAspect;
+      offsetX = (mainCanvas.width - drawWidth) / 2;
+    } else {
+      // Image is taller than canvas ratio - fit by width
+      drawWidth = mainCanvas.width;
+      drawHeight = drawWidth / imgAspect;
+      offsetY = (mainCanvas.height - drawHeight) / 2;
+    }
+    
+    // Calculate the scale factor from canvas to image
+    const scaleX = imgObj.width / drawWidth;
+    const scaleY = imgObj.height / drawHeight;
+    
+    // Calculate crop area in original image coordinates
+    const cropX = (circle.x - circle.r - offsetX) * scaleX;
+    const cropY = (circle.y - circle.r - offsetY) * scaleY;
+    const cropSize = 2 * circle.r * scaleX;
+    
+    // Ensure crop area is within image bounds
+    const safeCropX = Math.max(0, Math.min(imgObj.width - cropSize, cropX));
+    const safeCropY = Math.max(0, Math.min(imgObj.height - cropSize, cropY));
+    const safeCropSize = Math.min(cropSize, imgObj.width - safeCropX, imgObj.height - safeCropY);
     
     // Draw cropped circle
     previewCtx.save();
@@ -594,18 +692,14 @@
     previewCtx.closePath();
     previewCtx.clip();
     
-    // Calculate scale and draw
-    const mainCanvas = document.getElementById('main-canvas');
-    if (mainCanvas) {
+    if (safeCropSize > 0) {
       previewCtx.drawImage(
         imgObj,
-        (circle.x - circle.r) * (imgObj.width / mainCanvas.width),
-        (circle.y - circle.r) * (imgObj.height / mainCanvas.height),
-        2 * circle.r * (imgObj.width / mainCanvas.width),
-        2 * circle.r * (imgObj.height / mainCanvas.height),
+        safeCropX, safeCropY, safeCropSize, safeCropSize,
         0, 0, previewCanvas.width, previewCanvas.height
       );
     }
+    
     previewCtx.restore();
   }
 

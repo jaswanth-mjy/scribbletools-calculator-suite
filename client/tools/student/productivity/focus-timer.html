@@ -3,9 +3,954 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Focus Session Timer - Student Tools</title>
+    <title>Focus Timer - FREE Student Productivity Tool | Study Session Timer</title>
+    <meta name="description" content="Free focus timer for students! Boost productivity with customizable study sessions. Perfect for Pomodoro technique, time blocking, and maintaining concentration during study sessions.">
+    <meta name="keywords" content="focus timer, pomodoro timer, study timer, productivity timer, concentration timer, student productivity, study session timer, time management, focus tool, study techniques">
+    <meta name="author" content="AllInOne.Tools">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://allinone.tools/client/tools/student/productivity/focus-timer.html">
+    <meta property="og:title" content="Focus Timer - FREE Student Productivity Tool">
+    <meta property="og:description" content="Free focus timer for students! Boost productivity with customizable study sessions. Perfect for Pomodoro technique and maintaining concentration.">
+    <meta property="og:image" content="https://allinone.tools/assets/og-image.svg">
+    <meta property="og:site_name" content="AllInOne.Tools">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://allinone.tools/client/tools/student/productivity/focus-timer.html">
+    <meta property="twitter:title" content="Focus Timer - FREE Student Productivity Tool">
+    <meta property="twitter:description" content="Free focus timer for students! Boost productivity with customizable study sessions. Perfect for Pomodoro technique.">
+    <meta property="twitter:image" content="https://allinone.tools/assets/og-image.svg">
+    
+    <!-- Additional SEO Meta Tags -->
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="AllInOne.Tools">
+    <meta name="generator" content="AllInOne.Tools">
+    <meta name="application-name" content="Focus Timer">
+    <meta name="apple-mobile-web-app-title" content="Focus Timer">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#667eea">
+    <meta name="msapplication-navbutton-color" content="#667eea">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#667eea">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://allinone.tools/client/tools/student/productivity/focus-timer.html">
+    
+    <!-- Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Focus Timer - Student Productivity Tool",
+        "description": "Free focus timer for students implementing Pomodoro technique and time blocking. Boost productivity and maintain concentration during study sessions.",
+        "url": "https://allinone.tools/client/tools/student/productivity/focus-timer.html",
+        "applicationCategory": "ProductivityApplication",
+        "operatingSystem": "Any",
+        "permissions": "browser",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "featureList": [
+            "Pomodoro technique timer",
+            "Customizable work/break intervals",
+            "Session tracking and statistics",
+            "Focus sounds and notifications",
+            "Visual progress indicators",
+            "Study session history",
+            "Mobile responsive design",
+            "No registration required"
+        ],
+        "provider": {
+            "@type": "Organization",
+            "name": "AllInOne.Tools",
+            "url": "https://allinone.tools"
+        },
+        "audience": {
+            "@type": "Audience",
+            "audienceType": "Students, College Students, University Students"
+        },
+        "educationalLevel": "Higher Education",
+        "category": "Education, Productivity, Time Management"
+    }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Caveat:wght@400;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* CSS Scoping - All styles prefixed with .focus-timer-root to prevent conflicts */
+        .focus-timer-root body { 
+            font-family: 'Poppins', sans-serif; 
+            background: #F0F7FF; 
+            color: #333; 
+            margin: 0; 
+            padding: 20px; 
+            line-height: 1.6;
+        }
+        .focus-timer-root .focus-timer-container { 
+            max-width: 100%; 
+            width: 100%;
+            margin: 1em auto; 
+            background: #fff; 
+            border-radius: 1.2em; 
+            box-shadow: 0 4px 24px #d6e4ff; 
+            padding: 2em; 
+            min-height: calc(100vh - 120px);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto auto 1fr auto;
+            gap: 2em;
+            grid-template-areas: 
+                "header header"
+                "timer settings"
+                "stats history"
+                "controls controls";
+        }
+        .focus-timer-root .focus-timer-header {
+            grid-area: header;
+            text-align: center;
+            padding: 1em;
+            background: linear-gradient(135deg, #4A90E2 0%, #3A7BC8 100%);
+            border-radius: 1em;
+            color: white;
+        }
+        .focus-timer-root .focus-timer-handwritten { 
+            font-family: 'Caveat', cursive; 
+            color: white; 
+            text-align: center; 
+            font-size: 3rem; 
+            font-weight: 700; 
+            margin-bottom: 0.5rem; 
+        }
+        .focus-timer-root .focus-timer-subtitle {
+            text-align: center;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 0;
+            font-size: 1.1em;
+        }
+        .focus-timer-root .focus-timer-display {
+            grid-area: timer;
+            background: #F5F9FF;
+            border: 2px solid #D6E4FF;
+            border-radius: 0.9em;
+            padding: 2em;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .focus-timer-root .focus-timer-time {
+            font-size: 5rem;
+            font-weight: 700;
+            color: #4A90E2;
+            font-family: 'Fira Code', monospace;
+            margin-bottom: 0.5em;
+            text-shadow: 2px 2px 4px rgba(74, 144, 226, 0.1);
+            position: relative;
+        }
+        .focus-timer-root .focus-timer-session-type {
+            font-size: 1.2em;
+            color: #666;
+            margin-bottom: 1.5em;
+        }
+        .focus-timer-root .focus-timer-controls {
+            display: flex;
+            gap: 1em;
+            justify-content: center;
+            margin-bottom: 1.5em;
+        }
+        .focus-timer-root .focus-timer-btn { 
+            background: linear-gradient(135deg, #4A90E2, #3A7BC8); 
+            color: white; 
+            border: none; 
+            padding: 1em 2em; 
+            border-radius: 2em; 
+            cursor: pointer; 
+            font-size: 1.1em; 
+            font-weight: 600; 
+            box-shadow: 0 4px 15px rgba(74, 144, 226, 0.3); 
+            transition: all 0.3s ease; 
+        }
+        .focus-timer-root .focus-timer-btn:hover { 
+            transform: translateY(-2px); 
+            box-shadow: 0 8px 25px rgba(74, 144, 226, 0.4); 
+        }
+        .focus-timer-root .focus-timer-btn.secondary {
+            background: #fff;
+            color: #4A90E2;
+            border: 2px solid #4A90E2;
+        }
+        .focus-timer-root .focus-timer-btn.secondary:hover {
+            background: #F5F9FF;
+        }
+        .focus-timer-root .focus-timer-progress {
+            width: 100%;
+            height: 8px;
+            background: #e1e5e9;
+            border-radius: 1em;
+            overflow: hidden;
+            margin-bottom: 1em;
+        }
+        .focus-timer-root .focus-timer-progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #4A90E2, #3A7BC8);
+            transition: width 1s linear;
+            border-radius: 1em;
+        }
+        .focus-timer-root .focus-timer-circular-progress {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 1em 0;
+        }
+        .focus-timer-root .focus-timer-circular-progress svg {
+            width: 220px;
+            height: 220px;
+        }
+        .focus-timer-root .focus-timer-time-overlay {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .focus-timer-root #progressCircle {
+            transition: stroke-dashoffset 1s linear;
+        }
+        .focus-timer-root .focus-timer-settings {
+            grid-area: settings;
+            background: #F5F9FF;
+            border: 2px solid #D6E4FF;
+            border-radius: 0.9em;
+            padding: 1.5em;
+            height: fit-content;
+        }
+        .focus-timer-root .focus-timer-settings-title {
+            font-family: 'Caveat', cursive;
+            color: #4A90E2;
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        .focus-timer-root .focus-timer-form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1em;
+            margin-bottom: 1.5em;
+        }
+        .focus-timer-root .focus-timer-form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        .focus-timer-root .focus-timer-form-label {
+            font-weight: 600;
+            margin-bottom: 0.5em;
+            color: #333;
+            font-size: 0.95em;
+        }
+        .focus-timer-root .focus-timer-form-input {
+            width: 100%;
+            padding: 1em;
+            border: 2px solid #D6E4FF;
+            border-radius: 0.7em;
+            font-size: 1.2em;
+            background: #F5F9FF;
+            text-align: center;
+            font-family: 'Fira Code', monospace;
+        }
+        .focus-timer-root .focus-timer-form-input:focus {
+            outline: none;
+            border-color: #4A90E2;
+            box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+        }
+        .focus-timer-root .focus-timer-preset-buttons {
+            display: flex;
+            gap: 0.5em;
+            margin-top: 0.5em;
+            flex-wrap: wrap;
+        }
+        .focus-timer-root .focus-timer-preset-btn {
+            padding: 0.5em 1em;
+            background: rgba(74, 144, 226, 0.1);
+            color: #4A90E2;
+            border: 1px solid rgba(74, 144, 226, 0.2);
+            border-radius: 1em;
+            cursor: pointer;
+            font-size: 0.9em;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .focus-timer-root .focus-timer-preset-btn:hover {
+            background: #4A90E2;
+            color: white;
+        }
+        .focus-timer-root .focus-timer-stats {
+            grid-area: stats;
+            background: linear-gradient(135deg, #4A90E2 0%, #3A7BC8 100%);
+            color: white;
+            border-radius: 0.9em;
+            padding: 1.5em;
+            height: fit-content;
+        }
+        .focus-timer-root .focus-timer-stats-title {
+            font-family: 'Caveat', cursive;
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        .focus-timer-root .focus-timer-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1em;
+        }
+        .focus-timer-root .focus-timer-stat-item {
+            text-align: center;
+        }
+        .focus-timer-root .focus-timer-stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5em;
+            font-family: 'Fira Code', monospace;
+        }
+        .focus-timer-root .focus-timer-stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .focus-timer-root .focus-timer-history {
+            grid-area: history;
+            background: #F5F9FF;
+            border: 2px solid #D6E4FF;
+            border-radius: 0.9em;
+            padding: 1.5em;
+            max-height: 400px;
+            overflow-y: auto;
+            height: fit-content;
+        }
+        .focus-timer-root .focus-timer-history-title {
+            font-family: 'Caveat', cursive;
+            color: #4A90E2;
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        .focus-timer-root .focus-timer-session-item {
+            background: white;
+            border-radius: 0.7em;
+            padding: 1em;
+            margin-bottom: 1em;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .focus-timer-root .focus-timer-session-info {
+            flex: 1;
+        }
+        .focus-timer-root .focus-timer-session-type {
+            font-weight: 600;
+            color: #4A90E2;
+            margin-bottom: 0.3em;
+        }
+        .focus-timer-root .focus-timer-session-duration {
+            font-size: 0.9em;
+            color: #666;
+        }
+        .focus-timer-root .focus-timer-session-time {
+            font-family: 'Fira Code', monospace;
+            font-weight: 600;
+            color: #333;
+        }
+        .focus-timer-root .focus-timer-empty-state {
+            text-align: center;
+            padding: 2em;
+            color: #666;
+        }
+        .focus-timer-root .focus-timer-empty-state i {
+            font-size: 3rem;
+            margin-bottom: 1em;
+            opacity: 0.5;
+        }
+        .focus-timer-root .focus-timer-notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: white;
+            padding: 1em 1.5em;
+            border-radius: 0.7em;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transform: translateX(400px);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+            max-width: 300px;
+            border-left: 4px solid #4A90E2;
+        }
+        .focus-timer-root .focus-timer-notification.show {
+            transform: translateX(0);
+        }
+        .focus-timer-root .focus-timer-notification-title {
+            font-weight: 600;
+            color: #4A90E2;
+            margin-bottom: 0.5em;
+        }
+        .focus-timer-root .focus-timer-notification-message {
+            color: #666;
+            margin-bottom: 1em;
+        }
+        .focus-timer-root .focus-timer-notification-close {
+            background: #4A90E2;
+            color: white;
+            border: none;
+            padding: 0.5em 1em;
+            border-radius: 0.5em;
+            cursor: pointer;
+            font-size: 0.9em;
+        }
+        @media (max-width: 968px) {
+            .focus-timer-root .focus-timer-container { 
+                grid-template-columns: 1fr;
+                grid-template-areas: 
+                    "header"
+                    "timer" 
+                    "settings"
+                    "stats"
+                    "history"
+                    "controls";
+                padding: 1.5em;
+                gap: 1.5em;
+            }
+            .focus-timer-root .focus-timer-time {
+                font-size: 4rem;
+            }
+        }
+        
+        @media (max-width: 600px) { 
+            .focus-timer-root body { padding: 10px; }
+            .focus-timer-root .focus-timer-container { 
+                padding: 1em; 
+                margin: 0.5em auto;
+                gap: 1em;
+            }
+            .focus-timer-root .focus-timer-handwritten {
+                font-size: 2.2rem;
+            }
+            .focus-timer-root .focus-timer-time {
+                font-size: 3rem;
+            }
+            .focus-timer-root .focus-timer-form-grid {
+                grid-template-columns: 1fr;
+            }
+            .focus-timer-root .focus-timer-stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Focus Session Timer Tool - To be implemented -->
+    <div class="focus-timer-root">
+        <div class="focus-timer-container">
+            <div class="focus-timer-header">
+                <h2 class="focus-timer-handwritten">⏱️ Focus Timer</h2>
+                <p class="focus-timer-subtitle">Boost your productivity with customizable focus sessions</p>
+            </div>
+            
+            <div class="focus-timer-display">
+                <div class="focus-timer-circular-progress" id="circularProgress">
+                    <svg width="200" height="200" viewBox="0 0 200 200">
+                        <circle cx="100" cy="100" r="90" fill="none" stroke="#e1e5e9" stroke-width="8"/>
+                        <circle cx="100" cy="100" r="90" fill="none" stroke="#4A90E2" stroke-width="8" 
+                                stroke-dasharray="565.48" stroke-dashoffset="565.48" 
+                                transform="rotate(-90 100 100)" id="progressCircle"/>
+                    </svg>
+                    <div class="focus-timer-time-overlay">
+                        <div class="focus-timer-time" id="timerDisplay">25:00</div>
+                        <div class="focus-timer-session-type" id="sessionType">Work Session</div>
+                    </div>
+                </div>
+                <div class="focus-timer-progress">
+                    <div class="focus-timer-progress-bar" id="progressBar"></div>
+                </div>
+                <div class="focus-timer-controls">
+                    <button class="focus-timer-btn" id="startBtn">
+                        <i class="fas fa-play"></i> Start
+                    </button>
+                    <button class="focus-timer-btn secondary" id="pauseBtn" style="display: none;">
+                        <i class="fas fa-pause"></i> Pause
+                    </button>
+                    <button class="focus-timer-btn secondary" id="resetBtn">
+                        <i class="fas fa-redo"></i> Reset
+                    </button>
+                </div>
+            </div>
+            
+            <div class="focus-timer-settings">
+                <h3 class="focus-timer-settings-title">Timer Settings</h3>
+                <div class="focus-timer-form-grid">
+                    <div class="focus-timer-form-group">
+                        <label class="focus-timer-form-label">Work Duration (minutes)</label>
+                        <input type="number" class="focus-timer-form-input" id="workDuration" value="25" min="1" max="60">
+                        <div class="focus-timer-preset-buttons">
+                            <button class="focus-timer-preset-btn" onclick="setWorkDuration(15)">15 min</button>
+                            <button class="focus-timer-preset-btn" onclick="setWorkDuration(25)">25 min</button>
+                            <button class="focus-timer-preset-btn" onclick="setWorkDuration(45)">45 min</button>
+                        </div>
+                    </div>
+                    <div class="focus-timer-form-group">
+                        <label class="focus-timer-form-label">Break Duration (minutes)</label>
+                        <input type="number" class="focus-timer-form-input" id="breakDuration" value="5" min="1" max="30">
+                        <div class="focus-timer-preset-buttons">
+                            <button class="focus-timer-preset-btn" onclick="setBreakDuration(3)">3 min</button>
+                            <button class="focus-timer-preset-btn" onclick="setBreakDuration(5)">5 min</button>
+                            <button class="focus-timer-preset-btn" onclick="setBreakDuration(10)">10 min</button>
+                        </div>
+                    </div>
+                    <div class="focus-timer-form-group">
+                        <label class="focus-timer-form-label">Sessions Until Long Break</label>
+                        <input type="number" class="focus-timer-form-input" id="sessionsUntilLongBreak" value="4" min="2" max="8">
+                    </div>
+                    <div class="focus-timer-form-group">
+                        <label class="focus-timer-form-label">Long Break Duration (minutes)</label>
+                        <input type="number" class="focus-timer-form-input" id="longBreakDuration" value="15" min="10" max="45">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="focus-timer-stats">
+                <h3 class="focus-timer-stats-title">Today's Progress</h3>
+                <div class="focus-timer-stats-grid">
+                    <div class="focus-timer-stat-item">
+                        <div class="focus-timer-stat-value" id="completedSessions">0</div>
+                        <div class="focus-timer-stat-label">Sessions</div>
+                    </div>
+                    <div class="focus-timer-stat-item">
+                        <div class="focus-timer-stat-value" id="totalFocusTime">0</div>
+                        <div class="focus-timer-stat-label">Minutes</div>
+                    </div>
+                    <div class="focus-timer-stat-item">
+                        <div class="focus-timer-stat-value" id="currentStreak">0</div>
+                        <div class="focus-timer-stat-label">Streak</div>
+                    </div>
+                    <div class="focus-timer-stat-item">
+                        <div class="focus-timer-stat-value" id="dailyGoal">0%</div>
+                        <div class="focus-timer-stat-label">Goal</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="focus-timer-history">
+                <h3 class="focus-timer-history-title">Session History</h3>
+                <div id="sessionHistory">
+                    <div class="focus-timer-empty-state">
+                        <i class="fas fa-clock"></i>
+                        <p>No sessions yet. Start your first focus session!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Timer state
+        let timerState = {
+            isRunning: false,
+            isPaused: false,
+            currentTime: 25 * 60, // seconds
+            totalTime: 25 * 60, // seconds
+            sessionType: 'work', // 'work', 'break', 'longBreak'
+            completedSessions: 0,
+            sessionsInCurrentSet: 0,
+            totalFocusTime: 0,
+            currentStreak: 0,
+            lastActiveDate: null,
+            dailyGoal: 120, // minutes
+            sessions: [] // Array to store session history
+        };
+
+        // DOM elements
+        const timerDisplay = document.getElementById('timerDisplay');
+        const sessionTypeLabel = document.getElementById('sessionType');
+        const startBtn = document.getElementById('startBtn');
+        const pauseBtn = document.getElementById('pauseBtn');
+        const resetBtn = document.getElementById('resetBtn');
+        const workDurationInput = document.getElementById('workDuration');
+        const breakDurationInput = document.getElementById('breakDuration');
+        const longBreakDurationInput = document.getElementById('longBreakDuration');
+        const sessionsUntilLongBreakInput = document.getElementById('sessionsUntilLongBreak');
+        const completedSessionsEl = document.getElementById('completedSessions');
+        const totalFocusTimeEl = document.getElementById('totalFocusTime');
+        const currentStreakEl = document.getElementById('currentStreak');
+        const dailyGoalEl = document.getElementById('dailyGoal');
+        const progressBar = document.getElementById('progressBar');
+        const sessionHistoryEl = document.getElementById('sessionHistory');
+
+        // Timer interval
+        let timerInterval = null;
+
+        // Initialize function for dynamic loading
+        function initializeFocusTimer() {
+            loadTimerState();
+            updateDisplay();
+            updateStatistics();
+            renderSessionHistory();
+            
+            // Event listeners
+            startBtn.addEventListener('click', startTimer);
+            pauseBtn.addEventListener('click', pauseTimer);
+            resetBtn.addEventListener('click', resetTimer);
+            
+            // Settings change listeners
+            workDurationInput.addEventListener('change', updateSettings);
+            breakDurationInput.addEventListener('change', updateSettings);
+            longBreakDurationInput.addEventListener('change', updateSettings);
+            sessionsUntilLongBreakInput.addEventListener('change', updateSettings);
+        }
+
+        // Make it available globally for dynamic loading
+        window.initializeFocusTimer = initializeFocusTimer;
+
+        // Initialize immediately if DOM is already loaded or on DOMContentLoaded
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initializeFocusTimer);
+        } else {
+            initializeFocusTimer();
+        }
+
+        function startTimer() {
+            if (!timerState.isRunning) {
+                timerState.isRunning = true;
+                timerState.isPaused = false;
+                
+                startBtn.style.display = 'none';
+                pauseBtn.style.display = 'inline-flex';
+                
+                // If timer is at 0, reset it based on session type
+                if (timerState.currentTime <= 0) {
+                    resetTimerToSessionType();
+                }
+                
+                timerInterval = setInterval(updateTimer, 1000);
+                saveTimerState();
+            }
+        }
+
+        function pauseTimer() {
+            if (timerState.isRunning) {
+                timerState.isRunning = false;
+                timerState.isPaused = true;
+                
+                pauseBtn.style.display = 'none';
+                startBtn.style.display = 'inline-flex';
+                
+                clearInterval(timerInterval);
+                saveTimerState();
+            }
+        }
+
+        function resetTimer() {
+            timerState.isRunning = false;
+            timerState.isPaused = false;
+            
+            pauseBtn.style.display = 'none';
+            startBtn.style.display = 'inline-flex';
+            
+            clearInterval(timerInterval);
+            resetTimerToSessionType();
+            updateDisplay();
+            saveTimerState();
+        }
+
+        function resetTimerToSessionType() {
+            switch (timerState.sessionType) {
+                case 'work':
+                    timerState.currentTime = workDurationInput.value * 60;
+                    timerState.totalTime = workDurationInput.value * 60;
+                    break;
+                case 'break':
+                    timerState.currentTime = breakDurationInput.value * 60;
+                    timerState.totalTime = breakDurationInput.value * 60;
+                    break;
+                case 'longBreak':
+                    timerState.currentTime = longBreakDurationInput.value * 60;
+                    timerState.totalTime = longBreakDurationInput.value * 60;
+                    break;
+            }
+        }
+
+        function updateTimer() {
+            if (timerState.currentTime > 0) {
+                timerState.currentTime--;
+                updateDisplay();
+                updateProgress();
+            } else {
+                // Timer completed
+                completeSession();
+            }
+        }
+
+        function updateDisplay() {
+            const minutes = Math.floor(timerState.currentTime / 60);
+            const seconds = timerState.currentTime % 60;
+            timerDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            
+            // Update session type label
+            switch (timerState.sessionType) {
+                case 'work':
+                    sessionTypeLabel.textContent = 'Work Session';
+                    break;
+                case 'break':
+                    sessionTypeLabel.textContent = 'Short Break';
+                    break;
+                case 'longBreak':
+                    sessionTypeLabel.textContent = 'Long Break';
+                    break;
+            }
+        }
+
+        function updateProgress() {
+            const progress = (timerState.totalTime - timerState.currentTime) / timerState.totalTime;
+            progressBar.style.width = `${progress * 100}%`;
+        }
+
+        function completeSession() {
+            clearInterval(timerInterval);
+            timerState.isRunning = false;
+            
+            // Play notification sound (if supported)
+            playNotificationSound();
+            
+            // Save session to history
+            saveSessionToHistory();
+            
+            // Update statistics based on session type
+            if (timerState.sessionType === 'work') {
+                timerState.completedSessions++;
+                timerState.sessionsInCurrentSet++;
+                timerState.totalFocusTime += workDurationInput.value;
+                
+                // Determine next session type
+                if (timerState.sessionsInCurrentSet >= parseInt(sessionsUntilLongBreakInput.value)) {
+                    timerState.sessionType = 'longBreak';
+                    timerState.sessionsInCurrentSet = 0;
+                    showNotification('Work session complete! Time for a long break.', 'success');
+                } else {
+                    timerState.sessionType = 'break';
+                    showNotification('Work session complete! Time for a short break.', 'success');
+                }
+            } else {
+                // Break session complete
+                timerState.sessionType = 'work';
+                showNotification('Break complete! Ready for another focus session?', 'info');
+            }
+            
+            // Update streak
+            updateStreak();
+            
+            // Reset display
+            pauseBtn.style.display = 'none';
+            startBtn.style.display = 'inline-flex';
+            
+            resetTimerToSessionType();
+            updateDisplay();
+            updateStatistics();
+            renderSessionHistory();
+            saveTimerState();
+        }
+
+        function saveSessionToHistory() {
+            const session = {
+                type: timerState.sessionType,
+                duration: timerState.totalTime / 60,
+                completedAt: new Date().toISOString(),
+                date: new Date().toLocaleDateString()
+            };
+            
+            timerState.sessions.unshift(session);
+            
+            // Keep only last 20 sessions
+            if (timerState.sessions.length > 20) {
+                timerState.sessions = timerState.sessions.slice(0, 20);
+            }
+        }
+
+        function updateStatistics() {
+            completedSessionsEl.textContent = timerState.completedSessions;
+            totalFocusTimeEl.textContent = timerState.totalFocusTime;
+            currentStreakEl.textContent = timerState.currentStreak;
+            
+            // Calculate daily goal progress
+            const goalProgress = Math.min(100, Math.round((timerState.totalFocusTime / timerState.dailyGoal) * 100));
+            dailyGoalEl.textContent = `${goalProgress}%`;
+        }
+
+        function updateSettings() {
+            if (!timerState.isRunning) {
+                resetTimerToSessionType();
+                updateDisplay();
+                saveTimerState();
+            }
+        }
+
+        function setWorkDuration(minutes) {
+            workDurationInput.value = minutes;
+            updateSettings();
+        }
+
+        function setBreakDuration(minutes) {
+            breakDurationInput.value = minutes;
+            updateSettings();
+        }
+
+        function updateStreak() {
+            const today = new Date().toDateString();
+            
+            if (timerState.lastActiveDate !== today) {
+                // Check if yesterday was active
+                const yesterday = new Date();
+                yesterday.setDate(yesterday.getDate() - 1);
+                
+                if (timerState.lastActiveDate === yesterday.toDateString()) {
+                    timerState.currentStreak++;
+                } else {
+                    // Streak broken
+                    timerState.currentStreak = 1;
+                }
+                
+                timerState.lastActiveDate = today;
+            }
+        }
+
+        function renderSessionHistory() {
+            if (timerState.sessions.length === 0) {
+                sessionHistoryEl.innerHTML = `
+                    <div class="focus-timer-empty-state">
+                        <i class="fas fa-clock"></i>
+                        <p>No sessions yet. Start your first focus session!</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            sessionHistoryEl.innerHTML = timerState.sessions.map(session => `
+                <div class="focus-timer-session-item">
+                    <div class="focus-timer-session-info">
+                        <div class="focus-timer-session-type">${session.type.charAt(0).toUpperCase() + session.type.slice(1)}</div>
+                        <div class="focus-timer-session-duration">${session.duration} minutes</div>
+                    </div>
+                    <div class="focus-timer-session-time">${new Date(session.completedAt).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</div>
+                </div>
+            `).join('');
+        }
+
+        function playNotificationSound() {
+            // Create a simple beep sound using Web Audio API
+            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+            
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            
+            oscillator.frequency.value = 800;
+            oscillator.type = 'sine';
+            
+            gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.5);
+            
+            oscillator.start(audioContext.currentTime);
+            oscillator.stop(audioContext.currentTime + 0.5);
+        }
+
+        function showNotification(message, type) {
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.className = 'focus-timer-notification';
+            notification.innerHTML = `
+                <div class="focus-timer-notification-title">${type === 'success' ? '✅' : 'ℹ️'} ${type === 'success' ? 'Great job!' : 'Reminder'}</div>
+                <div class="focus-timer-notification-message">${message}</div>
+                <button class="focus-timer-notification-close">OK</button>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            // Show notification
+            setTimeout(() => {
+                notification.classList.add('show');
+            }, 100);
+            
+            // Close button functionality
+            const closeBtn = notification.querySelector('.focus-timer-notification-close');
+            closeBtn.addEventListener('click', () => {
+                notification.classList.remove('show');
+                setTimeout(() => {
+                    if (document.body.contains(notification)) {
+                        document.body.removeChild(notification);
+                    }
+                }, 300);
+            });
+            
+            // Auto close after 5 seconds
+            setTimeout(() => {
+                if (document.body.contains(notification)) {
+                    notification.classList.remove('show');
+                    setTimeout(() => {
+                        if (document.body.contains(notification)) {
+                            document.body.removeChild(notification);
+                        }
+                    }, 300);
+                }
+            }, 5000);
+        }
+
+        function saveTimerState() {
+            localStorage.setItem('focusTimerState', JSON.stringify(timerState));
+        }
+
+        function loadTimerState() {
+            const savedState = localStorage.getItem('focusTimerState');
+            if (savedState) {
+                const parsedState = JSON.parse(savedState);
+                
+                // Check if it's a new day
+                const today = new Date().toDateString();
+                if (parsedState.lastActiveDate !== today) {
+                    // Reset daily stats but keep streak info
+                    timerState.completedSessions = 0;
+                    timerState.totalFocusTime = 0;
+                    timerState.sessionsInCurrentSet = 0;
+                    
+                    // Check if yesterday was active for streak
+                    const yesterday = new Date();
+                    yesterday.setDate(yesterday.getDate() - 1);
+                    
+                    if (parsedState.lastActiveDate === yesterday.toDateString()) {
+                        timerState.currentStreak = parsedState.currentStreak;
+                    } else {
+                        timerState.currentStreak = 0;
+                    }
+                    
+                    timerState.lastActiveDate = today;
+                } else {
+                    // Same day, load all stats
+                    timerState = {
+                        ...parsedState,
+                        isRunning: false,
+                        isPaused: false
+                    };
+                }
+            }
+        }
+    </script>
 </body>
 </html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GST Calculator Connection Test</title>
+</head>
+<body>
+    <h1>Testing Indian GST Calculator Connection</h1>
+    <div id="status"></div>
+    
+    <script>
+        // Test if the GST calculator can be loaded
+        async function testGSTCalculatorConnection() {
+            const statusDiv = document.getElementById('status');
+            
+            try {
+                // Test if the file exists by trying to fetch it
+                const response = await fetch('../client/tools/financial/indian-gst-calculator.html');
+                
+                if (response.ok) {
+                    statusDiv.innerHTML = `
+                        <div style="color: green; padding: 20px; border: 2px solid green; border-radius: 10px;">
+                            ✅ <strong>SUCCESS!</strong><br>
+                            Indian GST Calculator is properly connected and accessible.<br>
+                            File size: ${response.headers.get('content-length') || 'Unknown'} bytes<br>
+                            Status: ${response.status} ${response.statusText}<br><br>
+                            <a href="../client/tools/financial/indian-gst-calculator.html" target="_blank" 
+                               style="background: #FF6B35; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">
+                               🇮🇳 Open GST Calculator
+                            </a>
+                        </div>
+                    `;
+                } else {
+                    statusDiv.innerHTML = `
+                        <div style="color: red; padding: 20px; border: 2px solid red; border-radius: 10px;">
+                            ❌ <strong>ERROR!</strong><br>
+                            Could not load Indian GST Calculator<br>
+                            Status: ${response.status} ${response.statusText}
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                statusDiv.innerHTML = `
+                    <div style="color: red; padding: 20px; border: 2px solid red; border-radius: 10px;">
+                        ❌ <strong>CONNECTION ERROR!</strong><br>
+                        Error: ${error.message}
+                    </div>
+                `;
+            }
+        }
+        
+        // Test connection when page loads
+        window.addEventListener('load', testGSTCalculatorConnection);
+    </script>
+</body>
+</html>

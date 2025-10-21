@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loan Calculator - Free Personal Loan Payment Calculator</title>
-    <meta name="description" content="Calculate loan payments, total interest, and total cost with our free loan calculator. Perfect for personal loans, debt consolidation, and installment loans.">
-    <meta name="keywords" content="loan calculator, personal loan calculator, payment calculator, debt consolidation calculator, installment loan calculator">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Loan Calculator - Free Payment Tool | Calculate Loan Payments</title>
+    <meta name="description" content="Free loan calculator to calculate payments and view amortization schedule. Calculate monthly payments, total interest, and payment breakdown for any type of loan.">
+    <meta name="keywords" content="loan calculator, payment calculator, amortization calculator, personal loan, student loan, loan payment, loan schedule">
     <meta name="author" content="ScribbleTools">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://scribbletools.net/client/tools/financial/loan-calculator.html">
@@ -13,15 +13,15 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://scribbletools.net/client/tools/financial/loan-calculator.html">
-    <meta property="og:title" content="Loan Calculator - Free Personal Loan Payment Calculator">
-    <meta property="og:description" content="Calculate monthly payments, total interest, and loan costs. Perfect for personal loans and debt consolidation planning.">
+    <meta property="og:title" content="Loan Calculator - Free Payment Tool">
+    <meta property="og:description" content="Calculate loan payments and view amortization schedule. Free tool for personal loans, student loans, and other financing options.">
     <meta property="og:image" content="https://scribbletools.net/assets/og-image.svg">
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://scribbletools.net/client/tools/financial/loan-calculator.html">
-    <meta property="twitter:title" content="Loan Calculator - Free Personal Loan Payment Calculator">
-    <meta property="twitter:description" content="Calculate loan payments and compare terms with our free calculator.">
+    <meta property="twitter:title" content="Loan Calculator - Free Payment Tool">
+    <meta property="twitter:description" content="Calculate loan payments and view amortization schedule. Free tool for personal loans, student loans, and other financing options.">
     <meta property="twitter:image" content="https://scribbletools.net/assets/og-image.svg">
     
     <!-- JSON-LD Structured Data -->
@@ -30,7 +30,7 @@
       "@context": "https://schema.org",
       "@type": "WebApplication",
       "name": "Loan Calculator",
-      "description": "Free loan payment calculator to estimate monthly payments, total interest, and loan costs for personal loans and debt consolidation",
+      "description": "Free online loan calculator to calculate payments and view payment schedule",
       "url": "https://scribbletools.net/client/tools/financial/loan-calculator.html",
       "applicationCategory": "FinanceApplication",
       "operatingSystem": "Web Browser",
@@ -46,240 +46,314 @@
     }
     </script>
     <style>
-        body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; margin: 0; padding: 1em; }
-        .container { max-width: 500px; margin: 2em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2em 1.5em 2.5em 1.5em; }
+        body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; }
+        .calc-container { max-width: 420px; margin: 3em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2em 1.5em 2.5em 1.5em; }
         .handwritten { font-family: 'Caveat', cursive; }
-        .form-group { margin-bottom: 1.5em; }
-        .form-label { font-weight: 600; margin-bottom: 0.5em; display: block; color: #333; }
-        .form-input, .form-select { width: 100%; padding: 1em; border: 2px solid #EAE3D5; border-radius: 0.7em; font-size: 1.1em; background: #FDFBF5; box-sizing: border-box; }
-        .form-input:focus, .form-select:focus { border-color: #D9534F; outline: none; }
-        .calculate-btn { background: #D9534F; color: #fff; border: none; border-radius: 0.7em; padding: 1em 2em; font-weight: 600; font-size: 1.1em; cursor: pointer; transition: background 0.2s; width: 100%; margin-bottom: 1em; }
-        .calculate-btn:hover { background: #C9302C; }
-        .result-section { display: none; margin-top: 1.5em; }
-        .result-card { background: #F8F9FA; border: 1px solid #DEE2E6; border-radius: 0.5em; padding: 1em; margin-bottom: 1em; }
-        .result-card h3 { margin: 0 0 0.5em 0; color: #495057; font-size: 1em; }
-        .result-value { font-size: 1.5em; font-weight: bold; color: #D9534F; }
-        .conversion-success-card { background: #E8F5E8; border: 2px solid #5CB85C; border-radius: 0.7em; padding: 1.2em 1em 1.5em 1em; margin-bottom: 1em; box-shadow: 0 2px 12px #eae3d5; }
-        .success-icon { font-size: 2.2em; color: #5CB85C; margin-bottom: 0.3em; text-align: center; }
-        .success-message { font-size: 1.15em; color: #228B22; font-family: 'Caveat', cursive; margin-bottom: 0.7em; text-align: center; }
-        .calc-desc { max-width: fit-content; margin: 2.5em auto 0 auto; background: #FDFBF5; border: 2px solid #EAE3D5; border-radius: 0.9em; padding: 1.2em 1em; font-size: 1.08em; color: #333; line-height: 1.7; }
+        .calc-label { font-weight: 600; margin-bottom: 0.5em; display: block; }
+        .calc-input { width: 100%; padding: 1em; border: 2px solid #EAE3D5; border-radius: 0.7em; font-size: 1.2em; margin-bottom: 1em; background: #FDFBF5; text-align: center; font-family: 'Fira Code', monospace; }
+        .calc-btn { background: #fff; color: #D9534F; border: 2px solid #D9534F; border-radius: 0.5em; padding: 0.7em 2em; font-weight: 600; font-size: 1.1em; cursor: pointer; transition: all 0.2s; margin-bottom: 1em; }
+        .calc-btn:hover { background: #D9534F; color: #fff; }
+        .calc-result { background: #FDFBF5; border: 2px solid #D9534F; border-radius: 0.7em; padding: 1em; font-size: 1.25em; color: #D9534F; min-height: 1.7em; margin-bottom: 1em; text-align: center; font-family: 'Fira Code', monospace; font-weight: bold; max-height: 300px; overflow-y: auto; word-break: break-word; transition: height 0.2s; }
+        .calc-desc { width: 100%; margin-top: 2em; background:#FDFBF5; border:2px solid #EAE3D5; border-radius:0.9em; padding:1.2em 1em; font-size:1.08em; color:#333; line-height:1.7; }
         .calc-desc strong { color: #D9534F; font-size: 1.12em; }
-        .section-title { color: #D9534F; margin-top: 2em; }
-        .info-box { background: #f8f9fa; padding: 15px; border-radius: 5px; }
-        .list-indent { margin-left: 1.2em; }
-        @media (max-width: 600px) { .container { margin: 1em; padding: 1em; } }
+        @media (max-width: 600px) { .calc-container { padding: 1em 0.2em; } }
+        .amort-table { width: 100%; border-collapse: collapse; margin-top: 1em; font-size: 0.9em; }
+        .amort-table th, .amort-table td { padding: 0.5em; text-align: center; border-bottom: 1px solid #EAE3D5; }
+        .amort-table th { background: #D9534F; color: white; }
+        .amort-table tr:nth-child(even) { background: #FDFBF5; }
+        .download-btn { background: #5cb85c; color: white; border: 2px solid #5cb85c; }
+        .download-btn:hover { background: #4cae4c; border-color: #4cae4c; }
+        .info-message { background: #d9edf7; color: #31708f; border: 1px solid #bce8f1; border-radius: 0.5em; padding: 0.8em; margin-bottom: 1em; font-size: 0.95em; }
+        .toggle-section { margin-top: 1em; margin-bottom: 1em; }
+        .toggle-btn { background: #f0ad4e; color: white; border: 2px solid #f0ad4e; font-size: 0.9em; padding: 0.5em 1em; }
+        .toggle-btn:hover { background: #ec971f; border-color: #ec971f; }
+        .advanced-options { display: none; margin-top: 1em; padding: 1em; background: #FDFBF5; border: 1px solid #EAE3D5; border-radius: 0.7em; }
+        .loan-type-selector { display: flex; justify-content: space-between; margin-bottom: 1em; }
+        .loan-type-btn { flex: 1; padding: 0.5em; margin: 0 0.2em; border: 2px solid #D9534F; background: white; color: #D9534F; border-radius: 0.5em; cursor: pointer; font-size: 0.9em; }
+        .loan-type-btn.active { background: #D9534F; color: white; }
     </style>
 </head>
 <body>
-<div class="container">
-    <h1 class="handwritten section-title" style="text-align: center; font-size: 2.5em; margin-bottom: 1em;">Loan Calculator</h1>
+<div class="calc-container">
+    <h2 class="handwritten text-5xl text-[#D9534F] mb-4">Loan Calculator</h2>
     
-    <form id="loan-form" autocomplete="off">
-        <div class="form-group">
-            <label class="form-label" for="loan-amount">Loan Amount ($):</label>
-            <input type="number" id="loan-amount" class="form-input" placeholder="25000" min="1" step="100" aria-label="Loan Amount">
-        </div>
-        
-        <div class="form-group">
-            <label class="form-label" for="interest-rate">Interest Rate (% APR):</label>
-            <input type="number" id="interest-rate" class="form-input" placeholder="8.5" min="0" max="30" step="0.01" aria-label="Interest Rate">
-        </div>
-        
-        <div class="form-group">
-            <label class="form-label" for="loan-term">Loan Term (years):</label>
-            <select id="loan-term" class="form-select" aria-label="Loan Term">
-                <option value="1">1 year</option>
-                <option value="2">2 years</option>
-                <option value="3" selected>3 years</option>
-                <option value="4">4 years</option>
-                <option value="5">5 years</option>
-                <option value="6">6 years</option>
-                <option value="7">7 years</option>
-                <option value="10">10 years</option>
-            </select>
-        </div>
-        
-        <button class="calculate-btn" id="calculate-btn" type="button" aria-label="Calculate Loan Payment">Calculate Payment</button>
-    </form>
+    <div class="loan-type-selector">
+        <button class="loan-type-btn active" data-type="personal">Personal</button>
+        <button class="loan-type-btn" data-type="student">Student</button>
+        <button class="loan-type-btn" data-type="business">Business</button>
+    </div>
     
-    <div class="result-section" id="result-section">
-        <div class="conversion-success-card">
-            <div class="success-icon">💰</div>
-            <div class="success-message">Your loan calculation is ready!</div>
-            <div id="results-display"></div>
+    <label class="calc-label">Loan Amount ($):</label>
+    <input id="loanAmount" class="calc-input" type="number" min="0" placeholder="e.g. 10000">
+    <label class="calc-label">Annual Interest Rate (%):</label>
+    <input id="interestRate" class="calc-input" type="number" min="0" step="0.01" placeholder="e.g. 6.5">
+    <label class="calc-label">Loan Term (years):</label>
+    <input id="loanTerm" class="calc-input" type="number" min="1" placeholder="e.g. 5">
+    
+    <div class="toggle-section">
+        <button id="toggleAdvanced" class="calc-btn toggle-btn">Show Advanced Options</button>
+        <div id="advancedOptions" class="advanced-options">
+            <label class="calc-label">Origination Fee ($):</label>
+            <input id="originationFee" class="calc-input" type="number" min="0" placeholder="e.g. 200">
+            <label class="calc-label">Monthly Extra Payment ($):</label>
+            <input id="extraPayment" class="calc-input" type="number" min="0" placeholder="e.g. 100">
         </div>
     </div>
+    
+    <button id="calc-btn" class="calc-btn">Calculate</button>
+    <div id="info-message" class="info-message" style="display: none;"></div>
+    <button id="download-btn" class="calc-btn download-btn" style="display: none;">Download Excel Schedule</button>
+    <div class="calc-result" id="calc-result"></div>
 </div>
-
-<!-- Educational Content -->
-<section style="background: #f8f9fa; border-left: 4px solid #28a745; padding: 1.5em; margin: 1.5em; border-radius: 0.5em;">
-    <h2 style="color: #28a745; margin-bottom: 1em;">📚 Understanding Personal Loans: Complete Guide</h2>
+<div class="calc-desc" style="max-width: fit-content; margin: 2.5em auto 0 auto;">
+    <strong style="font-size:1.18em; color:#D9534F;">About the Loan Calculator</strong><br><br>
     
-    <div style="margin-bottom: 1.5em;">
-        <h3 style="color: #495057; margin-bottom: 0.8em;">💰 What is a Loan Calculator?</h3>
-        <p style="line-height: 1.6; color: #212529;">
-            A loan calculator helps you estimate monthly payments, total interest costs, and overall loan expenses for personal loans, debt consolidation, or any installment loan. By entering the loan amount, interest rate, and term, you can see exactly what borrowing will cost and make informed financial decisions.
-        </p>
-    </div>
-
-    <div style="margin-bottom: 1.5em;">
-        <h3 style="color: #495057; margin-bottom: 0.8em;">📋 How to Use This Calculator</h3>
-        <ol style="line-height: 1.6; color: #212529; padding-left: 1.2em;">
-            <li><strong>Loan Amount:</strong> Enter the total amount you want to borrow</li>
-            <li><strong>Interest Rate:</strong> Input the annual percentage rate (APR) from your lender</li>
-            <li><strong>Loan Term:</strong> Choose the number of years to repay the loan</li>
-            <li><strong>Calculate:</strong> View your monthly payment, total interest, and total cost</li>
-        </ol>
-    </div>
-
-    <div style="margin-bottom: 1.5em;">
-        <h3 style="color: #495057; margin-bottom: 0.8em;">💡 Real-World Example</h3>
-        <div style="background: #e9ecef; padding: 1em; border-radius: 0.375em; margin: 0.5em 0;">
-            <p style="margin: 0; line-height: 1.6; color: #212529;">
-                <strong>Scenario:</strong> You need $20,000 for debt consolidation at 8.5% APR for 5 years.
-                <br><br>
-                <strong>Results:</strong>
-                <br>• Monthly Payment: $408.54
-                <br>• Total Interest: $4,512.40
-                <br>• Total Paid: $24,512.40
-                <br>• You'll save money if your current debts have higher rates
-            </p>
-        </div>
-    </div>
-
-    <div style="margin-bottom: 1.5em;">
-        <h3 style="color: #495057; margin-bottom: 0.8em;">🎯 Personal Loan Basics</h3>
-        <div style="background: #fff; padding: 1em; border: 1px solid #dee2e6; border-radius: 0.375em; margin: 0.5em 0;">
-            <h4 style="color: #28a745; margin-bottom: 0.5em;">How Personal Loans Work:</h4>
-            <ul style="line-height: 1.6; color: #212529; margin: 0;">
-                <li><strong>Fixed Payment:</strong> Same monthly payment for the entire term</li>
-                <li><strong>Fixed Rate:</strong> Interest rate doesn't change (unlike credit cards)</li>
-                <li><strong>Set Term:</strong> Defined payoff period (typically 2-7 years)</li>
-                <li><strong>Unsecured:</strong> No collateral required for most personal loans</li>
-            </ul>
-        </div>
-    </div>
-
-    <div style="margin-bottom: 1.5em;">
-        <h3 style="color: #495057; margin-bottom: 0.8em;">💼 Common Uses for Personal Loans</h3>
-        <div style="background: #f8f9fa; padding: 1em; border-left: 3px solid #ffc107; border-radius: 0.375em; margin: 0.5em 0;">
-            <h4 style="color: #856404; margin-bottom: 0.5em;">Popular Applications:</h4>
-            <ul style="line-height: 1.6; color: #212529; margin: 0;">
-                <li><strong>Debt Consolidation:</strong> Combine multiple high-interest debts</li>
-                <li><strong>Home Improvements:</strong> Renovations and repairs</li>
-                <li><strong>Major Purchases:</strong> Wedding, vacation, or large expenses</li>
-                <li><strong>Medical Expenses:</strong> Unexpected healthcare costs</li>
-                <li><strong>Emergency Expenses:</strong> Quick funding for urgent needs</li>
-            </ul>
-        </div>
-    </div>
-
-    <div style="margin-bottom: 1.5em;">
-        <h3 style="color: #495057; margin-bottom: 0.8em;">🏦 Getting the Best Loan Terms</h3>
-        <div style="background: #e7f3ff; padding: 1em; border-radius: 0.375em; margin: 0.5em 0;">
-            <h4 style="color: #004085; margin-bottom: 0.5em;">Smart Borrowing Strategies:</h4>
-            <ul style="line-height: 1.6; color: #212529; margin: 0;">
-                <li><strong>Check Your Credit Score:</strong> 720+ gets best rates</li>
-                <li><strong>Shop Multiple Lenders:</strong> Banks, credit unions, online lenders</li>
-                <li><strong>Consider Shorter Terms:</strong> Less total interest, but higher payments</li>
-                <li><strong>Avoid Origination Fees:</strong> Look for no-fee options</li>
-                <li><strong>Pre-qualify First:</strong> Check rates without affecting credit</li>
-            </ul>
-        </div>
-    </div>
-
-    <div style="margin-bottom: 1.5em;">
-        <h3 style="color: #495057; margin-bottom: 0.8em;">⚠️ Important Considerations</h3>
-        <div style="background: #f8d7da; padding: 1em; border: 1px solid #f5c6cb; border-radius: 0.375em; margin: 0.5em 0;">
-            <h4 style="color: #721c24; margin-bottom: 0.5em;">Before You Borrow:</h4>
-            <ul style="line-height: 1.6; color: #212529; margin: 0;">
-                <li><strong>Budget Check:</strong> Ensure payments fit comfortably in your budget</li>
-                <li><strong>Emergency Fund:</strong> Don't borrow if it depletes your emergency savings</li>
-                <li><strong>Alternative Options:</strong> Consider 0% credit cards for short-term needs</li>
-                <li><strong>Early Payoff:</strong> Check for prepayment penalties</li>
-            </ul>
-        </div>
-    </div>
-
-    <div style="background: #e9ecef; padding: 1em; border-radius: 0.375em; border-left: 4px solid #6c757d;">
-        <h4 style="color: #495057; margin-bottom: 0.5em;">💼 Professional Advice</h4>
-        <p style="line-height: 1.6; color: #212529; margin: 0; font-style: italic;">
-            Personal loans can be excellent tools for debt consolidation or major expenses when used wisely. The key is ensuring the monthly payment fits your budget and that you're getting a better rate than your current debts. Always compare multiple offers and read the fine print for fees.
-        </p>
-    </div>
-</section>
-
+    The Loan Calculator helps you estimate your monthly payments and understand the total cost of borrowing. This versatile tool works for personal loans, student loans, business loans, and other types of installment loans.<br><br>
+    
+    <strong style="color:#D9534F;">How Loans Work:</strong><br>
+    Loans are borrowed money that you repay with interest over a set period. Each payment includes both principal (the original loan amount) and interest (the cost of borrowing). Over time, more of your payment goes toward principal as the loan balance decreases.<br><br>
+    
+    <strong style="color:#D9534F;">How to Use This Calculator:</strong><br>
+    <ol style="margin-left:1.2em; line-height:1.6;">
+        <li><strong>Select Loan Type:</strong> Choose Personal, Student, or Business loan for tailored calculations</li>
+        <li><strong>Loan Amount:</strong> Enter the total amount you're borrowing</li>
+        <li><strong>Interest Rate:</strong> Enter the annual interest rate as a percentage</li>
+        <li><strong>Loan Term:</strong> Enter the loan term in years</li>
+        <li><strong>Advanced Options (Optional):</strong> Include origination fees and extra payments</li>
+        <li><strong>Click Calculate:</strong> View your monthly payment and complete payment schedule</li>
+        <li><strong>Download Excel Schedule:</strong> Get the full payment schedule for your records</li>
+    </ol><br>
+    
+    <strong style="color:#D9534F;">What You'll Discover:</strong><br>
+    <ul style="margin-left:1.2em; line-height:1.6;">
+        <li><strong>Monthly Payment:</strong> Your fixed monthly payment amount</li>
+        <li><strong>Total Payment:</strong> Total amount paid over the life of the loan</li>
+        <li><strong>Total Interest:</strong> Total interest paid over the loan term</li>
+        <li><strong>Payment Breakdown:</strong> How much of each payment goes to principal vs. interest</li>
+        <li><strong>Early Payoff Impact:</strong> How extra payments reduce your loan term and interest</li>
+    </ul><br>
+    
+    <strong style="color:#D9534F;">Perfect For:</strong><br>
+    <ul style="margin-left:1.2em; line-height:1.6;">
+        <li><strong>Personal Loans:</strong> Planning for debt consolidation, home improvements, or major purchases</li>
+        <li><strong>Student Loans:</strong> Understanding repayment options and total education costs</li>
+        <li><strong>Business Loans:</strong> Budgeting for equipment, inventory, or expansion financing</li>
+        <li><strong>Debt Planning:</strong> Comparing loan offers and choosing the best financing option</li>
+        <li><strong>Early Payoff Strategies:</strong> Seeing how extra payments can save money</li>
+    </ul><br>
+    
+    <strong style="color:#D9534F;">Pro Tips for Borrowing:</strong><br>
+    <ul style="margin-left:1.2em; line-height:1.6;">
+        <li><strong>Compare APRs, not just rates:</strong> APR includes fees and gives the true cost of borrowing</li>
+        <li><strong>Consider shorter terms:</strong> They mean higher payments but less total interest</li>
+        <li><strong>Check for prepayment penalties:</strong> Ensure you can pay off the loan early without fees</li>
+        <li><strong>Understand all fees:</strong> Origination fees, late fees, and other charges add to the cost</li>
+        <li><strong>Make extra payments when possible:</strong> Even small amounts can significantly reduce interest</li>
+    </ul><br>
+    
+    <strong style="color:#D9534F;">Common Loan Scenarios:</strong><br>
+    <ul style="margin-left:1.2em; line-height:1.6;">
+        <li><strong>Debt Consolidation:</strong> Combining high-interest debts into one lower-rate loan</li>
+        <li><strong>Home Improvement:</strong> Financing renovations that increase your home's value</li>
+        <li><strong>Student Loan Repayment:</strong> Planning payments after graduation</li>
+        <li><strong>Business Equipment:</strong> Financing necessary tools or technology</li>
+        <li><strong>Major Purchase:</strong> Spreading the cost of a large expense over time</li>
+    </ul><br>
+    
+    <b>Note:</b> This calculator provides estimates for planning purposes. Actual loan terms may vary based on credit history, lender requirements, fees, and other factors. Always consult with financial advisors for personalized loan advice.
+</div>
 <script>
-function initializeLoanCalculator() {
-    const form = document.getElementById('loan-form');
-    const calculateBtn = document.getElementById('calculate-btn');
-    const resultSection = document.getElementById('result-section');
-    const resultsDisplay = document.getElementById('results-display');
+// Store amortization data globally for download
+let amortizationData = [];
 
-    calculateBtn.addEventListener('click', function() {
-        const loanAmount = parseFloat(document.getElementById('loan-amount').value);
-        const interestRate = parseFloat(document.getElementById('interest-rate').value);
-        const loanTermYears = parseInt(document.getElementById('loan-term').value);
+function showResult(str) {
+    document.getElementById('calc-result').innerHTML = str;
+}
 
-        // Validation
-        if (!loanAmount || !interestRate || !loanTermYears || 
-            loanAmount <= 0 || interestRate < 0 || loanTermYears <= 0) {
-            alert('Please enter valid values for all fields.');
-            return;
-        }
+function showInfo(message) {
+    const infoElement = document.getElementById('info-message');
+    infoElement.textContent = message;
+    infoElement.style.display = 'block';
+    setTimeout(() => {
+        infoElement.style.display = 'none';
+    }, 3000);
+}
 
-        // Calculate loan details
-        const monthlyRate = interestRate / 100 / 12;
-        const totalMonths = loanTermYears * 12;
-        
-        // Monthly payment calculation using standard loan formula
-        let monthlyPayment;
-        if (monthlyRate === 0) {
-            monthlyPayment = loanAmount / totalMonths;
-        } else {
-            monthlyPayment = loanAmount * (monthlyRate * Math.pow(1 + monthlyRate, totalMonths)) / 
-                           (Math.pow(1 + monthlyRate, totalMonths) - 1);
-        }
-        
-        const totalPayments = monthlyPayment * totalMonths;
-        const totalInterest = totalPayments - loanAmount;
+// Toggle advanced options
+document.getElementById('toggleAdvanced').addEventListener('click', function() {
+    const advancedOptions = document.getElementById('advancedOptions');
+    const toggleBtn = document.getElementById('toggleAdvanced');
+    
+    if (advancedOptions.style.display === 'none' || advancedOptions.style.display === '') {
+        advancedOptions.style.display = 'block';
+        toggleBtn.textContent = 'Hide Advanced Options';
+    } else {
+        advancedOptions.style.display = 'none';
+        toggleBtn.textContent = 'Show Advanced Options';
+    }
+});
 
-        // Display results
-        resultsDisplay.innerHTML = `
-            <div class="result-card">
-                <h3>Monthly Payment</h3>
-                <div class="result-value">$${monthlyPayment.toFixed(2)}</div>
-            </div>
-            <div class="result-card">
-                <h3>Total Interest</h3>
-                <div class="result-value">$${totalInterest.toFixed(2)}</div>
-            </div>
-            <div class="result-card">
-                <h3>Total Amount Paid</h3>
-                <div class="result-value">$${totalPayments.toFixed(2)}</div>
-            </div>
-            <div style="margin-top: 1em; font-size: 0.9em; color: #666;">
-                <p><strong>Loan Amount:</strong> $${loanAmount.toFixed(2)}</p>
-                <p><strong>Loan Term:</strong> ${loanTermYears} years (${totalMonths} months)</p>
-                <p><strong>APR:</strong> ${interestRate}%</p>
-                <p><strong>Interest as % of loan:</strong> ${((totalInterest/loanAmount)*100).toFixed(1)}%</p>
-            </div>
-        `;
-
-        resultSection.style.display = 'block';
+// Loan type selector
+document.querySelectorAll('.loan-type-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+        document.querySelectorAll('.loan-type-btn').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
     });
-}
+});
 
-// SPA/Router support
-if (window.initializeLoanCalculator === undefined) {
-    window.initializeLoanCalculator = initializeLoanCalculator;
-}
+document.getElementById('calc-btn').addEventListener('click', function() {
+    let loanAmount = parseFloat(document.getElementById('loanAmount').value);
+    let interestRate = parseFloat(document.getElementById('interestRate').value);
+    let loanTerm = parseInt(document.getElementById('loanTerm').value);
+    let originationFee = parseFloat(document.getElementById('originationFee').value) || 0;
+    let extraPayment = parseFloat(document.getElementById('extraPayment').value) || 0;
+    
+    if (isNaN(loanAmount) || isNaN(interestRate) || isNaN(loanTerm) || 
+        loanAmount <= 0 || interestRate < 0 || loanTerm <= 0) {
+        showResult('Please enter valid values for all required fields.');
+        return;
+    }
+    
+    // Calculate monthly payment
+    let monthlyRate = interestRate / 100 / 12;
+    let numPayments = loanTerm * 12;
+    let monthlyPayment = loanAmount * (monthlyRate * Math.pow(1 + monthlyRate, numPayments)) / 
+                         (Math.pow(1 + monthlyRate, numPayments) - 1);
+    
+    // Calculate total payment and total interest without extra payments
+    let totalPaymentWithoutExtra = monthlyPayment * numPayments;
+    let totalInterestWithoutExtra = totalPaymentWithoutExtra - loanAmount;
+    
+    // Generate amortization schedule with extra payments
+    let balance = loanAmount;
+    amortizationData = []; // Reset data
+    let totalPayment = 0;
+    let totalInterest = 0;
+    let actualNumPayments = 0;
+    
+    let amortizationHTML = `
+        <div style="margin-bottom: 1em;">
+            <b>Loan Amount:</b> $${loanAmount.toFixed(2)}<br>
+            <b>Origination Fee:</b> $${originationFee.toFixed(2)}<br>
+            <b>Monthly Payment:</b> $${monthlyPayment.toFixed(2)}<br>
+            <b>Extra Payment:</b> $${extraPayment.toFixed(2)}<br>
+            <b>Total Payment (without extra):</b> $${totalPaymentWithoutExtra.toFixed(2)}<br>
+            <b>Total Interest (without extra):</b> $${totalInterestWithoutExtra.toFixed(2)}<br>
+    `;
+    
+    for (let month = 1; month <= numPayments; month++) {
+        let interestPayment = balance * monthlyRate;
+        let principalPayment = monthlyPayment - interestPayment;
+        
+        // Add extra payment if available
+        if (extraPayment > 0 && balance > extraPayment) {
+            principalPayment += extraPayment;
+        }
+        
+        // Adjust if payment would overpay
+        if (principalPayment > balance) {
+            principalPayment = balance;
+        }
+        
+        balance -= principalPayment;
+        totalPayment += (monthlyPayment + (extraPayment > 0 && month <= numPayments ? extraPayment : 0));
+        totalInterest += interestPayment;
+        actualNumPayments = month;
+        
+        // Store data for Excel download
+        amortizationData.push({
+            month: month,
+            payment: monthlyPayment + (extraPayment > 0 && month <= numPayments ? extraPayment : 0),
+            principal: principalPayment,
+            interest: interestPayment,
+            balance: balance < 0 ? 0 : balance
+        });
+        
+        // Break if loan is paid off early
+        if (balance <= 0) {
+            break;
+        }
+    }
+    
+    amortizationHTML += `
+            <b>Actual Total Payment:</b> $${totalPayment.toFixed(2)}<br>
+            <b>Actual Total Interest:</b> $${totalInterest.toFixed(2)}<br>
+            <b>Interest Saved:</b> $${(totalInterestWithoutExtra - totalInterest).toFixed(2)}<br>
+            <b>Months Saved:</b> ${numPayments - actualNumPayments}
+        </div>
+        <table class="amort-table">
+            <thead>
+                <tr>
+                    <th>Month</th>
+                    <th>Payment</th>
+                    <th>Principal</th>
+                    <th>Interest</th>
+                    <th>Balance</th>
+                </tr>
+            </thead>
+            <tbody>
+    `;
+    
+    // Show first 12 months or all if less than 12
+    let showMonths = Math.min(12, amortizationData.length);
+    for (let i = 0; i < showMonths; i++) {
+        let row = amortizationData[i];
+        amortizationHTML += `
+            <tr>
+                <td>${row.month}</td>
+                <td>$${row.payment.toFixed(2)}</td>
+                <td>$${row.principal.toFixed(2)}</td>
+                <td>$${row.interest.toFixed(2)}</td>
+                <td>$${row.balance.toFixed(2)}</td>
+            </tr>
+        `;
+    }
+    
+    if (amortizationData.length > 12) {
+        amortizationHTML += `
+            <tr>
+                <td colspan="5">... Showing first 12 months of ${amortizationData.length} months ...</td>
+            </tr>
+        `;
+    }
+    
+    amortizationHTML += `
+            </tbody>
+        </table>
+    `;
+    
+    showResult(amortizationHTML);
+    document.getElementById('download-btn').style.display = 'block';
+});
 
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initializeLoanCalculator);
-} else {
-    initializeLoanCalculator();
-}
+// Download amortization schedule as Excel
+document.getElementById('download-btn').addEventListener('click', function() {
+    if (amortizationData.length === 0) {
+        showInfo('No data available. Please calculate first.');
+        return;
+    }
+    
+    // Create CSV content
+    let csvContent = "data:text/csv;charset=utf-8,";
+    csvContent += "Month,Payment,Principal,Interest,Balance\n";
+    
+    amortizationData.forEach(row => {
+        csvContent += `${row.month},${row.payment.toFixed(2)},${row.principal.toFixed(2)},${row.interest.toFixed(2)},${row.balance.toFixed(2)}\n`;
+    });
+    
+    // Create download link
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", "loan_schedule.csv");
+    
+    // Append to body and trigger click
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    
+    showInfo('Loan schedule downloaded successfully!');
+});
 </script>
 </body>
 </html>

@@ -3,25 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Amortization Calculator - Free Loan Payment Tool | Calculate Loan Schedule</title>
-    <meta name="description" content="Free amortization calculator to calculate loan payments and view amortization schedule. Calculate monthly payments, total interest, and payment breakdown for any loan.">
-    <meta name="keywords" content="amortization calculator, loan calculator, mortgage calculator, payment schedule, loan amortization, mortgage amortization, car loan calculator">
+    <title>Auto Loan Calculator - Free Car Payment Tool | Calculate Car Loan Payments</title>
+    <meta name="description" content="Free auto loan calculator to calculate car payments and view amortization schedule. Calculate monthly payments, total interest, and payment breakdown for any vehicle loan.">
+    <meta name="keywords" content="auto loan calculator, car loan calculator, vehicle payment calculator, car payment, auto financing, car loan amortization">
     <meta name="author" content="ScribbleTools">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://scribbletools.net/client/tools/financial/amortization-calculator.html">
+    <link rel="canonical" href="https://scribbletools.net/client/tools/financial/auto-loan-calculator.html">
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://scribbletools.net/client/tools/financial/amortization-calculator.html">
-    <meta property="og:title" content="Amortization Calculator - Free Loan Payment Tool">
-    <meta property="og:description" content="Calculate loan payments and view amortization schedule. Free tool for mortgages, auto loans, and personal loans.">
+    <meta property="og:url" content="https://scribbletools.net/client/tools/financial/auto-loan-calculator.html">
+    <meta property="og:title" content="Auto Loan Calculator - Free Car Payment Tool">
+    <meta property="og:description" content="Calculate car payments and view amortization schedule. Free tool for auto loans, vehicle financing, and car payment planning.">
     <meta property="og:image" content="https://scribbletools.net/assets/og-image.svg">
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://scribbletools.net/client/tools/financial/amortization-calculator.html">
-    <meta property="twitter:title" content="Amortization Calculator - Free Loan Payment Tool">
-    <meta property="twitter:description" content="Calculate loan payments and view amortization schedule. Free tool for mortgages, auto loans, and personal loans.">
+    <meta property="twitter:url" content="https://scribbletools.net/client/tools/financial/auto-loan-calculator.html">
+    <meta property="twitter:title" content="Auto Loan Calculator - Free Car Payment Tool">
+    <meta property="twitter:description" content="Calculate car payments and view amortization schedule. Free tool for auto loans and vehicle financing.">
     <meta property="twitter:image" content="https://scribbletools.net/assets/og-image.svg">
     
     <!-- JSON-LD Structured Data -->
@@ -29,9 +29,9 @@
     {
       "@context": "https://schema.org",
       "@type": "WebApplication",
-      "name": "Amortization Calculator",
-      "description": "Free online amortization calculator to calculate loan payments and view payment schedule",
-      "url": "https://scribbletools.net/client/tools/financial/amortization-calculator.html",
+      "name": "Auto Loan Calculator",
+      "description": "Free online auto loan calculator to calculate car payments and view payment schedule",
+      "url": "https://scribbletools.net/client/tools/financial/auto-loan-calculator.html",
       "applicationCategory": "FinanceApplication",
       "operatingSystem": "Web Browser",
       "offers": {
@@ -64,75 +64,94 @@
         .download-btn { background: #5cb85c; color: white; border: 2px solid #5cb85c; }
         .download-btn:hover { background: #4cae4c; border-color: #4cae4c; }
         .info-message { background: #d9edf7; color: #31708f; border: 1px solid #bce8f1; border-radius: 0.5em; padding: 0.8em; margin-bottom: 1em; font-size: 0.95em; }
+        .toggle-section { margin-top: 1em; margin-bottom: 1em; }
+        .toggle-btn { background: #f0ad4e; color: white; border: 2px solid #f0ad4e; font-size: 0.9em; padding: 0.5em 1em; }
+        .toggle-btn:hover { background: #ec971f; border-color: #ec971f; }
+        .advanced-options { display: none; margin-top: 1em; padding: 1em; background: #FDFBF5; border: 1px solid #EAE3D5; border-radius: 0.7em; }
     </style>
 </head>
 <body>
 <div class="calc-container">
-    <h2 class="handwritten text-5xl text-[#D9534F] mb-4">Amortization Calculator</h2>
-    <label class="calc-label">Loan Amount ($):</label>
-    <input id="loanAmount" class="calc-input" type="number" min="0" placeholder="e.g. 250000">
+    <h2 class="handwritten text-5xl text-[#D9534F] mb-4">Auto Loan Calculator</h2>
+    <label class="calc-label">Vehicle Price ($):</label>
+    <input id="vehiclePrice" class="calc-input" type="number" min="0" placeholder="e.g. 35000">
+    <label class="calc-label">Down Payment ($):</label>
+    <input id="downPayment" class="calc-input" type="number" min="0" placeholder="e.g. 5000">
+    
+    <div class="toggle-section">
+        <button id="toggleAdvanced" class="calc-btn toggle-btn">Show Advanced Options</button>
+        <div id="advancedOptions" class="advanced-options">
+            <label class="calc-label">Sales Tax (%):</label>
+            <input id="salesTax" class="calc-input" type="number" min="0" step="0.01" placeholder="e.g. 7.5">
+            <label class="calc-label">Other Fees ($):</label>
+            <input id="otherFees" class="calc-input" type="number" min="0" placeholder="e.g. 500">
+        </div>
+    </div>
+    
+    <label class="calc-label">Loan Term (years):</label>
+    <input id="loanTerm" class="calc-input" type="number" min="1" placeholder="e.g. 5">
     <label class="calc-label">Annual Interest Rate (%):</label>
     <input id="interestRate" class="calc-input" type="number" min="0" step="0.01" placeholder="e.g. 4.5">
-    <label class="calc-label">Loan Term (years):</label>
-    <input id="loanTerm" class="calc-input" type="number" min="1" placeholder="e.g. 30">
     <button id="calc-btn" class="calc-btn">Calculate</button>
     <div id="info-message" class="info-message" style="display: none;"></div>
     <button id="download-btn" class="calc-btn download-btn" style="display: none;">Download Excel Schedule</button>
     <div class="calc-result" id="calc-result"></div>
 </div>
 <div class="calc-desc" style="max-width: fit-content; margin: 2.5em auto 0 auto;">
-    <strong style="font-size:1.18em; color:#D9534F;">About the Amortization Calculator</strong><br><br>
+    <strong style="font-size:1.18em; color:#D9534F;">About the Auto Loan Calculator</strong><br><br>
     
-    The Amortization Calculator helps you understand your loan repayment schedule by breaking down each payment into principal and interest components. This tool is essential for planning major purchases like homes, cars, or education loans.<br><br>
+    The Auto Loan Calculator helps you estimate your monthly car payments and understand the total cost of financing a vehicle. This tool is essential for budgeting and comparing different auto loan options before making a purchase decision.<br><br>
     
-    <strong style="color:#D9534F;">What is Amortization?</strong><br>
-    Amortization is the process of paying off a loan with regular payments over time. Each payment includes both principal (the original loan amount) and interest (the cost of borrowing). Over time, the portion of each payment that goes toward principal increases while the interest portion decreases.<br><br>
+    <strong style="color:#D9534F;">How Auto Loans Work:</strong><br>
+    Auto loans are installment loans specifically for purchasing vehicles. The loan amount is based on the vehicle price minus your down payment, plus any taxes and fees. You then make fixed monthly payments over a set term, typically 3-7 years.<br><br>
     
     <strong style="color:#D9534F;">How to Use This Calculator:</strong><br>
     <ol style="margin-left:1.2em; line-height:1.6;">
-        <li><strong>Loan Amount:</strong> Enter the total amount you're borrowing (e.g., $250,000 for a mortgage)</li>
-        <li><strong>Annual Interest Rate:</strong> Enter the annual interest rate as a percentage (e.g., 4.5%)</li>
-        <li><strong>Loan Term:</strong> Enter the loan term in years (e.g., 30 years for a typical mortgage)</li>
-        <li><strong>Click Calculate:</strong> View your monthly payment and complete amortization schedule</li>
-        <li><strong>Download Excel Schedule:</strong> Get the full payment schedule in Excel format for your records</li>
+        <li><strong>Vehicle Price:</strong> Enter the total cost of the vehicle you're considering</li>
+        <li><strong>Down Payment:</strong> Enter the amount you'll pay upfront (typically 10-20% of vehicle price)</li>
+        <li><strong>Advanced Options (Optional):</strong> Include sales tax and other fees for more accurate calculations</li>
+        <li><strong>Loan Term:</strong> Enter the loan term in years (typically 3-7 years for auto loans)</li>
+        <li><strong>Interest Rate:</strong> Enter the annual interest rate offered by the lender</li>
+        <li><strong>Click Calculate:</strong> View your monthly payment and complete payment schedule</li>
+        <li><strong>Download Excel Schedule:</strong> Get the full payment schedule for your records</li>
     </ol><br>
     
     <strong style="color:#D9534F;">What You'll Discover:</strong><br>
     <ul style="margin-left:1.2em; line-height:1.6;">
-        <li><strong>Monthly Payment:</strong> Your fixed monthly payment amount</li>
+        <li><strong>Monthly Payment:</strong> Your fixed monthly car payment amount</li>
         <li><strong>Total Payment:</strong> Total amount paid over the life of the loan</li>
         <li><strong>Total Interest:</strong> Total interest paid over the loan term</li>
         <li><strong>Payment Breakdown:</strong> How much of each payment goes to principal vs. interest</li>
-        <li><strong>Remaining Balance:</strong> How your loan balance decreases over time</li>
+        <li><strong>Loan Amount:</strong> The actual amount you're financing after down payment</li>
     </ul><br>
     
     <strong style="color:#D9534F;">Perfect For:</strong><br>
     <ul style="margin-left:1.2em; line-height:1.6;">
-        <li><strong>Home Buyers:</strong> Understanding mortgage payments and comparing loan options</li>
-        <li><strong>Auto Loans:</strong> Calculating car payments and total interest costs</li>
-        <li><strong>Student Loans:</strong> Planning repayment strategies and understanding interest costs</li>
-        <li><strong>Personal Loans:</strong> Evaluating loan offers and repayment schedules</li>
-        <li><strong>Refinancing:</strong> Comparing current loan with refinancing options</li>
+        <li><strong>New Car Buyers:</strong> Budgeting for monthly payments and comparing financing options</li>
+        <li><strong>Used Car Shoppers:</strong> Calculating payments for pre-owned vehicles</li>
+        <li><strong>Lease vs. Buy Decisions:</strong> Comparing the costs of leasing versus purchasing</li>
+        <li><strong>Refinancing:</strong> Evaluating if refinancing your current auto loan makes sense</li>
+        <li><strong>Trade-in Planning:</strong> Understanding how trade-in value affects your new loan</li>
     </ul><br>
     
-    <strong style="color:#D9534F;">Pro Tips for Loan Planning:</strong><br>
+    <strong style="color:#D9534F;">Pro Tips for Auto Financing:</strong><br>
     <ul style="margin-left:1.2em; line-height:1.6;">
-        <li><strong>Compare loan terms:</strong> See how shorter terms save interest but increase monthly payments</li>
-        <li><strong>Consider extra payments:</strong> Even small additional payments can significantly reduce total interest</li>
-        <li><strong>Check interest rates:</strong> Small rate differences can mean thousands over the loan term</li>
-        <li><strong>Understand fixed vs. variable:</strong> Fixed rates provide stability, variable rates may start lower but can increase</li>
-        <li><strong>Factor in insurance and taxes:</strong> For mortgages, remember these additional costs</li>
+        <li><strong>Aim for 20% down payment:</strong> Reduces loan amount and may qualify you for better rates</li>
+        <li><strong>Keep loan term under 5 years:</strong> Longer terms mean lower payments but more interest</li>
+        <li><strong>Get pre-approved:</strong> Secure financing before visiting dealerships for better negotiation power</li>
+        <li><strong>Consider total cost:</strong> Look beyond monthly payment to total interest paid</li>
+        <li><strong>Check for prepayment penalties:</strong> Ensure you can pay off the loan early without fees</li>
     </ul><br>
     
-    <strong style="color:#D9534F;">Common Loan Scenarios:</strong><br>
+    <strong style="color:#D9534F;">Common Auto Loan Scenarios:</strong><br>
     <ul style="margin-left:1.2em; line-height:1.6;">
-        <li><strong>30-year Mortgage:</strong> Lower monthly payments but higher total interest</li>
-        <li><strong>15-year Mortgage:</strong> Higher monthly payments but significant interest savings</li>
-        <li><strong>Auto Loan (5 years):</strong> Typical term for new vehicle financing</li>
-        <li><strong>Student Loan (10 years):</strong> Standard repayment plan for federal student loans</li>
+        <li><strong>New Car (5-year term):</strong> Typical financing for a new vehicle purchase</li>
+        <li><strong>Used Car (3-year term):</strong> Shorter term for older vehicles to avoid being underwater</li>
+        <li><strong>Luxury Vehicle (6-year term):</strong> Longer term to afford higher-priced vehicles</li>
+        <li><strong>First-time Buyer:</strong> Higher interest rates but building credit history</li>
     </ul><br>
     
-    <b>Note:</b> This calculator provides estimates for planning purposes. Actual loan terms may vary based on credit history, fees, and other factors. Consult with financial advisors for personalized loan advice.
+    <b>Note:</b> This calculator provides estimates for planning purposes. Actual loan terms may vary based on credit history, lender requirements, fees, and other factors. Always consult with financial advisors for personalized auto financing advice.
 </div>
 <script>
 // Store amortization data globally for download
@@ -151,14 +170,41 @@ function showInfo(message) {
     }, 3000);
 }
 
-document.getElementById('calc-btn').addEventListener('click', function() {
-    let loanAmount = parseFloat(document.getElementById('loanAmount').value);
-    let interestRate = parseFloat(document.getElementById('interestRate').value);
-    let loanTerm = parseInt(document.getElementById('loanTerm').value);
+// Toggle advanced options
+document.getElementById('toggleAdvanced').addEventListener('click', function() {
+    const advancedOptions = document.getElementById('advancedOptions');
+    const toggleBtn = document.getElementById('toggleAdvanced');
     
-    if (isNaN(loanAmount) || isNaN(interestRate) || isNaN(loanTerm) || 
-        loanAmount <= 0 || interestRate < 0 || loanTerm <= 0) {
-        showResult('Please enter valid values for all fields.');
+    if (advancedOptions.style.display === 'none' || advancedOptions.style.display === '') {
+        advancedOptions.style.display = 'block';
+        toggleBtn.textContent = 'Hide Advanced Options';
+    } else {
+        advancedOptions.style.display = 'none';
+        toggleBtn.textContent = 'Show Advanced Options';
+    }
+});
+
+document.getElementById('calc-btn').addEventListener('click', function() {
+    let vehiclePrice = parseFloat(document.getElementById('vehiclePrice').value);
+    let downPayment = parseFloat(document.getElementById('downPayment').value);
+    let salesTax = parseFloat(document.getElementById('salesTax').value) || 0;
+    let otherFees = parseFloat(document.getElementById('otherFees').value) || 0;
+    let loanTerm = parseInt(document.getElementById('loanTerm').value);
+    let interestRate = parseFloat(document.getElementById('interestRate').value);
+    
+    if (isNaN(vehiclePrice) || isNaN(downPayment) || isNaN(loanTerm) || isNaN(interestRate) || 
+        vehiclePrice <= 0 || downPayment < 0 || loanTerm <= 0 || interestRate < 0) {
+        showResult('Please enter valid values for all required fields.');
+        return;
+    }
+    
+    // Calculate loan amount including tax and fees
+    let taxAmount = vehiclePrice * (salesTax / 100);
+    let totalCost = vehiclePrice + taxAmount + otherFees;
+    let loanAmount = totalCost - downPayment;
+    
+    if (loanAmount <= 0) {
+        showResult('Down payment cannot be greater than or equal to total vehicle cost.');
         return;
     }
     
@@ -177,6 +223,11 @@ document.getElementById('calc-btn').addEventListener('click', function() {
     amortizationData = []; // Reset data
     let amortizationHTML = `
         <div style="margin-bottom: 1em;">
+            <b>Vehicle Price:</b> $${vehiclePrice.toFixed(2)}<br>
+            <b>Down Payment:</b> $${downPayment.toFixed(2)}<br>
+            <b>Sales Tax:</b> $${taxAmount.toFixed(2)}<br>
+            <b>Other Fees:</b> $${otherFees.toFixed(2)}<br>
+            <b>Loan Amount:</b> $${loanAmount.toFixed(2)}<br><br>
             <b>Monthly Payment:</b> $${monthlyPayment.toFixed(2)}<br>
             <b>Total Payment:</b> $${totalPayment.toFixed(2)}<br>
             <b>Total Interest:</b> $${totalInterest.toFixed(2)}
@@ -264,14 +315,14 @@ document.getElementById('download-btn').addEventListener('click', function() {
     const encodedUri = encodeURI(csvContent);
     const link = document.createElement("a");
     link.setAttribute("href", encodedUri);
-    link.setAttribute("download", "amortization_schedule.csv");
+    link.setAttribute("download", "auto_loan_schedule.csv");
     
     // Append to body and trigger click
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
     
-    showInfo('Amortization schedule downloaded successfully!');
+    showInfo('Auto loan schedule downloaded successfully!');
 });
 </script>
 </body>

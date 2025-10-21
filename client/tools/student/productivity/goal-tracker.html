@@ -60,50 +60,439 @@
         }
     }
     </script>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Caveat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
-        /* Goal Tracker Specific Styles - All prefixed with 'goal-' to avoid conflicts */
+        /* CSS Variables for Goal Tracker - Multiple scope definitions for maximum compatibility */
+        :root,
         .goal-root,
         .goal-main-container,
         .goal-body,
         body.goal-body,
         html {
-            --goal-font-primary: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
-            
-            /* Enhanced Color Palette */
-            --goal-color-primary: #667eea !important;
-            --goal-color-primary-dark: #5a6fd8 !important;
-            --goal-color-secondary: #764ba2 !important;
-            --goal-color-accent: #f39c12 !important;
-            --goal-color-success: #28a745 !important;
-            --goal-color-danger: #dc3545 !important;
-            --goal-color-info: #17a2b8 !important;
-            
-            /* Background & Surface Colors */
-            --goal-color-background: #f5f7fa !important;
-            --goal-color-surface: #ffffff !important;
-            --goal-color-surface-alt: #f8f9fa !important;
-            
-            /* Text Colors */
-            --goal-color-text-primary: #2c3e50 !important;
-            --goal-color-text-secondary: #6c757d !important;
-            --goal-color-text-on-primary: #ffffff !important;
-            
-            /* Border & Shadow */
-            --goal-color-border: #e9ecef !important;
-            --goal-shadow-sm: 0 2px 4px rgba(0,0,0,0.08) !important;
-            --goal-shadow-md: 0 4px 12px rgba(0,0,0,0.15) !important;
-            --goal-shadow-lg: 0 8px 32px rgba(0,0,0,0.18) !important;
+            --goal-primary-color: #2E7D32 !important;
+            --goal-secondary-color: #388E3C !important;
+            --goal-accent-color: #4CAF50 !important;
+            --goal-success-color: #1B5E20 !important;
+            --goal-warning-color: #FF8F00 !important;
+            --goal-error-color: #D32F2F !important;
+            --goal-text-primary: #212121 !important;
+            --goal-text-secondary: #757575 !important;
+            --goal-text-light: #BDBDBD !important;
+            --goal-surface: #FFFFFF !important;
+            --goal-surface-alt: #F1F8E9 !important;
+            --goal-border-color: #E0E0E0 !important;
+            --goal-border-light: #F5F5F5 !important;
+            --goal-shadow-sm: 0 2px 4px rgba(46, 125, 50, 0.1) !important;
+            --goal-shadow-md: 0 4px 8px rgba(46, 125, 50, 0.15) !important;
+            --goal-shadow-lg: 0 8px 16px rgba(46, 125, 50, 0.2) !important;
+            --goal-shadow-hover: 0 12px 24px rgba(46, 125, 50, 0.25) !important;
+            --goal-border-radius: 0.75rem !important;
+            --goal-transition-timing: cubic-bezier(0.4, 0, 0.2, 1) !important;
+            --goal-font-family: 'Poppins', sans-serif !important;
+            --goal-font-size-xs: 0.75rem !important;
+            --goal-font-size-sm: 0.875rem !important;
+            --goal-font-size-base: 1rem !important;
+            --goal-font-size-lg: 1.125rem !important;
+            --goal-font-size-xl: 1.25rem !important;
+            --goal-font-size-2xl: 1.5rem !important;
+            --goal-font-size-3xl: 1.875rem !important;
+            --goal-line-height: 1.5 !important;
+            --goal-spacing-xs: 0.5rem !important;
+            --goal-spacing-sm: 0.75rem !important;
+            --goal-spacing-md: 1rem !important;
+            --goal-spacing-lg: 1.5rem !important;
+            --goal-spacing-xl: 2rem !important;
+            --goal-spacing-2xl: 3rem !important;
         }
 
-        .goal-body { 
-            font-family: var(--goal-font-primary); 
-            background: var(--goal-color-background); 
-            color: var(--goal-color-text-primary); 
-            margin: 0; 
-            padding: 20px; 
-            line-height: 1.7;
-            min-height: 100vh;
-            scroll-behavior: smooth;
+        /* Reset and Base Styles - Scoped to goal tracker only */
+        .goal-root *, 
+        .goal-root *::before, 
+        .goal-root *::after {
+            box-sizing: border-box !important;
+        }
+
+        .goal-root {
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        /* Revert margins and padding for goal elements */
+        .goal-root .goal-main-container,
+        .goal-root .goal-header-section,
+        .goal-root .goal-content-section,
+        .goal-root .goal-calculator-grid,
+        .goal-root .goal-input-section,
+        .goal-root .goal-results-section,
+        .goal-root .goal-tips-section {
+            margin: revert !important;
+            padding: revert !important;
+        }
+
+        .goal-body {
+            font-family: var(--goal-font-family, 'Poppins', sans-serif) !important;
+            font-family: 'Poppins', sans-serif !important;
+            background: transparent !important;
+            background-color: transparent !important;
+        }
+
+        body.goal-body {
+            background: transparent !important;
+            background-color: transparent !important;
+        }
+
+        html {
+            background: transparent !important;
+            background-color: transparent !important;
+        }
+
+        /* Goal Calculator Container - Works both standalone and embedded */
+        .goal-standalone-wrapper {
+            background: transparent !important;
+            min-height: 100vh !important;
+            line-height: var(--goal-line-height, 1.5) !important;
+            line-height: 1.5 !important;
+            color: var(--goal-text-primary, #212121) !important;
+            color: #212121 !important;
+            padding: var(--goal-spacing-md, 20px) !important;
+            padding: 20px !important;
+            margin: 0 !important;
+            
+            /* Mobile touch improvements */
+            -webkit-tap-highlight-color: transparent !important;
+            -webkit-touch-callout: none !important;
+            -webkit-user-select: none !important;
+            -moz-user-select: none !important;
+            -ms-user-select: none !important;
+            user-select: none !important;
+        }
+
+        /* Allow text selection for inputs and content */
+        .goal-root input,
+        .goal-root select,
+        .goal-root textarea,
+        .goal-root p,
+        .goal-root h1,
+        .goal-root h2,
+        .goal-root h3 {
+            -webkit-user-select: text !important;
+            -moz-user-select: text !important;
+            -ms-user-select: text !important;
+            user-select: text !important;
+        }
+
+        /* When embedded, remove background and padding */
+        .goal-embedded .goal-standalone-wrapper {
+            background: none !important;
+            min-height: 0 !important;
+            padding: 0 !important;
+        }
+
+        /* Main Container */
+        .goal-root .goal-main-container {
+            max-width: 1400px !important;
+            margin: 0 auto !important;
+            background: var(--goal-surface, #ffffff) !important;
+            background: #ffffff !important;
+            border-radius: var(--goal-border-radius, 30px) !important;
+            border-radius: 30px !important;
+            box-shadow: var(--goal-shadow-lg, 0 25px 50px rgba(46, 125, 50, 0.15)) !important;
+            box-shadow: 0 25px 50px rgba(46, 125, 50, 0.15) !important;
+            overflow: hidden !important;
+            position: relative !important;
+        }
+
+        /* Header Section */
+        .goal-root .goal-header-section {
+            background: linear-gradient(135deg, var(--goal-primary-color, #2E7D32) 0%, var(--goal-secondary-color, #388E3C) 100%) !important;
+            background: linear-gradient(135deg, #2E7D32 0%, #388E3C 100%) !important;
+            color: #ffffff !important;
+            padding: var(--goal-spacing-2xl, 3rem) var(--goal-spacing-xl, 2rem) !important;
+            padding: 3rem 2rem !important;
+            text-align: center !important;
+            position: relative !important;
+            overflow: hidden !important;
+        }
+
+        .goal-root .goal-header-section::before {
+            content: '' !important;
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="goal-pattern" patternUnits="userSpaceOnUse" width="20" height="20"><circle cx="10" cy="10" r="2" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23goal-pattern)"/></svg>') !important;
+            opacity: 0.3 !important;
+        }
+
+        .goal-root .goal-header-section h1 {
+            font-family: 'Caveat', cursive !important;
+            font-size: var(--goal-font-size-3xl, 3rem) !important;
+            font-size: 3rem !important;
+            font-weight: 700 !important;
+            margin-bottom: var(--goal-spacing-md, 1rem) !important;
+            margin-bottom: 1rem !important;
+            color: #ffffff !important;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2) !important;
+            position: relative !important;
+            z-index: 2 !important;
+        }
+
+        .goal-root .goal-header-section p {
+            font-size: var(--goal-font-size-lg, 1.125rem) !important;
+            font-size: 1.125rem !important;
+            opacity: 0.95 !important;
+            color: #ffffff !important;
+            max-width: 600px !important;
+            margin: 0 auto var(--goal-spacing-lg, 1.5rem) auto !important;
+            margin: 0 auto 1.5rem auto !important;
+            position: relative !important;
+            z-index: 2 !important;
+        }
+
+        .goal-root .goal-desktop-notice {
+            background: rgba(255, 255, 255, 0.2) !important;
+            border: 2px solid rgba(255, 255, 255, 0.3) !important;
+            border-radius: var(--goal-border-radius, 20px) !important;
+            border-radius: 20px !important;
+            padding: var(--goal-spacing-md, 1rem) var(--goal-spacing-lg, 1.5rem) !important;
+            padding: 1rem 1.5rem !important;
+            color: #ffffff !important;
+            font-weight: 500 !important;
+            max-width: 600px !important;
+            margin: var(--goal-spacing-lg, 1.5rem) auto 0 auto !important;
+            margin: 1.5rem auto 0 auto !important;
+            position: relative !important;
+            z-index: 2 !important;
+            -webkit-backdrop-filter: blur(10px) !important;
+            backdrop-filter: blur(10px) !important;
+        }
+
+        /* Content Section */
+        .goal-root .goal-content-section {
+            padding: var(--goal-spacing-2xl, 3rem) var(--goal-spacing-xl, 2rem) !important;
+            padding: 3rem 2rem !important;
+        }
+
+        /* Calculator Grid */
+        .goal-root .goal-calculator-grid {
+            display: grid !important;
+            grid-template-columns: 1fr 1fr !important;
+            gap: var(--goal-spacing-2xl, 3rem) !important;
+            gap: 3rem !important;
+            margin-bottom: var(--goal-spacing-2xl, 3rem) !important;
+            margin-bottom: 3rem !important;
+        }
+
+        /* Mobile-first responsive grid */
+        @media (max-width: 768px) {
+            .goal-root .goal-calculator-grid {
+                grid-template-columns: 1fr !important;
+                gap: 2rem !important;
+                margin-bottom: 2rem !important;
+            }
+        }
+
+        /* Input Section */
+        .goal-root .goal-input-section {
+            background: var(--goal-surface, #ffffff) !important;
+            background: #ffffff !important;
+            border: 2px solid var(--goal-border-color, #e0e0e0) !important;
+            border: 2px solid #e0e0e0 !important;
+            border-radius: var(--goal-border-radius, 20px) !important;
+            border-radius: 20px !important;
+            padding: var(--goal-spacing-2xl, 2.5rem) !important;
+            padding: 2.5rem !important;
+            box-shadow: var(--goal-shadow-sm, 0 4px 6px rgba(46, 125, 50, 0.1)) !important;
+            box-shadow: 0 4px 6px rgba(46, 125, 50, 0.1) !important;
+        }
+
+        .goal-root .goal-input-section h2 {
+            color: var(--goal-primary-color, #2E7D32) !important;
+            color: #2E7D32 !important;
+            font-size: var(--goal-font-size-xl, 1.5rem) !important;
+            font-size: 1.5rem !important;
+            font-weight: 600 !important;
+            margin-bottom: var(--goal-spacing-lg, 1.5rem) !important;
+            margin-bottom: 1.5rem !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: var(--goal-spacing-sm, 0.75rem) !important;
+            gap: 0.75rem !important;
+        }
+
+        /* Form Elements */
+        .goal-root .goal-form-group {
+            margin-bottom: var(--goal-spacing-lg, 1.5rem) !important;
+            margin-bottom: 1.5rem !important;
+        }
+
+        .goal-root .goal-form-label {
+            display: block !important;
+            color: var(--goal-text-primary, #212121) !important;
+            color: #212121 !important;
+            font-weight: 500 !important;
+            margin-bottom: var(--goal-spacing-sm, 0.75rem) !important;
+            margin-bottom: 0.75rem !important;
+            font-size: var(--goal-font-size-sm, 0.875rem) !important;
+            font-size: 0.875rem !important;
+        }
+
+        .goal-root .goal-form-input, 
+        .goal-root .goal-form-select {
+            width: 100% !important;
+            padding: var(--goal-spacing-md, 1rem) var(--goal-spacing-lg, 1.25rem) !important;
+            padding: 1rem 1.25rem !important;
+            border: 2px solid var(--goal-border-color, #e0e0e0) !important;
+            border: 2px solid #e0e0e0 !important;
+            border-radius: var(--goal-border-radius, 15px) !important;
+            border-radius: 15px !important;
+            font-size: var(--goal-font-size-base, 1rem) !important;
+            font-size: 1rem !important;
+            font-family: var(--goal-font-family, 'Poppins', sans-serif) !important;
+            font-family: 'Poppins', sans-serif !important;
+            transition: all 0.3s var(--goal-transition-timing, cubic-bezier(0.4, 0, 0.2, 1)) !important;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            background: var(--goal-surface, #ffffff) !important;
+            
+            /* Mobile improvements */
+            min-height: 48px !important;
+            -webkit-appearance: none !important;
+            -moz-appearance: none !important;
+            appearance: none !important;
+            outline: none !important;
+            -webkit-tap-highlight-color: transparent !important;
+            background: #ffffff !important;
+            color: var(--goal-text-primary, #212121) !important;
+            color: #212121 !important;
+        }
+
+        .goal-root .goal-form-input:focus, 
+        .goal-root .goal-form-select:focus {
+            outline: none !important;
+            border-color: var(--goal-primary-color, #2E7D32) !important;
+            border-color: #2E7D32 !important;
+            box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.1) !important;
+            transform: translateY(-1px) !important;
+        }
+
+        /* Buttons */
+        .goal-root .goal-btn-primary {
+            background: linear-gradient(135deg, var(--goal-primary-color, #2E7D32) 0%, var(--goal-secondary-color, #388E3C) 100%) !important;
+            background: linear-gradient(135deg, #2E7D32 0%, #388E3C 100%) !important;
+            color: #ffffff !important;
+            border: none !important;
+            padding: var(--goal-spacing-md, 1rem) var(--goal-spacing-xl, 2rem) !important;
+            padding: 1rem 2rem !important;
+            border-radius: var(--goal-border-radius, 18px) !important;
+            border-radius: 18px !important;
+            font-size: var(--goal-font-size-base, 1rem) !important;
+            font-size: 1rem !important;
+            font-weight: 600 !important;
+            cursor: pointer !important;
+            transition: all 0.3s var(--goal-transition-timing, cubic-bezier(0.4, 0, 0.2, 1)) !important;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            width: 100% !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            gap: var(--goal-spacing-sm, 0.75rem) !important;
+            gap: 0.75rem !important;
+            text-transform: uppercase !important;
+            letter-spacing: 0.5px !important;
+            
+            /* Mobile touch improvements */
+            min-height: 48px !important;
+            -webkit-tap-highlight-color: rgba(255, 255, 255, 0.2) !important;
+            touch-action: manipulation !important;
+        }
+
+        .goal-root .goal-btn-primary:hover {
+            transform: translateY(-2px) !important;
+            box-shadow: var(--goal-shadow-hover, 0 12px 24px rgba(46, 125, 50, 0.25)) !important;
+            box-shadow: 0 12px 24px rgba(46, 125, 50, 0.25) !important;
+        }
+
+        .goal-btn-secondary {
+            background: var(--goal-surface, #ffffff) !important;
+            color: var(--goal-primary-color, #2E7D32) !important;
+            border: 2px solid var(--goal-primary-color, #2E7D32) !important;
+            padding: var(--goal-spacing-sm, 0.75rem) var(--goal-spacing-lg, 1.5rem) !important;
+            border-radius: var(--goal-border-radius, 8px) !important;
+            font-size: var(--goal-font-size-sm, 0.875rem) !important;
+            font-weight: 600 !important;
+            cursor: pointer !important;
+            transition: all 0.3s var(--goal-transition-timing, cubic-bezier(0.4, 0, 0.2, 1)) !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: var(--goal-spacing-xs, 0.5rem) !important;
+        }
+
+        .goal-btn-secondary:hover {
+            background: var(--goal-primary-color, #2E7D32) !important;
+            color: #ffffff !important;
+            transform: translateY(-1px) !important;
+        }
+
+        /* Results Section */
+        .goal-root .goal-results-section {
+            background: linear-gradient(135deg, var(--goal-surface-alt, #f1f8e9) 0%, var(--goal-surface, #ffffff) 100%) !important;
+            background: linear-gradient(135deg, #f1f8e9 0%, #ffffff 100%) !important;
+            border: 2px solid var(--goal-border-light, #f0f0f0) !important;
+            border: 2px solid #f0f0f0 !important;
+            border-radius: var(--goal-border-radius, 20px) !important;
+            border-radius: 20px !important;
+            padding: var(--goal-spacing-2xl, 2.5rem) !important;
+            padding: 2.5rem !important;
+            position: relative !important;
+            overflow: hidden !important;
+        }
+
+        .goal-root .goal-results-section::before {
+            content: '' !important;
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 4px !important;
+            background: linear-gradient(90deg, var(--goal-primary-color, #2E7D32), var(--goal-accent-color, #4CAF50)) !important;
+            background: linear-gradient(90deg, #2E7D32, #4CAF50) !important;
+        }
+
+        .goal-root .goal-results-section h2 {
+            color: var(--goal-primary-color, #2E7D32) !important;
+            color: #2E7D32 !important;
+            font-size: var(--goal-font-size-xl, 1.5rem) !important;
+            font-size: 1.5rem !important;
+            font-weight: 600 !important;
+            margin-bottom: var(--goal-spacing-lg, 1.5rem) !important;
+            margin-bottom: 1.5rem !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: var(--goal-spacing-sm, 0.75rem) !important;
+            gap: 0.75rem !important;
+        }
+
+        /* Results Display */
+        .goal-result-grid {
+            display: grid !important;
+            gap: var(--goal-spacing-lg, 1.5rem) !important;
+        }
+
+        .goal-result-card {
+            background: var(--goal-surface, #ffffff) !important;
+            border: 1px solid var(--goal-border-color, #e0e0e0) !important;
+            border-radius: var(--goal-border-radius, 10px) !important;
+            padding: var(--goal-spacing-lg, 1.5rem) !important;
+            transition: all 0.3s var(--goal-transition-timing, cubic-bezier(0.4, 0, 0.2, 1)) !important;
+        }
+
+        .goal-result-card:hover {
+            box-shadow: var(--goal-shadow-md, 0 8px 16px rgba(46, 125, 50, 0.1)) !important;
+            transform: translateY(-2px) !important;
         }
 
         .goal-main-container {
@@ -695,14 +1084,26 @@
         }
     </style>
 </head>
-<body class="goal-body">
-    <div class="goal-main-container">
-        <div class="goal-header">
-            <h1>🎯 Free Goal Tracker - Student Goal Progress & Achievement Planner</h1>
-            <p>Set, track, and achieve your academic and personal goals with our comprehensive goal tracking system</p>
-        </div>
-        
-        <div class="goal-content">
+<body class="goal-body" id="goalTrackerApp">
+    <div class="goal-root goal-standalone-wrapper">
+        <div class="goal-main-container">
+            <!-- Header Section -->
+            <div class="goal-header-section">
+                <h1>🎯 Goal Tracker</h1>
+                <p>Set, track, and achieve your academic and personal goals with our comprehensive goal tracking system</p>
+                <div class="goal-desktop-notice">
+                    <i class="fas fa-bullseye"></i>
+                    Transform your dreams into achievable goals with smart tracking and progress monitoring
+                </div>
+            </div>
+            
+            <!-- Content Section -->
+            <div class="goal-content-section">
+                <!-- Calculator Grid -->
+                <div class="goal-calculator-grid">
+                    <!-- Input Section -->
+                    <div class="goal-input-section">
+                        <h2><i class="fas fa-plus-circle"></i> Add New Goal</h2>
             <!-- SEO Content Section -->
             <div class="goal-form-section" style="margin-bottom: 25px;">
                 <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; border-radius: 10px; margin-bottom: 20px;">
@@ -737,63 +1138,57 @@
                 </div>
             </div>
 
-            <!-- Add Goal Form -->
-            <div class="goal-form-section">
-                <h2 class="goal-form-title">Add New Goal</h2>
-                <form id="goalForm">
-                    <div class="goal-form-grid">
-                        <div class="goal-form-group">
-                            <label for="goalName">Goal Name</label>
-                            <input type="text" id="goalName" required placeholder="e.g., Graduate with honors">
-                        </div>
-                        <div class="goal-form-group">
-                            <label for="category">Category</label>
-                            <select id="category" required>
-                                <option value="">Select category</option>
-                                <option value="academic">Academic</option>
-                                <option value="career">Career</option>
-                                <option value="health">Health</option>
-                                <option value="personal">Personal</option>
-                                <option value="financial">Financial</option>
-                                <option value="other">Other</option>
-                            </select>
-                        </div>
-                        <div class="goal-form-group">
-                            <label for="targetValue">Target Value</label>
-                            <input type="text" id="targetValue" required placeholder="e.g., 3.8 GPA, $5000">
-                        </div>
-                        <div class="goal-form-group">
-                            <label for="currentValue">Current Value</label>
-                            <input type="text" id="currentValue" required placeholder="e.g., 3.5 GPA, $1000">
-                        </div>
-                        <div class="goal-form-group">
-                            <label for="deadline">Deadline</label>
-                            <input type="date" id="deadline" required>
-                        </div>
-                        <div class="goal-form-group">
-                            <label for="priority">Priority</label>
-                            <select id="priority" required>
-                                <option value="">Select priority</option>
-                                <option value="high">High</option>
-                                <option value="medium">Medium</option>
-                                <option value="low">Low</option>
-                            </select>
-                        </div>
+                        <form id="goalForm">
+                            <div class="goal-form-group">
+                                <label for="goalName" class="goal-form-label">Goal Name</label>
+                                <input type="text" id="goalName" class="goal-form-input" required placeholder="e.g., Graduate with honors">
+                            </div>
+                            <div class="goal-form-group">
+                                <label for="category" class="goal-form-label">Category</label>
+                                <select id="category" class="goal-form-select" required>
+                                    <option value="">Select category</option>
+                                    <option value="academic">Academic</option>
+                                    <option value="career">Career</option>
+                                    <option value="health">Health</option>
+                                    <option value="personal">Personal</option>
+                                    <option value="financial">Financial</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="goal-form-group">
+                                <label for="targetValue" class="goal-form-label">Target Value</label>
+                                <input type="text" id="targetValue" class="goal-form-input" required placeholder="e.g., 3.8 GPA, $5000">
+                            </div>
+                            <div class="goal-form-group">
+                                <label for="currentValue" class="goal-form-label">Current Value</label>
+                                <input type="text" id="currentValue" class="goal-form-input" required placeholder="e.g., 3.5 GPA, $1000">
+                            </div>
+                            <div class="goal-form-group">
+                                <label for="deadline" class="goal-form-label">Deadline</label>
+                                <input type="date" id="deadline" class="goal-form-input" required>
+                            </div>
+                            <div class="goal-form-group">
+                                <label for="priority" class="goal-form-label">Priority</label>
+                                <select id="priority" class="goal-form-select" required>
+                                    <option value="">Select priority</option>
+                                    <option value="high">High</option>
+                                    <option value="medium">Medium</option>
+                                    <option value="low">Low</option>
+                                </select>
+                            </div>
+                            <div class="goal-form-group">
+                                <label for="description" class="goal-form-label">Description</label>
+                                <textarea id="description" class="goal-form-input" rows="3" placeholder="Describe your goal and why it's important..."></textarea>
+                            </div>
+                            <button type="submit" class="goal-btn-primary">
+                                <i class="fas fa-plus-circle"></i> Add Goal
+                            </button>
+                        </form>
                     </div>
-                    <div class="goal-form-group">
-                        <label for="description">Description</label>
-                        <textarea id="description" rows="3" placeholder="Describe your goal and why it's important..."></textarea>
-                    </div>
-                    <div class="goal-btn-container">
-                        <button type="submit" class="goal-btn goal-btn-primary">
-                            <span>➕</span> Add Goal
-                        </button>
-                        <button type="button" class="goal-btn goal-btn-secondary" onclick="clearForm()">
-                            <span>🗑️</span> Clear Form
-                        </button>
-                    </div>
-                </form>
-            </div>
+                    
+                    <!-- Results Section -->
+                    <div class="goal-results-section">
+                        <h2><i class="fas fa-chart-line"></i> Goal Progress</h2>
             
             <!-- Summary Section -->
             <div class="goal-summary-section">
@@ -842,6 +1237,36 @@
                         <div class="empty-state-icon">🎯</div>
                         <h3>No Goals Added Yet</h3>
                         <p>Add your first goal using the form above to start tracking your progress.</p>
+                    </div>
+                </div>
+            </div>
+                        <!-- Goals will be displayed here -->
+                        <div id="goalContainer">
+                            <div class="empty-state">
+                                <div class="empty-state-icon">🎯</div>
+                                <h3>No Goals Added Yet</h3>
+                                <p>Add your first goal using the form above to start tracking your progress.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tips Section -->
+                <div class="goal-tips-section">
+                    <h2><i class="fas fa-lightbulb"></i> Goal Achievement Tips</h2>
+                    <div class="goal-result-grid">
+                        <div class="goal-result-card">
+                            <h3>🎯 SMART Goals</h3>
+                            <p>Make goals Specific, Measurable, Achievable, Relevant, and Time-bound for better success rates.</p>
+                        </div>
+                        <div class="goal-result-card">
+                            <h3>📊 Regular Review</h3>
+                            <p>Check your progress weekly and adjust your approach as needed to stay on track.</p>
+                        </div>
+                        <div class="goal-result-card">
+                            <h3>🏆 Celebrate Milestones</h3>
+                            <p>Acknowledge small wins along the way to maintain motivation and momentum.</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1303,6 +1728,34 @@
             if (event.target === modal) {
                 closeEditModal();
             }
+        }
+
+        // Initialize Goal Tracker when DOM is ready
+        function initializeGoalTracker() {
+            // Set current date as minimum for deadline input
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('deadline').min = today;
+            
+            // Load existing goals from localStorage
+            loadGoals();
+            updateSummary();
+            updateCategories();
+            
+            console.log('Goal Tracker initialized successfully');
+        }
+
+        // Auto-initialize when page loads
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initializeGoalTracker);
+        } else {
+            initializeGoalTracker();
+        }
+    </script>
+
+    <script>
+        // Global initialization for main app integration
+        if (typeof window.initializeGoalTracker === 'undefined') {
+            window.initializeGoalTracker = initializeGoalTracker;
         }
     </script>
 </body>

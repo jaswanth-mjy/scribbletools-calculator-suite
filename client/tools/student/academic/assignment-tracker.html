@@ -44,6 +44,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
     {
@@ -78,85 +81,800 @@
     }
     </script>
     <style>
-        body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; margin: 0; padding: 20px; }
-        .tracker-container { max-width: 1000px; margin: 2em auto 4em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2em; }
-        .tracker-container .handwritten { font-family: 'Caveat', cursive !important; color: #D9534F !important; font-size: 2.5rem !important; text-align: center !important; margin-bottom: 1.5rem !important; cursor: default !important; }
+        /* Import Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Caveat:wght@400;600;700&family=Fira+Code:wght@400;500&display=swap');
         
-        .form-section { background: #FDFBF5; border: 2px solid #EAE3D5; border-radius: 0.9em; padding: 1.5em; margin-bottom: 2em; }
-        .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1em; margin-bottom: 1em; }
-        .form-group { display: flex; flex-direction: column; }
-        .form-label { font-weight: 600; margin-bottom: 0.5em; color: #333; }
-        .form-input, .form-select, .form-textarea { padding: 0.8em; border: 2px solid #EAE3D5; border-radius: 0.7em; font-size: 1rem; background: #FDFBF5; font-family: 'Fira Code', monospace; }
-        .form-textarea { resize: vertical; min-height: 80px; font-family: 'Poppins', sans-serif; }
-        .form-btn { background: #fff; color: #D9534F; border: 2px solid #D9534F; border-radius: 0.5em; padding: 0.8em 2em; font-weight: 600; font-size: 1.1em; cursor: pointer; transition: all 0.2s; margin-top: 1em; }
-        .form-btn:hover { background: #D9534F; color: #fff; }
-        
-        .assignments-section { margin-top: 2em; }
-        .assignments-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1em; flex-wrap: wrap; gap: 1em; }
-        .toolbar-actions { display: flex; gap: 2em; flex-wrap: wrap; align-items: center; }
-        .filter-controls { display: flex; gap: 1em; flex-wrap: wrap; }
-        .export-controls { display: flex; gap: 1em; flex-wrap: wrap; }
-        .filter-btn { background: #fff; color: #666; border: 1px solid #ddd; border-radius: 0.5em; padding: 0.5em 1em; cursor: pointer; transition: all 0.2s; }
-        .filter-btn.active { background: #D9534F; color: #fff; border-color: #D9534F; }
-        .export-btn { background: #3498DB; color: white; border: none; border-radius: 0.5em; padding: 0.5em 1em; cursor: pointer; transition: all 0.2s; font-size: 0.9em; }
-        .export-btn:hover { background: #2980B9; transform: translateY(-2px); }
-        .calendar-info { margin-top: 1em; padding: 1em; background: #E8F5FF; border: 1px solid #3498DB; border-radius: 0.5em; font-size: 0.9em; }
-        
-        .assignment-list { display: grid; gap: 1em; }
-        .assignment-card { background: #FDFBF5; border: 2px solid #EAE3D5; border-radius: 0.9em; padding: 1.5em; position: relative; transition: all 0.3s; }
-        .assignment-card:hover { box-shadow: 0 4px 16px rgba(217, 83, 79, 0.1); }
-        .assignment-card.high-priority { border-left: 6px solid #D9534F; }
-        .assignment-card.medium-priority { border-left: 6px solid #F39C12; }
-        .assignment-card.low-priority { border-left: 6px solid #27AE60; }
-        .assignment-card.completed { opacity: 0.7; background: #E8F5E8; }
-        
-        .assignment-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1em; }
-        .assignment-title { font-size: 1.2em; font-weight: bold; color: #333; margin: 0; }
-        .assignment-course { color: #666; font-size: 0.9em; margin-top: 0.2em; }
-        .assignment-actions { display: flex; gap: 0.5em; }
-        .action-btn { background: none; border: 1px solid #ddd; border-radius: 0.3em; padding: 0.3em 0.6em; cursor: pointer; font-size: 0.8em; transition: all 0.2s; }
-        .edit-btn:hover { background: #F39C12; color: white; border-color: #F39C12; }
-        .delete-btn:hover { background: #D9534F; color: white; border-color: #D9534F; }
-        .complete-btn:hover { background: #27AE60; color: white; border-color: #27AE60; }
-        .calendar-btn:hover { background: #3498DB; color: white; border-color: #3498DB; }
-        
-        .assignment-details { margin-bottom: 1em; }
-        .assignment-due { font-weight: bold; color: #D9534F; }
-        .assignment-priority { display: inline-block; padding: 0.2em 0.6em; border-radius: 1em; font-size: 0.8em; font-weight: bold; text-transform: uppercase; }
-        .priority-high { background: #FFE6E6; color: #D9534F; }
-        .priority-medium { background: #FFF3E0; color: #F39C12; }
-        .priority-low { background: #E8F5E8; color: #27AE60; }
-        
-        .progress-section { margin-top: 1em; }
-        .progress-bar { background: #f0f0f0; border-radius: 1em; height: 8px; overflow: hidden; margin-top: 0.5em; }
-        .progress-fill { background: linear-gradient(90deg, #27AE60, #2ECC71); height: 100%; transition: width 0.3s; }
-        .progress-text { font-size: 0.9em; color: #666; margin-bottom: 0.5em; }
-        
-        .empty-state { text-align: center; padding: 3em; color: #666; }
-        .empty-state-icon { font-size: 4em; margin-bottom: 0.5em; }
-        
-        .disclaimer { 
-            background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%); 
-            border: 1px solid #f1c40f; 
-            border-radius: 8px; 
-            padding: 15px; 
-            margin-bottom: 20px; 
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        /* CSS Variables for consistent theming */
+        :root {
+            --primary-color: #D9534F;
+            --primary-light: #E57373;
+            --primary-dark: #C62828;
+            --secondary-color: #F39C12;
+            --secondary-light: #FFB74D;
+            --success-color: #27AE60;
+            --success-light: #66BB6A;
+            --info-color: #3498DB;
+            --info-light: #64B5F6;
+            --warning-color: #F39C12;
+            --warning-light: #FFB74D;
+            --danger-color: #E74C3C;
+            --danger-light: #EF5350;
+            --light-color: #F8F4E8;
+            --lighter-color: #FEFBF6;
+            --dark-color: #333;
+            --darker-color: #222;
+            --gray-color: #666;
+            --light-gray: #EAE3D5;
+            --white: #FFFFFF;
+            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.15);
+            --shadow-xl: 0 12px 24px rgba(0, 0, 0, 0.2);
+            --border-radius: 12px;
+            --border-radius-sm: 8px;
+            --border-radius-lg: 16px;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
         
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #F8F4E8 0%, #FEFBF6 100%);
+            color: var(--dark-color);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        /* Background decoration */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(217, 83, 79, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 90% 80%, rgba(243, 156, 18, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(52, 152, 219, 0.03) 0%, transparent 70%);
+            z-index: -1;
+        }
+        
+        /* Container */
+        .tracker-container {
+            max-width: 1000px;
+            margin: 2em auto 4em auto;
+            background: var(--white);
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-xl);
+            padding: 2.5em;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        /* Header decoration */
+        .tracker-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--info-color));
+        }
+        
+        /* Title */
+        .tracker-container .handwritten {
+            font-family: 'Caveat', cursive !important;
+            color: var(--primary-color) !important;
+            font-size: 3.5rem !important;
+            text-align: center !important;
+            margin-bottom: 2rem !important;
+            cursor: default !important;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+            text-shadow: 2px 2px 0px rgba(217, 83, 79, 0.1);
+            animation: pulse 2s infinite;
+        }
+        
+        /* Title underline animation */
+        .tracker-container .handwritten::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+            animation: expandWidth 2s ease-in-out infinite alternate;
+        }
+        
+        /* Disclaimer */
+        .disclaimer {
+            background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+            border: 1px solid #f1c40f;
+            border-radius: var(--border-radius);
+            padding: 1.2em 1.5em;
+            margin-bottom: 2em;
+            box-shadow: var(--shadow-md);
+            position: relative;
+            overflow: hidden;
+            animation: slideInLeft 0.5s ease-out 0.2s both;
+        }
+        
+        .disclaimer::before {
+            content: '⚠️';
+            position: absolute;
+            left: -10px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2.5rem;
+            opacity: 0.1;
+        }
+        
+        /* Form Section */
+        .form-section {
+            background: linear-gradient(135deg, var(--lighter-color) 0%, var(--light-color) 100%);
+            border: 2px solid var(--light-gray);
+            border-radius: var(--border-radius-lg);
+            padding: 2em;
+            margin-bottom: 2em;
+            box-shadow: var(--shadow-md);
+            position: relative;
+            overflow: hidden;
+            animation: slideInUp 0.5s ease-out 0.3s both;
+        }
+        
+        .form-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 100%);
+            pointer-events: none;
+        }
+        
+        .form-section h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.5em;
+            font-size: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .form-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--primary-color);
+        }
+        
+        /* Form Grid */
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5em;
+            margin-bottom: 1.5em;
+        }
+        
+        /* Form Group */
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        
+        .form-label {
+            font-weight: 600;
+            margin-bottom: 0.5em;
+            color: var(--dark-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5em;
+        }
+        
+        .form-label i {
+            color: var(--primary-color);
+            font-size: 0.9em;
+        }
+        
+        /* Form Inputs */
+        .form-input, .form-select, .form-textarea {
+            padding: 0.8em 1em;
+            border: 2px solid var(--light-gray);
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            background: var(--white);
+            font-family: 'Fira Code', monospace;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .form-input:focus, .form-select:focus, .form-textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(217, 83, 79, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        .form-textarea {
+            resize: vertical;
+            min-height: 100px;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        /* Form Button */
+        .form-btn {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+            border: none;
+            border-radius: var(--border-radius);
+            padding: 0.8em 2em;
+            font-weight: 600;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 1em;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5em;
+        }
+        
+        .form-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .form-btn:hover::before {
+            left: 100%;
+        }
+        
+        .form-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .form-btn:active {
+            transform: translateY(-1px);
+        }
+        
+        /* Calendar Info */
+        .calendar-info {
+            margin-top: 1.5em;
+            padding: 1em 1.5em;
+            background: linear-gradient(135deg, #E8F5FF 0%, #D1E9FF 100%);
+            border: 1px solid var(--info-color);
+            border-radius: var(--border-radius);
+            font-size: 0.9em;
+            display: flex;
+            align-items: center;
+            gap: 0.5em;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        /* Assignments Section */
+        .assignments-section {
+            margin-top: 2em;
+            animation: fadeIn 0.5s ease-out 0.4s both;
+        }
+        
+        /* Assignments Header */
+        .assignments-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5em;
+            flex-wrap: wrap;
+            gap: 1em;
+        }
+        
+        .assignments-header h3 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .assignments-header h3::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--primary-color);
+        }
+        
+        /* Toolbar Actions */
+        .toolbar-actions {
+            display: flex;
+            gap: 1.5em;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        
+        /* Filter Controls */
+        .filter-controls {
+            display: flex;
+            gap: 0.5em;
+            flex-wrap: wrap;
+            background: var(--white);
+            padding: 0.3em;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .filter-btn {
+            background: transparent;
+            color: var(--gray-color);
+            border: none;
+            border-radius: var(--border-radius-sm);
+            padding: 0.5em 1em;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .filter-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--primary-color);
+            transform: scale(0);
+            border-radius: 50%;
+            transition: transform 0.3s;
+            z-index: -1;
+        }
+        
+        .filter-btn:hover::before {
+            transform: scale(1.5);
+        }
+        
+        .filter-btn:hover {
+            color: var(--white);
+        }
+        
+        .filter-btn.active {
+            background: var(--primary-color);
+            color: var(--white);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        /* Export Controls */
+        .export-controls {
+            display: flex;
+            gap: 0.5em;
+            flex-wrap: wrap;
+        }
+        
+        .export-btn {
+            background: linear-gradient(135deg, var(--info-color) 0%, #2980B9 100%);
+            color: var(--white);
+            border: none;
+            border-radius: var(--border-radius-sm);
+            padding: 0.5em 1em;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.9em;
+            display: flex;
+            align-items: center;
+            gap: 0.3em;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .export-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        /* Assignment List */
+        .assignment-list {
+            display: grid;
+            gap: 1.5em;
+        }
+        
+        /* Assignment Card */
+        .assignment-card {
+            background: var(--white);
+            border: 2px solid var(--light-gray);
+            border-radius: var(--border-radius-lg);
+            padding: 1.5em;
+            position: relative;
+            transition: var(--transition);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            animation: slideInUp 0.3s ease-out;
+        }
+        
+        .assignment-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--gray-color);
+        }
+        
+        .assignment-card.high-priority::before {
+            background: var(--primary-color);
+        }
+        
+        .assignment-card.medium-priority::before {
+            background: var(--secondary-color);
+        }
+        
+        .assignment-card.low-priority::before {
+            background: var(--success-color);
+        }
+        
+        .assignment-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .assignment-card.completed {
+            opacity: 0.7;
+            background: linear-gradient(135deg, #E8F5E8 0%, #D4EDDA 100%);
+        }
+        
+        /* Assignment Header */
+        .assignment-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1em;
+            flex-wrap: wrap;
+            gap: 1em;
+        }
+        
+        .assignment-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: var(--dark-color);
+            margin: 0;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .assignment-course {
+            color: var(--gray-color);
+            font-size: 0.9em;
+            margin-top: 0.2em;
+            display: flex;
+            align-items: center;
+            gap: 0.3em;
+        }
+        
+        .assignment-course::before {
+            content: '📚';
+        }
+        
+        /* Assignment Actions */
+        .assignment-actions {
+            display: flex;
+            gap: 0.5em;
+            flex-wrap: wrap;
+        }
+        
+        .action-btn {
+            background: var(--white);
+            border: 1px solid var(--light-gray);
+            border-radius: var(--border-radius-sm);
+            padding: 0.4em 0.8em;
+            cursor: pointer;
+            font-size: 0.8em;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.3em;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .edit-btn:hover {
+            background: var(--secondary-color);
+            color: var(--white);
+            border-color: var(--secondary-color);
+        }
+        
+        .delete-btn:hover {
+            background: var(--danger-color);
+            color: var(--white);
+            border-color: var(--danger-color);
+        }
+        
+        .complete-btn:hover {
+            background: var(--success-color);
+            color: var(--white);
+            border-color: var(--success-color);
+        }
+        
+        .calendar-btn:hover {
+            background: var(--info-color);
+            color: var(--white);
+            border-color: var(--info-color);
+        }
+        
+        /* Assignment Details */
+        .assignment-details {
+            margin-bottom: 1em;
+        }
+        
+        .assignment-due {
+            font-weight: bold;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 0.3em;
+        }
+        
+        .assignment-priority {
+            display: inline-block;
+            padding: 0.2em 0.6em;
+            border-radius: 1em;
+            font-size: 0.8em;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-top: 0.5em;
+        }
+        
+        .priority-high {
+            background: rgba(217, 83, 79, 0.1);
+            color: var(--primary-color);
+        }
+        
+        .priority-medium {
+            background: rgba(243, 156, 18, 0.1);
+            color: var(--secondary-color);
+        }
+        
+        .priority-low {
+            background: rgba(39, 174, 96, 0.1);
+            color: var(--success-color);
+        }
+        
+        /* Progress Section */
+        .progress-section {
+            margin-top: 1em;
+        }
+        
+        .progress-bar {
+            background: var(--light-gray);
+            border-radius: 1em;
+            height: 10px;
+            overflow: hidden;
+            margin-top: 0.5em;
+            position: relative;
+        }
+        
+        .progress-fill {
+            background: linear-gradient(90deg, var(--success-color), var(--success-light));
+            height: 100%;
+            transition: width 0.5s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .progress-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.3),
+                transparent
+            );
+            transform: translateX(-100%);
+            animation: shimmer 2s infinite;
+        }
+        
+        .progress-text {
+            font-size: 0.9em;
+            color: var(--gray-color);
+            margin-bottom: 0.5em;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .progress-input {
+            width: 100px;
+            height: 6px;
+            border-radius: 3px;
+            background: var(--light-gray);
+            outline: none;
+            -webkit-appearance: none;
+        }
+        
+        .progress-input::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--success-color);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .progress-input::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+        }
+        
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 3em;
+            color: var(--gray-color);
+            background: var(--white);
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .empty-state-icon {
+            font-size: 4em;
+            margin-bottom: 1em;
+            opacity: 0.5;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.02);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        @keyframes expandWidth {
+            from {
+                width: 50px;
+            }
+            to {
+                width: 150px;
+            }
+        }
+        
+        @keyframes shimmer {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(100%);
+            }
+        }
+        
+        /* Responsive Design */
         @media (max-width: 768px) {
-            .tracker-container { padding: 1em; margin: 1em; }
-            .form-grid { grid-template-columns: 1fr; }
-            .assignments-header { flex-direction: column; gap: 1em; align-items: stretch; }
-            .toolbar-actions { flex-direction: column; gap: 1em; width: 100%; }
-            .filter-controls, .export-controls { justify-content: center; }
-            .assignment-header { flex-direction: column; gap: 1em; }
-            .assignment-actions { justify-content: flex-start; flex-wrap: wrap; }
+            .tracker-container {
+                padding: 1.5em;
+                margin: 1em;
+            }
+            
+            .tracker-container .handwritten {
+                font-size: 2.5rem !important;
+            }
+            
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .assignments-header {
+                flex-direction: column;
+                gap: 1em;
+                align-items: stretch;
+            }
+            
+            .toolbar-actions {
+                flex-direction: column;
+                gap: 1em;
+                width: 100%;
+            }
+            
+            .filter-controls, .export-controls {
+                justify-content: center;
+            }
+            
+            .assignment-header {
+                flex-direction: column;
+                gap: 1em;
+            }
+            
+            .assignment-actions {
+                justify-content: flex-start;
+                flex-wrap: wrap;
+            }
         }
     </style>
 </head>
 <body>
-        <div class="tracker-container">
+    <div class="tracker-container">
         <h1 class="handwritten">Assignment Tracker</h1>
         
         <div class="disclaimer">
@@ -167,26 +885,26 @@
         
         <!-- Add Assignment Form -->
         <div class="form-section">
-            <h3>Add New Assignment</h3>
+            <h3><i class="fas fa-plus-circle"></i> Add New Assignment</h3>
             <div class="form-grid">
                 <div class="form-group">
-                    <label class="form-label" for="title">Assignment Title *</label>
+                    <label class="form-label" for="title"><i class="fas fa-heading"></i> Assignment Title *</label>
                     <input type="text" id="title" class="form-input" placeholder="e.g. Math Homework Ch. 5" required>
                 </div>
                 <div class="form-group">
-                    <label class="form-label" for="course">Course/Subject</label>
+                    <label class="form-label" for="course"><i class="fas fa-book"></i> Course/Subject</label>
                     <input type="text" id="course" class="form-input" placeholder="e.g. Mathematics">
                 </div>
                 <div class="form-group">
-                    <label class="form-label" for="dueDate">Due Date *</label>
+                    <label class="form-label" for="dueDate"><i class="fas fa-calendar-alt"></i> Due Date *</label>
                     <input type="date" id="dueDate" class="form-input" required>
                 </div>
                 <div class="form-group">
-                    <label class="form-label" for="dueTime">Due Time *</label>
+                    <label class="form-label" for="dueTime"><i class="fas fa-clock"></i> Due Time *</label>
                     <input type="time" id="dueTime" class="form-input" required>
                 </div>
                 <div class="form-group">
-                    <label class="form-label" for="priority">Priority</label>
+                    <label class="form-label" for="priority"><i class="fas fa-flag"></i> Priority</label>
                     <select id="priority" class="form-select">
                         <option value="medium">Medium</option>
                         <option value="high">High</option>
@@ -195,12 +913,13 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="form-label" for="description">Description</label>
+                <label class="form-label" for="description"><i class="fas fa-align-left"></i> Description</label>
                 <textarea id="description" class="form-textarea" placeholder="Assignment details, requirements, notes..."></textarea>
             </div>
-            <button id="addBtn" class="form-btn">Add Assignment</button>
+            <button id="addBtn" class="form-btn"><i class="fas fa-save"></i> Add Assignment</button>
             
             <div class="calendar-info">
+                <i class="fas fa-info-circle"></i>
                 <strong>📅 Calendar Integration:</strong> Use the calendar buttons (📅) to export assignments to Outlook, Google Calendar, Apple Calendar, and other calendar apps. The .ics files include reminders 1 day and 2 hours before due dates.
             </div>
         </div>
@@ -208,7 +927,7 @@
         <!-- Assignments List -->
         <div class="assignments-section">
             <div class="assignments-header">
-                <h3>Your Assignments</h3>
+                <h3><i class="fas fa-tasks"></i> Your Assignments</h3>
                 <div class="toolbar-actions">
                     <div class="filter-controls">
                         <button class="filter-btn active" data-filter="all">All</button>
@@ -217,8 +936,8 @@
                         <button class="filter-btn" data-filter="overdue">Overdue</button>
                     </div>
                     <div class="export-controls">
-                        <button id="exportAllBtn" class="export-btn" title="Export all assignments to calendar">📅 Export All</button>
-                        <button id="exportPendingBtn" class="export-btn" title="Export pending assignments to calendar">📋 Export Pending</button>
+                        <button id="exportAllBtn" class="export-btn" title="Export all assignments to calendar"><i class="fas fa-calendar-download"></i> Export All</button>
+                        <button id="exportPendingBtn" class="export-btn" title="Export pending assignments to calendar"><i class="fas fa-file-export"></i> Export Pending</button>
                     </div>
                 </div>
             </div>
@@ -365,7 +1084,7 @@
                     }
                     this.editingId = null;
                     const addBtn = document.getElementById('addBtn');
-                    if (addBtn) addBtn.textContent = 'Add Assignment';
+                    if (addBtn) addBtn.innerHTML = '<i class="fas fa-save"></i> Add Assignment';
                 } else {
                     this.assignments.push(assignment);
                 }
@@ -392,7 +1111,7 @@
                     document.getElementById('description').value = assignment.description;
                     
                     this.editingId = id;
-                    document.getElementById('addBtn').textContent = 'Update Assignment';
+                    document.getElementById('addBtn').innerHTML = '<i class="fas fa-edit"></i> Update Assignment';
                 }
             }
 
@@ -505,18 +1224,20 @@
                                 ${assignment.course ? `<p class="assignment-course">${assignment.course}</p>` : ''}
                             </div>
                             <div class="assignment-actions">
-                                <button class="action-btn edit-btn" data-id="${assignment.id}">Edit</button>
+                                <button class="action-btn edit-btn" data-id="${assignment.id}"><i class="fas fa-edit"></i> Edit</button>
                                 <button class="action-btn complete-btn" data-id="${assignment.id}">
+                                    <i class="fas ${assignment.completed ? 'fa-undo' : 'fa-check'}"></i>
                                     ${assignment.completed ? 'Undo' : 'Complete'}
                                 </button>
-                                <button class="action-btn calendar-btn" data-id="${assignment.id}" title="Add to Calendar">📅</button>
-                                <button class="action-btn delete-btn" data-id="${assignment.id}">Delete</button>
+                                <button class="action-btn calendar-btn" data-id="${assignment.id}" title="Add to Calendar"><i class="fas fa-calendar-plus"></i></button>
+                                <button class="action-btn delete-btn" data-id="${assignment.id}"><i class="fas fa-trash"></i></button>
                             </div>
                         </div>
                         
                         <div class="assignment-details">
                             <p class="assignment-due">
-                                📅 Due: ${dueDate.toLocaleDateString()} at ${dueDate.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}
+                                <i class="fas fa-clock"></i>
+                                Due: ${dueDate.toLocaleDateString()} at ${dueDate.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}
                                 ${isOverdue ? ' <strong style="color: #D9534F;">(OVERDUE)</strong>' : ` (${timeUntilDue})`}
                             </p>
                             <span class="assignment-priority priority-${assignment.priority}">${assignment.priority} priority</span>
@@ -525,8 +1246,8 @@
                         
                         <div class="progress-section">
                             <div class="progress-text">
-                                Progress: ${assignment.progress}%
-                                <input type="range" class="progress-input" min="0" max="100" value="${assignment.progress}" data-id="${assignment.id}" style="margin-left: 1em;">
+                                <span>Progress: ${assignment.progress}%</span>
+                                <input type="range" class="progress-input" min="0" max="100" value="${assignment.progress}" data-id="${assignment.id}">
                             </div>
                             <div class="progress-bar">
                                 <div class="progress-fill" style="width: ${assignment.progress}%"></div>

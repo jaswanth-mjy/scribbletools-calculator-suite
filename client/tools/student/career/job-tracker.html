@@ -131,6 +131,8 @@
     <!-- Preconnect for Performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Caveat:wght@400;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* CSS Scoping - All styles prefixed with .job-tracker-root to prevent conflicts */
         .job-tracker-root * {
@@ -140,49 +142,67 @@
         }
 
         .job-tracker-root {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Poppins', sans-serif;
             background: transparent; /* No background like sleep calculator */
             min-height: 100vh;
             padding: 20px;
         }
 
         .job-tracker-root .main-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 30px; /* Rounded edges like sleep calculator */
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
+            max-width: 1400px;
+            width: 95%;
+            margin: 2em auto;
+            background: #fff;
+            border-radius: 1.2em;
+            box-shadow: 0 4px 24px rgba(74, 144, 226, 0.1);
+            padding: 2em;
+            min-height: calc(100vh - 8em);
         }
 
         .job-tracker-root .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
             text-align: center;
-            padding: 30px;
-            border-radius: 30px 30px 0 0; /* Rounded top edges */
+            margin-bottom: 2em;
         }
 
         .job-tracker-root .header h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
+            font-family: 'Caveat', cursive;
+            color: #4A90E2;
+            text-align: center;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
         }
 
         .job-tracker-root .header p {
-            font-size: 1.2em;
-            opacity: 0.9;
+            font-size: 1.1em;
+            color: #666;
+            margin-bottom: 1.5em;
         }
 
         .job-tracker-root .content {
-            padding: 30px;
+            padding: 0;
+        }
+
+        /* Dashboard Layout */
+        .job-tracker-root .dashboard-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2em;
+            margin-bottom: 2em;
+        }
+
+        .job-tracker-root .left-column,
+        .job-tracker-root .right-column {
+            display: flex;
+            flex-direction: column;
         }
 
         .job-tracker-root .add-job-section {
-            background: rgba(102, 126, 234, 0.05);
-            padding: 25px;
-            border-radius: 20px; /* Rounded sections */
-            margin-bottom: 30px;
-            border: 2px solid rgba(102, 126, 234, 0.1);
+            background: #F5F9FF;
+            padding: 1.5em;
+            border-radius: 0.9em;
+            margin-bottom: 2em;
+            border: 2px solid #D6E4FF;
         }
 
         .job-tracker-root .form-row {
@@ -199,7 +219,8 @@
 
         .job-tracker-root .form-group label {
             font-weight: 600;
-            margin-bottom: 8px;
+            margin-bottom: 0.5em;
+            display: block;
             color: #333;
             font-size: 0.95em;
         }
@@ -207,57 +228,72 @@
         .job-tracker-root .form-group input,
         .job-tracker-root .form-group select,
         .job-tracker-root .form-group textarea {
-            padding: 12px 15px;
-            border: 2px solid #e1e5e9;
-            border-radius: 15px; /* Rounded inputs like sleep calculator */
-            font-size: 16px;
+            width: 100%;
+            padding: 1em;
+            border: 2px solid #D6E4FF;
+            border-radius: 0.7em;
+            font-size: 1.2em;
+            margin-bottom: 1em;
+            background: #F5F9FF;
+            text-align: center;
+            font-family: 'Fira Code', monospace;
             transition: all 0.3s ease;
-            background: white;
         }
 
         .job-tracker-root .form-group input:focus,
         .job-tracker-root .form-group select:focus,
         .job-tracker-root .form-group textarea:focus {
             outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            border-color: #4A90E2;
+            box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
         }
 
         .job-tracker-root .form-group textarea {
             resize: vertical;
             min-height: 80px;
+            text-align: left;
         }
 
         .job-tracker-root .add-btn {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #4A90E2, #3A7BC8);
             color: white;
             border: none;
-            padding: 15px 30px;
-            border-radius: 18px; /* Rounded buttons like sleep calculator */
-            font-size: 16px;
-            font-weight: 600;
+            padding: 1.2em 2.5em;
+            border-radius: 2em;
             cursor: pointer;
+            font-size: 1.1em;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(74, 144, 226, 0.3);
             transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            text-align: center;
+            display: block;
+            width: fit-content;
+            margin: 2em auto;
         }
 
         .job-tracker-root .add-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 8px 25px rgba(74, 144, 226, 0.4);
         }
 
         .job-tracker-root .jobs-list-section {
-            background: rgba(255, 255, 255, 0.8);
-            border-radius: 20px; /* Rounded sections */
-            padding: 25px;
+            background: #F5F9FF;
+            border-radius: 0.9em;
+            padding: 1.5em;
+            margin-bottom: 2em;
+            border: 2px solid #D6E4FF;
+            height: fit-content;
+            max-height: 70vh;
+            overflow-y: auto;
         }
 
         .job-tracker-root .section-title {
-            font-size: 1.8em;
-            color: #333;
-            margin-bottom: 20px;
+            font-family: 'Caveat', cursive;
+            color: #4A90E2;
             text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
         }
 
         .job-tracker-root .filter-section {
@@ -265,14 +301,15 @@
             gap: 15px;
             margin-bottom: 25px;
             flex-wrap: wrap;
+            justify-content: center;
         }
 
         .job-tracker-root .filter-btn {
             padding: 8px 16px;
-            border: 2px solid #667eea;
+            border: 2px solid #4A90E2;
             background: transparent;
-            color: #667eea;
-            border-radius: 15px; /* Rounded filter buttons */
+            color: #4A90E2;
+            border-radius: 15px;
             cursor: pointer;
             transition: all 0.3s ease;
             font-weight: 500;
@@ -280,17 +317,17 @@
 
         .job-tracker-root .filter-btn.active,
         .job-tracker-root .filter-btn:hover {
-            background: #667eea;
+            background: #4A90E2;
             color: white;
         }
 
         .job-tracker-root .job-card {
             background: white;
-            border-radius: 20px; /* Rounded job cards */
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-            border-left: 5px solid;
+            border-radius: 0.9em;
+            padding: 1.2em;
+            margin-bottom: 1em;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            border-left: 4px solid;
             transition: all 0.3s ease;
         }
 
@@ -322,14 +359,14 @@
 
         .job-tracker-root .job-company {
             font-size: 1.1em;
-            color: #667eea;
+            color: #4A90E2;
             font-weight: 600;
             margin: 5px 0;
         }
 
         .job-tracker-root .job-status {
             padding: 6px 12px;
-            border-radius: 12px; /* Rounded status badges */
+            border-radius: 12px;
             font-size: 0.85em;
             font-weight: 600;
             text-transform: uppercase;
@@ -349,14 +386,14 @@
         }
 
         .job-tracker-root .job-detail {
-            background: rgba(102, 126, 234, 0.05);
+            background: rgba(74, 144, 226, 0.05);
             padding: 10px 15px;
-            border-radius: 12px; /* Rounded detail sections */
-            border: 1px solid rgba(102, 126, 234, 0.1);
+            border-radius: 0.7em;
+            border: 1px solid rgba(74, 144, 226, 0.1);
         }
 
         .job-tracker-root .job-detail strong {
-            color: #667eea;
+            color: #4A90E2;
             font-weight: 600;
         }
 
@@ -370,7 +407,7 @@
         .job-tracker-root .action-btn {
             padding: 8px 15px;
             border: none;
-            border-radius: 12px; /* Rounded action buttons */
+            border-radius: 12px;
             cursor: pointer;
             font-size: 0.9em;
             font-weight: 600;
@@ -394,30 +431,32 @@
 
         .job-tracker-root .stats-section {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             gap: 20px;
-            margin-bottom: 30px;
+            margin-bottom: 3em;
         }
 
         .job-tracker-root .stat-card {
             background: white;
-            padding: 20px;
-            border-radius: 20px; /* Rounded stat cards */
+            padding: 1.2em;
+            border-radius: 0.9em;
             text-align: center;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
             border-top: 4px solid;
         }
 
-        .job-tracker-root .stat-card.total { border-top-color: #667eea; }
+        .job-tracker-root .stat-card.total { border-top-color: #4A90E2; }
         .job-tracker-root .stat-card.applied { border-top-color: #3498db; }
         .job-tracker-root .stat-card.interviews { border-top-color: #f39c12; }
         .job-tracker-root .stat-card.offers { border-top-color: #27ae60; }
+        .job-tracker-root .stat-card.rejected { border-top-color: #e74c3c; }
 
         .job-tracker-root .stat-number {
-            font-size: 2.5em;
+            font-size: 2.2em;
             font-weight: 700;
             color: #333;
             margin-bottom: 5px;
+            font-family: 'Fira Code', monospace;
         }
 
         .job-tracker-root .stat-label {
@@ -425,42 +464,124 @@
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
-            font-size: 0.9em;
+            font-size: 0.8em;
         }
 
         .job-tracker-root .no-jobs {
             text-align: center;
-            padding: 40px;
+            padding: 2em;
             color: #666;
             font-size: 1.1em;
+            background: white;
+            border-radius: 0.9em;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
         }
 
-        /* SEO Hidden Content */
-        .job-tracker-root footer {
-            display: none;
+        /* About Section Styling */
+        .job-tracker-root .about-section {
+            background: #F5F9FF;
+            border-radius: 0.9em;
+            padding: 1.5em;
+            margin-bottom: 2em;
+            border: 2px solid #D6E4FF;
+        }
+
+        .job-tracker-root .about-section h2 {
+            font-family: 'Caveat', cursive;
+            color: #4A90E2;
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .job-tracker-root .about-section h3 {
+            color: #4A90E2;
+            font-size: 1.3em;
+            margin: 1.5em 0 0.8em 0;
+        }
+
+        .job-tracker-root .about-section p {
+            line-height: 1.6;
+            margin-bottom: 1em;
+            color: #333;
+        }
+
+        .job-tracker-root .about-section ul {
+            margin-left: 1.5em;
+            margin-bottom: 1.5em;
+        }
+
+        .job-tracker-root .about-section li {
+            margin-bottom: 0.5em;
+            line-height: 1.5;
+            color: #333;
+        }
+
+        .job-tracker-root .about-section .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1em;
+            margin-bottom: 1.5em;
+        }
+
+        .job-tracker-root .about-section .feature-item {
+            background: white;
+            padding: 1em;
+            border-radius: 0.7em;
+            border: 1px solid #D6E4FF;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .job-tracker-root .about-section .feature-item i {
+            color: #4A90E2;
+            margin-right: 0.5em;
+        }
+
+        .job-tracker-root .about-section .audience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1em;
+            margin-bottom: 1.5em;
+        }
+
+        .job-tracker-root .about-section .audience-item {
+            background: white;
+            padding: 1em;
+            border-radius: 0.7em;
+            border: 1px solid #D6E4FF;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .job-tracker-root .about-section .audience-item i {
+            font-size: 1.5em;
+            color: #4A90E2;
+            margin-bottom: 0.5em;
+            display: block;
         }
 
         /* Responsive Design */
-        @media (max-width: 768px) {
+        @media (max-width: 600px) {
             .job-tracker-root {
                 padding: 10px;
             }
 
             .job-tracker-root .main-container {
-                border-radius: 20px; /* Less rounded on mobile */
-            }
-
-            .job-tracker-root .header {
-                padding: 20px;
-                border-radius: 20px 20px 0 0;
+                padding: 1em 0.2em;
+                margin: 1em auto;
             }
 
             .job-tracker-root .header h1 {
-                font-size: 2em;
+                font-size: 2.2rem;
             }
 
-            .job-tracker-root .content {
-                padding: 20px;
+            .job-tracker-root .section-title {
+                font-size: 2rem;
+            }
+
+            .job-tracker-root .about-section h2 {
+                font-size: 2rem;
             }
 
             .job-tracker-root .form-row {
@@ -479,6 +600,20 @@
             .job-tracker-root .filter-section {
                 justify-content: center;
             }
+
+            .job-tracker-root .stats-section {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .job-tracker-root .dashboard-layout {
+                grid-template-columns: 1fr;
+                gap: 1.5em;
+            }
+
+            .job-tracker-root .feature-grid,
+            .job-tracker-root .audience-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -486,12 +621,12 @@
     <div class="job-tracker-root">
         <div class="main-container">
             <div class="header">
-                <h1>🎯 Free Job Application Tracker</h1>
-                <p>Organize your job search • Track applications, interviews & career progress • Perfect for students & professionals</p>
+                <h1>Job Application Tracker</h1>
+                <p>Organize your job search • Track applications, interviews & career progress</p>
             </div>
 
             <div class="content">
-                <!-- Statistics Section -->
+                <!-- Statistics Section - Full Width -->
                 <div class="stats-section">
                     <div class="stat-card total">
                         <div class="stat-number" id="totalJobs">0</div>
@@ -509,11 +644,19 @@
                         <div class="stat-number" id="offerJobs">0</div>
                         <div class="stat-label">Offers</div>
                     </div>
+                    <div class="stat-card rejected">
+                        <div class="stat-number" id="rejectedJobs">0</div>
+                        <div class="stat-label">Rejected</div>
+                    </div>
                 </div>
 
-                <!-- Add New Job Section -->
+                <!-- Main Dashboard Layout - Two Columns -->
+                <div class="dashboard-layout">
+                    <!-- Left Column: Add New Job Form -->
+                    <div class="left-column">
+                        <!-- Add New Job Section -->
                 <section class="add-job-section" aria-labelledby="add-job-heading">
-                    <h2 id="add-job-heading" class="section-title">📝 Add New Job Application</h2>
+                    <h2 id="add-job-heading" class="section-title">Add New Job Application</h2>
                     <form id="jobForm">
                         <div class="form-row">
                             <div class="form-group">
@@ -524,13 +667,13 @@
                                 <label for="company">Company *</label>
                                 <input type="text" id="company" name="company" required placeholder="e.g. Google">
                             </div>
+                        </div>
+
+                        <div class="form-row">
                             <div class="form-group">
                                 <label for="location">Location</label>
                                 <input type="text" id="location" name="location" placeholder="e.g. San Francisco, CA">
                             </div>
-                        </div>
-
-                        <div class="form-row">
                             <div class="form-group">
                                 <label for="status">Status *</label>
                                 <select id="status" name="status" required>
@@ -540,6 +683,9 @@
                                     <option value="rejected">Rejected</option>
                                 </select>
                             </div>
+                        </div>
+
+                        <div class="form-row">
                             <div class="form-group">
                                 <label for="applicationDate">Application Date</label>
                                 <input type="date" id="applicationDate" name="applicationDate">
@@ -570,11 +716,14 @@
 
                         <button type="submit" class="add-btn">Add Application</button>
                     </form>
-                </div>
+                    </section>
+                    </div>
 
-                <!-- Jobs List Section -->
-                <section class="jobs-list-section" aria-labelledby="jobs-list-heading">
-                    <h2 id="jobs-list-heading" class="section-title">📋 Your Job Applications</h2>
+                    <!-- Right Column: Jobs List -->
+                    <div class="right-column">
+                        <!-- Jobs List Section -->
+                        <section class="jobs-list-section" aria-labelledby="jobs-list-heading">
+                    <h2 id="jobs-list-heading" class="section-title">Your Job Applications</h2>
                     
                     <!-- Filter Buttons -->
                     <div class="filter-section">
@@ -592,45 +741,62 @@
                             <p>Track your first job application above and organize your career path to success.</p>
                         </div>
                     </div>
+                        </section>
+                    </div>
+                </div>
+
+                <!-- About Section - Full Width -->
+                <section class="about-section" aria-labelledby="about-heading">
+                    <h2 id="about-heading">About Job Application Tracker</h2>
+                    <p>Free online job application tracker designed for students and professionals. Organize job applications, track interview progress, manage offers, and analyze your job search performance with detailed statistics and insights.</p>
+                    
+                    <h3>Key Features</h3>
+                    <div class="feature-grid">
+                        <div class="feature-item"><i class="fas fa-infinity"></i> Track unlimited job applications for free</div>
+                        <div class="feature-item"><i class="fas fa-tasks"></i> Monitor application status from applied to hired</div>
+                        <div class="feature-item"><i class="fas fa-calendar-alt"></i> Record interview dates and follow-up tasks</div>
+                        <div class="feature-item"><i class="fas fa-dollar-sign"></i> Store salary expectations and negotiations</div>
+                        <div class="feature-item"><i class="fas fa-address-book"></i> Manage contact information and company details</div>
+                        <div class="feature-item"><i class="fas fa-filter"></i> Filter applications by status and date</div>
+                        <div class="feature-item"><i class="fas fa-chart-line"></i> View career progress with built-in analytics</div>
+                        <div class="feature-item"><i class="fas fa-download"></i> Export data for external analysis</div>
+                        <div class="feature-item"><i class="fas fa-mobile-alt"></i> Mobile-responsive design for on-the-go access</div>
+                        <div class="feature-item"><i class="fas fa-lock"></i> Secure local storage - your data stays private</div>
+                    </div>
+                    
+                    <h3>Perfect for</h3>
+                    <div class="audience-grid">
+                        <div class="audience-item">
+                            <i class="fas fa-graduation-cap"></i>
+                            College students seeking internships and entry-level positions
+                        </div>
+                        <div class="audience-item">
+                            <i class="fas fa-user-graduate"></i>
+                            Recent graduates navigating the job market
+                        </div>
+                        <div class="audience-item">
+                            <i class="fas fa-exchange-alt"></i>
+                            Career changers organizing their transition
+                        </div>
+                        <div class="audience-item">
+                            <i class="fas fa-briefcase"></i>
+                            Professionals seeking new opportunities
+                        </div>
+                        <div class="audience-item">
+                            <i class="fas fa-clipboard-list"></i>
+                            Anyone wanting to systematically track their job search
+                        </div>
+                    </div>
+                    
+                    <h3>How to Use</h3>
+                    <p>Simply enter your job application details including company name, position, application date, and current status. Use the filtering options to view specific types of applications, and track your progress with the built-in statistics dashboard.</p>
+                    
+                    <h3>Benefits</h3>
+                    <p>Stay organized during your job search, never lose track of applications or interviews, identify patterns in your job search success, and maintain momentum with visual progress tracking.</p>
                 </section>
             </div>
         </div>
     </div>
-
-    <!-- SEO Footer Information -->
-    <footer>
-        <h2>About Job Application Tracker</h2>
-        <p>Free online job application tracker designed for students and professionals. Organize job applications, track interview progress, manage offers, and analyze your job search performance with detailed statistics and insights.</p>
-        
-        <h3>Key Features</h3>
-        <ul>
-            <li>Track unlimited job applications for free</li>
-            <li>Monitor application status from applied to hired</li>
-            <li>Record interview dates and follow-up tasks</li>
-            <li>Store salary expectations and negotiations</li>
-            <li>Manage contact information and company details</li>
-            <li>Filter applications by status and date</li>
-            <li>View career progress with built-in analytics</li>
-            <li>Export data for external analysis</li>
-            <li>Mobile-responsive design for on-the-go access</li>
-            <li>Secure local storage - your data stays private</li>
-        </ul>
-        
-        <h3>Perfect for</h3>
-        <ul>
-            <li>College students seeking internships and entry-level positions</li>
-            <li>Recent graduates navigating the job market</li>
-            <li>Career changers organizing their transition</li>
-            <li>Professionals seeking new opportunities</li>
-            <li>Anyone wanting to systematically track their job search</li>
-        </ul>
-        
-        <h3>How to Use</h3>
-        <p>Simply enter your job application details including company name, position, application date, and current status. Use the filtering options to view specific types of applications, and track your progress with the built-in statistics dashboard.</p>
-        
-        <h3>Benefits</h3>
-        <p>Stay organized during your job search, never lose track of applications or interviews, identify patterns in your job search success, and maintain momentum with visual progress tracking.</p>
-    </footer>
 
     <script>
         class JobTracker {
@@ -818,13 +984,15 @@
                     total: this.jobs.length,
                     applied: this.jobs.filter(j => j.status === 'applied').length,
                     interview: this.jobs.filter(j => j.status === 'interview').length,
-                    offer: this.jobs.filter(j => j.status === 'offer').length
+                    offer: this.jobs.filter(j => j.status === 'offer').length,
+                    rejected: this.jobs.filter(j => j.status === 'rejected').length
                 };
 
                 document.getElementById('totalJobs').textContent = stats.total;
                 document.getElementById('appliedJobs').textContent = stats.applied;
                 document.getElementById('interviewJobs').textContent = stats.interview;
                 document.getElementById('offerJobs').textContent = stats.offer;
+                document.getElementById('rejectedJobs').textContent = stats.rejected;
             }
 
             resetForm() {
