@@ -11,7 +11,7 @@ Allow: /client/tools/other/
 Allow: /client/tools/student/
 
 # Sitemap location
-Sitemap: https://jaswanth-mjy.github.io/allinone.github.io/sitemap.xml
+Sitemap: https://scribbletools.in/sitemap.xml
 
 # Crawl-delay for good citizenship
 Crawl-delay: 1

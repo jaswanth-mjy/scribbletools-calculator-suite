@@ -3,198 +3,1781 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daily Schedule Optimizer - Student Tools</title>
+    
+    <!-- Enhanced SEO Meta Tags -->
+    <title>Daily Schedule Optimizer - Maximize Study Productivity | Time Management Tool</title>
+    <meta name="description" content="Free daily schedule optimizer for students. Plan study sessions, manage time blocks, track productivity, and optimize your daily routine with AI-powered scheduling and break management.">
+    <meta name="keywords" content="daily schedule optimizer, time management, study planner, productivity tool, schedule builder, time blocking, study routine, daily planner, student productivity, study schedule">
+    <meta name="author" content="Scribble Tools">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://scribbletools.in/client/tools/student/planning/daily-schedule-optimizer.html">
+    <meta property="og:title" content="Daily Schedule Optimizer - Maximize Study Productivity">
+    <meta property="og:description" content="Optimize your daily study schedule with intelligent time blocking, productivity tracking, and break management. Free student time management tool for maximum efficiency.">
+    <meta property="og:image" content="https://scribbletools.in/assets/daily-schedule-preview.jpg">
+    <meta property="og:site_name" content="Scribble Tools">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://scribbletools.in/client/tools/student/planning/daily-schedule-optimizer.html">
+    <meta name="twitter:title" content="Daily Schedule Optimizer - Maximize Study Productivity">
+    <meta name="twitter:description" content="Free daily schedule optimizer for students. Plan study sessions, manage time blocks, and maximize productivity with intelligent scheduling.">
+    <meta name="twitter:image" content="https://scribbletools.in/assets/daily-schedule-preview.jpg">
+    
+    <!-- Technical SEO -->
+    <link rel="canonical" href="https://scribbletools.in/client/tools/student/planning/daily-schedule-optimizer.html">
+    <meta name="theme-color" content="#D32F2F">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Caveat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Daily Schedule Optimizer",
+        "description": "Free daily schedule optimizer for students to plan study sessions, manage time blocks, track productivity, and optimize daily routines with intelligent scheduling.",
+        "url": "https://scribbletools.in/client/tools/student/planning/daily-schedule-optimizer.html",
+        "applicationCategory": "EducationalApplication",
+        "operatingSystem": "Web Browser",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "creator": {
+            "@type": "Organization",
+            "name": "Scribble Tools"
+        },
+        "featureList": [
+            "Time block scheduling",
+            "Productivity tracking",
+            "Study session planning",
+            "Break management",
+            "Energy level optimization",
+            "Subject prioritization",
+            "Daily analytics",
+            "Schedule templates"
+        ]
+    }
+    </script>
+    
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        /* CSS Variables - Red/Orange color scheme for urgency */
+        .schedule-optimizer-root,
+        .schedule-optimizer-main-container,
+        .schedule-optimizer-body,
+        body.schedule-optimizer-body {
+            --schedule-optimizer-primary-color: #D32F2F !important;
+            --schedule-optimizer-secondary-color: #F44336 !important;
+            --schedule-optimizer-accent-color: #FF5252 !important;
+            --schedule-optimizer-success-color: #388E3C !important;
+            --schedule-optimizer-warning-color: #FFA000 !important;
+            --schedule-optimizer-error-color: #C62828 !important;
+            --schedule-optimizer-text-primary: #212121 !important;
+            --schedule-optimizer-text-secondary: #757575 !important;
+            --schedule-optimizer-text-light: #BDBDBD !important;
+            --schedule-optimizer-surface: #FFFFFF !important;
+            --schedule-optimizer-surface-alt: #FFF3E0 !important;
+            --schedule-optimizer-border-color: #E0E0E0 !important;
+            --schedule-optimizer-border-light: #FFEBEE !important;
+            --schedule-optimizer-shadow-sm: 0 2px 4px rgba(211, 47, 47, 0.1) !important;
+            --schedule-optimizer-shadow-md: 0 4px 8px rgba(211, 47, 47, 0.15) !important;
+            --schedule-optimizer-shadow-lg: 0 8px 16px rgba(211, 47, 47, 0.2) !important;
+            --schedule-optimizer-shadow-hover: 0 12px 24px rgba(211, 47, 47, 0.25) !important;
+            --schedule-optimizer-border-radius: 0.75rem !important;
+            --schedule-optimizer-transition-timing: cubic-bezier(0.4, 0, 0.2, 1) !important;
+            --schedule-optimizer-font-family: 'Poppins', sans-serif !important;
+            --schedule-optimizer-font-size-xs: 0.75rem !important;
+            --schedule-optimizer-font-size-sm: 0.875rem !important;
+            --schedule-optimizer-font-size-base: 1rem !important;
+            --schedule-optimizer-font-size-lg: 1.125rem !important;
+            --schedule-optimizer-font-size-xl: 1.25rem !important;
+            --schedule-optimizer-font-size-2xl: 1.5rem !important;
+            --schedule-optimizer-font-size-3xl: 1.875rem !important;
+            --schedule-optimizer-line-height: 1.5 !important;
+            --schedule-optimizer-spacing-xs: 0.5rem !important;
+            --schedule-optimizer-spacing-sm: 0.75rem !important;
+            --schedule-optimizer-spacing-md: 1rem !important;
+            --schedule-optimizer-spacing-lg: 1.5rem !important;
+            --schedule-optimizer-spacing-xl: 2rem !important;
+            --schedule-optimizer-spacing-2xl: 3rem !important;
         }
-        
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 20px;
+
+        /* Reset and Base Styles */
+        .schedule-optimizer-root *, 
+        .schedule-optimizer-root *::before, 
+        .schedule-optimizer-root *::after {
+            box-sizing: border-box !important;
         }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            overflow: hidden;
+
+        .schedule-optimizer-root {
+            margin: 0 !important;
+            padding: 0 !important;
         }
-        
-        .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 30px;
-            text-align: center;
+
+        .schedule-optimizer-body {
+            font-family: var(--schedule-optimizer-font-family) !important;
+            background: transparent !important;
+            background-color: transparent !important;
         }
-        
-        .header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            font-weight: 700;
+
+        /* Schedule Optimizer Container */
+        .schedule-optimizer-standalone-wrapper {
+            background: transparent !important;
+            min-height: 100vh !important;
+            line-height: var(--schedule-optimizer-line-height) !important;
+            color: var(--schedule-optimizer-text-primary) !important;
+            padding: var(--schedule-optimizer-spacing-md) !important;
+            margin: 0 !important;
         }
-        
-        .header p {
-            font-size: 1.1rem;
-            opacity: 0.9;
+
+        /* Main Container */
+        .schedule-optimizer-root .schedule-optimizer-main-container {
+            max-width: 1400px !important;
+            margin: 0 auto !important;
+            background: var(--schedule-optimizer-surface) !important;
+            border-radius: var(--schedule-optimizer-border-radius) !important;
+            box-shadow: var(--schedule-optimizer-shadow-lg) !important;
+            overflow: hidden !important;
         }
-        
-        .content {
-            padding: 40px;
+
+        /* Header Section */
+        .schedule-optimizer-root .schedule-optimizer-header-section {
+            background: linear-gradient(135deg, var(--schedule-optimizer-primary-color) 0%, var(--schedule-optimizer-secondary-color) 100%) !important;
+            color: white !important;
+            padding: var(--schedule-optimizer-spacing-2xl) var(--schedule-optimizer-spacing-xl) !important;
+            text-align: center !important;
+            position: relative !important;
+            overflow: hidden !important;
         }
-        
-        .coming-soon {
-            text-align: center;
-            padding: 60px 20px;
+
+        .schedule-optimizer-root .schedule-optimizer-header-section::before {
+            content: "" !important;
+            position: absolute !important;
+            top: -50% !important;
+            right: -50% !important;
+            width: 200% !important;
+            height: 200% !important;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%) !important;
+            animation: pulse 4s ease-in-out infinite !important;
         }
-        
-        .coming-soon-icon {
-            font-size: 5rem;
-            margin-bottom: 30px;
-            color: #667eea;
+
+        .schedule-optimizer-root .schedule-optimizer-header-section h1 {
+            font-family: 'Caveat', cursive !important;
+            font-size: 3rem !important;
+            font-weight: 700 !important;
+            margin-bottom: 1rem !important;
+            color: #ffffff !important;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2) !important;
+            position: relative !important;
+            z-index: 2 !important;
         }
-        
-        .coming-soon h2 {
-            font-size: 2.5rem;
-            color: #333;
-            margin-bottom: 20px;
-            font-weight: 600;
+
+        .schedule-optimizer-root .schedule-optimizer-header-section p {
+            font-size: var(--schedule-optimizer-font-size-lg) !important;
+            opacity: 0.95 !important;
+            margin: 0 auto !important;
+            max-width: 600px !important;
+            position: relative !important;
+            z-index: 2 !important;
         }
-        
-        .coming-soon p {
-            font-size: 1.2rem;
-            color: #666;
-            line-height: 1.6;
-            max-width: 600px;
-            margin: 0 auto 30px;
+
+        /* Content Section */
+        .schedule-optimizer-root .schedule-optimizer-content-section {
+            padding: var(--schedule-optimizer-spacing-2xl) !important;
         }
-        
-        .features-preview {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 40px;
+
+        .schedule-optimizer-root .schedule-optimizer-layout-grid {
+            display: grid !important;
+            grid-template-columns: 2fr 1fr !important;
+            gap: var(--schedule-optimizer-spacing-xl) !important;
+            margin-bottom: var(--schedule-optimizer-spacing-2xl) !important;
         }
-        
-        .feature-card {
-            background: #f8f9fa;
-            padding: 25px;
-            border-radius: 15px;
-            text-align: center;
-            border: 2px solid #e9ecef;
-            transition: all 0.3s ease;
+
+        /* Form Section */
+        .schedule-optimizer-root .schedule-optimizer-form-section {
+            background: var(--schedule-optimizer-surface) !important;
+            border: 2px solid var(--schedule-optimizer-border-color) !important;
+            border-radius: var(--schedule-optimizer-border-radius) !important;
+            padding: var(--schedule-optimizer-spacing-xl) !important;
+            box-shadow: var(--schedule-optimizer-shadow-md) !important;
         }
-        
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            border-color: #667eea;
+
+        .schedule-optimizer-root .schedule-optimizer-form-section h2 {
+            color: var(--schedule-optimizer-primary-color) !important;
+            font-size: var(--schedule-optimizer-font-size-xl) !important;
+            font-weight: 600 !important;
+            margin-bottom: var(--schedule-optimizer-spacing-lg) !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: var(--schedule-optimizer-spacing-sm) !important;
         }
-        
-        .feature-icon {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            color: #667eea;
+
+        /* Schedule Display Section */
+        .schedule-optimizer-root .schedule-optimizer-display-section {
+            background: var(--schedule-optimizer-surface) !important;
+            border: 2px solid var(--schedule-optimizer-border-color) !important;
+            border-radius: var(--schedule-optimizer-border-radius) !important;
+            padding: var(--schedule-optimizer-spacing-xl) !important;
+            box-shadow: var(--schedule-optimizer-shadow-md) !important;
         }
-        
-        .feature-card h3 {
-            font-size: 1.3rem;
-            color: #333;
-            margin-bottom: 10px;
+
+        .schedule-optimizer-root .schedule-optimizer-display-section h2 {
+            color: var(--schedule-optimizer-primary-color) !important;
+            font-size: var(--schedule-optimizer-font-size-xl) !important;
+            font-weight: 600 !important;
+            margin-bottom: var(--schedule-optimizer-spacing-lg) !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: var(--schedule-optimizer-spacing-sm) !important;
         }
-        
-        .feature-card p {
-            color: #666;
-            line-height: 1.5;
+
+        /* Form Elements */
+        .schedule-optimizer-root .schedule-optimizer-form-group {
+            margin-bottom: var(--schedule-optimizer-spacing-lg) !important;
         }
-        
-        .notify-btn {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-top: 20px;
+
+        .schedule-optimizer-root .schedule-optimizer-form-label {
+            display: block !important;
+            color: var(--schedule-optimizer-text-primary) !important;
+            font-weight: 600 !important;
+            margin-bottom: var(--schedule-optimizer-spacing-sm) !important;
+            font-size: var(--schedule-optimizer-font-size-sm) !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: var(--schedule-optimizer-spacing-xs) !important;
         }
-        
-        .notify-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+
+        .schedule-optimizer-root .schedule-optimizer-form-input,
+        .schedule-optimizer-root .schedule-optimizer-form-select,
+        .schedule-optimizer-root .schedule-optimizer-form-textarea {
+            width: 100% !important;
+            padding: var(--schedule-optimizer-spacing-md) var(--schedule-optimizer-spacing-lg) !important;
+            border: 2px solid var(--schedule-optimizer-border-color) !important;
+            border-radius: var(--schedule-optimizer-border-radius) !important;
+            font-size: var(--schedule-optimizer-font-size-base) !important;
+            font-family: var(--schedule-optimizer-font-family) !important;
+            transition: all 0.3s var(--schedule-optimizer-transition-timing) !important;
+            background: var(--schedule-optimizer-surface) !important;
+            color: var(--schedule-optimizer-text-primary) !important;
+            min-height: 48px !important;
         }
-        
+
+        .schedule-optimizer-root .schedule-optimizer-form-textarea {
+            min-height: 100px !important;
+            resize: vertical !important;
+        }
+
+        .schedule-optimizer-root .schedule-optimizer-form-input:focus,
+        .schedule-optimizer-root .schedule-optimizer-form-select:focus,
+        .schedule-optimizer-root .schedule-optimizer-form-textarea:focus {
+            outline: none !important;
+            border-color: var(--schedule-optimizer-primary-color) !important;
+            box-shadow: 0 0 0 3px rgba(211, 47, 47, 0.1) !important;
+            transform: translateY(-1px) !important;
+        }
+
+        /* Buttons */
+        .schedule-optimizer-root .schedule-optimizer-btn {
+            padding: var(--schedule-optimizer-spacing-md) var(--schedule-optimizer-spacing-xl) !important;
+            border-radius: var(--schedule-optimizer-border-radius) !important;
+            font-size: var(--schedule-optimizer-font-size-base) !important;
+            font-weight: 600 !important;
+            cursor: pointer !important;
+            transition: all 0.3s var(--schedule-optimizer-transition-timing) !important;
+            border: none !important;
+            min-height: 48px !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            gap: var(--schedule-optimizer-spacing-sm) !important;
+        }
+
+        .schedule-optimizer-root .schedule-optimizer-btn-primary {
+            background: linear-gradient(135deg, var(--schedule-optimizer-primary-color) 0%, var(--schedule-optimizer-secondary-color) 100%) !important;
+            color: #ffffff !important;
+            width: 100% !important;
+        }
+
+        .schedule-optimizer-root .schedule-optimizer-btn-primary:hover {
+            transform: translateY(-2px) !important;
+            box-shadow: var(--schedule-optimizer-shadow-hover) !important;
+        }
+
+        /* Schedule Timeline */
+        .schedule-optimizer-root .schedule-optimizer-timeline {
+            display: flex !important;
+            flex-direction: column !important;
+            gap: var(--schedule-optimizer-spacing-sm) !important;
+            max-height: 600px !important;
+            overflow-y: auto !important;
+            padding-right: var(--schedule-optimizer-spacing-sm) !important;
+        }
+
+        .schedule-optimizer-root .schedule-optimizer-time-block {
+            background: var(--schedule-optimizer-surface-alt) !important;
+            border: 2px solid var(--schedule-optimizer-border-light) !important;
+            border-radius: var(--schedule-optimizer-border-radius) !important;
+            padding: var(--schedule-optimizer-spacing-lg) !important;
+            transition: all 0.3s var(--schedule-optimizer-transition-timing) !important;
+            position: relative !important;
+            display: flex !important;
+            gap: var(--schedule-optimizer-spacing-md) !important;
+            align-items: center !important;
+        }
+
+        .schedule-optimizer-root .schedule-optimizer-time-block:hover {
+            transform: translateY(-2px) !important;
+            box-shadow: var(--schedule-optimizer-shadow-md) !important;
+        }
+
+        .schedule-optimizer-root .schedule-optimizer-time-slot {
+            background: linear-gradient(135deg, var(--schedule-optimizer-primary-color) 0%, var(--schedule-optimizer-accent-color) 100%) !important;
+            color: white !important;
+            padding: var(--schedule-optimizer-spacing-sm) var(--schedule-optimizer-spacing-md) !important;
+            border-radius: var(--schedule-optimizer-border-radius) !important;
+            font-weight: 600 !important;
+            min-width: 120px !important;
+            text-align: center !important;
+            font-size: var(--schedule-optimizer-font-size-sm) !important;
+        }
+
+        .schedule-optimizer-root .schedule-optimizer-activity-details {
+            flex: 1 !important;
+        }
+
+        .schedule-optimizer-root .schedule-optimizer-activity-title {
+            font-size: var(--schedule-optimizer-font-size-lg) !important;
+            font-weight: 600 !important;
+            color: var(--schedule-optimizer-text-primary) !important;
+            margin-bottom: var(--schedule-optimizer-spacing-xs) !important;
+        }
+
+        .schedule-optimizer-root .schedule-optimizer-activity-subject {
+            color: var(--schedule-optimizer-text-secondary) !important;
+            font-size: var(--schedule-optimizer-font-size-sm) !important;
+            margin-bottom: var(--schedule-optimizer-spacing-xs) !important;
+        }
+
+        .schedule-optimizer-root .schedule-optimizer-activity-duration {
+            display: flex !important;
+            align-items: center !important;
+            gap: var(--schedule-optimizer-spacing-xs) !important;
+            color: var(--schedule-optimizer-primary-color) !important;
+            font-weight: 600 !important;
+            font-size: var(--schedule-optimizer-font-size-sm) !important;
+        }
+
+        .schedule-optimizer-root .schedule-optimizer-activity-actions {
+            display: flex !important;
+            gap: var(--schedule-optimizer-spacing-sm) !important;
+        }
+
+        .schedule-optimizer-root .schedule-optimizer-btn-small {
+            padding: var(--schedule-optimizer-spacing-sm) var(--schedule-optimizer-spacing-md) !important;
+            font-size: var(--schedule-optimizer-font-size-sm) !important;
+            min-height: auto !important;
+        }
+
+        .schedule-optimizer-root .schedule-optimizer-btn-delete {
+            background: var(--schedule-optimizer-error-color) !important;
+            color: white !important;
+        }
+
+        .schedule-optimizer-root .schedule-optimizer-btn-edit {
+            background: var(--schedule-optimizer-warning-color) !important;
+            color: white !important;
+        }
+
+        /* Activity Type Badges */
+        .schedule-optimizer-root .schedule-optimizer-activity-type {
+            padding: 0.25rem 0.75rem !important;
+            border-radius: 12px !important;
+            font-size: var(--schedule-optimizer-font-size-xs) !important;
+            font-weight: 600 !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 0.25rem !important;
+            margin-bottom: var(--schedule-optimizer-spacing-sm) !important;
+        }
+
+        .schedule-optimizer-root .schedule-optimizer-type-study {
+            background: #E8F5E9 !important;
+            color: #2E7D32 !important;
+        }
+
+        .schedule-optimizer-root .schedule-optimizer-type-break {
+            background: #E3F2FD !important;
+            color: #1565C0 !important;
+        }
+
+        .schedule-optimizer-root .schedule-optimizer-type-exercise {
+            background: #FFF3E0 !important;
+            color: #E65100 !important;
+        }
+
+        .schedule-optimizer-root .schedule-optimizer-type-meal {
+            background: #F3E5F5 !important;
+            color: #6A1B9A !important;
+        }
+
+        .schedule-optimizer-root .schedule-optimizer-type-other {
+            background: #FFEBEE !important;
+            color: #C62828 !important;
+        }
+
+        /* Energy Level Indicator */
+        .schedule-optimizer-root .schedule-optimizer-energy-level {
+            display: flex !important;
+            align-items: center !important;
+            gap: var(--schedule-optimizer-spacing-xs) !important;
+            margin-top: var(--schedule-optimizer-spacing-sm) !important;
+        }
+
+        .schedule-optimizer-root .schedule-optimizer-energy-bar {
+            display: flex !important;
+            gap: 2px !important;
+        }
+
+        .schedule-optimizer-root .schedule-optimizer-energy-dot {
+            width: 8px !important;
+            height: 8px !important;
+            border-radius: 50% !important;
+            background: #E0E0E0 !important;
+        }
+
+        .schedule-optimizer-root .schedule-optimizer-energy-dot.active {
+            background: var(--schedule-optimizer-warning-color) !important;
+        }
+
+        /* Empty State */
+        .schedule-optimizer-root .schedule-optimizer-empty-state {
+            text-align: center !important;
+            padding: var(--schedule-optimizer-spacing-2xl) !important;
+            color: var(--schedule-optimizer-text-secondary) !important;
+        }
+
+        .schedule-optimizer-root .schedule-optimizer-empty-icon {
+            font-size: 4rem !important;
+            opacity: 0.5 !important;
+            margin-bottom: var(--schedule-optimizer-spacing-md) !important;
+        }
+
+        /* Stats Section */
+        .schedule-optimizer-root .schedule-optimizer-stats-section {
+            grid-column: 1 / -1 !important;
+            display: grid !important;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important;
+            gap: var(--schedule-optimizer-spacing-lg) !important;
+            margin-bottom: var(--schedule-optimizer-spacing-xl) !important;
+        }
+
+        .schedule-optimizer-root .schedule-optimizer-stat-card {
+            background: var(--schedule-optimizer-surface) !important;
+            border: 2px solid var(--schedule-optimizer-border-light) !important;
+            border-radius: var(--schedule-optimizer-border-radius) !important;
+            padding: var(--schedule-optimizer-spacing-lg) !important;
+            text-align: center !important;
+            transition: all 0.3s var(--schedule-optimizer-transition-timing) !important;
+        }
+
+        .schedule-optimizer-root .schedule-optimizer-stat-card:hover {
+            transform: translateY(-2px) !important;
+            box-shadow: var(--schedule-optimizer-shadow-md) !important;
+        }
+
+        .schedule-optimizer-root .schedule-optimizer-stat-value {
+            font-size: var(--schedule-optimizer-font-size-2xl) !important;
+            font-weight: 700 !important;
+            color: var(--schedule-optimizer-primary-color) !important;
+            margin-bottom: var(--schedule-optimizer-spacing-xs) !important;
+        }
+
+        .schedule-optimizer-root .schedule-optimizer-stat-label {
+            font-size: var(--schedule-optimizer-font-size-sm) !important;
+            color: var(--schedule-optimizer-text-secondary) !important;
+            font-weight: 500 !important;
+        }
+
+        /* Quick Actions */
+        .schedule-optimizer-root .schedule-optimizer-quick-actions {
+            display: grid !important;
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: var(--schedule-optimizer-spacing-sm) !important;
+            margin-top: var(--schedule-optimizer-spacing-lg) !important;
+        }
+
+        .schedule-optimizer-root .schedule-optimizer-quick-btn {
+            padding: var(--schedule-optimizer-spacing-sm) !important;
+            background: var(--schedule-optimizer-surface-alt) !important;
+            border: 2px solid var(--schedule-optimizer-border-light) !important;
+            border-radius: var(--schedule-optimizer-border-radius) !important;
+            font-size: var(--schedule-optimizer-font-size-sm) !important;
+            font-weight: 600 !important;
+            cursor: pointer !important;
+            transition: all 0.3s var(--schedule-optimizer-transition-timing) !important;
+            color: var(--schedule-optimizer-text-primary) !important;
+            min-height: auto !important;
+        }
+
+        .schedule-optimizer-root .schedule-optimizer-quick-btn:hover {
+            background: var(--schedule-optimizer-primary-color) !important;
+            color: white !important;
+            transform: translateY(-1px) !important;
+        }
+
+        /* Productivity Score */
+        .schedule-optimizer-root .schedule-optimizer-productivity-score {
+            background: linear-gradient(135deg, var(--schedule-optimizer-success-color) 0%, #4CAF50 100%) !important;
+            color: white !important;
+            padding: var(--schedule-optimizer-spacing-lg) !important;
+            border-radius: var(--schedule-optimizer-border-radius) !important;
+            text-align: center !important;
+            margin-top: var(--schedule-optimizer-spacing-lg) !important;
+        }
+
+        .schedule-optimizer-root .schedule-optimizer-score-value {
+            font-size: var(--schedule-optimizer-font-size-3xl) !important;
+            font-weight: 700 !important;
+            margin-bottom: var(--schedule-optimizer-spacing-xs) !important;
+        }
+
+        .schedule-optimizer-root .schedule-optimizer-score-label {
+            font-size: var(--schedule-optimizer-font-size-sm) !important;
+            opacity: 0.9 !important;
+        }
+
+        /* Responsive Design */
         @media (max-width: 768px) {
-            .header h1 {
-                font-size: 2rem;
+            .schedule-optimizer-root .schedule-optimizer-layout-grid {
+                grid-template-columns: 1fr !important;
+            }
+
+            .schedule-optimizer-root .schedule-optimizer-stats-section {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .schedule-optimizer-root .schedule-optimizer-content-section {
+                padding: var(--schedule-optimizer-spacing-lg) !important;
             }
             
-            .coming-soon h2 {
-                font-size: 2rem;
+            .schedule-optimizer-root .schedule-optimizer-header-section {
+                padding: var(--schedule-optimizer-spacing-xl) var(--schedule-optimizer-spacing-lg) !important;
             }
             
-            .content {
-                padding: 20px;
+            .schedule-optimizer-root .schedule-optimizer-header-section h1 {
+                font-family: 'Caveat', cursive !important;
+                font-size: 2rem !important;
             }
-            
-            .features-preview {
-                grid-template-columns: 1fr;
+
+            .schedule-optimizer-root .schedule-optimizer-stats-section {
+                grid-template-columns: 1fr !important;
             }
+
+            .schedule-optimizer-root .schedule-optimizer-time-block {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+            }
+
+            .schedule-optimizer-root .schedule-optimizer-time-slot {
+                min-width: auto !important;
+                width: 100% !important;
+            }
+        }
+
+        /* SEO Section Styles */
+        .schedule-optimizer-root .schedule-optimizer-seo-section {
+            padding: var(--schedule-optimizer-spacing-xl) var(--schedule-optimizer-spacing-lg) !important;
+            background: linear-gradient(135deg, #FFF3E0 0%, #FFEBEE 100%) !important;
+        }
+
+        .schedule-optimizer-root .schedule-optimizer-seo-card {
+            background: white !important;
+            border-radius: 20px !important;
+            padding: var(--schedule-optimizer-spacing-xl) !important;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08) !important;
+            border: 1px solid rgba(211, 47, 47, 0.1) !important;
+        }
+
+        .schedule-optimizer-root .schedule-optimizer-seo-title {
+            font-family: 'Caveat', cursive !important;
+            font-size: 2.5rem !important;
+            color: var(--schedule-optimizer-primary-color) !important;
+            margin-bottom: var(--schedule-optimizer-spacing-lg) !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: 15px !important;
+        }
+
+        .schedule-optimizer-root .schedule-optimizer-seo-title i {
+            font-size: 2.2rem !important;
+        }
+
+        /* Features Grid */
+        .schedule-optimizer-root .schedule-optimizer-features-grid {
+            display: grid !important;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+            gap: var(--schedule-optimizer-spacing-lg) !important;
+            margin-top: var(--schedule-optimizer-spacing-xl) !important;
+        }
+
+        .schedule-optimizer-root .schedule-optimizer-feature-item {
+            background: linear-gradient(135deg, #FFF3E0 0%, white 100%) !important;
+            padding: var(--schedule-optimizer-spacing-lg) !important;
+            border-radius: 15px !important;
+            border-left: 4px solid var(--schedule-optimizer-primary-color) !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .schedule-optimizer-root .schedule-optimizer-feature-item:hover {
+            transform: translateY(-5px) !important;
+            box-shadow: 0 8px 20px rgba(211, 47, 47, 0.15) !important;
+        }
+
+        .schedule-optimizer-root .schedule-optimizer-feature-item h3 {
+            color: var(--schedule-optimizer-primary-color) !important;
+            font-size: 1.3rem !important;
+            margin-bottom: 12px !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: 10px !important;
+        }
+
+        .schedule-optimizer-root .schedule-optimizer-feature-item h3 span {
+            font-size: 1.5rem !important;
+        }
+
+        /* How to Use Steps */
+        .schedule-optimizer-root .schedule-optimizer-steps {
+            display: flex !important;
+            flex-direction: column !important;
+            gap: var(--schedule-optimizer-spacing-lg) !important;
+            margin-top: var(--schedule-optimizer-spacing-xl) !important;
+        }
+
+        .schedule-optimizer-root .schedule-optimizer-step {
+            display: flex !important;
+            gap: var(--schedule-optimizer-spacing-md) !important;
+            align-items: flex-start !important;
+            background: linear-gradient(135deg, white 0%, #FFF3E0 100%) !important;
+            padding: var(--schedule-optimizer-spacing-lg) !important;
+            border-radius: 15px !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .schedule-optimizer-root .schedule-optimizer-step:hover {
+            transform: translateX(10px) !important;
+            box-shadow: 0 5px 15px rgba(211, 47, 47, 0.1) !important;
+        }
+
+        .schedule-optimizer-root .schedule-optimizer-step-number {
+            background: linear-gradient(135deg, var(--schedule-optimizer-primary-color), var(--schedule-optimizer-secondary-color)) !important;
+            color: white !important;
+            width: 45px !important;
+            height: 45px !important;
+            border-radius: 50% !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            font-size: 1.3rem !important;
+            font-weight: bold !important;
+            flex-shrink: 0 !important;
+        }
+
+        .schedule-optimizer-root .schedule-optimizer-step-content h3 {
+            color: var(--schedule-optimizer-primary-color) !important;
+            font-size: 1.2rem !important;
+            margin-bottom: 8px !important;
+        }
+
+        /* Benefits Grid */
+        .schedule-optimizer-root .schedule-optimizer-benefits-grid {
+            display: grid !important;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
+            gap: var(--schedule-optimizer-spacing-lg) !important;
+            margin-top: var(--schedule-optimizer-spacing-xl) !important;
+        }
+
+        .schedule-optimizer-root .schedule-optimizer-benefit-item {
+            background: white !important;
+            padding: var(--schedule-optimizer-spacing-lg) !important;
+            border-radius: 15px !important;
+            border: 2px solid #FFF3E0 !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .schedule-optimizer-root .schedule-optimizer-benefit-item:hover {
+            border-color: var(--schedule-optimizer-primary-color) !important;
+            transform: translateY(-5px) !important;
+            box-shadow: 0 8px 20px rgba(211, 47, 47, 0.12) !important;
+        }
+
+        .schedule-optimizer-root .schedule-optimizer-benefit-item h3 {
+            color: var(--schedule-optimizer-primary-color) !important;
+            font-size: 1.2rem !important;
+            margin-bottom: 10px !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: 10px !important;
+        }
+
+        .schedule-optimizer-root .schedule-optimizer-benefit-item h3 i {
+            color: var(--schedule-optimizer-success-color) !important;
+            font-size: 1.3rem !important;
+        }
+
+        /* FAQ List */
+        .schedule-optimizer-root .schedule-optimizer-faq-list {
+            display: flex !important;
+            flex-direction: column !important;
+            gap: var(--schedule-optimizer-spacing-md) !important;
+            margin-top: var(--schedule-optimizer-spacing-xl) !important;
+        }
+
+        .schedule-optimizer-root .schedule-optimizer-faq-item {
+            background: white !important;
+            padding: var(--schedule-optimizer-spacing-lg) !important;
+            border-radius: 12px !important;
+            border-left: 4px solid var(--schedule-optimizer-secondary-color) !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .schedule-optimizer-root .schedule-optimizer-faq-item:hover {
+            border-left-color: var(--schedule-optimizer-primary-color) !important;
+            box-shadow: 0 5px 15px rgba(211, 47, 47, 0.1) !important;
+        }
+
+        .schedule-optimizer-root .schedule-optimizer-faq-question {
+            color: var(--schedule-optimizer-primary-color) !important;
+            font-size: 1.2rem !important;
+            font-weight: 600 !important;
+            margin-bottom: 10px !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: 10px !important;
+        }
+
+        .schedule-optimizer-root .schedule-optimizer-faq-question i {
+            color: var(--schedule-optimizer-secondary-color) !important;
+        }
+
+        .schedule-optimizer-root .schedule-optimizer-faq-answer {
+            color: var(--schedule-optimizer-text-secondary) !important;
+            line-height: 1.6 !important;
+        }
+
+        /* Use Cases */
+        .schedule-optimizer-root .schedule-optimizer-use-cases {
+            display: grid !important;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+            gap: var(--schedule-optimizer-spacing-lg) !important;
+            margin-top: var(--schedule-optimizer-spacing-xl) !important;
+        }
+
+        .schedule-optimizer-root .schedule-optimizer-use-case {
+            background: linear-gradient(135deg, white 0%, #FFEBEE 100%) !important;
+            padding: var(--schedule-optimizer-spacing-lg) !important;
+            border-radius: 15px !important;
+            border: 2px solid transparent !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .schedule-optimizer-root .schedule-optimizer-use-case:hover {
+            border-color: var(--schedule-optimizer-primary-color) !important;
+            transform: translateY(-5px) !important;
+            box-shadow: 0 8px 20px rgba(211, 47, 47, 0.15) !important;
+        }
+
+        .schedule-optimizer-root .schedule-optimizer-use-case h3 {
+            color: var(--schedule-optimizer-primary-color) !important;
+            font-size: 1.3rem !important;
+            margin-bottom: 10px !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: 10px !important;
+        }
+
+        .schedule-optimizer-root .schedule-optimizer-use-case h3 i {
+            font-size: 1.5rem !important;
+        }
+
+        /* Responsive adjustments for SEO sections */
+        @media (max-width: 768px) {
+            .schedule-optimizer-root .schedule-optimizer-seo-title {
+                font-size: 2rem !important;
+            }
+
+            .schedule-optimizer-root .schedule-optimizer-features-grid,
+            .schedule-optimizer-root .schedule-optimizer-benefits-grid,
+            .schedule-optimizer-root .schedule-optimizer-use-cases {
+                grid-template-columns: 1fr !important;
+            }
+
+            .schedule-optimizer-root .schedule-optimizer-step {
+                transform: none !important;
+            }
+
+            .schedule-optimizer-root .schedule-optimizer-step:hover {
+                transform: translateX(5px) !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .schedule-optimizer-root .schedule-optimizer-seo-section {
+                padding: var(--schedule-optimizer-spacing-lg) var(--schedule-optimizer-spacing-md) !important;
+            }
+
+            .schedule-optimizer-root .schedule-optimizer-seo-card {
+                padding: var(--schedule-optimizer-spacing-lg) !important;
+            }
+
+            .schedule-optimizer-root .schedule-optimizer-seo-title {
+                font-size: 1.8rem !important;
+                flex-direction: column !important;
+            }
+
+            .schedule-optimizer-root .schedule-optimizer-feature-item h3,
+            .schedule-optimizer-root .schedule-optimizer-benefit-item h3,
+            .schedule-optimizer-root .schedule-optimizer-use-case h3 {
+                font-size: 1.1rem !important;
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.1; }
+            50% { opacity: 0.2; }
         }
     </style>
 </head>
-<body>
-    <div class="container">
-        <div class="header">
-            <h1>⏰ Daily Schedule Optimizer</h1>
-            <p>Time blocking for classes, study, work with smart optimization</p>
-        </div>
-        
-        <div class="content">
-            <div class="coming-soon">
-                <div class="coming-soon-icon">🚀</div>
-                <h2>Coming Soon!</h2>
-                <p>We're developing an intelligent daily schedule optimizer that uses time-blocking techniques to help you balance classes, study time, work, and personal activities for maximum productivity!</p>
-                
-                <div class="features-preview">
-                    <div class="feature-card">
-                        <div class="feature-icon">🎯</div>
-                        <h3>Smart Time Blocking</h3>
-                        <p>Automatically organize your day into focused time blocks</p>
+<body class="schedule-optimizer-body schedule-optimizer-root">
+    <div class="schedule-optimizer-standalone-wrapper schedule-optimizer-root">
+        <div class="schedule-optimizer-main-container">
+            <!-- Header Section -->
+            <div class="schedule-optimizer-header-section">
+                <h1><i class="fas fa-clock"></i> Daily Schedule Optimizer</h1>
+                <p>Maximize your productivity with intelligent time blocking, energy management, and optimized study scheduling for peak academic performance</p>
+            </div>
+
+            <!-- Main Content -->
+            <div class="schedule-optimizer-content-section">
+                <!-- Stats Section -->
+                <div class="schedule-optimizer-stats-section">
+                    <div class="schedule-optimizer-stat-card">
+                        <div class="schedule-optimizer-stat-value" id="totalActivities">0</div>
+                        <div class="schedule-optimizer-stat-label">Total Activities</div>
                     </div>
-                    
-                    <div class="feature-card">
-                        <div class="feature-icon">⚖️</div>
-                        <h3>Work-Life Balance</h3>
-                        <p>Optimize the balance between study, work, and personal time</p>
+                    <div class="schedule-optimizer-stat-card">
+                        <div class="schedule-optimizer-stat-value" id="studyHours">0h</div>
+                        <div class="schedule-optimizer-stat-label">Study Hours</div>
                     </div>
-                    
-                    <div class="feature-card">
-                        <div class="feature-icon">🔄</div>
-                        <h3>Dynamic Adjustments</h3>
-                        <p>Adapt your schedule based on changing priorities and deadlines</p>
+                    <div class="schedule-optimizer-stat-card">
+                        <div class="schedule-optimizer-stat-value" id="breakTime">0h</div>
+                        <div class="schedule-optimizer-stat-label">Break Time</div>
                     </div>
-                    
-                    <div class="feature-card">
-                        <div class="feature-icon">📊</div>
-                        <h3>Productivity Analytics</h3>
-                        <p>Track and analyze your time usage patterns</p>
+                    <div class="schedule-optimizer-stat-card">
+                        <div class="schedule-optimizer-stat-value" id="productivityScore">0%</div>
+                        <div class="schedule-optimizer-stat-label">Productivity Score</div>
                     </div>
                 </div>
-                
-                <button class="notify-btn" onclick="alert('We\'ll notify you when this tool is ready!')">
-                    Notify Me When Ready
-                </button>
+
+                <!-- Form and Schedule Layout -->
+                <div class="schedule-optimizer-layout-grid">
+                    <!-- Add Activity Form -->
+                    <div class="schedule-optimizer-form-section">
+                        <h2><i class="fas fa-plus-circle"></i> Add Activity</h2>
+                        
+                        <div class="schedule-optimizer-form-group">
+                            <label class="schedule-optimizer-form-label" for="activityTitle">
+                                <i class="fas fa-tasks"></i> Activity Title
+                            </label>
+                            <input type="text" 
+                                   class="schedule-optimizer-form-input" 
+                                   id="activityTitle" 
+                                   placeholder="e.g., Math Study, Lunch, Exercise">
+                        </div>
+
+                        <div class="schedule-optimizer-form-group">
+                            <label class="schedule-optimizer-form-label" for="activityType">
+                                <i class="fas fa-tag"></i> Activity Type
+                            </label>
+                            <select class="schedule-optimizer-form-select" id="activityType">
+                                <option value="study">📚 Study Session</option>
+                                <option value="break">☕ Break</option>
+                                <option value="exercise">🏃 Exercise</option>
+                                <option value="meal">🍽️ Meal</option>
+                                <option value="other">📌 Other</option>
+                            </select>
+                        </div>
+
+                        <div class="schedule-optimizer-form-group">
+                            <label class="schedule-optimizer-form-label" for="activitySubject">
+                                <i class="fas fa-book"></i> Subject/Topic (Optional)
+                            </label>
+                            <input type="text" 
+                                   class="schedule-optimizer-form-input" 
+                                   id="activitySubject" 
+                                   placeholder="e.g., Calculus, Physics, Literature">
+                        </div>
+
+                        <div class="schedule-optimizer-form-group">
+                            <label class="schedule-optimizer-form-label" for="startTime">
+                                <i class="fas fa-play"></i> Start Time
+                            </label>
+                            <input type="time" 
+                                   class="schedule-optimizer-form-input" 
+                                   id="startTime">
+                        </div>
+
+                        <div class="schedule-optimizer-form-group">
+                            <label class="schedule-optimizer-form-label" for="endTime">
+                                <i class="fas fa-stop"></i> End Time
+                            </label>
+                            <input type="time" 
+                                   class="schedule-optimizer-form-input" 
+                                   id="endTime">
+                        </div>
+
+                        <div class="schedule-optimizer-form-group">
+                            <label class="schedule-optimizer-form-label" for="energyLevel">
+                                <i class="fas fa-battery-three-quarters"></i> Energy Level Required
+                            </label>
+                            <select class="schedule-optimizer-form-select" id="energyLevel">
+                                <option value="1">🟢 Low Energy</option>
+                                <option value="2">🟡 Medium Energy</option>
+                                <option value="3">🔴 High Energy</option>
+                            </select>
+                        </div>
+
+                        <div class="schedule-optimizer-form-group">
+                            <label class="schedule-optimizer-form-label" for="activityPriority">
+                                <i class="fas fa-flag"></i> Priority Level
+                            </label>
+                            <select class="schedule-optimizer-form-select" id="activityPriority">
+                                <option value="high">🔴 High Priority</option>
+                                <option value="medium" selected>🟡 Medium Priority</option>
+                                <option value="low">🟢 Low Priority</option>
+                            </select>
+                        </div>
+
+                        <div class="schedule-optimizer-form-group">
+                            <label class="schedule-optimizer-form-label" for="activityNotes">
+                                <i class="fas fa-sticky-note"></i> Notes (Optional)
+                            </label>
+                            <textarea class="schedule-optimizer-form-textarea" 
+                                      id="activityNotes" 
+                                      placeholder="Goals, materials needed, etc."></textarea>
+                        </div>
+
+                        <button class="schedule-optimizer-btn schedule-optimizer-btn-primary" id="addActivityBtn">
+                            <i class="fas fa-plus"></i> Add Activity
+                        </button>
+
+                        <!-- Quick Actions -->
+                        <div class="schedule-optimizer-quick-actions">
+                            <button class="schedule-optimizer-quick-btn" onclick="addQuickActivity('study')">
+                                <i class="fas fa-book"></i> Quick Study
+                            </button>
+                            <button class="schedule-optimizer-quick-btn" onclick="addQuickActivity('break')">
+                                <i class="fas fa-coffee"></i> Quick Break
+                            </button>
+                            <button class="schedule-optimizer-quick-btn" onclick="addQuickActivity('meal')">
+                                <i class="fas fa-utensils"></i> Quick Meal
+                            </button>
+                            <button class="schedule-optimizer-quick-btn" onclick="addQuickActivity('exercise')">
+                                <i class="fas fa-running"></i> Quick Exercise
+                            </button>
+                        </div>
+
+                        <!-- Productivity Score -->
+                        <div class="schedule-optimizer-productivity-score">
+                            <div class="schedule-optimizer-score-value" id="dailyProductivityScore">85%</div>
+                            <div class="schedule-optimizer-score-label">Daily Productivity Score</div>
+                        </div>
+                    </div>
+
+                    <!-- Schedule Timeline -->
+                    <div class="schedule-optimizer-display-section">
+                        <h2><i class="fas fa-calendar-day"></i> Today's Optimized Schedule</h2>
+                        
+                        <div class="schedule-optimizer-timeline" id="scheduleTimeline">
+                            <div class="schedule-optimizer-empty-state">
+                                <div class="schedule-optimizer-empty-icon">
+                                    <i class="fas fa-calendar-alt"></i>
+                                </div>
+                                <p>No activities scheduled yet.<br>Add your first activity to optimize your day!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SEO Content Section -->
+                <div class="schedule-optimizer-seo-section">
+                    <!-- About Section -->
+                    <div class="schedule-optimizer-seo-card">
+                        <h2 class="schedule-optimizer-seo-title">
+                            <i class="fas fa-info-circle"></i> About Daily Schedule Optimizer
+                        </h2>
+                        <p class="schedule-optimizer-seo-text">
+                            The <strong>Daily Schedule Optimizer</strong> is an intelligent time management tool designed to help students maximize productivity, balance study sessions, and create optimal daily routines. This powerful scheduler uses time-blocking techniques, energy level optimization, and intelligent break management to help you make the most of every hour in your day. Whether you're managing multiple courses, balancing extracurricular activities, or preparing for exams, our optimizer ensures you allocate your time effectively and maintain peak performance throughout the day.
+                        </p>
+                        <p class="schedule-optimizer-seo-text">
+                            Research shows that effective time management is crucial for academic success and stress reduction. Our Daily Schedule Optimizer combines proven productivity principles with flexible scheduling to help you create sustainable daily routines. Track different activity types including study sessions, breaks, meals, exercise, and personal time. The optimizer provides real-time productivity scoring, energy level management, priority-based scheduling, and intelligent recommendations to ensure you're working at your best during high-focus tasks and taking appropriate breaks to maintain mental clarity and avoid burnout.
+                        </p>
+                    </div>
+
+                    <!-- Key Features Section -->
+                    <div class="schedule-optimizer-seo-card">
+                        <h2 class="schedule-optimizer-seo-title">
+                            <i class="fas fa-star"></i> Key Features
+                        </h2>
+                        <div class="schedule-optimizer-features-grid">
+                            <div class="schedule-optimizer-feature-item">
+                                <div class="schedule-optimizer-feature-icon">📅</div>
+                                <h3>Time Block Scheduling</h3>
+                                <p>Create detailed daily schedules with precise time blocks for study sessions, breaks, meals, and activities. Visualize your entire day at a glance.</p>
+                            </div>
+                            <div class="schedule-optimizer-feature-item">
+                                <div class="schedule-optimizer-feature-icon">⚡</div>
+                                <h3>Energy Level Optimization</h3>
+                                <p>Match activities to your natural energy levels. Schedule demanding tasks when you're most alert and lighter activities during low-energy periods.</p>
+                            </div>
+                            <div class="schedule-optimizer-feature-item">
+                                <div class="schedule-optimizer-feature-icon">🎯</div>
+                                <h3>Priority Management</h3>
+                                <p>Assign priority levels (High, Medium, Low) to activities ensuring important tasks get optimal time slots and proper attention throughout your day.</p>
+                            </div>
+                            <div class="schedule-optimizer-feature-item">
+                                <div class="schedule-optimizer-feature-icon">📊</div>
+                                <h3>Productivity Analytics</h3>
+                                <p>Real-time productivity scoring based on your schedule balance, study time allocation, break frequency, and activity distribution throughout the day.</p>
+                            </div>
+                            <div class="schedule-optimizer-feature-item">
+                                <div class="schedule-optimizer-feature-icon">⏰</div>
+                                <h3>Smart Time Tracking</h3>
+                                <p>Track activity duration, monitor total study time, break time, and other activities with automatic calculations and time summaries.</p>
+                            </div>
+                            <div class="schedule-optimizer-feature-item">
+                                <div class="schedule-optimizer-feature-icon">🎨</div>
+                                <h3>Visual Timeline</h3>
+                                <p>Beautiful color-coded timeline displaying all activities with time ranges, priority badges, and energy level indicators for quick overview.</p>
+                            </div>
+                            <div class="schedule-optimizer-feature-item">
+                                <div class="schedule-optimizer-feature-icon">⚙️</div>
+                                <h3>Activity Categories</h3>
+                                <p>Organize activities by type: Study sessions, Breaks, Meals, Exercise, Personal time, Meetings, and Custom activities for complete schedule coverage.</p>
+                            </div>
+                            <div class="schedule-optimizer-feature-item">
+                                <div class="schedule-optimizer-feature-icon">🚀</div>
+                                <h3>Quick Actions</h3>
+                                <p>One-click quick add buttons for common activities (study, break, meal, exercise) pre-filled with smart defaults for rapid schedule building.</p>
+                            </div>
+                            <div class="schedule-optimizer-feature-item">
+                                <div class="schedule-optimizer-feature-icon">💾</div>
+                                <h3>Auto-Save</h3>
+                                <p>Automatic saving to browser local storage ensures your schedule persists across sessions without requiring account creation or login.</p>
+                            </div>
+                            <div class="schedule-optimizer-feature-item">
+                                <div class="schedule-optimizer-feature-icon">📱</div>
+                                <h3>Mobile Optimized</h3>
+                                <p>Fully responsive design works seamlessly on smartphones, tablets, and desktop computers for schedule management anywhere, anytime.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- How to Use Section -->
+                    <div class="schedule-optimizer-seo-card">
+                        <h2 class="schedule-optimizer-seo-title">
+                            <i class="fas fa-book-open"></i> How to Use the Daily Schedule Optimizer
+                        </h2>
+                        <div class="schedule-optimizer-steps">
+                            <div class="schedule-optimizer-step">
+                                <div class="schedule-optimizer-step-number">1</div>
+                                <div class="schedule-optimizer-step-content">
+                                    <h3>Add Your First Activity</h3>
+                                    <p>Fill in the activity form with a title (e.g., "Study Calculus"), select the activity type, and set start and end times. Use specific, descriptive titles for better schedule clarity.</p>
+                                </div>
+                            </div>
+                            <div class="schedule-optimizer-step">
+                                <div class="schedule-optimizer-step-number">2</div>
+                                <div class="schedule-optimizer-step-content">
+                                    <h3>Select Energy Level</h3>
+                                    <p>Choose your expected energy level (High, Medium, Low) for this time slot. Schedule demanding tasks during high-energy periods and lighter activities when energy is lower.</p>
+                                </div>
+                            </div>
+                            <div class="schedule-optimizer-step">
+                                <div class="schedule-optimizer-step-number">3</div>
+                                <div class="schedule-optimizer-step-content">
+                                    <h3>Set Priority Level</h3>
+                                    <p>Assign priority (High, Medium, Low) based on importance and deadlines. High-priority activities should be scheduled during your peak performance hours.</p>
+                                </div>
+                            </div>
+                            <div class="schedule-optimizer-step">
+                                <div class="schedule-optimizer-step-number">4</div>
+                                <div class="schedule-optimizer-step-content">
+                                    <h3>Use Quick Actions</h3>
+                                    <p>For common activities, use Quick Action buttons to instantly add pre-configured study sessions, breaks, meals, or exercise with smart default durations.</p>
+                                </div>
+                            </div>
+                            <div class="schedule-optimizer-step">
+                                <div class="schedule-optimizer-step-number">5</div>
+                                <div class="schedule-optimizer-step-content">
+                                    <h3>Review Your Schedule</h3>
+                                    <p>View your complete daily timeline with color-coded activities, check your productivity score, and ensure balanced distribution of study time, breaks, and other activities.</p>
+                                </div>
+                            </div>
+                            <div class="schedule-optimizer-step">
+                                <div class="schedule-optimizer-step-number">6</div>
+                                <div class="schedule-optimizer-step-content">
+                                    <h3>Adjust and Optimize</h3>
+                                    <p>Edit activities to refine timing, delete items that no longer fit, and continuously optimize your schedule based on what works best for your productivity patterns.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Benefits Section -->
+                    <div class="schedule-optimizer-seo-card">
+                        <h2 class="schedule-optimizer-seo-title">
+                            <i class="fas fa-trophy"></i> Benefits for Students
+                        </h2>
+                        <div class="schedule-optimizer-benefits-grid">
+                            <div class="schedule-optimizer-benefit-item">
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <h3>Maximize Productivity</h3>
+                                    <p>Optimize your study schedule to work with your natural energy rhythms, ensuring peak performance during demanding tasks and efficient use of every hour.</p>
+                                </div>
+                            </div>
+                            <div class="schedule-optimizer-benefit-item">
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <h3>Reduce Stress</h3>
+                                    <p>Clear daily structure eliminates decision fatigue and reduces anxiety by providing a clear roadmap for your day with appropriate breaks and balanced activities.</p>
+                                </div>
+                            </div>
+                            <div class="schedule-optimizer-benefit-item">
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <h3>Better Work-Life Balance</h3>
+                                    <p>Ensure time for study, exercise, meals, personal activities, and relaxation by creating comprehensive schedules that cover all aspects of student life.</p>
+                                </div>
+                            </div>
+                            <div class="schedule-optimizer-benefit-item">
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <h3>Improved Time Management</h3>
+                                    <p>Develop strong time management skills through structured scheduling, learning to estimate task duration and allocate appropriate time for different activities.</p>
+                                </div>
+                            </div>
+                            <div class="schedule-optimizer-benefit-item">
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <h3>Prevent Burnout</h3>
+                                    <p>Intelligent break management ensures you take regular rest periods, preventing mental exhaustion and maintaining sustainable study habits long-term.</p>
+                                </div>
+                            </div>
+                            <div class="schedule-optimizer-benefit-item">
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <h3>Free and Private</h3>
+                                    <p>Completely free with no account required. Your schedule data stays private in your browser's local storage, never uploaded to external servers.</p>
+                                </div>
+                            </div>
+                            <div class="schedule-optimizer-benefit-item">
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <h3>Visual Clarity</h3>
+                                    <p>Color-coded timeline provides instant visual understanding of your day's structure, making it easy to identify gaps, overcommitments, or imbalances.</p>
+                                </div>
+                            </div>
+                            <div class="schedule-optimizer-benefit-item">
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <h3>Flexible Scheduling</h3>
+                                    <p>Easily modify your schedule as plans change, with quick edit and delete functions for adapting to unexpected events or changing priorities.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Section -->
+                    <div class="schedule-optimizer-seo-card">
+                        <h2 class="schedule-optimizer-seo-title">
+                            <i class="fas fa-question-circle"></i> Frequently Asked Questions
+                        </h2>
+                        <div class="schedule-optimizer-faq-list">
+                            <div class="schedule-optimizer-faq-item">
+                                <h3 class="schedule-optimizer-faq-question">
+                                    <i class="fas fa-chevron-right"></i> How do I create an optimized daily schedule?
+                                </h3>
+                                <p class="schedule-optimizer-faq-answer">
+                                    Start by adding activities throughout your day using the form on the left. Include all types: study sessions, breaks, meals, exercise, and personal time. Select appropriate energy levels and priorities for each activity. The optimizer will display your schedule in a visual timeline and provide a productivity score. Aim for balance between focused work and rest periods, scheduling demanding tasks during high-energy times.
+                                </p>
+                            </div>
+                            <div class="schedule-optimizer-faq-item">
+                                <h3 class="schedule-optimizer-faq-question">
+                                    <i class="fas fa-chevron-right"></i> What are energy levels and how should I use them?
+                                </h3>
+                                <p class="schedule-optimizer-faq-answer">
+                                    Energy levels (High, Medium, Low) represent your expected alertness and focus during specific time periods. Most people have high energy in morning (8am-12pm), medium in afternoon (1pm-5pm), and low in evening (6pm-10pm). Schedule challenging subjects and intensive study during high-energy periods, routine tasks during medium-energy times, and lighter activities or review during low-energy periods for optimal productivity.
+                                </p>
+                            </div>
+                            <div class="schedule-optimizer-faq-item">
+                                <h3 class="schedule-optimizer-faq-question">
+                                    <i class="fas fa-chevron-right"></i> How is the productivity score calculated?
+                                </h3>
+                                <p class="schedule-optimizer-faq-answer">
+                                    The productivity score analyzes multiple factors: study time balance (not too much or too little), appropriate break frequency (preventing burnout), energy level optimization (matching tasks to energy), priority distribution (ensuring high-priority items get adequate time), and overall schedule balance. A score of 70-100% indicates excellent optimization, 50-69% suggests room for improvement, and below 50% needs significant rebalancing.
+                                </p>
+                            </div>
+                            <div class="schedule-optimizer-faq-item">
+                                <h3 class="schedule-optimizer-faq-question">
+                                    <i class="fas fa-chevron-right"></i> Can I save my schedule for later use?
+                                </h3>
+                                <p class="schedule-optimizer-faq-answer">
+                                    Yes! Your daily schedule is automatically saved to your browser's local storage. It will persist even after closing the browser or refreshing the page. However, clearing browser data or cache will remove saved schedules. The data stays on your device and is never uploaded to external servers, ensuring complete privacy.
+                                </p>
+                            </div>
+                            <div class="schedule-optimizer-faq-item">
+                                <h3 class="schedule-optimizer-faq-question">
+                                    <i class="fas fa-chevron-right"></i> What are the Quick Action buttons?
+                                </h3>
+                                <p class="schedule-optimizer-faq-answer">
+                                    Quick Action buttons (Quick Study, Quick Break, Quick Meal, Quick Exercise) provide one-click scheduling for common activities. They automatically fill in the form with smart defaults: study sessions get 2 hours and high energy, breaks are 15 minutes with low energy, meals are 30 minutes with low energy, and exercise is 1 hour with high energy. You can modify these defaults before adding to your schedule.
+                                </p>
+                            </div>
+                            <div class="schedule-optimizer-faq-item">
+                                <h3 class="schedule-optimizer-faq-question">
+                                    <i class="fas fa-chevron-right"></i> How often should I schedule breaks?
+                                </h3>
+                                <p class="schedule-optimizer-faq-answer">
+                                    Research recommends a 5-10 minute break every hour for optimal focus and retention. For intensive study sessions, the Pomodoro Technique (25 minutes work, 5 minutes break) is highly effective. Schedule at least one 30-minute break every 3-4 hours for meals and longer rest periods. The optimizer's productivity score considers break frequency to help you maintain sustainable study patterns.
+                                </p>
+                            </div>
+                            <div class="schedule-optimizer-faq-item">
+                                <h3 class="schedule-optimizer-faq-question">
+                                    <i class="fas fa-chevron-right"></i> Can I edit activities after adding them?
+                                </h3>
+                                <p class="schedule-optimizer-faq-answer">
+                                    Yes! Click the "Edit" button on any activity card to load its details back into the form. Make your changes (adjust times, change energy levels, update priorities, modify notes) and click "Update Activity" to save. This flexibility allows you to adapt your schedule as the day progresses or plans change.
+                                </p>
+                            </div>
+                            <div class="schedule-optimizer-faq-item">
+                                <h3 class="schedule-optimizer-faq-question">
+                                    <i class="fas fa-chevron-right"></i> What activity types are available?
+                                </h3>
+                                <p class="schedule-optimizer-faq-answer">
+                                    The optimizer supports multiple activity types: Study (focused learning sessions), Break (short rest periods), Meal (breakfast, lunch, dinner), Exercise (physical activity), Personal (hobbies, social time), Meeting (classes, appointments), and Other (miscellaneous activities). Each type is color-coded in the timeline for easy visual identification and schedule analysis.
+                                </p>
+                            </div>
+                            <div class="schedule-optimizer-faq-item">
+                                <h3 class="schedule-optimizer-faq-question">
+                                    <i class="fas fa-chevron-right"></i> Does this work on mobile devices?
+                                </h3>
+                                <p class="schedule-optimizer-faq-answer">
+                                    Absolutely! The Daily Schedule Optimizer is fully responsive and works seamlessly on smartphones, tablets, and desktop computers. The layout automatically adapts to your screen size, providing an optimized experience for managing your schedule on any device, whether you're at home, in the library, or on the go.
+                                </p>
+                            </div>
+                            <div class="schedule-optimizer-faq-item">
+                                <h3 class="schedule-optimizer-faq-question">
+                                    <i class="fas fa-chevron-right"></i> Do I need to create an account?
+                                </h3>
+                                <p class="schedule-optimizer-faq-answer">
+                                    No account is required! The Daily Schedule Optimizer is completely free and works without registration. Your schedule data is stored locally in your browser, providing privacy and instant access without login credentials. Simply open the tool and start optimizing your daily schedule immediately.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Use Cases Section -->
+                    <div class="schedule-optimizer-seo-card">
+                        <h2 class="schedule-optimizer-seo-title">
+                            <i class="fas fa-lightbulb"></i> Perfect For
+                        </h2>
+                        <div class="schedule-optimizer-use-cases">
+                            <div class="schedule-optimizer-use-case">
+                                <i class="fas fa-graduation-cap"></i>
+                                <h3>College Students</h3>
+                                <p>Balance multiple courses, assignments, study sessions, and extracurricular activities with optimized daily schedules and time blocking.</p>
+                            </div>
+                            <div class="schedule-optimizer-use-case">
+                                <i class="fas fa-school"></i>
+                                <h3>High School Students</h3>
+                                <p>Manage homework, test preparation, after-school activities, and personal time with structured daily routines and productivity tracking.</p>
+                            </div>
+                            <div class="schedule-optimizer-use-case">
+                                <i class="fas fa-user-graduate"></i>
+                                <h3>Graduate Students</h3>
+                                <p>Coordinate research time, coursework, teaching responsibilities, and thesis writing with optimized schedules and energy management.</p>
+                            </div>
+                            <div class="schedule-optimizer-use-case">
+                                <i class="fas fa-book-reader"></i>
+                                <h3>Online Learners</h3>
+                                <p>Structure self-paced online courses, manage video lectures, complete assignments, and maintain consistent learning routines.</p>
+                            </div>
+                            <div class="schedule-optimizer-use-case">
+                                <i class="fas fa-clipboard-check"></i>
+                                <h3>Exam Preparation</h3>
+                                <p>Create intensive study schedules for exam periods, balance review sessions across subjects, and ensure adequate rest and break time.</p>
+                            </div>
+                            <div class="schedule-optimizer-use-case">
+                                <i class="fas fa-brain"></i>
+                                <h3>Productivity Enthusiasts</h3>
+                                <p>Optimize daily routines, experiment with time-blocking techniques, track productivity patterns, and develop sustainable study habits.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+
+    <script>
+        (function() {
+            'use strict';
+            
+            class DailyScheduleOptimizer {
+                constructor() {
+                    this.activities = this.loadActivities();
+                    this.editingId = null;
+                    
+                    const elementsReady = this.initializeElements();
+                    if (!elementsReady) {
+                        console.error('Daily Schedule Optimizer: Failed to initialize - DOM elements missing');
+                        return;
+                    }
+                    
+                    this.bindEvents();
+                    this.renderSchedule();
+                    this.updateStats();
+                    this.calculateProductivityScore();
+                }
+                
+                initializeElements() {
+                    this.activityTitleInput = document.getElementById('activityTitle');
+                    this.activityTypeSelect = document.getElementById('activityType');
+                    this.activitySubjectInput = document.getElementById('activitySubject');
+                    this.startTimeInput = document.getElementById('startTime');
+                    this.endTimeInput = document.getElementById('endTime');
+                    this.energyLevelSelect = document.getElementById('energyLevel');
+                    this.activityPrioritySelect = document.getElementById('activityPriority');
+                    this.activityNotesTextarea = document.getElementById('activityNotes');
+                    this.addActivityBtn = document.getElementById('addActivityBtn');
+                    this.scheduleTimeline = document.getElementById('scheduleTimeline');
+                    this.totalActivitiesStat = document.getElementById('totalActivities');
+                    this.studyHoursStat = document.getElementById('studyHours');
+                    this.breakTimeStat = document.getElementById('breakTime');
+                    this.productivityScoreStat = document.getElementById('productivityScore');
+                    this.dailyProductivityScore = document.getElementById('dailyProductivityScore');
+                    
+                    if (!this.activityTitleInput || !this.addActivityBtn || !this.scheduleTimeline) {
+                        return false;
+                    }
+                    return true;
+                }
+                
+                bindEvents() {
+                    if (this.addActivityBtn) {
+                        this.addActivityBtn.addEventListener('click', () => this.handleAddActivity());
+                    }
+                    
+                    // Enter key support
+                    [this.activityTitleInput, this.activitySubjectInput].forEach(input => {
+                        if (input) {
+                            input.addEventListener('keypress', (e) => {
+                                if (e.key === 'Enter') this.handleAddActivity();
+                            });
+                        }
+                    });
+                }
+                
+                handleAddActivity() {
+                    const title = this.activityTitleInput.value.trim();
+                    const type = this.activityTypeSelect.value;
+                    const subject = this.activitySubjectInput.value.trim();
+                    const startTime = this.startTimeInput.value;
+                    const endTime = this.endTimeInput.value;
+                    const energyLevel = parseInt(this.energyLevelSelect.value);
+                    const priority = this.activityPrioritySelect.value;
+                    const notes = this.activityNotesTextarea.value.trim();
+                    
+                    if (!title || !startTime || !endTime) {
+                        this.showNotification('Please fill in title, start time, and end time', 'error');
+                        return;
+                    }
+                    
+                    if (startTime >= endTime) {
+                        this.showNotification('End time must be after start time', 'error');
+                        return;
+                    }
+                    
+                    const activityData = {
+                        id: this.editingId || Date.now(),
+                        title,
+                        type,
+                        subject,
+                        startTime,
+                        endTime,
+                        energyLevel,
+                        priority,
+                        notes,
+                        createdAt: this.editingId ? this.activities.find(a => a.id === this.editingId).createdAt : Date.now()
+                    };
+                    
+                    if (this.editingId) {
+                        const index = this.activities.findIndex(a => a.id === this.editingId);
+                        this.activities[index] = activityData;
+                        this.showNotification('Activity updated successfully!', 'success');
+                        this.editingId = null;
+                        this.addActivityBtn.innerHTML = '<i class="fas fa-plus"></i> Add Activity';
+                    } else {
+                        this.activities.push(activityData);
+                        this.showNotification('Activity added successfully!', 'success');
+                    }
+                    
+                    this.saveActivities();
+                    this.renderSchedule();
+                    this.updateStats();
+                    this.calculateProductivityScore();
+                    this.clearForm();
+                }
+                
+                editActivity(id) {
+                    const activity = this.activities.find(a => a.id === id);
+                    if (!activity) return;
+                    
+                    this.activityTitleInput.value = activity.title;
+                    this.activityTypeSelect.value = activity.type;
+                    this.activitySubjectInput.value = activity.subject || '';
+                    this.startTimeInput.value = activity.startTime;
+                    this.endTimeInput.value = activity.endTime;
+                    this.energyLevelSelect.value = activity.energyLevel.toString();
+                    this.activityPrioritySelect.value = activity.priority;
+                    this.activityNotesTextarea.value = activity.notes || '';
+                    
+                    this.editingId = id;
+                    this.addActivityBtn.innerHTML = '<i class="fas fa-save"></i> Update Activity';
+                    this.activityTitleInput.focus();
+                    
+                    // Scroll to form
+                    document.querySelector('.schedule-optimizer-form-section').scrollIntoView({ behavior: 'smooth' });
+                }
+                
+                deleteActivity(id) {
+                    if (!confirm('Are you sure you want to delete this activity?')) return;
+                    
+                    this.activities = this.activities.filter(a => a.id !== id);
+                    this.saveActivities();
+                    this.renderSchedule();
+                    this.updateStats();
+                    this.calculateProductivityScore();
+                    this.showNotification('Activity deleted successfully', 'success');
+                }
+                
+                clearForm() {
+                    this.activityTitleInput.value = '';
+                    this.activityTypeSelect.value = 'study';
+                    this.activitySubjectInput.value = '';
+                    this.startTimeInput.value = '';
+                    this.endTimeInput.value = '';
+                    this.energyLevelSelect.value = '2';
+                    this.activityPrioritySelect.value = 'medium';
+                    this.activityNotesTextarea.value = '';
+                    this.editingId = null;
+                    this.addActivityBtn.innerHTML = '<i class="fas fa-plus"></i> Add Activity';
+                }
+                
+                renderSchedule() {
+                    if (!this.scheduleTimeline) return;
+                    
+                    if (this.activities.length === 0) {
+                        this.scheduleTimeline.innerHTML = `
+                            <div class="schedule-optimizer-empty-state">
+                                <div class="schedule-optimizer-empty-icon">
+                                    <i class="fas fa-calendar-alt"></i>
+                                </div>
+                                <p>No activities scheduled yet.<br>Add your first activity to optimize your day!</p>
+                            </div>
+                        `;
+                        return;
+                    }
+                    
+                    // Sort by start time
+                    const sortedActivities = [...this.activities].sort((a, b) => {
+                        return a.startTime.localeCompare(b.startTime);
+                    });
+                    
+                    this.scheduleTimeline.innerHTML = sortedActivities.map(activity => this.createActivityBlock(activity)).join('');
+                    
+                    // Bind delete and edit buttons
+                    sortedActivities.forEach(activity => {
+                        const deleteBtn = document.getElementById(`delete-${activity.id}`);
+                        const editBtn = document.getElementById(`edit-${activity.id}`);
+                        
+                        if (deleteBtn) deleteBtn.addEventListener('click', () => this.deleteActivity(activity.id));
+                        if (editBtn) editBtn.addEventListener('click', () => this.editActivity(activity.id));
+                    });
+                }
+                
+                createActivityBlock(activity) {
+                    const duration = this.calculateDuration(activity.startTime, activity.endTime);
+                    const typeClass = `schedule-optimizer-type-${activity.type}`;
+                    const typeIcon = this.getTypeIcon(activity.type);
+                    const priorityIcon = activity.priority === 'high' ? '🔴' : activity.priority === 'medium' ? '🟡' : '🟢';
+                    
+                    return `
+                        <div class="schedule-optimizer-time-block">
+                            <div class="schedule-optimizer-time-slot">
+                                ${activity.startTime} - ${activity.endTime}
+                            </div>
+                            <div class="schedule-optimizer-activity-details">
+                                <div class="schedule-optimizer-activity-type ${typeClass}">
+                                    ${typeIcon} ${activity.type.charAt(0).toUpperCase() + activity.type.slice(1)}
+                                </div>
+                                <div class="schedule-optimizer-activity-title">${activity.title}</div>
+                                ${activity.subject ? `
+                                    <div class="schedule-optimizer-activity-subject">${activity.subject}</div>
+                                ` : ''}
+                                <div class="schedule-optimizer-activity-duration">
+                                    <i class="fas fa-hourglass-half"></i> ${duration} minutes
+                                </div>
+                                <div class="schedule-optimizer-energy-level">
+                                    <span style="font-size: 0.875rem; color: var(--schedule-optimizer-text-secondary);">Energy:</span>
+                                    <div class="schedule-optimizer-energy-bar">
+                                        ${[1, 2, 3].map(level => `
+                                            <div class="schedule-optimizer-energy-dot ${level <= activity.energyLevel ? 'active' : ''}"></div>
+                                        `).join('')}
+                                    </div>
+                                    <span style="font-size: 0.75rem; color: var(--schedule-optimizer-text-secondary); margin-left: 0.5rem;">
+                                        ${priorityIcon} ${activity.priority}
+                                    </span>
+                                </div>
+                                ${activity.notes ? `
+                                    <div style="margin-top: 0.5rem; padding: 0.5rem; background: white; border-radius: 0.5rem; font-size: 0.875rem; color: var(--schedule-optimizer-text-secondary);">
+                                        <i class="fas fa-sticky-note"></i> ${activity.notes}
+                                    </div>
+                                ` : ''}
+                            </div>
+                            <div class="schedule-optimizer-activity-actions">
+                                <button class="schedule-optimizer-btn schedule-optimizer-btn-small schedule-optimizer-btn-edit" id="edit-${activity.id}">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="schedule-optimizer-btn schedule-optimizer-btn-small schedule-optimizer-btn-delete" id="delete-${activity.id}">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                }
+                
+                getTypeIcon(type) {
+                    const icons = {
+                        study: '📚',
+                        break: '☕',
+                        exercise: '🏃',
+                        meal: '🍽️',
+                        other: '📌'
+                    };
+                    return icons[type] || '📌';
+                }
+                
+                calculateDuration(startTime, endTime) {
+                    const start = this.timeToMinutes(startTime);
+                    const end = this.timeToMinutes(endTime);
+                    return end - start;
+                }
+                
+                timeToMinutes(time) {
+                    const [hours, minutes] = time.split(':').map(Number);
+                    return hours * 60 + minutes;
+                }
+                
+                updateStats() {
+                    if (!this.totalActivitiesStat) return;
+                    
+                    const totalActivities = this.activities.length;
+                    const studyActivities = this.activities.filter(a => a.type === 'study');
+                    const breakActivities = this.activities.filter(a => a.type === 'break');
+                    
+                    const studyMinutes = studyActivities.reduce((sum, activity) => {
+                        return sum + this.calculateDuration(activity.startTime, activity.endTime);
+                    }, 0);
+                    
+                    const breakMinutes = breakActivities.reduce((sum, activity) => {
+                        return sum + this.calculateDuration(activity.startTime, activity.endTime);
+                    }, 0);
+                    
+                    this.totalActivitiesStat.textContent = totalActivities;
+                    this.studyHoursStat.textContent = `${Math.floor(studyMinutes / 60)}h ${studyMinutes % 60}m`;
+                    this.breakTimeStat.textContent = `${Math.floor(breakMinutes / 60)}h ${breakMinutes % 60}m`;
+                }
+                
+                calculateProductivityScore() {
+                    if (!this.dailyProductivityScore) return;
+                    
+                    let score = 50; // Base score
+                    
+                    // Add points for study activities
+                    const studyActivities = this.activities.filter(a => a.type === 'study');
+                    score += studyActivities.length * 10;
+                    
+                    // Add points for balanced schedule (breaks)
+                    const breakActivities = this.activities.filter(a => a.type === 'break');
+                    score += breakActivities.length * 5;
+                    
+                    // Add points for exercise
+                    const exerciseActivities = this.activities.filter(a => a.type === 'exercise');
+                    score += exerciseActivities.length * 15;
+                    
+                    // Deduct points for too many high-energy activities in a row
+                    let consecutiveHighEnergy = 0;
+                    const sortedActivities = [...this.activities].sort((a, b) => a.startTime.localeCompare(b.startTime));
+                    
+                    sortedActivities.forEach(activity => {
+                        if (activity.energyLevel >= 3) {
+                            consecutiveHighEnergy++;
+                            if (consecutiveHighEnergy > 2) {
+                                score -= 5;
+                            }
+                        } else {
+                            consecutiveHighEnergy = 0;
+                        }
+                    });
+                    
+                    // Cap score between 0 and 100
+                    score = Math.max(0, Math.min(100, score));
+                    
+                    this.dailyProductivityScore.textContent = `${score}%`;
+                    this.productivityScoreStat.textContent = `${score}%`;
+                }
+                
+                showNotification(message, type = 'info') {
+                    const notification = document.createElement('div');
+                    const bgColor = type === 'success' ? '#4CAF50' : type === 'error' ? '#F44336' : '#2196F3';
+                    notification.style.cssText = 'position: fixed; top: 20px; right: 20px; background: ' + bgColor + '; color: white; padding: 1rem 1.5rem; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); z-index: 10000; font-family: Poppins, sans-serif; font-weight: 500; animation: slideIn 0.3s ease;';
+                    notification.textContent = message;
+                    
+                    document.body.appendChild(notification);
+                    
+                    setTimeout(() => {
+                        notification.style.animation = 'slideOut 0.3s ease';
+                        setTimeout(() => {
+                            if (notification.parentNode) {
+                                document.body.removeChild(notification);
+                            }
+                        }, 300);
+                    }, 3000);
+                }
+                
+                loadActivities() {
+                    try {
+                        return JSON.parse(localStorage.getItem('dailyScheduleOptimizer_activities') || '[]');
+                    } catch (e) {
+                        console.error('Error loading activities:', e);
+                        return [];
+                    }
+                }
+                
+                saveActivities() {
+                    try {
+                        localStorage.setItem('dailyScheduleOptimizer_activities', JSON.stringify(this.activities));
+                    } catch (e) {
+                        console.error('Error saving activities:', e);
+                    }
+                }
+            }
+            
+            // Quick add functions
+            function addQuickActivity(type) {
+                const optimizer = window.scheduleOptimizer;
+                if (!optimizer) return;
+                
+                const now = new Date();
+                const currentHour = now.getHours();
+                const currentMinute = now.getMinutes();
+                
+                let startTime, endTime, title, energyLevel;
+                
+                switch(type) {
+                    case 'study':
+                        startTime = `${String(currentHour).padStart(2, '0')}:${String(currentMinute).padStart(2, '0')}`;
+                        endTime = `${String(currentHour + 1).padStart(2, '0')}:${String(currentMinute).padStart(2, '0')}`;
+                        title = 'Study Session';
+                        energyLevel = '2';
+                        break;
+                    case 'break':
+                        startTime = `${String(currentHour).padStart(2, '0')}:${String(currentMinute).padStart(2, '0')}`;
+                        endTime = `${String(currentHour).padStart(2, '0')}:${String(currentMinute + 15).padStart(2, '0')}`;
+                        title = 'Break';
+                        energyLevel = '1';
+                        break;
+                    case 'meal':
+                        startTime = `${String(currentHour).padStart(2, '0')}:${String(currentMinute).padStart(2, '0')}`;
+                        endTime = `${String(currentHour + 1).padStart(2, '0')}:${String(currentMinute).padStart(2, '0')}`;
+                        title = 'Meal Time';
+                        energyLevel = '1';
+                        break;
+                    case 'exercise':
+                        startTime = `${String(currentHour).padStart(2, '0')}:${String(currentMinute).padStart(2, '0')}`;
+                        endTime = `${String(currentHour + 1).padStart(2, '0')}:${String(currentMinute).padStart(2, '0')}`;
+                        title = 'Exercise';
+                        energyLevel = '3';
+                        break;
+                }
+                
+                optimizer.activityTitleInput.value = title;
+                optimizer.activityTypeSelect.value = type;
+                optimizer.startTimeInput.value = startTime;
+                optimizer.endTimeInput.value = endTime;
+                optimizer.energyLevelSelect.value = energyLevel;
+                optimizer.activityTitleInput.focus();
+            }
+            
+            // Initialize
+            function initDailyScheduleOptimizer() {
+                try {
+                    const scheduleOptimizer = new DailyScheduleOptimizer();
+                    window.scheduleOptimizer = scheduleOptimizer;
+                    if (typeof window !== 'undefined' && window.location.hostname === 'localhost') {
+                        window.scheduleOptimizerDebug = scheduleOptimizer;
+                    }
+                    console.log('✅ Daily Schedule Optimizer initialized successfully');
+                } catch (error) {
+                    console.error('❌ Daily Schedule Optimizer initialization failed:', error);
+                }
+            }
+            
+            // Handle both standalone and iframe scenarios
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initDailyScheduleOptimizer);
+            } else {
+                initDailyScheduleOptimizer();
+            }
+            
+        })();
+        
+        // Add animations
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+            @keyframes slideOut {
+                from { transform: translateX(0); opacity: 1; }
+                to { transform: translateX(100%); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
 </body>
 </html>

@@ -1,11 +1,1339 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Loan Calculator - Student Tools</title>
+    
+    <!-- Enhanced SEO Meta Tags -->
+    <title>Student Loan Calculator - Estimate Payments & Interest | Student Financial Tools</title>
+    <meta name="description" content="Free student loan calculator to estimate monthly payments, total interest, and payoff timeline. Compare loan options and make informed borrowing decisions for your education.">
+    <meta name="keywords" content="student loan calculator, college loan payment, student debt, loan interest, education financing, federal loans, private loans, loan amortization, student aid">
+    <meta name="author" content="Student Tools Suite">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://scribbletools.in/loan-calculator">
+    <meta property="og:title" content="Student Loan Calculator - Estimate Payments & Interest">
+    <meta property="og:description" content="Calculate your student loan payments, total interest, and payoff schedule. Make smart borrowing decisions with our free loan calculator.">
+    <meta property="og:image" content="https://scribbletools.in/assets/loan-calculator-preview.jpg">
+    <meta property="og:site_name" content="Student Tools Suite">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://scribbletools.in/loan-calculator">
+    <meta name="twitter:title" content="Student Loan Calculator - Estimate Payments & Interest">
+    <meta name="twitter:description" content="Free calculator to estimate student loan payments, compare options, and plan your education financing strategy.">
+    <meta name="twitter:image" content="https://scribbletools.in/assets/loan-calculator-preview.jpg">
+    
+    <!-- Technical SEO -->
+    <link rel="canonical" href="https://scribbletools.in/loan-calculator">
+    <meta name="theme-color" content="#0277BD">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Caveat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Student Loan Calculator",
+        "description": "Free calculator to estimate student loan payments, total interest, and payoff timeline for education financing decisions.",
+        "url": "https://scribbletools.in/loan-calculator",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "Web Browser",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "creator": {
+            "@type": "Organization",
+            "name": "Student Tools Suite"
+        },
+        "featureList": [
+            "Monthly payment calculation",
+            "Total interest estimation",
+            "Loan comparison tools",
+            "Amortization schedule preview",
+            "Interest rate analysis",
+            "Payoff timeline calculator",
+            "Federal vs private loan comparison",
+            "Refinancing savings calculator"
+        ]
+    }
+    </script>
+    
+    <style>
+        /* CSS Variables for Loan Calculator - Blue/Teal Color Scheme */
+        :root,
+        .loan-calc-root,
+        .loan-calc-main-container,
+        .loan-calc-body,
+        body.loan-calc-body,
+        html {
+            --loan-calc-primary-color: #0277BD !important;
+            --loan-calc-secondary-color: #0288D1 !important;
+            --loan-calc-accent-color: #26C6DA !important;
+            --loan-calc-success-color: #388E3C !important;
+            --loan-calc-warning-color: #F57C00 !important;
+            --loan-calc-error-color: #D32F2F !important;
+            --loan-calc-text-primary: #212121 !important;
+            --loan-calc-text-secondary: #757575 !important;
+            --loan-calc-text-light: #BDBDBD !important;
+            --loan-calc-surface: #FFFFFF !important;
+            --loan-calc-surface-alt: #F5F5F5 !important;
+            --loan-calc-border-color: #E0E0E0 !important;
+            --loan-calc-border-light: #F5F5F5 !important;
+            --loan-calc-shadow-sm: 0 2px 4px rgba(2, 119, 189, 0.1) !important;
+            --loan-calc-shadow-md: 0 4px 8px rgba(2, 119, 189, 0.15) !important;
+            --loan-calc-shadow-lg: 0 8px 16px rgba(2, 119, 189, 0.2) !important;
+            --loan-calc-shadow-hover: 0 12px 24px rgba(2, 119, 189, 0.25) !important;
+            --loan-calc-border-radius: 0.75rem !important;
+            --loan-calc-transition-timing: cubic-bezier(0.4, 0, 0.2, 1) !important;
+            --loan-calc-font-family: 'Poppins', sans-serif !important;
+            --loan-calc-font-size-xs: 0.75rem !important;
+            --loan-calc-font-size-sm: 0.875rem !important;
+            --loan-calc-font-size-base: 1rem !important;
+            --loan-calc-font-size-lg: 1.125rem !important;
+            --loan-calc-font-size-xl: 1.25rem !important;
+            --loan-calc-font-size-2xl: 1.5rem !important;
+            --loan-calc-font-size-3xl: 1.875rem !important;
+            --loan-calc-line-height: 1.5 !important;
+            --loan-calc-spacing-xs: 0.5rem !important;
+            --loan-calc-spacing-sm: 0.75rem !important;
+            --loan-calc-spacing-md: 1rem !important;
+            --loan-calc-spacing-lg: 1.5rem !important;
+            --loan-calc-spacing-xl: 2rem !important;
+            --loan-calc-spacing-2xl: 3rem !important;
+        }
+
+        /* Reset and Base Styles - Scoped to loan calculator only */
+        .loan-calc-root *, 
+        .loan-calc-root *::before, 
+        .loan-calc-root *::after {
+            box-sizing: border-box !important;
+        }
+
+        .loan-calc-root {
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        /* Revert margins and padding for loan calc elements */
+        .loan-calc-root .loan-calc-main-container,
+        .loan-calc-root .loan-calc-header-section,
+        .loan-calc-root .loan-calc-content-section,
+        .loan-calc-root .loan-calc-calculator-grid,
+        .loan-calc-root .loan-calc-input-section,
+        .loan-calc-root .loan-calc-results-section,
+        .loan-calc-root .loan-calc-tips-section {
+            margin: revert !important;
+            padding: revert !important;
+        }
+
+        .loan-calc-body {
+            font-family: var(--loan-calc-font-family, 'Poppins', sans-serif) !important;
+            font-family: 'Poppins', sans-serif !important;
+            background: transparent !important;
+            background-color: transparent !important;
+        }
+
+        body.loan-calc-body {
+            background: transparent !important;
+            background-color: transparent !important;
+        }
+
+        html {
+            background: transparent !important;
+            background-color: transparent !important;
+        }
+
+        /* Loan Calculator Container - Works both standalone and embedded */
+        .loan-calc-standalone-wrapper {
+            background: transparent !important;
+            min-height: 100vh !important;
+            line-height: var(--loan-calc-line-height, 1.5) !important;
+            line-height: 1.5 !important;
+            color: var(--loan-calc-text-primary, #212121) !important;
+            color: #212121 !important;
+            padding: var(--loan-calc-spacing-md, 20px) !important;
+            padding: 20px !important;
+            margin: 0 !important;
+            
+            /* Mobile touch improvements */
+            -webkit-tap-highlight-color: transparent !important;
+            -webkit-touch-callout: none !important;
+            -webkit-user-select: none !important;
+            -moz-user-select: none !important;
+            -ms-user-select: none !important;
+            user-select: none !important;
+        }
+
+        /* Allow text selection for inputs and content */
+        .loan-calc-root input,
+        .loan-calc-root select,
+        .loan-calc-root textarea,
+        .loan-calc-root p,
+        .loan-calc-root h1,
+        .loan-calc-root h2,
+        .loan-calc-root h3 {
+            -webkit-user-select: text !important;
+            -moz-user-select: text !important;
+            -ms-user-select: text !important;
+            user-select: text !important;
+        }
+
+        /* When embedded, remove background and padding */
+        .loan-calc-embedded .loan-calc-standalone-wrapper {
+            background: none !important;
+            min-height: 0 !important;
+            padding: 0 !important;
+        }
+
+        /* Main Container */
+        .loan-calc-root .loan-calc-main-container {
+            max-width: 1400px !important;
+            margin: 0 auto !important;
+            background: var(--loan-calc-surface, #ffffff) !important;
+            background: #ffffff !important;
+            border-radius: var(--loan-calc-border-radius, 30px) !important;
+            border-radius: 30px !important;
+            box-shadow: var(--loan-calc-shadow-lg, 0 25px 50px rgba(2, 119, 189, 0.15)) !important;
+            box-shadow: 0 25px 50px rgba(2, 119, 189, 0.15) !important;
+            overflow: hidden !important;
+            position: relative !important;
+        }
+
+        /* Header Section */
+        .loan-calc-root .loan-calc-header-section {
+            background: linear-gradient(135deg, var(--loan-calc-primary-color, #0277BD) 0%, var(--loan-calc-secondary-color, #0288D1) 100%) !important;
+            background: linear-gradient(135deg, #0277BD 0%, #0288D1 100%) !important;
+            color: #ffffff !important;
+            padding: var(--loan-calc-spacing-2xl, 3rem) var(--loan-calc-spacing-xl, 2rem) !important;
+            padding: 3rem 2rem !important;
+            text-align: center !important;
+            position: relative !important;
+            overflow: hidden !important;
+        }
+
+        .loan-calc-root .loan-calc-header-section::before {
+            content: '' !important;
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="loan-calc-percent-pattern" patternUnits="userSpaceOnUse" width="20" height="20"><text x="10" y="15" font-size="12" fill="rgba(255,255,255,0.1)" text-anchor="middle">%</text></pattern></defs><rect width="100" height="100" fill="url(%23loan-calc-percent-pattern)"/></svg>') !important;
+            opacity: 0.3 !important;
+        }
+
+        .loan-calc-root .loan-calc-header-section h1 {
+            font-family: 'Caveat', cursive !important;
+            font-size: var(--loan-calc-font-size-3xl, 3rem) !important;
+            font-size: 3rem !important;
+            font-weight: 700 !important;
+            margin-bottom: var(--loan-calc-spacing-md, 1rem) !important;
+            margin-bottom: 1rem !important;
+            color: #ffffff !important;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2) !important;
+            position: relative !important;
+            z-index: 2 !important;
+        }
+
+        .loan-calc-root .loan-calc-header-section p {
+            font-size: var(--loan-calc-font-size-lg, 1.125rem) !important;
+            font-size: 1.125rem !important;
+            opacity: 0.95 !important;
+            color: #ffffff !important;
+            max-width: 600px !important;
+            margin: 0 auto var(--loan-calc-spacing-lg, 1.5rem) auto !important;
+            margin: 0 auto 1.5rem auto !important;
+            position: relative !important;
+            z-index: 2 !important;
+        }
+
+        .loan-calc-root .loan-calc-desktop-notice {
+            background: rgba(255, 255, 255, 0.2) !important;
+            border: 2px solid rgba(255, 255, 255, 0.3) !important;
+            border-radius: var(--loan-calc-border-radius, 20px) !important;
+            border-radius: 20px !important;
+            padding: var(--loan-calc-spacing-md, 1rem) var(--loan-calc-spacing-lg, 1.5rem) !important;
+            padding: 1rem 1.5rem !important;
+            color: #ffffff !important;
+            font-weight: 500 !important;
+            max-width: 600px !important;
+            margin: var(--loan-calc-spacing-lg, 1.5rem) auto 0 auto !important;
+            margin: 1.5rem auto 0 auto !important;
+            position: relative !important;
+            z-index: 2 !important;
+            -webkit-backdrop-filter: blur(10px) !important;
+            backdrop-filter: blur(10px) !important;
+        }
+
+        /* Content Section */
+        .loan-calc-root .loan-calc-content-section {
+            padding: var(--loan-calc-spacing-2xl, 3rem) var(--loan-calc-spacing-xl, 2rem) !important;
+            padding: 3rem 2rem !important;
+        }
+
+        /* Calculator Grid */
+        .loan-calc-root .loan-calc-calculator-grid {
+            display: grid !important;
+            grid-template-columns: 1fr 1fr !important;
+            gap: var(--loan-calc-spacing-2xl, 3rem) !important;
+            gap: 3rem !important;
+            margin-bottom: var(--loan-calc-spacing-2xl, 3rem) !important;
+            margin-bottom: 3rem !important;
+        }
+
+        /* Mobile-first responsive grid */
+        @media (max-width: 768px) {
+            .loan-calc-root .loan-calc-calculator-grid {
+                grid-template-columns: 1fr !important;
+                gap: 2rem !important;
+                margin-bottom: 2rem !important;
+            }
+        }
+
+        /* Input Section */
+        .loan-calc-root .loan-calc-input-section {
+            background: var(--loan-calc-surface, #ffffff) !important;
+            background: #ffffff !important;
+            border: 2px solid var(--loan-calc-border-color, #e0e0e0) !important;
+            border: 2px solid #e0e0e0 !important;
+            border-radius: var(--loan-calc-border-radius, 20px) !important;
+            border-radius: 20px !important;
+            padding: var(--loan-calc-spacing-2xl, 2.5rem) !important;
+            padding: 2.5rem !important;
+            box-shadow: var(--loan-calc-shadow-sm, 0 4px 6px rgba(2, 119, 189, 0.1)) !important;
+            box-shadow: 0 4px 6px rgba(2, 119, 189, 0.1) !important;
+        }
+
+        .loan-calc-root .loan-calc-input-section h2 {
+            color: var(--loan-calc-primary-color, #0277BD) !important;
+            color: #0277BD !important;
+            font-size: var(--loan-calc-font-size-xl, 1.5rem) !important;
+            font-size: 1.5rem !important;
+            font-weight: 600 !important;
+            margin-bottom: var(--loan-calc-spacing-lg, 1.5rem) !important;
+            margin-bottom: 1.5rem !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: var(--loan-calc-spacing-sm, 0.75rem) !important;
+            gap: 0.75rem !important;
+        }
+
+        /* Form Elements */
+        .loan-calc-root .loan-calc-form-group {
+            margin-bottom: var(--loan-calc-spacing-lg, 1.5rem) !important;
+            margin-bottom: 1.5rem !important;
+        }
+
+        .loan-calc-root .loan-calc-form-label {
+            display: block !important;
+            color: var(--loan-calc-text-primary, #212121) !important;
+            color: #212121 !important;
+            font-weight: 500 !important;
+            margin-bottom: var(--loan-calc-spacing-sm, 0.75rem) !important;
+            margin-bottom: 0.75rem !important;
+            font-size: var(--loan-calc-font-size-sm, 0.875rem) !important;
+            font-size: 0.875rem !important;
+        }
+
+        .loan-calc-root .loan-calc-form-input, 
+        .loan-calc-root .loan-calc-form-select {
+            width: 100% !important;
+            padding: var(--loan-calc-spacing-md, 1rem) var(--loan-calc-spacing-lg, 1.25rem) !important;
+            padding: 1rem 1.25rem !important;
+            border: 2px solid var(--loan-calc-border-color, #e0e0e0) !important;
+            border: 2px solid #e0e0e0 !important;
+            border-radius: var(--loan-calc-border-radius, 15px) !important;
+            border-radius: 15px !important;
+            font-size: var(--loan-calc-font-size-base, 1rem) !important;
+            font-size: 1rem !important;
+            font-family: var(--loan-calc-font-family, 'Poppins', sans-serif) !important;
+            font-family: 'Poppins', sans-serif !important;
+            transition: all 0.3s var(--loan-calc-transition-timing, cubic-bezier(0.4, 0, 0.2, 1)) !important;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            background: var(--loan-calc-surface, #ffffff) !important;
+            
+            /* Mobile improvements */
+            min-height: 48px !important;
+            -webkit-appearance: none !important;
+            -moz-appearance: none !important;
+            appearance: none !important;
+            outline: none !important;
+            -webkit-tap-highlight-color: transparent !important;
+            background: #ffffff !important;
+            color: var(--loan-calc-text-primary, #212121) !important;
+            color: #212121 !important;
+        }
+
+        .loan-calc-root .loan-calc-form-input:focus, 
+        .loan-calc-root .loan-calc-form-select:focus {
+            outline: none !important;
+            border-color: var(--loan-calc-primary-color, #0277BD) !important;
+            border-color: #0277BD !important;
+            box-shadow: 0 0 0 3px rgba(2, 119, 189, 0.1) !important;
+            transform: translateY(-1px) !important;
+        }
+
+        /* Buttons */
+        .loan-calc-root .loan-calc-btn-primary {
+            background: linear-gradient(135deg, var(--loan-calc-primary-color, #0277BD) 0%, var(--loan-calc-secondary-color, #0288D1) 100%) !important;
+            background: linear-gradient(135deg, #0277BD 0%, #0288D1 100%) !important;
+            color: #ffffff !important;
+            border: none !important;
+            padding: var(--loan-calc-spacing-md, 1rem) var(--loan-calc-spacing-xl, 2rem) !important;
+            padding: 1rem 2rem !important;
+            border-radius: var(--loan-calc-border-radius, 18px) !important;
+            border-radius: 18px !important;
+            font-size: var(--loan-calc-font-size-base, 1rem) !important;
+            font-size: 1rem !important;
+            font-weight: 600 !important;
+            cursor: pointer !important;
+            transition: all 0.3s var(--loan-calc-transition-timing, cubic-bezier(0.4, 0, 0.2, 1)) !important;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            width: 100% !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            gap: var(--loan-calc-spacing-sm, 0.75rem) !important;
+            gap: 0.75rem !important;
+            text-transform: uppercase !important;
+            letter-spacing: 0.5px !important;
+            
+            /* Mobile touch improvements */
+            min-height: 48px !important;
+            -webkit-tap-highlight-color: rgba(255, 255, 255, 0.2) !important;
+            touch-action: manipulation !important;
+        }
+
+        .loan-calc-root .loan-calc-btn-primary:hover {
+            transform: translateY(-2px) !important;
+            box-shadow: var(--loan-calc-shadow-hover, 0 12px 24px rgba(2, 119, 189, 0.25)) !important;
+            box-shadow: 0 12px 24px rgba(2, 119, 189, 0.25) !important;
+        }
+
+        .loan-calc-btn-secondary {
+            background: var(--loan-calc-surface, #ffffff) !important;
+            color: var(--loan-calc-primary-color, #0277BD) !important;
+            border: 2px solid var(--loan-calc-primary-color, #0277BD) !important;
+            padding: var(--loan-calc-spacing-sm, 0.75rem) var(--loan-calc-spacing-lg, 1.5rem) !important;
+            border-radius: var(--loan-calc-border-radius, 8px) !important;
+            font-size: var(--loan-calc-font-size-sm, 0.875rem) !important;
+            font-weight: 600 !important;
+            cursor: pointer !important;
+            transition: all 0.3s var(--loan-calc-transition-timing, cubic-bezier(0.4, 0, 0.2, 1)) !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: var(--loan-calc-spacing-xs, 0.5rem) !important;
+        }
+
+        .loan-calc-btn-secondary:hover {
+            background: var(--loan-calc-primary-color, #0277BD) !important;
+            color: #ffffff !important;
+            transform: translateY(-1px) !important;
+        }
+
+        /* Results Section */
+        .loan-calc-root .loan-calc-results-section {
+            background: linear-gradient(135deg, var(--loan-calc-surface-alt, #f8f9fa) 0%, var(--loan-calc-surface, #ffffff) 100%) !important;
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%) !important;
+            border: 2px solid var(--loan-calc-border-light, #f0f0f0) !important;
+            border: 2px solid #f0f0f0 !important;
+            border-radius: var(--loan-calc-border-radius, 20px) !important;
+            border-radius: 20px !important;
+            padding: var(--loan-calc-spacing-2xl, 2.5rem) !important;
+            padding: 2.5rem !important;
+            position: relative !important;
+            overflow: hidden !important;
+        }
+
+        .loan-calc-root .loan-calc-results-section::before {
+            content: '' !important;
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 4px !important;
+            background: linear-gradient(90deg, var(--loan-calc-primary-color, #0277BD), var(--loan-calc-accent-color, #26C6DA)) !important;
+            background: linear-gradient(90deg, #0277BD, #26C6DA) !important;
+        }
+
+        .loan-calc-root .loan-calc-results-section h2 {
+            color: var(--loan-calc-primary-color, #0277BD) !important;
+            color: #0277BD !important;
+            font-size: var(--loan-calc-font-size-xl, 1.5rem) !important;
+            font-size: 1.5rem !important;
+            font-weight: 600 !important;
+            margin-bottom: var(--loan-calc-spacing-lg, 1.5rem) !important;
+            margin-bottom: 1.5rem !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: var(--loan-calc-spacing-sm, 0.75rem) !important;
+            gap: 0.75rem !important;
+        }
+
+        /* Results Display */
+        .loan-calc-result-grid {
+            display: grid !important;
+            gap: var(--loan-calc-spacing-lg, 1.5rem) !important;
+        }
+
+        .loan-calc-result-card {
+            background: var(--loan-calc-surface, #ffffff) !important;
+            border: 1px solid var(--loan-calc-border-color, #e0e0e0) !important;
+            border-radius: var(--loan-calc-border-radius, 10px) !important;
+            padding: var(--loan-calc-spacing-lg, 1.5rem) !important;
+            transition: all 0.3s var(--loan-calc-transition-timing, cubic-bezier(0.4, 0, 0.2, 1)) !important;
+        }
+
+        .loan-calc-result-card:hover {
+            box-shadow: var(--loan-calc-shadow-md, 0 8px 16px rgba(2, 119, 189, 0.1)) !important;
+            transform: translateY(-2px) !important;
+        }
+
+        .loan-calc-result-item {
+            display: flex !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+            padding: var(--loan-calc-spacing-sm, 0.75rem) 0 !important;
+            border-bottom: 1px solid var(--loan-calc-border-light, #f0f0f0) !important;
+        }
+
+        .loan-calc-result-item:last-child {
+            border-bottom: none !important;
+            padding-bottom: 0 !important;
+        }
+
+        .loan-calc-result-label {
+            color: var(--loan-calc-text-secondary, #757575) !important;
+            font-weight: 500 !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: var(--loan-calc-spacing-xs, 0.5rem) !important;
+        }
+
+        .loan-calc-result-value {
+            color: var(--loan-calc-primary-color, #0277BD) !important;
+            font-weight: 600 !important;
+            font-size: var(--loan-calc-font-size-lg, 1.125rem) !important;
+        }
+
+        .loan-calc-result-value.positive {
+            color: var(--loan-calc-success-color, #388E3C) !important;
+        }
+
+        .loan-calc-result-value.negative {
+            color: var(--loan-calc-error-color, #D32F2F) !important;
+        }
+
+        /* Loan Summary Display */
+        .loan-calc-summary-display {
+            background: linear-gradient(135deg, #E3F2FD 0%, #E0F7FA 100%) !important;
+            border: 2px solid var(--loan-calc-primary-color, #0277BD) !important;
+            border-radius: var(--loan-calc-border-radius, 12px) !important;
+            padding: var(--loan-calc-spacing-lg, 1.5rem) !important;
+            margin: var(--loan-calc-spacing-lg, 1.5rem) 0 !important;
+        }
+
+        .loan-calc-summary-title {
+            color: var(--loan-calc-primary-color, #0277BD) !important;
+            font-size: var(--loan-calc-font-size-lg, 1.125rem) !important;
+            font-weight: 600 !important;
+            margin-bottom: var(--loan-calc-spacing-md, 1rem) !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: var(--loan-calc-spacing-sm, 0.75rem) !important;
+        }
+
+        .loan-calc-payment-display {
+            display: flex !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+            margin: var(--loan-calc-spacing-sm, 0.75rem) 0 !important;
+        }
+
+        .loan-calc-payment-item {
+            text-align: center !important;
+        }
+
+        .loan-calc-payment-label {
+            color: var(--loan-calc-text-secondary, #757575) !important;
+            font-size: var(--loan-calc-font-size-sm, 0.875rem) !important;
+            font-weight: 500 !important;
+        }
+
+        .loan-calc-payment-value {
+            font-size: var(--loan-calc-font-size-xl, 1.5rem) !important;
+            font-weight: 700 !important;
+            margin-top: var(--loan-calc-spacing-xs, 0.5rem) !important;
+        }
+
+        .loan-calc-payment-value.monthly {
+            color: var(--loan-calc-primary-color, #0277BD) !important;
+        }
+
+        .loan-calc-payment-value.total {
+            color: var(--loan-calc-accent-color, #26C6DA) !important;
+        }
+
+        .loan-calc-payment-value.interest {
+            color: var(--loan-calc-warning-color, #F57C00) !important;
+        }
+
+        /* Progress Bar */
+        .loan-calc-progress-bar {
+            width: 100% !important;
+            height: 30px !important;
+            background: var(--loan-calc-border-light, #f0f0f0) !important;
+            border-radius: 15px !important;
+            overflow: hidden !important;
+            margin: var(--loan-calc-spacing-md, 1rem) 0 !important;
+            position: relative !important;
+        }
+
+        .loan-calc-progress-fill {
+            height: 100% !important;
+            background: linear-gradient(90deg, var(--loan-calc-primary-color, #0277BD), var(--loan-calc-accent-color, #26C6DA)) !important;
+            border-radius: 15px !important;
+            transition: width 0.5s var(--loan-calc-transition-timing, cubic-bezier(0.4, 0, 0.2, 1)) !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            color: #ffffff !important;
+            font-weight: 600 !important;
+            font-size: var(--loan-calc-font-size-sm, 0.875rem) !important;
+        }
+
+        /* Loan Tips Section */
+        .loan-calc-root .loan-calc-tips-section {
+            background: var(--loan-calc-surface, #ffffff) !important;
+            background: #ffffff !important;
+            border: 2px solid var(--loan-calc-border-color, #e0e0e0) !important;
+            border: 2px solid #e0e0e0 !important;
+            border-radius: var(--loan-calc-border-radius, 20px) !important;
+            border-radius: 20px !important;
+            padding: var(--loan-calc-spacing-2xl, 2rem) !important;
+            padding: 2rem !important;
+            margin: var(--loan-calc-spacing-2xl, 2rem) 0 !important;
+            margin: 2rem 0 !important;
+        }
+
+        .loan-calc-root .loan-calc-section-title {
+            color: var(--loan-calc-primary-color, #0277BD) !important;
+            color: #0277BD !important;
+            font-size: var(--loan-calc-font-size-2xl, 1.75rem) !important;
+            font-size: 1.75rem !important;
+            font-weight: 600 !important;
+            text-align: center !important;
+            margin-bottom: var(--loan-calc-spacing-2xl, 2rem) !important;
+            margin-bottom: 2rem !important;
+            position: relative !important;
+        }
+
+        .loan-calc-root .loan-calc-section-title::after {
+            content: '' !important;
+            position: absolute !important;
+            bottom: -8px !important;
+            left: 50% !important;
+            transform: translateX(-50%) !important;
+            width: 60px !important;
+            height: 3px !important;
+            background: linear-gradient(90deg, var(--loan-calc-primary-color, #0277BD), var(--loan-calc-accent-color, #26C6DA)) !important;
+            background: linear-gradient(90deg, #0277BD, #26C6DA) !important;
+            border-radius: 2px !important;
+        }
+
+        /* Tips Grid */
+        .loan-calc-root .loan-calc-tips-grid {
+            display: grid !important;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
+            gap: var(--loan-calc-spacing-lg, 1.5rem) !important;
+            gap: 1.5rem !important;
+        }
+
+        .loan-calc-root .loan-calc-tip-card {
+            background: var(--loan-calc-surface-alt, #f8f9fa) !important;
+            background: #f8f9fa !important;
+            border: 1px solid var(--loan-calc-border-light, #f0f0f0) !important;
+            border: 1px solid #f0f0f0 !important;
+            border-radius: var(--loan-calc-border-radius, 16px) !important;
+            border-radius: 16px !important;
+            padding: var(--loan-calc-spacing-lg, 1.5rem) !important;
+            padding: 1.5rem !important;
+            transition: all 0.3s var(--loan-calc-transition-timing, cubic-bezier(0.4, 0, 0.2, 1)) !important;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            position: relative !important;
+            overflow: hidden !important;
+        }
+
+        .loan-calc-root .loan-calc-tip-card::before {
+            content: '' !important;
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 4px !important;
+            height: 100% !important;
+            background: linear-gradient(to bottom, var(--loan-calc-primary-color, #0277BD), var(--loan-calc-accent-color, #26C6DA)) !important;
+            background: linear-gradient(to bottom, #0277BD, #26C6DA) !important;
+        }
+
+        .loan-calc-root .loan-calc-tip-card:hover {
+            transform: translateY(-3px) !important;
+            box-shadow: var(--loan-calc-shadow-md, 0 8px 16px rgba(2, 119, 189, 0.15)) !important;
+            box-shadow: 0 8px 16px rgba(2, 119, 189, 0.15) !important;
+        }
+
+        .loan-calc-root .loan-calc-tip-icon {
+            font-size: var(--loan-calc-font-size-2xl, 2rem) !important;
+            font-size: 2rem !important;
+            color: var(--loan-calc-primary-color, #0277BD) !important;
+            color: #0277BD !important;
+            margin-bottom: var(--loan-calc-spacing-md, 1rem) !important;
+            margin-bottom: 1rem !important;
+        }
+
+        .loan-calc-root .loan-calc-tip-card h3 {
+            color: var(--loan-calc-text-primary, #212121) !important;
+            color: #212121 !important;
+            font-size: var(--loan-calc-font-size-lg, 1.125rem) !important;
+            font-size: 1.125rem !important;
+            font-weight: 600 !important;
+            margin-bottom: var(--loan-calc-spacing-sm, 0.75rem) !important;
+            margin-bottom: 0.75rem !important;
+        }
+
+        .loan-calc-tip-card p {
+            color: var(--loan-calc-text-secondary, #757575) !important;
+            line-height: var(--loan-calc-line-height, 1.6) !important;
+        }
+
+        /* Hidden class */
+        .loan-calc-hidden {
+            display: none !important;
+        }
+
+        /* Placeholder Message */
+        .loan-calc-placeholder-message {
+            text-align: center !important;
+            padding: var(--loan-calc-spacing-2xl, 3rem) !important;
+            color: var(--loan-calc-text-secondary, #757575) !important;
+        }
+
+        .loan-calc-placeholder-icon {
+            font-size: 4rem !important;
+            color: var(--loan-calc-border-color, #e0e0e0) !important;
+            margin-bottom: var(--loan-calc-spacing-lg, 1.5rem) !important;
+        }
+
+        /* Responsive Design - Tablet */
+        @media (max-width: 1024px) {
+            .loan-calc-root .loan-calc-main-container {
+                max-width: 95% !important;
+                margin: 0 auto !important;
+            }
+
+            .loan-calc-root .loan-calc-calculator-grid {
+                gap: 2rem !important;
+            }
+
+            .loan-calc-root .loan-calc-tips-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+            }
+        }
+
+        /* Responsive Design - Mobile */
+        @media (max-width: 768px) {
+            .loan-calc-standalone-wrapper {
+                padding: 0.5rem !important;
+                min-height: 0 !important;
+            }
+
+            .loan-calc-root .loan-calc-main-container {
+                border-radius: 20px !important;
+                margin: 0 !important;
+                box-shadow: 0 15px 35px rgba(2, 119, 189, 0.12) !important;
+            }
+
+            .loan-calc-root .loan-calc-header-section {
+                padding: 2rem 1.5rem !important;
+                text-align: center !important;
+            }
+
+            .loan-calc-root .loan-calc-header-section h1 {
+                font-size: 2.5rem !important;
+                margin-bottom: 0.75rem !important;
+                line-height: 1.2 !important;
+            }
+
+            .loan-calc-root .loan-calc-header-section p {
+                font-size: 1rem !important;
+                margin-bottom: 1rem !important;
+                line-height: 1.5 !important;
+            }
+
+            .loan-calc-root .loan-calc-desktop-notice {
+                padding: 0.75rem 1rem !important;
+                font-size: 0.9rem !important;
+                margin: 1rem auto 0 auto !important;
+                border-radius: 16px !important;
+            }
+
+            .loan-calc-root .loan-calc-content-section {
+                padding: 1.5rem !important;
+            }
+
+            .loan-calc-calculator-grid {
+                grid-template-columns: 1fr !important;
+                gap: var(--loan-calc-spacing-lg, 1.5rem) !important;
+                gap: 1.5rem !important;
+            }
+
+            .loan-calc-root .loan-calc-input-section,
+            .loan-calc-root .loan-calc-results-section,
+            .loan-calc-root .loan-calc-tips-section {
+                padding: var(--loan-calc-spacing-lg, 1.5rem) !important;
+                padding: 1.5rem !important;
+                border-radius: 16px !important;
+                margin-bottom: 1rem !important;
+            }
+
+            .loan-calc-root .loan-calc-input-section h2 {
+                font-size: 1.3rem !important;
+                margin-bottom: 1rem !important;
+            }
+
+            .loan-calc-root .loan-calc-form-group {
+                margin-bottom: 1rem !important;
+            }
+
+            .loan-calc-root .loan-calc-form-label {
+                font-size: 0.85rem !important;
+                margin-bottom: 0.5rem !important;
+            }
+
+            .loan-calc-root .loan-calc-form-input,
+            .loan-calc-root .loan-calc-form-select {
+                padding: 0.875rem 1rem !important;
+                font-size: 0.95rem !important;
+                border-radius: 12px !important;
+            }
+
+            .loan-calc-root .loan-calc-btn-primary {
+                padding: 1rem 1.5rem !important;
+                font-size: 0.95rem !important;
+                border-radius: 14px !important;
+            }
+            
+            .loan-calc-root .loan-calc-tips-grid {
+                grid-template-columns: 1fr !important;
+                gap: 1rem !important;
+            }
+
+            .loan-calc-root .loan-calc-tip-card {
+                padding: 1.25rem !important;
+                border-radius: 14px !important;
+            }
+
+            .loan-calc-root .loan-calc-section-title {
+                font-size: 1.5rem !important;
+                margin-bottom: 1.5rem !important;
+            }
+        }
+
+        /* Small Mobile Devices */
+        @media (max-width: 480px) {
+            .loan-calc-standalone-wrapper {
+                padding: 0.25rem !important;
+            }
+
+            .loan-calc-root .loan-calc-main-container {
+                border-radius: 16px !important;
+            }
+
+            .loan-calc-root .loan-calc-header-section {
+                padding: 1.5rem 1rem !important;
+            }
+
+            .loan-calc-root .loan-calc-header-section h1 {
+                font-size: 2rem !important;
+                margin-bottom: 0.5rem !important;
+            }
+
+            .loan-calc-root .loan-calc-header-section p {
+                font-size: 0.9rem !important;
+            }
+
+            .loan-calc-root .loan-calc-desktop-notice {
+                padding: 0.625rem 0.875rem !important;
+                font-size: 0.85rem !important;
+                border-radius: 14px !important;
+            }
+
+            .loan-calc-root .loan-calc-content-section {
+                padding: 1rem !important;
+            }
+
+            .loan-calc-root .loan-calc-input-section,
+            .loan-calc-root .loan-calc-results-section,
+            .loan-calc-root .loan-calc-tips-section {
+                padding: 1.25rem !important;
+                border-radius: 14px !important;
+            }
+
+            .loan-calc-root .loan-calc-form-input,
+            .loan-calc-root .loan-calc-form-select {
+                padding: 0.75rem 0.875rem !important;
+                font-size: 0.9rem !important;
+                border-radius: 10px !important;
+            }
+
+            .loan-calc-root .loan-calc-btn-primary {
+                padding: 0.875rem 1.25rem !important;
+                font-size: 0.9rem !important;
+                border-radius: 12px !important;
+            }
+
+            .loan-calc-root .loan-calc-tip-card {
+                padding: 1rem !important;
+                border-radius: 12px !important;
+            }
+            
+            .loan-calc-payment-display {
+                flex-direction: column !important;
+                gap: var(--loan-calc-spacing-md, 1rem) !important;
+                gap: 0.75rem !important;
+            }
+
+            .loan-calc-root .loan-calc-section-title {
+                font-size: 1.3rem !important;
+            }
+        }
+    </style>
 </head>
-<body>
-    <!-- Student Loan Calculator Tool - To be implemented -->
+<body class="loan-calc-body loan-calc-root">
+    <div class="loan-calc-standalone-wrapper loan-calc-root">
+        <div class="loan-calc-main-container">
+        <!-- Header Section -->
+        <div class="loan-calc-header-section">
+            <h1><i class="fas fa-graduation-cap"></i> Student Loan Calculator</h1>
+            <p>Calculate your student loan payments, total interest, and payoff timeline. Make informed decisions about education financing and loan options.</p>
+            <div class="loan-calc-desktop-notice">
+                <i class="fas fa-hand-holding-usd" aria-hidden="true"></i>
+                <span>💳 <strong>Smart Borrowing:</strong> Understand your loan obligations before you commit</span>
+            </div>
+        </div>
+
+        <div class="loan-calc-content-section">
+            <!-- Calculator Section -->
+            <div class="loan-calc-calculator-grid">
+                <div class="loan-calc-input-section">
+                    <h2><i class="fas fa-calculator"></i> Loan Details</h2>
+                    
+                    <div class="loan-calc-form-group">
+                        <label class="loan-calc-form-label" for="loan-calc-amount">
+                            <i class="fas fa-dollar-sign"></i> Loan Amount
+                        </label>
+                        <input type="number" id="loan-calc-amount" class="loan-calc-form-input" placeholder="Enter loan amount ($)" min="1000" max="500000" step="1000" value="30000">
+                    </div>
+
+                    <div class="loan-calc-form-group">
+                        <label class="loan-calc-form-label" for="loan-calc-interest-rate">
+                            <i class="fas fa-percentage"></i> Annual Interest Rate
+                        </label>
+                        <input type="number" id="loan-calc-interest-rate" class="loan-calc-form-input" placeholder="Enter interest rate (%)" min="0" max="30" step="0.1" value="4.5">
+                    </div>
+
+                    <div class="loan-calc-form-group">
+                        <label class="loan-calc-form-label" for="loan-calc-term">
+                            <i class="fas fa-calendar-alt"></i> Loan Term
+                        </label>
+                        <select id="loan-calc-term" class="loan-calc-form-select" title="Select loan term">
+                            <option value="5">5 years</option>
+                            <option value="10" selected>10 years (Standard)</option>
+                            <option value="15">15 years</option>
+                            <option value="20">20 years</option>
+                            <option value="25">25 years</option>
+                            <option value="30">30 years</option>
+                        </select>
+                    </div>
+
+                    <div class="loan-calc-form-group">
+                        <label class="loan-calc-form-label" for="loan-calc-grace-period">
+                            <i class="fas fa-clock"></i> Grace Period (months)
+                        </label>
+                        <select id="loan-calc-grace-period" class="loan-calc-form-select" title="Select grace period">
+                            <option value="0">No grace period</option>
+                            <option value="6" selected>6 months</option>
+                            <option value="9">9 months</option>
+                            <option value="12">12 months</option>
+                        </select>
+                    </div>
+
+                    <div class="loan-calc-form-group">
+                        <label class="loan-calc-form-label" for="loan-calc-extra-payment">
+                            <i class="fas fa-plus-circle"></i> Extra Monthly Payment ($)
+                        </label>
+                        <input type="number" id="loan-calc-extra-payment" class="loan-calc-form-input" placeholder="Additional payment each month" min="0" step="50" value="0">
+                    </div>
+
+                    <button class="loan-calc-btn-primary" onclick="loanCalcCalculate()">
+                        <i class="fas fa-chart-line"></i> Calculate Loan
+                    </button>
+                </div>
+
+                <div class="loan-calc-results-section">
+                    <h2><i class="fas fa-chart-pie"></i> Loan Analysis</h2>
+                    
+                    <div id="loan-calc-placeholder-message" class="loan-calc-placeholder-message">
+                        <div class="loan-calc-placeholder-icon">
+                            <i class="fas fa-file-invoice-dollar"></i>
+                        </div>
+                        <p>Enter your loan details to see monthly payments, total interest, and payoff timeline with detailed analysis.</p>
+                    </div>
+
+                    <div id="loan-calc-results-container" class="loan-calc-hidden">
+                        <!-- Results will be displayed here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Loan Tips Section -->
+            <div class="loan-calc-tips-section">
+                <h2 class="loan-calc-section-title">Smart Borrowing Tips</h2>
+                <div class="loan-calc-tips-grid">
+                    <div class="loan-calc-tip-card">
+                        <div class="loan-calc-tip-icon"><i class="fas fa-search-dollar"></i></div>
+                        <h3>Compare Federal vs Private Loans</h3>
+                        <p>Federal loans often have lower interest rates, flexible repayment options, and forgiveness programs. Always max out federal aid before considering private loans.</p>
+                    </div>
+                    
+                    <div class="loan-calc-tip-card">
+                        <div class="loan-calc-tip-icon"><i class="fas fa-hand-holding-heart"></i></div>
+                        <h3>Only Borrow What You Need</h3>
+                        <p>Every dollar borrowed must be repaid with interest. Create a realistic budget and borrow only for essential education expenses.</p>
+                    </div>
+                    
+                    <div class="loan-calc-tip-card">
+                        <div class="loan-calc-tip-icon"><i class="fas fa-piggy-bank"></i></div>
+                        <h3>Make Interest-Only Payments</h3>
+                        <p>During school or grace periods, pay interest if possible. This prevents interest capitalization and reduces your total repayment amount.</p>
+                    </div>
+                    
+                    <div class="loan-calc-tip-card">
+                        <div class="loan-calc-tip-icon"><i class="fas fa-rocket"></i></div>
+                        <h3>Pay Extra When Possible</h3>
+                        <p>Even small extra payments can significantly reduce total interest and shorten your loan term. Apply extra payments to principal when possible.</p>
+                    </div>
+                    
+                    <div class="loan-calc-tip-card">
+                        <div class="loan-calc-tip-icon"><i class="fas fa-shield-alt"></i></div>
+                        <h3>Understand Loan Forgiveness</h3>
+                        <p>Research loan forgiveness programs for public service, teaching, or other qualifying careers. These can save thousands in loan repayment.</p>
+                    </div>
+                    
+                    <div class="loan-calc-tip-card">
+                        <div class="loan-calc-tip-icon"><i class="fas fa-sync-alt"></i></div>
+                        <h3>Consider Refinancing</h3>
+                        <p>After graduation with good credit, refinancing can lower your interest rate. However, be aware you may lose federal loan benefits.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <script>
+        function loanCalcCalculate() {
+            // Get input values
+            const principal = parseFloat(document.getElementById('loan-calc-amount').value) || 0;
+            const annualRate = parseFloat(document.getElementById('loan-calc-interest-rate').value) || 0;
+            const termYears = parseInt(document.getElementById('loan-calc-term').value) || 10;
+            const gracePeriodMonths = parseInt(document.getElementById('loan-calc-grace-period').value) || 0;
+            const extraPayment = parseFloat(document.getElementById('loan-calc-extra-payment').value) || 0;
+            
+            // Validate inputs
+            if (principal <= 0 || annualRate < 0 || termYears <= 0) {
+                alert('Please enter valid loan details.');
+                return;
+            }
+            
+            // Calculate loan details
+            const monthlyRate = annualRate / 100 / 12;
+            const totalMonths = termYears * 12;
+            
+            // Calculate monthly payment using loan formula
+            let monthlyPayment;
+            if (monthlyRate === 0) {
+                monthlyPayment = principal / totalMonths;
+            } else {
+                monthlyPayment = principal * (monthlyRate * Math.pow(1 + monthlyRate, totalMonths)) / 
+                                (Math.pow(1 + monthlyRate, totalMonths) - 1);
+            }
+            
+            // Add extra payment
+            const totalMonthlyPayment = monthlyPayment + extraPayment;
+            
+            // Calculate total payments and interest
+            const totalPayment = monthlyPayment * totalMonths;
+            const totalInterest = totalPayment - principal;
+            
+            // Calculate with extra payments
+            let monthsToPayoff = totalMonths;
+            let totalPaymentWithExtra = totalPayment;
+            let totalInterestWithExtra = totalInterest;
+            
+            if (extraPayment > 0) {
+                let balance = principal;
+                let month = 0;
+                while (balance > 0 && month < 1000) {
+                    month++;
+                    const interestPayment = balance * monthlyRate;
+                    const principalPayment = totalMonthlyPayment - interestPayment;
+                    balance -= principalPayment;
+                    if (balance < 0) balance = 0;
+                }
+                monthsToPayoff = month;
+                totalPaymentWithExtra = totalMonthlyPayment * monthsToPayoff;
+                totalInterestWithExtra = totalPaymentWithExtra - principal;
+            }
+            
+            // Calculate savings from extra payments
+            const savings = totalPayment - totalPaymentWithExtra;
+            const interestSavings = totalInterest - totalInterestWithExtra;
+            
+            // Display results
+            loanCalcDisplayResults({
+                principal,
+                annualRate,
+                termYears,
+                gracePeriodMonths,
+                monthlyPayment,
+                totalMonthlyPayment,
+                totalPayment,
+                totalInterest,
+                monthsToPayoff,
+                totalPaymentWithExtra,
+                totalInterestWithExtra,
+                savings,
+                interestSavings,
+                extraPayment
+            });
+        }
+
+        function loanCalcDisplayResults(data) {
+            const {
+                principal,
+                annualRate,
+                termYears,
+                gracePeriodMonths,
+                monthlyPayment,
+                totalMonthlyPayment,
+                totalPayment,
+                totalInterest,
+                monthsToPayoff,
+                totalPaymentWithExtra,
+                totalInterestWithExtra,
+                savings,
+                interestSavings,
+                extraPayment
+            } = data;
+            
+            const resultsContainer = document.getElementById('loan-calc-results-container');
+            
+            // Calculate interest as percentage of principal
+            const interestPercentage = principal > 0 ? (totalInterest / principal * 100).toFixed(1) : 0;
+            
+            // Format years and months for payoff time
+            const payoffYears = Math.floor(monthsToPayoff / 12);
+            const payoffMonths = monthsToPayoff % 12;
+            const payoffTimeText = payoffYears > 0 ? 
+                `${payoffYears} year${payoffYears > 1 ? 's' : ''}${payoffMonths > 0 ? ` ${payoffMonths} month${payoffMonths > 1 ? 's' : ''}` : ''}` : 
+                `${monthsToPayoff} month${monthsToPayoff > 1 ? 's' : ''}`;
+            
+            resultsContainer.innerHTML = `
+                <div class="loan-calc-summary-display">
+                    <div class="loan-calc-summary-title">
+                        <i class="fas fa-money-check-alt"></i> Monthly Payment Summary
+                    </div>
+                    <div class="loan-calc-payment-display">
+                        <div class="loan-calc-payment-item">
+                            <div class="loan-calc-payment-label">Base Payment</div>
+                            <div class="loan-calc-payment-value monthly">$${monthlyPayment.toFixed(2)}</div>
+                        </div>
+                        ${extraPayment > 0 ? `
+                        <div style="font-size: 2rem; color: var(--loan-calc-accent-color);">+</div>
+                        <div class="loan-calc-payment-item">
+                            <div class="loan-calc-payment-label">Extra Payment</div>
+                            <div class="loan-calc-payment-value monthly">$${extraPayment.toFixed(2)}</div>
+                        </div>
+                        ` : ''}
+                        <div style="font-size: 2rem; color: var(--loan-calc-accent-color);">=</div>
+                        <div class="loan-calc-payment-item">
+                            <div class="loan-calc-payment-label">Total Monthly</div>
+                            <div class="loan-calc-payment-value total">$${totalMonthlyPayment.toFixed(2)}</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="loan-calc-result-grid">
+                    <div class="loan-calc-result-card">
+                        <h4 style="color: var(--loan-calc-primary-color); margin-bottom: 1rem;">
+                            <i class="fas fa-info-circle"></i> Loan Details
+                        </h4>
+                        <div class="loan-calc-result-item">
+                            <span class="loan-calc-result-label">
+                                <i class="fas fa-hand-holding-usd"></i> Loan Amount
+                            </span>
+                            <span class="loan-calc-result-value">
+                                $${principal.toLocaleString()}
+                            </span>
+                        </div>
+                        <div class="loan-calc-result-item">
+                            <span class="loan-calc-result-label">
+                                <i class="fas fa-percentage"></i> Interest Rate
+                            </span>
+                            <span class="loan-calc-result-value">
+                                ${annualRate}%
+                            </span>
+                        </div>
+                        <div class="loan-calc-result-item">
+                            <span class="loan-calc-result-label">
+                                <i class="fas fa-calendar"></i> Loan Term
+                            </span>
+                            <span class="loan-calc-result-value">
+                                ${termYears} years
+                            </span>
+                        </div>
+                        ${gracePeriodMonths > 0 ? `
+                        <div class="loan-calc-result-item">
+                            <span class="loan-calc-result-label">
+                                <i class="fas fa-clock"></i> Grace Period
+                            </span>
+                            <span class="loan-calc-result-value">
+                                ${gracePeriodMonths} months
+                            </span>
+                        </div>
+                        ` : ''}
+                    </div>
+                    
+                    <div class="loan-calc-result-card">
+                        <h4 style="color: var(--loan-calc-primary-color); margin-bottom: 1rem;">
+                            <i class="fas fa-chart-line"></i> Cost Analysis
+                        </h4>
+                        <div class="loan-calc-result-item">
+                            <span class="loan-calc-result-label">
+                                <i class="fas fa-coins"></i> Total Payment
+                            </span>
+                            <span class="loan-calc-result-value">
+                                $${totalPaymentWithExtra.toLocaleString()}
+                            </span>
+                        </div>
+                        <div class="loan-calc-result-item">
+                            <span class="loan-calc-result-label">
+                                <i class="fas fa-percentage"></i> Total Interest
+                            </span>
+                            <span class="loan-calc-result-value negative">
+                                $${totalInterestWithExtra.toLocaleString()} (${interestPercentage}%)
+                            </span>
+                        </div>
+                        <div class="loan-calc-result-item">
+                            <span class="loan-calc-result-label">
+                                <i class="fas fa-hourglass-end"></i> Payoff Time
+                            </span>
+                            <span class="loan-calc-result-value">
+                                ${payoffTimeText}
+                            </span>
+                        </div>
+                        ${extraPayment > 0 && savings > 0 ? `
+                        <div class="loan-calc-result-item">
+                            <span class="loan-calc-result-label">
+                                <i class="fas fa-piggy-bank"></i> Total Savings
+                            </span>
+                            <span class="loan-calc-result-value positive">
+                                $${savings.toLocaleString()}
+                            </span>
+                        </div>
+                        ` : ''}
+                    </div>
+                </div>
+                
+                ${extraPayment > 0 ? `
+                <div style="margin: 1.5rem 0;">
+                    <h4 style="color: var(--loan-calc-primary-color); margin-bottom: 0.75rem;">
+                        <i class="fas fa-tachometer-alt"></i> Payoff Acceleration
+                    </h4>
+                    <div class="loan-calc-progress-bar">
+                        <div class="loan-calc-progress-fill" style="width: ${Math.min(100, (termYears * 12 - monthsToPayoff) / (termYears * 12) * 100)}%;">
+                            ${Math.round((termYears * 12 - monthsToPayoff) / (termYears * 12) * 100)}% Time Saved
+                        </div>
+                    </div>
+                </div>
+                ` : ''}
+                
+                <div style="background: linear-gradient(135deg, #E3F2FD 0%, #E0F7FA 100%); padding: 1.5rem; border-radius: 0.75rem; margin-top: 1.5rem; border-left: 4px solid var(--loan-calc-primary-color);">
+                    <h4 style="color: var(--loan-calc-primary-color); margin-bottom: 0.75rem;">
+                        <i class="fas fa-lightbulb"></i> Loan Recommendations
+                    </h4>
+                    <p style="color: var(--loan-calc-text-secondary); margin-bottom: 0.75rem;">
+                        ${loanCalcGetLoanRecommendation(annualRate, totalInterest, principal, extraPayment)}
+                    </p>
+                    <p style="color: var(--loan-calc-text-secondary); font-size: 0.875rem;">
+                        <strong>Remember:</strong> Consider income-driven repayment plans if you have federal loans and your income is limited after graduation.
+                    </p>
+                </div>
+            `;
+            
+            // Hide placeholder and show results
+            document.getElementById('loan-calc-placeholder-message').classList.add('loan-calc-hidden');
+            resultsContainer.classList.remove('loan-calc-hidden');
+        }
+
+        function loanCalcGetLoanRecommendation(annualRate, totalInterest, principal, extraPayment) {
+            const interestRate = annualRate;
+            const interestRatio = totalInterest / principal;
+            
+            if (interestRate > 7) {
+                return "Your interest rate is quite high. Consider improving your credit score or finding a cosigner to refinance at a lower rate. Even a 1% reduction could save you thousands.";
+            } else if (interestRate > 5) {
+                return "Your interest rate is moderate. Making extra payments can significantly reduce your total interest costs. Consider increasing payments when your income allows.";
+            } else if (interestRatio > 0.3) {
+                return "You'll pay more than 30% of your loan amount in interest. Extra payments could save you substantial money over the life of the loan.";
+            } else if (extraPayment === 0 && interestRate > 3) {
+                return "Consider making small extra payments. Even $50-100 extra per month could save you thousands in interest and help you pay off your loan years earlier.";
+            } else {
+                return "You have a reasonable interest rate. Continue making consistent payments and consider extra payments when possible to minimize total interest costs.";
+            }
+        }
+
+        // Add enter key support and initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add event listeners for enter key on all inputs
+            const inputs = document.querySelectorAll('.loan-calc-form-input, .loan-calc-form-select');
+            inputs.forEach(function(input) {
+                input.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        loanCalcCalculate();
+                    }
+                });
+            });
+            
+            // Auto-calculate on input change for better UX
+            inputs.forEach(function(input) {
+                input.addEventListener('change', function() {
+                    loanCalcCalculate();
+                });
+            });
+        });
+    </script>
 </body>
 </html>

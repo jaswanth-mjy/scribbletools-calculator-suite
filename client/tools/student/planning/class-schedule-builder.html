@@ -3,198 +3,753 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Class Schedule Builder - Student Tools</title>
+    
+    <!-- Primary SEO Meta Tags -->
+    <title>Class Schedule Builder - Create Weekly Timetables & Download PDF | Free Student Tool</title>
+    <meta name="description" content="Free online class schedule builder for students. Create your weekly class timetable, organize courses by time slots, add instructor details, and download as PDF. Perfect for college, high school, and university students planning their academic week.">
+    <meta name="keywords" content="class schedule builder, weekly schedule maker, timetable creator, student schedule planner, course organizer, class timetable, academic schedule, PDF schedule download, student planning tool, weekly class planner, school schedule maker, college timetable, university schedule builder">
+    <meta name="author" content="Scribble Tools">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    
+    <!-- Open Graph / Facebook Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://scribbletools.in/client/tools/student/planning/class-schedule-builder.html">
+    <meta property="og:title" content="Class Schedule Builder - Create Weekly Timetables & Download PDF">
+    <meta property="og:description" content="Build your perfect weekly class schedule with our free tool. Add classes, organize by time slots, and download as PDF. Perfect for students planning their academic week.">
+    <meta property="og:image" content="https://scribbletools.in/assets/images/class-schedule-preview.jpg">
+    <meta property="og:site_name" content="Scribble Tools">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://scribbletools.in/client/tools/student/planning/class-schedule-builder.html">
+    <meta name="twitter:title" content="Class Schedule Builder - Free Student Planning Tool">
+    <meta name="twitter:description" content="Create your weekly class schedule with our free online tool. Add courses, organize time slots, and download as PDF.">
+    <meta name="twitter:image" content="https://scribbletools.in/assets/images/class-schedule-preview.jpg">
+    <meta name="twitter:creator" content="@ScribbleTools">
+    
+    <!-- Additional SEO Meta Tags -->
+    <meta name="application-name" content="Class Schedule Builder">
+    <meta name="apple-mobile-web-app-title" content="Schedule Builder">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="format-detection" content="telephone=no">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://scribbletools.in/client/tools/student/planning/class-schedule-builder.html">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#667eea">
+    <meta name="msapplication-TileColor" content="#667eea">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Structured Data / Schema.org for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Class Schedule Builder",
+        "description": "Free online class schedule builder for students to create weekly timetables, organize courses by time slots, add instructor and room details, and download schedules as PDF.",
+        "url": "https://scribbletools.in/client/tools/student/planning/class-schedule-builder.html",
+        "applicationCategory": "EducationalApplication",
+        "operatingSystem": "Any",
+        "browserRequirements": "Requires JavaScript. Works with modern browsers.",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "creator": {
+            "@type": "Organization",
+            "name": "Scribble Tools",
+            "url": "https://scribbletools.in"
+        },
+        "featureList": [
+            "Weekly schedule builder with Monday-Sunday support",
+            "Customizable time slots from 8 AM to 6 PM",
+            "Add class names, instructors, and room numbers",
+            "Visual timetable grid display",
+            "PDF export functionality",
+            "Print-ready format",
+            "Mobile responsive design",
+            "Local storage for data persistence",
+            "Statistics tracking (total classes, hours per week, busiest day)",
+            "Easy class editing and deletion",
+            "Clear and intuitive interface"
+        ],
+        "audience": {
+            "@type": "Audience",
+            "audienceType": "Students, Teachers, Educators"
+        },
+        "inLanguage": "en-US",
+        "isAccessibleForFree": true,
+        "keywords": "class schedule builder, weekly schedule, timetable maker, student planner, course organizer, academic schedule, PDF schedule"
+    }
+    </script>
+</head>
+<body>
+
+<div class="schedule-builder-redirect-wrapper">
     <style>
-        * {
+        body {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
         }
         
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 20px;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        .seo-content-hidden {
+            position: absolute;
+            left: -9999px;
+            width: 1px;
+            height: 1px;
             overflow: hidden;
         }
         
-        .header {
+        .schedule-builder-redirect-wrapper {
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            padding: 40px 20px;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .schedule-redirect-card {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 30px;
+            padding: 50px 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(102, 126, 234, 0.3);
             text-align: center;
+            max-width: 600px;
+            width: 100%;
+            color: white;
+            animation: scheduleSlideUp 0.6s ease;
         }
-        
-        .header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
+
+        @keyframes scheduleSlideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .schedule-redirect-icon {
+            font-size: 4.5rem;
+            margin-bottom: 25px;
+            display: inline-block;
+            animation: scheduleIconBounce 2s ease infinite;
+        }
+
+        @keyframes scheduleIconBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .schedule-redirect-title {
+            font-size: 2.2rem;
             font-weight: 700;
+            margin-bottom: 15px;
+            line-height: 1.2;
         }
-        
-        .header p {
+
+        .schedule-redirect-description {
+            font-size: 1.15rem;
+            margin-bottom: 35px;
+            line-height: 1.6;
+            opacity: 0.95;
+        }
+
+        .schedule-redirect-btn {
+            display: inline-block;
+            padding: 16px 45px;
+            background: white;
+            color: #667eea;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 700;
             font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            cursor: pointer;
+        }
+
+        .schedule-redirect-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+            color: #764ba2;
+        }
+
+        .schedule-redirect-btn i {
+            margin-left: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .schedule-redirect-btn:hover i {
+            transform: translateX(5px);
+        }
+
+        .schedule-features {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .schedule-feature-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95rem;
             opacity: 0.9;
         }
-        
-        .content {
-            padding: 40px;
-        }
-        
-        .coming-soon {
-            text-align: center;
-            padding: 60px 20px;
-        }
-        
-        .coming-soon-icon {
-            font-size: 5rem;
-            margin-bottom: 30px;
-            color: #667eea;
-        }
-        
-        .coming-soon h2 {
-            font-size: 2.5rem;
-            color: #333;
-            margin-bottom: 20px;
-            font-weight: 600;
-        }
-        
-        .coming-soon p {
-            font-size: 1.2rem;
-            color: #666;
-            line-height: 1.6;
-            max-width: 600px;
-            margin: 0 auto 30px;
-        }
-        
-        .features-preview {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 40px;
-        }
-        
-        .feature-card {
-            background: #f8f9fa;
-            padding: 25px;
-            border-radius: 15px;
-            text-align: center;
-            border: 2px solid #e9ecef;
-            transition: all 0.3s ease;
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            border-color: #667eea;
-        }
-        
-        .feature-icon {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            color: #667eea;
-        }
-        
-        .feature-card h3 {
-            font-size: 1.3rem;
-            color: #333;
-            margin-bottom: 10px;
-        }
-        
-        .feature-card p {
-            color: #666;
-            line-height: 1.5;
-        }
-        
-        .notify-btn {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            border-radius: 50px;
+
+        .schedule-feature-item i {
             font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-top: 20px;
         }
-        
-        .notify-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
-        }
-        
+
         @media (max-width: 768px) {
-            .header h1 {
-                font-size: 2rem;
+            .schedule-redirect-card {
+                padding: 40px 30px;
             }
-            
-            .coming-soon h2 {
-                font-size: 2rem;
+
+            .schedule-redirect-title {
+                font-size: 1.8rem;
             }
-            
-            .content {
-                padding: 20px;
+
+            .schedule-redirect-description {
+                font-size: 1rem;
             }
-            
-            .features-preview {
-                grid-template-columns: 1fr;
+
+            .schedule-redirect-btn {
+                padding: 14px 35px;
+                font-size: 1rem;
+            }
+
+            .schedule-features {
+                gap: 15px;
+            }
+
+            .schedule-feature-item {
+                font-size: 0.85rem;
             }
         }
     </style>
-</head>
-<body>
-    <div class="container">
-        <div class="header">
-            <h1>📅 Class Schedule Builder</h1>
-            <p>Create visual timetables with conflict detection and optimization</p>
+
+    <div class="schedule-redirect-card">
+        <div class="schedule-redirect-icon">
+            <i class="fas fa-calendar-alt"></i>
         </div>
-        
-        <div class="content">
-            <div class="coming-soon">
-                <div class="coming-soon-icon">🚀</div>
-                <h2>Coming Soon!</h2>
-                <p>We're building an intelligent class schedule builder that helps you create optimal timetables, detect scheduling conflicts, and visualize your weekly academic schedule with beautiful, printable layouts!</p>
-                
-                <div class="features-preview">
-                    <div class="feature-card">
-                        <div class="feature-icon">🗓️</div>
-                        <h3>Visual Timetable</h3>
-                        <p>Create beautiful, color-coded weekly schedule layouts</p>
-                    </div>
-                    
-                    <div class="feature-card">
-                        <div class="feature-icon">⚠️</div>
-                        <h3>Conflict Detection</h3>
-                        <p>Automatically detect and highlight scheduling conflicts</p>
-                    </div>
-                    
-                    <div class="feature-card">
-                        <div class="feature-icon">🎯</div>
-                        <h3>Smart Optimization</h3>
-                        <p>Suggest optimal schedules based on your preferences</p>
-                    </div>
-                    
-                    <div class="feature-card">
-                        <div class="feature-icon">🖨️</div>
-                        <h3>Export & Print</h3>
-                        <p>Export your schedule as PDF or print-ready formats</p>
-                    </div>
-                </div>
-                
-                <button class="notify-btn" onclick="alert('We\'ll notify you when this tool is ready!')">
-                    Notify Me When Ready
-                </button>
+        <h1 class="schedule-redirect-title">Class Schedule Builder</h1>
+        <p class="schedule-redirect-description">
+            Create your perfect weekly class schedule with our comprehensive builder. 
+            Add classes, organize your time, and download as PDF!
+        </p>
+        <a href="client/tools/student/planning/class-schedule-builder-app.html" class="schedule-redirect-btn" onclick="window.location.href='client/tools/student/planning/class-schedule-builder-app.html'; return false;">
+            Open Schedule Builder <i class="fas fa-arrow-right"></i>
+        </a>
+        <div class="schedule-features">
+            <div class="schedule-feature-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Easy to Use</span>
+            </div>
+            <div class="schedule-feature-item">
+                <i class="fas fa-file-pdf"></i>
+                <span>PDF Export</span>
+            </div>
+            <div class="schedule-feature-item">
+                <i class="fas fa-print"></i>
+                <span>Print Ready</span>
             </div>
         </div>
     </div>
+</div>
+
+<!-- Use Cases Section -->
+<section class="seo-section use-cases-section">
+    <div class="seo-container">
+        <h2 class="seo-section-title">
+            <i class="fas fa-lightbulb"></i> Use Cases - Who Can Benefit?
+        </h2>
+        <div class="use-cases-grid">
+            <div class="use-case-card">
+                <div class="use-case-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <h3>College Students</h3>
+                <p>Organize multiple courses across different departments, track professor office hours, and balance study time with your class schedule.</p>
+            </div>
+            <div class="use-case-card">
+                <div class="use-case-icon">
+                    <i class="fas fa-school"></i>
+                </div>
+                <h3>High School Students</h3>
+                <p>Keep track of your classes, after-school activities, and study periods. Perfect for planning homework around your schedule.</p>
+            </div>
+            <div class="use-case-card">
+                <div class="use-case-icon">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                </div>
+                <h3>Teachers & Educators</h3>
+                <p>Plan your teaching schedule, coordinate with multiple classes, and share your availability with students.</p>
+            </div>
+            <div class="use-case-card">
+                <div class="use-case-icon">
+                    <i class="fas fa-laptop-house"></i>
+                </div>
+                <h3>Online Course Students</h3>
+                <p>Manage virtual classes across different time zones, set reminders for live sessions, and organize recorded lectures.</p>
+            </div>
+            <div class="use-case-card">
+                <div class="use-case-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3>Study Groups</h3>
+                <p>Coordinate group study sessions by finding common free time slots among multiple students' schedules.</p>
+            </div>
+            <div class="use-case-card">
+                <div class="use-case-icon">
+                    <i class="fas fa-briefcase"></i>
+                </div>
+                <h3>Working Students</h3>
+                <p>Balance part-time work with your class schedule, ensuring no conflicts between job shifts and academic commitments.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="seo-section faq-section">
+    <div class="seo-container">
+        <h2 class="seo-section-title">
+            <i class="fas fa-question-circle"></i> Frequently Asked Questions
+        </h2>
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question">
+                    <i class="fas fa-chevron-down"></i>
+                    <h3>Is the Class Schedule Builder completely free?</h3>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes! Our class schedule builder is 100% free with no hidden costs, subscriptions, or premium features. You can create unlimited schedules, download as PDF, and use all features without any charges.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <i class="fas fa-chevron-down"></i>
+                    <h3>Do I need to create an account to use this tool?</h3>
+                </div>
+                <div class="faq-answer">
+                    <p>No registration required! You can start creating your schedule immediately. Your data is saved locally in your browser, so you can access it anytime without logging in.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <i class="fas fa-chevron-down"></i>
+                    <h3>Can I add weekend classes (Saturday and Sunday)?</h3>
+                </div>
+                <div class="faq-answer">
+                    <p>Absolutely! Our schedule builder supports all seven days of the week, including Saturday and Sunday, making it perfect for students with weekend classes or study sessions.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <i class="fas fa-chevron-down"></i>
+                    <h3>How do I download my schedule as a PDF?</h3>
+                </div>
+                <div class="faq-answer">
+                    <p>Simply click the "Download as PDF" button after creating your schedule. The tool will generate a professional-looking PDF that you can save, print, or share with others.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <i class="fas fa-chevron-down"></i>
+                    <h3>What time slots are available?</h3>
+                </div>
+                <div class="faq-answer">
+                    <p>The schedule supports time slots from 8:00 AM to 6:00 PM in one-hour increments. This covers typical academic schedules for most institutions.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <i class="fas fa-chevron-down"></i>
+                    <h3>Will my schedule be saved if I close the browser?</h3>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes! Your schedule is automatically saved in your browser's local storage. As long as you use the same browser and don't clear your browsing data, your schedule will be there when you return.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <i class="fas fa-chevron-down"></i>
+                    <h3>Can I edit or delete classes after adding them?</h3>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes! You can easily remove any class by clicking the remove (×) button on the class card. To edit, simply delete the old entry and add a new one with updated information.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <i class="fas fa-chevron-down"></i>
+                    <h3>Is this tool mobile-friendly?</h3>
+                </div>
+                <div class="faq-answer">
+                    <p>Absolutely! The schedule builder is fully responsive and works perfectly on smartphones, tablets, and desktop computers. You can create and manage your schedule on any device.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <i class="fas fa-chevron-down"></i>
+                    <h3>Can I print my schedule directly?</h3>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes! Use the "Print Schedule" button for a clean, print-optimized version of your schedule. All unnecessary buttons and controls are hidden during printing for a professional look.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <i class="fas fa-chevron-down"></i>
+                    <h3>What information can I add for each class?</h3>
+                </div>
+                <div class="faq-answer">
+                    <p>For each class, you can add the class name, instructor/professor name, room number or location, day of the week, and time slot. This helps you have all important information in one place.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .seo-section {
+        background: white;
+        padding: 60px 20px;
+    }
+
+    .seo-container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .seo-section-title {
+        font-family: 'Poppins', sans-serif;
+        font-size: 2.5rem;
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 50px;
+        color: #1f2937;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .seo-section-title i {
+        color: #667eea;
+        font-size: 2.2rem;
+    }
+
+    /* Use Cases Section */
+    .use-cases-section {
+        background: linear-gradient(135deg, #f9fafb 0%, #e5e7eb 100%);
+    }
+
+    .use-cases-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        margin-top: 40px;
+    }
+
+    .use-case-card {
+        background: white;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        text-align: center;
+    }
+
+    .use-case-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+    }
+
+    .use-case-icon {
+        width: 80px;
+        height: 80px;
+        margin: 0 auto 20px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        color: white;
+    }
+
+    .use-case-card h3 {
+        font-size: 1.4rem;
+        font-weight: 600;
+        margin-bottom: 15px;
+        color: #1f2937;
+    }
+
+    .use-case-card p {
+        font-size: 1rem;
+        line-height: 1.6;
+        color: #6b7280;
+    }
+
+    /* FAQ Section */
+    .faq-section {
+        background: white;
+    }
+
+    .faq-container {
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    .faq-item {
+        margin-bottom: 20px;
+        border: 2px solid #e5e7eb;
+        border-radius: 12px;
+        overflow: hidden;
+        transition: all 0.3s ease;
+    }
+
+    .faq-item:hover {
+        border-color: #667eea;
+        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.15);
+    }
+
+    .faq-question {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 20px 25px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        transition: all 0.3s ease;
+    }
+
+    .faq-question:hover {
+        background: linear-gradient(135deg, #5568d3 0%, #65398b 100%);
+    }
+
+    .faq-question i {
+        font-size: 1.2rem;
+        transition: transform 0.3s ease;
+    }
+
+    .faq-item.active .faq-question i {
+        transform: rotate(180deg);
+    }
+
+    .faq-question h3 {
+        font-size: 1.15rem;
+        font-weight: 600;
+        margin: 0;
+        flex: 1;
+    }
+
+    .faq-answer {
+        padding: 25px;
+        background: #f9fafb;
+        display: none;
+    }
+
+    .faq-item.active .faq-answer {
+        display: block;
+    }
+
+    .faq-answer p {
+        font-size: 1rem;
+        line-height: 1.7;
+        color: #4b5563;
+        margin: 0;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .seo-section {
+            padding: 40px 15px;
+        }
+
+        .seo-section-title {
+            font-size: 1.8rem;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .seo-section-title i {
+            font-size: 1.8rem;
+        }
+
+        .use-cases-grid {
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .use-case-card {
+            padding: 25px 20px;
+        }
+
+        .use-case-icon {
+            width: 60px;
+            height: 60px;
+            font-size: 1.5rem;
+        }
+
+        .faq-question {
+            padding: 15px 20px;
+        }
+
+        .faq-question h3 {
+            font-size: 1rem;
+        }
+
+        .faq-answer {
+            padding: 20px;
+        }
+
+        .faq-answer p {
+            font-size: 0.95rem;
+        }
+    }
+</style>
+
+<script>
+// FAQ Accordion functionality - works with dynamic loading
+function initializeFAQ() {
+    console.log('Initializing FAQ...');
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    console.log('Found FAQ questions:', faqQuestions.length);
+    
+    if (faqQuestions.length === 0) {
+        console.log('No FAQ questions found, retrying in 100ms...');
+        setTimeout(initializeFAQ, 100);
+        return;
+    }
+    
+    faqQuestions.forEach(function(question, index) {
+        // Remove any existing listeners to avoid duplicates
+        const newQuestion = question.cloneNode(true);
+        question.parentNode.replaceChild(newQuestion, question);
+        
+        newQuestion.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log('FAQ clicked:', index);
+            const faqItem = this.parentElement;
+            const isActive = faqItem.classList.contains('active');
+            
+            // Close all other FAQ items
+            document.querySelectorAll('.faq-item').forEach(function(item) {
+                item.classList.remove('active');
+            });
+            
+            // Toggle current item
+            if (!isActive) {
+                faqItem.classList.add('active');
+                console.log('FAQ opened:', index);
+            } else {
+                console.log('FAQ closed:', index);
+            }
+        });
+    });
+    
+    // Open the first FAQ by default
+    const firstFaq = document.querySelector('.faq-item');
+    if (firstFaq) {
+        firstFaq.classList.add('active');
+        console.log('First FAQ opened by default');
+    }
+    
+    console.log('FAQ initialization complete');
+}
+
+// Try multiple initialization methods
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeFAQ);
+} else {
+    // DOM already loaded
+    setTimeout(initializeFAQ, 100);
+}
+
+// Also initialize after a delay for dynamic loading scenarios
+setTimeout(initializeFAQ, 500);
+</script>
+
+<!-- Additional SEO Content for Better Indexing -->
+<div class="seo-content-hidden">
+    <h1>Class Schedule Builder - Free Online Weekly Timetable Creator</h1>
+    <h2>Create Your Perfect Weekly Class Schedule</h2>
+    <p>Build and organize your weekly class timetable with our free online class schedule builder. Perfect for college students, high school students, and university students who need to plan their academic week efficiently.</p>
+    
+    <h2>Key Features of Our Class Schedule Builder</h2>
+    <ul>
+        <li>Complete weekly schedule with Monday through Sunday support</li>
+        <li>Flexible time slots from 8 AM to 6 PM</li>
+        <li>Add detailed class information including course name, instructor, and room number</li>
+        <li>Download your schedule as a PDF for easy printing and sharing</li>
+        <li>Mobile-responsive design works on any device</li>
+        <li>Automatic saving with browser local storage</li>
+        <li>Track statistics like total classes per week and busiest day</li>
+        <li>Easy-to-use drag and drop interface</li>
+        <li>Print-ready formatted schedules</li>
+        <li>Free forever, no registration required</li>
+    </ul>
+    
+    <h2>How to Use the Class Schedule Builder</h2>
+    <ol>
+        <li>Enter your class name (e.g., Mathematics 101, English Literature, Biology Lab)</li>
+        <li>Add instructor name and room number for each class</li>
+        <li>Select the day of the week (Monday through Sunday)</li>
+        <li>Choose the time slot for your class</li>
+        <li>Click "Add Class" to add it to your schedule</li>
+        <li>Repeat for all your classes throughout the week</li>
+        <li>Download as PDF or print directly from your browser</li>
+    </ol>
+    
+    <h2>Benefits of Using a Digital Class Schedule</h2>
+    <p>Stay organized throughout your academic semester with a clear visual representation of your weekly classes. Our schedule builder helps you identify time conflicts, balance your workload, and plan study time between classes. Perfect for students managing multiple courses, part-time jobs, and extracurricular activities.</p>
+    
+    <h2>Who Can Use This Tool?</h2>
+    <ul>
+        <li>College and University Students</li>
+        <li>High School Students</li>
+        <li>Teachers and Educators</li>
+        <li>Training Program Participants</li>
+        <li>Online Course Students</li>
+        <li>Homeschool Families</li>
+        <li>Anyone needing to organize weekly recurring activities</li>
+    </ul>
+    
+    <h2>Why Choose Our Class Schedule Builder?</h2>
+    <p>Unlike other schedule builders, our tool is completely free, requires no registration, works offline after first load, and includes weekend support for students with Saturday or Sunday classes. The clean interface makes it easy to create professional-looking schedules in minutes.</p>
+    
+    <h3>Tags: #ClassSchedule #Timetable #StudentPlanner #AcademicSchedule #WeeklySchedule #CourseOrganizer #EducationTools #StudentLife #CollegePlanner #TimeManagement</h3>
+</div>
+
 </body>
 </html>

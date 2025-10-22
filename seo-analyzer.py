@@ -55,7 +55,7 @@ def generate_seo_head(tool_name, category, file_path):
     
     title = f"{formatted_name} - {template['title_suffix']}"
     description = template['description_template'].format(tool_name=formatted_name)
-    canonical_url = f"https://scribbletools.com/{file_path}"
+    canonical_url = f"https://scribbletools.in/{file_path}"
     
     return f'''<!DOCTYPE html>
 <html lang="en">
@@ -75,7 +75,7 @@ def generate_seo_head(tool_name, category, file_path):
     <meta property="og:url" content="{canonical_url}">
     <meta property="og:title" content="{title}">
     <meta property="og:description" content="{description}">
-    <meta property="og:image" content="https://scribbletools.com/assets/og-image.svg">
+    <meta property="og:image" content="https://scribbletools.in/assets/og-image.svg">
     <meta property="og:site_name" content="ScribbleTools">
     
     <!-- Twitter -->
@@ -83,7 +83,7 @@ def generate_seo_head(tool_name, category, file_path):
     <meta property="twitter:url" content="{canonical_url}">
     <meta property="twitter:title" content="{title}">
     <meta property="twitter:description" content="{description}">
-    <meta property="twitter:image" content="https://scribbletools.com/assets/og-image.svg">
+    <meta property="twitter:image" content="https://scribbletools.in/assets/og-image.svg">
     <meta property="twitter:site" content="@scribbletools">
     
     <!-- JSON-LD Structured Data -->
@@ -104,7 +104,7 @@ def generate_seo_head(tool_name, category, file_path):
       "publisher": {{
         "@type": "Organization",
         "name": "ScribbleTools",
-        "url": "https://scribbletools.com"
+        "url": "https://scribbletools.in"
       }}
     }}
     </script>

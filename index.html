@@ -9,7 +9,7 @@
     <meta name="robots" content="index, follow">
     <meta name="author" content="ScribbleTools Team">
     <meta http-equiv="Content-Language" content="en">
-    <link rel="canonical" href="https://scribbletools.com/">
+    <link rel="canonical" href="https://scribbletools.in/">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <meta name="theme-color" content="#D9534F">
     <meta name="mobile-web-app-capable" content="yes">
@@ -19,14 +19,14 @@
     <meta property="og:type" content="website">
     <meta property="og:title" content="ScribbleTools: Free Online Calculators & Tools for Math, Text, Finance, Health">
     <meta property="og:description" content="ScribbleTools is the professional, ad-free toolbox for math, text, finance, health, and more. Fast, privacy-first, and always free. Trusted by students, teachers, and professionals.">
-    <meta property="og:url" content="https://scribbletools.com/">
+    <meta property="og:url" content="https://scribbletools.in/">
     <meta property="og:site_name" content="ScribbleTools">
-    <meta property="og:image" content="https://scribbletools.com/assets/og-image.svg">
+    <meta property="og:image" content="https://scribbletools.in/assets/og-image.svg">
     <meta property="og:image:alt" content="ScribbleTools - Free Online Calculators & Tools for Math, Text, Finance, Health">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="ScribbleTools: Free Online Calculators & Tools for Math, Text, Finance, Health">
     <meta name="twitter:description" content="ScribbleTools is the professional, ad-free toolbox for math, text, finance, health, and more. Fast, privacy-first, and always free. Trusted by students, teachers, and professionals.">
-    <meta name="twitter:image" content="https://scribbletools.com/assets/og-image.svg">
+    <meta name="twitter:image" content="https://scribbletools.in/assets/og-image.svg">
     <meta name="twitter:site" content="@scribbletools">
     <meta name="twitter:creator" content="@scribbletools">
     <script type="application/ld+json">
@@ -34,17 +34,17 @@
       "@context": "https://schema.org",
       "@type": "WebSite",
       "name": "ScribbleTools",
-      "url": "https://scribbletools.com/",
+      "url": "https://scribbletools.in/",
       "description": "ScribbleTools is the professional, ad-free toolbox for math, text, finance, health, and more. Fast, privacy-first, and always free.",
       "inLanguage": "en",
       "publisher": {
         "@type": "Organization",
         "name": "ScribbleTools Team",
-        "url": "https://scribbletools.com/"
+        "url": "https://scribbletools.in/"
       },
       "potentialAction": {
         "@type": "SearchAction",
-        "target": "https://scribbletools.com/?q={search_term_string}",
+        "target": "https://scribbletools.in/?q={search_term_string}",
         "query-input": "required name=search_term_string"
       }
     }
@@ -2327,7 +2327,7 @@ header input {
                                 window.location.hostname.startsWith('172.');
                 
                 const API_URL = isLocal 
-                    ? '/allinone-tools/api/track-click-local.php'
+                    ? '/scribbletools/api/track-click-local.php'
                     : '/api/track-click.php';
                 
                 console.log(`🌍 Environment: ${isLocal ? 'Local Development' : 'Production'}`);
@@ -2577,7 +2577,6 @@ header input {
             '#gpa-calculator': 'client/tools/student/academic/gpa-calculator.html', 
             '#grade-calculator': 'client/tools/student/academic/grade-calculator.html', 
             '#study-planner': 'client/tools/student/academic/study-planner.html', 
-            '#pomodoro-timer': 'client/tools/student/academic/pomodoro-timer.html', 
             '#assignment-tracker': 'client/tools/student/academic/assignment-tracker.html', 
             '#citation-generator': 'client/tools/student/academic/citation-generator.html', 
             '#flashcard-maker': 'client/tools/student/academic/flashcard-maker.html', 
@@ -3859,9 +3858,6 @@ header input {
                         } else if (path.includes('study-planner') && window.initializeStudyPlanner) {
                             console.log('📅 Initializing Study Planner...');
                             window.initializeStudyPlanner();
-                        } else if (path.includes('pomodoro-timer') && window.initializePomodoroTimer) {
-                            console.log('⏰ Initializing Pomodoro Timer...');
-                            window.initializePomodoroTimer();
                         } else if (path.includes('assignment-tracker') && window.initializeAssignmentTracker) {
                             console.log('📝 Initializing Assignment Tracker...');
                             window.initializeAssignmentTracker();
@@ -4457,7 +4453,6 @@ header input {
             { name: 'todo list', icon: '✅', category: 'Utility' },
             { name: 'timer', icon: '⏱️', category: 'Utility' },
             { name: 'stopwatch', icon: '⏰', category: 'Utility' },
-            { name: 'pomodoro timer', icon: '🍅', category: 'Utility' },
             { name: 'reminder app', icon: '🔔', category: 'Utility' },
             { name: 'note taker', icon: '📓', category: 'Utility' },
             { name: 'voice recorder', icon: '🎤', category: 'Utility' },

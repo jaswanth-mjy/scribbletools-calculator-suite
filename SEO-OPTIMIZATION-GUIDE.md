@@ -16,14 +16,14 @@
     <meta name="keywords" content="[tool name], [category] calculator, online tool, free calculator">
     <meta name="author" content="ScribbleTools Team">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://scribbletools.com/client/tools/[category]/[tool-name].html">
+    <link rel="canonical" href="https://scribbletools.in/client/tools/[category]/[tool-name].html">
     
     <!-- Open Graph Meta Tags -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="[Tool Name] - Free [Category] Tool">
     <meta property="og:description" content="[Description]">
     <meta property="og:url" content="[Canonical URL]">
-    <meta property="og:image" content="https://scribbletools.com/assets/og-image.svg">
+    <meta property="og:image" content="https://scribbletools.in/assets/og-image.svg">
     
     <!-- Twitter Cards -->
     <meta property="twitter:card" content="summary_large_image">

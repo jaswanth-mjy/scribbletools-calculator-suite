@@ -57,7 +57,7 @@ function openResumeBuilder(button) {
 <meta property="og:title" content="Free Resume Builder - Create Professional Resumes Online">
 <meta property="og:description" content="Create professional resumes in minutes with our free AI-powered resume builder. ATS-friendly templates, instant feedback, PDF download.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://allinone.github.io/client/tools/student/career/resume-builder.html">
+<meta property="og:url" content="https://scribbletools.in/client/tools/student/career/resume-builder.html">
 
 <!-- Twitter Cards -->
 <meta name="twitter:card" content="summary_large_image">

@@ -13,7 +13,7 @@ const SCRIBBLETOOLS_CONFIG = {
     // Site Configuration
     site: {
         name: 'ScribbleTools',
-        domain: 'scribbletools.com', // Replace with your domain
+        domain: 'scribbletools.in', // Replace with your domain
         description: 'ScribbleTools is the professional, ad-free toolbox for math, text, finance, health, and more.',
         keywords: 'online calculator, math calculator, area calculator, volume calculator, text tools, financial calculator, health calculator',
         author: 'ScribbleTools Team'
@@ -22,8 +22,8 @@ const SCRIBBLETOOLS_CONFIG = {
     // Social Media Configuration
     social: {
         twitter: '@scribbletools',
-        ogImage: 'https://scribbletools.com/assets/og-image.png',
-        twitterImage: 'https://scribbletools.com/assets/og-image.png'
+        ogImage: 'https://scribbletools.in/assets/og-image.png',
+        twitterImage: 'https://scribbletools.in/assets/og-image.png'
     },
     
     // Error Monitoring Configuration

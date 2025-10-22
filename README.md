@@ -1,9 +1,9 @@
 # 🧮 ScribbleTools - Free Online Calculators & Tools
 
-[![Website](https://img.shields.io/badge/Website-Live-brightgreen)](https://jaswanth-mjy.github.io/scribbletools-calculator-suite)
-[![GitHub Pages](https://img.shields.io/badge/Deployed%20on-GitHub%20Pages-blue)](https://jaswanth-mjy.github.io/scribbletools-calculator-suite)
+[![Website](https://img.shields.io/badge/Website-Live-brightgreen)](https://scribbletools.in)
+[![GitHub Pages](https://img.shields.io/badge/Deployed%20on-GitHub%20Pages-blue)](https://scribbletools.in)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Mobile Responsive](https://img.shields.io/badge/Mobile-Responsive-success)](https://jaswanth-mjy.github.io/scribbletools-calculator-suite)
+[![Mobile Responsive](https://img.shields.io/badge/Mobile-Responsive-success)](https://scribbletools.in)
 
 **ScribbleTools** is a comprehensive, professional, and ad-free toolbox featuring calculators and utilities for math, text processing, finance, health, and more. Built with a privacy-first approach and optimized for both desktop and mobile experiences.
 
@@ -88,8 +88,8 @@ ScribbleTools is built with mobile users in mind:
 ### Setup
 1. Clone the repository:
    \`\`\`bash
-   git clone https://github.com/yourusername/allinone-tools.git
-   cd allinone-tools
+   git clone https://github.com/yourusername/scribbletools.git
+   cd scribbletools
    \`\`\`
 
 2. Start a local web server:
@@ -109,7 +109,7 @@ ScribbleTools is built with mobile users in mind:
 ## 📂 **Project Structure**
 
 \`\`\`
-allinone-tools/
+scribbletools/
 ├── index.html              # Main application file
 ├── client/
 │   └── tools/              # Individual tool implementations
@@ -161,8 +161,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 **Contact**
 
-- **Website**: [scribbletools.com](https://scribbletools.com)
-- **Issues**: [GitHub Issues](https://github.com/yourusername/allinone-tools/issues)
+- **Website**: [scribbletools.in](https://scribbletools.in)
+- **Issues**: [GitHub Issues](https://github.com/yourusername/scribbletools/issues)
 - **Feedback**: Use the feedback form on our website
 
 ---
