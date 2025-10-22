@@ -2330,8 +2330,8 @@ header input {
                     ? '/scribbletools/api/track-click-local.php'
                     : '/api/track-click.php';
                 
-                console.log(`🌍 Environment: ${isLocal ? 'Local Development' : 'Production'}`);
-                console.log(`📡 API URL: ${API_URL}`);
+                // console.log(`🌍 Environment: ${isLocal ? 'Local Development' : 'Production'}`);
+                // console.log(`📡 API URL: ${API_URL}`);
                 
                 const trackingData = {
                     tool_name: toolName,
@@ -2354,7 +2354,7 @@ header input {
                 if (response.ok) {
                     const result = await response.json();
                     if (result.success) {
-                        console.log(`✅ Click tracked: ${toolName} (${result.click_count} total clicks)`);
+                        // console.log(`✅ Click tracked: ${toolName} (${result.click_count} total clicks)`);
                         
                         // Store click count in localStorage for potential display
                         localStorage.setItem(`clicks_${toolName}`, result.click_count);
@@ -3643,8 +3643,8 @@ header input {
         }
 
         async function loadContent(path, query) {
-            console.log('loadContent called with path:', path);
-            console.log('Current location:', window.location.href);
+            // console.log('loadContent called with path:', path);
+            // console.log('Current location:', window.location.href);
             
             // Clear any existing intervals or timeouts to prevent memory leaks
             for (let i = 1; i < 99999; i++) {
@@ -3654,17 +3654,17 @@ header input {
             
             appContainer.innerHTML = '<div class="flex justify-center items-center h-full"><div class="spinner"></div></div>';
             try {
-                console.log('Fetching:', path);
+                // console.log('Fetching:', path);
                 const response = await fetch(path);
-                console.log('Fetch response:', response.status, response.ok, response.statusText);
+                // console.log('Fetch response:', response.status, response.ok, response.statusText);
                 
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status} - ${response.statusText}`);
                 }
                 
                 const html = await response.text();
-                console.log('HTML received, length:', html.length);
-                console.log('HTML starts with:', html.substring(0, 100));
+                // console.log('HTML received, length:', html.length);
+                // console.log('HTML starts with:', html.substring(0, 100));
 
                 // Create a temporary container to parse the HTML
                 const tempDiv = document.createElement('div');
@@ -3720,7 +3720,7 @@ header input {
                 // After all scripts are loaded, call the initializer once.
                 Promise.all(scriptPromises)
                     .then(() => {
-                        console.log(`✅ All scripts for ${path} have been loaded. Initializing tool...`);
+                        // console.log(`✅ All scripts for ${path} have been loaded. Initializing tool...`);
                         checkAndInitializeTool(path);
                     })
                     .catch(error => {
@@ -3782,19 +3782,19 @@ header input {
                         } else if (path.includes('flip-image') && window.initializeFlipImageTool) {
                             window.initializeFlipImageTool();
                         } else if (path.includes('resize-sign-50mm-20mm') && window.initializeResizeSign50x20Tool) {
-                            console.log('📏 Initializing Resize Sign 50mm x 20mm Tool...');
+                            // console.log('📏 Initializing Resize Sign 50mm x 20mm Tool...');
                             window.initializeResizeSign50x20Tool();
-                            console.log('✅ Resize Sign 50mm x 20mm Tool initialized');
+                            // console.log('✅ Resize Sign 50mm x 20mm Tool initialized');
                         } else if (path.includes('add-name-dob-photo') && window.initializeAddNameDobTool) {
-                            console.log('🏷️ Initializing Add Name & DOB Tool...');
+                            // console.log('🏷️ Initializing Add Name & DOB Tool...');
                             window.initializeAddNameDobTool();
-                            console.log('✅ Add Name & DOB Tool initialized');
+                            // console.log('✅ Add Name & DOB Tool initialized');
                                                 } else if (path.includes('gif-tools') && window.initializeGifTools) {
                             window.initializeGifTools();
                         }
                         // Other tools
                         else if (path.includes('personal-notes')) {
-                            console.log('📝 Initializing Personal Notes...');
+                            // console.log('📝 Initializing Personal Notes...');
                             // Try multiple initialization methods
                             if (window.initializePersonalNotes) {
                                 window.initializePersonalNotes();
@@ -3810,24 +3810,24 @@ header input {
                                     }
                                 }, 500);
                             }
-                            console.log('✅ Personal Notes initialization attempted');
+                            // console.log('✅ Personal Notes initialization attempted');
                         }
                         // Student Tools
                         else if (path.includes('resume-builder')) {
-                            console.log('📋 Initializing Resume Builder...');
+                            // console.log('📋 Initializing Resume Builder...');
                             try {
                                 if (window.initializeResumeBuilder) {
                                     const result = window.initializeResumeBuilder();
-                                    if (result) {
-                                        console.log('✅ Resume Builder initialized successfully');
-                                    }
+                                    // if (result) {
+                                    //     console.log('✅ Resume Builder initialized successfully');
+                                    // }
                                 } else {
-                                    console.warn('⚠️ Resume Builder initialization function not found, retrying...');
+                                    // console.warn('⚠️ Resume Builder initialization function not found, retrying...');
                                     // Retry after a short delay
                                     setTimeout(() => {
                                         if (window.initializeResumeBuilder) {
                                             window.initializeResumeBuilder();
-                                            console.log('✅ Resume Builder initialized on retry');
+                                            // console.log('✅ Resume Builder initialized on retry');
                                         }
                                     }, 500);
                                 }
@@ -3835,19 +3835,19 @@ header input {
                                 console.error('❌ Error initializing Resume Builder:', error);
                             }
                         } else if (path.includes('cover-letter-generator') && window.initializeCoverLetterGenerator) {
-                            console.log('📄 Initializing Cover Letter Generator...');
+                            // console.log('📄 Initializing Cover Letter Generator...');
                             window.initializeCoverLetterGenerator();
                         } else if (path.includes('job-tracker') && window.initializeJobTracker) {
-                            console.log('📊 Initializing Job Application Tracker...');
+                            // console.log('📊 Initializing Job Application Tracker...');
                             window.initializeJobTracker();
                         } else if (path.includes('gpa-calculator') && window.initializeGpaCalculator) {
-                            console.log('📚 Initializing GPA Calculator...');
+                            // console.log('📚 Initializing GPA Calculator...');
                             window.initializeGpaCalculator();
                         } else if (path.includes('grade-calculator') && window.initializeGradeCalculator) {
-                            console.log('📈 Initializing Grade Calculator...');
+                            // console.log('📈 Initializing Grade Calculator...');
                             window.initializeGradeCalculator();
                         } else if (path.includes('study-planner') && window.initializeStudyPlanner) {
-                            console.log('📅 Initializing Study Planner...');
+                            // console.log('📅 Initializing Study Planner...');
                             window.initializeStudyPlanner();
                         } else if (path.includes('assignment-tracker') && window.initializeAssignmentTracker) {
                             console.log('📝 Initializing Assignment Tracker...');
@@ -4213,8 +4213,8 @@ header input {
                 setTimeout(() => checkAndInitializeTool(path), 500);
             } catch (error) {
                 console.error("Failed to load content:", error);
-                console.error("Path was:", path);
-                console.error("Error details:", error.message, error.stack);
+                // console.error("Path was:", path);
+                // console.error("Error details:", error.message, error.stack);
                 appContainer.innerHTML = `<p class="text-red-500 text-center">Sorry, we couldn't load this tool. Error: ${error.message}</p>`;
             }
         }
@@ -6649,7 +6649,7 @@ header input {
             });
             
             logoEventListenersAdded = true;
-            console.log('Logo toggle functionality initialized');
+            // console.log('Logo toggle functionality initialized');
         }
 
         // Initialize all systems when DOM is loaded
