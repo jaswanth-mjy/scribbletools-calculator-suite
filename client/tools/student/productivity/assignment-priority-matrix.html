@@ -299,6 +299,7 @@
             display: grid;
             grid-template-columns: 150px repeat(2, 1fr);
             grid-template-rows: repeat(2, 1fr);
+            gap: 0;
         }
         
         .matrix-cell {
@@ -760,7 +761,20 @@
             }
             
             .matrix-grid {
-                grid-template-columns: 100px repeat(2, 1fr);
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .matrix-cell {
+                min-height: 150px;
+                width: 100%;
+            }
+            
+            .matrix-label {
+                position: static;
+                display: inline-block;
+                margin-bottom: 10px;
             }
             
             .assignment-grid {

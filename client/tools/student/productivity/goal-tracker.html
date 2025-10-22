@@ -696,8 +696,14 @@
         
         .goal-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .goal-grid {
+                grid-template-columns: 1fr;
+            }
         }
         
         .goal-card {
@@ -1111,7 +1117,7 @@
                     <p style="margin-bottom: 0; color: white;">Set SMART goals with deadlines, track progress, prioritize tasks, and celebrate achievements. Perfect for academic goals, personal development, and student success planning.</p>
                 </div>
                 
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 20px;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 20px;">
                     <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #667eea;">
                         <h3 style="color: #2c3e50; margin-top: 0;">🎯 Goal Setting Benefits</h3>
                         <ul style="margin-bottom: 0; color: #6c757d;">
