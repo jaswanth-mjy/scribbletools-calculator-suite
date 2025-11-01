@@ -1,0 +1,85 @@
+/**
+ * Force Desktop Layout CSS for Student Tools
+ * Add this to all student tool files to ensure desktop layout on all devices
+ */
+
+/* Force minimum width for entire page */
+html {
+    min-width: 1200px !important;
+}
+
+body {
+    min-width: 1200px !important;
+    width: auto !important;
+    overflow-x: auto !important;
+}
+
+/* Disable all mobile-specific media queries */
+@media only screen and (max-width: 768px) {
+    html, body {
+        min-width: 1200px !important;
+        width: auto !important;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    html, body {
+        min-width: 1200px !important;
+        width: auto !important;
+    }
+}
+
+/* Force desktop display on mobile devices */
+@media screen and (max-width: 1024px) {
+    * {
+        min-width: initial !important;
+    }
+    
+    html {
+        min-width: 1200px !important;
+    }
+    
+    body {
+        min-width: 1200px !important;
+        width: auto !important;
+    }
+    
+    /* Ensure content doesn't shrink */
+    .container, .main-content, [class*="container"] {
+        min-width: 1100px !important;
+    }
+}
+
+/* Force desktop view notice for mobile users */
+.mobile-desktop-notice {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 12px 20px;
+    text-align: center;
+    font-size: 14px;
+    z-index: 10000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+@media screen and (max-width: 1024px) {
+    .mobile-desktop-notice {
+        display: block;
+    }
+    
+    body {
+        padding-top: 50px;
+    }
+}
+
+.mobile-desktop-notice strong {
+    font-weight: 600;
+}
+
+.mobile-desktop-notice .icon {
+    margin-right: 8px;
+}
