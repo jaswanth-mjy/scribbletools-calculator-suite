@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Primary Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Probability Calculator | Calculate Event Probability & Odds - Free Tool</title>
+    <meta name="title" content="Probability Calculator | Calculate Event Probability & Odds - Free Tool">
+    <meta name="description" content="Calculate probability of any event instantly. Free probability calculator for dice, coins, cards, and statistical analysis. Perfect for students, teachers, and researchers. Easy-to-use probability tool.">
+    <meta name="keywords" content="probability calculator, probability, odds calculator, chance calculator, likelihood, statistics, math calculator, dice probability, coin flip, probability formula, risk assessment, statistical probability">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <meta name="author" content="Probability Calculator Tool">
+    
+    <!-- Geographic Tags -->
+    <meta name="geo.region" content="US">
+    <meta name="geo.placename" content="United States">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://scribbletools.in/client/tools/math/probability-calculator.html">
+    <meta property="og:title" content="Probability Calculator | Calculate Event Probability & Odds">
+    <meta property="og:description" content="Free probability calculator for any event. Calculate chances, odds, and likelihood instantly. Perfect for statistics, games, and educational purposes.">
+    <meta property="og:image" content="https://scribbletools.in/assets/og-image.svg">
+    <meta property="og:image:alt" content="Probability Calculator Tool">
+    <meta property="og:site_name" content="All-in-One Tools">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://scribbletools.in/client/tools/math/probability-calculator.html">
+    <meta property="twitter:title" content="Probability Calculator | Calculate Event Probability & Odds">
+    <meta property="twitter:description" content="Free probability calculator for any event. Calculate chances, odds, and likelihood instantly. Perfect for statistics and education.">
+    <meta property="twitter:image" content="https://scribbletools.in/assets/og-image.svg">
+    <meta property="twitter:image:alt" content="Probability Calculator Tool">
+    
+    <!-- Additional SEO Meta Tags -->
+    <meta name="application-name" content="Probability Calculator">
+    <meta name="msapplication-TileColor" content="#D9534F">
+    <meta name="theme-color" content="#D9534F">
+    <link rel="canonical" href="https://scribbletools.in/client/tools/math/probability-calculator.html">
+    
+    <!-- Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": ["WebApplication", "SoftwareApplication"],
+        "name": "Probability Calculator",
+        "description": "Calculate the probability of any event with favorable and total outcomes. Free online probability calculator for statistical analysis, games, and educational purposes.",
+        "url": "https://scribbletools.in/client/tools/math/probability-calculator.html",
+        "applicationCategory": "EducationalApplication",
+        "operatingSystem": "Web Browser",
+        "permissions": "browser",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "creator": {
+            "@type": "Organization",
+            "name": "All-in-One Tools"
+        },
+        "featureList": [
+            "Event probability calculation",
+            "Percentage conversion",
+            "Odds calculation",
+            "Statistical probability",
+            "Favorable outcome analysis",
+            "Educational probability tool"
+        ],
+        "keywords": "probability, odds, chance, likelihood, statistics, mathematics, probability formula, risk assessment",
+        "mainEntity": {
+            "@type": "MathSolver",
+            "name": "Probability Formula",
+            "description": "P(A) = Number of Favorable Outcomes / Total Number of Outcomes",
+            "mathExpression": "P(A) = n(A) / n(S)"
+        }
+    }
+    </script>
+    <style>
+        body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; }
+        .geo-calc-container { max-width: 400px; margin: 3em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2em 1.5em 2.5em 1.5em; }
+        .handwritten { font-family: 'Caveat', cursive; }
+        .geo-calc-label { font-weight: 600; margin-bottom: 0.5em; display: block; }
+        .geo-calc-input { width: 100%; padding: 1em; border: 2px solid #EAE3D5; border-radius: 0.7em; font-size: 1.1em; margin-bottom: 1em; background: #FDFBF5; text-align: center; font-family: 'Fira Code', monospace; }
+        .geo-calc-btn { background: #fff; color: #D9534F; border: 2px solid #D9534F; border-radius: 0.5em; padding: 0.7em 2em; font-weight: 600; font-size: 1.1em; cursor: pointer; transition: all 0.2s; margin-bottom: 1em; }
+        .geo-calc-btn:hover { background: #D9534F; color: #fff; }
+        .geo-calc-result { background: #FDFBF5; border: 2px solid #D9534F; border-radius: 0.7em; padding: 1em; font-size: 1.18em; color: #D9534F; min-height: 1.7em; margin-bottom: 1em; text-align: center; font-family: 'Fira Code', monospace; font-weight: bold; max-height: 300px; overflow-y: auto; word-break: break-word; transition: height 0.2s; }
+        @media (max-width: 600px) { .geo-calc-container { padding: 1em 0.2em; } }
+    </style>
+</head>
+<body>
+<div class="geo-calc-container">
+    <h2 class="handwritten text-5xl text-[#D9534F] mb-4">Probability Calculator</h2>
+    <label class="geo-calc-label" for="favorable">Number of Favorable Outcomes:</label>
+    <input class="geo-calc-input" id="favorable" type="number" min="0" placeholder="e.g. 3">
+    <label class="geo-calc-label" for="total">Total Number of Outcomes:</label>
+    <input class="geo-calc-input" id="total" type="number" min="1" placeholder="e.g. 8">
+    <button type="button" class="geo-calc-btn" onclick="calculateProbability()">Calculate Probability</button>
+    <div class="geo-calc-result" id="result"></div>
+</div>
+<div class="geo-calc-desc" style="max-width: fit-content; margin: 2.5em auto 0 auto; background:#FDFBF5; border:2px solid #EAE3D5; border-radius:0.9em; padding:1.2em 1em; font-size:1.08em; color:#333; line-height:1.7;">
+    <strong style="font-size:1.18em; color:#D9534F;">About Probability</strong><br><br>
+    <b>Probability:</b> The measure of how likely an event is to occur, expressed as a number between 0 (impossible) and 1 (certain).<br><br>
+    <b>Formula:</b>
+    <ul style="margin-left:1.2em; margin-bottom:0.7em;">
+        <li>Probability of an event: <code>P(A) = \frac{\text{Number of Favorable Outcomes}}{\text{Total Number of Outcomes}}</code></li>
+    </ul>
+    <b>Use Cases:</b>
+    <ul style="margin-left:1.2em;">
+        <li>Games of chance (dice, cards, coins)</li>
+        <li>Risk assessment and statistics</li>
+        <li>Everyday decision making</li>
+    </ul>
+</div>
+<script>
+function calculateProbability() {
+    const favorable = parseFloat(document.getElementById('favorable').value);
+    const total = parseFloat(document.getElementById('total').value);
+    if (isNaN(favorable) || isNaN(total) || favorable < 0 || total <= 0 || favorable > total) {
+        document.getElementById('result').textContent = 'Please enter valid numbers (favorable ≤ total, total > 0).';
+        return;
+    }
+    const probability = favorable / total;
+    document.getElementById('result').innerHTML = `<b>Probability:</b> ${probability} <br><b>As a percentage:</b> ${(probability*100).toFixed(2)}%`;
+}
+</script>
+</body>
+</html>

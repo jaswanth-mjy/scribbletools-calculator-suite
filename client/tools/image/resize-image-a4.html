@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resize Image A4 Size - FREE A4 Document Photo Tool (210x297mm)</title>
+  <meta name="description" content="Free A4 image resizer! Resize photos to A4 paper size (210x297mm). Perfect for document printing, presentations, reports. Professional quality. 100% free!">
+  <meta name="keywords" content="resize image A4, A4 photo size, A4 document image, resize photo A4 paper, A4 image tool, document photo A4, A4 paper photo, presentation image A4, A4 size converter, document image resize, A4 print size, office document photo, A4 page image, business document photo, A4 layout image, professional document photo, A4 format image, report image A4, presentation photo A4, A4 document tool, office photo A4, document preparation A4">
+  <meta name="author" content="Scribble Tools">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://scribbletools.in/client/tools/image/resize-image-a4.html">
+  <meta property="og:title" content="Resize Image A4 Size - FREE A4 Document Photo Tool (210x297mm)">
+  <meta property="og:description" content="Free A4 image resizer! Resize photos to A4 paper size (210x297mm). Perfect for document printing, presentations, reports. Professional quality. 100% free!">
+  <meta property="og:image" content="https://scribbletools.in/assets/og-image.svg">
+  <meta property="og:site_name" content="Scribble Tools">
+  <meta property="og:locale" content="en_US">
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://scribbletools.in/client/tools/image/resize-image-a4.html">
+  <meta property="twitter:title" content="Resize Image A4 Size - FREE A4 Document Photo Tool (210x297mm)">
+  <meta property="twitter:description" content="Free A4 image resizer! Resize photos to A4 paper size (210x297mm). Perfect for document printing, presentations, reports. Professional quality. 100% free!">
+  <meta property="twitter:image" content="https://scribbletools.in/assets/og-image.svg">
+  
+  <!-- Additional SEO Meta Tags -->
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Scribble Tools">
+  <meta name="generator" content="Scribble Tools">
+  <meta name="application-name" content="A4 Image Resizer">
+  <meta name="apple-mobile-web-app-title" content="A4 Photo Resizer">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#D9534F">
+  <meta name="msapplication-navbutton-color" content="#D9534F">
+  <meta name="apple-mobile-web-app-status-bar-style" content="#D9534F">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://scribbletools.in/client/tools/image/resize-image-a4.html">
+  
+  <!-- Preconnect for Performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "A4 Image Resizer Tool",
+    "description": "Free online tool for resizing images to A4 paper size (210x297mm). Perfect for document printing, presentations, and professional reports.",
+    "url": "https://scribbletools.in/client/tools/image/resize-image-a4.html",
+    "applicationCategory": "MultimediaApplication",
+    "operatingSystem": "Any",
+    "permissions": "browser",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "featureList": [
+      "Resize images to A4 size",
+      "Document photo preparation",
+      "Presentation image sizing",
+      "Professional report images",
+      "Office document photos",
+      "A4 paper format conversion",
+      "No registration required",
+      "Free to use"
+    ],
+    "provider": {
+      "@type": "Organization",
+      "name": "Scribble Tools",
+      "url": "https://scribbletools.in"
+    }
+  }
+  </script>
+  
+  <style>
+    .resize-a4-tool body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; }
+    .resize-a4-tool main { display: block; }
+    .resize-a4-tool .reduce-size-container { max-width: 800px; margin: 3em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2em 1.5em 2.5em 1.5em; }
+    .resize-a4-tool .handwritten { font-family: 'Caveat', cursive; }
+    .resize-a4-tool .upload-area { border: 3px dashed #D9534F; border-radius: 1em; padding: 3em 2em; text-align: center; margin: 2em 0; background: #FDFBF5; transition: all 0.3s; cursor: pointer; }
+    .resize-a4-tool .upload-area:hover { background: #F0F8FF; border-color: #4682B4; }
+    .resize-a4-tool .upload-icon { font-size: 3em; color: #D9534F; margin-bottom: 1em; text-align: center; }
+    .resize-a4-tool .file-input { display: none; }
+    .resize-a4-tool .upload-btn { background: #D9534F; color: #fff; border: none; border-radius: 0.5em; padding: 1em 2em; font-weight: 600; cursor: pointer; transition: all 0.2s; display: block; margin: 0 auto 1.5em auto; }
+    .resize-a4-tool .upload-btn:hover { background: #c9302c; }
+    .resize-a4-tool .choose-file-btn { background: #D9534F; color: #fff; border: none; border-radius: 0.5em; padding: 1em 2em; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+    .resize-a4-tool .choose-file-btn:hover { background: #c9302c; }
+    .resize-a4-tool .preview-section { margin-top: 2em; text-align: center; display: none; }
+    .resize-a4-tool .preview-section h3 { color: #4682B4; margin-bottom: 1em; }
+    .resize-a4-tool .uploaded-preview { max-width: 100%; max-height: 300px; border-radius: 0.5em; margin: 1em 0; border: 2px solid #EAE3D5; }
+    .resize-a4-tool .controls-section { display: none; margin: 2em 0; background: #FDFBF5; border-radius: 0.7em; padding: 1.2em; border: 1px solid #FFEAA7; }
+    .resize-a4-tool .controls-section h3 { color: #4682B4; margin-bottom: 1em; font-weight: 600; }
+    .resize-a4-tool .form-group { margin: 1.2em 0; }
+    .resize-a4-tool .form-label { font-weight: 600; margin-bottom: 0.5em; display: block; color: #4682B4; }
+    .resize-a4-tool .form-input { width: 100%; padding: 0.8em; border: 2px solid #EAE3D5; border-radius: 0.5em; font-size: 1em; margin-bottom: 1em; background: #fff; }
+    .resize-a4-tool .process-btn { background: #228B22; color: #fff; border: none; border-radius: 0.5em; padding: 1em 2em; font-weight: 600; cursor: pointer; transition: all 0.2s; width: 100%; font-size: 1.1em; }
+    .resize-a4-tool .process-btn:hover { background: #1e7e1e; }
+    .resize-a4-tool .clear-btn { background: #6c757d; color: #fff; border: none; border-radius: 0.5em; padding: 0.8em 1.5em; font-weight: 600; cursor: pointer; transition: all 0.2s; margin-left: 1em; }
+    .resize-a4-tool .clear-btn:hover { background: #5a6268; }
+    .resize-a4-tool .output-preview { background: #FDFBF5; border-radius: 0.7em; padding: 1.2em; text-align: center; margin: 2em 0; border: 1px solid #FFEAA7; display: none; }
+    .resize-a4-tool .output-preview h3 { color: #4682B4; margin-bottom: 1em; font-weight: 600; }
+    .resize-a4-tool .preview-image { max-width: 100%; max-height: 300px; border-radius: 0.5em; margin: 1em 0; border: 2px solid #EAE3D5; }
+    .resize-a4-tool .output-card { display: none; margin-top: 1.5em; }
+    .resize-a4-tool .btn-download { background: #228B22; color: #fff; border: none; border-radius: 0.5em; padding: 1em 2em; font-weight: 600; cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-block; margin-right: 1em; font-size: 1.1em; }
+    .resize-a4-tool .btn-download:hover { background: #1e7e1e; color: #fff; text-decoration: none; }
+    .resize-a4-tool .related-links { margin-top: 2em; font-size: 1em; }
+    .resize-a4-tool .related-links a { color: #D9534F; text-decoration: underline; margin-right: 1.2em; }
+    .resize-a4-tool .related-links a:hover { color: #4682B4; }
+    .resize-a4-tool .example-section { background: #FDFBF5; border: 1px solid #FFEAA7; border-radius: 0.7em; padding: 1.2em; margin: 2em 0; }
+    .resize-a4-tool .example-section h3 { color: #4682B4; margin-bottom: 1em; }
+    .resize-a4-tool .feature-list { background: #FDFBF5; border-radius: 0.7em; padding: 1.2em; margin: 2em 0; border: 1px solid #FFEAA7; }
+    .resize-a4-tool .feature-list h3 { color: #4682B4; margin-bottom: 1em; font-weight: 600; }
+    .resize-a4-tool .feature-list ul { list-style: none; padding: 0; }
+    .resize-a4-tool .feature-list li { color: #333; margin-bottom: 0.7em; padding-left: 1.5em; position: relative; }
+    .resize-a4-tool .feature-list li:before { content: "✓"; color: #4682B4; font-weight: bold; position: absolute; left: 0; }
+    .resize-a4-tool .step-list { margin: 1.2em 0 1.2em 1.2em; padding: 0; }
+    .resize-a4-tool .step-list li { margin-bottom: 0.7em; color: #666; }
+    .resize-a4-tool .step-list li strong { color: #4682B4; }
+    .resize-a4-tool .recent-tools { margin: 1em 0; padding: 1.2em; background: #FDFBF5; border-radius: 0.7em; font-size: 0.95em; border: 1px solid #FFEAA7; }
+    .resize-a4-tool .recent-tools strong { color: #4682B4; }
+    .resize-a4-tool .recent-tools a { color: #D9534F; text-decoration: none; margin: 0 0.5em; }
+    .resize-a4-tool .recent-tools a:hover { color: #4682B4; text-decoration: underline; }
+    .resize-a4-tool .recent-tools-list { margin-left: 0.5em; }
+    .resize-a4-tool .sr-only { position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden; }
+    .resize-a4-tool .instructions { background: #FFF3CD; border: 1px solid #FFD700; border-radius: 0.7em; padding: 1em; margin-bottom: 1.2em; color: #B8860B; font-weight: bold; font-size: 1.1em; }
+    .resize-a4-tool .tool-description h2 { color: #4682B4; margin-bottom: 1em; }
+    @media (max-width: 600px) { 
+      .resize-a4-tool .reduce-size-container { padding: 1em 0.2em; }
+      .resize-a4-tool .recent-tools { padding: 1em; }
+      .resize-a4-tool .recent-tools-list { display: flex; flex-wrap: wrap; gap: 0.5em; margin-top: 0.5em; }
+      .resize-a4-tool .color-control { padding: 0.8em; }
+    }
+  </style>
+</head>
+<body>
+<main>
+  <div class="resize-a4-tool">
+    <div class="reduce-size-container">
+      <header>
+        <h1 style="font-family: 'Caveat', cursive; font-size: 3em; color: #FF6B6B; margin-bottom: 0.5em;">Resize Image to A4 (210mm × 297mm)</h1>
+        <p style="font-size:1.2em; margin-bottom:1em;">Resize your photo to an exact A4 canvas. Fast, privacy-first, and precise. No files are stored.</p>
+      </header>
+
+      <div style="margin-bottom: 1.5em;">
+        <span style="color: #666;">Related:</span>
+        <a href="#image-compressor" style="color: #FF6B6B; text-decoration: none; margin: 0 0.5em;">Image Compressor</a>
+        <a href="#image-converter" style="color: #FF6B6B; text-decoration: none; margin: 0 0.5em;">Image Converter</a>
+        <a href="#grayscale-image" style="color: #FF6B6B; text-decoration: none; margin: 0 0.5em;">Grayscale Image</a>
+        <a href="#watermark-images" style="color: #FF6B6B; text-decoration: none; margin: 0 0.5em;">Watermark Images</a>
+      </div>
+
+      <div style="background:#FFF3CD; border:1px solid #FFD700; border-radius:0.7em; padding:1em; margin-bottom:1.2em; color:#B8860B; font-weight:bold; font-size:1.1em;">
+        📏 <b>Resize photos to an exact A4 canvas with centered fit.</b> Ideal for documents, posters, and print layouts.
+      </div>
+
+      <section aria-labelledby="instructions-title" style="background: #F8FBFF; border-radius: 0.7em; padding: 1.5em; margin: 2em 0; border: 1px solid #4682B4;">
+        <h2 id="instructions-title" style="color:#4682B4; margin-bottom: 1em; font-size: 1.5em;">How to Use</h2>
+        <ol class="step-list" style="margin-left: 1.5em; line-height: 1.6;">
+          <li><strong style="color: #4682B4">Upload Your Photo:</strong>
+            <ul style="margin: 0.5em 0 0.5em 1.5em; color: #666;">
+              <li>Drag & drop your image into the upload area</li>
+              <li>Or click "Choose File" to browse</li>
+              <li>Supports JPG, PNG, and common formats</li>
+            </ul>
+          </li>
+          <li><strong style="color: #4682B4">Resize:</strong>
+            <ul style="margin: 0.5em 0 0.5em 1.5em; color: #666;">
+              <li>Click "Resize Image" to generate the result</li>
+              <li>Preview updates instantly</li>
+            </ul>
+          </li>
+          <li><strong style="color: #4682B4">Save Your Image:</strong>
+            <ul style="margin: 0.5em 0 0.5em 1.5em; color: #666;">
+              <li>Click "Download" to save your resized photo</li>
+              <li>High-quality PNG output</li>
+              <li>No watermarks added</li>
+            </ul>
+          </li>
+        </ol>
+      </section>
+
+      <section class="example-section" style="background: #FDFBF5; border: 1px solid #FFEAA7; border-radius: 0.7em; padding: 1.5em; margin: 2em 0;">
+        <h3 style="color: #4682B4; margin-bottom: 1em;">Usage Guide & Examples</h3>
+        <div style="margin-bottom: 1.5em;">
+          <h4 style="color: #FF6B6B; margin-bottom: 0.5em;">🧩 Common Uses</h4>
+          <ul style="color: #666; margin-left: 1.2em;">
+            <li>Printable documents and forms</li>
+            <li>Flyers, posters, and cover sheets</li>
+            <li>Report inserts and portfolios</li>
+            <li>Letterheads and branded layouts</li>
+          </ul>
+        </div>
+        <div style="margin-bottom: 1.5em;">
+          <h4 style="color: #FF6B6B; margin-bottom: 0.5em;">🎯 Output Details</h4>
+          <ul style="color: #666; margin-left: 1.2em;">
+            <li>Canvas: A4 (210mm × 297mm) at 96 DPI</li>
+            <li>Approx. pixels: 793 × 1123</li>
+            <li>Centered fit with white background</li>
+            <li>PNG output for clean edges</li>
+          </ul>
+        </div>
+        <div>
+          <h4 style="color: #FF6B6B; margin-bottom: 0.5em;">💡 Pro Tips</h4>
+          <ul style="color: #666; margin-left: 1.2em;">
+            <li>Keep margins for printers (avoid edge bleed unless required)</li>
+            <li>Use high-resolution sources to avoid pixelation at print size</li>
+            <li>Prefer vector graphics for logos and text where possible</li>
+          </ul>
+        </div>
+      </section>
+
+      <section style="margin-top: 2em;">
+        <h2 style="color:#FF6B6B; margin-bottom: 0.5em;">Privacy Notice</h2>
+        <div style="background: #FFF3CD; border: 1px solid #FFD700; border-radius: 0.7em; padding: 1em; margin-bottom: 1.2em; color: #B8860B;">
+          <strong style="font-size: 1.1em;">🔒 Your files are never uploaded or stored. All processing happens in your browser.</strong>
+        </div>
+      </section>
+
+      <div class="tool-interface">
+        <div class="upload-area" id="upload-area" tabindex="0" aria-label="Upload photo area. Drag and drop or click to select a photo.">
+          <div class="upload-icon" aria-hidden="true">🖼️</div>
+          <h3>Drag & Drop your photo here</h3>
+          <p>or click to browse files</p>
+          <input type="file" id="file-input" class="file-input" accept="image/*">
+          <button class="upload-btn" id="choose-file-btn">Choose File</button>
+          <div id="upload-progress-bar" style="display:none; width:100%; background:#F0F8FF; border-radius:0.5em; margin-top:1.2em; height:1.5em; overflow:hidden; border:1px solid #B0C4DE; position:relative;">
+            <div id="upload-progress-fill" style="height:100%; width:0; background:linear-gradient(90deg,#D9534F,#F0AD4E,#5BC0DE,#5CB85C,#A569BD); transition:width 0.2s;"></div>
+            <span id="upload-progress-text" style="position:absolute; left:50%; top:0; transform:translateX(-50%); color:#333; font-weight:600; line-height:1.5em; font-size:1em;">Uploading: 0%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="image-description" id="image-description" style="display: none; background: #E8F5E8; border: 2px solid #5CB85C; border-radius: 0.7em; padding: 1.2em; margin: 1.5em 0; text-align: center;">
+        <div style="font-size: 1.5em; color: #228B22; margin-bottom: 0.5em;">📸</div>
+        <div style="font-size: 1.1em; color: #228B22; font-weight: 600; margin-bottom: 0.5em;">Image Uploaded Successfully!</div>
+        <div style="color: #666; font-size: 0.95em;" id="image-info">Ready for A4 resizing</div>
+      </div>
+
+      <div class="preview-section" id="preview-section">
+        <h3>Uploaded Image <button class="clear-btn" id="clear-btn">Clear</button></h3>
+        <img id="preview-image" class="uploaded-preview" alt="Uploaded preview">
+      </div>
+
+      <div class="controls-section" id="controls-section">
+        <h3>Resize Settings</h3>
+        <div class="form-group">
+          <button class="process-btn" id="process-btn">Resize Image to A4</button>
+        </div>
+      </div>
+
+      <div class="output-preview" id="output-preview">
+        <h3>Result Preview</h3>
+        <img id="result-image" class="preview-image" alt="Resized result preview" />
+        
+        <div class="output-card" id="output-card">
+          <a href="#" class="btn-download" id="download-link" download="resized-a4.png">Download Resized Image</a>
+          <button class="clear-btn" id="download-clear-btn">Start Over</button>
+        </div>
+      </div>
+
+      <div class="feature-list" style="background: #F8F9FA; border-radius: 0.7em; padding: 1.2em; margin: 1.5em 0;">
+        <h2 style="color: #4682B4; margin-bottom: 1em;">Key Features</h2>
+        <ul>
+          <li>Exact A4 canvas (210mm × 297mm)</li>
+          <li>Centered fit with background fill</li>
+          <li>High-quality PNG output</li>
+          <li>Privacy-first - no uploads stored</li>
+          <li>Works on all devices</li>
+        </ul>
+      </div>
+
+      <nav class="recent-tools" aria-label="Recently used tools" style="background: #F8F9FA; border-radius: 0.7em; padding: 1.2em; margin: 1.5em 0;">
+        <strong>Recent Tools:</strong>
+        <div class="recent-tools-list" style="display: inline-block;">
+          <a href="/client/tools/image/black-white-image.html">Black & White Image</a>
+          <a href="/client/tools/image/image-color-picker.html">Color Picker</a>
+          <a href="/client/tools/image/grayscale-image.html">Grayscale</a>
+          <span class="separator" style="margin: 0 0.5em; color: #999;">•</span>
+          <a href="#" id="clear-recent" style="color: #D9534F; font-size: 0.9em;">Clear History</a>
+        </div>
+      </nav>
+    </div>
+  </div>
+</main>
+
+<script>
+(function() {
+  'use strict';
+  
+  const MM_PER_INCH = 25.4;
+  const DPI = 96; // match project baseline unless specified otherwise
+  const RECENT_TOOLS_KEY = 'recentImageTools';
+  const MAX_RECENT_TOOLS = 4;
+
+  let uploadedImage = null;
+  let canvas = null;
+  let ctx = null;
+  let isInitialized = false;
+  let isProcessing = false;
+
+  window.initializeResizeA4Tool = function() { reset(); init(); };
+
+  function reset() {
+    uploadedImage = null;
+    canvas = null;
+    ctx = null;
+    isProcessing = false;
+    isInitialized = false;
+
+    const elements = {
+      uploadArea: document.getElementById('upload-area'),
+      previewSection: document.getElementById('preview-section'),
+      controlsSection: document.getElementById('controls-section'),
+      outputPreview: document.getElementById('output-preview'),
+      imageDescription: document.getElementById('image-description'),
+      fileInput: document.getElementById('file-input'),
+      outputCard: document.getElementById('output-card'),
+      resultImage: document.getElementById('result-image')
+    };
+
+    if (elements.uploadArea) elements.uploadArea.style.display = 'block';
+    if (elements.previewSection) elements.previewSection.style.display = 'none';
+    if (elements.controlsSection) elements.controlsSection.style.display = 'none';
+    if (elements.outputPreview) elements.outputPreview.style.display = 'none';
+    if (elements.imageDescription) elements.imageDescription.style.display = 'none';
+    if (elements.outputCard) elements.outputCard.style.display = 'none';
+
+    if (elements.fileInput) elements.fileInput.value = '';
+    if (elements.resultImage) elements.resultImage.src = '';
+  }
+
+  function init() {
+    if (isInitialized) return;
+
+    const uploadArea = document.getElementById('upload-area');
+    const fileInput = document.getElementById('file-input');
+    const chooseFileBtn = document.getElementById('choose-file-btn');
+    const processBtn = document.getElementById('process-btn');
+
+    if (!uploadArea || !fileInput || !chooseFileBtn || !processBtn) { setTimeout(init, 100); return; }
+
+    [uploadArea, fileInput, chooseFileBtn, processBtn].forEach(el => { if (el && el.parentNode) { const newEl = el.cloneNode(true); el.parentNode.replaceChild(newEl, el); } });
+
+    const newUploadArea = document.getElementById('upload-area');
+    const newFileInput = document.getElementById('file-input');
+    const newChooseFileBtn = document.getElementById('choose-file-btn');
+    const newProcessBtn = document.getElementById('process-btn');
+
+    if (newChooseFileBtn) newChooseFileBtn.onclick = function(e) { e.preventDefault(); if (!isProcessing) newFileInput.click(); };
+
+    if (newUploadArea) {
+      newUploadArea.onclick = function(e) { if (e.target !== newChooseFileBtn && !isProcessing) newFileInput.click(); };
+      newUploadArea.ondragover = function(e) { e.preventDefault(); if (!isProcessing) { newUploadArea.style.backgroundColor = '#F0F8FF'; newUploadArea.style.borderColor = '#4682B4'; } };
+      newUploadArea.ondragleave = function() { newUploadArea.style.backgroundColor = '#FDFBF5'; newUploadArea.style.borderColor = '#D9534F'; };
+      newUploadArea.ondrop = function(e) { e.preventDefault(); newUploadArea.style.backgroundColor = '#FDFBF5'; newUploadArea.style.borderColor = '#D9534F'; if (!isProcessing && e.dataTransfer.files.length > 0) startUploadProgress(e.dataTransfer.files[0]); };
+    }
+
+    if (newFileInput) newFileInput.onchange = function(e) { if (e.target.files.length > 0) { const file = e.target.files[0]; if (!isProcessing) startUploadProgress(file); e.target.value = ''; } };
+
+    if (newProcessBtn) newProcessBtn.onclick = processImage;
+
+    ['clear-btn', 'download-clear-btn'].forEach(id => { const btn = document.getElementById(id); if (btn) btn.onclick = reset; });
+
+    const downloadLink = document.getElementById('download-link');
+    if (downloadLink) downloadLink.onclick = function(e) { if (!uploadedImage) { e.preventDefault(); alert('Please process an image first'); } };
+
+    isInitialized = true;
+  }
+
+  function startUploadProgress(file) {
+    if (isProcessing) return;
+    const uploadProgressBar = document.getElementById('upload-progress-bar');
+    const uploadProgressFill = document.getElementById('upload-progress-fill');
+    const uploadProgressText = document.getElementById('upload-progress-text');
+
+    if (!uploadProgressBar || !uploadProgressFill || !uploadProgressText) { handleFile(file); return; }
+
+    const previewSection = document.getElementById('preview-section');
+    const controlsSection = document.getElementById('controls-section');
+    const outputPreview = document.getElementById('output-preview');
+    if (previewSection) previewSection.style.display = 'none';
+    if (controlsSection) controlsSection.style.display = 'none';
+    if (outputPreview) outputPreview.style.display = 'none';
+
+    uploadProgressBar.style.display = 'block';
+    uploadProgressFill.style.width = '0%';
+    uploadProgressText.textContent = 'Uploading: 0%';
+
+    let percent = 0;
+    const duration = 800 + Math.random() * 400;
+    const start = Date.now();
+    function animate() {
+      percent = Math.min(100, Math.round(((Date.now() - start) / duration) * 100));
+      uploadProgressFill.style.width = percent + '%';
+      uploadProgressText.textContent = 'Uploading: ' + percent + '%';
+      if (percent < 100) { requestAnimationFrame(animate); } else { setTimeout(() => { uploadProgressBar.style.display = 'none'; handleFile(file); }, 200); }
+    }
+    animate();
+  }
+
+  function handleFile(file) {
+    if (isProcessing) return;
+
+    isProcessing = true;
+
+    if (!file.type.startsWith('image/')) { alert('❌ Please select a valid image file (JPEG, PNG, etc.).'); isProcessing = false; return; }
+    if (file.size > 10 * 1024 * 1024) { alert('❌ File size must be less than 10 MB.'); isProcessing = false; return; }
+
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      uploadedImage = new Image();
+      uploadedImage.onload = function() {
+        const previewImage = document.getElementById('preview-image');
+        const imageInfo = document.getElementById('image-info');
+        const imageDescription = document.getElementById('image-description');
+
+        previewImage.src = e.target.result;
+        if (imageInfo) { const fileSize = (file.size / 1024).toFixed(1); imageInfo.textContent = `${file.name} (${fileSize} KB) - Ready for A4 resizing`; }
+
+        document.getElementById('preview-section').style.display = 'block';
+        document.getElementById('controls-section').style.display = 'block';
+        document.getElementById('upload-area').style.display = 'none';
+        if (imageDescription) imageDescription.style.display = 'block';
+
+        isProcessing = false;
+      };
+      uploadedImage.onerror = function(err) { alert('Error loading image. Please try a different file.'); isProcessing = false; };
+      uploadedImage.src = e.target.result;
+    };
+    reader.onerror = function(err) { alert('Error reading file. Please try again.'); isProcessing = false; };
+    reader.readAsDataURL(file);
+  }
+
+  function processImage() {
+    if (!uploadedImage) { alert('❌ Please upload an image first'); return; }
+    if (isProcessing) return;
+    isProcessing = true;
+
+    try {
+      if (!uploadedImage.complete || uploadedImage.naturalWidth === 0) throw new Error('Image not loaded properly. Please try uploading again.');
+
+      canvas = document.createElement('canvas');
+      ctx = canvas.getContext('2d');
+      if (!ctx) throw new Error('Could not get canvas context. Please try a different browser.');
+
+      // A4: 210mm × 297mm at 96 DPI -> inch = mm/25.4
+      const widthInches = 210 / MM_PER_INCH;
+      const heightInches = 297 / MM_PER_INCH;
+      const targetWidth = Math.round(widthInches * DPI);
+      const targetHeight = Math.round(heightInches * DPI);
+
+      canvas.width = targetWidth;
+      canvas.height = targetHeight;
+
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      const scale = Math.min(targetWidth / uploadedImage.width, targetHeight / uploadedImage.height);
+      const scaledWidth = Math.round(uploadedImage.width * scale);
+      const scaledHeight = Math.round(uploadedImage.height * scale);
+      const x = Math.round((targetWidth - scaledWidth) / 2);
+      const y = Math.round((targetHeight - scaledHeight) / 2);
+
+      ctx.drawImage(uploadedImage, x, y, scaledWidth, scaledHeight);
+
+      showResult();
+
+      const successMsg = document.createElement('div');
+      successMsg.style.cssText = 'background: #E8F5E8; border: 2px solid #5CB85C; border-radius: 0.7em; padding: 1.2em; margin: 1.5em 0; text-align: center; animation: fadeIn 0.5s ease-in;';
+      successMsg.innerHTML = `
+        <div style=\"font-size: 1.5em; color: #228B22; margin-bottom: 0.5em;\">✅</div>
+        <div style=\"font-size: 1.1em; color: #228B22; font-weight: 600; margin-bottom: 0.5em;\">Success!</div>
+        <div style=\"color: #666; font-size: 0.95em;\">Image resized to <b>A4 (210mm × 297mm)</b>. Click the download button below to save your image.</div>
+      `;
+      const outputPreview = document.getElementById('output-preview');
+      outputPreview.insertBefore(successMsg, document.getElementById('output-card'));
+
+      if (!document.getElementById('success-animation-style')) {
+        const style = document.createElement('style');
+        style.id = 'success-animation-style';
+        style.textContent = ` @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } } `;
+        document.head.appendChild(style);
+      }
+
+    } catch (error) {
+      const errorMsg = document.createElement('div');
+      errorMsg.style.cssText = 'background: #FFE8E8; border: 2px solid #DC3545; border-radius: 0.7em; padding: 1.2em; margin: 1.5em 0; text-align: center; animation: fadeIn 0.5s ease-in;';
+      errorMsg.innerHTML = `
+        <div style=\"font-size: 1.5em; color: #DC3545; margin-bottom: 0.5em;\">❌</div>
+        <div style=\"font-size: 1.1em; color: #DC3545; font-weight: 600; margin-bottom: 0.5em;\">Error</div>
+        <div style=\"color: #666; font-size: 0.95em;\">${error.message || 'An error occurred while processing the image. Please try again.'}</div>
+      `;
+      const outputPreview = document.getElementById('output-preview');
+      const existingError = outputPreview.querySelector('[style*=\"background: #FFE8E8\"]');
+      if (existingError) existingError.remove();
+      outputPreview.insertBefore(errorMsg, document.getElementById('output-card'));
+      outputPreview.style.display = 'block';
+    } finally {
+      isProcessing = false;
+    }
+  }
+
+  function showResult() {
+    const resultImage = document.getElementById('result-image');
+    const outputPreview = document.getElementById('output-preview');
+    const outputCard = document.getElementById('output-card');
+    const downloadLink = document.getElementById('download-link');
+
+    let dataURL;
+    try { dataURL = canvas.toDataURL('image/png'); } catch (error) { alert('Failed to create image. The image might be too large.'); return; }
+
+    resultImage.src = dataURL;
+    downloadLink.href = dataURL;
+    downloadLink.download = 'resized-a4.png';
+
+    const existingSuccess = outputPreview.querySelector('[style*="background: #E8F5E8"]');
+    if (existingSuccess) existingSuccess.remove();
+
+    outputPreview.style.display = 'block';
+    outputCard.style.display = 'block';
+  }
+
+  function initRecentTools() {
+    const clearRecentBtn = document.getElementById('clear-recent');
+    if (clearRecentBtn) clearRecentBtn.onclick = function(e) { e.preventDefault(); localStorage.removeItem(RECENT_TOOLS_KEY); updateRecentToolsList(); };
+
+    const currentToolData = { name: 'Resize A4', url: window.location.pathname };
+    addToRecentTools(currentToolData);
+    updateRecentToolsList();
+  }
+
+  function addToRecentTools(toolData) {
+    let recentTools = JSON.parse(localStorage.getItem(RECENT_TOOLS_KEY) || '[]');
+    recentTools = recentTools.filter(tool => tool.url !== toolData.url);
+    recentTools.unshift(toolData);
+    recentTools = recentTools.slice(0, MAX_RECENT_TOOLS);
+    localStorage.setItem(RECENT_TOOLS_KEY, JSON.stringify(recentTools));
+  }
+
+  function updateRecentToolsList() {
+    const recentToolsList = document.querySelector('.recent-tools-list');
+    if (!recentToolsList) return;
+
+    const recentTools = JSON.parse(localStorage.getItem(RECENT_TOOLS_KEY) || '[]');
+    if (recentTools.length === 0) { recentToolsList.innerHTML = '<span style="color: #666;">No recent tools</span>'; return; }
+
+    const toolLinks = recentTools
+      .filter(tool => tool.url !== window.location.pathname)
+      .map(tool => `<a href="${tool.url}">${tool.name}</a>`)
+      .join('<span class="separator" style="margin: 0 0.5em; color: #999;">•</span>');
+
+    recentToolsList.innerHTML = toolLinks + '<span class="separator" style="margin: 0 0.5em; color: #999;">•</span>' + '<a href="#" id="clear-recent" style="color: #D9534F; font-size: 0.9em;">Clear History</a>';
+
+    const clearRecent = document.getElementById('clear-recent');
+    if (clearRecent) clearRecent.onclick = function(e) { e.preventDefault(); localStorage.removeItem(RECENT_TOOLS_KEY); updateRecentToolsList(); };
+  }
+
+  const originalInit = init;
+  init = function() { originalInit(); initRecentTools(); };
+
+  if (document.readyState !== 'loading') { setTimeout(init, 50); }
+  else { document.addEventListener('DOMContentLoaded', function() { setTimeout(init, 50); }); }
+
+})();
+</script>
+</body>
+</html>

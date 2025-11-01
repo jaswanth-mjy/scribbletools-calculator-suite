@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mortgage Calculator - Free Home Loan Tool | Calculate Mortgage Payments</title>
+    <meta name="description" content="Free mortgage calculator to calculate home loan payments and view amortization schedule. Calculate monthly payments, total interest, and payment breakdown for your mortgage.">
+    <meta name="keywords" content="mortgage calculator, home loan calculator, mortgage payment, PITI calculator, mortgage amortization, home affordability">
+    <meta name="author" content="ScribbleTools">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://scribbletools.in/client/tools/financial/mortgage-calculator.html">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://scribbletools.in/client/tools/financial/mortgage-calculator.html">
+    <meta property="og:title" content="Mortgage Calculator - Free Home Loan Tool">
+    <meta property="og:description" content="Calculate mortgage payments and view amortization schedule. Free tool for home loans, refinancing, and mortgage planning.">
+    <meta property="og:image" content="https://scribbletools.in/assets/og-image.svg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://scribbletools.in/client/tools/financial/mortgage-calculator.html">
+    <meta property="twitter:title" content="Mortgage Calculator - Free Home Loan Tool">
+    <meta property="twitter:description" content="Calculate mortgage payments and view amortization schedule. Free tool for home loans and refinancing.">
+    <meta property="twitter:image" content="https://scribbletools.in/assets/og-image.svg">
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Mortgage Calculator",
+      "description": "Free online mortgage calculator to calculate home loan payments and view payment schedule",
+      "url": "https://scribbletools.in/client/tools/financial/mortgage-calculator.html",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Web Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "ScribbleTools"
+      }
+    }
+    </script>
+    <style>
+        body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; }
+        .calc-container { max-width: 420px; margin: 3em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2em 1.5em 2.5em 1.5em; }
+        .handwritten { font-family: 'Caveat', cursive; }
+        .calc-label { font-weight: 600; margin-bottom: 0.5em; display: block; }
+        .calc-input { width: 100%; padding: 1em; border: 2px solid #EAE3D5; border-radius: 0.7em; font-size: 1.2em; margin-bottom: 1em; background: #FDFBF5; text-align: center; font-family: 'Fira Code', monospace; }
+        .calc-btn { background: #fff; color: #D9534F; border: 2px solid #D9534F; border-radius: 0.5em; padding: 0.7em 2em; font-weight: 600; font-size: 1.1em; cursor: pointer; transition: all 0.2s; margin-bottom: 1em; }
+        .calc-btn:hover { background: #D9534F; color: #fff; }
+        .calc-result { background: #FDFBF5; border: 2px solid #D9534F; border-radius: 0.7em; padding: 1em; font-size: 1.25em; color: #D9534F; min-height: 1.7em; margin-bottom: 1em; text-align: center; font-family: 'Fira Code', monospace; font-weight: bold; max-height: 300px; overflow-y: auto; word-break: break-word; transition: height 0.2s; }
+        .calc-desc { width: 100%; margin-top: 2em; background:#FDFBF5; border:2px solid #EAE3D5; border-radius:0.9em; padding:1.2em 1em; font-size:1.08em; color:#333; line-height:1.7; }
+        .calc-desc strong { color: #D9534F; font-size: 1.12em; }
+        @media (max-width: 600px) { .calc-container { padding: 1em 0.2em; } }
+        .amort-table { width: 100%; border-collapse: collapse; margin-top: 1em; font-size: 0.9em; }
+        .amort-table th, .amort-table td { padding: 0.5em; text-align: center; border-bottom: 1px solid #EAE3D5; }
+        .amort-table th { background: #D9534F; color: white; }
+        .amort-table tr:nth-child(even) { background: #FDFBF5; }
+        .download-btn { background: #5cb85c; color: white; border: 2px solid #5cb85c; }
+        .download-btn:hover { background: #4cae4c; border-color: #4cae4c; }
+        .info-message { background: #d9edf7; color: #31708f; border: 1px solid #bce8f1; border-radius: 0.5em; padding: 0.8em; margin-bottom: 1em; font-size: 0.95em; }
+        .toggle-section { margin-top: 1em; margin-bottom: 1em; }
+        .toggle-btn { background: #f0ad4e; color: white; border: 2px solid #f0ad4e; font-size: 0.9em; padding: 0.5em 1em; }
+        .toggle-btn:hover { background: #ec971f; border-color: #ec971f; }
+        .advanced-options { display: none; margin-top: 1em; padding: 1em; background: #FDFBF5; border: 1px solid #EAE3D5; border-radius: 0.7em; }
+        .down-payment-inputs { display: flex; gap: 0.5em; }
+        .down-payment-inputs .calc-input { flex: 1; margin-bottom: 0.5em; }
+        .payment-breakdown { display: flex; flex-wrap: wrap; gap: 0.5em; margin-top: 0.5em; }
+        .payment-item { flex: 1; min-width: 45%; background: white; padding: 0.5em; border-radius: 0.5em; border: 1px solid #EAE3D5; }
+    </style>
+</head>
+<body>
+<div class="calc-container">
+    <h2 class="handwritten text-5xl text-[#D9534F] mb-4">Mortgage Calculator</h2>
+    <label class="calc-label">Home Price ($):</label>
+    <input id="homePrice" class="calc-input" type="number" min="0" placeholder="e.g. 350000">
+    
+    <label class="calc-label">Down Payment:</label>
+    <div class="down-payment-inputs">
+        <input id="downPaymentPercent" class="calc-input" type="number" min="0" max="100" step="0.1" placeholder="e.g. 20%">
+        <input id="downPaymentAmount" class="calc-input" type="number" min="0" placeholder="e.g. 70000">
+    </div>
+    
+    <label class="calc-label">Loan Term (years):</label>
+    <input id="loanTerm" class="calc-input" type="number" min="1" placeholder="e.g. 30">
+    <label class="calc-label">Interest Rate (%):</label>
+    <input id="interestRate" class="calc-input" type="number" min="0" step="0.01" placeholder="e.g. 4.5">
+    
+    <div class="toggle-section">
+        <button id="toggleAdvanced" class="calc-btn toggle-btn">Show Advanced Options</button>
+        <div id="advancedOptions" class="advanced-options">
+            <label class="calc-label">Annual Property Tax ($):</label>
+            <input id="propertyTax" class="calc-input" type="number" min="0" placeholder="e.g. 3500">
+            <label class="calc-label">Annual Home Insurance ($):</label>
+            <input id="homeInsurance" class="calc-input" type="number" min="0" placeholder="e.g. 1200">
+            <label class="calc-label">Monthly HOA Fees ($):</label>
+            <input id="hoaFees" class="calc-input" type="number" min="0" placeholder="e.g. 150">
+            <label class="calc-label">PMI Rate (%):</label>
+            <input id="pmiRate" class="calc-input" type="number" min="0" step="0.01" placeholder="e.g. 0.5">
+        </div>
+    </div>
+    
+    <button id="calc-btn" class="calc-btn">Calculate</button>
+    <div id="info-message" class="info-message" style="display: none;"></div>
+    <button id="download-btn" class="calc-btn download-btn" style="display: none;">Download Excel Schedule</button>
+    <div class="calc-result" id="calc-result"></div>
+</div>
+<div class="calc-desc" style="max-width: fit-content; margin: 2.5em auto 0 auto;">
+    <strong style="font-size:1.18em; color:#D9534F;">About the Mortgage Calculator</strong><br><br>
+    
+    The Mortgage Calculator helps you estimate your monthly mortgage payments and understand the total cost of homeownership. This essential tool is perfect for home buyers, refinancers, and anyone planning to purchase a property.<br><br>
+    
+    <strong style="color:#D9534F;">How Mortgages Work:</strong><br>
+    A mortgage is a loan specifically for purchasing real estate. The loan is secured by the property itself, meaning the lender can foreclose if you fail to make payments. Mortgage payments typically include principal, interest, taxes, and insurance (PITI).<br><br>
+    
+    <strong style="color:#D9534F;">How to Use This Calculator:</strong><br>
+    <ol style="margin-left:1.2em; line-height:1.6;">
+        <li><strong>Home Price:</strong> Enter the total purchase price of the property</li>
+        <li><strong>Down Payment:</strong> Enter either the percentage or amount (the other will auto-calculate)</li>
+        <li><strong>Loan Term:</strong> Enter the mortgage term in years (typically 15 or 30 years)</li>
+        <li><strong>Interest Rate:</strong> Enter the annual mortgage interest rate</li>
+        <li><strong>Advanced Options (Optional):</strong> Include property taxes, insurance, HOA fees, and PMI</li>
+        <li><strong>Click Calculate:</strong> View your monthly payment and complete mortgage schedule</li>
+        <li><strong>Download Excel Schedule:</strong> Get the full payment schedule for your records</li>
+    </ol><br>
+    
+    <strong style="color:#D9534F;">What You'll Discover:</strong><br>
+    <ul style="margin-left:1.2em; line-height:1.6;">
+        <li><strong>Monthly Payment:</strong> Your total monthly mortgage payment (PITI)</li>
+        <li><strong>Payment Breakdown:</strong> How much goes to principal, interest, taxes, and insurance</li>
+        <li><strong>Total Payment:</strong> Total amount paid over the life of the mortgage</li>
+        <li><strong>Total Interest:</strong> Total interest paid over the mortgage term</li>
+        <li><strong>PMI Impact:</strong> How private mortgage insurance affects your payments</li>
+    </ul><br>
+    
+    <strong style="color:#D9534F;">Perfect For:</strong><br>
+    <ul style="margin-left:1.2em; line-height:1.6;">
+        <li><strong>Home Buyers:</strong> Calculating affordability and comparing mortgage options</li>
+        <li><strong>Refinancers:</strong> Evaluating if refinancing will save money</li>
+        <li><strong>Real Estate Investors:</strong> Analyzing potential investment properties</li>
+        <li><strong>First-Time Buyers:</strong> Understanding all components of a mortgage payment</li>
+        <li><strong>Financial Planners:</strong> Helping clients budget for homeownership</li>
+    </ul><br>
+    
+    <strong style="color:#D9534F;">Pro Tips for Mortgage Planning:</strong><br>
+    <ul style="margin-left:1.2em; line-height:1.6;">
+        <li><strong>Aim for 20% down payment:</strong> Avoids PMI and may qualify you for better rates</li>
+        <li><strong>Compare 15 vs 30-year terms:</strong> 15-year saves interest but has higher payments</li>
+        <li><strong>Consider total housing costs:</strong> Include maintenance, utilities, and repairs</li>
+        <li><strong>Get pre-approved:</strong> Know your budget before house hunting</li>
+        <li><strong>Lock in your rate:</strong> Protect against rate increases while you shop</li>
+    </ul><br>
+    
+    <strong style="color:#D9534F;">Common Mortgage Scenarios:</strong><br>
+    <ul style="margin-left:1.2em; line-height:1.6;">
+        <li><strong>First-Time Home Buyer:</strong> 30-year term with 5-10% down payment and PMI</li>
+        <li><strong>Move-Up Buyer:</strong> 20% down payment on a larger home, avoiding PMI</li>
+        <li><strong>Refinancing:</strong> Lowering interest rate on existing mortgage</li>
+        <li><strong>Investment Property:</strong> Higher interest rate and larger down payment required</li>
+    </ul><br>
+    
+    <b>Note:</b> This calculator provides estimates for planning purposes. Actual mortgage terms may vary based on credit history, lender requirements, location, and other factors. Always consult with mortgage professionals for personalized advice.
+</div>
+<script>
+// Store amortization data globally for download
+let amortizationData = [];
+
+function showResult(str) {
+    document.getElementById('calc-result').innerHTML = str;
+}
+
+function showInfo(message) {
+    const infoElement = document.getElementById('info-message');
+    infoElement.textContent = message;
+    infoElement.style.display = 'block';
+    setTimeout(() => {
+        infoElement.style.display = 'none';
+    }, 3000);
+}
+
+// Toggle advanced options
+document.getElementById('toggleAdvanced').addEventListener('click', function() {
+    const advancedOptions = document.getElementById('advancedOptions');
+    const toggleBtn = document.getElementById('toggleAdvanced');
+    
+    if (advancedOptions.style.display === 'none' || advancedOptions.style.display === '') {
+        advancedOptions.style.display = 'block';
+        toggleBtn.textContent = 'Hide Advanced Options';
+    } else {
+        advancedOptions.style.display = 'none';
+        toggleBtn.textContent = 'Show Advanced Options';
+    }
+});
+
+// Auto-calculate down payment when one field changes
+document.getElementById('downPaymentPercent').addEventListener('input', function() {
+    const homePrice = parseFloat(document.getElementById('homePrice').value) || 0;
+    const percent = parseFloat(this.value) || 0;
+    if (homePrice > 0 && percent > 0) {
+        const amount = homePrice * (percent / 100);
+        document.getElementById('downPaymentAmount').value = amount.toFixed(2);
+    }
+});
+
+document.getElementById('downPaymentAmount').addEventListener('input', function() {
+    const homePrice = parseFloat(document.getElementById('homePrice').value) || 0;
+    const amount = parseFloat(this.value) || 0;
+    if (homePrice > 0 && amount > 0) {
+        const percent = (amount / homePrice) * 100;
+        document.getElementById('downPaymentPercent').value = percent.toFixed(2);
+    }
+});
+
+document.getElementById('homePrice').addEventListener('input', function() {
+    const homePrice = parseFloat(this.value) || 0;
+    const percent = parseFloat(document.getElementById('downPaymentPercent').value) || 0;
+    if (homePrice > 0 && percent > 0) {
+        const amount = homePrice * (percent / 100);
+        document.getElementById('downPaymentAmount').value = amount.toFixed(2);
+    }
+});
+
+document.getElementById('calc-btn').addEventListener('click', function() {
+    let homePrice = parseFloat(document.getElementById('homePrice').value);
+    let downPaymentPercent = parseFloat(document.getElementById('downPaymentPercent').value) || 0;
+    let downPaymentAmount = parseFloat(document.getElementById('downPaymentAmount').value) || 0;
+    let loanTerm = parseInt(document.getElementById('loanTerm').value);
+    let interestRate = parseFloat(document.getElementById('interestRate').value);
+    let propertyTax = parseFloat(document.getElementById('propertyTax').value) || 0;
+    let homeInsurance = parseFloat(document.getElementById('homeInsurance').value) || 0;
+    let hoaFees = parseFloat(document.getElementById('hoaFees').value) || 0;
+    let pmiRate = parseFloat(document.getElementById('pmiRate').value) || 0;
+    
+    if (isNaN(homePrice) || isNaN(loanTerm) || isNaN(interestRate) || 
+        homePrice <= 0 || loanTerm <= 0 || interestRate < 0) {
+        showResult('Please enter valid values for all required fields.');
+        return;
+    }
+    
+    // Ensure we have down payment values
+    if (downPaymentPercent > 0 && downPaymentAmount === 0) {
+        downPaymentAmount = homePrice * (downPaymentPercent / 100);
+    } else if (downPaymentAmount > 0 && downPaymentPercent === 0) {
+        downPaymentPercent = (downPaymentAmount / homePrice) * 100;
+    }
+    
+    // Calculate loan amount
+    let loanAmount = homePrice - downPaymentAmount;
+    
+    if (loanAmount <= 0) {
+        showResult('Down payment cannot be greater than or equal to home price.');
+        return;
+    }
+    
+    // Calculate monthly mortgage components
+    let monthlyRate = interestRate / 100 / 12;
+    let numPayments = loanTerm * 12;
+    let monthlyPrincipalInterest = loanAmount * (monthlyRate * Math.pow(1 + monthlyRate, numPayments)) / 
+                                  (Math.pow(1 + monthlyRate, numPayments) - 1);
+    
+    // Calculate monthly taxes and insurance
+    let monthlyPropertyTax = propertyTax / 12;
+    let monthlyHomeInsurance = homeInsurance / 12;
+    
+    // Calculate PMI (if down payment is less than 20%)
+    let monthlyPMI = 0;
+    let pmiCutoffMonth = 0;
+    if (downPaymentPercent < 20 && pmiRate > 0) {
+        monthlyPMI = loanAmount * (pmiRate / 100) / 12;
+        // Estimate when PMI will be removed (when LTV reaches 80%)
+        pmiCutoffMonth = Math.ceil(Math.log(0.8 / (1 - downPaymentPercent/100)) / Math.log(1 + monthlyRate) / 12);
+    }
+    
+    // Calculate total monthly payment
+    let totalMonthlyPayment = monthlyPrincipalInterest + monthlyPropertyTax + monthlyHomeInsurance + hoaFees + monthlyPMI;
+    
+    // Calculate total payment and total interest
+    let totalPrincipalInterest = monthlyPrincipalInterest * numPayments;
+    let totalInterest = totalPrincipalInterest - loanAmount;
+    let totalPropertyTax = propertyTax * loanTerm;
+    let totalHomeInsurance = homeInsurance * loanTerm;
+    let totalHOA = hoaFees * numPayments;
+    let totalPMI = monthlyPMI * numPayments;
+    let totalPayment = totalPrincipalInterest + totalPropertyTax + totalHomeInsurance + totalHOA + totalPMI;
+    
+    // Generate amortization schedule
+    let balance = loanAmount;
+    amortizationData = []; // Reset data
+    let amortizationHTML = `
+        <div style="margin-bottom: 1em;">
+            <b>Home Price:</b> $${homePrice.toFixed(2)}<br>
+            <b>Down Payment:</b> $${downPaymentAmount.toFixed(2)} (${downPaymentPercent.toFixed(2)}%)<br>
+            <b>Loan Amount:</b> $${loanAmount.toFixed(2)}<br><br>
+            
+            <div class="payment-breakdown">
+                <div class="payment-item">
+                    <b>Principal & Interest:</b><br>
+                    $${monthlyPrincipalInterest.toFixed(2)}
+                </div>
+                <div class="payment-item">
+                    <b>Property Tax:</b><br>
+                    $${monthlyPropertyTax.toFixed(2)}
+                </div>
+                <div class="payment-item">
+                    <b>Home Insurance:</b><br>
+                    $${monthlyHomeInsurance.toFixed(2)}
+                </div>
+                <div class="payment-item">
+                    <b>HOA Fees:</b><br>
+                    $${hoaFees.toFixed(2)}
+                </div>
+                ${monthlyPMI > 0 ? `
+                <div class="payment-item">
+                    <b>PMI:</b><br>
+                    $${monthlyPMI.toFixed(2)}
+                </div>
+                ` : ''}
+            </div>
+            
+            <div style="margin-top: 1em; text-align: center; font-size: 1.1em;">
+                <b>Total Monthly Payment:</b> $${totalMonthlyPayment.toFixed(2)}
+            </div>
+            
+            <div style="margin-top: 1em;">
+                <b>Total Principal & Interest:</b> $${totalPrincipalInterest.toFixed(2)}<br>
+                <b>Total Property Tax:</b> $${totalPropertyTax.toFixed(2)}<br>
+                <b>Total Home Insurance:</b> $${totalHomeInsurance.toFixed(2)}<br>
+                <b>Total HOA Fees:</b> $${totalHOA.toFixed(2)}<br>
+                ${totalPMI > 0 ? `<b>Total PMI:</b> $${totalPMI.toFixed(2)}<br>` : ''}
+                <b>Total Payment:</b> $${totalPayment.toFixed(2)}<br>
+                <b>Total Interest:</b> $${totalInterest.toFixed(2)}
+            </div>
+        </div>
+        <table class="amort-table">
+            <thead>
+                <tr>
+                    <th>Month</th>
+                    <th>Payment</th>
+                    <th>Principal</th>
+                    <th>Interest</th>
+                    <th>Balance</th>
+                </tr>
+            </thead>
+            <tbody>
+    `;
+    
+    for (let month = 1; month <= numPayments; month++) {
+        let interestPayment = balance * monthlyRate;
+        let principalPayment = monthlyPrincipalInterest - interestPayment;
+        
+        // Adjust for last payment to avoid negative balance
+        if (month === numPayments) {
+            principalPayment = balance;
+            monthlyPrincipalInterest = principalPayment + interestPayment;
+        }
+        
+        balance -= principalPayment;
+        
+        // Check if PMI should be removed this month
+        let currentPMI = monthlyPMI;
+        if (pmiCutoffMonth > 0 && month >= pmiCutoffMonth) {
+            currentPMI = 0;
+        }
+        
+        // Store data for Excel download
+        amortizationData.push({
+            month: month,
+            payment: monthlyPrincipalInterest + monthlyPropertyTax + monthlyHomeInsurance + hoaFees + currentPMI,
+            principal: principalPayment,
+            interest: interestPayment,
+            balance: balance < 0 ? 0 : balance,
+            propertyTax: monthlyPropertyTax,
+            homeInsurance: monthlyHomeInsurance,
+            hoaFees: hoaFees,
+            pmi: currentPMI
+        });
+        
+        amortizationHTML += `
+            <tr>
+                <td>${month}</td>
+                <td>$${(monthlyPrincipalInterest + monthlyPropertyTax + monthlyHomeInsurance + hoaFees + currentPMI).toFixed(2)}</td>
+                <td>$${principalPayment.toFixed(2)}</td>
+                <td>$${interestPayment.toFixed(2)}</td>
+                <td>$${balance.toFixed(2)}</td>
+            </tr>
+        `;
+        
+        // Only show first 12 months in the preview
+        if (month === 12 && numPayments > 12) {
+            amortizationHTML += `
+                <tr>
+                    <td colspan="5">... Showing first 12 months of ${numPayments} months ...</td>
+                </tr>
+            `;
+            break;
+        }
+    }
+    
+    amortizationHTML += `
+            </tbody>
+        </table>
+    `;
+    
+    showResult(amortizationHTML);
+    document.getElementById('download-btn').style.display = 'block';
+});
+
+// Download amortization schedule as Excel
+document.getElementById('download-btn').addEventListener('click', function() {
+    if (amortizationData.length === 0) {
+        showInfo('No data available. Please calculate first.');
+        return;
+    }
+    
+    // Create CSV content
+    let csvContent = "data:text/csv;charset=utf-8,";
+    csvContent += "Month,Total Payment,Principal,Interest,Balance,Property Tax,Home Insurance,HOA Fees,PMI\n";
+    
+    amortizationData.forEach(row => {
+        csvContent += `${row.month},${row.payment.toFixed(2)},${row.principal.toFixed(2)},${row.interest.toFixed(2)},${row.balance.toFixed(2)},${row.propertyTax.toFixed(2)},${row.homeInsurance.toFixed(2)},${row.hoaFees.toFixed(2)},${row.pmi.toFixed(2)}\n`;
+    });
+    
+    // Create download link
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", "mortgage_schedule.csv");
+    
+    // Append to body and trigger click
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    
+    showInfo('Mortgage schedule downloaded successfully!');
+});
+</script>
+</body>
+</html>

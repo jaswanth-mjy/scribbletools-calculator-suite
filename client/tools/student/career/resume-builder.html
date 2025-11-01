@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Builder - FREE ATS-Friendly Professional Resume Maker</title>
+    <meta name="description" content="Free ATS-friendly resume builder! Create professional resumes, CV maker, job application templates. Student resume creator, career builder. 100% free!">
+    <meta name="keywords" content="resume builder, ATS resume, professional resume, free resume maker, CV builder, resume creator, job application resume, career builder, student resume, resume generator, ATS-friendly resume, employment resume, hiring resume, interview resume, resume templates, job search resume, career templates, professional CV, resume tool, online resume">
+    <meta name="author" content="Scribble Tools">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://scribbletools.in/client/tools/student/career/resume-builder.html">
+    <meta property="og:title" content="Resume Builder - FREE ATS-Friendly Professional Resume Maker">
+    <meta property="og:description" content="Free ATS-friendly resume builder! Create professional resumes, CV maker, job application templates. Student resume creator, career builder. 100% free!">
+    <meta property="og:image" content="https://scribbletools.in/assets/og-image.svg">
+    <meta property="og:site_name" content="Scribble Tools">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://scribbletools.in/client/tools/student/career/resume-builder.html">
+    <meta property="twitter:title" content="Resume Builder - FREE ATS-Friendly Professional Resume Maker">
+    <meta property="twitter:description" content="Free ATS-friendly resume builder! Create professional resumes, CV maker, job application templates. Student resume creator, career builder. 100% free!">
+    <meta property="twitter:image" content="https://scribbletools.in/assets/og-image.svg">
+    
+    <!-- Additional SEO Meta Tags -->
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Scribble Tools">
+    <meta name="generator" content="Scribble Tools">
+    <meta name="application-name" content="Resume Builder">
+    <meta name="apple-mobile-web-app-title" content="Resume Builder">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#D9534F">
+    <meta name="msapplication-navbutton-color" content="#D9534F">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#D9534F">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://scribbletools.in/client/tools/student/career/resume-builder.html">
+    
+    <!-- Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "ATS-Friendly Resume Builder",
+      "description": "Free professional resume builder with ATS optimization. Create job-ready resumes that pass applicant tracking systems. Perfect for students and professionals.",
+      "url": "https://scribbletools.in/client/tools/student/career/resume-builder.html",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "Any",
+      "permissions": "browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "featureList": [
+        "ATS-friendly resume creation",
+        "Professional templates",
+        "PDF download",
+        "Real-time preview",
+        "Student-friendly interface",
+        "Career optimization",
+        "No registration required",
+        "Free resume builder"
+      ],
+      "provider": {
+        "@type": "Organization",
+        "name": "Scribble Tools",
+        "url": "https://scribbletools.in"
+      }
+    }
+    </script>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Caveat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* CSS Variables for Resume Builder - Multiple scope definitions for maximum compatibility */
+        :root,
+        .resume-builder-root,
+        .resume-builder-main-container,
+        .resume-builder-body,
+        body.resume-builder-body,
+        html {
+            --resume-builder-primary-color: #D9534F !important;
+            --resume-builder-secondary-color: #c9302c !important;
+            --resume-builder-accent-color: #F47068 !important;
+            --resume-builder-success-color: #2E7D32 !important;
+            --resume-builder-warning-color: #F57C00 !important;
+            --resume-builder-error-color: #D32F2F !important;
+            --resume-builder-text-primary: #212121 !important;
+            --resume-builder-text-secondary: #757575 !important;
+            --resume-builder-text-light: #BDBDBD !important;
+            --resume-builder-surface: #FFFFFF !important;
+            --resume-builder-surface-alt: #F5F5F5 !important;
+            --resume-builder-border-color: #E0E0E0 !important;
+            --resume-builder-border-light: #F5F5F5 !important;
+            --resume-builder-shadow-sm: 0 2px 4px rgba(217, 83, 79, 0.1) !important;
+            --resume-builder-shadow-md: 0 4px 8px rgba(217, 83, 79, 0.15) !important;
+            --resume-builder-shadow-lg: 0 8px 16px rgba(217, 83, 79, 0.2) !important;
+            --resume-builder-shadow-hover: 0 12px 24px rgba(217, 83, 79, 0.25) !important;
+            --resume-builder-border-radius: 0.75rem !important;
+            --resume-builder-transition-timing: cubic-bezier(0.4, 0, 0.2, 1) !important;
+            --resume-builder-font-family: 'Poppins', sans-serif !important;
+            --resume-builder-font-size-xs: 0.75rem !important;
+            --resume-builder-font-size-sm: 0.875rem !important;
+            --resume-builder-font-size-base: 1rem !important;
+            --resume-builder-font-size-lg: 1.125rem !important;
+            --resume-builder-font-size-xl: 1.25rem !important;
+            --resume-builder-font-size-2xl: 1.5rem !important;
+            --resume-builder-font-size-3xl: 1.875rem !important;
+            --resume-builder-line-height: 1.5 !important;
+            --resume-builder-spacing-xs: 0.5rem !important;
+            --resume-builder-spacing-sm: 0.75rem !important;
+            --resume-builder-spacing-md: 1rem !important;
+            --resume-builder-spacing-lg: 1.5rem !important;
+            --resume-builder-spacing-xl: 2rem !important;
+            --resume-builder-spacing-2xl: 3rem !important;
+        }
+
+        /* Reset and Base Styles - Scoped to resume builder only */
+        .resume-builder-root *, 
+        .resume-builder-root *::before, 
+        .resume-builder-root *::after {
+            box-sizing: border-box !important;
+        }
+
+        .resume-builder-root {
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        .resume-builder-body {
+            font-family: var(--resume-builder-font-family, 'Poppins', sans-serif) !important;
+            font-family: 'Poppins', sans-serif !important;
+            background: transparent !important;
+            background-color: transparent !important;
+        }
+
+        body.resume-builder-body {
+            background: transparent !important;
+            background-color: transparent !important;
+        }
+
+        html {
+            background: transparent !important;
+            background-color: transparent !important;
+        }
+
+        /* Resume Builder Container - Works both standalone and embedded */
+        .resume-builder-standalone-wrapper {
+            background: transparent !important;
+            min-height: 100vh !important;
+            line-height: var(--resume-builder-line-height, 1.5) !important;
+            line-height: 1.5 !important;
+            color: var(--resume-builder-text-primary, #212121) !important;
+            color: #212121 !important;
+            padding: var(--resume-builder-spacing-md, 20px) !important;
+            padding: 20px !important;
+            margin: 0 !important;
+            
+            /* Mobile touch improvements */
+            -webkit-tap-highlight-color: transparent !important;
+            -webkit-touch-callout: none !important;
+            -webkit-user-select: none !important;
+            -moz-user-select: none !important;
+            -ms-user-select: none !important;
+            user-select: none !important;
+        }
+
+        /* Allow text selection for inputs and content */
+        .resume-builder-root input,
+        .resume-builder-root select,
+        .resume-builder-root textarea,
+        .resume-builder-root p,
+        .resume-builder-root h1,
+        .resume-builder-root h2,
+        .resume-builder-root h3 {
+            -webkit-user-select: text !important;
+            -moz-user-select: text !important;
+            -ms-user-select: text !important;
+            user-select: text !important;
+        }
+
+        /* When embedded, remove background and padding */
+        .resume-builder-embedded .resume-builder-standalone-wrapper {
+            background: none !important;
+            min-height: 0 !important;
+            padding: 0 !important;
+        }
+
+        /* Main Container */
+        .resume-builder-root .resume-builder-main-container {
+            max-width: 1400px !important;
+            margin: 0 auto !important;
+            background: var(--resume-builder-surface, #ffffff) !important;
+            background: #ffffff !important;
+            border-radius: var(--resume-builder-border-radius, 30px) !important;
+            border-radius: 30px !important;
+            box-shadow: var(--resume-builder-shadow-lg, 0 25px 50px rgba(217, 83, 79, 0.15)) !important;
+            box-shadow: 0 25px 50px rgba(217, 83, 79, 0.15) !important;
+            overflow: hidden !important;
+            position: relative !important;
+        }
+
+        /* Header Section */
+        .resume-builder-root .resume-builder-header-section {
+            background: linear-gradient(135deg, var(--resume-builder-primary-color, #D9534F) 0%, var(--resume-builder-secondary-color, #c9302c) 100%) !important;
+            background: linear-gradient(135deg, #D9534F 0%, #c9302c 100%) !important;
+            color: #ffffff !important;
+            padding: var(--resume-builder-spacing-2xl, 3rem) var(--resume-builder-spacing-xl, 2rem) !important;
+            padding: 3rem 2rem !important;
+            text-align: center !important;
+            position: relative !important;
+            overflow: hidden !important;
+        }
+
+        .resume-builder-root .resume-builder-header-section::before {
+            content: '' !important;
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="resume-builder-pattern" patternUnits="userSpaceOnUse" width="20" height="20"><circle cx="10" cy="10" r="2" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23resume-builder-pattern)"/></svg>') !important;
+            opacity: 0.3 !important;
+        }
+
+        .resume-builder-root .resume-builder-header-section h1 {
+            font-family: 'Caveat', cursive !important;
+            font-size: var(--resume-builder-font-size-3xl, 3rem) !important;
+            font-size: 3rem !important;
+            font-weight: 700 !important;
+            margin-bottom: var(--resume-builder-spacing-md, 1rem) !important;
+            margin-bottom: 1rem !important;
+            color: #ffffff !important;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2) !important;
+            position: relative !important;
+            z-index: 2 !important;
+        }
+
+        .resume-builder-root .resume-builder-header-section p {
+            font-size: var(--resume-builder-font-size-lg, 1.125rem) !important;
+            font-size: 1.125rem !important;
+            opacity: 0.95 !important;
+            color: #ffffff !important;
+            max-width: 600px !important;
+            margin: 0 auto var(--resume-builder-spacing-lg, 1.5rem) auto !important;
+            margin: 0 auto 1.5rem auto !important;
+            position: relative !important;
+            z-index: 2 !important;
+        }
+
+        .resume-builder-root .resume-builder-desktop-notice {
+            background: rgba(255, 255, 255, 0.2) !important;
+            border: 2px solid rgba(255, 255, 255, 0.3) !important;
+            border-radius: var(--resume-builder-border-radius, 20px) !important;
+            border-radius: 20px !important;
+            padding: var(--resume-builder-spacing-md, 1rem) var(--resume-builder-spacing-lg, 1.5rem) !important;
+            padding: 1rem 1.5rem !important;
+            color: #ffffff !important;
+            font-weight: 500 !important;
+            max-width: 600px !important;
+            margin: var(--resume-builder-spacing-lg, 1.5rem) auto 0 auto !important;
+            margin: 1.5rem auto 0 auto !important;
+            position: relative !important;
+            z-index: 2 !important;
+            -webkit-backdrop-filter: blur(10px) !important;
+            backdrop-filter: blur(10px) !important;
+        }
+        /* Content Section */
+        .resume-builder-root .resume-builder-content-section {
+            padding: var(--resume-builder-spacing-2xl, 3rem) var(--resume-builder-spacing-xl, 2rem) !important;
+            padding: 3rem 2rem !important;
+        }
+
+        /* Primary Button */
+        .resume-builder-root .resume-builder-btn-primary {
+            background: linear-gradient(135deg, var(--resume-builder-primary-color, #D9534F) 0%, var(--resume-builder-secondary-color, #c9302c) 100%) !important;
+            background: linear-gradient(135deg, #D9534F 0%, #c9302c 100%) !important;
+            color: #ffffff !important;
+            border: none !important;
+            border-radius: var(--resume-builder-border-radius, 25px) !important;
+            border-radius: 25px !important;
+            padding: var(--resume-builder-spacing-md, 1rem) var(--resume-builder-spacing-xl, 2rem) !important;
+            padding: 1rem 2rem !important;
+            font-weight: 600 !important;
+            font-size: var(--resume-builder-font-size-lg, 1.125rem) !important;
+            font-size: 1.125rem !important;
+            cursor: pointer !important;
+            transition: all 0.3s var(--resume-builder-transition-timing, cubic-bezier(0.4, 0, 0.2, 1)) !important;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            text-decoration: none !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: var(--resume-builder-spacing-sm, 0.75rem) !important;
+            gap: 0.75rem !important;
+            margin: var(--resume-builder-spacing-sm, 0.75rem) !important;
+            margin: 0.75rem !important;
+            box-shadow: var(--resume-builder-shadow-md, 0 4px 8px rgba(217, 83, 79, 0.3)) !important;
+            box-shadow: 0 4px 8px rgba(217, 83, 79, 0.3) !important;
+            position: relative !important;
+            z-index: 2 !important;
+        }
+
+        .resume-builder-root .resume-builder-btn-primary:hover {
+            transform: translateY(-3px) !important;
+            box-shadow: var(--resume-builder-shadow-hover, 0 12px 24px rgba(217, 83, 79, 0.4)) !important;
+            box-shadow: 0 12px 24px rgba(217, 83, 79, 0.4) !important;
+        }
+
+        .resume-builder-root .resume-builder-btn-primary:active {
+            transform: translateY(-1px) !important;
+        }
+
+        /* CTA Section */
+        .resume-builder-root .resume-builder-cta-section {
+            text-align: center !important;
+            margin: 3rem 0 !important;
+        }
+        
+        .resume-builder-root .resume-builder-cta-description {
+            font-size: 1.125rem !important;
+            color: #757575 !important;
+            margin-bottom: 2rem !important;
+            max-width: 600px !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+        }
+        
+        .resume-builder-root .resume-builder-cta-button {
+            font-size: 1.2rem !important;
+            padding: 1.2rem 2.5rem !important;
+        }
+
+        /* Features Grid */
+        .resume-builder-root .resume-builder-features-grid {
+            display: grid !important;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
+            gap: var(--resume-builder-spacing-xl, 2rem) !important;
+            gap: 2rem !important;
+            margin: var(--resume-builder-spacing-2xl, 3rem) 0 !important;
+            margin: 3rem 0 !important;
+        }
+
+        /* Feature Cards */
+        .resume-builder-root .resume-builder-feature-card {
+            background: var(--resume-builder-surface, #ffffff) !important;
+            background: #ffffff !important;
+            border: 2px solid var(--resume-builder-border-color, #E0E0E0) !important;
+            border: 2px solid #E0E0E0 !important;
+            border-radius: var(--resume-builder-border-radius, 20px) !important;
+            border-radius: 20px !important;
+            padding: var(--resume-builder-spacing-xl, 2rem) !important;
+            padding: 2rem !important;
+            text-align: center !important;
+            transition: all 0.3s var(--resume-builder-transition-timing, cubic-bezier(0.4, 0, 0.2, 1)) !important;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            position: relative !important;
+            overflow: hidden !important;
+        }
+
+        .resume-builder-root .resume-builder-feature-card::before {
+            content: '' !important;
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 4px !important;
+            background: linear-gradient(135deg, var(--resume-builder-primary-color, #D9534F) 0%, var(--resume-builder-accent-color, #F47068) 100%) !important;
+            background: linear-gradient(135deg, #D9534F 0%, #F47068 100%) !important;
+            transform: scaleX(0) !important;
+            transition: transform 0.3s var(--resume-builder-transition-timing, cubic-bezier(0.4, 0, 0.2, 1)) !important;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        }
+
+        .resume-builder-root .resume-builder-feature-card:hover {
+            border-color: var(--resume-builder-primary-color, #D9534F) !important;
+            border-color: #D9534F !important;
+            transform: translateY(-8px) !important;
+            box-shadow: var(--resume-builder-shadow-hover, 0 16px 32px rgba(217, 83, 79, 0.2)) !important;
+            box-shadow: 0 16px 32px rgba(217, 83, 79, 0.2) !important;
+        }
+
+        .resume-builder-root .resume-builder-feature-card:hover::before {
+            transform: scaleX(1) !important;
+        }
+
+        .resume-builder-root .resume-builder-feature-icon {
+            font-size: 3rem !important;
+            color: var(--resume-builder-primary-color, #D9534F) !important;
+            color: #D9534F !important;
+            margin-bottom: var(--resume-builder-spacing-lg, 1.5rem) !important;
+            margin-bottom: 1.5rem !important;
+            display: block !important;
+        }
+
+        .resume-builder-root .resume-builder-feature-title {
+            font-weight: 600 !important;
+            color: var(--resume-builder-text-primary, #212121) !important;
+            color: #212121 !important;
+            margin-bottom: var(--resume-builder-spacing-md, 1rem) !important;
+            margin-bottom: 1rem !important;
+            font-size: var(--resume-builder-font-size-xl, 1.25rem) !important;
+            font-size: 1.25rem !important;
+        }
+
+        .resume-builder-root .resume-builder-feature-desc {
+            color: var(--resume-builder-text-secondary, #757575) !important;
+            color: #757575 !important;
+            font-size: var(--resume-builder-font-size-base, 1rem) !important;
+            font-size: 1rem !important;
+            line-height: var(--resume-builder-line-height, 1.6) !important;
+            line-height: 1.6 !important;
+        }
+
+        /* Section Titles */
+        .resume-builder-root .resume-builder-section-title {
+            font-family: 'Caveat', cursive !important;
+            color: var(--resume-builder-primary-color, #D9534F) !important;
+            color: #D9534F !important;
+            font-size: var(--resume-builder-font-size-3xl, 2.5rem) !important;
+            font-size: 2.5rem !important;
+            font-weight: 700 !important;
+            text-align: center !important;
+            margin: var(--resume-builder-spacing-2xl, 3rem) 0 var(--resume-builder-spacing-xl, 2rem) 0 !important;
+            margin: 3rem 0 2rem 0 !important;
+        }
+
+        /* Use Cases Grid */
+        .resume-builder-root .resume-builder-use-cases-grid {
+            display: grid !important;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)) !important;
+            gap: var(--resume-builder-spacing-lg, 1.5rem) !important;
+            gap: 1.5rem !important;
+            margin: var(--resume-builder-spacing-xl, 2rem) 0 !important;
+            margin: 2rem 0 !important;
+        }
+
+        .resume-builder-root .resume-builder-use-case {
+            background: linear-gradient(135deg, #F8F9FF 0%, #E8F0FF 100%) !important;
+            border: 2px solid #B0C4DE !important;
+            border-radius: var(--resume-builder-border-radius, 15px) !important;
+            border-radius: 15px !important;
+            padding: var(--resume-builder-spacing-xl, 2rem) !important;
+            padding: 2rem !important;
+            text-align: center !important;
+            transition: all 0.3s var(--resume-builder-transition-timing, cubic-bezier(0.4, 0, 0.2, 1)) !important;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        }
+
+        .resume-builder-root .resume-builder-use-case:hover {
+            border-color: var(--resume-builder-primary-color, #D9534F) !important;
+            border-color: #D9534F !important;
+            transform: translateY(-5px) !important;
+            box-shadow: var(--resume-builder-shadow-lg, 0 8px 16px rgba(217, 83, 79, 0.15)) !important;
+            box-shadow: 0 8px 16px rgba(217, 83, 79, 0.15) !important;
+        }
+
+        .resume-builder-root .resume-builder-use-case-icon {
+            font-size: 2.5rem !important;
+            margin-bottom: var(--resume-builder-spacing-md, 1rem) !important;
+            margin-bottom: 1rem !important;
+            display: block !important;
+        }
+
+        .resume-builder-root .resume-builder-use-case h4 {
+            color: var(--resume-builder-text-primary, #212121) !important;
+            color: #212121 !important;
+            margin-bottom: var(--resume-builder-spacing-sm, 0.75rem) !important;
+            margin-bottom: 0.75rem !important;
+            font-weight: 600 !important;
+            font-size: var(--resume-builder-font-size-lg, 1.125rem) !important;
+            font-size: 1.125rem !important;
+        }
+
+        .resume-builder-root .resume-builder-use-case p {
+            color: var(--resume-builder-text-secondary, #757575) !important;
+            color: #757575 !important;
+            font-size: var(--resume-builder-font-size-sm, 0.875rem) !important;
+            font-size: 0.875rem !important;
+            line-height: var(--resume-builder-line-height, 1.5) !important;
+            line-height: 1.5 !important;
+        }
+
+        /* FAQ Section */
+        .resume-builder-root .resume-builder-faq-section {
+            background: var(--resume-builder-surface-alt, #F5F5F5) !important;
+            background: #F5F5F5 !important;
+            border: 2px solid var(--resume-builder-border-color, #E0E0E0) !important;
+            border: 2px solid #E0E0E0 !important;
+            border-radius: var(--resume-builder-border-radius, 20px) !important;
+            border-radius: 20px !important;
+            padding: var(--resume-builder-spacing-xl, 2rem) !important;
+            padding: 2rem !important;
+            margin: var(--resume-builder-spacing-2xl, 3rem) 0 !important;
+            margin: 3rem 0 !important;
+        }
+
+        .resume-builder-root .resume-builder-faq-item {
+            margin-bottom: var(--resume-builder-spacing-xl, 2rem) !important;
+            margin-bottom: 2rem !important;
+            padding-bottom: var(--resume-builder-spacing-lg, 1.5rem) !important;
+            padding-bottom: 1.5rem !important;
+            border-bottom: 1px solid var(--resume-builder-border-color, #E0E0E0) !important;
+            border-bottom: 1px solid #E0E0E0 !important;
+        }
+
+        .resume-builder-root .resume-builder-faq-item:last-child {
+            border-bottom: none !important;
+            margin-bottom: 0 !important;
+            padding-bottom: 0 !important;
+        }
+
+        .resume-builder-root .resume-builder-faq-question {
+            font-weight: 600 !important;
+            color: var(--resume-builder-text-primary, #212121) !important;
+            color: #212121 !important;
+            font-size: var(--resume-builder-font-size-lg, 1.125rem) !important;
+            font-size: 1.125rem !important;
+            margin-bottom: var(--resume-builder-spacing-sm, 0.75rem) !important;
+            margin-bottom: 0.75rem !important;
+        }
+
+        .resume-builder-root .resume-builder-faq-answer {
+            color: var(--resume-builder-text-secondary, #757575) !important;
+            color: #757575 !important;
+            font-size: var(--resume-builder-font-size-base, 1rem) !important;
+            font-size: 1rem !important;
+            line-height: var(--resume-builder-line-height, 1.6) !important;
+            line-height: 1.6 !important;
+        }
+
+        /* Mobile-first responsive design */
+        @media (max-width: 768px) {
+            .resume-builder-root .resume-builder-main-container {
+                border-radius: 0 !important;
+                margin: -20px !important;
+                box-shadow: none !important;
+            }
+
+            .resume-builder-root .resume-builder-header-section {
+                padding: var(--resume-builder-spacing-xl, 2rem) var(--resume-builder-spacing-md, 1rem) !important;
+                padding: 2rem 1rem !important;
+            }
+
+            .resume-builder-root .resume-builder-header-section h1 {
+                font-size: var(--resume-builder-font-size-2xl, 2rem) !important;
+                font-size: 2rem !important;
+            }
+
+            .resume-builder-root .resume-builder-content-section {
+                padding: var(--resume-builder-spacing-xl, 2rem) var(--resume-builder-spacing-md, 1rem) !important;
+                padding: 2rem 1rem !important;
+            }
+
+            .resume-builder-root .resume-builder-features-grid {
+                grid-template-columns: 1fr !important;
+                gap: var(--resume-builder-spacing-lg, 1.5rem) !important;
+                gap: 1.5rem !important;
+            }
+
+            .resume-builder-root .resume-builder-use-cases-grid {
+                grid-template-columns: 1fr !important;
+                gap: var(--resume-builder-spacing-md, 1rem) !important;
+                gap: 1rem !important;
+            }
+
+            .resume-builder-root .resume-builder-feature-card {
+                padding: var(--resume-builder-spacing-lg, 1.5rem) !important;
+                padding: 1.5rem !important;
+            }
+
+            .resume-builder-root .resume-builder-use-case {
+                padding: var(--resume-builder-spacing-lg, 1.5rem) !important;
+                padding: 1.5rem !important;
+            }
+
+            .resume-builder-root .resume-builder-section-title {
+                font-size: var(--resume-builder-font-size-2xl, 2rem) !important;
+                font-size: 2rem !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .resume-builder-root .resume-builder-header-section h1 {
+                font-size: var(--resume-builder-font-size-xl, 1.75rem) !important;
+                font-size: 1.75rem !important;
+            }
+
+            .resume-builder-root .resume-builder-header-section p {
+                font-size: var(--resume-builder-font-size-base, 1rem) !important;
+                font-size: 1rem !important;
+            }
+
+            .resume-builder-root .resume-builder-section-title {
+                font-size: var(--resume-builder-font-size-xl, 1.75rem) !important;
+                font-size: 1.75rem !important;
+            }
+
+            .resume-builder-root .resume-builder-btn-primary {
+                width: 100% !important;
+                justify-content: center !important;
+            }
+        }
+
+        /* Print styles */
+        @media print {
+            .resume-builder-root .resume-builder-main-container {
+                box-shadow: none !important;
+                border: 1px solid #ddd !important;
+            }
+        }
+
+        /* High contrast mode support */
+        @media (prefers-contrast: high) {
+            .resume-builder-root .resume-builder-feature-card,
+            .resume-builder-root .resume-builder-use-case {
+                border-width: 3px !important;
+            }
+        }
+
+        /* Reduced motion support */
+        @media (prefers-reduced-motion: reduce) {
+            .resume-builder-root * {
+                transition: none !important;
+                animation: none !important;
+            }
+        }
+    </style>
+        
+</head>
+<body class="resume-builder-body">
+    <div class="resume-builder-standalone-wrapper">
+        <div class="resume-builder-root">
+            <div class="resume-builder-main-container">
+                <!-- Header Section -->
+                <div class="resume-builder-header-section">
+                    <h1>📝 Resume Builder</h1>
+                    <p>Create professional, ATS-friendly resumes that get you noticed by employers and pass through applicant tracking systems</p>
+                    <div class="resume-builder-desktop-notice">
+                        <i class="fas fa-desktop" aria-hidden="true"></i>
+                        <span>💡 <strong>Best Experience:</strong> Use on desktop/laptop for optimal editing and formatting</span>
+                    </div>
+                    <button data-action="launch-app" class="resume-builder-btn-primary">
+                        <i class="fas fa-edit" aria-hidden="true"></i> Start Building Now
+                    </button>
+                </div>
+
+                <div class="resume-builder-content-section">
+                    <!-- Features Section -->
+                    <h2 class="resume-builder-section-title">Why Choose Our Resume Builder?</h2>
+                    <div class="resume-builder-features-grid">
+                        <div class="resume-builder-feature-card">
+                            <div class="resume-builder-feature-icon"><i class="fas fa-robot" aria-hidden="true"></i></div>
+                            <div class="resume-builder-feature-title">ATS-Friendly Format</div>
+                            <div class="resume-builder-feature-desc">Optimized for Applicant Tracking Systems to ensure your resume passes initial screening and reaches human recruiters.</div>
+                        </div>
+                        <div class="resume-builder-feature-card">
+                            <div class="resume-builder-feature-icon"><i class="fas fa-palette" aria-hidden="true"></i></div>
+                            <div class="resume-builder-feature-title">Customizable Templates</div>
+                            <div class="resume-builder-feature-desc">Professional, industry-specific templates that can be easily customized to match your personal style and career level.</div>
+                        </div>
+                        <div class="resume-builder-feature-card">
+                            <div class="resume-builder-feature-icon"><i class="fas fa-file-pdf" aria-hidden="true"></i></div>
+                            <div class="resume-builder-feature-title">Instant PDF Download</div>
+                            <div class="resume-builder-feature-desc">Generate and download professional PDF resumes instantly. Perfect formatting for email attachments and online applications.</div>
+                        </div>
+                        <div class="resume-builder-feature-card">
+                            <div class="resume-builder-feature-icon"><i class="fas fa-eye" aria-hidden="true"></i></div>
+                            <div class="resume-builder-feature-title">Real-time Preview</div>
+                            <div class="resume-builder-feature-desc">See your resume update in real-time as you type. Make adjustments instantly and ensure perfect formatting before downloading.</div>
+                        </div>
+                        <div class="resume-builder-feature-card">
+                            <div class="resume-builder-feature-icon"><i class="fas fa-shield-alt" aria-hidden="true"></i></div>
+                            <div class="resume-builder-feature-title">Privacy Protected</div>
+                            <div class="resume-builder-feature-desc">Your data stays on your device. No sign-up required, no data storage on our servers. Complete privacy and security guaranteed.</div>
+                        </div>
+                        <div class="resume-builder-feature-card">
+                            <div class="resume-builder-feature-icon"><i class="fas fa-mobile-alt" aria-hidden="true"></i></div>
+                            <div class="resume-builder-feature-title">Mobile Responsive</div>
+                            <div class="resume-builder-feature-desc">Create and edit resumes on any device. Fully responsive design works perfectly on desktop, tablet, and mobile phones.</div>
+                        </div>
+                    </div>
+
+                    <!-- Use Cases Section -->
+                    <h2 class="resume-builder-section-title">Perfect for Every Job Seeker</h2>
+                    <div class="resume-builder-use-cases-grid">
+                        <div class="resume-builder-use-case">
+                            <div class="resume-builder-use-case-icon"><i class="fas fa-graduation-cap" aria-hidden="true" style="color: #5CB85C;"></i></div>
+                            <h4>Students & New Graduates</h4>
+                            <p>Create impressive resumes that highlight your education, internships, projects, and potential for entry-level positions.</p>
+                        </div>
+                        <div class="resume-builder-use-case">
+                            <div class="resume-builder-use-case-icon"><i class="fas fa-briefcase" aria-hidden="true" style="color: #5BC0DE;"></i></div>
+                            <h4>Experienced Professionals</h4>
+                            <p>Showcase your career progression, achievements, and expertise with professional resumes that demonstrate your value to employers.</p>
+                        </div>
+                        <div class="resume-builder-use-case">
+                            <div class="resume-builder-use-case-icon"><i class="fas fa-route" aria-hidden="true" style="color: #A569BD;"></i></div>
+                            <h4>Career Changers</h4>
+                            <p>Craft strategic resumes that highlight transferable skills and bridge your experience to new career opportunities.</p>
+                        </div>
+                        <div class="resume-builder-use-case">
+                            <div class="resume-builder-use-case-icon"><i class="fas fa-laptop-code" aria-hidden="true" style="color: #F0AD4E;"></i></div>
+                            <h4>Freelancers & Contractors</h4>
+                            <p>Build versatile resumes that showcase your diverse project experience and attract new clients or contract opportunities.</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Section -->
+                    <h2 class="resume-builder-section-title">Frequently Asked Questions</h2>
+                    <div class="resume-builder-faq-section">
+                        <div class="resume-builder-faq-item">
+                            <div class="resume-builder-faq-question"><i class="fas fa-question-circle" aria-hidden="true"></i> Is the resume builder really free?</div>
+                            <div class="resume-builder-faq-answer">Yes! Our resume builder is completely free to use. You can create unlimited resumes, customize templates, and download them as PDFs without any cost or hidden fees.</div>
+                        </div>
+                        <div class="resume-builder-faq-item">
+                            <div class="resume-builder-faq-question"><i class="fas fa-question-circle" aria-hidden="true"></i> Do I need to create an account?</div>
+                            <div class="resume-builder-faq-answer">No account required! You can start building your resume immediately. Your data stays local on your device and is not stored on our servers, ensuring complete privacy.</div>
+                        </div>
+                        <div class="resume-builder-faq-item">
+                            <div class="resume-builder-faq-question"><i class="fas fa-question-circle" aria-hidden="true"></i> Are the resume templates ATS-friendly?</div>
+                            <div class="resume-builder-faq-answer">Absolutely! All our templates are designed to be ATS (Applicant Tracking System) compatible. They use clean formatting, standard section headers, and readable fonts that ATS systems can easily parse.</div>
+                        </div>
+                        <div class="resume-builder-faq-item">
+                            <div class="resume-builder-faq-question"><i class="fas fa-question-circle" aria-hidden="true"></i> Can I customize the resume templates?</div>
+                            <div class="resume-builder-faq-answer">Yes! You have full control over colors, fonts, layout, and content. Add or remove sections, adjust formatting, and personalize every aspect of your resume to match your style.</div>
+                        </div>
+                        <div class="resume-builder-faq-item">
+                            <div class="resume-builder-faq-question"><i class="fas fa-question-circle" aria-hidden="true"></i> What file formats can I download?</div>
+                            <div class="resume-builder-faq-answer">You can download your resume as a high-quality PDF file, which is the industry standard format. PDFs maintain consistent formatting across all devices and are preferred by employers and ATS systems.</div>
+                        </div>
+                        <div class="resume-builder-faq-item">
+                            <div class="resume-builder-faq-question"><i class="fas fa-question-circle" aria-hidden="true"></i> Can I edit my resume later?</div>
+                            <div class="resume-builder-faq-answer">Yes! Your resume data is automatically saved in your browser's local storage. You can return anytime to edit, update, or create new versions of your resume.</div>
+                        </div>
+                    </div>
+
+                    <!-- Call to Action -->
+                    <div class="resume-builder-cta-section">
+                        <h2 class="resume-builder-section-title">Ready to Build Your Professional Resume?</h2>
+                        <p class="resume-builder-cta-description">Join thousands of job seekers who have successfully landed interviews using our professional resume builder.</p>
+                        <button data-action="launch-app" class="resume-builder-btn-primary resume-builder-cta-button">
+                            <i class="fas fa-rocket" aria-hidden="true"></i> Get Started Now - It's Free!
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    <script>
+        /**
+         * Reusable function to launch a target file in a new tab.
+         * Handles button states, path resolution, and popup blocking.
+         * @param {HTMLButtonElement} button - The button that was clicked.
+         * @param {string} targetFileName - The name of the HTML file to open (e.g., 'resume-builder-app.html').
+         * @param {string} toolName - The display name of the tool (e.g., 'Resume Builder').
+         */
+        function launchTool(button, targetFileName, toolName) {
+            console.log(`🚀 Launching ${toolName} - Target: ${targetFileName}`, button);
+            
+            // Ensure button parameter is valid
+            if (!button) {
+                console.warn('⚠️ Button parameter is null or undefined');
+                button = event ? event.target : null;
+            }
+            
+            // Add visual feedback with better error handling
+            if (button) {
+                try {
+                    const originalText = button.innerHTML;
+                    button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Opening...';
+                    button.disabled = true;
+                    button.style.opacity = '0.7';
+                    
+                    // Reset button after short delay
+                    setTimeout(() => {
+                        try {
+                            if (button) button.innerHTML = originalText;
+                            button.disabled = false;
+                            button.style.opacity = '1';
+                        } catch (resetError) {
+                            console.warn('⚠️ Error resetting button state:', resetError.message);
+                        }
+                    }, 2000); // Increased delay for better UX
+                } catch (domError) {
+                    console.warn('⚠️ Error updating button appearance:', domError.message);
+                }
+            }
+            
+            // Get the correct path for the app with GitHub Pages and main site context support
+            const currentPath = window.location.pathname;
+            let finalPath;
+            
+            // Check if we're on GitHub Pages
+            const isGitHubPages = window.location.hostname.includes('github.io');
+            const repoName = 'scribbletools.in';
+            
+            // Check if we're loaded within the main site (hash routing) or standalone
+            const isMainSiteContext = window.location.hash && window.location.hash.includes('resume-builder');
+            const isStandalone = currentPath.includes('/client/tools/student/career/');
+            
+            console.log('Context detection:', {
+                currentPath,
+                isGitHubPages,
+                isMainSiteContext,
+                isStandalone,
+                currentHash: window.location.hash
+            });
+            
+            if (isStandalone) {
+                // Direct access to resume builder - app is in same directory
+                const basePath = currentPath.substring(0, currentPath.lastIndexOf('/') + 1);
+                finalPath = basePath + targetFileName;
+            } else if (isMainSiteContext) {
+                // Loaded via main site hash routing - use full path
+                if (isGitHubPages) {
+                    finalPath = `/${repoName}/client/tools/student/career/${targetFileName}`;
+                } else {
+                    finalPath = `/client/tools/student/career/${targetFileName}`;
+                }
+            } else {
+                // Fallback - determine based on GitHub Pages
+                if (isGitHubPages) {
+                    finalPath = `/${repoName}/client/tools/student/career/${targetFileName}`;
+                } else {
+                    finalPath = `/client/tools/student/career/${targetFileName}`;
+                }
+            }
+            
+            console.log(`Opening ${toolName} in new tab:`, finalPath);
+            
+            // Always open in new tab
+            try {
+                const newWindow = window.open(finalPath, '_blank', 'noopener,noreferrer');
+                if (newWindow) {
+                    newWindow.focus();
+                    console.log(`✅ ${toolName} opened in new tab`);
+                } else {
+                    console.log('❌ Popup blocked - please allow popups for this site');
+                    if (button) button.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Popup Blocked';
+                }
+            } catch (e) {
+                console.error(`❌ Failed to open new tab for ${toolName}:`, e.message);
+                if (button) button.innerHTML = '<i class="fas fa-exclamation-circle"></i> Error';
+            }
+            
+            return false;
+        }
+
+        /**
+         * Initializes the tool page by setting up event listeners and performing checks.
+         * This function is designed to be called when the content is loaded dynamically.
+         */
+        function initializeResumeBuilder() {
+            // Idempotency check: Ensure this runs only once.
+            if (window.resumeBuilderInitialized) {
+                console.log('📋 Resume Builder already initialized. Skipping.');
+                return;
+            }
+            window.resumeBuilderInitialized = true;
+            // This function will be called by the main router in index.html
+            // We use a small timeout to ensure the DOM is fully ready after being injected.
+            setTimeout(() => {
+                const appButtons = document.querySelectorAll('[data-action="launch-app"]');
+                appButtons.forEach(btn => {
+                    btn.addEventListener('click', () => launchTool(btn, 'resume-builder-app.html', 'Resume Builder'));
+                });
+            }, 0);
+
+            console.log('📋 Resume Builder (ScribbleTools) landing page loaded');
+            console.log('Current URL:', window.location.href);
+            console.log('Current pathname:', window.location.pathname);
+            
+            // Test if the app file exists
+            const currentPath = window.location.pathname;
+            let appPath;
+            
+            if (currentPath.includes('/client/tools/student/career/')) {
+                // Direct access - app is in same directory
+                const basePath = currentPath.substring(0, currentPath.lastIndexOf('/') + 1);
+                appPath = basePath + 'resume-builder-app.html';
+            } else {
+                // Loaded via main site - need full path
+                appPath = '/client/tools/student/career/resume-builder-app.html';
+            }
+            
+            console.log('Testing app accessibility at:', appPath);
+            
+            fetch(appPath, { method: 'HEAD' })
+                .then(response => {
+                    if (response.ok) {
+                        console.log('✅ Resume builder app is accessible.');
+                    } else { 
+                        console.warn(`❌ Resume builder app not found at: ${appPath} (Status: ${response.status})`);
+                        const buttons = document.querySelectorAll('button[onclick*="openResumeBuilder"]');
+                        buttons.forEach(btn => {
+                            btn.style.opacity = '0.5';
+                            btn.title = `Resume builder app not found (${response.status})`;
+                            btn.disabled = true;
+                        });
+                    }
+                })
+                .catch(error => {
+                    console.error('❌ Error checking app accessibility:', error.message);
+                });
+        }
+        
+        // Auto-initialize if called directly (standalone mode)
+        // When loaded dynamically via the main router, index.html is responsible for calling initializeResumeBuilder().
+        if (window.location.pathname.includes('resume-builder.html')) {
+            document.addEventListener('DOMContentLoaded', initializeResumeBuilder);
+        }
+    </script>
+</body>
+</html>

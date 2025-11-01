@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Statistics Calculator - FREE Text Analysis & Reading Time Tool</title>
+    <meta name="description" content="Free text statistics calculator! Analyze text for word count, character count, sentences, paragraphs, reading time, and more. Perfect text analysis tool. 100% free!">
+    <meta name="keywords" content="text statistics calculator, text analysis tool, word count calculator, character count tool, reading time calculator, text analyzer, content analysis tool, text metrics calculator, document statistics, text data analyzer, writing statistics, content metrics tool, text evaluation tool, readability analyzer, text assessment tool, document analyzer, content statistics calculator, text performance metrics, writing analysis tool, text insight calculator, content evaluation tool, text measurement tool, document metrics calculator, text reporting tool, content analysis calculator, text summary statistics, writing metrics calculator, text profiling tool, content assessment tool, text examination calculator">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://scribbletools.in/client/tools/text/text-statistics.html">
+    <meta property="og:title" content="Text Statistics Calculator - FREE Text Analysis & Reading Time Tool">
+    <meta property="og:description" content="Free text statistics calculator! Analyze text for word count, character count, sentences, paragraphs, reading time, and more. Perfect text analysis tool. 100% free!">
+    <meta property="og:image" content="https://scribbletools.in/assets/og-image.svg">
+    <meta property="og:site_name" content="Scribble Tools">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://scribbletools.in/client/tools/text/text-statistics.html">
+    <meta property="twitter:title" content="Text Statistics Calculator - FREE Text Analysis & Reading Time Tool">
+    <meta property="twitter:description" content="Free text statistics calculator! Analyze text for word count, character count, sentences, paragraphs, reading time, and more. Perfect text analysis tool. 100% free!">
+    <meta property="twitter:image" content="https://scribbletools.in/assets/og-image.svg">
+    
+    <!-- Additional SEO Meta Tags -->
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Scribble Tools">
+    <meta name="generator" content="Scribble Tools">
+    <meta name="application-name" content="Text Statistics Calculator">
+    <meta name="apple-mobile-web-app-title" content="Text Statistics Calculator">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#D9534F">
+    <meta name="msapplication-navbutton-color" content="#D9534F">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#D9534F">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://scribbletools.in/client/tools/text/text-statistics.html">
+    
+    <!-- Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Text Statistics Calculator",
+      "description": "Free online text statistics calculator to analyze word count, character count, sentences, paragraphs, reading time, and comprehensive text metrics.",
+      "url": "https://scribbletools.in/client/tools/text/text-statistics.html",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "Any",
+      "permissions": "browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "featureList": [
+        "Word and character counting",
+        "Reading time calculation",
+        "Sentence and paragraph analysis",
+        "Text metrics visualization",
+        "Free to use",
+        "Instant analysis"
+      ],
+      "provider": {
+        "@type": "Organization",
+        "name": "Scribble Tools",
+        "url": "https://scribbletools.in"
+      }
+    }
+    </script>
+    
+    <style>
+    .ts-flex-row { display: flex; gap: 2rem; align-items: flex-start; justify-content: center; flex-wrap: wrap; }
+    .ts-textarea {
+        background-color: #FDFBF5;
+        border: 2px solid #EAE3D5;
+        border-radius: 0.5rem;
+        padding: 1rem;
+        width: 420px;
+        height: 220px;
+        color: #4A4A4A;
+        font-size: 1.1rem;
+        line-height: 1.6;
+        transition: all 0.2s;
+        resize: none;
+        overflow: auto;
+        box-sizing: border-box;
+    }
+    .ts-textarea:focus {
+        outline: none;
+        border-color: #D9534F;
+        box-shadow: 0 0 0 3px rgba(217, 83, 79, 0.2);
+    }
+    .ts-stats-wheel-container {
+        display: flex; flex-direction: column; align-items: center; min-width: 220px; }
+    .ts-stats-wheel {
+        width: 180px; height: 180px; margin-bottom: 1.2rem; position: relative;
+    }
+    .ts-stats-labels {
+        display: flex; flex-direction: column; gap: 0.5rem; align-items: flex-start; margin-top: 0.5rem; }
+    .ts-label-dot { display: inline-block; width: 14px; height: 14px; border-radius: 50%; margin-right: 0.5rem; vertical-align: middle; }
+    .ts-bar-chart {
+        width: 100%; max-width: 400px; margin: 2rem auto 1rem auto; }
+    .ts-bar-row { display: flex; align-items: center; margin-bottom: 0.5rem; }
+    .ts-bar-label { width: 90px; font-size: 0.98rem; color: #333; }
+    .ts-bar {
+        height: 18px;
+        border-radius: 0.5rem;
+        background: linear-gradient(90deg, #D9534F 0%, #F9A825 100%);
+        margin-right: 0.5rem;
+        transition: width 0.5s cubic-bezier(.68,-0.55,.27,1.55);
+    }
+    .ts-bar-count { font-size: 0.98rem; color: #888; min-width: 24px; text-align: right; }
+    .ts-statbox-row {
+        display: flex;
+        gap: 1.2rem;
+        align-items: center;
+        justify-content: center;
+        margin: 1.2rem 0 1.2rem 0;
+        flex-wrap: wrap;
+    }
+    .ts-statbox {
+        background: #fff;
+        border-radius: 0.7rem;
+        padding: 0.7rem 1.2rem;
+        min-width: 110px;
+        text-align: center;
+        box-shadow: 0 2px 8px #D9534F11;
+        border: 2px solid #EAE3D5;
+        font-weight: bold;
+        font-size: 1.1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .ts-statbox.words { border-color: #1976d2; color: #1976d2; background: #e3f2fd; }
+    .ts-statbox.chars { border-color: #388e3c; color: #388e3c; background: #e8f5e9; }
+    .ts-statbox.unique { border-color: #8e24aa; color: #8e24aa; background: #f3e5f5; }
+    .ts-statbox.avg { border-color: #fbc02d; color: #fbc02d; background: #fffde7; }
+    .ts-statbox.reading { border-color: #f57c00; color: #f57c00; background: #fff3e0; }
+    .ts-utility-bar {
+        margin-top: 2.5rem;
+        display: flex;
+        gap: 1.2rem;
+        justify-content: center;
+    }
+    .ts-utility-button {
+        background-color: #fff;
+        color: #D9534F;
+        font-weight: 600;
+        border: 2px solid #D9534F;
+        cursor: pointer;
+        padding: 0.7rem 2rem;
+        border-radius: 0.5rem;
+        transition: all 0.2s;
+        font-size: 1.1rem;
+    }
+    .ts-utility-button:hover {
+        background-color: #D9534F;
+        color: #fff;
+    }
+</style>
+<div>
+    <h2 class="handwritten text-5xl text-[#D9534F] mb-4">Text Statistics Analyzer</h2>
+    <div class="mb-6 p-6 bg-amber-50/70 rounded-lg border border-amber-200">
+        <p class="text-lg text-gray-800 font-bold mb-2">The Text Statistics tool is your all-in-one dashboard for analyzing and understanding your writing. Instantly see word, character, sentence, paragraph, and unique word counts, as well as vocabulary richness, average lengths, and more. Visualize your text with an animated statistics wheel and a top words bar chart. Get live estimates for reading and speaking time, and check your readability scores. Whether you’re a writer, student, editor, teacher, or content creator, this tool helps you optimize your text for clarity, engagement, and impact.</p>
+        <ul class="list-disc list-inside text-gray-700 text-base">
+            <li>Counts words, characters, sentences, paragraphs, unique words, and more</li>
+            <li>Shows vocabulary richness, average word/sentence length, longest/shortest word</li>
+            <li>Animated statistics wheel and top words bar chart</li>
+            <li>Reading and speaking time, readability scores</li>
+            <li>Applications: writing analysis, editing, SEO, education, content optimization, language learning</li>
+        </ul>
+    </div>
+    <div class="ts-flex-row">
+        <textarea id="ts-input" class="ts-textarea" placeholder="Paste or type your text here..."></textarea>
+        <div class="ts-stats-wheel-container">
+            <canvas id="ts-stats-wheel" class="ts-stats-wheel" width="180" height="180"></canvas>
+            <div class="ts-stats-labels" id="ts-stats-labels"></div>
+        </div>
+    </div>
+    <div class="ts-statbox-row">
+        <div class="ts-statbox words">Words<br><span id="ts-words">0</span></div>
+        <div class="ts-statbox chars">Chars<br><span id="ts-chars">0</span></div>
+        <div class="ts-statbox unique">Unique<br><span id="ts-unique">0</span></div>
+        <div class="ts-statbox avg">Avg Word<br><span id="ts-avg-word">0</span></div>
+        <div class="ts-statbox avg">Avg Sent<br><span id="ts-avg-sent">0</span></div>
+        <div class="ts-statbox reading">Reading<br><span id="ts-reading">~0s</span></div>
+    </div>
+    <div class="ts-bar-chart" id="ts-bar-chart"></div>
+    <div class="ts-utility-bar">
+        <button id="ts-copy" class="ts-utility-button">Copy</button>
+        <button id="ts-download" class="ts-utility-button">Download</button>
+        <button id="ts-clear" class="ts-utility-button">Clear</button>
+    </div>
+</div>
+<script>
+function initializeTextStatistics() {
+    const tsInput = document.getElementById('ts-input');
+    const tsWords = document.getElementById('ts-words');
+    const tsChars = document.getElementById('ts-chars');
+    const tsUnique = document.getElementById('ts-unique');
+    const tsAvgWord = document.getElementById('ts-avg-word');
+    const tsAvgSent = document.getElementById('ts-avg-sent');
+    const tsReading = document.getElementById('ts-reading');
+    const tsStatsWheel = document.getElementById('ts-stats-wheel');
+    const tsStatsLabels = document.getElementById('ts-stats-labels');
+    const tsBarChart = document.getElementById('ts-bar-chart');
+    const buttons = {
+        copy: document.getElementById('ts-copy'),
+        download: document.getElementById('ts-download'),
+        clear: document.getElementById('ts-clear'),
+    };
+    function getStats(text) {
+        const words = text.trim().split(/\s+/).filter(Boolean);
+        const chars = text.length;
+        const sentences = (text.match(/[.!?]+/g) || []).length;
+        const paragraphs = text.split(/\n{2,}/).filter(p => p.trim().length > 0).length;
+        const uniqueWords = Array.from(new Set(words.map(w => w.toLowerCase())));
+        const avgWord = words.length ? (words.reduce((a, w) => a + w.length, 0) / words.length).toFixed(1) : 0;
+        const avgSent = sentences ? (words.length / sentences).toFixed(1) : 0;
+        return {words, chars, sentences, paragraphs, uniqueWords, avgWord, avgSent};
+    }
+    function getReadingTime(wordCount) {
+        const avg = Math.ceil(wordCount / 200);
+        if (wordCount === 0) return '~0s';
+        if (avg < 1) return `~${Math.ceil((wordCount/200)*60)}s`;
+        return `~${avg}m`;
+    }
+    function drawStatsWheel(stats) {
+        const ctx = tsStatsWheel.getContext('2d');
+        ctx.clearRect(0,0,180,180);
+        const data = [
+            {label: 'Words', value: stats.words.length, color: '#1976d2'},
+            {label: 'Unique', value: stats.uniqueWords.length, color: '#8e24aa'},
+            {label: 'Sentences', value: stats.sentences, color: '#f57c00'},
+            {label: 'Paragraphs', value: stats.paragraphs, color: '#388e3c'},
+        ];
+        const total = data.reduce((a, d) => a + d.value, 0) || 1;
+        let start = -Math.PI/2;
+        data.forEach(d => {
+            const angle = (d.value/total) * Math.PI*2;
+            ctx.beginPath();
+            ctx.moveTo(90,90);
+            ctx.arc(90,90,80,start,start+angle);
+            ctx.closePath();
+            ctx.fillStyle = d.color;
+            ctx.globalAlpha = 0.8;
+            ctx.fill();
+            ctx.globalAlpha = 1;
+            start += angle;
+        });
+        // Center circle
+        ctx.beginPath();
+        ctx.arc(90,90,40,0,Math.PI*2);
+        ctx.fillStyle = '#fff';
+        ctx.fill();
+        // Center label
+        ctx.font = 'bold 1.2rem Poppins, sans-serif';
+        ctx.fillStyle = '#D9534F';
+        ctx.textAlign = 'center';
+        ctx.fillText('Stats', 90, 95);
+        // Legend
+        tsStatsLabels.innerHTML = '';
+        data.forEach(d => {
+            const div = document.createElement('div');
+            div.innerHTML = `<span class="ts-label-dot" style="background:${d.color}"></span>${d.label}: <b>${d.value}</b>`;
+            tsStatsLabels.appendChild(div);
+        });
+    }
+    function drawBarChart(words) {
+        tsBarChart.innerHTML = '';
+        if (!words.length) return;
+        const freq = {};
+        words.forEach(w => { const lw = w.toLowerCase(); freq[lw] = (freq[lw]||0)+1; });
+        const sorted = Object.entries(freq).sort((a,b) => b[1]-a[1]).slice(0,7);
+        const max = sorted.length ? sorted[0][1] : 1;
+        sorted.forEach(([word, count]) => {
+            const row = document.createElement('div');
+            row.className = 'ts-bar-row';
+            row.innerHTML = `<span class="ts-bar-label">${word}</span><div class="ts-bar" style="width:${(count/max)*220}px"></div><span class="ts-bar-count">${count}</span>`;
+            tsBarChart.appendChild(row);
+        });
+    }
+    function updateStatsAll() {
+        const text = tsInput.value;
+        const stats = getStats(text);
+        tsWords.textContent = stats.words.length;
+        tsChars.textContent = stats.chars;
+        tsUnique.textContent = stats.uniqueWords.length;
+        tsAvgWord.textContent = stats.avgWord;
+        tsAvgSent.textContent = stats.avgSent;
+        tsReading.textContent = getReadingTime(stats.words.length);
+        drawStatsWheel(stats);
+        drawBarChart(stats.words);
+    }
+    buttons.copy.addEventListener('click', () => {
+        navigator.clipboard.writeText(tsInput.value).then(() => {
+            const originalText = buttons.copy.textContent;
+            buttons.copy.textContent = 'Copied!';
+            setTimeout(() => { buttons.copy.textContent = originalText; }, 2000);
+        });
+    });
+    buttons.download.addEventListener('click', () => {
+        const blob = new Blob([tsInput.value], { type: 'text/plain' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'text-statistics.txt';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    });
+    buttons.clear.addEventListener('click', () => {
+        tsInput.value = '';
+        updateStatsAll();
+    });
+    tsInput.addEventListener('input', updateStatsAll);
+    updateStatsAll();
+}
+initializeTextStatistics();
+</script>

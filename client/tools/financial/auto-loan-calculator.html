@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Auto Loan Calculator - Free Car Payment Tool | Calculate Car Loan Payments</title>
+    <meta name="description" content="Free auto loan calculator to calculate car payments and view amortization schedule. Calculate monthly payments, total interest, and payment breakdown for any vehicle loan.">
+    <meta name="keywords" content="auto loan calculator, car loan calculator, vehicle payment calculator, car payment, auto financing, car loan amortization">
+    <meta name="author" content="ScribbleTools">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://scribbletools.in/client/tools/financial/auto-loan-calculator.html">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://scribbletools.in/client/tools/financial/auto-loan-calculator.html">
+    <meta property="og:title" content="Auto Loan Calculator - Free Car Payment Tool">
+    <meta property="og:description" content="Calculate car payments and view amortization schedule. Free tool for auto loans, vehicle financing, and car payment planning.">
+    <meta property="og:image" content="https://scribbletools.in/assets/og-image.svg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://scribbletools.in/client/tools/financial/auto-loan-calculator.html">
+    <meta property="twitter:title" content="Auto Loan Calculator - Free Car Payment Tool">
+    <meta property="twitter:description" content="Calculate car payments and view amortization schedule. Free tool for auto loans and vehicle financing.">
+    <meta property="twitter:image" content="https://scribbletools.in/assets/og-image.svg">
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Auto Loan Calculator",
+      "description": "Free online auto loan calculator to calculate car payments and view payment schedule",
+      "url": "https://scribbletools.in/client/tools/financial/auto-loan-calculator.html",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Web Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "ScribbleTools"
+      }
+    }
+    </script>
+    <style>
+        body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; }
+        .calc-container { max-width: 420px; margin: 3em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2em 1.5em 2.5em 1.5em; }
+        .handwritten { font-family: 'Caveat', cursive; }
+        .calc-label { font-weight: 600; margin-bottom: 0.5em; display: block; }
+        .calc-input { width: 100%; padding: 1em; border: 2px solid #EAE3D5; border-radius: 0.7em; font-size: 1.2em; margin-bottom: 1em; background: #FDFBF5; text-align: center; font-family: 'Fira Code', monospace; }
+        .calc-btn { background: #fff; color: #D9534F; border: 2px solid #D9534F; border-radius: 0.5em; padding: 0.7em 2em; font-weight: 600; font-size: 1.1em; cursor: pointer; transition: all 0.2s; margin-bottom: 1em; }
+        .calc-btn:hover { background: #D9534F; color: #fff; }
+        .calc-result { background: #FDFBF5; border: 2px solid #D9534F; border-radius: 0.7em; padding: 1em; font-size: 1.25em; color: #D9534F; min-height: 1.7em; margin-bottom: 1em; text-align: center; font-family: 'Fira Code', monospace; font-weight: bold; max-height: 300px; overflow-y: auto; word-break: break-word; transition: height 0.2s; }
+        .calc-desc { width: 100%; margin-top: 2em; background:#FDFBF5; border:2px solid #EAE3D5; border-radius:0.9em; padding:1.2em 1em; font-size:1.08em; color:#333; line-height:1.7; }
+        .calc-desc strong { color: #D9534F; font-size: 1.12em; }
+        @media (max-width: 600px) { .calc-container { padding: 1em 0.2em; } }
+        .amort-table { width: 100%; border-collapse: collapse; margin-top: 1em; font-size: 0.9em; }
+        .amort-table th, .amort-table td { padding: 0.5em; text-align: center; border-bottom: 1px solid #EAE3D5; }
+        .amort-table th { background: #D9534F; color: white; }
+        .amort-table tr:nth-child(even) { background: #FDFBF5; }
+        .download-btn { background: #5cb85c; color: white; border: 2px solid #5cb85c; }
+        .download-btn:hover { background: #4cae4c; border-color: #4cae4c; }
+        .info-message { background: #d9edf7; color: #31708f; border: 1px solid #bce8f1; border-radius: 0.5em; padding: 0.8em; margin-bottom: 1em; font-size: 0.95em; }
+        .toggle-section { margin-top: 1em; margin-bottom: 1em; }
+        .toggle-btn { background: #f0ad4e; color: white; border: 2px solid #f0ad4e; font-size: 0.9em; padding: 0.5em 1em; }
+        .toggle-btn:hover { background: #ec971f; border-color: #ec971f; }
+        .advanced-options { display: none; margin-top: 1em; padding: 1em; background: #FDFBF5; border: 1px solid #EAE3D5; border-radius: 0.7em; }
+    </style>
+</head>
+<body>
+<div class="calc-container">
+    <h2 class="handwritten text-5xl text-[#D9534F] mb-4">Auto Loan Calculator</h2>
+    <label class="calc-label">Vehicle Price ($):</label>
+    <input id="vehiclePrice" class="calc-input" type="number" min="0" placeholder="e.g. 35000">
+    <label class="calc-label">Down Payment ($):</label>
+    <input id="downPayment" class="calc-input" type="number" min="0" placeholder="e.g. 5000">
+    
+    <div class="toggle-section">
+        <button id="toggleAdvanced" class="calc-btn toggle-btn">Show Advanced Options</button>
+        <div id="advancedOptions" class="advanced-options">
+            <label class="calc-label">Sales Tax (%):</label>
+            <input id="salesTax" class="calc-input" type="number" min="0" step="0.01" placeholder="e.g. 7.5">
+            <label class="calc-label">Other Fees ($):</label>
+            <input id="otherFees" class="calc-input" type="number" min="0" placeholder="e.g. 500">
+        </div>
+    </div>
+    
+    <label class="calc-label">Loan Term (years):</label>
+    <input id="loanTerm" class="calc-input" type="number" min="1" placeholder="e.g. 5">
+    <label class="calc-label">Annual Interest Rate (%):</label>
+    <input id="interestRate" class="calc-input" type="number" min="0" step="0.01" placeholder="e.g. 4.5">
+    <button id="calc-btn" class="calc-btn">Calculate</button>
+    <div id="info-message" class="info-message" style="display: none;"></div>
+    <button id="download-btn" class="calc-btn download-btn" style="display: none;">Download Excel Schedule</button>
+    <div class="calc-result" id="calc-result"></div>
+</div>
+<div class="calc-desc" style="max-width: fit-content; margin: 2.5em auto 0 auto;">
+    <strong style="font-size:1.18em; color:#D9534F;">About the Auto Loan Calculator</strong><br><br>
+    
+    The Auto Loan Calculator helps you estimate your monthly car payments and understand the total cost of financing a vehicle. This tool is essential for budgeting and comparing different auto loan options before making a purchase decision.<br><br>
+    
+    <strong style="color:#D9534F;">How Auto Loans Work:</strong><br>
+    Auto loans are installment loans specifically for purchasing vehicles. The loan amount is based on the vehicle price minus your down payment, plus any taxes and fees. You then make fixed monthly payments over a set term, typically 3-7 years.<br><br>
+    
+    <strong style="color:#D9534F;">How to Use This Calculator:</strong><br>
+    <ol style="margin-left:1.2em; line-height:1.6;">
+        <li><strong>Vehicle Price:</strong> Enter the total cost of the vehicle you're considering</li>
+        <li><strong>Down Payment:</strong> Enter the amount you'll pay upfront (typically 10-20% of vehicle price)</li>
+        <li><strong>Advanced Options (Optional):</strong> Include sales tax and other fees for more accurate calculations</li>
+        <li><strong>Loan Term:</strong> Enter the loan term in years (typically 3-7 years for auto loans)</li>
+        <li><strong>Interest Rate:</strong> Enter the annual interest rate offered by the lender</li>
+        <li><strong>Click Calculate:</strong> View your monthly payment and complete payment schedule</li>
+        <li><strong>Download Excel Schedule:</strong> Get the full payment schedule for your records</li>
+    </ol><br>
+    
+    <strong style="color:#D9534F;">What You'll Discover:</strong><br>
+    <ul style="margin-left:1.2em; line-height:1.6;">
+        <li><strong>Monthly Payment:</strong> Your fixed monthly car payment amount</li>
+        <li><strong>Total Payment:</strong> Total amount paid over the life of the loan</li>
+        <li><strong>Total Interest:</strong> Total interest paid over the loan term</li>
+        <li><strong>Payment Breakdown:</strong> How much of each payment goes to principal vs. interest</li>
+        <li><strong>Loan Amount:</strong> The actual amount you're financing after down payment</li>
+    </ul><br>
+    
+    <strong style="color:#D9534F;">Perfect For:</strong><br>
+    <ul style="margin-left:1.2em; line-height:1.6;">
+        <li><strong>New Car Buyers:</strong> Budgeting for monthly payments and comparing financing options</li>
+        <li><strong>Used Car Shoppers:</strong> Calculating payments for pre-owned vehicles</li>
+        <li><strong>Lease vs. Buy Decisions:</strong> Comparing the costs of leasing versus purchasing</li>
+        <li><strong>Refinancing:</strong> Evaluating if refinancing your current auto loan makes sense</li>
+        <li><strong>Trade-in Planning:</strong> Understanding how trade-in value affects your new loan</li>
+    </ul><br>
+    
+    <strong style="color:#D9534F;">Pro Tips for Auto Financing:</strong><br>
+    <ul style="margin-left:1.2em; line-height:1.6;">
+        <li><strong>Aim for 20% down payment:</strong> Reduces loan amount and may qualify you for better rates</li>
+        <li><strong>Keep loan term under 5 years:</strong> Longer terms mean lower payments but more interest</li>
+        <li><strong>Get pre-approved:</strong> Secure financing before visiting dealerships for better negotiation power</li>
+        <li><strong>Consider total cost:</strong> Look beyond monthly payment to total interest paid</li>
+        <li><strong>Check for prepayment penalties:</strong> Ensure you can pay off the loan early without fees</li>
+    </ul><br>
+    
+    <strong style="color:#D9534F;">Common Auto Loan Scenarios:</strong><br>
+    <ul style="margin-left:1.2em; line-height:1.6;">
+        <li><strong>New Car (5-year term):</strong> Typical financing for a new vehicle purchase</li>
+        <li><strong>Used Car (3-year term):</strong> Shorter term for older vehicles to avoid being underwater</li>
+        <li><strong>Luxury Vehicle (6-year term):</strong> Longer term to afford higher-priced vehicles</li>
+        <li><strong>First-time Buyer:</strong> Higher interest rates but building credit history</li>
+    </ul><br>
+    
+    <b>Note:</b> This calculator provides estimates for planning purposes. Actual loan terms may vary based on credit history, lender requirements, fees, and other factors. Always consult with financial advisors for personalized auto financing advice.
+</div>
+<script>
+// Store amortization data globally for download
+let amortizationData = [];
+
+function showResult(str) {
+    document.getElementById('calc-result').innerHTML = str;
+}
+
+function showInfo(message) {
+    const infoElement = document.getElementById('info-message');
+    infoElement.textContent = message;
+    infoElement.style.display = 'block';
+    setTimeout(() => {
+        infoElement.style.display = 'none';
+    }, 3000);
+}
+
+// Toggle advanced options
+document.getElementById('toggleAdvanced').addEventListener('click', function() {
+    const advancedOptions = document.getElementById('advancedOptions');
+    const toggleBtn = document.getElementById('toggleAdvanced');
+    
+    if (advancedOptions.style.display === 'none' || advancedOptions.style.display === '') {
+        advancedOptions.style.display = 'block';
+        toggleBtn.textContent = 'Hide Advanced Options';
+    } else {
+        advancedOptions.style.display = 'none';
+        toggleBtn.textContent = 'Show Advanced Options';
+    }
+});
+
+document.getElementById('calc-btn').addEventListener('click', function() {
+    let vehiclePrice = parseFloat(document.getElementById('vehiclePrice').value);
+    let downPayment = parseFloat(document.getElementById('downPayment').value);
+    let salesTax = parseFloat(document.getElementById('salesTax').value) || 0;
+    let otherFees = parseFloat(document.getElementById('otherFees').value) || 0;
+    let loanTerm = parseInt(document.getElementById('loanTerm').value);
+    let interestRate = parseFloat(document.getElementById('interestRate').value);
+    
+    if (isNaN(vehiclePrice) || isNaN(downPayment) || isNaN(loanTerm) || isNaN(interestRate) || 
+        vehiclePrice <= 0 || downPayment < 0 || loanTerm <= 0 || interestRate < 0) {
+        showResult('Please enter valid values for all required fields.');
+        return;
+    }
+    
+    // Calculate loan amount including tax and fees
+    let taxAmount = vehiclePrice * (salesTax / 100);
+    let totalCost = vehiclePrice + taxAmount + otherFees;
+    let loanAmount = totalCost - downPayment;
+    
+    if (loanAmount <= 0) {
+        showResult('Down payment cannot be greater than or equal to total vehicle cost.');
+        return;
+    }
+    
+    // Calculate monthly payment
+    let monthlyRate = interestRate / 100 / 12;
+    let numPayments = loanTerm * 12;
+    let monthlyPayment = loanAmount * (monthlyRate * Math.pow(1 + monthlyRate, numPayments)) / 
+                         (Math.pow(1 + monthlyRate, numPayments) - 1);
+    
+    // Calculate total payment and total interest
+    let totalPayment = monthlyPayment * numPayments;
+    let totalInterest = totalPayment - loanAmount;
+    
+    // Generate amortization schedule
+    let balance = loanAmount;
+    amortizationData = []; // Reset data
+    let amortizationHTML = `
+        <div style="margin-bottom: 1em;">
+            <b>Vehicle Price:</b> $${vehiclePrice.toFixed(2)}<br>
+            <b>Down Payment:</b> $${downPayment.toFixed(2)}<br>
+            <b>Sales Tax:</b> $${taxAmount.toFixed(2)}<br>
+            <b>Other Fees:</b> $${otherFees.toFixed(2)}<br>
+            <b>Loan Amount:</b> $${loanAmount.toFixed(2)}<br><br>
+            <b>Monthly Payment:</b> $${monthlyPayment.toFixed(2)}<br>
+            <b>Total Payment:</b> $${totalPayment.toFixed(2)}<br>
+            <b>Total Interest:</b> $${totalInterest.toFixed(2)}
+        </div>
+        <table class="amort-table">
+            <thead>
+                <tr>
+                    <th>Month</th>
+                    <th>Payment</th>
+                    <th>Principal</th>
+                    <th>Interest</th>
+                    <th>Balance</th>
+                </tr>
+            </thead>
+            <tbody>
+    `;
+    
+    for (let month = 1; month <= numPayments; month++) {
+        let interestPayment = balance * monthlyRate;
+        let principalPayment = monthlyPayment - interestPayment;
+        
+        // Adjust for last payment to avoid negative balance
+        if (month === numPayments) {
+            principalPayment = balance;
+            monthlyPayment = principalPayment + interestPayment;
+        }
+        
+        balance -= principalPayment;
+        
+        // Store data for Excel download
+        amortizationData.push({
+            month: month,
+            payment: monthlyPayment,
+            principal: principalPayment,
+            interest: interestPayment,
+            balance: balance < 0 ? 0 : balance
+        });
+        
+        amortizationHTML += `
+            <tr>
+                <td>${month}</td>
+                <td>$${monthlyPayment.toFixed(2)}</td>
+                <td>$${principalPayment.toFixed(2)}</td>
+                <td>$${interestPayment.toFixed(2)}</td>
+                <td>$${balance.toFixed(2)}</td>
+            </tr>
+        `;
+        
+        // Only show first 12 months in the preview
+        if (month === 12 && numPayments > 12) {
+            amortizationHTML += `
+                <tr>
+                    <td colspan="5">... Showing first 12 months of ${numPayments} months ...</td>
+                </tr>
+            `;
+            break;
+        }
+    }
+    
+    amortizationHTML += `
+            </tbody>
+        </table>
+    `;
+    
+    showResult(amortizationHTML);
+    document.getElementById('download-btn').style.display = 'block';
+});
+
+// Download amortization schedule as Excel
+document.getElementById('download-btn').addEventListener('click', function() {
+    if (amortizationData.length === 0) {
+        showInfo('No data available. Please calculate first.');
+        return;
+    }
+    
+    // Create CSV content
+    let csvContent = "data:text/csv;charset=utf-8,";
+    csvContent += "Month,Payment,Principal,Interest,Balance\n";
+    
+    amortizationData.forEach(row => {
+        csvContent += `${row.month},${row.payment.toFixed(2)},${row.principal.toFixed(2)},${row.interest.toFixed(2)},${row.balance.toFixed(2)}\n`;
+    });
+    
+    // Create download link
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", "auto_loan_schedule.csv");
+    
+    // Append to body and trigger click
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    
+    showInfo('Auto loan schedule downloaded successfully!');
+});
+</script>
+</body>
+</html>

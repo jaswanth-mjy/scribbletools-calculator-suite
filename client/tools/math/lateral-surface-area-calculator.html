@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Lateral Surface Area Calculator - 3D Shapes Geometry Tool | ScribbleTools</title>
+    <meta name="description" content="Calculate lateral surface area of 3D shapes online with our free geometry calculator. Support for cubes, cylinders, cones, pyramids, and cuboids. Perfect for homework, construction, painting, and material estimation.">
+    <meta name="keywords" content="lateral surface area calculator, 3D shapes calculator, geometry calculator, surface area calculator, cube surface area, cylinder surface area, cone surface area, pyramid surface area, cuboid calculator, geometry homework, material estimation, construction calculator, painting calculator, mathematics, geometry formulas">
+    <meta name="author" content="ScribbleTools">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://scribbletools.in/client/tools/math/lateral-surface-area-calculator.html">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Free Lateral Surface Area Calculator - 3D Shapes Geometry Tool">
+    <meta property="og:description" content="Calculate lateral surface area of cubes, cylinders, cones, and more 3D shapes. Perfect for geometry homework, construction projects, and material estimation.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://scribbletools.in/client/tools/math/lateral-surface-area-calculator.html">
+    <meta property="og:image" content="https://scribbletools.in/assets/og-image.svg">
+    <meta property="og:site_name" content="ScribbleTools">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Free Lateral Surface Area Calculator - 3D Shapes Geometry Tool">
+    <meta name="twitter:description" content="Calculate lateral surface area of 3D shapes including cubes, cylinders, cones, and pyramids. Perfect for geometry and construction.">
+    <meta name="twitter:image" content="https://scribbletools.in/assets/og-image.svg">
+    
+    <!-- Additional SEO Meta Tags -->
+    <meta name="theme-color" content="#D9534F">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Lateral Surface Area Calculator">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    
+    <!-- Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Lateral Surface Area Calculator",
+        "description": "Calculate lateral surface area of 3D shapes including cubes, cylinders, cones, pyramids, and cuboids for geometry and construction projects.",
+        "url": "https://scribbletools.in/client/tools/math/lateral-surface-area-calculator.html",
+        "applicationCategory": "EducationalApplication",
+        "operatingSystem": "Any",
+        "permissions": "browser",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "featureList": [
+            "Lateral surface area calculation",
+            "Multiple 3D shape support",
+            "Geometry homework assistance",
+            "Construction planning",
+            "Material estimation",
+            "Paint coverage calculation"
+        ]
+    }
+    </script>
+    <style>
+        body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; }
+        .geo-calc-container { max-width: 400px; margin: 3em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2em 1.5em 2.5em 1.5em; }
+        .handwritten { font-family: 'Caveat', cursive; }
+        .geo-calc-label { font-weight: 600; margin-bottom: 0.5em; display: block; }
+        .geo-calc-input, .geo-calc-select { width: 100%; padding: 1em; border: 2px solid #EAE3D5; border-radius: 0.7em; font-size: 1.1em; margin-bottom: 1em; background: #FDFBF5; text-align: center; font-family: 'Fira Code', monospace; }
+        .geo-calc-btn { background: #fff; color: #D9534F; border: 2px solid #D9534F; border-radius: 0.5em; padding: 0.7em 2em; font-weight: 600; font-size: 1.1em; cursor: pointer; transition: all 0.2s; margin-bottom: 1em; }
+        .geo-calc-btn:hover { background: #D9534F; color: #fff; }
+        .geo-calc-result { background: #FDFBF5; border: 2px solid #D9534F; border-radius: 0.7em; padding: 1em; font-size: 1.18em; color: #D9534F; min-height: 1.7em; margin-bottom: 1em; text-align: center; font-family: 'Fira Code', monospace; font-weight: bold; max-height: 300px; overflow-y: auto; word-break: break-word; transition: height 0.2s; }
+        @media (max-width: 600px) { .geo-calc-container { padding: 1em 0.2em; } }
+    </style>
+</head>
+<body>
+<div class="geo-calc-container">
+    <h2 class="handwritten text-5xl text-[#D9534F] mb-4">Lateral Surface Area Calculator</h2>
+    <label class="geo-calc-label" for="shape">Select Shape:</label>
+    <select id="shape" class="geo-calc-select" onchange="updateInputs()">
+        <option value="cube">Cube</option>
+        <option value="cuboid">Cuboid</option>
+        <option value="cylinder">Cylinder</option>
+        <option value="cone">Cone</option>
+        <option value="pyramid">Pyramid</option>
+    </select>
+    <form id="inputs"></form>
+    <button type="button" class="geo-calc-btn" onclick="calculateLSA()">Calculate Lateral Surface Area</button>
+    <div class="geo-calc-result" id="result"></div>
+</div>
+<div class="geo-calc-desc" style="max-width: fit-content; margin: 2.5em auto 0 auto; background:#FDFBF5; border:2px solid #EAE3D5; border-radius:0.9em; padding:1.2em 1em; font-size:1.08em; color:#333; line-height:1.7;">
+    <strong style="font-size:1.18em; color:#D9534F;">About the Lateral Surface Area Calculator</strong><br><br>
+    Instantly find the lateral surface area (the sides, not the top or bottom) of 3D shapes like cubes, cylinders, cones, and more. Just select your shape, enter the measurements, and see the result. Great for wrapping, painting, or covering the sides of objects.<br><br>
+    <b>Use Cases:</b>
+    <ul style="margin-left:1.2em;">
+        <li>Calculate the amount of material needed to wrap or cover the sides of a box or cylinder</li>
+        <li>Estimate paint or wallpaper needed for the sides of a room or column</li>
+        <li>Check homework or prepare for geometry class</li>
+        <li>Plan craft, construction, or packaging projects</li>
+    </ul>
+</div>
+<script>
+function updateInputs() {
+    const shape = document.getElementById('shape').value;
+    const inputs = document.getElementById('inputs');
+    let html = '';
+    if (shape === 'cube') {
+        html += '<label class="geo-calc-label" for="side">Side:</label>';
+        html += '<input class="geo-calc-input" type="number" id="side" min="0" step="any">';
+    } else if (shape === 'cuboid') {
+        html += '<label class="geo-calc-label" for="length">Length:</label>';
+        html += '<input class="geo-calc-input" type="number" id="length" min="0" step="any">';
+        html += '<label class="geo-calc-label" for="width">Width:</label>';
+        html += '<input class="geo-calc-input" type="number" id="width" min="0" step="any">';
+        html += '<label class="geo-calc-label" for="height">Height:</label>';
+        html += '<input class="geo-calc-input" type="number" id="height" min="0" step="any">';
+    } else if (shape === 'cylinder') {
+        html += '<label class="geo-calc-label" for="radius">Radius:</label>';
+        html += '<input class="geo-calc-input" type="number" id="radius" min="0" step="any">';
+        html += '<label class="geo-calc-label" for="height">Height:</label>';
+        html += '<input class="geo-calc-input" type="number" id="height" min="0" step="any">';
+    } else if (shape === 'cone') {
+        html += '<label class="geo-calc-label" for="radius">Radius:</label>';
+        html += '<input class="geo-calc-input" type="number" id="radius" min="0" step="any">';
+        html += '<label class="geo-calc-label" for="slantHeight">Slant Height:</label>';
+        html += '<input class="geo-calc-input" type="number" id="slantHeight" min="0" step="any">';
+    } else if (shape === 'pyramid') {
+        html += '<label class="geo-calc-label" for="basePerimeter">Base Perimeter:</label>';
+        html += '<input class="geo-calc-input" type="number" id="basePerimeter" min="0" step="any">';
+        html += '<label class="geo-calc-label" for="slantHeight">Slant Height:</label>';
+        html += '<input class="geo-calc-input" type="number" id="slantHeight" min="0" step="any">';
+    }
+    inputs.innerHTML = html;
+}
+function calculateLSA() {
+    const shape = document.getElementById('shape').value;
+    let lsa = null;
+    if (shape === 'cube') {
+        const side = parseFloat(document.getElementById('side').value);
+        if (isNaN(side) || side <= 0) {
+            lsa = null;
+        } else {
+            lsa = 4 * side * side;
+        }
+    } else if (shape === 'cuboid') {
+        const length = parseFloat(document.getElementById('length').value);
+        const width = parseFloat(document.getElementById('width').value);
+        const height = parseFloat(document.getElementById('height').value);
+        if (isNaN(length) || isNaN(width) || isNaN(height) || length <= 0 || width <= 0 || height <= 0) {
+            lsa = null;
+        } else {
+            lsa = 2 * height * (length + width);
+        }
+    } else if (shape === 'cylinder') {
+        const radius = parseFloat(document.getElementById('radius').value);
+        const height = parseFloat(document.getElementById('height').value);
+        if (isNaN(radius) || isNaN(height) || radius <= 0 || height <= 0) {
+            lsa = null;
+        } else {
+            lsa = 2 * Math.PI * radius * height;
+        }
+    } else if (shape === 'cone') {
+        const radius = parseFloat(document.getElementById('radius').value);
+        const slantHeight = parseFloat(document.getElementById('slantHeight').value);
+        if (isNaN(radius) || isNaN(slantHeight) || radius <= 0 || slantHeight <= 0) {
+            lsa = null;
+        } else {
+            lsa = Math.PI * radius * slantHeight;
+        }
+    } else if (shape === 'pyramid') {
+        const basePerimeter = parseFloat(document.getElementById('basePerimeter').value);
+        const slantHeight = parseFloat(document.getElementById('slantHeight').value);
+        if (isNaN(basePerimeter) || isNaN(slantHeight) || basePerimeter <= 0 || slantHeight <= 0) {
+            lsa = null;
+        } else {
+            lsa = 0.5 * basePerimeter * slantHeight;
+        }
+    }
+    if (lsa === null) {
+        document.getElementById('result').innerHTML = 'Please enter valid positive numbers for all required fields.';
+    } else {
+        document.getElementById('result').innerHTML = `<b>Lateral Surface Area:</b> ${lsa}`;
+    }
+}
+// Initialize inputs on page load
+updateInputs();
+</script>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Primary Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calories Burned Calculator | Free Exercise Calorie Counter - Weight Loss & Fitness Tool</title>
+    <meta name="title" content="Calories Burned Calculator | Free Exercise Calorie Counter - Weight Loss & Fitness Tool">
+    <meta name="description" content="Calculate calories burned during any activity or exercise. Free calorie counter for running, cycling, walking, gym workouts & daily activities. Perfect for weight loss and fitness tracking.">
+    <meta name="keywords" content="calories burned calculator, calorie counter, exercise calories, weight loss calculator, fitness tracker, activity calories, workout calculator, calorie burn estimator, exercise calorie counter">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <meta name="author" content="Calories Burned Calculator">
+    
+    <!-- Geographic Tags -->
+    <meta name="geo.region" content="US">
+    <meta name="geo.placename" content="United States">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://scribbletools.in/client/tools/health/calories-burned.html">
+    <meta property="og:title" content="Calories Burned Calculator | Free Exercise Calorie Counter">
+    <meta property="og:description" content="Calculate calories burned during any activity or exercise. Free tool for running, cycling, walking, gym workouts & daily activities. Perfect for weight loss tracking.">
+    <meta property="og:image" content="https://scribbletools.in/assets/og-image.svg">
+    <meta property="og:image:alt" content="Calories Burned Calculator Tool">
+    <meta property="og:site_name" content="All-in-One Tools">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://scribbletools.in/client/tools/health/calories-burned.html">
+    <meta property="twitter:title" content="Calories Burned Calculator | Free Exercise Calorie Counter">
+    <meta property="twitter:description" content="Calculate calories burned during any activity. Free tool for weight loss and fitness tracking.">
+    <meta property="twitter:image" content="https://scribbletools.in/assets/og-image.svg">
+    <meta property="twitter:image:alt" content="Calories Burned Calculator Tool">
+    
+    <!-- Additional SEO Meta Tags -->
+    <meta name="application-name" content="Calories Burned Calculator">
+    <meta name="msapplication-TileColor" content="#D9534F">
+    <meta name="theme-color" content="#D9534F">
+    <link rel="canonical" href="https://scribbletools.in/client/tools/health/calories-burned.html">
+    
+    <!-- Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": ["WebApplication", "SoftwareApplication"],
+        "name": "Calories Burned Calculator",
+        "description": "Calculate calories burned during exercise and daily activities based on weight, activity type, and duration. Essential tool for weight loss, fitness tracking, and workout planning.",
+        "url": "https://scribbletools.in/client/tools/health/calories-burned.html",
+        "applicationCategory": "HealthApplication",
+        "operatingSystem": "Web Browser",
+        "permissions": "browser",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "creator": {
+            "@type": "Organization",
+            "name": "All-in-One Tools"
+        },
+        "featureList": [
+            "Exercise calorie calculation",
+            "Activity-based calorie tracking",
+            "Weight loss planning",
+            "Workout calorie estimation",
+            "Fitness goal tracking",
+            "Daily activity calories",
+            "Exercise comparison tool"
+        ],
+        "keywords": "calories burned, calorie counter, exercise calories, weight loss, fitness tracker, workout calculator, calorie burn",
+        "mainEntity": {
+            "@type": "MedicalCalculator",
+            "name": "Calorie Expenditure Calculation",
+            "description": "Estimation of energy expenditure during physical activities based on metabolic equivalents and body weight"
+        }
+    }
+    </script>
+    <style>
+        body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; }
+        .calc-container { max-width: 420px; margin: 3em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2em 1.5em 2.5em 1.5em; }
+        .handwritten { font-family: 'Caveat', cursive; }
+        .calc-label { font-weight: 600; margin-bottom: 0.5em; display: block; }
+        .calc-input, .calc-select { width: 100%; padding: 1em; border: 2px solid #EAE3D5; border-radius: 0.7em; font-size: 1.2em; margin-bottom: 1em; background: #FDFBF5; text-align: center; font-family: 'Fira Code', monospace; }
+        .calc-btn { background: #fff; color: #D9534F; border: 2px solid #D9534F; border-radius: 0.5em; padding: 0.7em 2em; font-weight: 600; font-size: 1.1em; cursor: pointer; transition: all 0.2s; margin-bottom: 1em; }
+        .calc-btn:hover { background: #D9534F; color: #fff; }
+        .calc-result { background: #FDFBF5; border: 2px solid #D9534F; border-radius: 0.7em; padding: 1em; font-size: 1.25em; color: #D9534F; min-height: 1.7em; margin-bottom: 1em; text-align: center; font-family: 'Fira Code', monospace; font-weight: bold; max-height: 300px; overflow-y: auto; word-break: break-word; transition: height 0.2s; }
+        .calc-desc { width: 100%; margin-top: 2em; background:#FDFBF5; border:2px solid #EAE3D5; border-radius:0.9em; padding:1.2em 1em; font-size:1.08em; color:#333; line-height:1.7; }
+        .calc-desc strong { color: #D9534F; font-size: 1.12em; }
+        @media (max-width: 600px) { .calc-container { padding: 1em 0.2em; } }
+    </style>
+</head>
+<body>
+<div class="calc-container">
+    <h2 class="handwritten text-5xl text-[#D9534F] mb-4">Calories Burned Estimator</h2>
+    <label class="calc-label">Weight (kg):</label>
+    <input id="weight" class="calc-input" type="number" min="0" placeholder="e.g. 70">
+    <label class="calc-label">Activity (e.g. running, cycling):</label>
+    <input id="activity" class="calc-input" type="text" placeholder="e.g. running">
+    <label class="calc-label">Duration (minutes):</label>
+    <input id="duration" class="calc-input" type="number" min="0" placeholder="e.g. 30">
+    <button id="calc-btn" class="calc-btn">Calculate</button>
+    <div class="calc-result" id="calc-result"></div>
+</div>
+<div class="calc-desc" style="max-width: fit-content; margin: 2.5em auto 0 auto;">
+    <strong style="font-size:1.18em; color:#D9534F;">About the Calories Burned Estimator</strong><br><br>
+    Instantly estimate how many calories you burn during exercise or daily activities. Enter your weight, activity, and duration to see your calories burned. Great for fitness, weight loss, or tracking your workouts.<br><br>
+    <b>Note:</b> The data used in this calculator was last updated on July 30, 2024, and may change in the future.<br><br>
+    <b>Use Cases:</b>
+    <ul style="margin-left:1.2em;">
+        <li>Track calories burned for different activities</li>
+        <li>Plan workouts for weight loss or fitness</li>
+        <li>Compare calories burned for different exercises</li>
+        <li>Check homework or prepare for health class</li>
+    </ul>
+</div>
+<script>
+function showResult(str) {
+    document.getElementById('calc-result').innerHTML = str;
+}
+document.getElementById('calc-btn').addEventListener('click', function() {
+    let weight = parseFloat(document.getElementById('weight').value);
+    let activity = document.getElementById('activity').value.trim().toLowerCase();
+    let duration = parseFloat(document.getElementById('duration').value);
+    if (isNaN(weight) || isNaN(duration) || weight <= 0 || duration <= 0 || !activity) {
+        showResult('Please enter valid values for all fields.');
+        return;
+    }
+    // Simple MET values for demo
+    let mets = 1;
+    if (activity.includes('run')) mets = 9;
+    else if (activity.includes('cycle')) mets = 7.5;
+    else if (activity.includes('walk')) mets = 3.5;
+    else if (activity.includes('swim')) mets = 6;
+    else if (activity.includes('yoga')) mets = 2.5;
+    let calories = mets * weight * (duration / 60);
+    showResult(`<b>Estimated Calories Burned:</b> ${calories.toFixed(0)} kcal`);
+});
+</script>
+</body>
+</html>

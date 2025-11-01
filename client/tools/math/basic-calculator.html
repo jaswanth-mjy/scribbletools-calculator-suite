@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Calculator - Free Online Calculator - ScribbleTools</title>
+    <meta name="description" content="Free online basic calculator for arithmetic operations. Add, subtract, multiply, and divide with our professional calculator tool. Fast, accurate, and easy to use.">
+    <meta name="keywords" content="basic calculator, online calculator, free calculator, math calculator, arithmetic calculator, addition calculator, calculator tool">
+    <meta name="author" content="ScribbleTools Team">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://scribbletools.in/client/tools/math/basic-calculator.html">
+    <meta name="theme-color" content="#D9534F">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://scribbletools.in/client/tools/math/basic-calculator.html">
+    <meta property="og:title" content="Basic Calculator - Free Online Calculator - ScribbleTools">
+    <meta property="og:description" content="Free online calculator for basic arithmetic operations. Fast, accurate, and easy to use for all your calculation needs.">
+    <meta property="og:image" content="https://scribbletools.in/assets/og-image.svg">
+    <meta property="og:site_name" content="ScribbleTools">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://scribbletools.in/client/tools/math/basic-calculator.html">
+    <meta property="twitter:title" content="Basic Calculator - Free Online Calculator">
+    <meta property="twitter:description" content="Free online calculator for basic arithmetic. Perfect for quick calculations.">
+    <meta property="twitter:image" content="https://scribbletools.in/assets/og-image.svg">
+    <meta property="twitter:site" content="@scribbletools">
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Basic Calculator",
+      "url": "https://scribbletools.in/client/tools/math/basic-calculator.html",
+      "description": "Free online basic calculator for arithmetic operations including addition, subtraction, multiplication, and division.",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ScribbleTools",
+        "url": "https://scribbletools.in"
+      },
+      "featureList": [
+        "Basic arithmetic operations",
+        "Real-time calculations",
+        "Keyboard support",
+        "Mobile-friendly interface"
+      ]
+    }
+    </script>
+    
+    <!-- Performance Optimization -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <style>
+        body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; }
+        .basic-calc-container { max-width: 600px; margin: 3em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2em 1.5em 2.5em 1.5em; }
+        .handwritten { font-family: 'Caveat', cursive; }
+        .basic-calc-display { background: #FDFBF5; border: 2px solid #EAE3D5; border-radius: 0.7em; padding: 1em; font-size: 1.5em; min-height: 2.2em; margin-bottom: 0.5em; word-break: break-all; text-align: right; font-family: 'Fira Code', monospace; }
+        .basic-calc-keypad { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.7em; margin-bottom: 1.2em; }
+        .basic-calc-btn { background: #fff; color: #D9534F; border: 2px solid #D9534F; border-radius: 0.5em; padding: 0.7em 0; font-weight: 600; font-size: 1.2em; cursor: pointer; transition: all 0.2s; }
+        .basic-calc-btn:hover, .basic-calc-btn:focus { background: #D9534F; color: #fff; }
+        .basic-calc-btn.eq { background: #D9534F; color: #fff; border-color: #D9534F; }
+        .basic-calc-btn.clear { background: #ff6b6b; color: #fff; border-color: #ff6b6b; }
+        
+        .result-section { margin-top: 2em; }
+        .result-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1em; margin: 1em 0; }
+        .result-card { background: #F0F8FF; border: 1px solid #B0C4DE; border-radius: 0.5em; padding: 1em; text-align: center; }
+        .result-card h4 { color: #4682B4; margin: 0 0 0.5em 0; }
+        .result-card .value { font-size: 1.5em; font-weight: bold; color: #D9534F; }
+        
+        .calculation-steps { background: #E8F5E8; border: 1px solid #90EE90; border-radius: 0.5em; padding: 1em; margin: 1em 0; }
+        .calculation-steps h4 { color: #228B22; margin: 0 0 0.5em 0; }
+        .step-item { padding: 0.5em; margin: 0.2em 0; background: white; border-radius: 0.3em; border-left: 4px solid #228B22; }
+        
+        .number-info { background: #FFF8DC; border: 1px solid #FFD700; border-radius: 0.5em; padding: 1em; margin: 1em 0; }
+        .number-info h4 { color: #DAA520; margin: 0 0 0.5em 0; }
+        .info-item { display: flex; justify-content: space-between; padding: 0.5em; margin: 0.2em 0; background: white; border-radius: 0.3em; }
+        
+        /* Special button styles */
+        .zero-btn { grid-column: span 2; }
+        .result-section-hidden { display: none; }
+        
+        /* About section styles */
+        .about-section { 
+            max-width: fit-content; 
+            margin: 5.5em auto 0 auto; 
+            background: #FDFBF5; 
+            border: 2px solid #EAE3D5; 
+            border-radius: 0.9em; 
+            padding: 1.5em 1.2em; 
+            font-size: 1.12em; 
+            color: #333; 
+            line-height: 1.7; 
+        }
+        .about-title { font-size: 1.18em; color: #D9534F; font-weight: bold; }
+        .about-list { margin-left: 1.2em; margin-bottom: 0.7em; }
+        .about-list-simple { margin-left: 1.2em; }
+        
+        @media (max-width: 600px) { 
+            .basic-calc-container { padding: 1em 0.2em; }
+            .result-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+<div class="basic-calc-container">
+    <h2 class="handwritten text-5xl text-[#D9534F] mb-4">Basic Calculator</h2>
+    <div class="basic-calc-display" id="basic-calc-display">0</div>
+    <div class="basic-calc-keypad">
+        <button class="basic-calc-btn clear" data-val="C">C</button>
+        <button class="basic-calc-btn" data-val="/">÷</button>
+        <button class="basic-calc-btn" data-val="*">×</button>
+        <button class="basic-calc-btn" data-val="⌫">⌫</button>
+        <button class="basic-calc-btn" data-val="7">7</button>
+        <button class="basic-calc-btn" data-val="8">8</button>
+        <button class="basic-calc-btn" data-val="9">9</button>
+        <button class="basic-calc-btn" data-val="-">−</button>
+        <button class="basic-calc-btn" data-val="4">4</button>
+        <button class="basic-calc-btn" data-val="5">5</button>
+        <button class="basic-calc-btn" data-val="6">6</button>
+        <button class="basic-calc-btn" data-val="+">+</button>
+        <button class="basic-calc-btn" data-val="1">1</button>
+        <button class="basic-calc-btn" data-val="2">2</button>
+        <button class="basic-calc-btn" data-val="3">3</button>
+        <button class="basic-calc-btn eq" data-val="=">=</button>
+        <button class="basic-calc-btn zero-btn" data-val="0">0</button>
+        <button class="basic-calc-btn" data-val=".">.</button>
+    </div>
+    
+    <div class="result-section result-section-hidden" id="result-section">
+        <div class="result-grid" id="result-grid"></div>
+        <div class="calculation-steps" id="calculation-steps"></div>
+        <div class="number-info" id="number-info"></div>
+    </div>
+</div>
+
+<div class="about-section">
+    <span class="about-title">About the Basic Calculator</span><br><br>
+    <b>What is this?</b><br>
+    This is a fast, modern, and easy-to-use calculator for everyday arithmetic. It's designed for quick calculations—whether you're at your desk, on your phone, or just need to check a sum.<br><br>
+    <b>Features:</b>
+    <ul class="about-list">
+        <li>Clean, distraction-free interface for instant calculations</li>
+        <li>Supports addition (+), subtraction (−), multiplication (×), division (÷), decimals, clear (C), and backspace (⌫)</li>
+        <li>Works with both mouse/touch and keyboard input</li>
+        <li>Press = or Enter to get the result</li>
+        <li>Handles long expressions and operator precedence</li>
+        <li>Responsive and mobile-friendly</li>
+        <li>Remembers your last result until you clear or overwrite it</li>
+        <li>Smart backspace: easily fix typos or edit long expressions</li>
+        <li>Large, readable display for easy viewing</li>
+        <li>Instant feedback for errors (e.g., division by zero)</li>
+    </ul>
+    <b>Use Cases:</b>
+    <ul class="about-list-simple">
+        <li>Quickly add up expenses, receipts, or invoices for personal or business use</li>
+        <li>Check homework or perform simple math for school, college, or tutoring</li>
+        <li>Calculate discounts, tips, or taxes while shopping, dining, or traveling</li>
+        <li>Perform basic math for recipes, measurements, or DIY projects at home</li>
+        <li>Use as a handy replacement for your phone or desktop calculator</li>
+        <li>Double-check numbers before entering them into forms, spreadsheets, or reports</li>
+        <li>Help kids learn arithmetic in a fun, digital way</li>
+        <li>Keep a calculator open in a browser tab for quick access anytime</li>
+    </ul>
+    <b>Why use this calculator?</b><br>
+    No ads, no clutter, no tracking—just a beautiful, reliable calculator you can use anywhere.<br><br>
+    <b>Tips:</b>
+    <ul class="about-list-simple">
+        <li>Use your keyboard for even faster input—numbers, operators, Enter, Backspace, and C all work</li>
+        <li>Click or tap the buttons for touch-friendly use on phones and tablets</li>
+        <li>Supports long expressions: e.g., <code>12+7*3-4/2</code> or <code>(5+3)*2</code></li>
+        <li>Handles operator precedence (PEMDAS/BODMAS rules)</li>
+        <li>Press C to clear everything, or ⌫ to delete the last character</li>
+        <li>Works offline after first load (if your browser supports it)</li>
+    </ul>
+    <b>Security & Privacy:</b><br>
+    All calculations are done in your browser. Nothing is sent to a server. Your data is never tracked or stored.<br>
+</div>
+
+<script>
+// DOM elements will be initialized after DOM loads
+let display, keypad, resultSection, resultGrid, calculationSteps, numberInfo;
+
+let expr = '';
+let lastResult = '';
+
+function initializeBasicCalculator() {
+    // Initialize DOM elements
+    display = document.getElementById('basic-calc-display');
+    keypad = document.querySelector('.basic-calc-keypad');
+    resultSection = document.getElementById('result-section');
+    resultGrid = document.getElementById('result-grid');
+    calculationSteps = document.getElementById('calculation-steps');
+    numberInfo = document.getElementById('number-info');
+
+    // Add event listeners
+    keypad.addEventListener('click', handleKeypadClick);
+    
+    // Keyboard support
+    document.addEventListener('keydown', handleKeydown);
+}
+
+function handleKeypadClick(e) {
+    if (!e.target.classList.contains('basic-calc-btn')) return;
+    
+    const val = e.target.dataset.val;
+    
+    if (val === 'C') {
+        expr = '';
+        lastResult = '';
+        resultSection.classList.add('result-section-hidden');
+    } else if (val === '⌫') {
+        if (expr) {
+            expr = expr.slice(0, -1);
+        } else if (lastResult && lastResult !== 'Error') {
+            lastResult = '';
+        }
+    } else if (val === '=') {
+        if (!expr) return;
+        
+        try {
+            const result = safeEvaluate(expr.replace(/×/g, '*').replace(/÷/g, '/').replace(/−/g, '-'));
+            
+            if (isFinite(result)) {
+                lastResult = result.toString();
+                showComprehensiveResult(expr, result);
+                expr = '';
+            } else {
+                lastResult = 'Error';
+                resultSection.classList.add('result-section-hidden');
+            }
+        } catch (e) {
+            lastResult = 'Error: ' + e.message;
+            resultSection.classList.add('result-section-hidden');
+        }
+    } else {
+        if (lastResult && !expr) {
+            expr = lastResult;
+            lastResult = '';
+        }
+        expr += val;
+    }
+    
+    updateDisplay();
+}
+
+function handleKeydown(e) {
+    const key = e.key;
+    const keyMap = {
+        'Enter': '=',
+        'Escape': 'C',
+        'Backspace': '⌫',
+        '+': '+',
+        '-': '-',
+        '*': '*',
+        '/': '/',
+        '.': '.',
+        '0': '0', '1': '1', '2': '2', '3': '3', '4': '4',
+        '5': '5', '6': '6', '7': '7', '8': '8', '9': '9'
+    };
+    
+    if (keyMap[key]) {
+        e.preventDefault();
+        const btn = document.querySelector(`[data-val="${keyMap[key]}"]`);
+        if (btn) btn.click();
+    }
+}
+
+// Initialize when DOM is loaded
+document.addEventListener('DOMContentLoaded', initializeBasicCalculator);
+
+// Expose globally for dynamic loading
+window.initializeBasicCalculator = initializeBasicCalculator;
+
+function formatNumber(num) {
+    return parseFloat(num).toLocaleString('en-US', {
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 6
+    });
+}
+
+function getNumberProperties(num) {
+    const properties = [];
+    
+    if (Number.isInteger(num)) {
+        properties.push('Integer');
+        if (num % 2 === 0) properties.push('Even');
+        else properties.push('Odd');
+        
+        if (num > 0) properties.push('Positive');
+        else if (num < 0) properties.push('Negative');
+        else properties.push('Zero');
+        
+        // Check if prime
+        if (num > 1) {
+            let isPrime = true;
+            for (let i = 2; i <= Math.sqrt(num); i++) {
+                if (num % i === 0) {
+                    isPrime = false;
+                    break;
+                }
+            }
+            if (isPrime) properties.push('Prime');
+        }
+        
+        // Check if perfect square
+        const sqrt = Math.sqrt(num);
+        if (Number.isInteger(sqrt)) properties.push('Perfect Square');
+        
+        // Check if perfect cube
+        const cbrt = Math.cbrt(num);
+        if (Number.isInteger(cbrt)) properties.push('Perfect Cube');
+    } else {
+        properties.push('Decimal');
+        if (num > 0) properties.push('Positive');
+        else if (num < 0) properties.push('Negative');
+    }
+    
+    return properties;
+}
+
+function getCalculationSteps(expression, result) {
+    const steps = [];
+    
+    // Simple step-by-step breakdown
+    if (expression.includes('+')) {
+        const parts = expression.split('+');
+        if (parts.length === 2) {
+            steps.push(`Step 1: ${parts[0].trim()} + ${parts[1].trim()}`);
+            steps.push(`Step 2: = ${result}`);
+        }
+    } else if (expression.includes('-')) {
+        const parts = expression.split('-');
+        if (parts.length === 2) {
+            steps.push(`Step 1: ${parts[0].trim()} - ${parts[1].trim()}`);
+            steps.push(`Step 2: = ${result}`);
+        }
+    } else if (expression.includes('*')) {
+        const parts = expression.split('*');
+        if (parts.length === 2) {
+            steps.push(`Step 1: ${parts[0].trim()} × ${parts[1].trim()}`);
+            steps.push(`Step 2: = ${result}`);
+        }
+    } else if (expression.includes('/')) {
+        const parts = expression.split('/');
+        if (parts.length === 2) {
+            steps.push(`Step 1: ${parts[0].trim()} ÷ ${parts[1].trim()}`);
+            steps.push(`Step 2: = ${result}`);
+        }
+    } else {
+        steps.push(`Result: ${result}`);
+    }
+    
+    return steps;
+}
+
+function showComprehensiveResult(expression, result) {
+    const num = parseFloat(result);
+    const properties = getNumberProperties(num);
+    const steps = getCalculationSteps(expression, result);
+    
+    resultGrid.innerHTML = `
+        <div class="result-card">
+            <h4>📊 Calculation</h4>
+            <div class="value">${expression}</div>
+        </div>
+        <div class="result-card">
+            <h4>🎯 Result</h4>
+            <div class="value">${formatNumber(result)}</div>
+        </div>
+        <div class="result-card">
+            <h4>📈 Decimal</h4>
+            <div class="value">${formatNumber(num)}</div>
+        </div>
+        <div class="result-card">
+            <h4>🔢 Scientific</h4>
+            <div class="value">${num.toExponential(3)}</div>
+        </div>
+    `;
+    
+    calculationSteps.innerHTML = `
+        <h4>📝 Calculation Steps</h4>
+        ${steps.map(step => `<div class="step-item">${step}</div>`).join('')}
+    `;
+    
+    numberInfo.innerHTML = `
+        <h4>🔍 Number Properties</h4>
+        ${properties.map(prop => `<div class="info-item"><span>${prop}</span><span>✅</span></div>`).join('')}
+        <div class="info-item">
+            <span>Absolute Value</span>
+            <span>${formatNumber(Math.abs(num))}</span>
+        </div>
+        <div class="info-item">
+            <span>Square</span>
+            <span>${formatNumber(num * num)}</span>
+        </div>
+        <div class="info-item">
+            <span>Square Root</span>
+            <span>${num >= 0 ? formatNumber(Math.sqrt(num)) : 'Imaginary'}</span>
+        </div>
+        <div class="info-item">
+            <span>Cube</span>
+            <span>${formatNumber(num * num * num)}</span>
+        </div>
+        <div class="info-item">
+            <span>Cube Root</span>
+            <span>${formatNumber(Math.cbrt(num))}</span>
+        </div>
+    `;
+    
+    resultSection.classList.remove('result-section-hidden');
+}
+
+function updateDisplay() {
+    display.textContent = expr || lastResult || '0';
+}
+
+function safeEvaluate(expression) {
+    // Remove all whitespace and normalize operators
+    expression = expression.replace(/\s+/g, '');
+    
+    // Only allow numbers, basic operators, parentheses, and decimal points
+    if (!/^[0-9+\-*/().]+$/.test(expression)) {
+        throw new Error('Invalid characters in expression');
+    }
+    
+    // Prevent multiple consecutive operators
+    if (/[+\-*/]{2,}/.test(expression)) {
+        throw new Error('Invalid operator sequence');
+    }
+    
+    // Check for division by zero
+    if (/\/0(?![0-9])/.test(expression)) {
+        throw new Error('Division by zero');
+    }
+    
+    // Validate parentheses balance
+    let openParen = 0;
+    for (let char of expression) {
+        if (char === '(') openParen++;
+        if (char === ')') openParen--;
+        if (openParen < 0) throw new Error('Unmatched closing parenthesis');
+    }
+    if (openParen !== 0) throw new Error('Unmatched opening parenthesis');
+    
+    // Safe evaluation using Function constructor (safer than eval)
+    try {
+        const result = new Function('return ' + expression)();
+        if (typeof result !== 'number') {
+            throw new Error('Invalid expression result');
+        }
+        return result;
+    } catch (error) {
+        throw new Error('Invalid mathematical expression');
+    }
+}
+
+</script>
+</body>
+</html>

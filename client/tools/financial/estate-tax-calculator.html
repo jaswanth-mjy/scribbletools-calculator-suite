@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Estate Tax Calculator - Calculate Federal Estate Tax & Inheritance Tax</title>
+    <meta name="description" content="Free estate tax calculator to calculate federal estate tax liability. Determine estate taxes, exemptions, and inheritance tax planning for your estate.">
+    <meta name="keywords" content="estate tax calculator, inheritance tax calculator, federal estate tax, estate planning calculator, estate tax exemption calculator">
+    <meta name="author" content="ScribbleTools">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://scribbletools.in/client/tools/financial/estate-tax-calculator.html">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://scribbletools.in/client/tools/financial/estate-tax-calculator.html">
+    <meta property="og:title" content="Estate Tax Calculator - Calculate Federal Estate Tax & Inheritance Tax">
+    <meta property="og:description" content="Calculate federal estate tax and inheritance tax with our free estate tax calculator. Plan your estate with accurate tax calculations.">
+    <meta property="og:image" content="https://scribbletools.in/assets/og-image.svg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://scribbletools.in/client/tools/financial/estate-tax-calculator.html">
+    <meta property="twitter:title" content="Estate Tax Calculator - Calculate Federal Estate Tax & Inheritance Tax">
+    <meta property="twitter:description" content="Calculate federal estate tax and inheritance tax with our free estate tax calculator. Estate planning made easy.">
+    <meta property="twitter:image" content="https://scribbletools.in/assets/og-image.svg">
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Estate Tax Calculator",
+      "description": "Free online estate tax calculator for calculating federal estate tax liability, exemptions, and inheritance tax planning",
+      "url": "https://scribbletools.in/client/tools/financial/estate-tax-calculator.html",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Web Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "ScribbleTools"
+      }
+    }
+    </script>
+    <style>
+        body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; }
+        .calc-container { max-width: 420px; margin: 3em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2em 1.5em 2.5em 1.5em; }
+        .handwritten { font-family: 'Caveat', cursive; }
+        .calc-label { font-weight: 600; margin-bottom: 0.5em; display: block; }
+        .calc-input { width: 100%; padding: 1em; border: 2px solid #EAE3D5; border-radius: 0.7em; font-size: 1.2em; margin-bottom: 1em; background: #FDFBF5; text-align: center; font-family: 'Fira Code', monospace; }
+        .calc-btn { background: #fff; color: #D9534F; border: 2px solid #D9534F; border-radius: 0.5em; padding: 0.7em 2em; font-weight: 600; font-size: 1.1em; cursor: pointer; transition: all 0.2s; margin-bottom: 1em; }
+        .calc-btn:hover { background: #D9534F; color: #fff; }
+        .calc-result { background: #FDFBF5; border: 2px solid #D9534F; border-radius: 0.7em; padding: 1em; font-size: 1.25em; color: #D9534F; min-height: 1.7em; margin-bottom: 1em; text-align: center; font-family: 'Fira Code', monospace; font-weight: bold; max-height: 300px; overflow-y: auto; word-break: break-word; transition: height 0.2s; }
+        .calc-desc { width: 100%; margin-top: 2em; background:#FDFBF5; border:2px solid #EAE3D5; border-radius:0.9em; padding:1.2em 1em; font-size:1.08em; color:#333; line-height:1.7; }
+        .calc-desc strong { color: #D9534F; font-size: 1.12em; }
+        @media (max-width: 600px) { .calc-container { padding: 1em 0.2em; } }
+    </style>
+</head>
+<body>
+<div class="calc-container">
+    <h2 class="handwritten text-5xl text-[#D9534F] mb-4">Estate Tax Calculator</h2>
+    <label class="calc-label">Estate Value ($):</label>
+    <input id="estate" class="calc-input" type="number" min="0" placeholder="e.g. 1000000">
+    <label class="calc-label">State (if applicable):</label>
+    <input id="state" class="calc-input" type="text" placeholder="e.g. CA or leave blank">
+    <button id="calc-btn" class="calc-btn">Calculate</button>
+    <div class="calc-result" id="calc-result"></div>
+</div>
+<div class="calc-desc" style="max-width: fit-content; margin: 2.5em auto 0 auto;">
+    <strong style="font-size:1.18em; color:#D9534F;">About the Estate Tax Calculator</strong><br><br>
+    Instantly estimate potential estate taxes based on your estate value and location. Enter your estate value and (optionally) your state to see if federal or state estate taxes may apply. Great for estate planning, inheritance, or financial advice.<br><br>
+    
+    <h3 style="color:#D9534F; margin-top:2em;">How to Use the Estate Tax Calculator</h3>
+    <ol style="margin-left:1.2em;">
+        <li><strong>Enter Estate Value:</strong> Input the total estimated value of your estate</li>
+        <li><strong>Add State (Optional):</strong> Enter your state if it has estate or inheritance taxes</li>
+        <li><strong>Calculate:</strong> See potential federal and state estate tax liability</li>
+        <li><strong>Review Results:</strong> Understand tax implications and planning opportunities</li>
+    </ol>
+    
+    <h3 style="color:#D9534F; margin-top:2em;">2024 Estate Tax Exemptions</h3>
+    <div style="background:#f8f9fa; padding:15px; border-radius:5px;">
+        <strong>Federal Estate Tax:</strong><br>
+        • Exemption Amount: $13.61 million per person ($27.22 million for married couples)<br>
+        • Tax Rate: 40% on amounts above exemption<br>
+        • Only 0.2% of estates pay federal estate tax<br><br>
+        <strong>Key Fact:</strong> The federal exemption is scheduled to drop to ~$6 million in 2026<br>
+        <em>Most families won't owe federal estate taxes, but state taxes may still apply!</em>
+    </div>
+    
+    <h3 style="color:#D9534F; margin-top:2em;">States with Estate or Inheritance Taxes</h3>
+    <ul style="margin-left:1.2em;">
+        <li><strong>Estate Tax States:</strong> Connecticut, Hawaii, Illinois, Maine, Massachusetts, Minnesota, New York, Oregon, Rhode Island, Vermont, Washington, DC</li>
+        <li><strong>Inheritance Tax States:</strong> Iowa, Kentucky, Maryland, Nebraska, New Jersey, Pennsylvania</li>
+        <li><strong>Both Estate & Inheritance:</strong> Maryland and New Jersey have both taxes</li>
+        <li><strong>Lower Exemptions:</strong> State exemptions range from $1 million to $12.92 million</li>
+        <li><strong>No State Taxes:</strong> 38 states have no estate or inheritance taxes</li>
+    </ul>
+    
+    <h3 style="color:#D9534F; margin-top:2em;">What's Included in Your Estate</h3>
+    <ul style="margin-left:1.2em;">
+        <li><strong>Real Estate:</strong> Primary residence, vacation homes, rental properties</li>
+        <li><strong>Financial Accounts:</strong> Bank accounts, investment portfolios, retirement accounts</li>
+        <li><strong>Business Interests:</strong> Ownership stakes in companies or partnerships</li>
+        <li><strong>Personal Property:</strong> Vehicles, jewelry, art, collectibles</li>
+        <li><strong>Life Insurance:</strong> Death benefits from policies you own</li>
+        <li><strong>Debts:</strong> Outstanding mortgages and loans reduce estate value</li>
+    </ul>
+    
+    <h3 style="color:#D9534F; margin-top:2em;">Estate Planning Strategies</h3>
+    <div style="background:#f8f9fa; padding:15px; border-radius:5px;">
+        <strong>Common Tax Reduction Techniques:</strong><br>
+        • Annual Gift Tax Exclusion: $18,000 per recipient (2024)<br>
+        • Lifetime Gift Exemption: $13.61 million (shares federal exemption)<br>
+        • Charitable Deductions: Unlimited deduction for qualified charities<br>
+        • Marital Deduction: Unlimited transfers to surviving spouse<br>
+        • Generation-Skipping Trusts: Transfer wealth to grandchildren tax-efficiently<br>
+        <em>Strategic gifting during lifetime can significantly reduce estate taxes!</em>
+    </div>
+    
+    <h3 style="color:#D9534F; margin-top:2em;">Advanced Estate Planning Tools</h3>
+    <ul style="margin-left:1.2em;">
+        <li><strong>Irrevocable Life Insurance Trusts (ILITs):</strong> Remove life insurance from taxable estate</li>
+        <li><strong>Grantor Retained Annuity Trusts (GRATs):</strong> Transfer appreciation to beneficiaries</li>
+        <li><strong>Qualified Personal Residence Trusts (QPRTs):</strong> Discount value of residence transfers</li>
+        <li><strong>Family Limited Partnerships:</strong> Transfer business interests at discounted values</li>
+        <li><strong>Charitable Remainder Trusts:</strong> Income stream plus charitable deduction</li>
+        <li><strong>Dynasty Trusts:</strong> Multi-generational wealth transfer vehicles</li>
+    </ul>
+    
+    <h3 style="color:#D9534F; margin-top:2em;">Valuation Considerations</h3>
+    <ul style="margin-left:1.2em;">
+        <li><strong>Fair Market Value:</strong> Price willing buyer would pay willing seller</li>
+        <li><strong>Discounts Available:</strong> Minority interests, marketability restrictions</li>
+        <li><strong>Professional Appraisals:</strong> Required for certain assets like businesses, art</li>
+        <li><strong>Date of Death Values:</strong> Assets valued as of date of death</li>
+        <li><strong>Alternate Valuation:</strong> Executor can choose 6 months after death</li>
+        <li><strong>Special Use Valuation:</strong> Farms and businesses may qualify for discounts</li>
+    </ul>
+    
+    <h3 style="color:#D9534F; margin-top:2em;">Estate Tax vs Inheritance Tax</h3>
+    <div style="background:#f8f9fa; padding:15px; border-radius:5px;">
+        <strong>Key Differences:</strong><br><br>
+        <strong>Estate Tax:</strong><br>
+        • Paid by the estate before distribution<br>
+        • Based on total estate value<br>
+        • Paid before beneficiaries receive assets<br><br>
+        <strong>Inheritance Tax:</strong><br>
+        • Paid by individual beneficiaries<br>
+        • Rates vary by relationship to deceased<br>
+        • Spouses often exempt, children get lower rates<br>
+        <em>Some states have both taxes, requiring careful planning!</em>
+    </div>
+    
+    <h3 style="color:#D9534F; margin-top:2em;">When to Consult Professionals</h3>
+    <ul style="margin-left:1.2em;">
+        <li><strong>Estate Value > $5 Million:</strong> Complex planning strategies may be beneficial</li>
+        <li><strong>Business Ownership:</strong> Succession planning requires specialized expertise</li>
+        <li><strong>Multiple State Connections:</strong> Different state laws create complications</li>
+        <li><strong>Blended Families:</strong> Complex beneficiary structures need careful planning</li>
+        <li><strong>Charitable Goals:</strong> Tax-efficient charitable giving strategies</li>
+        <li><strong>Tax Law Changes:</strong> 2026 exemption reduction requires action</li>
+    </ul>
+    
+    <h3 style="color:#D9534F; margin-top:2em;">Essential Estate Planning Documents</h3>
+    <ul style="margin-left:1.2em;">
+        <li><strong>Will:</strong> Directs asset distribution and names executor</li>
+        <li><strong>Revocable Living Trust:</strong> Avoids probate, provides privacy</li>
+        <li><strong>Financial Power of Attorney:</strong> Manages finances if incapacitated</li>
+        <li><strong>Healthcare Power of Attorney:</strong> Makes medical decisions</li>
+        <li><strong>Healthcare Directive:</strong> Documents end-of-life wishes</li>
+        <li><strong>Beneficiary Designations:</strong> Keep retirement accounts and insurance current</li>
+    </ul>
+    
+    <h3 style="color:#D9534F; margin-top:2em;">Common Estate Planning Mistakes</h3>
+    <div style="background:#f8f9fa; padding:15px; border-radius:5px;">
+        <strong>Avoid These Costly Errors:</strong><br>
+        • Not updating beneficiary designations after major life events<br>
+        • Procrastinating on estate planning until it's too late<br>
+        • Failing to coordinate state and federal tax strategies<br>
+        • Not considering generation-skipping tax implications<br>
+        • Overlooking annual gifting opportunities<br>
+        • Inadequate liquidity planning for tax payments<br>
+        <em>Proper planning can save your heirs significant taxes and complications!</em>
+    </div>
+    
+    <b>Note:</b> The data used in this calculator was last updated on July 30, 2024, and may change in the future. Estate tax laws are complex and change frequently - consult with qualified estate planning professionals.<br><br>
+    <b>Use Cases:</b>
+    <ul style="margin-left:1.2em;">
+        <li>Estimate potential estate taxes for comprehensive financial planning</li>
+        <li>Understand federal and state estate tax thresholds and exemptions</li>
+        <li>Plan for wealth transfer strategies and charitable giving opportunities</li>
+        <li>Determine if your estate may be subject to current or future tax liability</li>
+        <li>Evaluate the impact of the 2026 federal exemption reduction</li>
+        <li>Compare estate tax implications of different states for relocation planning</li>
+    </ul>
+</div>
+<script>
+function showResult(str) {
+    document.getElementById('calc-result').innerHTML = str;
+}
+document.getElementById('calc-btn').addEventListener('click', function() {
+    let estate = parseFloat(document.getElementById('estate').value);
+    let state = document.getElementById('state').value.trim().toUpperCase();
+    if (isNaN(estate) || estate < 0) {
+        showResult('Please enter a valid estate value.');
+        return;
+    }
+    // 2024 federal exemption (example, not legal advice)
+    let federalExempt = 13000000;
+    let federalTaxRate = 0.4;
+    let federalTax = estate > federalExempt ? (estate - federalExempt) * federalTaxRate : 0;
+    let stateTax = 0;
+    // For demo: only NY and MA have state estate tax in this example
+    if (state === 'NY' && estate > 6000000) stateTax = (estate - 6000000) * 0.16;
+    if (state === 'MA' && estate > 2000000) stateTax = (estate - 2000000) * 0.12;
+    let totalTax = federalTax + stateTax;
+    showResult(`<b>Estimated Estate Tax:</b> $${totalTax.toFixed(2)}<br><b>Federal Tax:</b> $${federalTax.toFixed(2)}<br><b>State Tax:</b> $${stateTax.toFixed(2)}`);
+});
+</script>
+</body>
+</html>

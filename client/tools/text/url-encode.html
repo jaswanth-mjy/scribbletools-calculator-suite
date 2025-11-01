@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Encoder Decoder - FREE URL Encode & Decode Tool</title>
+    <meta name="description" content="Free URL encoder and decoder! Encode and decode URLs, query strings, and special characters instantly. Perfect URL encoding tool for developers. 100% free!">
+    <meta name="keywords" content="url encoder, url decoder, url encode tool, url decode tool, percent encoding tool, url escape tool, query string encoder, url parameter encoder, web encoding tool, uri encoder decoder, url conversion tool, character encoding tool, url safe encoding, web development tool, url formatting tool, special character encoder, url string converter, web url encoder, http encoding tool, url parameter decoder, uri escape tool, url component encoder, web character encoder, url text converter, url query encoder">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://scribbletools.in/client/tools/text/url-encode.html">
+    <meta property="og:title" content="URL Encoder Decoder - FREE URL Encode & Decode Tool">
+    <meta property="og:description" content="Free URL encoder and decoder! Encode and decode URLs, query strings, and special characters instantly. Perfect URL encoding tool for developers. 100% free!">
+    <meta property="og:image" content="https://scribbletools.in/assets/og-image.svg">
+    <meta property="og:site_name" content="Scribble Tools">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://scribbletools.in/client/tools/text/url-encode.html">
+    <meta property="twitter:title" content="URL Encoder Decoder - FREE URL Encode & Decode Tool">
+    <meta property="twitter:description" content="Free URL encoder and decoder! Encode and decode URLs, query strings, and special characters instantly. Perfect URL encoding tool for developers. 100% free!">
+    <meta property="twitter:image" content="https://scribbletools.in/assets/og-image.svg">
+    
+    <!-- Additional SEO Meta Tags -->
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Scribble Tools">
+    <meta name="generator" content="Scribble Tools">
+    <meta name="application-name" content="URL Encoder Decoder">
+    <meta name="apple-mobile-web-app-title" content="URL Encoder">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#D9534F">
+    <meta name="msapplication-navbutton-color" content="#D9534F">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#D9534F">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://scribbletools.in/client/tools/text/url-encode.html">
+    
+    <!-- Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "URL Encoder Decoder",
+      "description": "Free online URL encoder and decoder tool for encoding and decoding URLs, query strings, and special characters.",
+      "url": "https://scribbletools.in/client/tools/text/url-encode.html",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Any",
+      "permissions": "browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "featureList": [
+        "URL encoding and decoding",
+        "Query string encoding",
+        "Special character handling",
+        "Percent encoding support",
+        "Instant processing",
+        "Copy to clipboard",
+        "Developer-friendly tool"
+      ],
+      "provider": {
+        "@type": "Organization",
+        "name": "Scribble Tools",
+        "url": "https://scribbletools.in"
+      }
+    }
+    </script>
+    
+    <style>
+    .ue-flex-row { display: flex; gap: 2rem; align-items: flex-start; justify-content: center; flex-wrap: wrap; }
+    .ue-textarea {
+        background-color: #FDFBF5;
+        border: 2px solid #EAE3D5;
+        border-radius: 0.5rem;
+        padding: 1rem;
+        width: 90%;
+        min-width: 320px;
+        max-width: 700px;
+        height: 80px;
+        color: #4A4A4A;
+        font-size: 1.1rem;
+        line-height: 1.6;
+        transition: all 0.2s;
+        resize: none;
+        overflow: auto;
+        box-sizing: border-box;
+        margin: 0 auto 1.2rem auto;
+        display: block;
+    }
+    .ue-textarea:focus {
+        outline: none;
+        border-color: #D9534F;
+        box-shadow: 0 0 0 3px rgba(217, 83, 79, 0.2);
+    }
+    .ue-options-box {
+        margin: 0 auto 1.5rem auto;
+        padding: 1.2rem 1.5rem;
+        background-color: #FDFBF5;
+        border-radius: 0.5rem;
+        border: 1px solid #EAE3D5;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.2rem;
+        align-items: center;
+        justify-content: center;
+        max-width: 700px;
+    }
+    .ue-label {
+        font-weight: 600;
+        color: #D9534F;
+        margin-right: 0.5rem;
+    }
+    .ue-input, .ue-select {
+        padding: 0.3rem 0.7rem;
+        border-radius: 0.4rem;
+        border: 1px solid #EAE3D5;
+        font-size: 1rem;
+        margin-right: 0.5rem;
+    }
+    .ue-toggle {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 1rem;
+        font-weight: 600;
+        color: #D9534F;
+    }
+    .ue-toggle input[type=checkbox] {
+        accent-color: #D9534F;
+        width: 1.2rem;
+        height: 1.2rem;
+    }
+    .ue-output-box {
+        margin: 2rem auto 0 auto;
+        background: #fff;
+        border: 2px solid #D9534F;
+        border-radius: 0.7rem;
+        padding: 1.2rem 1rem;
+        min-height: 80px;
+        color: #333;
+        font-size: 1.15rem;
+        font-family: 'Fira Code', monospace;
+        letter-spacing: 1px;
+        word-break: break-word;
+        overflow: auto;
+        max-width: 700px;
+        width: 90%;
+        text-align: left;
+    }
+    .ue-utility-bar {
+        margin-top: 2.5rem;
+        display: flex;
+        gap: 1.2rem;
+        justify-content: center;
+    }
+    .ue-utility-button {
+        background-color: #fff;
+        color: #D9534F;
+        font-weight: 600;
+        border: 2px solid #D9534F;
+        cursor: pointer;
+        padding: 0.7rem 2rem;
+        border-radius: 0.5rem;
+        transition: all 0.2s;
+        font-size: 1.1rem;
+    }
+    .ue-utility-button:hover {
+        background-color: #D9534F;
+        color: #fff;
+    }
+</style>
+<div>
+    <h2 class="handwritten text-5xl text-[#D9534F] mb-4">URL Encode & Decode</h2>
+    <div class="mb-6 p-6 bg-amber-50/70 rounded-lg border border-amber-200">
+        <p class="text-lg text-gray-800 font-bold mb-2">The URL Encode tool makes it easy to safely encode or decode URLs for web use. Instantly convert special characters to percent-encoding, or decode encoded URLs back to readable text. Perfect for web developers, marketers, students, and anyone who needs to share, debug, or process links. Supports single or multi-line input, and lets you choose between encoding all non-ASCII or just reserved characters. Copy or download your result with a click!</p>
+        <ul class="list-disc list-inside text-gray-700 text-base">
+            <li>Encode and decode URLs (percent-encoding for safe web use)</li>
+            <li>Encode/decode entire URLs, query strings, or selected text</li>
+            <li>Option to encode/decode only reserved characters or all non-ASCII</li>
+            <li>Multi-line support for lists of URLs</li>
+            <li>Applications: web development, sharing links, email, QR code generation, data processing, debugging, and more</li>
+        </ul>
+    </div>
+    <textarea id="ue-input" class="ue-textarea" placeholder="Paste or type your URL(s) or text here..."></textarea>
+    <div class="ue-options-box">
+        <button id="ue-encode" class="ue-utility-button">Encode</button>
+        <button id="ue-decode" class="ue-utility-button">Decode</button>
+        <div class="ue-toggle">
+            <input type="checkbox" id="ue-multiline">
+            <label for="ue-multiline">Multi-line Mode</label>
+        </div>
+        <div class="ue-toggle">
+            <input type="checkbox" id="ue-reserved">
+            <label for="ue-reserved">Only Reserved Chars</label>
+        </div>
+    </div>
+    <div class="ue-output-box" id="ue-output"></div>
+    <div class="ue-utility-bar">
+        <button id="ue-copy" class="ue-utility-button">Copy</button>
+        <button id="ue-download" class="ue-utility-button">Download</button>
+        <button id="ue-clear" class="ue-utility-button">Clear</button>
+    </div>
+</div>
+<script>
+function initializeUrlEncode() {
+    const ueInput = document.getElementById('ue-input');
+    const ueOutput = document.getElementById('ue-output');
+    const btnEncode = document.getElementById('ue-encode');
+    const btnDecode = document.getElementById('ue-decode');
+    const btnCopy = document.getElementById('ue-copy');
+    const btnDownload = document.getElementById('ue-download');
+    const btnClear = document.getElementById('ue-clear');
+    const cbMultiline = document.getElementById('ue-multiline');
+    const cbReserved = document.getElementById('ue-reserved');
+    const reservedChars = /[!'()*]/g;
+    function encodeText(text, reservedOnly) {
+        if (reservedOnly) {
+            return text.replace(reservedChars, c => '%' + c.charCodeAt(0).toString(16).toUpperCase());
+        } else {
+            return encodeURIComponent(text);
+        }
+    }
+    function decodeText(text) {
+        try { return decodeURIComponent(text); }
+        catch { return text; }
+    }
+    function process(action) {
+        let input = ueInput.value;
+        let result = '';
+        if (cbMultiline.checked) {
+            const lines = input.split(/\r?\n/);
+            result = lines.map(line => action === 'encode' ? encodeText(line, cbReserved.checked) : decodeText(line)).join('\n');
+        } else {
+            result = action === 'encode' ? encodeText(input, cbReserved.checked) : decodeText(input);
+        }
+        ueOutput.textContent = result;
+    }
+    btnEncode.addEventListener('click', () => process('encode'));
+    btnDecode.addEventListener('click', () => process('decode'));
+    btnCopy.addEventListener('click', () => {
+        navigator.clipboard.writeText(ueOutput.textContent).then(() => {
+            const orig = btnCopy.textContent;
+            btnCopy.textContent = 'Copied!';
+            setTimeout(() => { btnCopy.textContent = orig; }, 2000);
+        });
+    });
+    btnDownload.addEventListener('click', () => {
+        const blob = new Blob([ueOutput.textContent], { type: 'text/plain' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'url-encoded.txt';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    });
+    btnClear.addEventListener('click', () => {
+        ueInput.value = '';
+        ueOutput.textContent = '';
+    });
+}
+initializeUrlEncode();
+</script>

@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Join Text Tool - FREE Text Joiner & String Merger</title>
+  <meta name="description" content="Free text joiner tool! Join text lines, merge strings, combine text with separators. Text merger for data processing, content combining. 100% free!">
+  <meta name="keywords" content="join text tool, text joiner, text merger, string joiner, text combiner, merge text, combine text, text concatenation, join strings, text union tool, merge strings, text assembler, string merger, text connector, combine lines, join text lines, text fusion tool, string combiner, text aggregator, merge text files">
+  <meta name="author" content="Scribble Tools">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://scribbletools.in/client/tools/text/join-text.html">
+  <meta property="og:title" content="Join Text Tool - FREE Text Joiner & String Merger">
+  <meta property="og:description" content="Free text joiner tool! Join text lines, merge strings, combine text with separators. Text merger for data processing, content combining. 100% free!">
+  <meta property="og:image" content="https://scribbletools.in/assets/og-image.svg">
+  <meta property="og:site_name" content="Scribble Tools">
+  <meta property="og:locale" content="en_US">
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://scribbletools.in/client/tools/text/join-text.html">
+  <meta property="twitter:title" content="Join Text Tool - FREE Text Joiner & String Merger">
+  <meta property="twitter:description" content="Free text joiner tool! Join text lines, merge strings, combine text with separators. Text merger for data processing, content combining. 100% free!">
+  <meta property="twitter:image" content="https://scribbletools.in/assets/og-image.svg">
+  
+  <!-- Additional SEO Meta Tags -->
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Scribble Tools">
+  <meta name="generator" content="Scribble Tools">
+  <meta name="application-name" content="Text Joiner Tool">
+  <meta name="apple-mobile-web-app-title" content="Join Text">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#D9534F">
+  <meta name="msapplication-navbutton-color" content="#D9534F">
+  <meta name="apple-mobile-web-app-status-bar-style" content="#D9534F">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://scribbletools.in/client/tools/text/join-text.html">
+  
+  <!-- Preconnect for Performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Text Joiner & String Merger Tool",
+    "description": "Free online tool for joining and merging text with custom separators. Perfect for data processing, content combination, and text manipulation tasks.",
+    "url": "https://scribbletools.in/client/tools/text/join-text.html",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "Any",
+    "permissions": "browser",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "featureList": [
+      "Text joining utility",
+      "String merger tool",
+      "Custom separator options",
+      "Line combination tool",
+      "Data processing helper",
+      "Text concatenation",
+      "No registration required",
+      "Free to use"
+    ],
+    "provider": {
+      "@type": "Organization",
+      "name": "Scribble Tools",
+      "url": "https://scribbletools.in"
+    }
+  }
+  </script>
+</head>
+<body>
+
+<!-- File: tools/text/join-text.html -->
+<style>
+    .jt-textarea {
+        background-color: #FDFBF5;
+        border: 2px solid #EAE3D5;
+        border-radius: 0.5rem;
+        padding: 1rem;
+        width: 100%;
+        min-height: 120px;
+        color: #4A4A4A;
+        transition: all 0.2s;
+        font-size: 1.1rem;
+        line-height: 1.6;
+    }
+    .jt-textarea:focus {
+        outline: none;
+        border-color: #D9534F;
+        box-shadow: 0 0 0 3px rgba(217, 83, 79, 0.2);
+    }
+    .jt-options-box {
+        margin-top: 1.5rem;
+        padding: 1.5rem;
+        background-color: #FDFBF5;
+        border-radius: 0.5rem;
+        border: 1px solid #EAE3D5;
+    }
+    .jt-button-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 0.75rem;
+    }
+    .jt-button {
+        background-color: #fff;
+        color: #4A4A4A;
+        padding: 0.75rem 1rem;
+        border-radius: 0.5rem;
+        font-weight: 600;
+        border: 1px solid #DCD5C3;
+        cursor: pointer;
+        transition: all 0.2s;
+        text-align: center;
+    }
+    .jt-button:hover {
+        background-color: #EFEAE0;
+        border-color: #C8BFAC;
+    }
+    .jt-button:active {
+        transform: scale(0.98);
+        background-color: #EAE3D5;
+    }
+    .jt-utility-bar {
+        margin-top: 1.5rem;
+        padding-top: 1.5rem;
+        border-top: 2px dashed #DCD5C3;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .jt-utility-button {
+        background-color: transparent;
+        color: #D9534F;
+        font-weight: 600;
+        border: none;
+        cursor: pointer;
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+    }
+    .jt-utility-button:hover {
+        background-color: #FDFBF5;
+    }
+    .jt-status-bar {
+        font-size: 0.9rem;
+        color: #888;
+    }
+    .jt-result-area {
+        margin-top: 1.5rem;
+        background: #fff;
+        border: 1px solid #EAE3D5;
+        border-radius: 0.5rem;
+        padding: 1rem;
+        min-height: 80px;
+        font-size: 1.05rem;
+        color: #333;
+        white-space: pre-wrap;
+        word-break: break-word;
+    }
+    .jt-input-group {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+    .jt-input-group label {
+        font-size: 0.95rem;
+        color: #555;
+        font-weight: 500;
+    }
+    .jt-input {
+        border: 1px solid #DCD5C3;
+        border-radius: 0.375rem;
+        padding: 0.4rem 0.7rem;
+        font-size: 1rem;
+        width: 120px;
+    }
+</style>
+<div>
+    <h2 class="handwritten text-5xl text-[#D9534F] mb-4">Join Text</h2>
+    <div class="mb-6 p-6 bg-amber-50/70 rounded-lg border border-amber-200">
+        <p class="text-lg text-gray-800 font-bold mb-2">The Join Text tool is designed to help you combine multiple lines, words, or segments of text into a single string using a variety of joining options. Whether you need to join lines with a custom delimiter, merge words into camelCase, PascalCase, snake_case, or kebab-case, or add prefixes/suffixes, this tool makes it easy. It’s perfect for data processing, code formatting, preparing lists, or creating readable output for documents and web content. Advanced features like alternating delimiters and batch prefix/suffix operations make it a powerful utility for both technical and creative tasks.</p>
+        <ul class="list-disc list-inside text-gray-700 text-base">
+            <li>Join lines or words with a custom delimiter</li>
+            <li>Merge into camelCase, PascalCase, snake_case, kebab-case, or Title Case</li>
+            <li>Add prefix/suffix to each segment</li>
+            <li>Alternate delimiters, remove whitespace, or join with numbering</li>
+            <li>Perfect for code, data, lists, and creative writing</li>
+        </ul>
+    </div>
+    <p class="text-gray-600 mb-6">
+        Join your text in every way possible! Choose from 10 powerful joining options for lines, words, and more.
+    </p>
+    <textarea id="jt-input" class="jt-textarea" placeholder="Type or paste your text here..."></textarea>
+    <div class="jt-options-box">
+        <h3 class="font-bold text-lg text-gray-700 mb-4">Join Options</h3>
+        <div class="jt-input-group">
+            <label for="jt-delimiter">Delimiter:</label>
+            <input id="jt-delimiter" class="jt-input" type="text" placeholder="," maxlength="10">
+            <label for="jt-prefix">Prefix:</label>
+            <input id="jt-prefix" class="jt-input" type="text" placeholder="">
+            <label for="jt-suffix">Suffix:</label>
+            <input id="jt-suffix" class="jt-input" type="text" placeholder="">
+            <label for="jt-alt-delim">Alt Delimiter:</label>
+            <input id="jt-alt-delim" class="jt-input" type="text" placeholder=";">
+        </div>
+        <div class="jt-button-grid">
+            <button id="jt-join-lines" class="jt-button">Join Lines (Delimiter)</button>
+            <button id="jt-join-words" class="jt-button">Join Words (Delimiter)</button>
+            <button id="jt-join-no-space" class="jt-button">Join (No Whitespace)</button>
+            <button id="jt-join-camel" class="jt-button">Join as camelCase</button>
+            <button id="jt-join-pascal" class="jt-button">Join as PascalCase</button>
+            <button id="jt-join-snake" class="jt-button">Join as snake_case</button>
+            <button id="jt-join-kebab" class="jt-button">Join as kebab-case</button>
+            <button id="jt-join-title" class="jt-button">Join as Title Case</button>
+            <button id="jt-join-alt-delim" class="jt-button">Join (Alternating Delimiters)</button>
+            <button id="jt-join-prefix-suffix" class="jt-button">Join (Prefix & Suffix)</button>
+        </div>
+    </div>
+    <div class="jt-result-area" id="jt-result"></div>
+    <div class="jt-utility-bar">
+        <div class="jt-status-bar">
+            <span>Chars: <strong id="jt-char-count" class="text-gray-600">0</strong></span> |
+            <span>Words: <strong id="jt-word-count" class="text-gray-600">0</strong></span>
+        </div>
+        <div>
+            <button id="jt-copy" class="jt-utility-button">Copy</button>
+            <button id="jt-download" class="jt-utility-button">Download</button>
+            <button id="jt-clear" class="jt-utility-button">Clear</button>
+        </div>
+    </div>
+</div>
+<script>
+function initializeJoinText() {
+    const jtInput = document.getElementById('jt-input');
+    const jtResult = document.getElementById('jt-result');
+    const jtCharCount = document.getElementById('jt-char-count');
+    const jtWordCount = document.getElementById('jt-word-count');
+    const jtDelimiter = document.getElementById('jt-delimiter');
+    const jtPrefix = document.getElementById('jt-prefix');
+    const jtSuffix = document.getElementById('jt-suffix');
+    const jtAltDelim = document.getElementById('jt-alt-delim');
+
+    function updateStats() {
+        const text = jtInput.value;
+        jtCharCount.textContent = text.length;
+        jtWordCount.textContent = text.trim().split(/\s+/).filter(Boolean).length;
+    }
+    function showResult(str) {
+        jtResult.textContent = str;
+    }
+    function getLines() {
+        return jtInput.value.split(/\r?\n/).filter(line => line.length > 0);
+    }
+    function getWords() {
+        return jtInput.value.trim().split(/\s+/).filter(Boolean);
+    }
+    document.getElementById('jt-join-lines').addEventListener('click', function() {
+        const delim = jtDelimiter.value || ',';
+        showResult(getLines().join(delim));
+    });
+    document.getElementById('jt-join-words').addEventListener('click', function() {
+        const delim = jtDelimiter.value || ',';
+        showResult(getWords().join(delim));
+    });
+    document.getElementById('jt-join-no-space').addEventListener('click', function() {
+        showResult(jtInput.value.replace(/\s+/g, ''));
+    });
+    document.getElementById('jt-join-camel').addEventListener('click', function() {
+        const words = getWords();
+        if (words.length === 0) return showResult('');
+        const camel = words[0].toLowerCase() + words.slice(1).map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase()).join('');
+        showResult(camel);
+    });
+    document.getElementById('jt-join-pascal').addEventListener('click', function() {
+        const words = getWords();
+        const pascal = words.map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase()).join('');
+        showResult(pascal);
+    });
+    document.getElementById('jt-join-snake').addEventListener('click', function() {
+        showResult(getWords().map(w => w.toLowerCase()).join('_'));
+    });
+    document.getElementById('jt-join-kebab').addEventListener('click', function() {
+        showResult(getWords().map(w => w.toLowerCase()).join('-'));
+    });
+    document.getElementById('jt-join-title').addEventListener('click', function() {
+        showResult(getWords().map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase()).join(' '));
+    });
+    document.getElementById('jt-join-alt-delim').addEventListener('click', function() {
+        const words = getWords();
+        const d1 = jtDelimiter.value || ',';
+        const d2 = jtAltDelim.value || ';';
+        let out = '';
+        for (let i = 0; i < words.length; i++) {
+            out += words[i];
+            if (i < words.length - 1) out += (i % 2 === 0 ? d1 : d2);
+        }
+        showResult(out);
+    });
+    document.getElementById('jt-join-prefix-suffix').addEventListener('click', function() {
+        const words = getWords();
+        const prefix = jtPrefix.value || '';
+        const suffix = jtSuffix.value || '';
+        showResult(words.map(w => prefix + w + suffix).join(''));
+    });
+    jtInput.addEventListener('input', updateStats);
+    document.getElementById('jt-copy').addEventListener('click', function() {
+        navigator.clipboard.writeText(jtResult.textContent).then(() => {
+            const btn = document.getElementById('jt-copy');
+            const orig = btn.textContent;
+            btn.textContent = 'Copied!';
+            setTimeout(() => { btn.textContent = orig; }, 2000);
+        });
+    });
+    document.getElementById('jt-download').addEventListener('click', function() {
+        const blob = new Blob([jtResult.textContent], { type: 'text/plain' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'join-text.txt';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    });
+    document.getElementById('jt-clear').addEventListener('click', function() {
+        jtInput.value = '';
+        jtResult.textContent = '';
+        updateStats();
+    });
+    updateStats();
+}
+initializeJoinText();
+</script>

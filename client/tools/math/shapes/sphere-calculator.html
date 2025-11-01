@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Sphere Calculator - Volume, Surface Area & Radius Calculator | ScribbleTools</title>
+    <meta name="description" content="Calculate sphere volume, surface area, radius, and diameter with our comprehensive 3D sphere calculator. Perfect for geometry homework, construction projects, and mathematical calculations with instant results.">
+    <meta name="keywords" content="sphere calculator, sphere volume calculator, sphere surface area calculator, 3D sphere calculator, geometry calculator, sphere radius calculator, sphere diameter calculator, math calculator, construction calculator, geometry homework, mathematical formulas, 3D geometry">
+    <meta name="author" content="ScribbleTools">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://scribbletools.in/client/tools/math/shapes/sphere-calculator.html">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Free Sphere Calculator - Volume, Surface Area & Radius Calculator">
+    <meta property="og:description" content="Calculate sphere volume, surface area, radius, and diameter with instant 3D geometry calculations. Perfect for homework and construction projects.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://scribbletools.in/client/tools/math/shapes/sphere-calculator.html">
+    <meta property="og:image" content="https://scribbletools.in/assets/og-image.svg">
+    <meta property="og:site_name" content="ScribbleTools">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Free Sphere Calculator - Volume, Surface Area & Radius Calculator">
+    <meta name="twitter:description" content="Calculate all sphere measurements from any known value. Perfect for 3D geometry and construction calculations.">
+    <meta name="twitter:image" content="https://scribbletools.in/assets/og-image.svg">
+    
+    <!-- Additional SEO Meta Tags -->
+    <meta name="theme-color" content="#D9534F">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Sphere Calculator">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    
+    <!-- Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Sphere Calculator",
+        "description": "Calculate sphere volume, surface area, radius, and diameter from any known measurement with comprehensive 3D geometric calculations.",
+        "url": "https://scribbletools.in/client/tools/math/shapes/sphere-calculator.html",
+        "applicationCategory": "EducationalApplication",
+        "operatingSystem": "Any",
+        "permissions": "browser",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "featureList": [
+            "Sphere volume calculation",
+            "Sphere surface area calculation",
+            "Sphere radius calculation",
+            "Sphere diameter calculation",
+            "3D geometry support",
+            "Construction planning"
+        ]
+    }
+    </script>
+    <style>
+        body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; }
+        .geo-calc-container { max-width: 400px; margin: 3em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2em 1.5em 2.5em 1.5em; }
+        .handwritten { font-family: 'Caveat', cursive; }
+        .geo-calc-label { font-weight: 600; margin-bottom: 0.5em; display: block; }
+        .geo-calc-input, .geo-calc-select { width: 100%; padding: 1em; border: 2px solid #EAE3D5; border-radius: 0.7em; font-size: 1.1em; margin-bottom: 1em; background: #FDFBF5; text-align: center; font-family: 'Fira Code', monospace; }
+        .geo-calc-btn { background: #fff; color: #D9534F; border: 2px solid #D9534F; border-radius: 0.5em; padding: 0.7em 2em; font-weight: 600; font-size: 1.1em; cursor: pointer; transition: all 0.2s; margin-bottom: 1em; }
+        .geo-calc-btn:hover { background: #D9534F; color: #fff; }
+        .geo-calc-result { background: #FDFBF5; border: 2px solid #D9534F; border-radius: 0.7em; padding: 1em; font-size: 1.18em; color: #D9534F; min-height: 1.7em; margin-bottom: 1em; text-align: center; font-family: 'Fira Code', monospace; font-weight: bold; max-height: 300px; overflow-y: auto; word-break: break-word; transition: height 0.2s; }
+        .input-group { margin-bottom: 1em; }
+        .radio-group { display: flex; gap: 1em; margin-bottom: 1em; flex-wrap: wrap; }
+        .radio-option { display: flex; align-items: center; gap: 0.5em; }
+        .radio-option input[type="radio"] { margin: 0; }
+        .geo-calc-desc { max-width: fit-content; margin: 2.5em auto 0 auto; background:#FDFBF5; border:2px solid #EAE3D5; border-radius:0.9em; padding:1.2em 1em; font-size:1.08em; color:#333; line-height:1.7; }
+        @media (max-width: 600px) { 
+            .geo-calc-container { padding: 1em 0.2em; }
+            .radio-group { flex-direction: column; gap: 0.5em; }
+        }
+    </style>
+</head>
+<body>
+<div class="geo-calc-container">
+    <h2 class="handwritten text-5xl text-[#D9534F] mb-4">Sphere Calculator</h2>
+    
+    <div class="input-group">
+        <label class="geo-calc-label">What do you know?</label>
+        <div class="radio-group">
+            <div class="radio-option">
+                <input type="radio" id="radius-input" name="input-type" value="radius" checked>
+                <label for="radius-input">Radius</label>
+            </div>
+            <div class="radio-option">
+                <input type="radio" id="diameter-input" name="input-type" value="diameter">
+                <label for="diameter-input">Diameter</label>
+            </div>
+            <div class="radio-option">
+                <input type="radio" id="surface-area-input" name="input-type" value="surface-area">
+                <label for="surface-area-input">Surface Area</label>
+            </div>
+            <div class="radio-option">
+                <input type="radio" id="volume-input" name="input-type" value="volume">
+                <label for="volume-input">Volume</label>
+            </div>
+        </div>
+    </div>
+    
+    <div class="input-group">
+        <label class="geo-calc-label" id="input-label">Enter radius:</label>
+        <input id="value-input" class="geo-calc-input" type="number" min="0" step="any" placeholder="Enter value">
+    </div>
+    
+    <button type="button" class="geo-calc-btn" onclick="calculateSphere()">Calculate</button>
+    <div class="geo-calc-result" id="result">Enter a value to see all sphere properties</div>
+</div>
+
+<div class="geo-calc-desc">
+    <strong style="font-size:1.18em; color:#D9534F;">About the Sphere Calculator</strong><br><br>
+    Calculate all properties of a sphere from any known value: radius, diameter, surface area, or volume.<br><br>
+    <b>Formulas:</b>
+    <ul style="margin-left:1.2em; margin-bottom:0.7em;">
+        <li>Surface Area: <code>A = 4πr²</code></li>
+        <li>Volume: <code>V = (4/3)πr³</code></li>
+        <li>Diameter: <code>d = 2r</code></li>
+        <li>Circumference of great circle: <code>C = 2πr</code></li>
+    </ul>
+    <b>Use Cases:</b>
+    <ul style="margin-left:1.2em;">
+        <li>Engineering and physics calculations</li>
+        <li>3D modeling and design projects</li>
+        <li>Calculate material needed for spherical objects</li>
+        <li>Educational geometry problems</li>
+    </ul>
+    <b>Why use this calculator?</b> No ads, no clutter, no tracking—just accurate sphere calculations.<br>
+</div>
+
+<script>
+// Update input label based on selected radio button
+document.querySelectorAll('input[name="input-type"]').forEach(radio => {
+    radio.addEventListener('change', function() {
+        const label = document.getElementById('input-label');
+        const input = document.getElementById('value-input');
+        
+        switch(this.value) {
+            case 'radius':
+                label.textContent = 'Enter radius:';
+                input.placeholder = 'Enter radius value';
+                break;
+            case 'diameter':
+                label.textContent = 'Enter diameter:';
+                input.placeholder = 'Enter diameter value';
+                break;
+            case 'surface-area':
+                label.textContent = 'Enter surface area:';
+                input.placeholder = 'Enter surface area value';
+                break;
+            case 'volume':
+                label.textContent = 'Enter volume:';
+                input.placeholder = 'Enter volume value';
+                break;
+        }
+        input.value = '';
+        document.getElementById('result').textContent = 'Enter a value to see all sphere properties';
+    });
+});
+
+function formatNumber(num) {
+    if (Math.abs(num) < 1e-10) return '0';
+    if (Math.abs(num) >= 1e10) return num.toExponential(6);
+    return parseFloat(num.toFixed(8)).toString();
+}
+
+function calculateSphere() {
+    const inputType = document.querySelector('input[name="input-type"]:checked').value;
+    const value = parseFloat(document.getElementById('value-input').value);
+    
+    if (isNaN(value) || value <= 0) {
+        document.getElementById('result').textContent = 'Please enter a positive number.';
+        return;
+    }
+    
+    let radius, diameter, surfaceArea, volume, circumference;
+    
+    try {
+        switch(inputType) {
+            case 'radius':
+                radius = value;
+                diameter = 2 * radius;
+                surfaceArea = 4 * Math.PI * radius * radius;
+                volume = (4/3) * Math.PI * radius * radius * radius;
+                circumference = 2 * Math.PI * radius;
+                break;
+                
+            case 'diameter':
+                diameter = value;
+                radius = diameter / 2;
+                surfaceArea = 4 * Math.PI * radius * radius;
+                volume = (4/3) * Math.PI * radius * radius * radius;
+                circumference = 2 * Math.PI * radius;
+                break;
+                
+            case 'surface-area':
+                surfaceArea = value;
+                radius = Math.sqrt(surfaceArea / (4 * Math.PI));
+                diameter = 2 * radius;
+                volume = (4/3) * Math.PI * radius * radius * radius;
+                circumference = 2 * Math.PI * radius;
+                break;
+                
+            case 'volume':
+                volume = value;
+                radius = Math.cbrt((3 * volume) / (4 * Math.PI));
+                diameter = 2 * radius;
+                surfaceArea = 4 * Math.PI * radius * radius;
+                circumference = 2 * Math.PI * radius;
+                break;
+        }
+        
+        const result = `
+<strong>Sphere Properties:</strong>
+
+• Radius (r): ${formatNumber(radius)}
+• Diameter (d): ${formatNumber(diameter)}
+• Surface Area (A): ${formatNumber(surfaceArea)}
+• Volume (V): ${formatNumber(volume)}
+• Circumference of great circle: ${formatNumber(circumference)}
+
+<strong>Calculations:</strong>
+• Surface Area = 4πr² = 4π × ${formatNumber(radius)}² = ${formatNumber(surfaceArea)}
+• Volume = (4/3)πr³ = (4/3)π × ${formatNumber(radius)}³ = ${formatNumber(volume)}
+• Diameter = 2r = ${formatNumber(diameter)}
+• Great circle circumference = 2πr = ${formatNumber(circumference)}
+        `.trim();
+        
+        document.getElementById('result').innerHTML = result;
+        
+    } catch (error) {
+        document.getElementById('result').textContent = 'Error in calculation. Please check your input.';
+    }
+}
+
+// Allow Enter key to calculate
+document.getElementById('value-input').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') {
+        calculateSphere();
+    }
+});
+</script>
+</body>
+</html>

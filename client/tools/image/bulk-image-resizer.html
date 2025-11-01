@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bulk Image Resizer - FREE Batch Photo Resize Tool Online</title>
+  <meta name="description" content="Free bulk image resizer! Resize multiple photos at once with batch processing. Bulk photo resizer, mass image resize tool. 100% free batch image editor online!">
+  <meta name="keywords" content="bulk image resizer, batch photo resize, mass image resize, bulk photo editor, batch image resize tool, resize multiple images, bulk image processor, mass photo resizer, batch image editor, multiple image resizer, bulk photo processing, batch resize photos, mass image editor, bulk image converter, batch photo processor, resize images in bulk, mass photo editor, bulk photo converter, batch image processing, multiple photo resizer, bulk resize tool, mass resize images, batch photo editor online, bulk image editing, mass photo processing, batch image optimization, bulk photo optimization, multiple image processing, batch resize tool, mass image processing, bulk photo resizer online, batch image resizer free">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://scribbletools.in/client/tools/image/bulk-image-resizer.html">
+  <meta property="og:title" content="Bulk Image Resizer - FREE Batch Photo Resize Tool Online">
+  <meta property="og:description" content="Free bulk image resizer! Resize multiple photos at once with batch processing. Bulk photo resizer, mass image resize tool. 100% free batch image editor online!">
+  <meta property="og:image" content="https://scribbletools.in/assets/og-image.svg">
+  <meta property="og:site_name" content="Scribble Tools">
+  <meta property="og:locale" content="en_US">
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://scribbletools.in/client/tools/image/bulk-image-resizer.html">
+  <meta property="twitter:title" content="Bulk Image Resizer - FREE Batch Photo Resize Tool Online">
+  <meta property="twitter:description" content="Free bulk image resizer! Resize multiple photos at once with batch processing. Bulk photo resizer, mass image resize tool. 100% free batch image editor online!">
+  <meta property="twitter:image" content="https://scribbletools.in/assets/og-image.svg">
+  
+  <!-- Additional SEO Meta Tags -->
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Scribble Tools">
+  <meta name="generator" content="Scribble Tools">
+  <meta name="application-name" content="Bulk Image Resizer">
+  <meta name="apple-mobile-web-app-title" content="Bulk Image Resizer">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#4682B4">
+  <meta name="msapplication-navbutton-color" content="#4682B4">
+  <meta name="apple-mobile-web-app-status-bar-style" content="#4682B4">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://scribbletools.in/client/tools/image/bulk-image-resizer.html">
+  
+  <!-- Preconnect for Performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Bulk Image Resizer",
+    "description": "Free online bulk image resizer to resize multiple photos at once. Batch processing tool for mass image resize operations with aspect ratio preservation.",
+    "url": "https://scribbletools.in/client/tools/image/bulk-image-resizer.html",
+    "applicationCategory": "MultimediaApplication",
+    "operatingSystem": "Any",
+    "permissions": "browser",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "featureList": [
+      "Bulk image resizing",
+      "Batch photo processing",
+      "Multiple image resize",
+      "Aspect ratio preservation",
+      "Free to use",
+      "No file upload required"
+    ],
+    "provider": {
+      "@type": "Organization",
+      "name": "Scribble Tools",
+      "url": "https://scribbletools.in"
+    }
+  }
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <style>
+    body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; margin: 0; }
+    .reduce-size-container { max-width: 800px; margin: 3em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2.5em 2em 2.5em 2em; }
+    .handwritten { font-family: 'Caveat', cursive; }
+    .upload-area { border: 3px dashed #4682B4; border-radius: 1em; padding: 3em 2em; text-align: center; margin: 2em 0; background: #F8FBFF; transition: all 0.3s; cursor: pointer; }
+    .upload-area:hover { background: #F0F8FF; border-color: #2E5C88; }
+    .upload-icon { font-size: 3em; color: #4682B4; margin-bottom: 1em; }
+    .file-input { display: none; }
+    .upload-btn { background: #4682B4; color: #fff; border: none; border-radius: 0.5em; padding: 1em 2em; font-weight: 600; cursor: pointer; transition: all 0.2s; display: block; margin: 0 auto 1.5em auto; }
+    .upload-btn:hover { background: #2E5C88; }
+    .preview-section { margin-top: 2em; text-align: center; display: none; }
+    .preview-section h3 { color: #4682B4; margin-bottom: 1em; }
+    .preview-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 1em; margin: 1em 0; }
+    .preview-item { position: relative; background: #F8FBFF; border: 2px solid #EAE3D5; border-radius: 0.5em; padding: 0.5em; }
+    .preview-item img { width: 100%; height: 120px; object-fit: contain; border-radius: 0.3em; }
+    .preview-item .remove-btn { position: absolute; top: -8px; right: -8px; background: #D9534F; color: white; border: none; border-radius: 50%; width: 24px; height: 24px; font-size: 14px; cursor: pointer; }
+    .preview-item .file-info { font-size: 0.8em; color: #666; margin-top: 0.5em; word-break: break-all; }
+    .controls-section { display: none; margin: 2em 0; background: #F8FBFF; border-radius: 0.7em; padding: 1.2em; border: 1px solid #4682B4; }
+    .controls-section h3 { color: #4682B4; margin-bottom: 1em; font-weight: 600; }
+    .form-group { margin: 1.2em 0; }
+    .form-label { font-weight: 600; margin-bottom: 0.5em; display: block; }
+    .form-input { width: 100%; padding: 0.8em; border: 2px solid #EAE3D5; border-radius: 0.5em; font-size: 1em; margin-bottom: 1em; }
+    .dimension-inputs { display: grid; grid-template-columns: 1fr auto 1fr; gap: 1em; align-items: center; }
+    .dimension-input { width: 100%; padding: 0.8em; border: 2px solid #EAE3D5; border-radius: 0.5em; }
+    .link-aspect { background: none; border: none; color: #4682B4; cursor: pointer; font-size: 1.2em; padding: 0.5em; }
+    .link-aspect.unlinked { color: #999; }
+    .process-btn { background: #228B22; color: #fff; border: none; border-radius: 0.5em; padding: 1em 2em; font-weight: 600; cursor: pointer; transition: all 0.2s; width: 100%; font-size: 1.1em; }
+    .process-btn:hover { background: #1e7e1e; }
+    .process-btn:disabled { background: #cccccc; cursor: not-allowed; }
+    .clear-btn { background: #6c757d; color: #fff; border: none; border-radius: 0.5em; padding: 0.8em 1.5em; font-weight: 600; cursor: pointer; transition: all 0.2s; margin-left: 1em; }
+    .clear-btn:hover { background: #5a6268; }
+    .related-links { margin: 1.5em 0; font-size: 1em; }
+    .related-links a { color: #4682B4; text-decoration: none; margin: 0 0.8em; }
+    .related-links a:hover { text-decoration: underline; }
+    .output-preview { display: none; margin: 2em 0; }
+    .progress-bar { width: 100%; height: 20px; background-color: #f0f0f0; border-radius: 10px; overflow: hidden; margin: 1em 0; }
+    .progress-bar-fill { height: 100%; background-color: #4682B4; width: 0%; transition: width 0.3s ease-in-out; }
+    .status-text { color: #666; text-align: center; margin: 1em 0; }
+    .download-all-btn { background: #228B22; color: #fff; border: none; border-radius: 0.5em; padding: 1em 2em; font-weight: 600; cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-block; }
+    .download-all-btn:hover { background: #1e7e1e; }
+    .error-message { background: #FFE8E8; border: 2px solid #DC3545; border-radius: 0.7em; padding: 1.2em; margin: 1em 0; color: #DC3545; text-align: center; }
+    .success-message { background: #E8F5E8; border: 2px solid #28A745; border-radius: 0.7em; padding: 1.2em; margin: 1em 0; color: #28A745; text-align: center; }
+    .feature-list { background: #F8F9FA; border-radius: 0.7em; padding: 1.2em; margin: 1.5em 0; }
+    .feature-list h3 { color: #4682B4; margin-bottom: 1em; font-weight: 600; }
+    .feature-list ul { list-style: none; padding: 0; }
+    .feature-list li { margin-bottom: 0.7em; font-size: 1.1em; }
+    .recent-tools { background: #F8F9FA; border-radius: 0.7em; padding: 1.2em; margin: 1.5em 0; }
+    .recent-tools strong { color: #4682B4; }
+    .recent-tools-list { display: inline-block; }
+    .recent-tools-list a { color: #D9534F; text-decoration: none; margin: 0 0.5em; }
+    .recent-tools-list a:hover { color: #4682B4; }
+    .separator { margin: 0 0.5em; color: #999; }
+    @media (max-width: 600px) {
+      .reduce-size-container { padding: 1.5em 1em; }
+      .preview-grid { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }
+      .dimension-inputs { grid-template-columns: 1fr; }
+      .link-aspect { transform: rotate(90deg); margin: 0.5em 0; }
+      .clear-btn { margin: 1em 0 0 0; }
+    }
+    .privacy-section { margin: 2em 0; }
+    .privacy-section strong { color: #D9534F; }
+    @media (max-width: 600px) { .reduce-size-container { padding: 1em 0.2em; } }
+    
+    /* New styles for the custom alert */
+    .custom-alert-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    .custom-alert-box {
+      background: #fff;
+      padding: 2em;
+      border-radius: 1em;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      max-width: 400px;
+      text-align: center;
+      position: relative;
+    }
+    .custom-alert-box h4 {
+      margin-top: 0;
+      color: #4682B4;
+      font-size: 1.5em;
+    }
+    .custom-alert-box p {
+      color: #666;
+    }
+    .custom-alert-box button {
+      margin-top: 1.5em;
+      background: #4682B4;
+      color: #fff;
+      border: none;
+      border-radius: 0.5em;
+      padding: 0.8em 1.5em;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+    .custom-alert-box button:hover {
+      background: #2E5C88;
+    }
+    .info-btn {
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: 1.2em;
+        color: #4682B4;
+        padding: 0;
+        margin-left: 0.5em;
+    }
+  </style>
+</head>
+<body>
+<main>
+  <div class="reduce-size-container">
+    <header>
+      <h1 style="font-family: 'Caveat', cursive; font-size: 3em; color: #FF6B6B; margin-bottom: 0.5em;">Bulk Image Resizer</h1>
+      <p style="font-size:1.2em; margin-bottom:1em;">Resize multiple images at once with perfect quality. Perfect for social media, websites, and document preparation. Fast, privacy-first, and completely free.</p>
+    </header>
+
+    <div style="margin-bottom: 1.5em;">
+      <span style="color: #666;">Related:</span>
+      <a href="../image-compressor.html" style="color: #FF6B6B; text-decoration: none; margin: 0 0.5em;">Image Compressor</a>
+      <a href="../resize-image-pixel.html" style="color: #FF6B6B; text-decoration: none; margin: 0 0.5em;">Resize by Pixel</a>
+      <a href="../image-converter.html" style="color: #FF6B6B; text-decoration: none; margin: 0 0.5em;">Image Converter</a>
+          </div>
+
+    <div style="background:#FFF3CD; border:1px solid #FFD700; border-radius:0.7em; padding:1em; margin-bottom:1.2em; color:#B8860B; font-weight:bold; font-size:1.1em;">
+      📸 <b>Resize multiple images in one go!</b> Perfect for preparing photos for websites, social media, or documents. Save time by processing all your images at once while maintaining quality.
+    </div>
+
+    <section aria-labelledby="instructions-title" style="background: #F8FBFF; border-radius: 0.7em; padding: 1.5em; margin: 2em 0; border: 1px solid #4682B4;">
+      <h2 id="instructions-title" style="color:#4682B4; margin-bottom: 1em; font-size: 1.5em;">How to Use</h2>
+      <ol class="step-list" style="margin-left: 1.5em; line-height: 1.6;">
+        <li><strong style="color: #4682B4">Upload Images:</strong> Drag & drop multiple images into the upload box or click <b>Choose Files</b>. Supports JPG, PNG, and other common formats.</li>
+        <li><strong style="color: #4682B4">Set Dimensions:</strong> Choose your desired output size:
+          <ul style="margin: 0.5em 0 0.5em 1.5em; color: #666;">
+            <li>Enter exact width and height in pixels</li>
+            <li>Lock aspect ratio to maintain proportions</li>
+            <li>Maximum size: 8000 x 8000 pixels</li>
+          </ul>
+        </li>
+        <li><strong style="color: #4682B4">Choose Resize Mode:</strong>
+          <ul style="margin: 0.5em 0 0.5em 1.5em; color: #666;">
+            <li>'Fit' - Maintains aspect ratio, no stretching</li>
+            <li>'Exact' - Forces exact dimensions</li>
+            <li>'Fill' - Crops to fit if needed</li>
+          </ul>
+        </li>
+        <li><strong style="color: #4682B4">Process & Download:</strong> Click <strong style="color: #228B22">Process Images</strong> and download individually or as a ZIP.</li>
+      </ol>
+    </section>
+    
+    <section class="example-section" aria-labelledby="examples-title" style="background: #FDFBF5; border: 1px solid #FFEAA7; border-radius: 0.7em; padding: 1.5em; margin: 2em 0;">
+      <h3 id="examples-title" style="color: #4682B4; margin-bottom: 1em;">Common Use Cases & Tips</h3>
+      
+      <div style="margin-bottom: 1.5em;">
+        <h4 style="color: #FF6B6B; margin-bottom: 0.5em;">📱 Social Media Images</h4>
+        <ul style="color: #666; margin-left: 1.2em;">
+          <li>Instagram: 1080 x 1080 pixels (square)</li>
+          <li>Facebook Cover: 820 x 312 pixels</li>
+          <li>Twitter Header: 1500 x 500 pixels</li>
+        </ul>
+      </div>
+      
+      <div style="margin-bottom: 1.5em;">
+        <h4 style="color: #FF6B6B; margin-bottom: 0.5em;">💻 Website Optimization</h4>
+        <ul style="color: #666; margin-left: 1.2em;">
+          <li>Thumbnail size: 150 x 150 pixels</li>
+          <li>Featured image: 1200 x 630 pixels</li>
+          <li>Product photos: 800 x 800 pixels</li>
+        </ul>
+      </div>
+      
+      <div>
+        <h4 style="color: #FF6B6B; margin-bottom: 0.5em;">🎯 Pro Tips</h4>
+        <ul style="color: #666; margin-left: 1.2em;">
+          <li>Start with high-quality original images</li>
+          <li>Keep aspect ratio locked for natural look</li>
+          <li>Use 'Fit' mode to prevent distortion</li>
+          <li>Process similar images together</li>
+        </ul>
+      </div>
+    </section>
+    <section class="privacy-section">
+      <h2 style="color:#D9534F;">Privacy Notice</h2>
+      <div style="background: #FFF3CD; border: 1px solid #FFEAA7; border-radius: 0.5em; padding: 1em; margin: 1em 0; font-size: 0.95em; color: #856404;">
+        <strong>🔒 Your files are never uploaded or stored. All processing happens in your browser.</strong>
+      </div>
+    </section>
+    <div class="upload-area" id="upload-area" tabindex="0" aria-label="Upload images area. Drag and drop or click to select images.">
+      <div class="upload-icon" aria-hidden="true">📁</div>
+      <h3>Drag & Drop Images Here</h3>
+      <p>or click to select files</p>
+      <input type="file" id="file-input" class="file-input" accept="image/*" multiple>
+      <button class="upload-btn" id="choose-file-btn">Choose Files</button>
+    </div>
+
+    <div class="preview-section" id="preview-section">
+      <h3>Selected Images <button class="clear-btn" id="clear-btn">Clear All</button></h3>
+      <div class="preview-grid" id="preview-grid"></div>
+    </div>
+
+    <div class="controls-section" id="controls-section">
+      <h3>Resize Settings</h3>
+      
+      <div class="form-group">
+        <label class="form-label">New Dimensions: <button class="info-btn" id="info-btn" aria-label="More information on aspect ratio locking">ℹ️</button></label>
+        <div class="dimension-inputs">
+          <input type="number" id="width-input" class="dimension-input" placeholder="Width" min="1" max="8000">
+          <button class="link-aspect" id="link-aspect" title="Lock/unlock aspect ratio">🔗</button>
+          <input type="number" id="height-input" class="dimension-input" placeholder="Height" min="1" max="8000">
+        </div>
+        <small style="color: #666; display: block; margin-top: 4px;">Maximum dimension: 8000px</small>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Resize Mode:</label>
+        <select id="resize-mode" class="form-input">
+          <option value="fit">Fit (maintain aspect ratio)</option>
+          <option value="exact">Exact (might stretch)</option>
+          <option value="fill">Fill (might crop)</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <button class="process-btn" id="process-btn" disabled>Resize Images</button>
+      </div>
+    </div>
+
+    <div class="output-preview" id="output-preview">
+      <div class="progress-bar">
+        <div class="progress-bar-fill" id="progress-bar-fill"></div>
+      </div>
+      <div class="status-text" id="status-text">Processing images...</div>
+      <button class="download-all-btn" id="download-all-btn" style="display: none;">Download All (ZIP)</button>
+    </div>
+
+    <div class="feature-list" style="background: #F8F9FA; border-radius: 0.7em; padding: 1.2em; margin: 1.5em 0;">
+      <h2 style="color: #4682B4; margin-bottom: 1em;">Key Features</h2>
+      <ul>
+        <li>🔄 Resize multiple images simultaneously</li>
+        <li>📏 Set exact dimensions or percentage scaling</li>
+        <li>🔒 Privacy-focused: all processing in browser</li>
+        <li>🎯 Keep aspect ratio for perfect proportions</li>
+        <li>⚡ Lightning-fast batch processing</li>
+        <li>💾 Download as individual files or ZIP</li>
+        <li>📱 Works on all devices</li>
+        <li>🆓 No registration required</li>
+      </ul>
+    </div>
+
+    <nav class="recent-tools" aria-label="Recently used tools" style="background: #F8F9FA; border-radius: 0.7em; padding: 1.2em; margin: 1.5em 0;">
+      <strong>Recent Tools:</strong>
+      <div class="recent-tools-list" style="display: inline-block;">
+        <a href="/client/tools/image/image-compressor.html">Image Compressor</a>
+        <a href="/client/tools/image/resize-image-pixel.html">Resize by Pixel</a>
+                <a href="#" id="clear-recent" style="color: #D9534F; font-size: 0.9em;">Clear History</a>
+      </div>
+    </nav>
+  </div>
+  
+  <!-- Custom Alert Overlay -->
+  <div id="custom-alert-overlay" class="custom-alert-overlay">
+    <div class="custom-alert-box">
+      <h4>Aspect Ratio Lock</h4>
+      <p>Click the **🔗** button to lock or unlock the aspect ratio. When locked, changing one dimension (width or height) will automatically update the other to maintain the original image proportions.</p>
+      <button id="alert-close-btn">Got it</button>
+    </div>
+  </div>
+</main>
+
+<script>
+(function() {
+  'use strict';
+
+  let selectedFiles = [];
+  let processedImages = [];
+  let isProcessing = false;
+  let aspectRatioLocked = true;
+  let originalAspectRatio = 1;
+  let isInitialized = false;
+
+  // Initialize the tool
+  function init() {
+    if (isInitialized) return;
+
+    const uploadArea = document.getElementById('upload-area');
+    const fileInput = document.getElementById('file-input');
+    const chooseFileBtn = document.getElementById('choose-file-btn');
+    const clearBtn = document.getElementById('clear-btn');
+    const processBtn = document.getElementById('process-btn');
+    const widthInput = document.getElementById('width-input');
+    const heightInput = document.getElementById('height-input');
+    const linkAspectBtn = document.getElementById('link-aspect');
+    const infoBtn = document.getElementById('info-btn');
+    const downloadAllBtn = document.getElementById('download-all-btn');
+    const alertOverlay = document.getElementById('custom-alert-overlay');
+    const alertCloseBtn = document.getElementById('alert-close-btn');
+
+    // Setup drag and drop
+    uploadArea.ondragover = (e) => {
+      e.preventDefault();
+      uploadArea.style.background = '#F0F8FF';
+      uploadArea.style.borderColor = '#2E5C88';
+    };
+
+    uploadArea.ondragleave = () => {
+      uploadArea.style.background = '#F8FBFF';
+      uploadArea.style.borderColor = '#4682B4';
+    };
+
+    uploadArea.ondrop = (e) => {
+      e.preventDefault();
+      uploadArea.style.background = '#F8FBFF';
+      uploadArea.style.borderColor = '#4682B4';
+      handleFiles(e.dataTransfer.files);
+    };
+
+    // File input change
+    fileInput.onchange = (e) => handleFiles(e.target.files);
+
+    // Choose files button
+    chooseFileBtn.onclick = (e) => {
+      e.preventDefault();
+      if (!isProcessing) fileInput.click();
+    };
+
+    // Clear button
+    clearBtn.onclick = resetTool;
+
+    // Process button
+    processBtn.onclick = processImages;
+
+    // Download button
+    downloadAllBtn.onclick = downloadAllImages;
+
+    // Dimension inputs - only update if locked
+    widthInput.oninput = () => {
+      if (aspectRatioLocked && widthInput.value) {
+        heightInput.value = Math.round(widthInput.value / originalAspectRatio);
+      }
+      updateProcessButton();
+    };
+
+    heightInput.oninput = () => {
+      if (aspectRatioLocked && heightInput.value) {
+        widthInput.value = Math.round(heightInput.value * originalAspectRatio);
+      }
+      updateProcessButton();
+    };
+
+    // Aspect ratio lock toggle
+    linkAspectBtn.onclick = () => {
+      aspectRatioLocked = !aspectRatioLocked;
+      linkAspectBtn.classList.toggle('unlinked');
+      const widthInput = document.getElementById('width-input');
+      const heightInput = document.getElementById('height-input');
+      if (aspectRatioLocked && widthInput.value && originalAspectRatio) {
+        heightInput.value = Math.round(widthInput.value / originalAspectRatio);
+      }
+    };
+    
+    // Info button for aspect ratio
+    infoBtn.onclick = () => {
+      alertOverlay.style.display = 'flex';
+    };
+
+    // Close alert button
+    alertCloseBtn.onclick = () => {
+      alertOverlay.style.display = 'none';
+    };
+
+    isInitialized = true;
+  }
+
+  function handleFiles(files) {
+    if (isProcessing) return;
+
+    const imageFiles = Array.from(files).filter(file => file.type.startsWith('image/'));
+    if (imageFiles.length === 0) {
+      showError('Please select valid image files (JPEG, PNG, etc.)');
+      return;
+    }
+
+    selectedFiles = [...selectedFiles, ...imageFiles];
+    updatePreviewGrid();
+    updateControls();
+    
+    if (selectedFiles.length === 1) {
+      // Set initial aspect ratio from first image
+      const img = new Image();
+      const imgUrl = URL.createObjectURL(selectedFiles[0]);
+      img.onload = () => {
+        originalAspectRatio = img.width / img.height;
+        const widthInput = document.getElementById('width-input');
+        const heightInput = document.getElementById('height-input');
+        if (!widthInput.value && !heightInput.value) {
+          widthInput.value = img.width;
+          heightInput.value = img.height;
+        }
+        URL.revokeObjectURL(imgUrl);
+      };
+      img.onerror = () => {
+        showError('Error loading image for aspect ratio calculation.');
+        URL.revokeObjectURL(imgUrl);
+      };
+      img.src = imgUrl;
+    }
+  }
+
+  function updatePreviewGrid() {
+    const previewGrid = document.getElementById('preview-grid');
+    previewGrid.innerHTML = '';
+
+    selectedFiles.forEach((file, index) => {
+      const preview = document.createElement('div');
+      preview.className = 'preview-item';
+
+      const img = document.createElement('img');
+      const imgUrl = URL.createObjectURL(file);
+      img.src = imgUrl;
+      img.onload = () => URL.revokeObjectURL(imgUrl);
+      img.onerror = () => URL.revokeObjectURL(imgUrl);
+
+      const removeBtn = document.createElement('button');
+      removeBtn.className = 'remove-btn';
+      removeBtn.innerHTML = '×';
+      removeBtn.onclick = () => removeFile(index);
+
+      const info = document.createElement('div');
+      info.className = 'file-info';
+      info.textContent = file.name;
+
+      preview.appendChild(img);
+      preview.appendChild(removeBtn);
+      preview.appendChild(info);
+      previewGrid.appendChild(preview);
+    });
+
+    document.getElementById('preview-section').style.display = 
+      selectedFiles.length > 0 ? 'block' : 'none';
+  }
+
+  function removeFile(index) {
+    selectedFiles.splice(index, 1);
+    updatePreviewGrid();
+    updateControls();
+  }
+
+  function updateControls() {
+    const controlsSection = document.getElementById('controls-section');
+    controlsSection.style.display = selectedFiles.length > 0 ? 'block' : 'none';
+    updateProcessButton();
+  }
+
+  function updateProcessButton() {
+    const processBtn = document.getElementById('process-btn');
+    const width = document.getElementById('width-input').value;
+    const height = document.getElementById('height-input').value;
+    processBtn.disabled = !(selectedFiles.length > 0 && width && height);
+  }
+
+  async function processImages() {
+    if (isProcessing) return;
+    isProcessing = true;
+
+    const width = parseInt(document.getElementById('width-input').value);
+    const height = parseInt(document.getElementById('height-input').value);
+    const mode = document.getElementById('resize-mode').value;
+    
+    if (width > 8000 || height > 8000) {
+      showError('Maximum dimension is 8000px');
+      isProcessing = false;
+      return;
+    }
+
+    const outputPreview = document.getElementById('output-preview');
+    const progressBar = document.getElementById('progress-bar-fill');
+    const statusText = document.getElementById('status-text');
+    outputPreview.style.display = 'block';
+    processedImages = [];
+
+    for (let i = 0; i < selectedFiles.length; i++) {
+        const file = selectedFiles[i];
+        try {
+            const progress = (i / selectedFiles.length) * 100;
+            progressBar.style.width = progress + '%';
+            statusText.textContent = `Processing ${i + 1} of ${selectedFiles.length}...`;
+
+            const resizedBlob = await resizeImage(file, width, height, mode);
+            processedImages.push({
+                name: file.name,
+                blob: resizedBlob,
+                type: file.type
+            });
+        } catch (error) {
+            console.error(`Error processing image ${file.name}:`, error);
+            showError(`Failed to process **${file.name}**. It has been skipped. The remaining images will continue to process.`);
+            continue; // Skip the failed image and continue with the next one
+        }
+    }
+
+    progressBar.style.width = '100%';
+    statusText.textContent = 'Processing complete!';
+    document.getElementById('download-all-btn').style.display = 'inline-block';
+    showSuccess(`Successfully processed ${processedImages.length} of ${selectedFiles.length} images.`);
+    
+    isProcessing = false;
+  }
+
+  function resizeImage(file, targetWidth, targetHeight, mode) {
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+      const imgUrl = URL.createObjectURL(file);
+      img.onload = () => {
+        try {
+          const canvas = document.createElement('canvas');
+          let width = targetWidth;
+          let height = targetHeight;
+          let sx = 0, sy = 0, sWidth = img.width, sHeight = img.height;
+
+          if (mode === 'fit') {
+            const scale = Math.min(targetWidth / img.width, targetHeight / img.height);
+            width = Math.round(img.width * scale);
+            height = Math.round(img.height * scale);
+          } else if (mode === 'fill') {
+            const scale = Math.max(targetWidth / img.width, targetHeight / img.height);
+            const scaledWidth = img.width * scale;
+            const scaledHeight = img.height * scale;
+            sx = (scaledWidth - targetWidth) / 2 / scale;
+            sy = (scaledHeight - targetHeight) / 2 / scale;
+            sWidth = (targetWidth / scale);
+            sHeight = (targetHeight / scale);
+          }
+
+          canvas.width = targetWidth;
+          canvas.height = targetHeight;
+          
+          const ctx = canvas.getContext('2d');
+          ctx.fillStyle = '#ffffff';
+          ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+          if (mode === 'fit') {
+            const x = (targetWidth - width) / 2;
+            const y = (targetHeight - height) / 2;
+            ctx.drawImage(img, x, y, width, height);
+          } else {
+            ctx.drawImage(img, sx, sy, sWidth, sHeight, 0, 0, targetWidth, targetHeight);
+          }
+
+          const outputType = file.type === 'image/png' ? 'image/png' : 'image/jpeg';
+          canvas.toBlob(resolve, outputType, 0.92);
+        } catch (e) {
+            reject(e);
+        } finally {
+            URL.revokeObjectURL(imgUrl);
+        }
+      };
+      img.onerror = () => {
+        reject('Failed to load image.');
+        URL.revokeObjectURL(imgUrl);
+      };
+      img.src = imgUrl;
+    });
+  }
+
+  async function downloadAllImages() {
+    if (processedImages.length === 0) return;
+
+    const zip = new JSZip();
+    processedImages.forEach(image => {
+      const extension = image.type === 'image/png' ? 'png' : 'jpg';
+      const filename = image.name.replace(/\.[^/.]+$/, '') + '_resized.' + extension;
+      zip.file(filename, image.blob);
+    });
+
+    try {
+      const content = await zip.generateAsync({ type: 'blob' });
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(content);
+      link.download = 'resized_images.zip';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(link.href);
+    } catch (error) {
+      console.error('Error creating ZIP:', error);
+      showError('Error creating ZIP file. Please try again.');
+    }
+  }
+
+  function showError(message) {
+    const container = document.querySelector('.reduce-size-container');
+    const existingError = container.querySelector('.error-message');
+    if (existingError) existingError.remove();
+
+    const error = document.createElement('div');
+    error.className = 'error-message';
+    error.innerHTML = `❌ ${message}`;
+    container.insertBefore(error, document.getElementById('upload-area'));
+
+    setTimeout(() => error.remove(), 5000);
+  }
+
+  function showSuccess(message) {
+    const container = document.querySelector('.reduce-size-container');
+    const existingSuccess = container.querySelector('.success-message');
+    if (existingSuccess) existingSuccess.remove();
+
+    const success = document.createElement('div');
+    success.className = 'success-message';
+    success.innerHTML = `✅ ${message}`;
+    container.insertBefore(success, document.getElementById('output-preview'));
+
+    setTimeout(() => success.remove(), 5000);
+  }
+
+  function resetTool() {
+    selectedFiles = [];
+    processedImages = [];
+    isProcessing = false;
+    document.getElementById('preview-section').style.display = 'none';
+    document.getElementById('controls-section').style.display = 'none';
+    document.getElementById('output-preview').style.display = 'none';
+    document.getElementById('width-input').value = '';
+    document.getElementById('height-input').value = '';
+    document.getElementById('file-input').value = '';
+    const preview = document.getElementById('preview-grid');
+    preview.innerHTML = '';
+    updateProcessButton(); // Ensure button is disabled after clearing
+  }
+
+  // Expose initializers for SPA loader and fallback auto-init
+  window.initializeBulkImageResizerTool = function() { try { init(); } catch (e) { console.error('Bulk Image Resizer init error:', e); } };
+  // Generic initializer used by the main router if no specific initializer is detected
+  window.initializeTool = function() { try { init(); } catch (e) { console.error('Generic init error (Bulk Image Resizer):', e); } };
+
+  // Auto-initialize if DOM is already ready (for direct loads), or after DOMContentLoaded
+  if (document.readyState !== 'loading') {
+    setTimeout(init, 50);
+  } else {
+    document.addEventListener('DOMContentLoaded', function() { setTimeout(init, 50); });
+  }
+})();
+</script>
+</body>
+</html>

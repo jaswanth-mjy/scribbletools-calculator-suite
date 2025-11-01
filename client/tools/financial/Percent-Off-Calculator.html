@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Percent Off Calculator - Free Discount Tool | Calculate Sale Prices</title>
+    <meta name="description" content="Free percent off calculator to calculate sale prices and savings. Find discount amounts, final prices, and compare deals quickly and easily.">
+    <meta name="keywords" content="percent off calculator, discount calculator, sale calculator, price calculator, savings calculator, discount percentage">
+    <meta name="author" content="ScribbleTools">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://scribbletools.in/client/tools/financial/percent-off-calculator.html">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://scribbletools.in/client/tools/financial/percent-off-calculator.html">
+    <meta property="og:title" content="Percent Off Calculator - Free Discount Tool">
+    <meta property="og:description" content="Calculate sale prices and savings with our free percent off calculator. Find the best deals instantly.">
+    <meta property="og:image" content="https://scribbletools.in/assets/og-image.svg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://scribbletools.in/client/tools/financial/percent-off-calculator.html">
+    <meta property="twitter:title" content="Percent Off Calculator - Free Discount Tool">
+    <meta property="twitter:description" content="Calculate sale prices and savings with our free percent off calculator. Find the best deals instantly.">
+    <meta property="twitter:image" content="https://scribbletools.in/assets/og-image.svg">
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Percent Off Calculator",
+      "description": "Free online percent off calculator to calculate sale prices and savings",
+      "url": "https://scribbletools.in/client/tools/financial/percent-off-calculator.html",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Web Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "ScribbleTools"
+      }
+    }
+    </script>
+    <style>
+        body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; }
+        .calc-container { max-width: 420px; margin: 3em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2em 1.5em 2.5em 1.5em; }
+        .handwritten { font-family: 'Caveat', cursive; }
+        .calc-label { font-weight: 600; margin-bottom: 0.5em; display: block; }
+        .calc-input { width: 100%; padding: 1em; border: 2px solid #EAE3D5; border-radius: 0.7em; font-size: 1.2em; margin-bottom: 1em; background: #FDFBF5; text-align: center; font-family: 'Fira Code', monospace; }
+        .calc-btn { background: #fff; color: #D9534F; border: 2px solid #D9534F; border-radius: 0.5em; padding: 0.7em 2em; font-weight: 600; font-size: 1.1em; cursor: pointer; transition: all 0.2s; margin-bottom: 1em; }
+        .calc-btn:hover { background: #D9534F; color: #fff; }
+        .calc-result { background: #FDFBF5; border: 2px solid #D9534F; border-radius: 0.7em; padding: 1em; font-size: 1.25em; color: #D9534F; min-height: 1.7em; margin-bottom: 1em; text-align: center; font-family: 'Fira Code', monospace; font-weight: bold; max-height: 300px; overflow-y: auto; word-break: break-word; transition: height 0.2s; }
+        .calc-desc { width: 100%; margin-top: 2em; background:#FDFBF5; border:2px solid #EAE3D5; border-radius:0.9em; padding:1.2em 1em; font-size:1.08em; color:#333; line-height:1.7; }
+        .calc-desc strong { color: #D9534F; font-size: 1.12em; }
+        @media (max-width: 600px) { .calc-container { padding: 1em 0.2em; } }
+        .result-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1em; margin-top: 1em; }
+        .result-box { background: white; border: 1px solid #EAE3D5; border-radius: 0.7em; padding: 1em; text-align: center; }
+        .result-box h4 { margin: 0 0 0.5em 0; color: #D9534F; font-size: 1em; }
+        .result-box .value { font-size: 1.3em; font-weight: bold; color: #333; }
+        .savings-highlight { background: #e8f5e9; border: 2px solid #4caf50; border-radius: 0.7em; padding: 1em; margin-top: 1em; text-align: center; }
+        .savings-highlight .savings-amount { font-size: 1.5em; font-weight: bold; color: #2e7d32; }
+        .compare-section { margin-top: 1.5em; padding: 1em; background: #f3e5f5; border: 1px solid #ce93d8; border-radius: 0.7em; }
+        .compare-section h4 { margin: 0 0 0.5em 0; color: #7b1fa2; }
+        .quick-discounts { display: flex; flex-wrap: wrap; gap: 0.5em; margin-top: 1em; }
+        .quick-discount-btn { background: #e3f2fd; color: #1976d2; border: 1px solid #90caf9; border-radius: 0.5em; padding: 0.5em 1em; font-size: 0.9em; cursor: pointer; }
+        .quick-discount-btn:hover { background: #bbdefb; }
+    </style>
+</head>
+<body>
+<div class="calc-container">
+    <h2 class="handwritten text-5xl text-[#D9534F] mb-4">Percent Off Calculator</h2>
+    <label class="calc-label">Original Price ($):</label>
+    <input id="originalPrice" class="calc-input" type="number" min="0" step="0.01" placeholder="e.g. 49.99">
+    <label class="calc-label">Percent Off (%):</label>
+    <input id="percentOff" class="calc-input" type="number" min="0" max="100" step="0.1" placeholder="e.g. 25">
+    
+    <div class="quick-discounts">
+        <button class="quick-discount-btn" data-percent="10">10% Off</button>
+        <button class="quick-discount-btn" data-percent="20">20% Off</button>
+        <button class="quick-discount-btn" data-percent="25">25% Off</button>
+        <button class="quick-discount-btn" data-percent="50">50% Off</button>
+        <button class="quick-discount-btn" data-percent="75">75% Off</button>
+    </div>
+    
+    <button id="calc-btn" class="calc-btn">Calculate</button>
+    <div class="calc-result" id="calc-result"></div>
+</div>
+<div class="calc-desc" style="max-width: fit-content; margin: 2.5em auto 0 auto;">
+    <strong style="font-size:1.18em; color:#D9534F;">About the Percent Off Calculator</strong><br><br>
+    
+    The Percent Off Calculator helps you quickly determine the sale price and savings when a discount is applied. This essential tool is perfect for shopping, comparing deals, and making informed purchasing decisions during sales events.<br><br>
+    
+    <strong style="color:#D9534F;">How Percent Off Works:</strong><br>
+    When you see a "X% off" discount, it means you pay that percentage less than the original price. The calculator instantly shows you the final price after discount and how much money you're saving. This helps you evaluate whether a deal is truly worth it.<br><br>
+    
+    <strong style="color:#D9534F;">How to Use This Calculator:</strong><br>
+    <ol style="margin-left:1.2em; line-height:1.6;">
+        <li><strong>Original Price:</strong> Enter the full price before any discounts</li>
+        <li><strong>Percent Off:</strong> Enter the discount percentage (or use quick buttons)</li>
+        <li><strong>Click Calculate:</strong> See your sale price and savings instantly</li>
+        <li><strong>Compare Deals:</strong> Use the calculator to compare different discounts</li>
+    </ol><br>
+    
+    <strong style="color:#D9534F;">What You'll Discover:</strong><br>
+    <ul style="margin-left:1.2em; line-height:1.6;">
+        <li><strong>Sale Price:</strong> The final price after applying the discount</li>
+        <li><strong>Amount Saved:</strong> How much money you're saving with the discount</li>
+        <li><strong>Final Price:</strong> What you'll actually pay at the register</li>
+        <li><strong>Discount Value:</strong> The monetary value of the percentage discount</li>
+    </ul><br>
+    
+    <strong style="color:#D9534F;">Perfect For:</strong><br>
+    <ul style="margin-left:1.2em; line-height:1.6;">
+        <li><strong>Shopping Sales:</strong> Calculating prices during Black Friday, Cyber Monday, and seasonal sales</li>
+        <li><strong>Comparing Deals:</strong> Determining which discount offers the best value</li>
+        <li><strong>Budget Planning:</strong> Knowing exactly how much you'll spend</li>
+        <li><strong>Coupon Stacking:</strong> Calculating final price after multiple discounts</li>
+        <li><strong>Price Matching:</strong> Verifying advertised sale prices</li>
+    </ul><br>
+    
+    <strong style="color:#D9534F;">Pro Tips for Smart Shopping:</strong><br>
+    <ul style="margin-left:1.2em; line-height:1.6;">
+        <li><strong>Calculate before you buy:</strong> Know the final price to avoid surprises</li>
+        <li><strong>Compare percentage vs. dollar discounts:</strong> Sometimes a smaller percentage on a higher-priced item saves more</li>
+        <li><strong>Watch for marketing tricks:</strong> "Up to X% off" often means most items have much smaller discounts</li>
+        <li><strong>Check the original price:</strong> Some retailers inflate original prices to make discounts look bigger</li>
+        <li><strong>Consider additional savings:</strong> Cashback, rewards, and coupons can increase your total savings</li>
+    </ul><br>
+    
+    <strong style="color:#D9534F;">Common Discount Scenarios:</strong><br>
+    <ul style="margin-left:1.2em; line-height:1.6;">
+        <li><strong>Seasonal Sales:</strong> 20-50% off during end-of-season clearance</li>
+        <li><strong>Holiday Sales:</strong> 10-30% off during major shopping events</li>
+        <li><strong>Flash Sales:</strong> Limited-time offers with significant discounts</li>
+        <li><strong>Clearance Events:</strong> 50-75% off on discontinued items</li>
+        <li><strong>Member Discounts:</strong> Additional 5-15% off for loyalty program members</li>
+    </ul><br>
+    
+    <strong style="color:#D9534F;">Understanding Discount Psychology:</strong><br>
+    Retailers use percentage discounts because they psychologically appear more significant than dollar amounts. For example, "$10 off" sounds less impressive than "25% off," even if they represent the same value. Our calculator helps you see past the marketing to the actual savings.<br><br>
+    
+    <b>Note:</b> This calculator provides instant calculations for planning purposes. Actual prices may vary based on taxes, additional fees, and retailer policies. Always verify final prices at checkout.
+</div>
+<script>
+// Quick discount buttons
+document.querySelectorAll('.quick-discount-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+        const percent = this.dataset.percent;
+        document.getElementById('percentOff').value = percent;
+    });
+});
+
+document.getElementById('calc-btn').addEventListener('click', function() {
+    const originalPrice = parseFloat(document.getElementById('originalPrice').value);
+    const percentOff = parseFloat(document.getElementById('percentOff').value);
+    
+    if (isNaN(originalPrice) || isNaN(percentOff) || 
+        originalPrice <= 0 || percentOff < 0 || percentOff > 100) {
+        document.getElementById('calc-result').innerHTML = 'Please enter valid values. Original price must be greater than 0 and percent off must be between 0 and 100.';
+        return;
+    }
+    
+    // Calculate discount amount and sale price
+    const discountAmount = originalPrice * (percentOff / 100);
+    const salePrice = originalPrice - discountAmount;
+    
+    // Calculate what percent you're actually paying
+    const percentPaying = 100 - percentOff;
+    
+    // Calculate how many items you could buy with the savings
+    const itemsWithSavings = Math.floor(discountAmount / salePrice);
+    
+    let resultHTML = `
+        <div class="result-grid">
+            <div class="result-box">
+                <h4>Original Price</h4>
+                <div class="value">$${originalPrice.toFixed(2)}</div>
+            </div>
+            <div class="result-box">
+                <h4>Sale Price</h4>
+                <div class="value">$${salePrice.toFixed(2)}</div>
+            </div>
+        </div>
+        
+        <div class="savings-highlight">
+            <h4>You Save</h4>
+            <div class="savings-amount">$${discountAmount.toFixed(2)} (${percentOff}%)</div>
+            <div>You're paying only ${percentPaying.toFixed(1)}% of the original price!</div>
+        </div>
+    `;
+    
+    // Add comparison section if savings are significant
+    if (itemsWithSavings > 0) {
+        resultHTML += `
+            <div class="compare-section">
+                <h4>Did You Know?</h4>
+                <div>With your savings of $${discountAmount.toFixed(2)}, you could buy ${itemsWithSavings} more item${itemsWithSavings !== 1 ? 's' : ''} at the sale price!</div>
+            </div>
+        `;
+    }
+    
+    // Add additional discount comparisons
+    const comparisonDiscounts = [10, 20, 30, 40, 50];
+    let comparisonHTML = '<div style="margin-top: 1.5em;"><h4 style="margin-bottom: 0.5em; color: #D9534F;">Compare Other Discounts:</h4><div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5em; font-size: 0.9em;">';
+    
+    comparisonDiscounts.forEach(discount => {
+        if (discount !== percentOff) {
+            const compDiscountAmount = originalPrice * (discount / 100);
+            const compSalePrice = originalPrice - compDiscountAmount;
+            comparisonHTML += `
+                <div style="background: white; padding: 0.5em; border-radius: 0.5em; border: 1px solid #EAE3D5;">
+                    <strong>${discount}% Off:</strong> $${compSalePrice.toFixed(2)}
+                </div>
+            `;
+        }
+    });
+    
+    comparisonHTML += '</div></div>';
+    resultHTML += comparisonHTML;
+    
+    document.getElementById('calc-result').innerHTML = resultHTML;
+});
+
+// Auto-calculate when inputs change
+document.getElementById('originalPrice').addEventListener('input', function() {
+    if (this.value && document.getElementById('percentOff').value) {
+        document.getElementById('calc-btn').click();
+    }
+});
+
+document.getElementById('percentOff').addEventListener('input', function() {
+    if (this.value && document.getElementById('originalPrice').value) {
+        document.getElementById('calc-btn').click();
+    }
+});
+</script>
+</body>
+</html>

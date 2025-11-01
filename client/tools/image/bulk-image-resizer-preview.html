@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bulk Image Resizer - FREE Batch Photo Resizer Tool</title>
+  <meta name="description" content="Free bulk image resizer! Resize multiple photos at once. Batch photo processing with preview. Perfect for web, email, social media. 100% free!">
+  <meta name="keywords" content="bulk image resizer, batch photo resizer, multiple image resize, bulk photo editor, batch image processing, mass image resize, multiple photo resize, bulk image converter, batch image optimizer, photo batch processing, bulk resize tool, mass photo editor, multiple image processor, batch photo converter, bulk image tool, photo mass resize, image batch editor, bulk photo tool, multiple image editor, batch resize photos, bulk image compression">
+  <meta name="author" content="Scribble Tools">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://scribbletools.in/client/tools/image/bulk-image-resizer-preview.html">
+  <meta property="og:title" content="Bulk Image Resizer - FREE Batch Photo Resizer Tool">
+  <meta property="og:description" content="Free bulk image resizer! Resize multiple photos at once. Batch photo processing with preview. Perfect for web, email, social media. 100% free!">
+  <meta property="og:image" content="https://scribbletools.in/assets/og-image.svg">
+  <meta property="og:site_name" content="Scribble Tools">
+  <meta property="og:locale" content="en_US">
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://scribbletools.in/client/tools/image/bulk-image-resizer-preview.html">
+  <meta property="twitter:title" content="Bulk Image Resizer - FREE Batch Photo Resizer Tool">
+  <meta property="twitter:description" content="Free bulk image resizer! Resize multiple photos at once. Batch photo processing with preview. Perfect for web, email, social media. 100% free!">
+  <meta property="twitter:image" content="https://scribbletools.in/assets/og-image.svg">
+  
+  <!-- Additional SEO Meta Tags -->
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Scribble Tools">
+  <meta name="generator" content="Scribble Tools">
+  <meta name="application-name" content="Bulk Image Resizer">
+  <meta name="apple-mobile-web-app-title" content="Batch Photo Resizer">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#D9534F">
+  <meta name="msapplication-navbutton-color" content="#D9534F">
+  <meta name="apple-mobile-web-app-status-bar-style" content="#D9534F">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://scribbletools.in/client/tools/image/bulk-image-resizer-preview.html">
+  
+  <!-- Preconnect for Performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Bulk Image Resizer Tool",
+    "description": "Free online tool for resizing multiple images at once. Batch photo processing with preview and download as ZIP archive.",
+    "url": "https://scribbletools.in/client/tools/image/bulk-image-resizer-preview.html",
+    "applicationCategory": "MultimediaApplication",
+    "operatingSystem": "Any",
+    "permissions": "browser",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "featureList": [
+      "Bulk image resizing",
+      "Batch photo processing",
+      "Multiple image upload",
+      "Preview before resize",
+      "ZIP download archive",
+      "Web optimization",
+      "No registration required",
+      "Free to use"
+    ],
+    "provider": {
+      "@type": "Organization",
+      "name": "Scribble Tools",
+      "url": "https://scribbletools.in"
+    }
+  }
+  </script>
+  <style>
+    body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; margin: 0; }
+    .container { max-width: 900px; margin: 0 auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 0 1.5em 2.5em 1.5em; min-height: 100vh; }
+    .whitespace { height: 4em; }
+    .upload-area { border: 3px dashed #D9534F; border-radius: 1em; padding: 2em 1em; text-align: center; margin: 2em 0 1em 0; background: #FDFBF5; transition: all 0.3s; cursor: pointer; }
+    .upload-area:hover { background: #F0F8FF; border-color: #4682B4; }
+    .upload-icon { font-size: 2em; color: #D9534F; margin-bottom: 0.5em; }
+    .file-input { display: none; }
+    .upload-btn { background: #D9534F; color: #fff; border: none; border-radius: 0.5em; padding: 0.8em 2em; font-weight: 600; cursor: pointer; transition: all 0.2s; margin-top: 1em; }
+    .upload-btn:hover { background: #c9302c; }
+    .preview-section { margin-top: 2em; display: none; }
+    .preview-section h3 { color: #4682B4; margin-bottom: 1em; text-align: center; }
+    .clear-btn { background: #6c757d; color: #fff; border: none; border-radius: 0.5em; padding: 0.8em 1.5em; font-weight: 600; cursor: pointer; transition: all 0.2s; margin: 1em; }
+    .clear-btn:hover { background: #5a6268; }
+    .preview-row { display: flex; gap: 0.7em; overflow-x: auto; align-items: flex-end; margin-bottom: 2em; }
+    .preview-thumb { width: 80px; height: 80px; object-fit: cover; border-radius: 0.5em; border: 1px solid #EAE3D5; background: #fff; box-shadow: 0 2px 8px #eae3d5; }
+    .main-preview-img { max-width: 100%; max-height: 260px; border-radius: 0.7em; border: 1px solid #EAE3D5; background: #fff; box-shadow: 0 2px 8px #eae3d5; margin: 1.5em auto 0 auto; display: block; }
+    .resize-controls { max-width: 400px; margin: 2em auto 0 auto; background: #FDFBF5; border-radius: 0.7em; box-shadow: 0 2px 8px #eae3d5; padding: 2em 2em 1.5em 2em; }
+    .form-group { margin: 1.2em 0; }
+    .form-label { font-weight: 600; margin-bottom: 0.5em; display: block; }
+    .form-input { width: 100%; padding: 0.8em; border: 2px solid #EAE3D5; border-radius: 0.5em; font-size: 1em; margin-bottom: 1em; }
+    .download-btn { background: #4682B4; color: #fff; border: none; border-radius: 0.5em; padding: 1em 2em; font-weight: 600; cursor: pointer; transition: all 0.2s; width: 100%; font-size: 1.1em; margin-top: 1.5em; }
+    .download-btn:hover { background: #357abd; }
+    .zip-options { margin: 1.2em 0; }
+    .zip-options label { margin-right: 1.5em; font-weight: 500; }
+    @media (max-width: 600px) {
+      .container { padding: 0 0.2em 2em 0.2em; }
+      .resize-controls { padding: 1em 0.5em; }
+      .preview-row { gap: 0.3em; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="whitespace"></div>
+    <div class="upload-area" id="upload-area" tabindex="0" aria-label="Upload images area. Drag and drop or click to select images.">
+      <div class="upload-icon" aria-hidden="true">🖼️</div>
+      <h3>Drag & Drop your images here</h3>
+      <p>or click to browse files</p>
+      <input type="file" id="file-input" class="file-input" accept="image/*" multiple aria-label="Choose image files">
+      <button class="upload-btn" id="choose-file-btn" aria-label="Choose Files">Choose Files</button>
+    </div>
+    
+    <div class="preview-section" id="preview-section">
+      <h3>📷 Uploaded Images Preview</h3>
+      <div id="preview-row" class="preview-row"></div>
+      <div style="text-align: center; margin-top: 1em;">
+        <button class="clear-btn" id="clear-btn" type="button">🔄 Upload Different Images</button>
+      </div>
+    </div>
+    
+    <!-- No large preview below thumbnails -->
+    <form id="resize-controls" class="resize-controls" autocomplete="off" style="display:none;">
+      <div class="form-group">
+        <label class="form-label" for="resize-width">Width (px):</label>
+        <input type="number" id="resize-width" class="form-input" placeholder="Width (px)" aria-label="Resize width" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="resize-height">Height (px):</label>
+        <input type="number" id="resize-height" class="form-input" placeholder="Height (px)" aria-label="Resize height" required>
+      </div>
+      <div class="zip-options form-group">
+        <label><input type="radio" name="zip-type" value="all" checked> All images in one archive</label>
+        <label><input type="radio" name="zip-type" value="individual"> Each image as its own archive</label>
+        <div style="margin-top:1em;">
+          <label for="archive-format" style="font-weight:600; margin-right:0.5em;">Archive Format:</label>
+          <select id="archive-format" style="padding:0.5em 1em; border-radius:0.4em; border:1px solid #EAE3D5;">
+            <option value="zip">ZIP (.zip)</option>
+            <option value="7z">7-Zip (.7z)</option>
+            <option value="tar">TAR (.tar)</option>
+            <option value="rar">RAR (.rar)</option>
+          </select>
+        </div>
+        <div id="archive-warning" style="color:#B8860B; font-size:0.98em; margin-top:0.7em; display:none;">Only ZIP is supported in browser. For 7z/tar/rar, use a desktop tool after download.</div>
+      </div>
+      <button class="download-btn" id="download-btn" type="button">Download All Resized Images</button>
+      <div style="text-align: center; margin-top: 1em;">
+        <button class="clear-btn" id="clear-form-btn" type="button">🔄 Start Over</button>
+      </div>
+    </form>
+  </div>
+  <script>
+    // --- Upload logic ---
+    const uploadArea = document.getElementById('upload-area');
+    const fileInput = document.getElementById('file-input');
+    const chooseFileBtn = document.getElementById('choose-file-btn');
+    const previewSection = document.getElementById('preview-section');
+    const previewRow = document.getElementById('preview-row');
+    const clearBtn = document.getElementById('clear-btn');
+    const clearFormBtn = document.getElementById('clear-form-btn');
+    const mainPreview = document.getElementById('main-preview');
+    const mainPreviewContainer = document.getElementById('main-preview-container');
+    const resizeControls = document.getElementById('resize-controls');
+    const resizeWidth = document.getElementById('resize-width');
+    const resizeHeight = document.getElementById('resize-height');
+    const downloadBtn = document.getElementById('download-btn');
+    let images = [];
+    let mainPreviewUrl = '';
+
+    // Clear/Reset function
+    function clearAll() {
+      images = [];
+      uploadArea.style.display = 'block';
+      previewSection.style.display = 'none';
+      resizeControls.style.display = 'none';
+      resizeWidth.value = '';
+      resizeHeight.value = '';
+      fileInput.value = '';
+      sessionStorage.removeItem('bulkImageResizerFiles');
+      renderPreviews();
+    }
+
+    // Clear button event listeners
+    clearBtn.addEventListener('click', clearAll);
+    clearFormBtn.addEventListener('click', clearAll);
+    chooseFileBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      fileInput.click();
+    });
+    uploadArea.addEventListener('click', (e) => {
+      if (e.target === uploadArea) {
+        fileInput.click();
+      }
+    });
+    uploadArea.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      uploadArea.classList.add('dragover');
+    });
+    uploadArea.addEventListener('dragleave', () => {
+      uploadArea.classList.remove('dragover');
+    });
+    uploadArea.addEventListener('drop', (e) => {
+      e.preventDefault();
+      uploadArea.classList.remove('dragover');
+      const files = Array.from(e.dataTransfer.files).filter(f => f.type.startsWith('image/'));
+      if (files.length > 0) {
+        handleFiles(files);
+      }
+    });
+    fileInput.addEventListener('change', (e) => {
+      const files = Array.from(e.target.files).filter(f => f.type.startsWith('image/'));
+      if (files.length > 0) {
+        handleFiles(files);
+        fileInput.value = '';
+      }
+    });
+    function handleFiles(files) {
+      const fileObjs = [];
+      let processed = 0;
+      files.forEach(file => {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          fileObjs.push({ name: file.name, dataUrl: e.target.result });
+          processed++;
+          if (processed === files.length) {
+            images = images.concat(fileObjs);
+            uploadArea.style.display = 'none';
+            previewSection.style.display = 'block';
+            renderPreviews();
+            resizeControls.style.display = images.length > 0 ? 'block' : 'none';
+          }
+        };
+        reader.readAsDataURL(file);
+      });
+    }
+    // --- Preview logic ---
+    function renderPreviews() {
+      previewRow.innerHTML = '';
+      images.forEach((img, idx) => {
+        const el = document.createElement('img');
+        el.src = img.dataUrl;
+        el.className = 'preview-thumb';
+        el.title = img.name;
+        el.style.cursor = 'default';
+        // No click handler for large preview
+        // X button
+        const delBtn = document.createElement('button');
+        delBtn.textContent = '×';
+        delBtn.title = 'Remove';
+        delBtn.style.position = 'absolute';
+        delBtn.style.top = '0';
+        delBtn.style.right = '0';
+        delBtn.style.background = '#D9534F';
+        delBtn.style.color = '#fff';
+        delBtn.style.border = 'none';
+        delBtn.style.borderRadius = '0 0.4em 0 0';
+        delBtn.style.width = '1.5em';
+        delBtn.style.height = '1.5em';
+        delBtn.style.cursor = 'pointer';
+        delBtn.style.fontWeight = 'bold';
+        delBtn.style.fontSize = '1.1em';
+        delBtn.addEventListener('click', (ev) => {
+          ev.stopPropagation();
+          images.splice(idx, 1);
+          if (mainPreviewUrl === img.dataUrl) {
+            mainPreviewUrl = '';
+            mainPreview.src = '';
+            mainPreviewContainer.style.display = 'none';
+          }
+          renderPreviews();
+          resizeControls.style.display = images.length > 0 ? 'block' : 'none';
+        });
+        const thumbWrapper = document.createElement('div');
+        thumbWrapper.style.position = 'relative';
+        thumbWrapper.appendChild(el);
+        thumbWrapper.appendChild(delBtn);
+        previewRow.appendChild(thumbWrapper);
+      });
+      // Add + button as a thumbnail
+      const addBtn = document.createElement('div');
+      addBtn.title = 'Add more images';
+      addBtn.style.width = '80px';
+      addBtn.style.height = '80px';
+      addBtn.style.display = 'flex';
+      addBtn.style.alignItems = 'center';
+      addBtn.style.justifyContent = 'center';
+      addBtn.style.background = '#FDFBF5';
+      addBtn.style.border = '1px solid #EAE3D5';
+      addBtn.style.borderRadius = '0.5em';
+      addBtn.style.cursor = 'pointer';
+      addBtn.style.fontSize = '2.5em';
+      addBtn.style.color = '#D9534F';
+      addBtn.textContent = '+';
+      addBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        fileInput.click();
+      });
+      previewRow.appendChild(addBtn);
+    }
+    // --- Download logic ---
+    const archiveFormat = document.getElementById('archive-format');
+    const archiveWarning = document.getElementById('archive-warning');
+    archiveFormat.addEventListener('change', function() {
+      if (archiveFormat.value !== 'zip') {
+        archiveWarning.style.display = 'block';
+      } else {
+        archiveWarning.style.display = 'none';
+      }
+    });
+    downloadBtn.addEventListener('click', function() {
+      const w = parseInt(resizeWidth.value);
+      const h = parseInt(resizeHeight.value);
+      if (!w || !h) {
+        alert('Please enter both width and height.');
+        return;
+      }
+      const zipType = document.querySelector('input[name="zip-type"]:checked').value;
+      const archiveType = archiveFormat.value;
+      if (archiveType !== 'zip') {
+        alert('Only ZIP is supported in browser. For 7z/tar/rar, use a desktop tool after download.');
+        return;
+      }
+      if (typeof JSZip === 'undefined') {
+        const script = document.createElement('script');
+        script.src = 'https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js';
+        script.onload = () => doZip(w, h, zipType);
+        document.body.appendChild(script);
+      } else {
+        doZip(w, h, zipType);
+      }
+    });
+    function doZip(w, h, zipType) {
+      if (zipType === 'all') {
+        const zip = new JSZip();
+        let processed = 0;
+        images.forEach((img, idx) => {
+          const image = new window.Image();
+          image.onload = function() {
+            const canvas = document.createElement('canvas');
+            canvas.width = w;
+            canvas.height = h;
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(image, 0, 0, w, h);
+            canvas.toBlob(function(blob) {
+              zip.file(`resized-${img.name.replace(/\.[^.]+$/, '')}.jpg`, blob);
+              processed++;
+              if (processed === images.length) {
+                zip.generateAsync({type:'blob'}).then(function(content) {
+                  const url = URL.createObjectURL(content);
+                  const a = document.createElement('a');
+                  a.href = url;
+                  a.download = 'resized-images.zip';
+                  a.click();
+                  // Auto-clear after download with delay
+                  setTimeout(clearAll, 2000);
+                });
+              }
+            }, 'image/jpeg', 0.95);
+          };
+          image.src = img.dataUrl;
+        });
+      } else {
+        let processed = 0;
+        images.forEach((img, idx) => {
+          const image = new window.Image();
+          image.onload = function() {
+            const canvas = document.createElement('canvas');
+            canvas.width = w;
+            canvas.height = h;
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(image, 0, 0, w, h);
+            canvas.toBlob(function(blob) {
+              const zip = new JSZip();
+              zip.file(`resized-${img.name.replace(/\.[^.]+$/, '')}.jpg`, blob);
+              zip.generateAsync({type:'blob'}).then(function(content) {
+                const url = URL.createObjectURL(content);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `resized-${img.name.replace(/\.[^.]+$/, '')}.zip`;
+                a.click();
+                processed++;
+                if (processed === images.length) {
+                  // Auto-clear after download with delay
+                  setTimeout(clearAll, 2000);
+                }
+              });
+            }, 'image/jpeg', 0.95);
+          };
+          image.src = img.dataUrl;
+        });
+      }
+    }
+    // If sessionStorage has images, load them
+    try {
+      const stored = JSON.parse(sessionStorage.getItem('bulkImageResizerFiles') || '[]');
+      if (stored.length > 0) {
+        images = stored;
+        uploadArea.style.display = 'none';
+        previewSection.style.display = 'block';
+        renderPreviews();
+        resizeControls.style.display = images.length > 0 ? 'block' : 'none';
+      }
+    } catch { images = []; }
+  </script>
+</body>
+</html>

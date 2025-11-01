@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Increase Image Size KB - FREE Photo Enlarger Tool (Upscale & Enhance)</title>
+    <meta name="description" content="Free image size increaser! Increase photo file size in KB/MB and upscale dimensions. AI-powered image enhancement and enlargement. 100% free!">
+    <meta name="keywords" content="increase image size, increase photo file size, upscale image, enlarge photo, increase image KB, image upscaler, photo enlarger, AI image enhancer, increase picture size, upscale photo resolution, image size booster, enlarge image quality, photo upscaler, increase image dimensions, enhance photo quality, image enlargement tool, upscale low resolution, photo enhancement, image quality improver, picture size increaser, resize image larger, boost image size">
+    <meta name="author" content="Scribble Tools">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://scribbletools.in/client/tools/image/increase-image-size-kb.html">
+    <meta property="og:title" content="Increase Image Size KB - FREE Photo Enlarger Tool (Upscale & Enhance)">
+    <meta property="og:description" content="Free image size increaser! Increase photo file size in KB/MB and upscale dimensions. AI-powered image enhancement and enlargement. 100% free!">
+    <meta property="og:image" content="https://scribbletools.in/assets/og-image.svg">
+    <meta property="og:site_name" content="Scribble Tools">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://scribbletools.in/client/tools/image/increase-image-size-kb.html">
+    <meta property="twitter:title" content="Increase Image Size KB - FREE Photo Enlarger Tool (Upscale & Enhance)">
+    <meta property="twitter:description" content="Free image size increaser! Increase photo file size in KB/MB and upscale dimensions. AI-powered image enhancement and enlargement. 100% free!">
+    <meta property="twitter:image" content="https://scribbletools.in/assets/og-image.svg">
+    
+    <!-- Additional SEO Meta Tags -->
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Scribble Tools">
+    <meta name="generator" content="Scribble Tools">
+    <meta name="application-name" content="Image Size Increaser">
+    <meta name="apple-mobile-web-app-title" content="Image Enlarger">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#D9534F">
+    <meta name="msapplication-navbutton-color" content="#D9534F">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#D9534F">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://scribbletools.in/client/tools/image/increase-image-size-kb.html">
+    
+    <!-- Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Image Size Increaser Tool",
+      "description": "Free online tool for increasing image file size and upscaling photo dimensions. AI-powered image enhancement for better quality and larger file sizes.",
+      "url": "https://scribbletools.in/client/tools/image/increase-image-size-kb.html",
+      "applicationCategory": "MultimediaApplication",
+      "operatingSystem": "Any",
+      "permissions": "browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "featureList": [
+        "Increase image file size (KB/MB)",
+        "Upscale image dimensions",
+        "AI-powered enhancement",
+        "Quality improvement",
+        "Photo enlargement",
+        "Resolution booster",
+        "No registration required",
+        "Free to use"
+      ],
+      "provider": {
+        "@type": "Organization",
+        "name": "Scribble Tools",
+        "url": "https://scribbletools.in"
+      }
+    }
+    </script>
+    
+    <!-- External image processing libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/browser-image-compression@2.0.2/dist/browser-image-compression.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pica@7.1.0/dist/pica.min.js"></script>
+    <style>
+    body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; }
+    main { display: block; }
+    .increase-size-container { max-width: 800px; margin: 3em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2em 1.5em 2.5em 1.5em; }
+    .handwritten { font-family: 'Caveat', cursive; }
+    
+    .upload-area { border: 3px dashed #D9534F; border-radius: 1em; padding: 3em 2em; text-align: center; margin: 2em 0; background: #FDFBF5; transition: all 0.3s; cursor: pointer; }
+    .upload-area:hover { background: #F0F8FF; border-color: #4682B4; }
+    .upload-area.dragover { background: #E8F5E8; border-color: #228B22; }
+    .upload-icon { font-size: 3em; color: #D9534F; margin-bottom: 1em; text-align: center; }
+    
+    .file-input { display: none; }
+    .upload-btn { background: #D9534F; color: #fff; border: none; border-radius: 0.5em; padding: 1em 2em; font-weight: 600; cursor: pointer; transition: all 0.2s; display: block; margin: 0 auto 1.5em auto; }
+    .upload-btn:hover { background: #c9302c; }
+    .choose-file-btn { background: #D9534F; color: #fff; border: none; border-radius: 0.5em; padding: 1em 2em; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+    .choose-file-btn:hover { background: #c9302c; }
+    
+    .size-options { margin: 2em 0; background: #FDFBF5; border-radius: 0.7em; padding: 1.2em; border: 1px solid #FFEAA7; }
+    .size-options h3 { color: #4682B4; margin-bottom: 1em; font-weight: 600; }
+    .option-group { margin: 1.2em 0; }
+    .option-label { font-weight: 600; margin-bottom: 0.5em; display: block; color: #4682B4; }
+    .option-select, .option-input { width: 100%; padding: 0.8em; border: 2px solid #EAE3D5; border-radius: 0.5em; font-size: 1em; margin-bottom: 1em; background: #fff; }
+    
+    .increase-btn { background: #228B22; color: #fff; border: none; border-radius: 0.5em; padding: 1em 2em; font-weight: 600; cursor: pointer; transition: all 0.2s; width: 100%; font-size: 1.1em; }
+    .increase-btn:hover { background: #1e7e1e; }
+    .increase-btn:disabled { background: #ccc; cursor: not-allowed; }
+    
+    .result-section { margin-top: 2em; }
+    .result-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1em; margin: 1em 0; }
+    .result-card { background: #F0F8FF; border: 1px solid #B0C4DE; border-radius: 0.5em; padding: 1em; text-align: center; }
+    .result-card h4 { color: #4682B4; margin: 0 0 0.5em 0; }
+    .result-card .value { font-size: 1.2em; font-weight: bold; color: #D9534F; }
+    
+    .preview-comparison { background: #F0FFF0; border: 1px solid #90EE90; border-radius: 0.5em; padding: 1em; margin: 1em 0; }
+    .preview-comparison h4 { color: #228B22; margin: 0 0 0.5em 0; }
+    .preview-images { display: grid; grid-template-columns: 1fr 1fr; gap: 1em; margin: 1em 0; }
+    .preview-container { text-align: center; }
+    .preview-image { max-width: 100%; max-height: 300px; border-radius: 0.5em; margin: 0.5em 0; }
+    
+    .download-section { background: #F0F8FF; border: 1px solid #B0C4DE; border-radius: 0.5em; padding: 1em; margin: 1em 0; text-align: center; }
+    .download-btn { background: #4682B4; color: #fff; border: none; border-radius: 0.5em; padding: 1em 2em; font-weight: 600; cursor: pointer; transition: all 0.2s; margin: 0.5em; }
+    .download-btn:hover { background: #357abd; }
+    
+    .conversion-success-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: #E8F5E8;
+      border: 2px solid #5CB85C;
+      border-radius: 0.7em;
+      padding: 1.2em 1em 1.5em 1em;
+      margin-bottom: 1em;
+      margin-top: 0.5em;
+      box-shadow: 0 2px 12px #eae3d5;
+    }
+    .success-icon {
+      font-size: 2.2em;
+      color: #5CB85C;
+      margin-bottom: 0.3em;
+    }
+    .success-message {
+      font-size: 1.15em;
+      color: #228B22;
+      font-family: 'Caveat', cursive;
+      margin-bottom: 0.7em;
+      text-align: center;
+    }
+    
+    .example-section { background: #FDFBF5; border: 1px solid #FFEAA7; border-radius: 0.7em; padding: 1.5em; margin: 2em 0; }
+    .example-section h3 { color: #4682B4; margin-bottom: 1em; }
+    .feature-list { background: #FDFBF5; border-radius: 0.7em; padding: 1.2em; margin: 2em 0; border: 1px solid #FFEAA7; }
+    .feature-list h2 { color: #4682B4; margin-bottom: 1em; font-weight: 600; }
+    .feature-list ul { list-style: none; padding: 0; }
+    .feature-list li { color: #333; margin-bottom: 0.7em; padding-left: 1.5em; position: relative; }
+    .feature-list li:before { content: "✓"; color: #4682B4; font-weight: bold; position: absolute; left: 0; }
+    .step-list { margin: 1.2em 0 1.2em 1.2em; padding: 0; }
+    .step-list li { margin-bottom: 0.7em; color: #666; }
+    .step-list li strong { color: #4682B4; }
+    .recent-tools { margin: 1em 0; padding: 1.2em; background: #FDFBF5; border-radius: 0.7em; font-size: 0.95em; border: 1px solid #FFEAA7; }
+    .recent-tools strong { color: #4682B4; }
+    .recent-tools a { color: #D9534F; text-decoration: none; margin: 0 0.5em; }
+    .recent-tools a:hover { color: #4682B4; text-decoration: underline; }
+    .recent-tools-list { margin-left: 0.5em; }
+    
+    .size-warning { color: #dc2626; font-weight: 500; }
+    .size-success { color: #059669; font-weight: 500; }
+    
+    @media (max-width: 600px) { 
+        .increase-size-container { padding: 1em 0.2em; }
+        .result-grid { grid-template-columns: 1fr; }
+        .preview-images { grid-template-columns: 1fr; }
+    }
+    </style>
+</head>
+<body>
+<main>
+<div class="increase-size-container">
+    <header>
+        <h1 style="font-family: 'Caveat', cursive; font-size: 3em; color: #FF6B6B; margin-bottom: 0.5em;">Increase Image Size</h1>
+        <p style="font-size:1.2em; margin-bottom:1em;">Upscale images to larger dimensions and increase file size when needed. Fast, privacy-first, and free.</p>
+    </header>
+
+    <div style="margin-bottom: 1.5em;">
+      <span style="color: #666;">Related:</span>
+      <a href="/client/tools/image/image-compressor.html" style="color: #FF6B6B; text-decoration: none; margin: 0 0.5em;">Image Compressor</a>
+      <a href="/client/tools/image/image-converter.html" style="color: #FF6B6B; text-decoration: none; margin: 0 0.5em;">Image Converter</a>
+      <a href="/client/tools/image/grayscale-image.html" style="color: #FF6B6B; text-decoration: none; margin: 0 0.5em;">Grayscale Image</a>
+      <a href="/client/tools/image/black-white-image.html" style="color: #FF6B6B; text-decoration: none; margin: 0 0.5em;">Black & White</a>
+    </div>
+
+    <div style="background:#FFF3CD; border:1px solid #FFD700; border-radius:0.7em; padding:1em; margin-bottom:1.2em; color:#B8860B; font-weight:bold; font-size:1.1em;">
+      📈 <b>Increase both dimensions and file size using high-quality resampling.</b> All processing happens in your browser.
+    </div>
+
+    <section aria-labelledby="instructions-title" style="background: #F8FBFF; border-radius: 0.7em; padding: 1.5em; margin: 2em 0; border: 1px solid #4682B4;">
+      <h2 id="instructions-title" style="color:#4682B4; margin-bottom: 1em; font-size: 1.5em;">How to Use</h2>
+      <ol class="step-list" style="margin-left: 1.5em; line-height: 1.6;">
+        <li><strong style="color: #4682B4">Upload Your Image:</strong>
+          <ul style="margin: 0.5em 0 0.5em 1.5em; color: #666;">
+            <li>Drag & drop your image into the upload area</li>
+            <li>Or click "Choose File" to browse</li>
+            <li>Recommended size: 10 KB – 10 MB</li>
+          </ul>
+        </li>
+        <li><strong style="color: #4682B4">Choose Settings:</strong>
+          <ul style="margin: 0.5em 0 0.5em 1.5em; color: #666;">
+            <li>Select a scale factor (1.5x, 2x, 3x, 4x) or enter a custom scale</li>
+            <li>Pick output format: JPEG, WebP, or PNG</li>
+            <li>Choose quality (higher quality increases size)</li>
+            <li>Select size increase strategy for best results</li>
+          </ul>
+        </li>
+        <li><strong style="color: #4682B4">Upscale & Download:</strong>
+          <ul style="margin: 0.5em 0 0.5em 1.5em; color: #666;">
+            <li>Click "Increase Image Size" to process</li>
+            <li>Compare before/after preview and size metrics</li>
+            <li>Download the upscaled image</li>
+          </ul>
+        </li>
+      </ol>
+    </section>
+
+    <section class="example-section" style="background: #FDFBF5; border: 1px solid #FFEAA7; border-radius: 0.7em; padding: 1.5em; margin: 2em 0;">
+      <h3 style="color: #4682B4; margin-bottom: 1em;">Common Uses & Tips</h3>
+      <div style="margin-bottom: 1.2em;">
+        <h4 style="color: #FF6B6B; margin-bottom: 0.5em;">📦 Common Uses</h4>
+        <ul style="color: #666; margin-left: 1.2em;">
+          <li>Meeting minimum upload file size requirements</li>
+          <li>Preparing larger images for print or high-DPI displays</li>
+          <li>Upscaling assets for editing or design</li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="color: #FF6B6B; margin-bottom: 0.5em;">💡 Pro Tips</h4>
+        <ul style="color: #666; margin-left: 1.2em;">
+          <li>Use "High Quality" strategy for maximum file size increase</li>
+          <li>Use "Custom Target Size" for precise file size control</li>
+          <li>PNG format typically gives larger file sizes than JPEG/WebP</li>
+          <li>Higher scale factors (3x, 4x) create more dramatic size increases</li>
+          <li>Stay within 8000×8000 px to avoid browser limits</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="privacy-section">
+      <h2 style="color:#D9534F;">Privacy Notice</h2>
+      <div style="background: #FFF3CD; border: 1px solid #FFEAA7; border-radius: 0.5em; padding: 1em; margin: 1em 0; font-size: 0.9em; color: #856404;">
+        <strong>🔒 Your files are processed only in your browser and are not uploaded. Temporary data is cleared automatically.</strong>
+      </div>
+    </section>
+
+    <div class="tool-interface">
+        <div class="upload-area" id="upload-area" tabindex="0" aria-label="Upload image area. Drag and drop or click to select an image.">
+            <div class="upload-icon" aria-hidden="true">📈</div>
+            <h3>Drag & Drop your image here</h3>
+            <p>or click to browse files</p>
+            <input type="file" id="file-input" class="file-input" accept="image/*">
+            <button class="upload-btn" id="choose-file-btn">Choose File</button>
+            <div id="upload-progress-bar" style="display:none; width:100%; background:#F0F8FF; border-radius:0.5em; margin-top:1.2em; height:1.5em; overflow:hidden; border:1px solid #B0C4DE; position:relative;">
+                <div id="upload-progress-fill" style="height:100%; width:0; background:linear-gradient(90deg,#D9534F,#F0AD4E,#5BC0DE,#5CB85C,#A569BD); transition:width 0.2s;"></div>
+                <span id="upload-progress-text" style="position:absolute; left:50%; top:0; transform:translateX(-50%); color:#333; font-weight:600; line-height:1.5em; font-size:1em;">Uploading: 0%</span>
+            </div>
+        </div>
+        
+        <div class="image-description" id="image-description" style="display: none; background: #E8F5E8; border: 2px solid #5CB85C; border-radius: 0.7em; padding: 1.2em; margin: 1.5em 0; text-align: center;">
+            <div style="font-size: 1.5em; color: #228B22; margin-bottom: 0.5em;">📸</div>
+            <div style="font-size: 1.1em; color: #228B22; font-weight: 600; margin-bottom: 0.5em;">Image Uploaded Successfully!</div>
+            <div style="color: #666; font-size: 0.95em;" id="image-info">Ready for upscaling</div>
+        </div>
+    <div class="size-options" id="size-options" style="display: none;">
+        <h3 style="color: #D9534F; margin-bottom: 1em;">Increase Size Options</h3>
+        <div class="option-group">
+            <label class="option-label">Scale Factor:</label>
+            <select id="scale-factor" class="option-select">
+                <option value="1.5">1.5x (50% larger)</option>
+                <option value="2">2x (Double size)</option>
+                <option value="3">3x (Triple size)</option>
+                <option value="4">4x (Quadruple size)</option>
+                <option value="custom">Custom Scale</option>
+            </select>
+        </div>
+        <div class="option-group" id="custom-scale-div" style="display: none;">
+            <label class="option-label">Custom Scale Factor (1.1 - 10):</label>
+            <input type="number" id="custom-scale" min="1.1" max="10" step="0.1" class="option-input" placeholder="Enter scale factor">
+        </div>
+        <div class="option-group">
+            <label class="option-label">Output Format:</label>
+            <select id="output-format" class="option-select">
+                <option value="jpeg">JPEG (Best for photos)</option>
+                <option value="webp">WebP (Modern, smaller)</option>
+                <option value="png">PNG (Lossless)</option>
+            </select>
+        </div>
+        <div class="option-group">
+            <label class="option-label">Quality Setting:</label>
+            <select id="quality-setting" class="option-select">
+                <option value="1.0" selected>Maximum (100%)</option>
+                <option value="0.95">Very High (95%)</option>
+                <option value="0.9">High (90%)</option>
+                <option value="0.8">Medium (80%)</option>
+            </select>
+        </div>
+        <div class="option-group">
+            <label class="option-label">Size Increase Strategy:</label>
+            <select id="size-strategy" class="option-select">
+                <option value="quality">High Quality (Best for size increase)</option>
+                <option value="dimensions">Maximum Dimensions (Best for upscaling)</option>
+                <option value="balanced">Balanced Approach</option>
+                <option value="custom-kb">Custom Target Size (KB)</option>
+            </select>
+        </div>
+        <div class="option-group" id="custom-kb-group" style="display: none;">
+            <label class="option-label">Target File Size (KB):</label>
+            <input type="number" id="custom-kb-input" class="option-input" min="1" step="1" placeholder="Enter target size in KB">
+            <small style="color: #666; display: block; margin-top: 0.3em;">Must be greater than original file size</small>
+        </div>
+        <button class="increase-btn" id="increase-size-btn">Increase Image Size</button>
+    </div>
+    <div class="result-section" id="result-section" style="display: none;">
+        <div class="result-grid" id="result-grid"></div>
+        <div class="preview-comparison" id="preview-comparison"></div>
+        <div class="download-section" id="download-section"></div>
+    </div>
+    </div>
+</div>
+<section class="feature-list" style="max-width:800px; margin: 1.5em auto; background: #FDFBF5; border-radius: 0.7em; padding: 1.2em; border: 1px solid #FFEAA7;">
+  <h2 style="color: #4682B4; margin-bottom: 1em;">Key Features</h2>
+  <ul style="list-style: none; padding-left: 0;">
+    <li>✓ Multiple scale options + custom scale</li>
+    <li>✓ High-quality resampling with smoothing</li>
+    <li>✓ Choose output format and quality</li>
+    <li>✓ Before/after preview with size metrics</li>
+    <li>✓ Works entirely in your browser (privacy-first)</li>
+    <li>✓ Instant download of upscaled image</li>
+  </ul>
+</section>
+<nav class="recent-tools" aria-label="Recently used tools" style="max-width:800px; margin: 1.5em auto; background: #F8F9FA; border-radius: 0.7em; padding: 1.2em;">
+  <strong>Recent Tools:</strong>
+  <div class="recent-tools-list" style="display: inline-block;">
+    <a href="/client/tools/image/image-compressor.html">Image Compressor</a>
+    <a href="/client/tools/image/image-converter.html">Image Converter</a>
+    <a href="/client/tools/image/grayscale-image.html">Grayscale</a>
+    <span class="separator" style="margin: 0 0.5em; color: #999;">•</span>
+    <a href="#" id="clear-recent" style="color: #D9534F; font-size: 0.9em;">Clear History</a>
+  </div>
+</nav>
+
+<div id="loading-overlay" style="display:none; position:fixed; z-index:9999; top:0; left:0; width:100vw; height:100vh; background:rgba(255,255,255,0.92); align-items:center; justify-content:center;">
+  <div style="text-align:center;">
+    <div class="scribble-loader" aria-label="Processing, please wait...">
+      <div class="scribble-dot"></div>
+      <div class="scribble-dot"></div>
+      <div class="scribble-dot"></div>
+      <div class="scribble-dot"></div>
+      <div class="scribble-dot"></div>
+    </div>
+    <div style="font-family:'Caveat',cursive; font-size:2.2em; color:#D9534F; margin-top:1.2em;">Upscaling...</div>
+    <div style="font-size:1.1em; color:#333; margin-top:0.5em;">Please wait while we increase your image size.</div>
+  </div>
+</div>
+<style>
+.scribble-loader {
+  display: flex;
+  gap: 0.5em;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2em;
+}
+.scribble-dot {
+  width: 0.8em;
+  height: 0.8em;
+  background: #D9534F;
+  border-radius: 50%;
+  animation: scribble-bounce 1.4s ease-in-out infinite both;
+}
+.scribble-dot:nth-child(1) { animation-delay: -0.32s; }
+.scribble-dot:nth-child(2) { animation-delay: -0.16s; }
+.scribble-dot:nth-child(3) { animation-delay: 0s; }
+.scribble-dot:nth-child(4) { animation-delay: 0.16s; }
+.scribble-dot:nth-child(5) { animation-delay: 0.32s; }
+@keyframes scribble-bounce {
+  0%, 80%, 100% { transform: scale(0); }
+  40% { transform: scale(1); }
+}
+.conversion-success-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #E8F5E8;
+  border: 2px solid #5CB85C;
+  border-radius: 0.7em;
+  padding: 1.2em 1em 1.5em 1em;
+  margin-bottom: 1em;
+  margin-top: 0.5em;
+  box-shadow: 0 2px 12px #eae3d5;
+}
+.success-icon {
+  font-size: 2.2em;
+  color: #5CB85C;
+  margin-bottom: 0.3em;
+}
+.success-message {
+  font-size: 1.15em;
+  color: #228B22;
+  font-family: 'Caveat', cursive;
+  margin-bottom: 0.7em;
+  text-align: center;
+}
+.download-btn {
+  display: inline-block;
+  margin-top: 0.5em;
+  margin-bottom: 0.2em;
+  font-size: 1.08em;
+  padding: 0.9em 2em;
+}
+@media (max-width: 600px) { .preview-images { grid-template-columns: 1fr; } }
+</style>
+<script>
+// Global variables
+let currentFile = null;
+let uploadedImage = null;
+let canvas = null;
+let ctx = null;
+let isProcessing = false;
+let isInitialized = false;
+
+// Helper functions
+function formatFileSize(bytes) {
+    if (bytes === 0) return '0 Bytes';
+    const k = 1024;
+    const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+}
+
+function initializeIncreaseImageSize() {
+    if (isInitialized) {
+        console.log('Already initialized');
+        return;
+    }
+
+    console.log('Setting up event listeners...');
+    
+    // Get elements
+    const uploadArea = document.getElementById('upload-area');
+    const fileInput = document.getElementById('file-input');
+    const chooseFileBtn = document.getElementById('choose-file-btn');
+    
+    if (!uploadArea || !fileInput || !chooseFileBtn) {
+        console.error('Critical elements missing:', {
+            uploadArea: !!uploadArea,
+            fileInput: !!fileInput,
+            chooseFileBtn: !!chooseFileBtn
+        });
+        setTimeout(initializeIncreaseImageSize, 100); // Retry
+        return;
+    }
+
+    // Remove old listeners by cloning
+    [uploadArea, fileInput, chooseFileBtn].forEach(el => {
+        if (el && el.parentNode) {
+            const newEl = el.cloneNode(true);
+            el.parentNode.replaceChild(newEl, el);
+        }
+    });
+
+    // Re-get elements after cloning
+    const newUploadArea = document.getElementById('upload-area');
+    const newFileInput = document.getElementById('file-input');
+    const newChooseFileBtn = document.getElementById('choose-file-btn');
+
+    // Click handlers
+    if (newChooseFileBtn) {
+        newChooseFileBtn.onclick = function(e) {
+            e.preventDefault();
+            if (!isProcessing) {
+                console.log('🖱️ Choose file clicked');
+                newFileInput.click();
+            }
+        };
+    }
+
+    if (newUploadArea) {
+        newUploadArea.onclick = function(e) {
+            if (e.target !== newChooseFileBtn && !isProcessing) {
+                console.log('🖱️ Upload area clicked');
+                newFileInput.click();
+            }
+        };
+    }
+
+    // File input change
+    if (newFileInput) {
+        newFileInput.onchange = function(e) {
+            if (e.target.files.length > 0) {
+                const file = e.target.files[0];
+                console.log('📁 File selected:', file.name);
+                if (!isProcessing) {
+                    startUploadProgress(file);
+                }
+                e.target.value = '';
+            }
+        };
+    }
+
+    // Drag and drop
+    if (newUploadArea) {
+        newUploadArea.ondragover = function(e) {
+            e.preventDefault();
+            if (!isProcessing) {
+                newUploadArea.style.backgroundColor = '#F0F8FF';
+                newUploadArea.style.borderColor = '#4682B4';
+            }
+        };
+
+        newUploadArea.ondragleave = function() {
+            newUploadArea.style.backgroundColor = '#FDFBF5';
+            newUploadArea.style.borderColor = '#D9534F';
+        };
+
+        newUploadArea.ondrop = function(e) {
+            e.preventDefault();
+            newUploadArea.style.backgroundColor = '#FDFBF5';
+            newUploadArea.style.borderColor = '#D9534F';
+            if (!isProcessing && e.dataTransfer.files.length > 0) {
+                startUploadProgress(e.dataTransfer.files[0]);
+            }
+        };
+    }
+
+    // Scale factor change
+    const scaleFactor = document.getElementById('scale-factor');
+    if (scaleFactor) {
+        scaleFactor.onchange = function() {
+            const customScaleDiv = document.getElementById('custom-scale-div');
+            if (this.value === 'custom') {
+                customScaleDiv.style.display = 'block';
+            } else {
+                customScaleDiv.style.display = 'none';
+            }
+        };
+    }
+    
+    // Size strategy change
+    const sizeStrategySelect = document.getElementById('size-strategy');
+    if (sizeStrategySelect) {
+        sizeStrategySelect.onchange = function() {
+            const customKbGroup = document.getElementById('custom-kb-group');
+            if (customKbGroup) {
+                if (this.value === 'custom-kb') {
+                    customKbGroup.style.display = 'block';
+                } else {
+                    customKbGroup.style.display = 'none';
+                }
+            }
+        };
+    }
+
+    // Increase size button
+    const increaseSizeBtn = document.getElementById('increase-size-btn');
+    if (increaseSizeBtn) {
+        increaseSizeBtn.onclick = increaseImageSize;
+    }
+
+    isInitialized = true;
+    console.log('✅ Increase Image Size Tool initialized successfully');
+}
+
+function startUploadProgress(file) {
+    if (isProcessing) return;
+    const uploadProgressBar = document.getElementById('upload-progress-bar');
+    const uploadProgressFill = document.getElementById('upload-progress-fill');
+    const uploadProgressText = document.getElementById('upload-progress-text');
+
+    if (!uploadProgressBar || !uploadProgressFill || !uploadProgressText) {
+        // Fallback if elements are missing
+        handleFile(file);
+        return;
+    }
+
+    // Reset related UI while "uploading"
+    const imageDescription = document.getElementById('image-description');
+    const sizeOptions = document.getElementById('size-options');
+    const resultSection = document.getElementById('result-section');
+    if (imageDescription) imageDescription.style.display = 'none';
+    if (sizeOptions) sizeOptions.style.display = 'none';
+    if (resultSection) resultSection.style.display = 'none';
+
+    uploadProgressBar.style.display = 'block';
+    uploadProgressFill.style.width = '0%';
+    uploadProgressText.textContent = 'Uploading: 0%';
+
+    let percent = 0;
+    const duration = 800 + Math.random() * 400; // 0.8s - 1.2s
+    const start = Date.now();
+    function animate() {
+        percent = Math.min(100, Math.round(((Date.now() - start) / duration) * 100));
+        uploadProgressFill.style.width = percent + '%';
+        uploadProgressText.textContent = 'Uploading: ' + percent + '%';
+        if (percent < 100) {
+            requestAnimationFrame(animate);
+        } else {
+            setTimeout(() => {
+                uploadProgressBar.style.display = 'none';
+                handleFile(file);
+            }, 200);
+        }
+    }
+    animate();
+}
+
+function handleFile(file) {
+    if (isProcessing) {
+        console.log('⚠️ Already processing a file, skipping...');
+        return;
+    }
+    
+    isProcessing = true;
+    currentFile = file;
+    console.log('📤 Processing file:', file.name, 'Size:', file.size, 'Type:', file.type);
+    
+    if (!file.type.startsWith('image/')) {
+        alert('❌ Please select a valid image file (JPEG, PNG, etc.).');
+        isProcessing = false;
+        return;
+    }
+
+    if (file.size > 10 * 1024 * 1024) {
+        alert('❌ File size must be less than 10 MB.');
+        isProcessing = false;
+        return;
+    }
+    if (file.size < 15 * 1024) {
+        alert('❌ File size must be at least 15 KB.');
+        isProcessing = false;
+        return;
+    }
+
+    const reader = new FileReader();
+    
+    reader.onload = function(e) {
+        console.log('✅ File read successfully, loading image...');
+        uploadedImage = new Image();
+        
+        uploadedImage.onload = function() {
+            console.log('✅ Image loaded successfully:', uploadedImage.width, 'x', uploadedImage.height);
+            const imageInfo = document.getElementById('image-info');
+            const imageDescription = document.getElementById('image-description');
+            
+            if (imageInfo) {
+                const fileSize = (file.size / 1024).toFixed(1);
+                imageInfo.textContent = `${file.name} (${fileSize} KB) - Ready for upscaling`;
+            }
+            
+            // Show description and options
+            if (imageDescription) imageDescription.style.display = 'block';
+            document.getElementById('size-options').style.display = 'block';
+            document.getElementById('upload-area').style.display = 'none';
+            
+            isProcessing = false;
+            console.log('✅ UI updated successfully');
+        };
+        
+        uploadedImage.onerror = function(err) {
+            console.error('❌ Error loading image:', err);
+            alert('Error loading image. Please try a different file.');
+            isProcessing = false;
+        };
+        
+        uploadedImage.src = e.target.result;
+    };
+    
+    reader.onerror = function(err) {
+        console.error('❌ Error reading file:', err);
+        alert('Error reading file. Please try again.');
+        isProcessing = false;
+    };
+    
+    reader.readAsDataURL(file);
+}
+
+async function increaseImageSize() {
+    if (!uploadedImage) {
+        alert('❌ Please upload an image first');
+        return;
+    }
+    
+    if (isProcessing) {
+        console.log('⚠️ Already processing, please wait...');
+        return;
+    }
+    
+    isProcessing = true;
+    
+    const scaleFactor = document.getElementById('scale-factor');
+    const customScale = document.getElementById('custom-scale');
+    const outputFormat = document.getElementById('output-format');
+    const qualitySetting = document.getElementById('quality-setting');
+    
+    const scaleValue = scaleFactor.value === 'custom' ? parseFloat(customScale.value) : parseFloat(scaleFactor.value);
+    if (scaleFactor.value === 'custom' && (isNaN(scaleValue) || scaleValue < 1.1 || scaleValue > 10)) {
+        alert('Custom scale factor must be between 1.1 and 10');
+        isProcessing = false;
+        return;
+    }
+    
+    const format = outputFormat.value;
+    const quality = parseFloat(qualitySetting.value);
+    
+    // Get size strategy early
+    const sizeStrategy = document.getElementById('size-strategy').value;
+    
+    // Validate custom KB input if strategy is custom-kb
+    if (sizeStrategy === 'custom-kb') {
+        const customKbInput = document.getElementById('custom-kb-input');
+        if (!customKbInput || !customKbInput.value) {
+            alert('❌ Please enter a target file size in KB');
+            isProcessing = false;
+            return;
+        }
+        
+        const targetKb = parseFloat(customKbInput.value);
+        if (isNaN(targetKb) || targetKb <= 0) {
+            alert('❌ Please enter a valid positive number for target size');
+            isProcessing = false;
+            return;
+        }
+        
+        const originalKb = currentFile.size / 1024;
+        if (targetKb <= originalKb) {
+            alert(`❌ Target size (${targetKb} KB) must be greater than original size (${originalKb.toFixed(1)} KB)`);
+            isProcessing = false;
+            return;
+        }
+        
+        console.log(`🎯 Custom target: ${targetKb} KB (original: ${originalKb.toFixed(1)} KB)`);
+    }
+    
+    // Show loading indicator
+    const increaseBtn = document.getElementById('increase-size-btn');
+    if (increaseBtn) {
+        increaseBtn.disabled = true;
+        increaseBtn.textContent = 'Upscaling...';
+    }
+    
+    try {
+        console.log('🔄 Starting image upscaling...');
+        console.log('📊 Image details:', {
+            complete: uploadedImage.complete,
+            naturalWidth: uploadedImage.naturalWidth,
+            naturalHeight: uploadedImage.naturalHeight,
+            width: uploadedImage.width,
+            height: uploadedImage.height
+        });
+        
+        // Validate the image
+        if (!uploadedImage.complete || uploadedImage.naturalWidth === 0) {
+            throw new Error('Image not loaded properly. Please try uploading again.');
+        }
+
+        const newWidth = Math.round(uploadedImage.width * scaleValue);
+        const newHeight = Math.round(uploadedImage.height * scaleValue);
+        
+        if (newWidth > 8000 || newHeight > 8000) {
+            alert('Resulting image would be too large (max 8000x8000 pixels). Please use a smaller scale factor.');
+            return;
+        }
+
+        // Create canvas with error checking
+        canvas = document.createElement('canvas');
+        if (!canvas) {
+            throw new Error('Could not create canvas. Please refresh your browser.');
+        }
+
+        ctx = canvas.getContext('2d');
+        if (!ctx) {
+            throw new Error('Could not get canvas context. Please try a different browser.');
+        }
+        
+        // Set dimensions
+        canvas.width = newWidth;
+        canvas.height = newHeight;
+        
+        // Clear canvas first
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        // Try to use Pica for high-quality upscaling if available
+        if (window.pica) {
+            console.log('🎯 Using Pica for high-quality upscaling');
+            try {
+                const pica = new window.pica();
+                const sourceCanvas = document.createElement('canvas');
+                const sourceCtx = sourceCanvas.getContext('2d');
+                sourceCanvas.width = uploadedImage.width;
+                sourceCanvas.height = uploadedImage.height;
+                sourceCtx.drawImage(uploadedImage, 0, 0);
+                
+                await pica.resize(sourceCanvas, canvas);
+                console.log('✅ Pica upscaling completed successfully');
+            } catch (picaError) {
+                console.warn('⚠️ Pica failed, falling back to canvas:', picaError);
+                // Fallback to canvas
+                ctx.imageSmoothingEnabled = true;
+                ctx.imageSmoothingQuality = 'high';
+                ctx.drawImage(uploadedImage, 0, 0, newWidth, newHeight);
+            }
+        } else {
+            // Fallback to canvas with high-quality settings
+            console.log('🎯 Using canvas for upscaling');
+            ctx.imageSmoothingEnabled = true;
+            ctx.imageSmoothingQuality = 'high';
+            ctx.drawImage(uploadedImage, 0, 0, newWidth, newHeight);
+        }
+        
+        // Add some additional processing to increase file size
+        // This helps ensure the upscaled image is actually larger
+        if (sizeStrategy === 'quality' || sizeStrategy === 'custom-kb') {
+            // Add some noise or detail to increase file size
+            const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+            const data = imageData.data;
+            
+            // Add subtle noise to increase file size (very minimal to maintain quality)
+            for (let i = 0; i < data.length; i += 4) {
+                // Add very subtle random variation to RGB values
+                const noise = (Math.random() - 0.5) * 2; // ±1 value
+                data[i] = Math.min(255, Math.max(0, data[i] + noise));     // Red
+                data[i + 1] = Math.min(255, Math.max(0, data[i + 1] + noise)); // Green
+                data[i + 2] = Math.min(255, Math.max(0, data[i + 2] + noise)); // Blue
+            }
+            
+            ctx.putImageData(imageData, 0, 0);
+            console.log('🔧 Added subtle detail to increase file size');
+        }
+        
+        // For custom KB strategy, add more aggressive size increase if needed
+        if (sizeStrategy === 'custom-kb') {
+            const targetKb = parseFloat(document.getElementById('custom-kb-input').value);
+            const targetBytes = targetKb * 1024;
+            const currentCanvasSize = canvas.width * canvas.height * 4; // Approximate size
+            
+            // If we need more size, add more detail
+            if (currentCanvasSize < targetBytes) {
+                console.log('🔧 Adding more detail to reach target size...');
+                const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                const data = imageData.data;
+                
+                // Add more variation for custom KB target
+                for (let i = 0; i < data.length; i += 4) {
+                    const noise = (Math.random() - 0.5) * 4; // ±2 value for more size
+                    data[i] = Math.min(255, Math.max(0, data[i] + noise));     // Red
+                    data[i + 1] = Math.min(255, Math.max(0, data[i + 1] + noise)); // Green
+                    data[i + 2] = Math.min(255, Math.max(0, data[i + 2] + noise)); // Blue
+                }
+                
+                ctx.putImageData(imageData, 0, 0);
+                console.log('🔧 Enhanced detail for custom KB target');
+            }
+        }
+        
+        // Adjust quality and format based on strategy to ensure size increase
+        let finalQuality = quality;
+        let finalFormat = format;
+        
+        if (sizeStrategy === 'quality') {
+            // Use maximum quality and prefer PNG for size increase
+            finalQuality = 1.0;
+            finalFormat = 'png';
+        } else if (sizeStrategy === 'dimensions') {
+            // Use high quality but keep original format
+            finalQuality = Math.max(0.95, quality);
+        } else if (sizeStrategy === 'custom-kb') {
+            // Use maximum quality and PNG for precise size control
+            finalQuality = 1.0;
+            finalFormat = 'png';
+        }
+        
+        // Convert to desired format with quality
+        let mimeType;
+        switch(finalFormat) {
+            case 'jpeg':
+                mimeType = 'image/jpeg';
+                break;
+            case 'webp':
+                mimeType = 'image/webp';
+                break;
+            case 'png':
+                mimeType = 'image/png';
+                break;
+            default:
+                mimeType = 'image/jpeg';
+        }
+        
+        console.log(`🎯 Final settings: Format=${finalFormat}, Quality=${finalQuality}, Strategy=${sizeStrategy}`);
+        
+        // Try to create blob with maximum quality first
+        canvas.toBlob(function(blob) {
+            if (blob) {
+                console.log(`📊 Initial blob size: ${(blob.size / 1024).toFixed(2)} KB`);
+                
+                // If the blob is smaller than original, try with even higher quality
+                if (blob.size < currentFile.size && finalQuality < 1.0) {
+                    console.log('⚠️ File size decreased, trying with maximum quality...');
+                    canvas.toBlob(function(highQualityBlob) {
+                        if (highQualityBlob) {
+                            console.log(`📊 High quality blob size: ${(highQualityBlob.size / 1024).toFixed(2)} KB`);
+                            displayResults(currentFile, highQualityBlob, finalFormat, newWidth, newHeight, scaleValue, finalQuality);
+                        } else {
+                            displayResults(currentFile, blob, finalFormat, newWidth, newHeight, scaleValue, finalQuality);
+                        }
+                    }, mimeType, 1.0);
+                } else {
+                    displayResults(currentFile, blob, finalFormat, newWidth, newHeight, scaleValue, finalQuality);
+                }
+            } else {
+                // Fallback for unsupported formats
+                console.warn('Format not supported, trying PNG fallback');
+                canvas.toBlob(function(fallbackBlob) {
+                    if (fallbackBlob) {
+                        displayResults(currentFile, fallbackBlob, 'png', newWidth, newHeight, scaleValue, 1.0);
+                    } else {
+                        throw new Error('Failed to upscale image. Please try a different format.');
+                    }
+                }, 'image/png', 1.0);
+            }
+        }, mimeType, finalQuality);
+        
+        console.log('✅ Image upscaled successfully');
+    } catch (error) {
+        console.error('❌ Error processing image:', error);
+        alert('Error: ' + (error && error.message ? error.message : error));
+    } finally {
+        isProcessing = false;
+        // Reset button
+        const increaseBtn = document.getElementById('increase-size-btn');
+        if (increaseBtn) {
+            increaseBtn.disabled = false;
+            increaseBtn.textContent = 'Increase Image Size';
+        }
+    }
+}
+
+function displayResults(originalFile, upscaledBlob, format, width, height, scaleValue, quality) {
+    const resultGrid = document.getElementById('result-grid');
+    const previewComparison = document.getElementById('preview-comparison');
+    const downloadSection = document.getElementById('download-section');
+
+    const originalSize = (originalFile.size / 1024).toFixed(2);
+    const upscaledSize = (upscaledBlob.size / 1024).toFixed(2);
+    const sizeIncrease = ((upscaledBlob.size - originalFile.size) / 1024).toFixed(2);
+    const sizeIncreasePercent = (((upscaledBlob.size - originalFile.size) / originalFile.size) * 100).toFixed(1);
+    const sizeClass = parseFloat(sizeIncrease) > 0 ? 'size-success' : 'size-warning';
+    const sizeText = parseFloat(sizeIncrease) > 0 ? `+${sizeIncrease} KB` : `${Math.abs(sizeIncrease)} KB smaller`;
+
+    // Result grid
+    resultGrid.innerHTML = `
+        <div class="result-card">
+            <h4>📏 New Dimensions</h4>
+            <div class="value">${width} × ${height}px</div>
+            <small>${scaleValue}x scale</small>
+        </div>
+        <div class="result-card">
+            <h4>📊 Original Size</h4>
+            <div class="value">${originalSize} KB</div>
+            <small>${formatFileSize(originalFile.size)}</small>
+        </div>
+        <div class="result-card">
+            <h4>📊 Upscaled Size</h4>
+            <div class="value">${upscaledSize} KB</div>
+            <small>${formatFileSize(upscaledBlob.size)}</small>
+        </div>
+        <div class="result-card">
+            <h4>📈 Size Change</h4>
+            <div class="value ${sizeClass}">${sizeText} (${sizeIncreasePercent}%)</div>
+        </div>
+    `;
+
+    // Before & After Comparison
+    const originalUrl = URL.createObjectURL(originalFile);
+    const upscaledUrl = URL.createObjectURL(upscaledBlob);
+    previewComparison.innerHTML = `
+        <h4>🖼️ Before & After Comparison</h4>
+        <div class="preview-images">
+            <div class="preview-container">
+                <h5>Original</h5>
+                <img src="${originalUrl}" alt="Original" class="preview-image">
+                <p>${originalSize} KB</p>
+                <small>${uploadedImage.width} × ${uploadedImage.height} pixels</small>
+            </div>
+            <div class="preview-container">
+                <h5>Upscaled</h5>
+                <img src="${upscaledUrl}" alt="Upscaled" class="preview-image">
+                <p>${upscaledSize} KB</p>
+                <small>${width} × ${height} pixels</small>
+            </div>
+        </div>
+    `;
+
+    // Download section
+    const url = URL.createObjectURL(upscaledBlob);
+    const downloadLink = document.createElement('a');
+    downloadLink.href = url;
+    downloadLink.download = `upscaled_image.${format}`;
+    downloadLink.className = 'download-btn';
+    downloadLink.textContent = 'Download Upscaled Image';
+
+    // Neat result card for message + button
+    downloadSection.innerHTML = `
+        <div class="conversion-success-card">
+            <div class="success-icon">✅</div>
+            <div class="success-message">Your image has been <b>successfully upscaled!</b></div>
+        </div>
+    `;
+    downloadSection.appendChild(downloadLink);
+    
+    // Show results
+    document.getElementById('result-section').style.display = 'block';
+}
+
+// Recent tools functionality
+const RECENT_TOOLS_KEY = 'recentImageTools';
+const MAX_RECENT_TOOLS = 4;
+
+function initRecentTools() {
+    const clearRecentBtn = document.getElementById('clear-recent');
+    if (clearRecentBtn) {
+        clearRecentBtn.onclick = function(e) {
+            e.preventDefault();
+            localStorage.removeItem(RECENT_TOOLS_KEY);
+            updateRecentToolsList();
+        };
+    }
+
+    // Add current tool to recent
+    const currentToolData = {
+        name: 'Increase Image Size',
+        url: window.location.pathname
+    };
+    addToRecentTools(currentToolData);
+    updateRecentToolsList();
+}
+
+function addToRecentTools(toolData) {
+    let recentTools = JSON.parse(localStorage.getItem(RECENT_TOOLS_KEY) || '[]');
+    
+    // Remove if already exists
+    recentTools = recentTools.filter(tool => tool.url !== toolData.url);
+    
+    // Add to front
+    recentTools.unshift(toolData);
+    
+    // Keep only MAX_RECENT_TOOLS items
+    recentTools = recentTools.slice(0, MAX_RECENT_TOOLS);
+    
+    localStorage.setItem(RECENT_TOOLS_KEY, JSON.stringify(recentTools));
+}
+
+function updateRecentToolsList() {
+    const recentToolsList = document.querySelector('.recent-tools-list');
+    if (!recentToolsList) return;
+
+    const recentTools = JSON.parse(localStorage.getItem(RECENT_TOOLS_KEY) || '[]');
+    
+    if (recentTools.length === 0) {
+        recentToolsList.innerHTML = '<span style="color: #666;">No recent tools</span>';
+        return;
+    }
+
+    const toolLinks = recentTools
+        .filter(tool => tool.url !== window.location.pathname) // Don't show current tool
+        .map(tool => `<a href="${tool.url}">${tool.name}</a>`)
+        .join('<span class="separator" style="margin: 0 0.5em; color: #999;">•</span>');
+
+    recentToolsList.innerHTML = toolLinks + 
+        '<span class="separator" style="margin: 0 0.5em; color: #999;">•</span>' +
+        '<a href="#" id="clear-recent" style="color: #D9534F; font-size: 0.9em;">Clear History</a>';
+    
+    // Reattach clear event listener
+    const clearRecentBtn = document.getElementById('clear-recent');
+    if (clearRecentBtn) {
+        clearRecentBtn.onclick = function(e) {
+            e.preventDefault();
+            localStorage.removeItem(RECENT_TOOLS_KEY);
+            updateRecentToolsList();
+        };
+    }
+}
+
+// Auto-initialize if DOM is ready
+if (document.readyState !== 'loading') {
+    setTimeout(() => {
+        initializeIncreaseImageSize();
+        initRecentTools();
+    }, 50);
+} else {
+    document.addEventListener('DOMContentLoaded', function() {
+        setTimeout(() => {
+            initializeIncreaseImageSize();
+            initRecentTools();
+        }, 50);
+    });
+}
+</script>
+</main>
+</body>
+</html>

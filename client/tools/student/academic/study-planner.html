@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary Meta Tags -->
+    <title>Study Planner - Organize Your Academic Life & Track Goals | Free Student Tool</title>
+    <meta name="title" content="Study Planner - Organize Your Academic Life & Track Goals | Free Student Tool">
+    <meta name="description" content="Free online study planner for students. Create weekly schedules, manage subjects, set academic goals (daily, weekly, monthly), organize tasks with priorities, and track your progress with detailed statistics. Perfect for college and high school students.">
+    <meta name="keywords" content="study planner, academic planner, student planner, goal tracker, task manager, weekly schedule, subject organizer, study goals, academic goals, student productivity, free study planner, online planner, homework planner, exam planner, college planner, high school planner, study schedule, time management, student organizer, academic calendar">
+    <meta name="author" content="ScribbleTools">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://scribbletools.in/client/tools/student/academic/study-planner.html">
+    <meta property="og:title" content="Study Planner - Organize Your Academic Life & Track Goals | Free Student Tool">
+    <meta property="og:description" content="Free online study planner for students. Create weekly schedules, manage subjects, set academic goals, organize tasks, and track your progress.">
+    <meta property="og:image" content="https://scribbletools.in/assets/images/study-planner-og.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://scribbletools.in/client/tools/student/academic/study-planner.html">
+    <meta property="twitter:title" content="Study Planner - Organize Your Academic Life & Track Goals">
+    <meta property="twitter:description" content="Free online study planner with weekly schedules, subject management, goal tracking, task organization, and progress statistics.">
+    <meta property="twitter:image" content="https://scribbletools.in/assets/images/study-planner-twitter.jpg">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://scribbletools.in/client/tools/student/academic/study-planner.html">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/assets/images/favicon.png">
+    <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
+    
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#667eea">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Structured Data / Schema.org -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Study Planner",
+        "description": "Free online study planner for students to organize academic life with weekly schedules, subject management, goal tracking, task organization, and progress statistics.",
+        "url": "https://scribbletools.in/client/tools/student/academic/study-planner.html",
+        "applicationCategory": "EducationalApplication",
+        "operatingSystem": "Any",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "featureList": [
+            "Weekly schedule planner (7 days, 8 AM - 9 PM time slots)",
+            "Subject management with instructor info and study hours",
+            "Goal tracking system (daily, weekly, monthly goals)",
+            "Task manager with priority levels (high, medium, low)",
+            "Progress statistics and completion tracking",
+            "Week navigation (previous/current/next week)",
+            "Local data storage (no sign-up required)",
+            "JSON export for backup",
+            "Subject-linked tasks and schedule blocks",
+            "Visual completion indicators",
+            "Mobile-responsive design",
+            "Real-time statistics dashboard",
+            "Filter system for pending and completed tasks"
+        ],
+        "audience": {
+            "@type": "EducationalAudience",
+            "audienceType": "Students, High School Students, College Students, Graduate Students, Online Learners"
+        },
+        "inLanguage": "en",
+        "isAccessibleForFree": true,
+        "creator": {
+            "@type": "Organization",
+            "name": "ScribbleTools"
+        }
+    }
+    </script>
+</head>
+<body>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Poppins', sans-serif;
+        background: #F8F4E8;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Redirect Card Styles */
+    .planner-redirect-container {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 40px 20px;
+    }
+
+    .planner-redirect-card {
+        background: white;
+        border-radius: 25px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        padding: 60px 50px;
+        max-width: 700px;
+        width: 100%;
+        text-align: center;
+        animation: fadeInScale 0.6s ease-out;
+    }
+
+    @keyframes fadeInScale {
+        from {
+            opacity: 0;
+            transform: scale(0.9);
+        }
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+    .planner-redirect-icon {
+        width: 100px;
+        height: 100px;
+        margin: 0 auto 30px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3rem;
+        color: white;
+        box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+    }
+
+    .planner-redirect-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #1f2937;
+        margin-bottom: 20px;
+    }
+
+    .planner-redirect-description {
+        font-size: 1.15rem;
+        color: #6b7280;
+        line-height: 1.7;
+        margin-bottom: 35px;
+    }
+
+    .planner-redirect-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 16px 40px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-size: 1.1rem;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+    }
+
+    .planner-redirect-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 40px rgba(102, 126, 234, 0.5);
+    }
+
+    .planner-redirect-btn i {
+        transition: transform 0.3s ease;
+    }
+
+    .planner-redirect-btn:hover i {
+        transform: translateX(5px);
+    }
+
+    .planner-features {
+        margin-top: 30px;
+        display: flex;
+        justify-content: center;
+        gap: 25px;
+        flex-wrap: wrap;
+    }
+
+    .planner-feature-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.95rem;
+        opacity: 0.9;
+    }
+
+    .planner-feature-item i {
+        font-size: 1.1rem;
+        color: #667eea;
+    }
+
+    @media (max-width: 768px) {
+        .planner-redirect-card {
+            padding: 40px 30px;
+        }
+
+        .planner-redirect-title {
+            font-size: 1.8rem;
+        }
+
+        .planner-redirect-description {
+            font-size: 1rem;
+        }
+
+        .planner-redirect-btn {
+            padding: 14px 35px;
+            font-size: 1rem;
+        }
+
+        .planner-features {
+            gap: 15px;
+        }
+
+        .planner-feature-item {
+            font-size: 0.85rem;
+        }
+    }
+</style>
+
+<div class="planner-redirect-container">
+    <div class="planner-redirect-card">
+        <div class="planner-redirect-icon">
+            <i class="fas fa-clipboard-list"></i>
+        </div>
+        <h1 class="planner-redirect-title">Study Planner</h1>
+        <p class="planner-redirect-description">
+            Organize your academic life with our comprehensive study planner. 
+            Manage your weekly schedule, track subjects, set goals, organize tasks, and monitor your progress!
+        </p>
+        <a href="client/tools/student/academic/study-planner-redirect.html" target="_blank" rel="noopener noreferrer" class="planner-redirect-btn">
+            Open Study Planner <i class="fas fa-arrow-right"></i>
+        </a>
+        <div class="planner-features">
+            <div class="planner-feature-item">
+                <i class="fas fa-calendar-week"></i>
+                <span>Weekly Schedule</span>
+            </div>
+            <div class="planner-feature-item">
+                <i class="fas fa-book"></i>
+                <span>Subject Manager</span>
+            </div>
+            <div class="planner-feature-item">
+                <i class="fas fa-bullseye"></i>
+                <span>Goal Tracker</span>
+            </div>
+            <div class="planner-feature-item">
+                <i class="fas fa-tasks"></i>
+                <span>Task Organizer</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Use Cases Section -->
+<section class="seo-section use-cases-section">
+    <div class="seo-container">
+        <h2 class="seo-section-title">
+            <i class="fas fa-lightbulb"></i> Use Cases - Who Can Benefit?
+        </h2>
+        <div class="use-cases-grid">
+            <div class="use-case-card">
+                <div class="use-case-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <h3>College Students</h3>
+                <p>Balance multiple courses, assignments, and exams. Track your study hours for each subject, set weekly academic goals, and organize tasks by priority to stay on top of your workload.</p>
+            </div>
+            <div class="use-case-card">
+                <div class="use-case-icon">
+                    <i class="fas fa-school"></i>
+                </div>
+                <h3>High School Students</h3>
+                <p>Manage homework, projects, and test preparation. Create a structured study schedule, set daily goals for homework completion, and track your progress throughout the semester.</p>
+            </div>
+            <div class="use-case-card">
+                <div class="use-case-icon">
+                    <i class="fas fa-user-graduate"></i>
+                </div>
+                <h3>Graduate Students</h3>
+                <p>Juggle research, coursework, and thesis work. Plan your weekly research sessions, track progress on dissertation chapters, and organize tasks across multiple projects and deadlines.</p>
+            </div>
+            <div class="use-case-card">
+                <div class="use-case-icon">
+                    <i class="fas fa-laptop-house"></i>
+                </div>
+                <h3>Online Learners</h3>
+                <p>Stay organized with self-paced courses. Schedule study blocks for different online courses, set completion goals for modules, and track assignments across multiple learning platforms.</p>
+            </div>
+            <div class="use-case-card">
+                <div class="use-case-icon">
+                    <i class="fas fa-briefcase"></i>
+                </div>
+                <h3>Working Students</h3>
+                <p>Balance work and studies effectively. Create a schedule that fits around your job, set realistic goals for study time, and prioritize tasks to maintain academic performance while working.</p>
+            </div>
+            <div class="use-case-card">
+                <div class="use-case-icon">
+                    <i class="fas fa-book-reader"></i>
+                </div>
+                <h3>Exam Preparation</h3>
+                <p>Plan comprehensive exam study schedules. Break down exam preparation into manageable daily and weekly goals, organize review tasks by subject, and track your progress leading up to exams.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="seo-section faq-section">
+    <div class="seo-container">
+        <h2 class="seo-section-title">
+            <i class="fas fa-question-circle"></i> Frequently Asked Questions
+        </h2>
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question">
+                    <i class="fas fa-chevron-down"></i>
+                    <h3>Is the Study Planner completely free?</h3>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes! Our study planner is 100% free with no hidden costs, subscriptions, or premium features. You can create unlimited schedules, subjects, goals, and tasks, and use all features without any charges.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <i class="fas fa-chevron-down"></i>
+                    <h3>Do I need to create an account to use this tool?</h3>
+                </div>
+                <div class="faq-answer">
+                    <p>No registration required! You can start planning your studies immediately. Your data is saved locally in your browser, so you can access it anytime without logging in or creating an account.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <i class="fas fa-chevron-down"></i>
+                    <h3>What features are included in the Study Planner?</h3>
+                </div>
+                <div class="faq-answer">
+                    <p>The planner includes five main features: (1) Weekly Schedule with 7-day planning and time slots from 8 AM to 9 PM, (2) Subject Management to track courses with instructor info and study hours, (3) Goal Tracking for daily, weekly, and monthly goals, (4) Task Manager with priority levels and due dates, and (5) Statistics Dashboard showing your progress and completion rates.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <i class="fas fa-chevron-down"></i>
+                    <h3>How does the goal tracking system work?</h3>
+                </div>
+                <div class="faq-answer">
+                    <p>You can set three types of goals: daily (for today's tasks), weekly (for the current week), and monthly (for long-term objectives). Each goal has a description, target date, and completion status. The system tracks your progress and shows completion rates in the statistics section.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <i class="fas fa-chevron-down"></i>
+                    <h3>Will my data be saved if I close the browser?</h3>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes! All your schedules, subjects, goals, and tasks are automatically saved in your browser's local storage. As long as you use the same browser and don't clear your browsing data, everything will be there when you return.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <i class="fas fa-chevron-down"></i>
+                    <h3>Can I export my study plan data?</h3>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes! You can export all your data (schedules, subjects, goals, and tasks) as a JSON file. This allows you to back up your data or transfer it to another browser. Simply click the "Export Data" button in the planner.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <i class="fas fa-chevron-down"></i>
+                    <h3>How do task priorities work?</h3>
+                </div>
+                <div class="faq-answer">
+                    <p>Tasks can be assigned three priority levels: High (urgent and important), Medium (important but not urgent), or Low (can be done later). High priority tasks are displayed with a red indicator, medium with orange, and low with blue, helping you focus on what's most important.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <i class="fas fa-chevron-down"></i>
+                    <h3>Is the Study Planner mobile-friendly?</h3>
+                </div>
+                <div class="faq-answer">
+                    <p>Absolutely! The study planner is fully responsive and works perfectly on smartphones, tablets, and desktop computers. You can access and update your schedule, goals, and tasks from any device, anywhere.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <i class="fas fa-chevron-down"></i>
+                    <h3>Can I link tasks to specific subjects?</h3>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes! When creating a task, you can link it to a specific subject from your subject list. This helps you organize tasks by course and see at a glance which assignments belong to which class.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <i class="fas fa-chevron-down"></i>
+                    <h3>What statistics does the planner track?</h3>
+                </div>
+                <div class="faq-answer">
+                    <p>The statistics dashboard shows: total number of subjects, total scheduled study blocks, total goals (with completion rate), and total tasks (with completion rate). This gives you a comprehensive overview of your academic planning and progress.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .seo-section {
+        background: white;
+        padding: 60px 20px;
+    }
+
+    .seo-container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .seo-section-title {
+        font-family: 'Poppins', sans-serif;
+        font-size: 2.5rem;
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 50px;
+        color: #1f2937;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .seo-section-title i {
+        color: #667eea;
+        font-size: 2.2rem;
+    }
+
+    /* Use Cases Section */
+    .use-cases-section {
+        background: linear-gradient(135deg, #f9fafb 0%, #e5e7eb 100%);
+    }
+
+    .use-cases-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        margin-top: 40px;
+    }
+
+    .use-case-card {
+        background: white;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        text-align: center;
+    }
+
+    .use-case-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+    }
+
+    .use-case-icon {
+        width: 80px;
+        height: 80px;
+        margin: 0 auto 20px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        color: white;
+    }
+
+    .use-case-card h3 {
+        font-size: 1.4rem;
+        font-weight: 600;
+        margin-bottom: 15px;
+        color: #1f2937;
+    }
+
+    .use-case-card p {
+        font-size: 1rem;
+        line-height: 1.6;
+        color: #6b7280;
+    }
+
+    /* FAQ Section */
+    .faq-section {
+        background: white;
+    }
+
+    .faq-container {
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    .faq-item {
+        margin-bottom: 20px;
+        border: 2px solid #e5e7eb;
+        border-radius: 12px;
+        overflow: hidden;
+        transition: all 0.3s ease;
+    }
+
+    .faq-item:hover {
+        border-color: #667eea;
+        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.15);
+    }
+
+    .faq-question {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 20px 25px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        transition: all 0.3s ease;
+    }
+
+    .faq-question:hover {
+        background: linear-gradient(135deg, #5568d3 0%, #65398b 100%);
+    }
+
+    .faq-question i {
+        font-size: 1.2rem;
+        transition: transform 0.3s ease;
+    }
+
+    .faq-item.active .faq-question i {
+        transform: rotate(180deg);
+    }
+
+    .faq-question h3 {
+        font-size: 1.15rem;
+        font-weight: 600;
+        margin: 0;
+        flex: 1;
+    }
+
+    .faq-answer {
+        padding: 0 25px;
+        background: #f9fafb;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition: all 0.4s ease;
+    }
+
+    .faq-item.active .faq-answer {
+        padding: 25px;
+        max-height: 500px;
+        opacity: 1;
+    }
+
+    .faq-answer p {
+        font-size: 1rem;
+        line-height: 1.7;
+        color: #4b5563;
+        margin: 0;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .seo-section {
+            padding: 40px 15px;
+        }
+
+        .seo-section-title {
+            font-size: 1.8rem;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .seo-section-title i {
+            font-size: 1.6rem;
+        }
+
+        .use-cases-grid {
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .use-case-card {
+            padding: 25px;
+        }
+
+        .use-case-icon {
+            width: 70px;
+            height: 70px;
+            font-size: 1.8rem;
+        }
+
+        .use-case-card h3 {
+            font-size: 1.2rem;
+        }
+
+        .use-case-card p {
+            font-size: 0.95rem;
+        }
+
+        .faq-question {
+            padding: 15px 20px;
+        }
+
+        .faq-question h3 {
+            font-size: 1rem;
+        }
+
+        .faq-answer {
+            padding: 20px;
+        }
+
+        .faq-answer p {
+            font-size: 0.95rem;
+        }
+    }
+</style>
+
+<script>
+    // FAQ Accordion functionality
+    (function() {
+        'use strict';
+        
+        // Wait for DOM to be fully loaded
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initFAQ);
+        } else {
+            initFAQ();
+        }
+        
+        function initFAQ() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(function(item) {
+                const question = item.querySelector('.faq-question');
+                
+                if (question) {
+                    question.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        
+                        // Toggle active class
+                        const isActive = item.classList.contains('active');
+                        
+                        // Close all FAQ items first
+                        document.querySelectorAll('.faq-item').forEach(function(faqItem) {
+                            faqItem.classList.remove('active');
+                        });
+                        
+                        // Open clicked item if it wasn't active
+                        if (!isActive) {
+                            item.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }
+    })();
+</script>
+
+</body>
+</html>

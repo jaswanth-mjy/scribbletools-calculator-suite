@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Text Align Tool - FREE Text Alignment & Formatting Tool</title>
+  <meta name="description" content="Free text alignment tool! Align text left, right, center, justify. Format paragraphs, adjust spacing, perfect text layout. 100% free!">
+  <meta name="keywords" content="text align tool, text alignment, align text center, align text left, align text right, text justify, text formatting tool, paragraph alignment, text layout tool, format text alignment, text spacing tool, document formatting, text editor alignment, content alignment, text positioning tool, typography alignment, text arrangement, paragraph formatter, text structure tool, content formatting">
+  <meta name="author" content="Scribble Tools">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://scribbletools.in/client/tools/text/align-text.html">
+  <meta property="og:title" content="Text Align Tool - FREE Text Alignment & Formatting Tool">
+  <meta property="og:description" content="Free text alignment tool! Align text left, right, center, justify. Format paragraphs, adjust spacing, perfect text layout. 100% free!">
+  <meta property="og:image" content="https://scribbletools.in/assets/og-image.svg">
+  <meta property="og:site_name" content="Scribble Tools">
+  <meta property="og:locale" content="en_US">
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://scribbletools.in/client/tools/text/align-text.html">
+  <meta property="twitter:title" content="Text Align Tool - FREE Text Alignment & Formatting Tool">
+  <meta property="twitter:description" content="Free text alignment tool! Align text left, right, center, justify. Format paragraphs, adjust spacing, perfect text layout. 100% free!">
+  <meta property="twitter:image" content="https://scribbletools.in/assets/og-image.svg">
+  
+  <!-- Additional SEO Meta Tags -->
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Scribble Tools">
+  <meta name="generator" content="Scribble Tools">
+  <meta name="application-name" content="Text Alignment Tool">
+  <meta name="apple-mobile-web-app-title" content="Text Align">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#D9534F">
+  <meta name="msapplication-navbutton-color" content="#D9534F">
+  <meta name="apple-mobile-web-app-status-bar-style" content="#D9534F">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://scribbletools.in/client/tools/text/align-text.html">
+  
+  <!-- Preconnect for Performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Text Alignment & Formatting Tool",
+    "description": "Free online tool for aligning and formatting text. Supports left, right, center, and justify alignment with advanced paragraph formatting options.",
+    "url": "https://scribbletools.in/client/tools/text/align-text.html",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "Any",
+    "permissions": "browser",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "featureList": [
+      "Text alignment options",
+      "Left, right, center alignment",
+      "Text justification",
+      "Paragraph formatting",
+      "Typography control",
+      "Content layout tools",
+      "No registration required",
+      "Free to use"
+    ],
+    "provider": {
+      "@type": "Organization",
+      "name": "Scribble Tools",
+      "url": "https://scribbletools.in"
+    }
+  }
+  </script>
+</head>
+<body>
+
+<!-- File: tools/text/align-text.html -->
+<style>
+    .at-textarea {
+        background-color: #FDFBF5;
+        border: 2px solid #EAE3D5;
+        border-radius: 0.5rem;
+        padding: 1rem;
+        width: 100%;
+        min-height: 180px;
+        color: #4A4A4A;
+        font-size: 1.1rem;
+        line-height: 1.6;
+        transition: all 0.2s;
+    }
+    .at-textarea:focus {
+        outline: none;
+        border-color: #D9534F;
+        box-shadow: 0 0 0 3px rgba(217, 83, 79, 0.2);
+    }
+    .at-options-box {
+        margin-top: 1.5rem;
+        padding: 1.5rem;
+        background-color: #FDFBF5;
+        border-radius: 0.5rem;
+        border: 1px solid #EAE3D5;
+    }
+    .at-button-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 0.75rem;
+    }
+    .at-button {
+        background-color: #fff;
+        color: #4A4A4A;
+        padding: 0.75rem 1rem;
+        border-radius: 0.5rem;
+        font-weight: 600;
+        border: 1px solid #DCD5C3;
+        cursor: pointer;
+        transition: all 0.2s;
+        text-align: center;
+    }
+    .at-button:hover {
+        background-color: #EFEAE0;
+        border-color: #C8BFAC;
+    }
+    .at-button:active {
+        transform: scale(0.98);
+        background-color: #EAE3D5;
+    }
+    .at-utility-bar {
+        margin-top: 1.5rem;
+        padding-top: 1.5rem;
+        border-top: 2px dashed #DCD5C3;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .at-utility-button {
+        background-color: transparent;
+        color: #D9534F;
+        font-weight: 600;
+        border: none;
+        cursor: pointer;
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+    }
+    .at-utility-button:hover {
+        background-color: #FDFBF5;
+    }
+    .at-status-bar {
+        font-size: 0.9rem;
+        color: #888;
+    }
+    .at-result-area {
+        margin-top: 1.5rem;
+        background: #fff;
+        border: 1px solid #EAE3D5;
+        border-radius: 0.5rem;
+        padding: 1rem;
+        min-height: 80px;
+        font-size: 1.05rem;
+        color: #333;
+        white-space: pre-wrap;
+        word-break: break-word;
+    }
+    .at-input-group {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+        margin-bottom: 1rem;
+        flex-wrap: wrap;
+    }
+    .at-input-group label {
+        font-size: 0.95rem;
+        color: #555;
+        font-weight: 500;
+    }
+    .at-input {
+        border: 1px solid #DCD5C3;
+        border-radius: 0.375rem;
+        padding: 0.4rem 0.7rem;
+        font-size: 1rem;
+        width: 120px;
+    }
+</style>
+<div>
+    <h2 class="handwritten text-5xl text-[#D9534F] mb-4">Align Text</h2>
+    <div class="mb-6 p-6 bg-amber-50/70 rounded-lg border border-amber-200">
+        <p class="text-lg text-gray-800 font-bold mb-2">The Align Text tool is your all-in-one solution for text alignment and formatting. Whether you’re preparing code snippets, writing documentation, formatting poetry, or organizing tabular data, this tool gives you full control over how your text appears. With a wide range of alignment options—including left, right, center, justify, and even table-style column alignment—you can quickly transform messy or unstructured text into clean, readable blocks. Advanced features like aligning by custom characters, decimal alignment for numbers, and line padding make it perfect for both technical and creative tasks. The tool also supports adding or removing indentation, mirroring lines, and batch prefix/suffix operations, making it a must-have for anyone who works with text.</p>
+        <ul class="list-disc list-inside text-gray-700 text-base">
+            <li>Align left, right, center, or justify</li>
+            <li>Align as table columns (tab, comma, or custom delimiter)</li>
+            <li>Pad lines to same length</li>
+            <li>Indent or remove indentation</li>
+            <li>Align numbers by decimal</li>
+            <li>Align by custom character</li>
+            <li>Mirror/reverse lines</li>
+            <li>Vertical center (add blank lines)</li>
+            <li>Add/remove line prefix/suffix</li>
+            <li>Remove empty lines</li>
+        </ul>
+    </div>
+    <textarea id="at-input" class="at-textarea" placeholder="Type or paste your text here..."></textarea>
+    <div class="at-options-box">
+        <div class="at-input-group">
+            <label for="at-delimiter">Delimiter:</label>
+            <input id="at-delimiter" class="at-input" type="text" placeholder="," maxlength="5">
+            <label for="at-pad-char">Pad Char:</label>
+            <input id="at-pad-char" class="at-input" type="text" placeholder=" " maxlength="2">
+            <label for="at-indent">Indent:</label>
+            <input id="at-indent" class="at-input" type="number" min="0" max="20" value="4">
+            <label for="at-custom-align">Align by Char:</label>
+            <input id="at-custom-align" class="at-input" type="text" placeholder=":" maxlength="2">
+            <label for="at-prefix">Prefix:</label>
+            <input id="at-prefix" class="at-input" type="text" placeholder="">
+            <label for="at-suffix">Suffix:</label>
+            <input id="at-suffix" class="at-input" type="text" placeholder="">
+        </div>
+        <div class="at-button-grid">
+            <button id="at-align-left" class="at-button">Align Left</button>
+            <button id="at-align-center" class="at-button">Align Center</button>
+            <button id="at-align-right" class="at-button">Align Right</button>
+            <button id="at-justify" class="at-button">Justify</button>
+            <button id="at-align-table" class="at-button">Align as Table</button>
+            <button id="at-pad-lines" class="at-button">Pad Lines</button>
+            <button id="at-indent-lines" class="at-button">Indent Lines</button>
+            <button id="at-remove-indent" class="at-button">Remove Indent</button>
+            <button id="at-align-decimal" class="at-button">Align Numbers (Decimal)</button>
+            <button id="at-align-custom" class="at-button">Align by Custom Char</button>
+            <button id="at-mirror-lines" class="at-button">Mirror Lines</button>
+            <button id="at-vertical-center" class="at-button">Vertical Center</button>
+            <button id="at-prefix-suffix" class="at-button">Add Prefix/Suffix</button>
+            <button id="at-remove-empty" class="at-button">Remove Empty Lines</button>
+        </div>
+    </div>
+    <div class="at-result-area" id="at-result"></div>
+    <div class="at-utility-bar">
+        <div class="at-status-bar">
+            <span>Chars: <strong id="at-char-count" class="text-gray-600">0</strong></span> |
+            <span>Words: <strong id="at-word-count" class="text-gray-600">0</strong></span>
+        </div>
+        <div>
+            <button id="at-copy" class="at-utility-button">Copy</button>
+            <button id="at-download" class="at-utility-button">Download</button>
+            <button id="at-clear" class="at-utility-button">Clear</button>
+        </div>
+    </div>
+</div>
+<script>
+function initializeAlignText() {
+    const atInput = document.getElementById('at-input');
+    const atResult = document.getElementById('at-result');
+    const atCharCount = document.getElementById('at-char-count');
+    const atWordCount = document.getElementById('at-word-count');
+    const atDelimiter = document.getElementById('at-delimiter');
+    const atPadChar = document.getElementById('at-pad-char');
+    const atIndent = document.getElementById('at-indent');
+    const atCustomAlign = document.getElementById('at-custom-align');
+    const atPrefix = document.getElementById('at-prefix');
+    const atSuffix = document.getElementById('at-suffix');
+
+    function updateStats() {
+        const text = atInput.value;
+        atCharCount.textContent = text.length;
+        atWordCount.textContent = text.trim().split(/\s+/).filter(Boolean).length;
+    }
+    function showResult(str) {
+        atResult.textContent = str;
+    }
+    function getLines() {
+        return atInput.value.split(/\r?\n/);
+    }
+    // Alignment functions
+    document.getElementById('at-align-left').addEventListener('click', function() {
+        showResult(getLines().map(line => line.trimStart()).join('\n'));
+    });
+    document.getElementById('at-align-center').addEventListener('click', function() {
+        const lines = getLines();
+        const maxLen = Math.max(...lines.map(l => l.length));
+        showResult(lines.map(line => {
+            const pad = maxLen - line.length;
+            const left = Math.floor(pad/2);
+            const right = pad - left;
+            return ' '.repeat(left) + line.trim() + ' '.repeat(right);
+        }).join('\n'));
+    });
+    document.getElementById('at-align-right').addEventListener('click', function() {
+        const lines = getLines();
+        const maxLen = Math.max(...lines.map(l => l.length));
+        showResult(lines.map(line => ' '.repeat(maxLen - line.length) + line.trim()).join('\n'));
+    });
+    document.getElementById('at-justify').addEventListener('click', function() {
+        const lines = getLines();
+        const maxLen = Math.max(...lines.map(l => l.length));
+        showResult(lines.map(line => {
+            let words = line.trim().split(/\s+/);
+            if (words.length <= 1) return line.trim();
+            let totalSpaces = maxLen - words.join('').length;
+            let spaceSlots = words.length - 1;
+            let even = Math.floor(totalSpaces / spaceSlots);
+            let extra = totalSpaces % spaceSlots;
+            return words.reduce((acc, word, i) => {
+                if (i === 0) return word;
+                let spaces = even + (i <= extra ? 1 : 0);
+                return acc + ' '.repeat(spaces) + word;
+            });
+        }).join('\n'));
+    });
+    document.getElementById('at-align-table').addEventListener('click', function() {
+        const delim = atDelimiter.value || '\t';
+        const lines = getLines().map(l => l.split(delim));
+        const cols = Math.max(...lines.map(arr => arr.length));
+        const colWidths = Array(cols).fill(0);
+        lines.forEach(arr => arr.forEach((cell, i) => { if (cell.length > colWidths[i]) colWidths[i] = cell.length; }));
+        showResult(lines.map(arr => arr.map((cell, i) => cell.padEnd(colWidths[i])).join('  ')).join('\n'));
+    });
+    document.getElementById('at-pad-lines').addEventListener('click', function() {
+        const padChar = (atPadChar.value || ' ').charAt(0);
+        const lines = getLines();
+        const maxLen = Math.max(...lines.map(l => l.length));
+        showResult(lines.map(line => line.padEnd(maxLen, padChar)).join('\n'));
+    });
+    document.getElementById('at-indent-lines').addEventListener('click', function() {
+        const n = Math.max(0, parseInt(atIndent.value, 10) || 4);
+        showResult(getLines().map(line => ' '.repeat(n) + line).join('\n'));
+    });
+    document.getElementById('at-remove-indent').addEventListener('click', function() {
+        showResult(getLines().map(line => line.replace(/^\s+/, '')).join('\n'));
+    });
+    document.getElementById('at-align-decimal').addEventListener('click', function() {
+        const lines = getLines();
+        const parts = lines.map(l => l.split(/\./));
+        const leftMax = Math.max(...parts.map(p => (p[0]||'').length));
+        showResult(parts.map(p => (p[0]||'').padStart(leftMax) + (p[1] !== undefined ? '.' + p[1] : '')).join('\n'));
+    });
+    document.getElementById('at-align-custom').addEventListener('click', function() {
+        const char = atCustomAlign.value || ':';
+        const lines = getLines();
+        const idxs = lines.map(l => l.indexOf(char));
+        const maxIdx = Math.max(...idxs);
+        showResult(lines.map((l, i) => {
+            let idx = idxs[i];
+            if (idx === -1) return l;
+            return ' '.repeat(maxIdx - idx) + l;
+        }).join('\n'));
+    });
+    document.getElementById('at-mirror-lines').addEventListener('click', function() {
+        showResult(getLines().map(line => line.split('').reverse().join('')).join('\n'));
+    });
+    document.getElementById('at-vertical-center').addEventListener('click', function() {
+        const lines = getLines();
+        const total = lines.length;
+        const height = Math.max(10, total * 2);
+        const padTop = Math.floor((height - total) / 2);
+        const padBot = height - total - padTop;
+        showResult(Array(padTop).fill('').concat(lines).concat(Array(padBot).fill('')).join('\n'));
+    });
+    document.getElementById('at-prefix-suffix').addEventListener('click', function() {
+        const prefix = atPrefix.value || '';
+        const suffix = atSuffix.value || '';
+        showResult(getLines().map(line => prefix + line + suffix).join('\n'));
+    });
+    document.getElementById('at-remove-empty').addEventListener('click', function() {
+        showResult(getLines().filter(line => line.trim().length > 0).join('\n'));
+    });
+    atInput.addEventListener('input', updateStats);
+    document.getElementById('at-copy').addEventListener('click', function() {
+        navigator.clipboard.writeText(atResult.textContent).then(() => {
+            const btn = document.getElementById('at-copy');
+            const orig = btn.textContent;
+            btn.textContent = 'Copied!';
+            setTimeout(() => { btn.textContent = orig; }, 2000);
+        });
+    });
+    document.getElementById('at-download').addEventListener('click', function() {
+        const blob = new Blob([atResult.textContent], { type: 'text/plain' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'aligned-text.txt';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    });
+    document.getElementById('at-clear').addEventListener('click', function() {
+        atInput.value = '';
+        atResult.textContent = '';
+        updateStats();
+    });
+    updateStats();
+}
+initializeAlignText();
+</script>

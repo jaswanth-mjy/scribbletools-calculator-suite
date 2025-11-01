@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Currency Calculator - Free Currency Converter & Exchange Rate Calculator</title>
+    <meta name="description" content="Free currency calculator and converter with live exchange rates. Convert between USD, EUR, GBP, JPY and 150+ world currencies instantly.">
+    <meta name="keywords" content="currency calculator, currency converter, exchange rate calculator, currency exchange, foreign exchange calculator, forex calculator">
+    <meta name="author" content="ScribbleTools">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://scribbletools.in/client/tools/financial/currency-calculator.html">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://scribbletools.in/client/tools/financial/currency-calculator.html">
+    <meta property="og:title" content="Currency Calculator - Free Currency Converter & Exchange Rate Calculator">
+    <meta property="og:description" content="Convert currencies with live exchange rates using our free currency calculator. Support for 150+ world currencies including USD, EUR, GBP.">
+    <meta property="og:image" content="https://scribbletools.in/assets/og-image.svg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://scribbletools.in/client/tools/financial/currency-calculator.html">
+    <meta property="twitter:title" content="Currency Calculator - Free Currency Converter & Exchange Rate Calculator">
+    <meta property="twitter:description" content="Convert currencies with live exchange rates using our free currency calculator. 150+ currencies supported.">
+    <meta property="twitter:image" content="https://scribbletools.in/assets/og-image.svg">
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Currency Calculator",
+      "description": "Free online currency calculator and converter with live exchange rates for international currency conversion",
+      "url": "https://scribbletools.in/client/tools/financial/currency-calculator.html",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Web Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "ScribbleTools"
+      }
+    }
+    </script>
+    <style>
+        body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; }
+        .currency-calc-container { max-width: 420px; margin: 3em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2em 1.5em 2.5em 1.5em; }
+        .handwritten { font-family: 'Caveat', cursive; }
+        .currency-calc-label { font-weight: 600; margin-bottom: 0.5em; display: block; }
+        .currency-calc-input, .currency-calc-select { width: 100%; padding: 1em; border: 2px solid #EAE3D5; border-radius: 0.7em; font-size: 1.2em; margin-bottom: 1em; background: #FDFBF5; text-align: center; font-family: 'Fira Code', monospace; }
+        .currency-calc-btn { background: #fff; color: #D9534F; border: 2px solid #D9534F; border-radius: 0.5em; padding: 0.7em 2em; font-weight: 600; font-size: 1.1em; cursor: pointer; transition: all 0.2s; margin-bottom: 1em; }
+        .currency-calc-btn:hover { background: #D9534F; color: #fff; }
+        .currency-calc-result { background: #FDFBF5; border: 2px solid #D9534F; border-radius: 0.7em; padding: 1em; font-size: 1.25em; color: #D9534F; min-height: 1.7em; margin-bottom: 1em; text-align: center; font-family: 'Fira Code', monospace; font-weight: bold; max-height: 300px; overflow-y: auto; word-break: break-word; transition: height 0.2s; }
+        .currency-calc-desc { width: 100%; margin-top: 2em; background:#FDFBF5; border:2px solid #EAE3D5; border-radius:0.9em; padding:1.2em 1em; font-size:1.08em; color:#333; line-height:1.7; }
+        .currency-calc-desc strong { color: #D9534F; font-size: 1.12em; }
+        @media (max-width: 600px) { .currency-calc-container { padding: 1em 0.2em; } }
+    .currency-calc-section-title {
+        color: #D9534F;
+        margin-top: 2em;
+    }
+    .currency-calc-about-title {
+        font-size: 1.18em;
+        color: #D9534F;
+    }
+    .currency-calc-ol-indent {
+        margin-left: 1.2em;
+    }
+    .currency-calc-info-box {
+        background: #f8f9fa;
+        padding: 15px;
+        border-radius: 5px;
+    }
+    .currency-calc-ul-indent {
+        margin-left: 1.2em;
+    }
+    .currency-calc-travel-tips-title {
+        color: #D9534F;
+        margin-top: 2em;
+    }
+    .currency-calc-trading-title {
+        color: #D9534F;
+        margin-top: 2em;
+    }
+    .currency-calc-digital-title {
+        color: #D9534F;
+        margin-top: 2em;
+    }
+    .currency-calc-historical-title {
+        color: #D9534F;
+        margin-top: 2em;
+    }
+    .currency-calc-travel-tips-box {
+        background: #f8f9fa;
+        padding: 15px;
+        border-radius: 5px;
+    }
+    .currency-calc-trading-list {
+        margin-left: 1.2em;
+    }
+    .currency-calc-digital-list {
+        margin-left: 1.2em;
+    }
+    .currency-calc-historical-box {
+        background: #f8f9fa;
+        padding: 15px;
+        border-radius: 5px;
+    }
+    .currency-calc-use-cases-list {
+        margin-left: 1.2em;
+    }
+    .currency-calc-travel-money-tips {
+        background: #f8f9fa;
+        padding: 15px;
+        border-radius: 5px;
+    }
+    .currency-calc-trading-basics {
+        margin-left: 1.2em;
+    }
+    .currency-calc-digital-modern {
+        margin-left: 1.2em;
+    }
+    .currency-calc-historical-facts {
+        background: #f8f9fa;
+        padding: 15px;
+        border-radius: 5px;
+    }
+    .currency-calc-use-cases {
+        margin-left: 1.2em;
+    }
+    .currency-calc-button-row {
+        display: flex;
+        gap: 0.5em;
+        align-items: center;
+        margin-bottom: 1em;
+    }
+    .currency-calc-btn-flex {
+        flex: 1;
+        margin: 0;
+    }
+    .currency-calc-btn-refresh {
+        padding: 0.7em;
+        margin: 0;
+    }
+    .currency-calc-success {
+        color: #28a745;
+    }
+    .currency-calc-error {
+        color: #dc3545;
+    }
+    .currency-calc-warning {
+        color: #ffc107;
+    }
+    .currency-calc-info {
+        color: #007bff;
+    }
+    .travel-tips-styled {
+        color: #D9534F;
+        margin-top: 2em;
+    }
+    .digital-currencies-styled {
+        color: #D9534F;
+        margin-top: 2em;
+    }
+    .historical-facts-styled {
+        color: #D9534F;
+        margin-top: 2em;
+    }
+    .info-box-styled {
+        background: #f8f9fa;
+        padding: 15px;
+        border-radius: 5px;
+    }
+    .list-styled {
+        margin-left: 1.2em;
+    }
+    </style>
+</head>
+<body>
+<div class="currency-calc-container">
+    <h2 class="handwritten text-5xl text-[#D9534F] mb-4">Currency Calculator</h2>
+    <label class="currency-calc-label">Amount:</label>
+    <input id="amount" class="currency-calc-input" type="number" min="0" placeholder="e.g. 100">
+    <label class="currency-calc-label">From Currency:</label>
+    <select id="from-currency" class="currency-calc-select" aria-label="From Currency"></select>
+    <label class="currency-calc-label">To Currency:</label>
+    <select id="to-currency" class="currency-calc-select" aria-label="To Currency"></select>
+    
+    <div class="currency-calc-button-row">
+        <button id="currency-calc-btn" class="currency-calc-btn currency-calc-btn-flex" type="button">Convert Currency</button>
+        <button id="refresh-rates-btn" class="currency-calc-btn currency-calc-btn-refresh" type="button" title="Refresh exchange rates">🔄</button>
+    </div>
+    
+    <div class="currency-calc-result" id="currency-calc-result">Enter an amount and select currencies to see conversion</div>
+    
+    <strong class="currency-calc-about-title">About the Currency Calculator</strong><br>
+    This calculator provides real-time currency conversion using live exchange rates from multiple reliable sources.
+</div>
+
+<div class="currency-calc-desc">
+    <h3 class="currency-calc-section-title">How to Use the Currency Calculator</h3>
+    <ol class="currency-calc-ol-indent">
+        <li><strong>Enter Amount:</strong> Input the amount you want to convert in the "From" currency</li>
+        <li><strong>Select From Currency:</strong> Choose the currency you're converting from (source)</li>
+        <li><strong>Select To Currency:</strong> Choose the currency you want to convert to (target)</li>
+    <h3 class="currency-calc-travel-tips-title">Travel Money Tips</h3>
+    <div class="currency-calc-travel-tips-box">
+        • USD/EUR - US Dollar to Euro<br>
+        • USD/GBP - US Dollar to British Pound<br>
+        • USD/JPY - US Dollar to Japanese Yen<br>
+        • EUR/GBP - Euro to British Pound<br>
+        • USD/CHF - US Dollar to Swiss Franc<br>
+        • USD/CAD - US Dollar to Canadian Dollar<br>
+        <em>These pairs account for over 70% of global forex trading volume.</em>
+    </div>
+        • EUR/GBP - Euro to British Pound<br>
+    <h3 class="currency-calc-trading-title">Currency Trading Basics</h3>
+    <ul class="currency-calc-trading-list">
+        <em>These pairs account for over 70% of global forex trading volume.</em>
+    <ul class="currency-calc-ul-indent">
+        <li><strong>Floating Rates:</strong> Most currencies fluctuate based on market forces</li>
+    <h3 class="currency-calc-travel-tips-title">Travel Money Tips</h3>
+    <div class="currency-calc-travel-money-tips">
+        <li><strong>Volatility:</strong> How much exchange rates change over time</li>
+        <li><strong>Cross Rates:</strong> Exchange rates between non-USD currency pairs</li>
+    <h3 class="currency-calc-digital-title">Digital Currencies & Modern Money</h3>
+    <ul class="currency-calc-digital-list">
+        <li><strong>Cross Rates:</strong> Exchange rates between non-USD currency pairs</li>
+    </ul>
+    
+    <h3 class="currency-calc-section-title">Factors That Affect Exchange Rates</h3>
+    <ul class="currency-calc-ul-indent">
+    <h3 class="currency-calc-trading-title">Currency Trading Basics</h3>
+    <ul class="currency-calc-trading-basics">
+    <h3 class="currency-calc-historical-title">Historical Currency Facts</h3>
+    <div class="currency-calc-historical-box">
+        <li><strong>Trade Balance:</strong> Countries with trade surpluses often have stronger currencies</li>
+        <li><strong>Market Sentiment:</strong> Investor confidence affects currency demand</li>
+    </ul>
+    
+    <h3 style="color:#D9534F; margin-top:2em;">Travel Money Tips</h3>
+    <h3 class="currency-calc-digital-title">Digital Currencies & Modern Money</h3>
+    <ul class="currency-calc-digital-modern">
+        • Use ATMs abroad for better rates than currency exchanges<br>
+        • Avoid airport currency exchanges (highest fees)<br>
+        • Choose cards with no foreign transaction fees<br>
+        • Monitor rates and exchange when favorable<br>
+    <ul class="currency-calc-use-cases-list">
+        <li>Convert prices while shopping online or traveling internationally</li>
+    </div>
+    <h3 class="currency-calc-historical-title">Historical Currency Facts</h3>
+    <div class="currency-calc-historical-facts">
+    <ul style="margin-left:1.2em;">
+        <li><strong>Forex Market:</strong> Largest financial market with $7.5 trillion daily volume</li>
+        <li><strong>Base vs Quote Currency:</strong> EUR/USD means 1 Euro = X US Dollars</li>
+        <li><strong>Leverage:</strong> Trade larger amounts with smaller capital (high risk!)</li>
+        <li><strong>Major Pairs:</strong> Most liquid currencies with tight spreads</li>
+        <li><strong>Exotic Pairs:</strong> Less liquid currencies with wider spreads</li>
+    </ul>
+    
+    <h3 style="color:#D9534F; margin-top:2em;">Digital Currencies & Modern Money</h3>
+    <ul style="margin-left:1.2em;">
+        <li><strong>Cryptocurrencies:</strong> Digital assets like Bitcoin, Ethereum (high volatility)</li>
+        <li><strong>Central Bank Digital Currencies (CBDCs):</strong> Government-issued digital money</li>
+        <li><strong>Stablecoins:</strong> Cryptocurrencies pegged to traditional currencies</li>
+        <li><strong>Digital Wallets:</strong> Store and transfer money electronically</li>
+        <li><strong>Remittances:</strong> Digital transfers often cheaper than traditional methods</li>
+    </ul>
+    
+    <h3 style="color:#D9534F; margin-top:2em;">Historical Currency Facts</h3>
+    <div style="background:#f8f9fa; padding:15px; border-radius:5px;">
+        <strong>Interesting Currency History:</strong><br>
+        • Gold Standard ended in 1971 (Nixon Shock)<br>
+        • Euro launched in 1999, coins/notes in 2002<br>
+        • British Pound is the world's oldest currency still in use<br>
+        • Hyperinflation: Zimbabwe Dollar reached 89.7 sextillion % inflation<br>
+        • Kuwait Dinar is currently the world's strongest currency<br>
+        <em>Currency values have changed dramatically throughout history.</em>
+    </div>
+    
+    <b>Note:</b> The data used in this calculator was last updated on July 30, 2024, and may change in the future.<br><br>
+    <b>Use Cases:</b>
+    <ul style="margin-left:1.2em;">
+        <li>Convert prices while shopping online or traveling internationally</li>
+        <li>Check exchange rates for business transactions or forex trading</li>
+        <li>Learn about world currencies for educational purposes</li>
+        <li>Compare costs between countries for budgeting and planning</li>
+        <li>Calculate international salary or investment conversions</li>
+        <li>Monitor currency trends for business or personal finance decisions</li>
+    </ul>
+</div>
+<script>
+// List of all ISO 4217 currencies with country names (abbreviated for brevity, but should be full in production)
+const currencies = [
+    { code: 'USD', name: 'United States Dollar (USA)' },
+    { code: 'EUR', name: 'Euro (European Union)' },
+    { code: 'JPY', name: 'Japanese Yen (Japan)' },
+    { code: 'GBP', name: 'British Pound (United Kingdom)' },
+    { code: 'AUD', name: 'Australian Dollar (Australia)' },
+    { code: 'CAD', name: 'Canadian Dollar (Canada)' },
+    { code: 'CHF', name: 'Swiss Franc (Switzerland)' },
+    { code: 'CNY', name: 'Chinese Yuan (China)' },
+    { code: 'INR', name: 'Indian Rupee (India)' },
+    { code: 'BRL', name: 'Brazilian Real (Brazil)' },
+    { code: 'ZAR', name: 'South African Rand (South Africa)' },
+    { code: 'RUB', name: 'Russian Ruble (Russia)' },
+    { code: 'SGD', name: 'Singapore Dollar (Singapore)' },
+    { code: 'MXN', name: 'Mexican Peso (Mexico)' },
+    { code: 'KRW', name: 'South Korean Won (South Korea)' },
+    { code: 'TRY', name: 'Turkish Lira (Turkey)' },
+    { code: 'SEK', name: 'Swedish Krona (Sweden)' },
+    { code: 'NZD', name: 'New Zealand Dollar (New Zealand)' },
+    { code: 'SAR', name: 'Saudi Riyal (Saudi Arabia)' },
+    { code: 'AED', name: 'UAE Dirham (United Arab Emirates)' },
+    { code: 'PLN', name: 'Polish Zloty (Poland)' },
+    { code: 'THB', name: 'Thai Baht (Thailand)' },
+    { code: 'IDR', name: 'Indonesian Rupiah (Indonesia)' },
+    { code: 'MYR', name: 'Malaysian Ringgit (Malaysia)' },
+    { code: 'EGP', name: 'Egyptian Pound (Egypt)' },
+    { code: 'NGN', name: 'Nigerian Naira (Nigeria)' },
+    { code: 'PKR', name: 'Pakistani Rupee (Pakistan)' },
+    { code: 'ILS', name: 'Israeli New Shekel (Israel)' },
+    { code: 'CLP', name: 'Chilean Peso (Chile)' },
+    { code: 'COP', name: 'Colombian Peso (Colombia)' },
+    { code: 'CZK', name: 'Czech Koruna (Czech Republic)' },
+    { code: 'HUF', name: 'Hungarian Forint (Hungary)' },
+    { code: 'DKK', name: 'Danish Krone (Denmark)' },
+    { code: 'PHP', name: 'Philippine Peso (Philippines)' },
+    { code: 'VND', name: 'Vietnamese Dong (Vietnam)' },
+    { code: 'UAH', name: 'Ukrainian Hryvnia (Ukraine)' },
+    { code: 'KWD', name: 'Kuwaiti Dinar (Kuwait)' },
+    { code: 'QAR', name: 'Qatari Riyal (Qatar)' },
+    { code: 'BDT', name: 'Bangladeshi Taka (Bangladesh)' },
+    { code: 'LKR', name: 'Sri Lankan Rupee (Sri Lanka)' },
+    { code: 'KES', name: 'Kenyan Shilling (Kenya)' },
+    { code: 'TZS', name: 'Tanzanian Shilling (Tanzania)' },
+    { code: 'GHS', name: 'Ghanaian Cedi (Ghana)' },
+    { code: 'MAD', name: 'Moroccan Dirham (Morocco)' },
+    { code: 'TWD', name: 'New Taiwan Dollar (Taiwan)' },
+    { code: 'HKD', name: 'Hong Kong Dollar (Hong Kong)' },
+    { code: 'NOK', name: 'Norwegian Krone (Norway)' },
+    { code: 'CZK', name: 'Czech Koruna (Czech Republic)' },
+    { code: 'RON', name: 'Romanian Leu (Romania)' },
+    { code: 'BGN', name: 'Bulgarian Lev (Bulgaria)' },
+    { code: 'HRK', name: 'Croatian Kuna (Croatia)' },
+    { code: 'ISK', name: 'Icelandic Krona (Iceland)' },
+    { code: 'JMD', name: 'Jamaican Dollar (Jamaica)' },
+    { code: 'DZD', name: 'Algerian Dinar (Algeria)' },
+    { code: 'PEN', name: 'Peruvian Sol (Peru)' },
+    { code: 'ARS', name: 'Argentine Peso (Argentina)' },
+    { code: 'UYU', name: 'Uruguayan Peso (Uruguay)' },
+    { code: 'BHD', name: 'Bahraini Dinar (Bahrain)' },
+    { code: 'OMR', name: 'Omani Rial (Oman)' },
+    { code: 'MUR', name: 'Mauritian Rupee (Mauritius)' },
+    { code: 'BWP', name: 'Botswana Pula (Botswana)' },
+    { code: 'MZN', name: 'Mozambican Metical (Mozambique)' },
+    { code: 'ETB', name: 'Ethiopian Birr (Ethiopia)' },
+    { code: 'XOF', name: 'West African CFA Franc (WAEMU)' },
+    { code: 'XAF', name: 'Central African CFA Franc (CEMAC)' },
+    { code: 'XCD', name: 'East Caribbean Dollar (ECCU)' },
+    { code: 'BSD', name: 'Bahamian Dollar (Bahamas)' },
+    { code: 'TTD', name: 'Trinidad & Tobago Dollar (Trinidad & Tobago)' },
+    { code: 'JOD', name: 'Jordanian Dinar (Jordan)' },
+    { code: 'LBP', name: 'Lebanese Pound (Lebanon)' },
+    { code: 'SDG', name: 'Sudanese Pound (Sudan)' },
+    { code: 'SYP', name: 'Syrian Pound (Syria)' },
+    { code: 'MMK', name: 'Myanmar Kyat (Myanmar)' },
+    { code: 'KZT', name: 'Kazakhstani Tenge (Kazakhstan)' },
+    { code: 'UZS', name: 'Uzbekistani Som (Uzbekistan)' },
+    { code: 'AFN', name: 'Afghan Afghani (Afghanistan)' },
+    { code: 'MNT', name: 'Mongolian Tugrik (Mongolia)' },
+    { code: 'IRR', name: 'Iranian Rial (Iran)' },
+    { code: 'IQD', name: 'Iraqi Dinar (Iraq)' },
+    { code: 'SLL', name: 'Sierra Leonean Leone (Sierra Leone)' },
+    { code: 'SCR', name: 'Seychellois Rupee (Seychelles)' },
+    { code: 'BND', name: 'Brunei Dollar (Brunei)' },
+    { code: 'FJD', name: 'Fijian Dollar (Fiji)' },
+    { code: 'PGK', name: 'Papua New Guinean Kina (Papua New Guinea)' },
+    { code: 'WST', name: 'Samoan Tala (Samoa)' },
+    { code: 'TOP', name: 'Tongan Paʻanga (Tonga)' },
+    { code: 'VUV', name: 'Vanuatu Vatu (Vanuatu)' },
+    { code: 'KPW', name: 'North Korean Won (North Korea)' },
+    { code: 'MOP', name: 'Macanese Pataca (Macau)' },
+    { code: 'LAK', name: 'Lao Kip (Laos)' },
+    { code: 'KHR', name: 'Cambodian Riel (Cambodia)' },
+    { code: 'BAM', name: 'Bosnia-Herzegovina Convertible Mark (Bosnia & Herzegovina)' },
+    { code: 'MKD', name: 'Macedonian Denar (North Macedonia)' },
+    { code: 'ALL', name: 'Albanian Lek (Albania)' },
+    { code: 'MDL', name: 'Moldovan Leu (Moldova)' },
+    { code: 'GEL', name: 'Georgian Lari (Georgia)' },
+    { code: 'AZN', name: 'Azerbaijani Manat (Azerbaijan)' },
+    { code: 'AMD', name: 'Armenian Dram (Armenia)' },
+    { code: 'TJS', name: 'Tajikistani Somoni (Tajikistan)' },
+    { code: 'KGS', name: 'Kyrgyzstani Som (Kyrgyzstan)' },
+    { code: 'MVR', name: 'Maldivian Rufiyaa (Maldives)' },
+    { code: 'NPR', name: 'Nepalese Rupee (Nepal)' },
+    { code: 'BTN', name: 'Bhutanese Ngultrum (Bhutan)' },
+    { code: 'BBD', name: 'Barbadian Dollar (Barbados)' },
+    { code: 'GYD', name: 'Guyanese Dollar (Guyana)' },
+    { code: 'SRD', name: 'Surinamese Dollar (Suriname)' },
+    { code: 'XPF', name: 'CFP Franc (French Polynesia, New Caledonia, Wallis & Futuna)' },
+    { code: 'ANG', name: 'Netherlands Antillean Guilder (Curaçao, Sint Maarten)' },
+    { code: 'AWG', name: 'Aruban Florin (Aruba)' },
+    { code: 'BMD', name: 'Bermudian Dollar (Bermuda)' },
+    { code: 'KYD', name: 'Cayman Islands Dollar (Cayman Islands)' },
+    { code: 'BZD', name: 'Belize Dollar (Belize)' },
+    { code: 'HTG', name: 'Haitian Gourde (Haiti)' },
+    { code: 'DOP', name: 'Dominican Peso (Dominican Republic)' },
+    { code: 'TTD', name: 'Trinidad & Tobago Dollar (Trinidad & Tobago)' },
+    { code: 'XAG', name: 'Silver (troy ounce)' },
+    { code: 'XAU', name: 'Gold (troy ounce)' }
+];
+
+function populateCurrencyDropdowns() {
+    const from = document.getElementById('from-currency');
+    const to = document.getElementById('to-currency');
+    const btn = document.getElementById('currency-calc-btn');
+    from.innerHTML = '';
+    to.innerHTML = '';
+    btn.disabled = true;
+    currencies.forEach(cur => {
+        const opt1 = document.createElement('option');
+        opt1.value = cur.code;
+        opt1.textContent = `${cur.name} (${cur.code})`;
+        from.appendChild(opt1);
+        const opt2 = document.createElement('option');
+        opt2.value = cur.code;
+        opt2.textContent = `${cur.name} (${cur.code})`;
+        to.appendChild(opt2);
+    });
+    from.value = 'USD';
+    to.value = 'EUR';
+    btn.disabled = false;
+}
+
+let latestRates = {};
+let lastUpdated = '';
+let isLoading = false;
+const CACHE_DURATION = 30 * 60 * 1000; // 30 minutes cache
+
+// Try to load cached rates from localStorage
+function loadCachedRates() {
+    try {
+        const cached = localStorage.getItem('currency_rates_cache');
+        if (cached) {
+            const data = JSON.parse(cached);
+            const now = Date.now();
+            if (data.timestamp && (now - data.timestamp) < CACHE_DURATION) {
+                latestRates = data.rates;
+                lastUpdated = data.lastUpdated + ' (cached)';
+                console.log('Loaded cached exchange rates');
+                return true;
+            }
+        }
+    } catch (error) {
+        console.warn('Failed to load cached rates:', error);
+    }
+    return false;
+}
+
+// Save rates to localStorage
+function saveCachedRates(rates, lastUpdated) {
+    try {
+        const cacheData = {
+            rates: rates,
+            lastUpdated: lastUpdated,
+            timestamp: Date.now()
+        };
+        localStorage.setItem('currency_rates_cache', JSON.stringify(cacheData));
+        console.log('Cached exchange rates for 30 minutes');
+    } catch (error) {
+        console.warn('Failed to cache rates:', error);
+    }
+}
+
+// Fallback exchange rates (approximate) in case APIs fail
+const fallbackRates = {
+    'USD': 1.0, 'EUR': 0.85, 'GBP': 0.73, 'JPY': 110.0, 'AUD': 1.35, 'CAD': 1.25,
+    'CHF': 0.92, 'CNY': 6.45, 'INR': 74.5, 'BRL': 5.2, 'ZAR': 14.8, 'RUB': 75.0,
+    'SGD': 1.35, 'MXN': 20.1, 'KRW': 1180.0, 'TRY': 8.5, 'SEK': 8.6, 'NZD': 1.42,
+    'SAR': 3.75, 'AED': 3.67, 'PLN': 3.9, 'THB': 31.5, 'IDR': 14300.0, 'MYR': 4.1,
+    'EGP': 15.7, 'NGN': 411.0, 'PKR': 169.0, 'ILS': 3.25, 'CLP': 730.0, 'COP': 3600.0,
+    'CZK': 21.5, 'HUF': 295.0, 'DKK': 6.3, 'PHP': 50.8, 'VND': 23000.0, 'UAH': 27.0,
+    'KWD': 0.30, 'QAR': 3.64, 'BDT': 84.8, 'LKR': 198.0, 'KES': 108.0, 'TZS': 2310.0,
+    'GHS': 6.1, 'MAD': 8.9, 'TWD': 27.8, 'HKD': 7.75, 'NOK': 8.5, 'RON': 4.2,
+    'BGN': 1.66, 'HRK': 6.4, 'ISK': 123.0, 'JMD': 150.0, 'DZD': 134.0, 'PEN': 3.9,
+    'ARS': 98.0, 'UYU': 44.0, 'BHD': 0.377, 'OMR': 0.385, 'MUR': 42.5, 'BWP': 11.0,
+    'MZN': 63.8, 'ETB': 44.0, 'XOF': 557.0, 'XAF': 557.0, 'XCD': 2.70, 'BSD': 1.0,
+    'TTD': 6.78, 'JOD': 0.71, 'LBP': 1507.0, 'SDG': 55.0, 'SYP': 1256.0, 'MMK': 1330.0,
+    'KZT': 425.0, 'UZS': 10600.0, 'AFN': 78.0, 'MNT': 2840.0, 'IRR': 25900.0, 'IQD': 1460.0
+};
+
+async function fetchRatesFromAPI() {
+    const APIs = [
+        'https://open.er-api.com/v6/latest/USD',                // ExchangeRate-API v6 - unlimited free tier
+        'https://api.exchangerate-api.com/v4/latest/USD',       // ExchangeRate-API v4 - 1,500 requests/month  
+        'https://api.fxratesapi.com/latest?base=USD'            // FxRatesAPI - 1,000 requests/month
+    ];
+    
+    for (const apiUrl of APIs) {
+        try {
+            console.log(`Trying API: ${apiUrl}`);
+            const res = await fetch(apiUrl);
+            if (!res.ok) throw new Error(`HTTP ${res.status}`);
+            
+            const data = await res.json();
+            const rates = data.rates || data.conversion_rates || {};
+            if (rates && Object.keys(rates).length > 50) {
+                console.log(`Successfully fetched rates from: ${apiUrl}`);
+                return {
+                    rates: { USD: 1, ...rates },
+                    date: data.date || data.time_last_update_utc?.split('T')[0] || new Date().toISOString().split('T')[0],
+                    source: apiUrl.includes('open.er-api') ? 'ExchangeRate-API v6 (Free)' :
+                           apiUrl.includes('exchangerate-api') ? 'ExchangeRate-API v4 (Free)' : 
+                           apiUrl.includes('fxratesapi') ? 'FxRatesAPI (Free)' : 'Exchange API'
+                };
+            }
+        } catch (error) {
+            console.warn(`API ${apiUrl} failed:`, error.message);
+            continue;
+        }
+    }
+    
+    // If all APIs fail, use fallback rates
+    console.log('All APIs failed, using fallback rates');
+    return {
+        rates: fallbackRates,
+        date: new Date().toISOString().split('T')[0],
+        source: 'Fallback rates (approximate)'
+    };
+}
+
+async function fetchRatesOnce() {
+    if (Object.keys(latestRates).length > 0) return;
+    if (isLoading) return;
+    
+    // Try to load from cache first
+    if (loadCachedRates()) {
+        return;
+    }
+    
+    isLoading = true;
+    const resultDiv = document.getElementById('currency-calc-result');
+    resultDiv.innerHTML = '<div class="currency-calc-info">🔄 Loading exchange rates...</div>';
+    
+    try {
+        const data = await fetchRatesFromAPI();
+        latestRates = data.rates;
+        lastUpdated = new Date(data.date).toLocaleDateString() + ` (${data.source})`;
+        saveCachedRates(latestRates, lastUpdated); // Cache the rates
+        resultDiv.innerHTML = '<div class="currency-calc-success">✅ Exchange rates loaded successfully</div>';
+    } catch (error) {
+        console.error('Failed to fetch rates:', error);
+        latestRates = fallbackRates;
+        lastUpdated = 'Using fallback rates (approximate)';
+        resultDiv.innerHTML = '<div class="currency-calc-warning">⚠️ Using approximate rates - API unavailable</div>';
+    } finally {
+        isLoading = false;
+    }
+}
+
+async function convertCurrency() {
+    const amount = parseFloat(document.getElementById('amount').value);
+    const from = document.getElementById('from-currency').value;
+    const to = document.getElementById('to-currency').value;
+    const resultDiv = document.getElementById('currency-calc-result');
+    
+    // Validation
+    if (!amount || isNaN(amount) || amount <= 0) {
+        resultDiv.innerHTML = '<div class="currency-calc-error">❌ Please enter a valid amount greater than 0</div>';
+        return;
+    }
+    
+    if (!from || !to) {
+        resultDiv.innerHTML = '<div class="currency-calc-error">❌ Please select both currencies</div>';
+        return;
+    }
+    
+    if (from === to) {
+        resultDiv.innerHTML = `<div class="currency-calc-success"><strong>${amount.toLocaleString()} ${from} = ${amount.toLocaleString()} ${to}</strong><br><small>Same currency selected</small></div>`;
+        return;
+    }
+    
+    // Ensure rates are loaded
+    if (Object.keys(latestRates).length === 0) {
+        await fetchRatesOnce();
+    }
+    
+    if (!latestRates[from] || !latestRates[to]) {
+        resultDiv.innerHTML = '<div class="currency-calc-error">❌ Exchange rate not available for selected currencies</div>';
+        return;
+    }
+    
+    try {
+        // Cross-rate conversion: amount_in_to = amount_in_from / rate_from * rate_to
+        const usdFromAmount = amount / latestRates[from];
+        const result = usdFromAmount * latestRates[to];
+        
+        // Format result based on currency (different decimal places for different currencies)
+        let decimals = 2;
+        if (['JPY', 'KRW', 'VND', 'IDR', 'CLP', 'COP', 'UZS', 'IRR', 'IQD', 'TZS', 'KHR', 'LAK', 'MNT', 'PYG'].includes(to)) {
+            decimals = 0; // No decimals for currencies typically not using cents
+        } else if (['BHD', 'KWD', 'OMR'].includes(to)) {
+            decimals = 3; // Three decimals for currencies with high value
+        }
+        
+        const formattedResult = result.toFixed(decimals);
+        const rate = (latestRates[to] / latestRates[from]).toFixed(6);
+        
+        resultDiv.innerHTML = `
+            <div class="currency-calc-success" style="font-size: 1.1em; margin-bottom: 0.5em;">
+                <strong>${amount.toLocaleString()} ${from} = ${Number(formattedResult).toLocaleString()} ${to}</strong>
+            </div>
+            <div style="font-size: 0.9em; color: #6c757d; margin-bottom: 0.5em;">
+                Exchange rate: 1 ${from} = ${rate} ${to}
+            </div>
+            <div style="font-size: 0.85em; color: #888;">
+                📅 Last updated: ${lastUpdated}
+            </div>
+        `;
+        
+    } catch (error) {
+        console.error('Conversion error:', error);
+        resultDiv.innerHTML = '<div class="currency-calc-error">❌ Error performing conversion. Please try again.</div>';
+    }
+}
+
+async function refreshRates() {
+    const refreshBtn = document.getElementById('refresh-rates-btn');
+    const originalText = refreshBtn.innerHTML;
+    
+    refreshBtn.innerHTML = '⏳';
+    refreshBtn.disabled = true;
+    
+    // Clear existing rates to force refetch
+    latestRates = {};
+    isLoading = false;
+    
+    try {
+        await fetchRatesOnce();
+        refreshBtn.innerHTML = '✅';
+        setTimeout(() => {
+            refreshBtn.innerHTML = originalText;
+            refreshBtn.disabled = false;
+        }, 1000);
+        
+        // Auto-convert if there's an amount
+        const amountInput = document.getElementById('amount');
+        if (amountInput.value && parseFloat(amountInput.value) > 0) {
+            convertCurrency();
+        }
+    } catch (error) {
+        refreshBtn.innerHTML = '❌';
+        setTimeout(() => {
+            refreshBtn.innerHTML = originalText;
+            refreshBtn.disabled = false;
+        }, 2000);
+    }
+}
+
+function initCurrencyCalculator() {
+    const calculateBtn = document.getElementById('currency-calc-btn');
+    const refreshBtn = document.getElementById('refresh-rates-btn');
+    const amountInput = document.getElementById('amount');
+    const fromSelect = document.getElementById('from-currency');
+    const toSelect = document.getElementById('to-currency');
+    
+    // Add event listeners
+    calculateBtn.addEventListener('click', convertCurrency);
+    refreshBtn.addEventListener('click', refreshRates);
+    
+    // Auto-convert when amount changes (with debounce)
+    let timeoutId;
+    amountInput.addEventListener('input', () => {
+        clearTimeout(timeoutId);
+        timeoutId = setTimeout(() => {
+            if (amountInput.value && parseFloat(amountInput.value) > 0) {
+                convertCurrency();
+            }
+        }, 500); // Wait 500ms after user stops typing
+    });
+    
+    // Auto-convert when currencies change
+    fromSelect.addEventListener('change', () => {
+        if (amountInput.value && parseFloat(amountInput.value) > 0) {
+            convertCurrency();
+        }
+    });
+    
+    toSelect.addEventListener('change', () => {
+        if (amountInput.value && parseFloat(amountInput.value) > 0) {
+            convertCurrency();
+        }
+    });
+    
+    // Swap currencies functionality
+    const swapBtn = document.createElement('button');
+    swapBtn.innerHTML = '🔄 Swap';
+    swapBtn.className = 'currency-calc-btn';
+    swapBtn.style.padding = '0.5em 1em';
+    swapBtn.style.fontSize = '0.9em';
+    swapBtn.style.marginLeft = '0.5em';
+    swapBtn.style.marginBottom = '0';
+    swapBtn.title = 'Swap From and To currencies';
+    
+    swapBtn.addEventListener('click', () => {
+        const fromValue = fromSelect.value;
+        const toValue = toSelect.value;
+        fromSelect.value = toValue;
+        toSelect.value = fromValue;
+        
+        if (amountInput.value && parseFloat(amountInput.value) > 0) {
+            convertCurrency();
+        }
+    });
+    
+    // Insert swap button after the To currency select
+    toSelect.parentNode.insertBefore(swapBtn, toSelect.nextSibling);
+    
+    // Initialize dropdowns and fetch rates
+    populateCurrencyDropdowns();
+    fetchRatesOnce();
+    
+    // Set focus to amount input
+    amountInput.focus();
+}
+
+// SPA compatibility and initialization
+if (typeof window.initializeCurrencyCalculator === 'undefined') {
+    window.initializeCurrencyCalculator = initCurrencyCalculator;
+}
+
+// Call the init function when loaded directly
+if (document.readyState === 'loading') {
+    window.addEventListener('DOMContentLoaded', initCurrencyCalculator);
+} else {
+    initCurrencyCalculator();
+}
+</script>
+</body>
+</html>

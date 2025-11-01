@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Max Heart Rate Calculator - Target Heart Rate Zone Calculator | ScribbleTools</title>
+    <meta name="description" content="Calculate maximum heart rate and target heart rate zones with our comprehensive heart rate calculator. Perfect for cardio training, fitness planning, and cardiovascular health monitoring.">
+    <meta name="keywords" content="max heart rate calculator, maximum heart rate, target heart rate calculator, heart rate zones, cardio calculator, fitness heart rate, training heart rate, cardiovascular calculator, exercise heart rate, heart rate training">
+    <meta name="author" content="ScribbleTools">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://scribbletools.in/client/tools/health/max-heart-rate.html">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Free Max Heart Rate Calculator - Target Heart Rate Zone Calculator">
+    <meta property="og:description" content="Calculate maximum heart rate and target training zones for effective cardio workouts and cardiovascular fitness planning.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://scribbletools.in/client/tools/health/max-heart-rate.html">
+    <meta property="og:image" content="https://scribbletools.in/assets/og-image.svg">
+    <meta property="og:site_name" content="ScribbleTools">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Free Max Heart Rate Calculator - Target Heart Rate Zone Calculator">
+    <meta name="twitter:description" content="Calculate maximum heart rate and training zones for effective cardio workouts and fitness planning.">
+    <meta name="twitter:image" content="https://scribbletools.in/assets/og-image.svg">
+    
+    <!-- Additional SEO Meta Tags -->
+    <meta name="theme-color" content="#D9534F">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Max Heart Rate Calculator">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    
+    <!-- Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Max Heart Rate Calculator",
+        "description": "Calculate maximum heart rate using multiple scientifically validated formulas for cardio training and cardiovascular fitness planning.",
+        "url": "https://scribbletools.in/client/tools/health/max-heart-rate.html",
+        "applicationCategory": "HealthApplication",
+        "operatingSystem": "Any",
+        "permissions": "browser",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "featureList": [
+            "Maximum heart rate calculation",
+            "Target heart rate zones",
+            "Multiple formula support",
+            "Cardio training guidance",
+            "Cardiovascular fitness planning"
+        ]
+    }
+    </script>
+    <style>
+        body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; }
+        .calc-container { max-width: 420px; margin: 3em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2em 1.5em 2.5em 1.5em; }
+        .handwritten { font-family: 'Caveat', cursive; }
+        .calc-label { font-weight: 600; margin-bottom: 0.5em; display: block; }
+        .calc-input { width: 100%; padding: 1em; border: 2px solid #EAE3D5; border-radius: 0.7em; font-size: 1.2em; margin-bottom: 1em; background: #FDFBF5; text-align: center; font-family: 'Fira Code', monospace; }
+        .calc-btn { background: #fff; color: #D9534F; border: 2px solid #D9534F; border-radius: 0.5em; padding: 0.7em 2em; font-weight: 600; font-size: 1.1em; cursor: pointer; transition: all 0.2s; margin-bottom: 1em; }
+        .calc-btn:hover { background: #D9534F; color: #fff; }
+        .calc-result { background: #FDFBF5; border: 2px solid #D9534F; border-radius: 0.7em; padding: 1em; font-size: 1.25em; color: #D9534F; min-height: 1.7em; margin-bottom: 1em; text-align: center; font-family: 'Fira Code', monospace; font-weight: bold; max-height: 300px; overflow-y: auto; word-break: break-word; transition: height 0.2s; }
+        .calc-desc { width: 100%; margin-top: 2em; background:#FDFBF5; border:2px solid #EAE3D5; border-radius:0.9em; padding:1.2em 1em; font-size:1.08em; color:#333; line-height:1.7; }
+        .calc-desc strong { color: #D9534F; font-size: 1.12em; }
+        @media (max-width: 600px) { .calc-container { padding: 1em 0.2em; } }
+    </style>
+</head>
+<body>
+<div class="calc-container">
+    <h2 class="handwritten text-5xl text-[#D9534F] mb-4">Max Heart Rate Tool</h2>
+    <label class="calc-label">Age (years):</label>
+    <input id="age" class="calc-input" type="number" min="0" placeholder="e.g. 30">
+    <label class="calc-label">Gender:</label>
+    <select id="gender" class="calc-input">
+        <option value="general">General (Default)</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+    </select>
+    <button id="calc-btn" class="calc-btn">Calculate Max HR</button>
+    <div class="calc-result" id="calc-result"></div>
+</div>
+<div class="calc-desc" style="max-width: fit-content; margin: 2.5em auto 0 auto;">
+    <strong style="font-size:1.18em; color:#D9534F;">About the Max Heart Rate Tool</strong><br><br>
+    Calculate your maximum heart rate using multiple scientifically validated formulas. Different formulas may be more accurate for different populations and activity levels.<br><br>
+    <b>Formulas Used:</b>
+    <ul style="margin-left:1.2em;">
+        <li><b>Classic:</b> 220 - age (most common)</li>
+        <li><b>Tanaka:</b> 208 - (0.7 × age) (revised formula)</li>
+        <li><b>Gulati (Women):</b> 206 - (0.88 × age)</li>
+        <li><b>Nes:</b> 211 - (0.64 × age) (active individuals)</li>
+    </ul><br>
+    <b>Use Cases:</b>
+    <ul style="margin-left:1.2em;">
+        <li>Establish baseline for target heart rate zones</li>
+        <li>Set safe exercise intensity limits</li>
+        <li>Monitor cardiovascular fitness progress</li>
+        <li>Plan cardio training programs</li>
+    </ul>
+</div>
+<script>
+function showResult(str) {
+    document.getElementById('calc-result').innerHTML = str;
+}
+document.getElementById('calc-btn').addEventListener('click', function() {
+    let age = parseInt(document.getElementById('age').value);
+    let gender = document.getElementById('gender').value;
+    
+    if (isNaN(age) || age <= 0 || age > 120) {
+        showResult('Please enter a valid age (1-120 years).');
+        return;
+    }
+    
+    // Calculate using multiple formulas
+    let classic = 220 - age;
+    let tanaka = Math.round(208 - (0.7 * age));
+    let gulati = Math.round(206 - (0.88 * age)); // For women
+    let nes = Math.round(211 - (0.64 * age)); // For active individuals
+    
+    let result = `<b>Max Heart Rate Estimates:</b><br><br>
+                  <b>Classic Formula:</b> ${classic} bpm<br>
+                  <b>Tanaka Formula:</b> ${tanaka} bpm<br>
+                  <b>Nes Formula:</b> ${nes} bpm<br>`;
+    
+    if (gender === 'female') {
+        result += `<b>Gulati (Women):</b> ${gulati} bpm<br><br>
+                   <b>Recommended:</b> ${gulati} bpm`;
+    } else if (gender === 'male') {
+        result += `<b>Gulati (Women):</b> ${gulati} bpm<br><br>
+                   <b>Recommended:</b> ${tanaka} bpm`;
+    } else {
+        result += `<b>Gulati (Women):</b> ${gulati} bpm<br><br>
+                   <b>Average:</b> ${Math.round((classic + tanaka + nes) / 3)} bpm`;
+    }
+    
+    showResult(result);
+});
+</script>
+</body>
+</html>

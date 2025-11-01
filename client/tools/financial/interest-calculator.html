@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Interest Calculator - Free Investment Tool | Calculate Simple & Compound Interest</title>
+    <meta name="description" content="Free interest calculator to calculate simple and compound interest. Calculate investment growth, final amount, and interest earned over time.">
+    <meta name="keywords" content="interest calculator, compound interest calculator, simple interest calculator, investment calculator, interest calculation">
+    <meta name="author" content="ScribbleTools">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://scribbletools.in/client/tools/financial/interest-calculator.html">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://scribbletools.in/client/tools/financial/interest-calculator.html">
+    <meta property="og:title" content="Interest Calculator - Free Investment Tool">
+    <meta property="og:description" content="Calculate simple and compound interest. Free tool for investment growth and interest calculations.">
+    <meta property="og:image" content="https://scribbletools.in/assets/og-image.svg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://scribbletools.in/client/tools/financial/interest-calculator.html">
+    <meta property="twitter:title" content="Interest Calculator - Free Investment Tool">
+    <meta property="twitter:description" content="Calculate simple and compound interest. Free tool for investment growth and interest calculations.">
+    <meta property="twitter:image" content="https://scribbletools.in/assets/og-image.svg">
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Interest Calculator",
+      "description": "Free online interest calculator to calculate simple and compound interest",
+      "url": "https://scribbletools.in/client/tools/financial/interest-calculator.html",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Web Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "ScribbleTools"
+      }
+    }
+    </script>
+    <style>
+        body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; }
+        .calc-container { max-width: 420px; margin: 3em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2em 1.5em 2.5em 1.5em; }
+        .handwritten { font-family: 'Caveat', cursive; }
+        .calc-label { font-weight: 600; margin-bottom: 0.5em; display: block; }
+        .calc-input { width: 100%; padding: 1em; border: 2px solid #EAE3D5; border-radius: 0.7em; font-size: 1.2em; margin-bottom: 1em; background: #FDFBF5; text-align: center; font-family: 'Fira Code', monospace; }
+        .calc-btn { background: #fff; color: #D9534F; border: 2px solid #D9534F; border-radius: 0.5em; padding: 0.7em 2em; font-weight: 600; font-size: 1.1em; cursor: pointer; transition: all 0.2s; margin-bottom: 1em; }
+        .calc-btn:hover { background: #D9534F; color: #fff; }
+        .calc-result { background: #FDFBF5; border: 2px solid #D9534F; border-radius: 0.7em; padding: 1em; font-size: 1.25em; color: #D9534F; min-height: 1.7em; margin-bottom: 1em; text-align: center; font-family: 'Fira Code', monospace; font-weight: bold; max-height: 300px; overflow-y: auto; word-break: break-word; transition: height 0.2s; }
+        .calc-desc { width: 100%; margin-top: 2em; background:#FDFBF5; border:2px solid #EAE3D5; border-radius:0.9em; padding:1.2em 1em; font-size:1.08em; color:#333; line-height:1.7; }
+        .calc-desc strong { color: #D9534F; font-size: 1.12em; }
+        @media (max-width: 600px) { .calc-container { padding: 1em 0.2em; } }
+        .interest-type-selector { display: flex; justify-content: space-between; margin-bottom: 1em; }
+        .interest-type-btn { flex: 1; padding: 0.5em; margin: 0 0.2em; border: 2px solid #D9534F; background: white; color: #D9534F; border-radius: 0.5em; cursor: pointer; font-size: 0.9em; }
+        .interest-type-btn.active { background: #D9534F; color: white; }
+        .compound-options { display: none; margin-top: 1em; }
+        .result-comparison { display: flex; justify-content: space-between; margin-top: 1em; }
+        .result-box { flex: 1; background: white; border: 1px solid #EAE3D5; border-radius: 0.5em; padding: 0.8em; margin: 0 0.2em; text-align: center; }
+        .result-box h4 { margin: 0 0 0.5em 0; color: #D9534F; }
+    </style>
+</head>
+<body>
+<div class="calc-container">
+    <h2 class="handwritten text-5xl text-[#D9534F] mb-4">Interest Calculator</h2>
+    
+    <div class="interest-type-selector">
+        <button class="interest-type-btn active" data-type="simple">Simple Interest</button>
+        <button class="interest-type-btn" data-type="compound">Compound Interest</button>
+    </div>
+    
+    <label class="calc-label">Principal Amount ($):</label>
+    <input id="principal" class="calc-input" type="number" min="0" placeholder="e.g. 10000">
+    <label class="calc-label">Annual Interest Rate (%):</label>
+    <input id="interestRate" class="calc-input" type="number" min="0" step="0.01" placeholder="e.g. 5">
+    <label class="calc-label">Time Period:</label>
+    <input id="timePeriod" class="calc-input" type="number" min="0" placeholder="e.g. 10">
+    
+    <div id="compoundOptions" class="compound-options">
+        <label class="calc-label">Compounding Frequency:</label>
+        <select id="compoundingFreq" class="calc-input" style="height: auto; padding: 0.7em;">
+            <option value="1">Annually</option>
+            <option value="2">Semi-Annually</option>
+            <option value="4">Quarterly</option>
+            <option value="12">Monthly</option>
+            <option value="365">Daily</option>
+        </select>
+    </div>
+    
+    <button id="calc-btn" class="calc-btn">Calculate</button>
+    <div class="calc-result" id="calc-result"></div>
+</div>
+<div class="calc-desc" style="max-width: fit-content; margin: 2.5em auto 0 auto;">
+    <strong style="font-size:1.18em; color:#D9534F;">About the Interest Calculator</strong><br><br>
+    
+    The Interest Calculator helps you calculate both simple and compound interest, allowing you to understand how your money grows over time. This tool is essential for investment planning, savings goals, and understanding the power of compounding.<br><br>
+    
+    <strong style="color:#D9534F;">Simple vs Compound Interest:</strong><br>
+    <strong>Simple Interest</strong> is calculated only on the principal amount. It's straightforward and commonly used for short-term loans or investments.<br><br>
+    <strong>Compound Interest</strong> is calculated on both the principal and accumulated interest. This creates a "snowball effect" where your money grows exponentially over time. Albert Einstein reportedly called compound interest the "eighth wonder of the world."<br><br>
+    
+    <strong style="color:#D9534F;">How to Use This Calculator:</strong><br>
+    <ol style="margin-left:1.2em; line-height:1.6;">
+        <li><strong>Select Interest Type:</strong> Choose between Simple or Compound Interest</li>
+        <li><strong>Principal Amount:</strong> Enter the initial amount of money</li>
+        <li><strong>Interest Rate:</strong> Enter the annual interest rate as a percentage</li>
+        <li><strong>Time Period:</strong> Enter the number of years</li>
+        <li><strong>Compounding Frequency (Compound only):</strong> Choose how often interest is compounded</li>
+        <li><strong>Click Calculate:</strong> See your interest earned and final amount</li>
+    </ol><br>
+    
+    <strong style="color:#D9534F;">What You'll Discover:</strong><br>
+    <ul style="margin-left:1.2em; line-height:1.6;">
+        <li><strong>Interest Earned:</strong> Total interest accumulated over the time period</li>
+        <li><strong>Final Amount:</strong> Principal plus interest (your total at the end)</li>
+        <li><strong>Growth Factor:</strong> How much your money multiplied</li>
+        <li><strong>Comparison:</strong> Difference between simple and compound interest</li>
+    </ul><br>
+    
+    <strong style="color:#D9534F;">Perfect For:</strong><br>
+    <ul style="margin-left:1.2em; line-height:1.6;">
+        <li><strong>Investment Planning:</strong> Projecting growth of savings and investments</li>
+        <li><strong>Retirement Planning:</strong> Understanding long-term growth potential</li>
+        <li><strong>Education Savings:</strong> Calculating growth of college funds</li>
+        <li><strong>Loan Analysis:</strong> Understanding interest costs on loans</li>
+        <li><strong>Financial Education:</strong> Demonstrating the power of compound interest</li>
+    </ul><br>
+    
+    <strong style="color:#D9534F;">Pro Tips for Interest Growth:</strong><br>
+    <ul style="margin-left:1.2em; line-height:1.6;">
+        <li><strong>Start early:</strong> Time is your greatest ally with compound interest</li>
+        <li><strong>Higher frequency = more growth:</strong> Daily compounding grows faster than annual</li>
+        <li><strong>Reinvest interest:</strong> Let your interest earn more interest</li>
+        <li><strong>Compare rates:</strong> Small rate differences make huge impacts over time</li>
+        <li><strong>Be consistent:</strong> Regular contributions accelerate growth</li>
+    </ul><br>
+    
+    <strong style="color:#D9534F;">The Rule of 72:</strong><br>
+    A quick way to estimate how long it takes for your money to double at a given interest rate. Divide 72 by the interest rate to get the approximate number of years. For example, at 6% interest, your money doubles in about 12 years (72 ÷ 6 = 12).<br><br>
+    
+    <b>Note:</b> This calculator provides estimates for planning purposes. Actual returns may vary based on market conditions, fees, taxes, and other factors. Consult with financial advisors for personalized investment advice.
+</div>
+<script>
+document.querySelectorAll('.interest-type-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+        document.querySelectorAll('.interest-type-btn').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        
+        const compoundOptions = document.getElementById('compoundOptions');
+        if (this.dataset.type === 'compound') {
+            compoundOptions.style.display = 'block';
+        } else {
+            compoundOptions.style.display = 'none';
+        }
+    });
+});
+
+document.getElementById('calc-btn').addEventListener('click', function() {
+    const principal = parseFloat(document.getElementById('principal').value);
+    const interestRate = parseFloat(document.getElementById('interestRate').value);
+    const timePeriod = parseFloat(document.getElementById('timePeriod').value);
+    const interestType = document.querySelector('.interest-type-btn.active').dataset.type;
+    const compoundingFreq = parseFloat(document.getElementById('compoundingFreq').value);
+    
+    if (isNaN(principal) || isNaN(interestRate) || isNaN(timePeriod) || 
+        principal <= 0 || interestRate < 0 || timePeriod <= 0) {
+        document.getElementById('calc-result').innerHTML = 'Please enter valid values for all fields.';
+        return;
+    }
+    
+    let interestEarned = 0;
+    let finalAmount = principal;
+    let simpleInterest = 0;
+    let compoundInterest = 0;
+    
+    // Calculate Simple Interest
+    simpleInterest = principal * (interestRate / 100) * timePeriod;
+    const simpleFinalAmount = principal + simpleInterest;
+    
+    // Calculate Compound Interest
+    if (interestType === 'compound') {
+        finalAmount = principal * Math.pow((1 + (interestRate / 100) / compoundingFreq), compoundingFreq * timePeriod);
+        compoundInterest = finalAmount - principal;
+        interestEarned = compoundInterest;
+    } else {
+        finalAmount = simpleFinalAmount;
+        interestEarned = simpleInterest;
+    }
+    
+    let resultHTML = '';
+    
+    if (interestType === 'simple') {
+        resultHTML = `
+            <div class="result-comparison">
+                <div class="result-box">
+                    <h4>Principal</h4>
+                    $${principal.toFixed(2)}
+                </div>
+                <div class="result-box">
+                    <h4>Interest Earned</h4>
+                    $${interestEarned.toFixed(2)}
+                </div>
+                <div class="result-box">
+                    <h4>Final Amount</h4>
+                    $${finalAmount.toFixed(2)}
+                </div>
+            </div>
+        `;
+    } else {
+        // Also calculate simple interest for comparison
+        resultHTML = `
+            <div class="result-comparison">
+                <div class="result-box">
+                    <h4>Principal</h4>
+                    $${principal.toFixed(2)}
+                </div>
+                <div class="result-box">
+                    <h4>Compound Interest</h4>
+                    $${compoundInterest.toFixed(2)}
+                </div>
+                <div class="result-box">
+                    <h4>Final Amount</h4>
+                    $${finalAmount.toFixed(2)}
+                </div>
+            </div>
+            <div style="margin-top: 1em; text-align: center; font-size: 0.9em;">
+                <strong>For comparison with Simple Interest:</strong><br>
+                Simple Interest: $${simpleInterest.toFixed(2)}<br>
+                Simple Final Amount: $${simpleFinalAmount.toFixed(2)}<br>
+                <strong>Extra from Compounding: $${(compoundInterest - simpleInterest).toFixed(2)}</strong>
+            </div>
+        `;
+    }
+    
+    document.getElementById('calc-result').innerHTML = resultHTML;
+});
+</script>
+</body>
+</html>

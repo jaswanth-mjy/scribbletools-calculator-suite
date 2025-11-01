@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Date Calculator - FREE Days Between Dates & Age Calculator Tool</title>
+  <meta name="description" content="Free date calculator! Calculate days, weeks, months, years between dates. Perfect for age calculation, anniversaries, project timelines, business planning. 100% free!">
+  <meta name="keywords" content="date calculator, days between dates, age calculator, date difference calculator, days counter tool, date duration calculator, anniversary calculator, project timeline calculator, date math calculator, business days calculator, working days calculator, date span calculator, time between dates, date interval calculator, days weeks months calculator, relationship anniversary calculator, birthday countdown calculator, date planning tool, calendar calculator, date computation tool, time difference calculator, date range calculator, date period calculator, chronological calculator">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://scribbletools.in/client/tools/other/date-calculator.html">
+  <meta property="og:title" content="Date Calculator - FREE Days Between Dates & Age Calculator Tool">
+  <meta property="og:description" content="Free date calculator! Calculate days, weeks, months, years between dates. Perfect for age calculation, anniversaries, project timelines, business planning. 100% free!">
+  <meta property="og:image" content="https://scribbletools.in/assets/og-image.svg">
+  <meta property="og:site_name" content="Scribble Tools">
+  <meta property="og:locale" content="en_US">
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://scribbletools.in/client/tools/other/date-calculator.html">
+  <meta property="twitter:title" content="Date Calculator - FREE Days Between Dates & Age Calculator Tool">
+  <meta property="twitter:description" content="Free date calculator! Calculate days, weeks, months, years between dates. Perfect for age calculation, anniversaries, project timelines, business planning. 100% free!">
+  <meta property="twitter:image" content="https://scribbletools.in/assets/og-image.svg">
+  
+  <!-- Additional SEO Meta Tags -->
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Scribble Tools">
+  <meta name="generator" content="Scribble Tools">
+  <meta name="application-name" content="Date Calculator">
+  <meta name="apple-mobile-web-app-title" content="Date Calculator">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#D9534F">
+  <meta name="msapplication-navbutton-color" content="#D9534F">
+  <meta name="apple-mobile-web-app-status-bar-style" content="#D9534F">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://scribbletools.in/client/tools/other/date-calculator.html">
+  
+  <!-- Preconnect for Performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Date Calculator",
+    "description": "Free online date calculator for computing the difference between two dates in days, weeks, months, and years. Perfect for age calculations, anniversaries, and project planning.",
+    "url": "https://scribbletools.in/client/tools/other/date-calculator.html",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "Any",
+    "permissions": "browser",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "featureList": [
+      "Calculate days between dates",
+      "Age calculation",
+      "Anniversary tracking",
+      "Project timeline planning",
+      "Business days counting",
+      "Date difference analysis",
+      "Multiple time unit display",
+      "Free to use"
+    ],
+    "provider": {
+      "@type": "Organization",
+      "name": "Scribble Tools",
+      "url": "https://scribbletools.in"
+    }
+  }
+  </script>
+  
+  <style>
+    .date-calculator-tool body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; margin: 0; padding: 0; }
+    .date-calculator-tool main { display: block; }
+    .date-calculator-tool .calculator-container { max-width: 800px; margin: 3em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2em 1.5em 2.5em 1.5em; }
+    .date-calculator-tool .handwritten { font-family: 'Caveat', cursive; }
+    .date-calculator-tool .form-section { background: #FDFBF5; border-radius: 0.7em; padding: 1.5em; margin: 1.5em 0; border: 1px solid #FFEAA7; }
+    .date-calculator-tool .form-group { margin: 1.2em 0; }
+    .date-calculator-tool .form-label { font-weight: 600; margin-bottom: 0.5em; display: block; color: #4682B4; font-size: 1.1em; }
+    .date-calculator-tool .form-input { width: 100%; padding: 1em; border: 2px solid #EAE3D5; border-radius: 0.7em; font-size: 1em; background: #fff; transition: all 0.3s; }
+    .date-calculator-tool .form-input:focus { border-color: #4682B4; outline: none; box-shadow: 0 0 0 3px rgba(70, 130, 180, 0.1); }
+    
+    .date-calculator-tool .date-inputs-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2em;
+      margin: 2em 0;
+    }
+    
+    .date-calculator-tool .date-input-section {
+      background: #F8FBFF;
+      border: 2px solid #4682B4;
+      border-radius: 1em;
+      padding: 1.5em;
+      text-align: center;
+      transition: all 0.3s;
+    }
+    
+    .date-calculator-tool .date-input-section:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(70, 130, 180, 0.2);
+    }
+    
+    .date-calculator-tool .date-input-section h3 {
+      color: #4682B4;
+      margin-bottom: 1em;
+      font-size: 1.3em;
+    }
+    
+    .date-calculator-tool .calculate-btn { 
+      background: linear-gradient(135deg, #FF6B6B, #FF8E8E); 
+      color: #fff; 
+      border: none; 
+      border-radius: 0.8em; 
+      padding: 1.2em 2.5em; 
+      font-weight: 700; 
+      cursor: pointer; 
+      transition: all 0.3s ease; 
+      font-size: 1.2em; 
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+      position: relative;
+      overflow: hidden;
+      margin: 2em auto;
+      display: block;
+      min-width: 200px;
+    }
+    
+    .date-calculator-tool .calculate-btn:hover { 
+      background: linear-gradient(135deg, #ff5252, #ff7777);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+    }
+    
+    .date-calculator-tool .calculate-btn:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 10px rgba(255, 107, 107, 0.3);
+    }
+    
+    .date-calculator-tool .calculate-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s;
+    }
+    
+    .date-calculator-tool .calculate-btn:hover::before {
+      left: 100%;
+    }
+    
+    .date-calculator-tool .results-section { 
+      background: linear-gradient(135deg, #E8F5E8, #F0FFF0); 
+      border: 2px solid #5CB85C; 
+      border-radius: 1em; 
+      padding: 2em; 
+      margin: 2em 0; 
+      text-align: center; 
+      display: none;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .date-calculator-tool .results-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(92, 184, 92, 0.1) 0%, transparent 70%);
+      animation: pulse 3s ease-in-out infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.5; }
+      50% { transform: scale(1.1); opacity: 0.8; }
+    }
+    
+    .date-calculator-tool .results-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5em;
+      margin: 2em 0;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .date-calculator-tool .result-card {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 0.8em;
+      padding: 1.5em;
+      text-align: center;
+      border: 1px solid #E8F5E8;
+      transition: all 0.3s;
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+    }
+    
+    .date-calculator-tool .result-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(92, 184, 92, 0.2);
+    }
+    
+    .date-calculator-tool .result-number {
+      font-size: 2.5em;
+      font-weight: 800;
+      color: #228B22;
+      margin-bottom: 0.2em;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .date-calculator-tool .result-label {
+      font-size: 1.1em;
+      color: #666;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .date-calculator-tool .main-title {
+      font-family: 'Caveat', cursive; 
+      font-size: 3.5em; 
+      color: #FF6B6B; 
+      margin-bottom: 0.5em; 
+      text-align: center;
+    }
+    
+    .date-calculator-tool .subtitle {
+      font-size: 1.3em; 
+      margin-bottom: 1.5em; 
+      text-align: center; 
+      color: #666;
+    }
+    
+    .date-calculator-tool .intro-banner {
+      background: #FFF3CD; 
+      border: 2px solid #FFD700; 
+      border-radius: 1em; 
+      padding: 1.5em; 
+      margin-bottom: 2em; 
+      color: #B8860B; 
+      font-weight: bold; 
+      font-size: 1.1em; 
+      text-align: center;
+    }
+    
+    .date-calculator-tool .section-title {
+      color: #4682B4; 
+      margin-bottom: 1.5em; 
+      text-align: center; 
+      font-size: 1.8em;
+    }
+    
+    .date-calculator-tool .date-helper {
+      color: #666; 
+      font-style: italic; 
+      margin-top: 0.5em;
+    }
+    
+    .date-calculator-tool .results-title {
+      color: #228B22; 
+      margin-bottom: 1em; 
+      font-size: 2em; 
+      position: relative; 
+      z-index: 1;
+    }
+    
+    .date-calculator-tool .breakdown-title {
+      color: #495057; 
+      margin-bottom: 1em; 
+      text-align: center;
+    }
+    
+    .date-calculator-tool .funny-comment {
+      background: #FFF3CD;
+      border: 2px solid #FFD700;
+      border-radius: 1em;
+      padding: 1.5em;
+      margin: 2em 0;
+      color: #B8860B;
+      font-weight: 600;
+      font-size: 1.1em;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+      animation: bounce 2s ease-in-out infinite;
+    }
+    
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(-5px); }
+      60% { transform: translateY(-3px); }
+    }
+    
+    .date-calculator-tool .detailed-breakdown {
+      background: #F8F9FA;
+      border-radius: 0.8em;
+      padding: 1.5em;
+      margin: 2em 0;
+      border: 1px solid #E9ECEF;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .date-calculator-tool .breakdown-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.8em 0;
+      border-bottom: 1px solid #E9ECEF;
+    }
+    
+    .date-calculator-tool .breakdown-item:last-child {
+      border-bottom: none;
+    }
+    
+    .date-calculator-tool .breakdown-label {
+      font-weight: 600;
+      color: #495057;
+    }
+    
+    .date-calculator-tool .breakdown-value {
+      font-weight: 700;
+      color: #228B22;
+      font-size: 1.1em;
+    }
+    
+    .date-calculator-tool .quick-presets {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8em;
+      margin: 1.5em 0;
+      justify-content: center;
+    }
+    
+    .date-calculator-tool .preset-btn {
+      background: #e9ecef;
+      border: 2px solid #dee2e6;
+      padding: 0.6em 1.2em;
+      border-radius: 0.6em;
+      cursor: pointer;
+      font-size: 0.9em;
+      transition: all 0.3s ease;
+      color: #333;
+      font-weight: 500;
+    }
+    
+    .date-calculator-tool .preset-btn:hover {
+      background: #4682B4;
+      color: white;
+      border-color: #4682B4;
+      transform: translateY(-2px);
+    }
+    
+    @media (max-width: 768px) {
+      .date-calculator-tool .date-inputs-container {
+        grid-template-columns: 1fr;
+        gap: 1.5em;
+      }
+      
+      .date-calculator-tool .results-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .date-calculator-tool .calculator-container {
+        margin: 1em;
+        padding: 1.5em;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .date-calculator-tool .results-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+<main>
+  <div class="date-calculator-tool">
+    <div class="calculator-container">
+      <header>
+        <h1 class="main-title">📅 Date Calculator</h1>
+        <p class="subtitle">Calculate the exact difference between any two dates with precision and style! Perfect for anniversaries, project timelines, or just satisfying your curiosity about time.</p>
+      </header>
+
+      <div class="intro-banner">
+        🕐 <b>Time is precious!</b> Use our calculator to measure those special moments, track project durations, or settle debates about how long you've been procrastinating! 😄
+      </div>
+
+      <section class="form-section">
+        <h2 class="section-title">📍 Select Your Dates</h2>
+        
+        <div class="quick-presets">
+          <button class="preset-btn" onclick="setToday('from')">📅 Today (From)</button>
+          <button class="preset-btn" onclick="setToday('to')">📅 Today (To)</button>
+          <button class="preset-btn" onclick="setYesterday('from')">⏮️ Yesterday</button>
+          <button class="preset-btn" onclick="setLastWeek()">📝 Last Week</button>
+          <button class="preset-btn" onclick="setLastMonth()">📆 Last Month</button>
+          <button class="preset-btn" onclick="setLastYear()">🗓️ Last Year</button>
+          <button class="preset-btn" onclick="setNextWeek()">⏭️ Next Week</button>
+          <button class="preset-btn" onclick="setNextMonth()">📅 Next Month</button>
+          <button class="preset-btn" onclick="setNextYear()">🚀 Next Year</button>
+        </div>
+        
+        <div class="date-inputs-container">
+          <div class="date-input-section">
+            <h3>🏁 Start Date</h3>
+            <div class="form-group">
+              <label for="from-date" class="form-label">From Date:</label>
+              <input type="date" id="from-date" class="form-input" />
+            </div>
+            <div class="date-helper">
+              The beginning of your time journey...
+            </div>
+          </div>
+          
+          <div class="date-input-section">
+            <h3>🏆 End Date</h3>
+            <div class="form-group">
+              <label for="to-date" class="form-label">To Date:</label>
+              <input type="date" id="to-date" class="form-input" />
+            </div>
+            <div class="date-helper">
+              ...and where it leads to!
+            </div>
+          </div>
+        </div>
+        
+        <button class="calculate-btn" onclick="calculateDateDifference()">
+          🧮 Calculate the Magic!
+        </button>
+      </section>
+
+      <div class="results-section" id="results-section">
+        <h2 class="results-title">🎯 Your Time Calculation Results!</h2>
+        
+        <div class="results-grid" id="results-grid">
+          <!-- Results will be populated here -->
+        </div>
+        
+        <div class="funny-comment" id="funny-comment">
+          <!-- Funny comment will appear here -->
+        </div>
+        
+        <div class="detailed-breakdown" id="detailed-breakdown">
+          <h3 class="breakdown-title">📊 Detailed Breakdown</h3>
+          <!-- Detailed breakdown will appear here -->
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script>
+(function() {
+  'use strict';
+  
+  const funnyComments = {
+    days: [
+      "🎉 That's {days} days of pure existence! Hope you made them count!",
+      "⏰ {days} days... That's roughly {days} coffee breaks if you drink one per day!",
+      "🌍 In {days} days, Earth completed {earthRotations} rotations. Dizzy yet?",
+      "🐌 A snail could travel about {snailDistance} meters in {days} days (if it really tried)!",
+      "📚 You could have read approximately {books} books in {days} days (assuming 1 book per week)!",
+      "🍕 That's enough time to eat {pizzas} pizzas (if you had one every 3 days)!",
+      "💤 You probably slept for about {sleepHours} hours during these {days} days!",
+      "🎬 You could have watched {movies} movies (2-hour movies, one per day)!"
+    ],
+    weeks: [
+      "📅 {weeks} weeks! That's {weeks} Monday blues survived!",
+      "☕ Approximately {coffees} cups of Monday morning coffee needed!",
+      "🛍️ {weeks} grocery shopping trips (if you're organized)!",
+      "🏃‍♂️ {weeks} weeks of potential gym memberships (actual gym visits may vary)!",
+      "📺 {weeks} weekend Netflix binges successfully completed!",
+      "🌧️ Statistically, you experienced {rainyDays} rainy days!",
+      "🎯 {weeks} opportunities to procrastinate on that important task!"
+    ],
+    months: [
+      "🗓️ {months} months! That's {months} rent payments (ouch!)!",
+      "💡 {months} months of brilliant ideas that you'll definitely start 'next month'!",
+      "🎂 Approximately {birthdays} birthdays to celebrate (including your own)!",
+      "🌙 The moon went through {moonCycles} complete cycles during this time!",
+      "💰 {months} months of pretending to stick to a budget!",
+      "🍰 {months} monthly treats you definitely deserved!",
+      "📱 {months} phone bill payments (those apps aren't free!)!"
+    ],
+    years: [
+      "🎊 {years} years! You've officially leveled up {years} times in the game of life!",
+      "🌍 Earth traveled approximately {earthDistance} million miles around the sun!",
+      "🎯 {years} New Year's resolutions made (completion rate not guaranteed)!",
+      "🎈 {years} years of birthday cakes and growing wisdom!",
+      "📚 {years} years of experiences added to your life story!",
+      "🌱 {years} years of personal growth and amazing memories!",
+      "⭐ {years} years closer to becoming the person you're meant to be!"
+    ],
+    special: [
+      "🎭 That's exactly the time it takes to binge-watch your favorite series... twice!",
+      "🚀 NASA could plan a mission to Mars in this timeframe!",
+      "🌱 A tree could grow several inches during this period!",
+      "📖 Shakespeare could have written half a play in this time!",
+      "🎨 An artist could create a masterpiece (or at least a really good doodle)!",
+      "🍷 Wine gets better with age, and so do you during this time!",
+      "🏆 Champions are made in moments like these!"
+    ]
+  };
+
+  function calculateDateDifference() {
+    const fromDate = new Date(document.getElementById('from-date').value);
+    const toDate = new Date(document.getElementById('to-date').value);
+    
+    if (!fromDate.getTime() || !toDate.getTime()) {
+      alert('Please select both dates! 📅');
+      return;
+    }
+    
+    // Ensure fromDate is earlier than toDate
+    const earlierDate = fromDate < toDate ? fromDate : toDate;
+    const laterDate = fromDate < toDate ? toDate : fromDate;
+    const isReversed = fromDate > toDate;
+    
+    // Calculate differences
+    const timeDiff = laterDate.getTime() - earlierDate.getTime();
+    const daysDiff = Math.floor(timeDiff / (1000 * 3600 * 24));
+    const weeksDiff = Math.floor(daysDiff / 7);
+    const monthsDiff = calculateMonthsDifference(earlierDate, laterDate);
+    const yearsDiff = Math.floor(monthsDiff / 12);
+    
+    // Calculate additional fun facts
+    const hoursDiff = Math.floor(timeDiff / (1000 * 3600));
+    const minutesDiff = Math.floor(timeDiff / (1000 * 60));
+    const secondsDiff = Math.floor(timeDiff / 1000);
+    
+    // Display results
+    displayResults(daysDiff, weeksDiff, monthsDiff, yearsDiff, hoursDiff, minutesDiff, secondsDiff, isReversed);
+  }
+  
+  function calculateMonthsDifference(date1, date2) {
+    const months = (date2.getFullYear() - date1.getFullYear()) * 12;
+    return months + date2.getMonth() - date1.getMonth();
+  }
+  
+  function displayResults(days, weeks, months, years, hours, minutes, seconds, isReversed) {
+    const resultsSection = document.getElementById('results-section');
+    const resultsGrid = document.getElementById('results-grid');
+    const funnyComment = document.getElementById('funny-comment');
+    const detailedBreakdown = document.getElementById('detailed-breakdown');
+    
+    // Create results cards
+    resultsGrid.innerHTML = `
+      <div class="result-card">
+        <div class="result-number">${days.toLocaleString()}</div>
+        <div class="result-label">Days</div>
+      </div>
+      <div class="result-card">
+        <div class="result-number">${weeks.toLocaleString()}</div>
+        <div class="result-label">Weeks</div>
+      </div>
+      <div class="result-card">
+        <div class="result-number">${months.toLocaleString()}</div>
+        <div class="result-label">Months</div>
+      </div>
+      <div class="result-card">
+        <div class="result-number">${years.toLocaleString()}</div>
+        <div class="result-label">Years</div>
+      </div>
+      <div class="result-card">
+        <div class="result-number">${hours.toLocaleString()}</div>
+        <div class="result-label">Hours</div>
+      </div>
+      <div class="result-card">
+        <div class="result-number">${minutes.toLocaleString()}</div>
+        <div class="result-label">Minutes</div>
+      </div>
+    `;
+    
+    // Generate funny comment
+    const comment = generateFunnyComment(days, weeks, months, years);
+    funnyComment.innerHTML = isReversed ? 
+      `⏪ ${comment} (You went backwards in time - are you a time traveler? 🚀)` : 
+      comment;
+    
+    // Create detailed breakdown
+    detailedBreakdown.innerHTML = `
+      <h3 class="breakdown-title">📊 Detailed Breakdown</h3>
+      <div class="breakdown-item">
+        <span class="breakdown-label">📅 Total Days:</span>
+        <span class="breakdown-value">${days.toLocaleString()}</span>
+      </div>
+      <div class="breakdown-item">
+        <span class="breakdown-label">⏰ Total Hours:</span>
+        <span class="breakdown-value">${hours.toLocaleString()}</span>
+      </div>
+      <div class="breakdown-item">
+        <span class="breakdown-label">⏱️ Total Minutes:</span>
+        <span class="breakdown-value">${minutes.toLocaleString()}</span>
+      </div>
+      <div class="breakdown-item">
+        <span class="breakdown-label">⚡ Total Seconds:</span>
+        <span class="breakdown-value">${seconds.toLocaleString()}</span>
+      </div>
+      <div class="breakdown-item">
+        <span class="breakdown-label">🌍 Earth Rotations:</span>
+        <span class="breakdown-value">${days.toLocaleString()}</span>
+      </div>
+      <div class="breakdown-item">
+        <span class="breakdown-label">💤 Sleep Hours (8h/day):</span>
+        <span class="breakdown-value">${(days * 8).toLocaleString()}</span>
+      </div>
+      <div class="breakdown-item">
+        <span class="breakdown-label">☕ Coffee Cups (1/day):</span>
+        <span class="breakdown-value">${days.toLocaleString()}</span>
+      </div>
+      <div class="breakdown-item">
+        <span class="breakdown-label">📚 Books Read (1/week):</span>
+        <span class="breakdown-value">${Math.floor(days / 7).toLocaleString()}</span>
+      </div>
+    `;
+    
+    resultsSection.style.display = 'block';
+    resultsSection.scrollIntoView({ behavior: 'smooth' });
+  }
+  
+  function generateFunnyComment(days, weeks, months, years) {
+    let comments = [];
+    let selectedComment = "";
+    
+    if (years > 0) {
+      comments = funnyComments.years;
+      selectedComment = comments[Math.floor(Math.random() * comments.length)];
+      selectedComment = selectedComment.replace(/{years}/g, years);
+      selectedComment = selectedComment.replace(/{earthDistance}/g, (years * 584).toFixed(0));
+    } else if (months > 0) {
+      comments = funnyComments.months;
+      selectedComment = comments[Math.floor(Math.random() * comments.length)];
+      selectedComment = selectedComment.replace(/{months}/g, months);
+      selectedComment = selectedComment.replace(/{birthdays}/g, Math.floor(months / 2));
+      selectedComment = selectedComment.replace(/{moonCycles}/g, Math.floor(months));
+    } else if (weeks > 0) {
+      comments = funnyComments.weeks;
+      selectedComment = comments[Math.floor(Math.random() * comments.length)];
+      selectedComment = selectedComment.replace(/{weeks}/g, weeks);
+      selectedComment = selectedComment.replace(/{coffees}/g, weeks);
+      selectedComment = selectedComment.replace(/{rainyDays}/g, Math.floor(weeks * 1.5));
+    } else {
+      comments = funnyComments.days;
+      selectedComment = comments[Math.floor(Math.random() * comments.length)];
+      selectedComment = selectedComment.replace(/{days}/g, days);
+      selectedComment = selectedComment.replace(/{earthRotations}/g, days);
+      selectedComment = selectedComment.replace(/{snailDistance}/g, (days * 0.06).toFixed(1));
+      selectedComment = selectedComment.replace(/{books}/g, Math.floor(days / 7));
+      selectedComment = selectedComment.replace(/{pizzas}/g, Math.floor(days / 3));
+      selectedComment = selectedComment.replace(/{sleepHours}/g, (days * 8).toLocaleString());
+      selectedComment = selectedComment.replace(/{movies}/g, days);
+    }
+    
+    return selectedComment;
+  }
+  
+  // Preset functions
+  // Preset button functions (automatically handle leap years and future dates!)
+  window.setToday = function(field) {
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById(field + '-date').value = today;
+  };
+  
+  window.setYesterday = function(field) {
+    const yesterday = new Date();
+    yesterday.setDate(yesterday.getDate() - 1);
+    document.getElementById(field + '-date').value = yesterday.toISOString().split('T')[0];
+  };
+  
+  window.setLastWeek = function() {
+    const today = new Date();
+    const lastWeek = new Date();
+    lastWeek.setDate(today.getDate() - 7);
+    
+    document.getElementById('from-date').value = lastWeek.toISOString().split('T')[0];
+    document.getElementById('to-date').value = today.toISOString().split('T')[0];
+  };
+  
+  window.setLastMonth = function() {
+    const today = new Date();
+    const lastMonth = new Date();
+    lastMonth.setMonth(today.getMonth() - 1);
+    
+    document.getElementById('from-date').value = lastMonth.toISOString().split('T')[0];
+    document.getElementById('to-date').value = today.toISOString().split('T')[0];
+  };
+  
+  window.setLastYear = function() {
+    const today = new Date();
+    const lastYear = new Date();
+    lastYear.setFullYear(today.getFullYear() - 1);
+    
+    document.getElementById('from-date').value = lastYear.toISOString().split('T')[0];
+    document.getElementById('to-date').value = today.toISOString().split('T')[0];
+  };
+  
+  // Future date presets (taking advantage of extended year range!)
+  window.setNextWeek = function() {
+    const today = new Date();
+    const nextWeek = new Date();
+    nextWeek.setDate(today.getDate() + 7);
+    
+    document.getElementById('from-date').value = today.toISOString().split('T')[0];
+    document.getElementById('to-date').value = nextWeek.toISOString().split('T')[0];
+  };
+  
+  window.setNextMonth = function() {
+    const today = new Date();
+    const nextMonth = new Date();
+    nextMonth.setMonth(today.getMonth() + 1);
+    
+    document.getElementById('from-date').value = today.toISOString().split('T')[0];
+    document.getElementById('to-date').value = nextMonth.toISOString().split('T')[0];
+  };
+  
+  window.setNextYear = function() {
+    const today = new Date();
+    const nextYear = new Date();
+    nextYear.setFullYear(today.getFullYear() + 1);
+    
+    document.getElementById('from-date').value = today.toISOString().split('T')[0];
+    document.getElementById('to-date').value = nextYear.toISOString().split('T')[0];
+  };
+  
+  // Make calculateDateDifference globally accessible
+  window.calculateDateDifference = calculateDateDifference;
+  
+  // Set default dates and auto-updating date constraints
+  document.addEventListener('DOMContentLoaded', function() {
+    const today = new Date();
+    const yesterday = new Date();
+    yesterday.setDate(today.getDate() - 1);
+    
+    // Get current year for dynamic min/max setting
+    const currentYear = today.getFullYear();
+    
+    // Set reasonable date constraints with auto-updating years
+    const fromDateInput = document.getElementById('from-date');
+    const toDateInput = document.getElementById('to-date');
+    
+    // Min date: 120 years ago (for historical calculations)
+    const minDate = new Date();
+    minDate.setFullYear(currentYear - 120);
+    const minDateString = minDate.toISOString().split('T')[0];
+    
+    // Max date: 10 years in future (for future planning)
+    const maxDate = new Date();
+    maxDate.setFullYear(currentYear + 10);
+    const maxDateString = maxDate.toISOString().split('T')[0];
+    
+    // Apply constraints to both inputs (automatically handles leap years!)
+    fromDateInput.min = minDateString;
+    fromDateInput.max = maxDateString;
+    toDateInput.min = minDateString;
+    toDateInput.max = maxDateString;
+    
+    // Set default values
+    toDateInput.value = today.toISOString().split('T')[0];
+    fromDateInput.value = yesterday.toISOString().split('T')[0];
+    
+    console.log(`Date Calculator: Year range ${currentYear - 120} to ${currentYear + 10} (auto-updates with leap years!) 📅`);
+  });
+})();
+</script>
+</body>
+</html>

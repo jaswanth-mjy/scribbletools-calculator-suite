@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Primary Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Number Generator | Free Online RNG Tool - Custom Range & Quantity</title>
+    <meta name="title" content="Random Number Generator | Free Online RNG Tool - Custom Range & Quantity">
+    <meta name="description" content="Generate random numbers with custom ranges, quantities & formats. Perfect for gaming, statistics, lottery, password creation, sampling & decision making. Free online random number generator.">
+    <meta name="keywords" content="random number generator, RNG, random numbers, number generator, lottery numbers, random picker, dice roller, gaming tools, statistics, sampling, password generator, random selection">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <meta name="author" content="Random Number Generator Tool">
+    
+    <!-- Geographic Tags -->
+    <meta name="geo.region" content="US">
+    <meta name="geo.placename" content="United States">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://scribbletools.in/client/tools/math/random-number-generator.html">
+    <meta property="og:title" content="Random Number Generator | Free Online RNG Tool">
+    <meta property="og:description" content="Generate random numbers with custom ranges and quantities. Perfect for gaming, lottery, statistics, and decision making. Free advanced random number generator.">
+    <meta property="og:image" content="https://scribbletools.in/assets/og-image.svg">
+    <meta property="og:image:alt" content="Random Number Generator Tool">
+    <meta property="og:site_name" content="All-in-One Tools">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://scribbletools.in/client/tools/math/random-number-generator.html">
+    <meta property="twitter:title" content="Random Number Generator | Free Online RNG Tool">
+    <meta property="twitter:description" content="Generate random numbers with custom ranges and quantities. Perfect for gaming, lottery, statistics, and decision making.">
+    <meta property="twitter:image" content="https://scribbletools.in/assets/og-image.svg">
+    <meta property="twitter:image:alt" content="Random Number Generator Tool">
+    
+    <!-- Additional SEO Meta Tags -->
+    <meta name="application-name" content="Random Number Generator">
+    <meta name="msapplication-TileColor" content="#228B22">
+    <meta name="theme-color" content="#228B22">
+    <link rel="canonical" href="https://scribbletools.in/client/tools/math/random-number-generator.html">
+    
+    <!-- Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": ["WebApplication", "SoftwareApplication"],
+        "name": "Random Number Generator",
+        "description": "Advanced random number generator with customizable ranges, quantities, formats, and statistical features. Perfect for gaming, lottery, research, and decision making.",
+        "url": "https://scribbletools.in/client/tools/math/random-number-generator.html",
+        "applicationCategory": "UtilityApplication",
+        "operatingSystem": "Web Browser",
+        "permissions": "browser",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "creator": {
+            "@type": "Organization",
+            "name": "All-in-One Tools"
+        },
+        "featureList": [
+            "Custom number ranges",
+            "Multiple number generation",
+            "Decimal number support",
+            "Duplicate prevention",
+            "Statistical analysis",
+            "History tracking",
+            "Export capabilities",
+            "Gaming presets",
+            "Lottery number generator"
+        ],
+        "keywords": "random number generator, RNG, gaming tools, lottery, statistics, sampling, decision making",
+        "mainEntity": {
+            "@type": "Thing",
+            "name": "Random Number Generation",
+            "description": "Mathematical process of generating unpredictable numbers within specified parameters"
+        }
+    }
+    </script>
+    <style>
+        body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; }
+        .rng-container { max-width: 800px; margin: 3em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2em 1.5em 2.5em 1.5em; }
+        .handwritten { font-family: 'Caveat', cursive; }
+        .rng-label { font-weight: 600; margin-bottom: 0.5em; display: block; color: #4682B4; }
+        .rng-input { width: 100%; padding: 0.8em; border: 2px solid #EAE3D5; border-radius: 0.5em; font-size: 1em; margin-bottom: 1em; background: #FDFBF5; font-family: 'Fira Code', monospace; }
+        .rng-select { width: 100%; padding: 0.8em; border: 2px solid #EAE3D5; border-radius: 0.5em; font-size: 1em; margin-bottom: 1em; background: #FDFBF5; }
+        .rng-checkbox { margin-right: 0.5em; }
+        .rng-checkbox-label { display: flex; align-items: center; margin-bottom: 0.8em; cursor: pointer; }
+        .rng-btn { background: #228B22; color: #fff; border: none; border-radius: 0.5em; padding: 1em 2em; font-weight: 600; cursor: pointer; transition: all 0.2s; margin-right: 1em; font-size: 1.1em; }
+        .rng-btn:hover { background: #1e7e1e; }
+        .rng-btn.secondary { background: #4682B4; }
+        .rng-btn.secondary:hover { background: #365F8A; }
+        .rng-btn.danger { background: #D9534F; }
+        .rng-btn.danger:hover { background: #c9302c; }
+        .number-output { background: #FDFBF5; border: 2px solid #228B22; border-radius: 0.7em; padding: 1.5em; font-size: 1.3em; color: #228B22; margin: 1.5em 0; text-align: center; font-family: 'Fira Code', monospace; font-weight: bold; }
+        .numbers-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); gap: 0.5em; margin: 1em 0; }
+        .number-item { background: #F0F8FF; border: 1px solid #B0C4DE; border-radius: 0.3em; padding: 0.8em; text-align: center; font-family: 'Fira Code', monospace; font-weight: bold; color: #4682B4; }
+        .number-actions { display: flex; gap: 1em; margin: 1em 0; flex-wrap: wrap; }
+        .options-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2em; margin: 2em 0; }
+        .option-group { background: #F8F9FA; border-radius: 0.7em; padding: 1.5em; }
+        .option-group h3 { color: #4682B4; margin: 0 0 1em 0; }
+        .stats-section { background: #FFF8DC; border: 1px solid #FFD700; border-radius: 0.7em; padding: 1.5em; margin: 2em 0; }
+        .stats-section h3 { color: #DAA520; margin: 0 0 1em 0; }
+        .stat-item { display: flex; justify-content: space-between; padding: 0.5em; margin: 0.3em 0; background: white; border-radius: 0.3em; }
+        .preset-section { background: #E8F5E8; border: 1px solid #90EE90; border-radius: 0.7em; padding: 1.5em; margin: 2em 0; }
+        .preset-section h3 { color: #228B22; margin: 0 0 1em 0; }
+        .preset-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1em; }
+        .preset-card { background: white; border-radius: 0.5em; padding: 1em; text-align: center; cursor: pointer; border: 2px solid transparent; transition: all 0.2s; }
+        .preset-card:hover { border-color: #228B22; background: #F0FFF0; }
+        .preset-title { font-weight: bold; color: #228B22; margin-bottom: 0.5em; }
+        .preset-desc { font-size: 0.9em; color: #666; }
+        .history-section { background: #F0F8FF; border: 1px solid #B0C4DE; border-radius: 0.7em; padding: 1.5em; margin: 2em 0; }
+        .history-section h3 { color: #4682B4; margin: 0 0 1em 0; }
+        .history-item { background: white; border-radius: 0.3em; padding: 1em; margin: 0.5em 0; display: flex; justify-content: space-between; align-items: center; }
+        .sequence-output { background: white; border-radius: 0.3em; padding: 1em; margin: 1em 0; font-family: 'Fira Code', monospace; font-size: 0.9em; max-height: 300px; overflow-y: auto; border: 1px solid #EAE3D5; }
+        .main-title { font-size: 3em; color: #FF6B6B; margin-bottom: 0.5em; }
+        .main-description { font-size: 1.2em; margin-bottom: 2em; color: #666; }
+        .generate-section { text-align: center; margin: 2em 0; }
+        .hidden { display: none; }
+        .help-text { color: #666; font-size: 0.9em; }
+        .about-section { max-width: fit-content; margin: 2.5em auto 0 auto; background: #FDFBF5; border: 2px solid #EAE3D5; border-radius: 0.9em; padding: 1.5em 1.2em; font-size: 1.08em; color: #333; line-height: 1.7; }
+        .about-title { font-size: 1.18em; color: #D9534F; }
+        .feature-list { margin-left: 1.2em; }
+        @media (max-width: 600px) { 
+            .rng-container { padding: 1em 0.5em; }
+            .options-grid { grid-template-columns: 1fr; gap: 1em; }
+            .number-actions { flex-direction: column; }
+            .preset-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+<div class="rng-container">
+    <h1 class="handwritten main-title">Random Number Generator</h1>
+    <p class="main-description">Generate random numbers with customizable ranges, quantities, and formats. Perfect for gaming, statistics, sampling, and decision making.</p>
+    
+    <div class="options-grid">
+        <div class="option-group">
+            <h3>Number Range</h3>
+            <label class="rng-label" for="min-value">Minimum Value:</label>
+            <input type="number" id="min-value" class="rng-input" value="1" title="Minimum value for random numbers">
+            
+            <label class="rng-label" for="max-value">Maximum Value:</label>
+            <input type="number" id="max-value" class="rng-input" value="100" title="Maximum value for random numbers">
+            
+            <label class="rng-checkbox-label">
+                <input type="checkbox" id="allow-decimals" class="rng-checkbox">
+                Allow Decimal Numbers
+            </label>
+            
+            <div id="decimal-options" class="hidden">
+                <label class="rng-label" for="decimal-places">Decimal Places:</label>
+                <select id="decimal-places" class="rng-select">
+                    <option value="1">1 decimal place</option>
+                    <option value="2" selected>2 decimal places</option>
+                    <option value="3">3 decimal places</option>
+                    <option value="4">4 decimal places</option>
+                </select>
+            </div>
+        </div>
+        
+        <div class="option-group">
+            <h3>Generation Options</h3>
+            <label class="rng-label" for="quantity">Quantity:</label>
+            <input type="number" id="quantity" class="rng-input" value="1" min="1" max="1000" title="Number of random numbers to generate">
+            
+            <label class="rng-checkbox-label">
+                <input type="checkbox" id="unique-numbers" class="rng-checkbox">
+                Generate Unique Numbers Only
+            </label>
+            
+            <label class="rng-checkbox-label">
+                <input type="checkbox" id="sort-results" class="rng-checkbox">
+                Sort Results
+            </label>
+            
+            <label class="rng-label" for="sort-order">Sort Order:</label>
+            <select id="sort-order" class="rng-select">
+                <option value="asc">Ascending</option>
+                <option value="desc">Descending</option>
+            </select>
+        </div>
+    </div>
+    
+    <div class="generate-section">
+        <button id="generate-btn" class="rng-btn">Generate Numbers</button>
+        <button id="quick-single-btn" class="rng-btn secondary">Quick Single Number</button>
+    </div>
+    
+    <div id="results-section" class="hidden">
+        <div class="number-output hidden" id="single-result"></div>
+        
+        <div id="multiple-results" class="hidden">
+            <h3>Generated Numbers:</h3>
+            <div class="numbers-grid" id="numbers-grid"></div>
+        </div>
+        
+        <div class="number-actions">
+            <button id="copy-btn" class="rng-btn secondary">Copy Numbers</button>
+            <button id="regenerate-btn" class="rng-btn">Generate Again</button>
+            <button id="save-btn" class="rng-btn secondary">Save to History</button>
+            <button id="download-btn" class="rng-btn secondary">Download as Text</button>
+        </div>
+        
+        <div class="stats-section" id="stats-section">
+            <h3>Statistics</h3>
+            <div id="stats-content"></div>
+        </div>
+    </div>
+    
+    <div class="preset-section">
+        <h3>Quick Presets</h3>
+        <div class="preset-grid">
+            <div class="preset-card" data-preset="dice">
+                <div class="preset-title">🎲 Dice Roll</div>
+                <div class="preset-desc">1-6, single number</div>
+            </div>
+            <div class="preset-card" data-preset="coin">
+                <div class="preset-title">🪙 Coin Flip</div>
+                <div class="preset-desc">0-1 (heads/tails)</div>
+            </div>
+            <div class="preset-card" data-preset="lottery">
+                <div class="preset-title">🎫 Lottery Numbers</div>
+                <div class="preset-desc">1-49, 6 unique numbers</div>
+            </div>
+            <div class="preset-card" data-preset="percentage">
+                <div class="preset-title">📊 Percentage</div>
+                <div class="preset-desc">0-100, 2 decimals</div>
+            </div>
+            <div class="preset-card" data-preset="grade">
+                <div class="preset-title">📝 Grade (0-100)</div>
+                <div class="preset-desc">0-100, whole numbers</div>
+            </div>
+            <div class="preset-card" data-preset="temperature">
+                <div class="preset-title">🌡️ Temperature</div>
+                <div class="preset-desc">-40 to 50°C</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="option-group">
+        <h3>Sequence Generation</h3>
+        <label class="rng-label" for="sequence-count">Generate Sequence:</label>
+        <input type="number" id="sequence-count" class="rng-input" value="10" min="1" max="100" title="Number of sequences to generate">
+        <button id="sequence-btn" class="rng-btn">Generate Number Sequence</button>
+        <div class="sequence-output hidden" id="sequence-output"></div>
+        <button id="copy-sequence-btn" class="rng-btn secondary hidden">Copy Sequence</button>
+    </div>
+    
+    <div class="history-section hidden" id="history-section">
+        <h3>Generation History</h3>
+        <div id="history-list"></div>
+        <button id="clear-history-btn" class="rng-btn danger">Clear History</button>
+    </div>
+</div>
+
+<div class="about-section">
+    <strong class="about-title">About the Random Number Generator</strong><br><br>
+    <strong>What is this?</strong><br>
+    A versatile random number generator for creating random numbers with customizable ranges and options. Perfect for gaming, statistics, sampling, decision making, and educational purposes.<br><br>
+    <strong>Features:</strong>
+    <ul class="feature-list">
+        <li>Customizable number ranges (integers and decimals)</li>
+        <li>Generate single or multiple numbers</li>
+        <li>Unique number generation option</li>
+        <li>Sorting and formatting options</li>
+        <li>Quick presets for common use cases</li>
+        <li>Statistical analysis of generated numbers</li>
+        <li>Number sequence generation</li>
+        <li>Generation history tracking</li>
+        <li>Copy and download functionality</li>
+    </ul>
+</div>
+
+<script>
+(function() {
+    'use strict';
+    
+    let generationHistory = JSON.parse(localStorage.getItem('rngHistory') || '[]');
+    let lastGenerated = [];
+    
+    // DOM elements will be initialized after DOM loads
+    let minValue, maxValue, allowDecimals, decimalOptions, decimalPlaces, quantity;
+    let uniqueNumbers, sortResults, sortOrder, generateBtn, quickSingleBtn, resultsSection;
+    let singleResult, multipleResults, numbersGrid, copyBtn, regenerateBtn, saveBtn;
+    let downloadBtn, statsSection, statsContent, historySection, historyList;
+    let clearHistoryBtn, sequenceBtn, sequenceOutput, copySequenceBtn;
+    
+    // Initialize
+    function initializeRandomNumberGenerator() {
+        // Initialize DOM elements
+        minValue = document.getElementById('min-value');
+        maxValue = document.getElementById('max-value');
+        allowDecimals = document.getElementById('allow-decimals');
+        decimalOptions = document.getElementById('decimal-options');
+        decimalPlaces = document.getElementById('decimal-places');
+        quantity = document.getElementById('quantity');
+        uniqueNumbers = document.getElementById('unique-numbers');
+        sortResults = document.getElementById('sort-results');
+        sortOrder = document.getElementById('sort-order');
+        generateBtn = document.getElementById('generate-btn');
+        quickSingleBtn = document.getElementById('quick-single-btn');
+        resultsSection = document.getElementById('results-section');
+        singleResult = document.getElementById('single-result');
+        multipleResults = document.getElementById('multiple-results');
+        numbersGrid = document.getElementById('numbers-grid');
+        copyBtn = document.getElementById('copy-btn');
+        regenerateBtn = document.getElementById('regenerate-btn');
+        saveBtn = document.getElementById('save-btn');
+        downloadBtn = document.getElementById('download-btn');
+        statsSection = document.getElementById('stats-section');
+        statsContent = document.getElementById('stats-content');
+        historySection = document.getElementById('history-section');
+        historyList = document.getElementById('history-list');
+        clearHistoryBtn = document.getElementById('clear-history-btn');
+        sequenceBtn = document.getElementById('sequence-btn');
+        sequenceOutput = document.getElementById('sequence-output');
+        copySequenceBtn = document.getElementById('copy-sequence-btn');
+        
+        updateHistoryDisplay();
+        
+        allowDecimals.addEventListener('change', toggleDecimalOptions);
+        generateBtn.addEventListener('click', generateNumbers);
+        quickSingleBtn.addEventListener('click', generateQuickSingle);
+        copyBtn.addEventListener('click', copyNumbers);
+        regenerateBtn.addEventListener('click', generateNumbers);
+        saveBtn.addEventListener('click', saveToHistory);
+        downloadBtn.addEventListener('click', downloadNumbers);
+        clearHistoryBtn.addEventListener('click', clearHistory);
+        sequenceBtn.addEventListener('click', generateSequence);
+        copySequenceBtn.addEventListener('click', copySequence);
+        
+        // Preset handlers
+        document.querySelectorAll('.preset-card').forEach(card => {
+            card.addEventListener('click', applyPreset);
+        });
+    }
+    
+    // Initialize when DOM is loaded
+    document.addEventListener('DOMContentLoaded', initializeRandomNumberGenerator);
+    
+    // Expose globally for dynamic loading
+    window.initializeRandomNumberGenerator = initializeRandomNumberGenerator;
+    
+    function toggleDecimalOptions() {
+        if (allowDecimals.checked) {
+            decimalOptions.classList.remove('hidden');
+        } else {
+            decimalOptions.classList.add('hidden');
+        }
+    }
+    
+    function generateRandomNumber(min, max, decimals = 0) {
+        if (decimals > 0) {
+            const random = Math.random() * (max - min) + min;
+            return parseFloat(random.toFixed(decimals));
+        } else {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+    }
+    
+    function generateNumbers() {
+        try {
+            const min = parseFloat(minValue.value);
+            const max = parseFloat(maxValue.value);
+            const count = parseInt(quantity.value);
+            const useDecimals = allowDecimals.checked;
+            const decimals = useDecimals ? parseInt(decimalPlaces.value) : 0;
+            const unique = uniqueNumbers.checked;
+            const sort = sortResults.checked;
+            const order = sortOrder.value;
+            
+            if (isNaN(min) || isNaN(max) || isNaN(count)) {
+                alert('Please enter valid numbers');
+                return;
+            }
+            
+            if (min >= max) {
+                alert('Maximum value must be greater than minimum value');
+                return;
+            }
+            
+            if (count < 1 || count > 1000) {
+                alert('Quantity must be between 1 and 1000');
+                return;
+            }
+            
+            if (unique && !useDecimals && (max - min + 1) < count) {
+                alert('Cannot generate that many unique numbers in the given range');
+                return;
+            }
+            
+            const numbers = [];
+            const usedNumbers = new Set();
+            
+            for (let i = 0; i < count; i++) {
+                let num;
+                let attempts = 0;
+                
+                do {
+                    num = generateRandomNumber(min, max, decimals);
+                    attempts++;
+                    
+                    if (attempts > 10000) {
+                        throw new Error('Could not generate enough unique numbers');
+                    }
+                } while (unique && usedNumbers.has(num));
+                
+                numbers.push(num);
+                if (unique) usedNumbers.add(num);
+            }
+            
+            if (sort) {
+                numbers.sort((a, b) => order === 'asc' ? a - b : b - a);
+            }
+            
+            lastGenerated = numbers;
+            displayResults(numbers);
+            calculateStats(numbers);
+            
+        } catch (error) {
+            alert(error.message);
+        }
+    }
+    
+    function generateQuickSingle() {
+        const min = parseFloat(minValue.value) || 1;
+        const max = parseFloat(maxValue.value) || 100;
+        const useDecimals = allowDecimals.checked;
+        const decimals = useDecimals ? parseInt(decimalPlaces.value) : 0;
+        
+        const number = generateRandomNumber(min, max, decimals);
+        lastGenerated = [number];
+        
+        singleResult.textContent = number;
+        singleResult.classList.remove('hidden');
+        multipleResults.classList.add('hidden');
+        resultsSection.classList.remove('hidden');
+        
+        calculateStats([number]);
+        resultsSection.scrollIntoView({ behavior: 'smooth' });
+    }
+    
+    function displayResults(numbers) {
+        if (numbers.length === 1) {
+            singleResult.textContent = numbers[0];
+            singleResult.classList.remove('hidden');
+            multipleResults.classList.add('hidden');
+        } else {
+            numbersGrid.innerHTML = '';
+            numbers.forEach(num => {
+                const numDiv = document.createElement('div');
+                numDiv.className = 'number-item';
+                numDiv.textContent = num;
+                numbersGrid.appendChild(numDiv);
+            });
+            
+            singleResult.classList.add('hidden');
+            multipleResults.classList.remove('hidden');
+        }
+        
+        resultsSection.classList.remove('hidden');
+        resultsSection.scrollIntoView({ behavior: 'smooth' });
+    }
+    
+    function calculateStats(numbers) {
+        if (numbers.length === 0) return;
+        
+        const sum = numbers.reduce((a, b) => a + b, 0);
+        const avg = sum / numbers.length;
+        const min = Math.min(...numbers);
+        const max = Math.max(...numbers);
+        const median = calculateMedian([...numbers].sort((a, b) => a - b));
+        const range = max - min;
+        
+        statsContent.innerHTML = '';
+        
+        const statItems = [
+            { label: 'Count:', value: numbers.length },
+            { label: 'Sum:', value: sum.toFixed(2) },
+            { label: 'Average:', value: avg.toFixed(2) },
+            { label: 'Minimum:', value: min },
+            { label: 'Maximum:', value: max },
+            { label: 'Median:', value: median },
+            { label: 'Range:', value: range }
+        ];
+        
+        statItems.forEach(item => {
+            const statDiv = document.createElement('div');
+            statDiv.className = 'stat-item';
+            
+            const labelSpan = document.createElement('span');
+            labelSpan.textContent = item.label;
+            
+            const valueSpan = document.createElement('span');
+            valueSpan.textContent = item.value;
+            
+            statDiv.appendChild(labelSpan);
+            statDiv.appendChild(valueSpan);
+            statsContent.appendChild(statDiv);
+        });
+    }
+    
+    function calculateMedian(sortedNumbers) {
+        const mid = Math.floor(sortedNumbers.length / 2);
+        if (sortedNumbers.length % 2 === 0) {
+            return ((sortedNumbers[mid - 1] + sortedNumbers[mid]) / 2).toFixed(2);
+        } else {
+            return sortedNumbers[mid];
+        }
+    }
+    
+    function copyNumbers() {
+        const text = lastGenerated.join(', ');
+        navigator.clipboard.writeText(text).then(() => {
+            const originalText = copyBtn.textContent;
+            copyBtn.textContent = 'Copied!';
+            copyBtn.style.background = '#228B22';
+            setTimeout(() => {
+                copyBtn.textContent = originalText;
+                copyBtn.style.background = '#4682B4';
+            }, 2000);
+        }).catch(() => {
+            alert('Failed to copy numbers');
+        });
+    }
+    
+    function downloadNumbers() {
+        const text = lastGenerated.join('\n');
+        const blob = new Blob([text], { type: 'text/plain' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'random-numbers.txt';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    }
+    
+    function saveToHistory() {
+        if (lastGenerated.length === 0) return;
+        
+        const timestamp = new Date().toLocaleString();
+        const historyItem = {
+            numbers: [...lastGenerated],
+            timestamp,
+            settings: {
+                min: minValue.value,
+                max: maxValue.value,
+                quantity: quantity.value,
+                decimals: allowDecimals.checked
+            }
+        };
+        
+        generationHistory.unshift(historyItem);
+        generationHistory = generationHistory.slice(0, 20); // Keep only last 20
+        localStorage.setItem('rngHistory', JSON.stringify(generationHistory));
+        updateHistoryDisplay();
+        
+        const originalText = saveBtn.textContent;
+        saveBtn.textContent = 'Saved!';
+        saveBtn.style.background = '#228B22';
+        setTimeout(() => {
+            saveBtn.textContent = originalText;
+            saveBtn.style.background = '#4682B4';
+        }, 2000);
+    }
+    
+    function updateHistoryDisplay() {
+        if (generationHistory.length === 0) {
+            historySection.classList.add('hidden');
+            return;
+        }
+        
+        historySection.classList.remove('hidden');
+        historyList.innerHTML = '';
+        
+        generationHistory.forEach((item, index) => {
+            const historyDiv = document.createElement('div');
+            historyDiv.className = 'history-item';
+            
+            const numbersText = item.numbers.length > 10 
+                ? `${item.numbers.slice(0, 10).join(', ')}... (${item.numbers.length} total)`
+                : item.numbers.join(', ');
+            
+            const contentDiv = document.createElement('div');
+            
+            const numbersDiv = document.createElement('div');
+            numbersDiv.style.fontFamily = "'Fira Code', monospace";
+            numbersDiv.style.fontWeight = 'bold';
+            numbersDiv.textContent = numbersText;
+            
+            const timestampDiv = document.createElement('div');
+            timestampDiv.style.fontSize = '0.8em';
+            timestampDiv.style.color = '#666';
+            timestampDiv.textContent = item.timestamp;
+            
+            const copyButton = document.createElement('button');
+            copyButton.className = 'rng-btn secondary';
+            copyButton.style.padding = '0.5em 1em';
+            copyButton.style.fontSize = '0.9em';
+            copyButton.textContent = 'Copy';
+            copyButton.onclick = () => copyHistoryItem(index);
+            
+            contentDiv.appendChild(numbersDiv);
+            contentDiv.appendChild(timestampDiv);
+            historyDiv.appendChild(contentDiv);
+            historyDiv.appendChild(copyButton);
+            
+            historyList.appendChild(historyDiv);
+        });
+    }
+    
+    function clearHistory() {
+        if (confirm('Are you sure you want to clear the generation history?')) {
+            generationHistory = [];
+            localStorage.removeItem('rngHistory');
+            updateHistoryDisplay();
+        }
+    }
+    
+    function generateSequence() {
+        const count = parseInt(document.getElementById('sequence-count').value) || 10;
+        const sequences = [];
+        
+        for (let i = 0; i < count; i++) {
+            generateNumbers();
+            if (lastGenerated.length > 0) {
+                sequences.push(`Sequence ${i + 1}: ${lastGenerated.join(', ')}`);
+            }
+        }
+        
+        sequenceOutput.textContent = sequences.join('\n');
+        sequenceOutput.classList.remove('hidden');
+        copySequenceBtn.classList.remove('hidden');
+        
+        sequenceOutput.scrollIntoView({ behavior: 'smooth' });
+    }
+    
+    function copySequence() {
+        navigator.clipboard.writeText(sequenceOutput.textContent).then(() => {
+            const originalText = copySequenceBtn.textContent;
+            copySequenceBtn.textContent = 'Copied!';
+            copySequenceBtn.style.background = '#228B22';
+            setTimeout(() => {
+                copySequenceBtn.textContent = originalText;
+                copySequenceBtn.style.background = '#4682B4';
+            }, 2000);
+        }).catch(() => {
+            alert('Failed to copy sequence');
+        });
+    }
+    
+    function applyPreset(event) {
+        const preset = event.currentTarget.dataset.preset;
+        
+        switch (preset) {
+            case 'dice':
+                minValue.value = 1;
+                maxValue.value = 6;
+                quantity.value = 1;
+                allowDecimals.checked = false;
+                break;
+            case 'coin':
+                minValue.value = 0;
+                maxValue.value = 1;
+                quantity.value = 1;
+                allowDecimals.checked = false;
+                break;
+            case 'lottery':
+                minValue.value = 1;
+                maxValue.value = 49;
+                quantity.value = 6;
+                allowDecimals.checked = false;
+                uniqueNumbers.checked = true;
+                sortResults.checked = true;
+                break;
+            case 'percentage':
+                minValue.value = 0;
+                maxValue.value = 100;
+                quantity.value = 1;
+                allowDecimals.checked = true;
+                decimalPlaces.value = 2;
+                break;
+            case 'grade':
+                minValue.value = 0;
+                maxValue.value = 100;
+                quantity.value = 1;
+                allowDecimals.checked = false;
+                break;
+            case 'temperature':
+                minValue.value = -40;
+                maxValue.value = 50;
+                quantity.value = 1;
+                allowDecimals.checked = true;
+                decimalPlaces.value = 1;
+                break;
+        }
+        
+        toggleDecimalOptions();
+        generateNumbers();
+    }
+    
+    // Global function for history copy
+    window.copyHistoryItem = function(index) {
+        const item = generationHistory[index];
+        const text = item.numbers.join(', ');
+        navigator.clipboard.writeText(text).then(() => {
+            // Visual feedback would go here
+        }).catch(() => {
+            alert('Failed to copy numbers');
+        });
+    };
+})();
+</script>
+</body>
+</html>

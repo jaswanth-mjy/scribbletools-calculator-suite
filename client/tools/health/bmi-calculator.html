@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Primary Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free BMI Calculator - Calculate Body Mass Index Instantly | ScribbleTools</title>
+    <meta name="description" content="Calculate your Body Mass Index (BMI) with our free online calculator. Enter height and weight to determine if you're underweight, normal, overweight, or obese. Instant results with health categories.">
+    <meta name="keywords" content="BMI calculator, body mass index, height weight calculator, health calculator, fitness tool, weight category, obesity calculator, underweight calculator">
+    <meta name="author" content="ScribbleTools">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://scribbletools.in/client/tools/health/bmi-calculator.html">
+    
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#D9534F">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://scribbletools.in/client/tools/health/bmi-calculator.html">
+    <meta property="og:title" content="Free BMI Calculator - Calculate Body Mass Index Instantly">
+    <meta property="og:description" content="Calculate your Body Mass Index (BMI) with our free online calculator. Enter height and weight to determine if you're underweight, normal, overweight, or obese.">
+    <meta property="og:image" content="https://scribbletools.in/assets/og-image.svg">
+    <meta property="og:site_name" content="ScribbleTools">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://scribbletools.in/client/tools/health/bmi-calculator.html">
+    <meta property="twitter:title" content="Free BMI Calculator - Calculate Body Mass Index Instantly">
+    <meta property="twitter:description" content="Calculate your Body Mass Index (BMI) with our free online calculator. Enter height and weight to determine if you're underweight, normal, overweight, or obese.">
+    <meta property="twitter:image" content="https://scribbletools.in/assets/og-image.svg">
+    <meta name="twitter:site" content="@scribbletools">
+    
+    <!-- Performance Optimization -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "BMI Calculator",
+        "url": "https://scribbletools.in/client/tools/health/bmi-calculator.html",
+        "description": "Free online BMI calculator to determine your Body Mass Index and health category based on height and weight.",
+        "applicationCategory": "HealthApplication",
+        "operatingSystem": "Any",
+        "permissions": "browser",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "ScribbleTools",
+            "url": "https://scribbletools.in"
+        },
+        "featureList": [
+            "Calculate BMI from height and weight",
+            "Determine health category (underweight, normal, overweight, obese)",
+            "Instant calculations",
+            "Mobile-friendly interface",
+            "Free to use"
+        ]
+    }
+    </script>
+    <style>
+        body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; }
+        .calc-container { max-width: 420px; margin: 3em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2em 1.5em 2.5em 1.5em; }
+        .handwritten { font-family: 'Caveat', cursive; }
+        .calc-label { font-weight: 600; margin-bottom: 0.5em; display: block; }
+        .calc-input { width: 100%; padding: 1em; border: 2px solid #EAE3D5; border-radius: 0.7em; font-size: 1.2em; margin-bottom: 1em; background: #FDFBF5; text-align: center; font-family: 'Fira Code', monospace; }
+        .calc-btn { background: #fff; color: #D9534F; border: 2px solid #D9534F; border-radius: 0.5em; padding: 0.7em 2em; font-weight: 600; font-size: 1.1em; cursor: pointer; transition: all 0.2s; margin-bottom: 1em; }
+        .calc-btn:hover { background: #D9534F; color: #fff; }
+        .calc-result { background: #FDFBF5; border: 2px solid #D9534F; border-radius: 0.7em; padding: 1em; font-size: 1.25em; color: #D9534F; min-height: 1.7em; margin-bottom: 1em; text-align: center; font-family: 'Fira Code', monospace; font-weight: bold; max-height: 300px; overflow-y: auto; word-break: break-word; transition: height 0.2s; }
+        .calc-desc { width: 100%; margin-top: 2em; background:#FDFBF5; border:2px solid #EAE3D5; border-radius:0.9em; padding:1.2em 1em; font-size:1.08em; color:#333; line-height:1.7; }
+        .calc-desc strong { color: #D9534F; font-size: 1.12em; }
+        @media (max-width: 600px) { .calc-container { padding: 1em 0.2em; } }
+    </style>
+</head>
+<body>
+<div class="calc-container">
+    <h2 class="handwritten text-5xl text-[#D9534F] mb-4">BMI Calculator</h2>
+    <label class="calc-label">Weight (kg):</label>
+    <input id="weight" class="calc-input" type="number" min="0" placeholder="e.g. 70">
+    <label class="calc-label">Height (cm):</label>
+    <input id="height" class="calc-input" type="number" min="0" placeholder="e.g. 175">
+    <button id="calc-btn" class="calc-btn">Calculate</button>
+    <div class="calc-result" id="calc-result"></div>
+</div>
+<!-- Content Sections for SEO -->
+<div style="max-width: 800px; margin: 3em auto; padding: 0 1em; font-family: 'Poppins', sans-serif; line-height: 1.6;">
+    
+    <!-- About Section -->
+    <section style="margin-bottom: 3em; background: #fff; padding: 2em; border-radius: 1em; box-shadow: 0 4px 24px #eae3d5;">
+        <h2 style="color: #D9534F; font-size: 1.8em; margin-bottom: 1em; font-weight: 600;">About the BMI Calculator</h2>
+        <p style="font-size: 1.1em; color: #333; margin-bottom: 1em;">
+            Our free BMI (Body Mass Index) calculator helps you quickly determine your BMI and health category based on your height and weight. 
+            BMI is a widely used screening tool that indicates whether your weight is in a healthy range for your height.
+        </p>
+        <p style="color: #666; font-size: 1em;">
+            Simply enter your weight in kilograms and height in centimeters to get instant results with your BMI score and corresponding health category.
+        </p>
+    </section>
+
+    <!-- How to Use Section -->
+    <section style="margin-bottom: 3em; background: #fff; padding: 2em; border-radius: 1em; box-shadow: 0 4px 24px #eae3d5;">
+        <h2 style="color: #D9534F; font-size: 1.8em; margin-bottom: 1em; font-weight: 600;">How to Calculate BMI</h2>
+        <div style="background: #FDFBF5; padding: 1.5em; border-radius: 0.8em; border: 2px solid #EAE3D5; margin-bottom: 1.5em;">
+            <h3 style="color: #D9534F; font-size: 1.3em; margin-bottom: 1em;">Step-by-Step Instructions:</h3>
+            <ol style="margin-left: 1.5em; color: #333;">
+                <li style="margin-bottom: 0.5em;"><strong>Enter Your Weight:</strong> Input your current weight in kilograms (kg)</li>
+                <li style="margin-bottom: 0.5em;"><strong>Enter Your Height:</strong> Input your height in centimeters (cm)</li>
+                <li style="margin-bottom: 0.5em;"><strong>Click Calculate:</strong> Press the calculate button to get your BMI</li>
+                <li><strong>View Results:</strong> Your BMI score and health category will be displayed instantly</li>
+            </ol>
+        </div>
+        <p style="color: #666; font-size: 0.95em; font-style: italic;">
+            <strong>Formula:</strong> BMI = Weight (kg) ÷ Height² (m²)
+        </p>
+    </section>
+
+    <!-- BMI Categories Section -->
+    <section style="margin-bottom: 3em; background: #fff; padding: 2em; border-radius: 1em; box-shadow: 0 4px 24px #eae3d5;">
+        <h2 style="color: #D9534F; font-size: 1.8em; margin-bottom: 1em; font-weight: 600;">Understanding BMI Categories</h2>
+        <div style="background: #FDFBF5; padding: 1.5em; border-radius: 0.8em; border: 2px solid #EAE3D5;">
+            <table style="width: 100%; border-collapse: collapse; margin-bottom: 1em;">
+                <thead>
+                    <tr style="background: #D9534F; color: white;">
+                        <th style="padding: 0.8em; text-align: left; border-radius: 0.5em 0 0 0;">BMI Range</th>
+                        <th style="padding: 0.8em; text-align: left; border-radius: 0 0.5em 0 0;">Category</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="border-bottom: 1px solid #EAE3D5;">
+                        <td style="padding: 0.8em; color: #333;"><strong>Below 18.5</strong></td>
+                        <td style="padding: 0.8em; color: #333;">Underweight</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #EAE3D5;">
+                        <td style="padding: 0.8em; color: #333;"><strong>18.5 - 24.9</strong></td>
+                        <td style="padding: 0.8em; color: #333;">Normal Weight</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #EAE3D5;">
+                        <td style="padding: 0.8em; color: #333;"><strong>25.0 - 29.9</strong></td>
+                        <td style="padding: 0.8em; color: #333;">Overweight</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.8em; color: #333;"><strong>30.0 and above</strong></td>
+                        <td style="padding: 0.8em; color: #333;">Obese</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section style="margin-bottom: 3em; background: #fff; padding: 2em; border-radius: 1em; box-shadow: 0 4px 24px #eae3d5;">
+        <h2 style="color: #D9534F; font-size: 1.8em; margin-bottom: 1em; font-weight: 600;">Calculator Features</h2>
+        <ul style="list-style: none; padding: 0;">
+            <li style="margin-bottom: 1em; padding: 0.8em; background: #FDFBF5; border-radius: 0.5em; border-left: 4px solid #D9534F;">
+                <strong style="color: #D9534F;">✓ Instant Results:</strong> Get your BMI calculation immediately
+            </li>
+            <li style="margin-bottom: 1em; padding: 0.8em; background: #FDFBF5; border-radius: 0.5em; border-left: 4px solid #D9534F;">
+                <strong style="color: #D9534F;">✓ Health Categories:</strong> Automatic classification into BMI ranges
+            </li>
+            <li style="margin-bottom: 1em; padding: 0.8em; background: #FDFBF5; border-radius: 0.5em; border-left: 4px solid #D9534F;">
+                <strong style="color: #D9534F;">✓ Mobile Friendly:</strong> Works perfectly on all devices
+            </li>
+            <li style="margin-bottom: 1em; padding: 0.8em; background: #FDFBF5; border-radius: 0.5em; border-left: 4px solid #D9534F;">
+                <strong style="color: #D9534F;">✓ Free to Use:</strong> No registration or payment required
+            </li>
+            <li style="padding: 0.8em; background: #FDFBF5; border-radius: 0.5em; border-left: 4px solid #D9534F;">
+                <strong style="color: #D9534F;">✓ Accurate Formula:</strong> Uses the standard BMI calculation method
+            </li>
+        </ul>
+    </section>
+
+    <!-- FAQ Section -->
+    <section style="margin-bottom: 3em; background: #fff; padding: 2em; border-radius: 1em; box-shadow: 0 4px 24px #eae3d5;">
+        <h2 style="color: #D9534F; font-size: 1.8em; margin-bottom: 1em; font-weight: 600;">Frequently Asked Questions</h2>
+        
+        <div style="margin-bottom: 1.5em; padding: 1em; border-left: 4px solid #D9534F; background: #FDFBF5;">
+            <h3 style="color: #D9534F; font-size: 1.2em; margin-bottom: 0.5em;">What is BMI?</h3>
+            <p style="color: #333; margin: 0;">BMI (Body Mass Index) is a measure that uses height and weight to estimate if an adult is a healthy weight. It's calculated by dividing weight in kilograms by height in meters squared.</p>
+        </div>
+        
+        <div style="margin-bottom: 1.5em; padding: 1em; border-left: 4px solid #D9534F; background: #FDFBF5;">
+            <h3 style="color: #D9534F; font-size: 1.2em; margin-bottom: 0.5em;">Is BMI accurate for everyone?</h3>
+            <p style="color: #333; margin: 0;">BMI is a useful screening tool but has limitations. It doesn't account for muscle mass, bone density, or body composition. Athletes or very muscular individuals may have high BMI but low body fat.</p>
+        </div>
+        
+        <div style="margin-bottom: 1.5em; padding: 1em; border-left: 4px solid #D9534F; background: #FDFBF5;">
+            <h3 style="color: #D9534F; font-size: 1.2em; margin-bottom: 0.5em;">What should I do if my BMI is outside the normal range?</h3>
+            <p style="color: #333; margin: 0;">If your BMI indicates you're underweight, overweight, or obese, consult with a healthcare professional for personalized advice on achieving or maintaining a healthy weight.</p>
+        </div>
+        
+        <div style="padding: 1em; border-left: 4px solid #D9534F; background: #FDFBF5;">
+            <h3 style="color: #D9534F; font-size: 1.2em; margin-bottom: 0.5em;">Can I use this calculator for children?</h3>
+            <p style="color: #333; margin: 0;">This BMI calculator is designed for adults. Children and teenagers have different BMI ranges that account for age and sex. Consult a pediatrician for children's BMI assessment.</p>
+        </div>
+    </section>
+
+    <!-- Related Tools Section -->
+    <section style="margin-bottom: 2em; background: #fff; padding: 2em; border-radius: 1em; box-shadow: 0 4px 24px #eae3d5;">
+        <h2 style="color: #D9534F; font-size: 1.8em; margin-bottom: 1em; font-weight: 600;">Related Health Calculators</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1em;">
+            <a href="../health/calorie-calculator.html" style="display: block; padding: 1em; background: #FDFBF5; border-radius: 0.8em; text-decoration: none; color: #333; border: 2px solid #EAE3D5; transition: all 0.2s;">
+                <strong style="color: #D9534F;">Calorie Calculator</strong><br>
+                <span style="font-size: 0.9em; color: #666;">Calculate daily caloric needs</span>
+            </a>
+            <a href="../health/ideal-weight-calculator.html" style="display: block; padding: 1em; background: #FDFBF5; border-radius: 0.8em; text-decoration: none; color: #333; border: 2px solid #EAE3D5; transition: all 0.2s;">
+                <strong style="color: #D9534F;">Ideal Weight Calculator</strong><br>
+                <span style="font-size: 0.9em; color: #666;">Find your ideal weight range</span>
+            </a>
+            <a href="../health/body-fat-calculator.html" style="display: block; padding: 1em; background: #FDFBF5; border-radius: 0.8em; text-decoration: none; color: #333; border: 2px solid #EAE3D5; transition: all 0.2s;">
+                <strong style="color: #D9534F;">Body Fat Calculator</strong><br>
+                <span style="font-size: 0.9em; color: #666;">Calculate body fat percentage</span>
+            </a>
+        </div>
+    </section>
+
+</div>
+<script>
+function showResult(str) {
+    document.getElementById('calc-result').innerHTML = str;
+}
+document.getElementById('calc-btn').addEventListener('click', function() {
+    let weight = parseFloat(document.getElementById('weight').value);
+    let height = parseFloat(document.getElementById('height').value);
+    if (isNaN(weight) || isNaN(height) || weight <= 0 || height <= 0) {
+        showResult('Please enter valid values for all fields.');
+        return;
+    }
+    let bmi = weight / Math.pow(height / 100, 2);
+    let category = bmi < 18.5 ? 'Underweight' : bmi < 25 ? 'Normal' : bmi < 30 ? 'Overweight' : 'Obese';
+    showResult(`<b>BMI:</b> ${bmi.toFixed(2)}<br><b>Category:</b> ${category}`);
+});
+</script>
+</body>
+</html>

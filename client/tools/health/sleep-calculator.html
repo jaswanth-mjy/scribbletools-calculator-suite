@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sleep Calculator - FREE Optimal Bedtime & Sleep Schedule Tool</title>
+    <meta name="description" content="Free sleep calculator! Calculate optimal bedtime and sleep schedule based on age and wake time. Improve sleep quality with personalized sleep recommendations. 100% free tool!">
+    <meta name="keywords" content="sleep calculator, bedtime calculator, optimal sleep time, sleep schedule calculator, when to go to bed, sleep cycle calculator, sleep duration calculator, healthy sleep calculator, sleep hygiene calculator, sleep quality calculator, circadian rhythm calculator, sleep pattern calculator, sleep health calculator, sleep optimization tool, sleep planning calculator, bedtime planner, sleep tracker calculator, sleep wellness calculator, sleep medicine calculator, sleep therapy calculator, insomnia calculator, sleep disorders calculator, sleep science calculator, sleep research calculator, sleep study calculator, sleep analysis calculator, sleep efficiency calculator, sleep timing calculator, sleep rhythm calculator, sleep cycle optimization, sleep habit calculator, sleep routine calculator, sleep lifestyle calculator, sleep fitness calculator, sleep recovery calculator">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://scribbletools.in/client/tools/health/sleep-calculator.html">
+    <meta property="og:title" content="Sleep Calculator - FREE Optimal Bedtime & Sleep Schedule Tool">
+    <meta property="og:description" content="Free sleep calculator! Calculate optimal bedtime and sleep schedule based on age and wake time. Improve sleep quality with personalized sleep recommendations. 100% free tool!">
+    <meta property="og:image" content="https://scribbletools.in/assets/og-image.svg">
+    <meta property="og:site_name" content="Scribble Tools">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://scribbletools.in/client/tools/health/sleep-calculator.html">
+    <meta property="twitter:title" content="Sleep Calculator - FREE Optimal Bedtime & Sleep Schedule Tool">
+    <meta property="twitter:description" content="Free sleep calculator! Calculate optimal bedtime and sleep schedule based on age and wake time. Improve sleep quality with personalized sleep recommendations. 100% free tool!">
+    <meta property="twitter:image" content="https://scribbletools.in/assets/og-image.svg">
+    
+    <!-- Additional SEO Meta Tags -->
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Scribble Tools">
+    <meta name="generator" content="Scribble Tools">
+    <meta name="application-name" content="Sleep Calculator">
+    <meta name="apple-mobile-web-app-title" content="Sleep Calculator">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#D9534F">
+    <meta name="msapplication-navbutton-color" content="#D9534F">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#D9534F">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://scribbletools.in/client/tools/health/sleep-calculator.html">
+    
+    <!-- Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Sleep Calculator",
+      "description": "Free online sleep calculator to determine optimal bedtime and sleep schedule based on age group and desired wake time. Improve sleep quality with personalized recommendations.",
+      "url": "https://scribbletools.in/client/tools/health/sleep-calculator.html",
+      "applicationCategory": "HealthApplication",
+      "operatingSystem": "Any",
+      "permissions": "browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "featureList": [
+        "Calculate optimal bedtime",
+        "Age-specific sleep recommendations",
+        "Sleep cycle optimization",
+        "Free to use",
+        "Mobile responsive",
+        "Instant results"
+      ],
+      "provider": {
+        "@type": "Organization",
+        "name": "Scribble Tools",
+        "url": "https://scribbletools.in"
+      }
+    }
+    </script>
+    <style>
+        body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; }
+        .calc-container { max-width: 600px; margin: 3em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2em 1.5em 2.5em 1.5em; }
+        .handwritten { font-family: 'Caveat', cursive; }
+        .calc-label { font-weight: 600; margin-bottom: 0.5em; display: block; }
+        .calc-input { width: 100%; padding: 1em; border: 2px solid #EAE3D5; border-radius: 0.7em; font-size: 1.2em; margin-bottom: 1em; background: #FDFBF5; text-align: center; font-family: 'Fira Code', monospace; }
+        .calc-btn { background: #fff; color: #D9534F; border: 2px solid #D9534F; border-radius: 0.5em; padding: 0.7em 2em; font-weight: 600; font-size: 1.1em; cursor: pointer; transition: all 0.2s; margin-bottom: 1em; }
+        .calc-btn:hover { background: #D9534F; color: #fff; }
+        .calc-result { background: #FDFBF5; border: 2px solid #D9534F; border-radius: 0.7em; padding: 1em; font-size: 1.25em; color: #D9534F; min-height: 1.7em; margin-bottom: 1em; text-align: center; font-family: 'Fira Code', monospace; font-weight: bold; max-height: 400px; overflow-y: auto; word-break: break-word; transition: height 0.2s; }
+        .calc-desc { width: 100%; margin-top: 2em; background:#FDFBF5; border:2px solid #EAE3D5; border-radius:0.9em; padding:1.2em 1em; font-size:1.08em; color:#333; line-height:1.7; }
+        .calc-desc strong { color: #D9534F; font-size: 1.12em; }
+        .age-group { background: #F0F8FF; border: 1px solid #B0C4DE; border-radius: 0.5em; padding: 1em; margin: 0.5em 0; }
+        .age-group h4 { color: #4682B4; margin: 0 0 0.5em 0; }
+        .sleep-info { display: grid; grid-template-columns: 1fr 1fr; gap: 1em; margin: 1em 0; }
+        .sleep-info > div { background: white; padding: 0.5em; border-radius: 0.3em; border: 1px solid #E0E0E0; }
+        .sleep-info strong { color: #D9534F; }
+        @media (max-width: 600px) { 
+            .calc-container { padding: 1em 0.2em; }
+            .sleep-info { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+<div class="calc-container">
+    <h2 class="handwritten text-5xl text-[#D9534F] mb-4">Optimal Sleep Time Calculator</h2>
+    
+    <label class="calc-label">Age Group:</label>
+    <select id="age-group" class="calc-input">
+        <option value="">Select your age group</option>
+        <option value="infant">Infants (0-3 months)</option>
+        <option value="baby">Babies (4-11 months)</option>
+        <option value="toddler">Toddlers (1-2 years)</option>
+        <option value="preschool">Preschoolers (3-5 years)</option>
+        <option value="school">School Age (6-12 years)</option>
+        <option value="teen">Teenagers (13-17 years)</option>
+        <option value="young-adult">Young Adults (18-25 years)</option>
+        <option value="adult">Adults (26-64 years)</option>
+        <option value="senior">Seniors (65+ years)</option>
+    </select>
+
+    <label class="calc-label">Desired Wake Up Time:</label>
+    <input id="wake" class="calc-input" type="time" value="07:00">
+    
+    <button id="calc-btn" class="calc-btn">Calculate Optimal Sleep Schedule</button>
+    <div class="calc-result" id="calc-result"></div>
+</div>
+
+<div class="calc-desc" style="max-width: fit-content; margin: 2.5em auto 0 auto;">
+    <strong style="font-size:1.18em; color:#D9534F;">Research-Based Sleep Guidelines by Age</strong><br><br>
+    
+    <div class="age-group">
+        <h4>🍼 Infants (0-3 months)</h4>
+        <div class="sleep-info">
+            <div><strong>Sleep Duration:</strong> 14-17 hours</div>
+            <div><strong>Bedtime:</strong> 6:00-8:00 PM</div>
+        </div>
+        <p>Newborns need frequent feeding and have irregular sleep patterns. They typically sleep in 2-4 hour intervals.</p>
+    </div>
+
+    <div class="age-group">
+        <h4>👶 Babies (4-11 months)</h4>
+        <div class="sleep-info">
+            <div><strong>Sleep Duration:</strong> 12-15 hours</div>
+            <div><strong>Bedtime:</strong> 6:00-7:30 PM</div>
+        </div>
+        <p>Babies start developing circadian rhythms. Consistent bedtime routines are crucial for healthy sleep habits.</p>
+    </div>
+
+    <div class="age-group">
+        <h4>🧸 Toddlers (1-2 years)</h4>
+        <div class="sleep-info">
+            <div><strong>Sleep Duration:</strong> 11-14 hours</div>
+            <div><strong>Bedtime:</strong> 7:00-8:00 PM</div>
+        </div>
+        <p>Toddlers need 1-2 naps during the day. Early bedtime helps prevent overtiredness and behavioral issues.</p>
+    </div>
+
+    <div class="age-group">
+        <h4>🎨 Preschoolers (3-5 years)</h4>
+        <div class="sleep-info">
+            <div><strong>Sleep Duration:</strong> 10-13 hours</div>
+            <div><strong>Bedtime:</strong> 7:00-8:30 PM</div>
+        </div>
+        <p>Preschoolers may still need one nap. Consistent sleep schedule supports cognitive development and behavior.</p>
+    </div>
+
+    <div class="age-group">
+        <h4>📚 School Age (6-12 years)</h4>
+        <div class="sleep-info">
+            <div><strong>Sleep Duration:</strong> 9-12 hours</div>
+            <div><strong>Bedtime:</strong> 8:00-9:00 PM</div>
+        </div>
+        <p>Children need adequate sleep for learning, memory consolidation, and physical growth. Early bedtime supports school performance.</p>
+    </div>
+
+    <div class="age-group">
+        <h4>🎓 Teenagers (13-17 years)</h4>
+        <div class="sleep-info">
+            <div><strong>Sleep Duration:</strong> 8-10 hours</div>
+            <div><strong>Bedtime:</strong> 9:00-10:00 PM</div>
+        </div>
+        <p>Teens experience a natural shift in circadian rhythm (delayed sleep phase). However, early school start times often conflict with this biological change.</p>
+    </div>
+
+    <div class="age-group">
+        <h4>👨‍🎓 Young Adults (18-25 years)</h4>
+        <div class="sleep-info">
+            <div><strong>Sleep Duration:</strong> 7-9 hours</div>
+            <div><strong>Bedtime:</strong> 10:00-11:00 PM</div>
+        </div>
+        <p>Young adults often have irregular sleep patterns due to social activities, work, and academic demands.</p>
+    </div>
+
+    <div class="age-group">
+        <h4>👨‍💼 Adults (26-64 years)</h4>
+        <div class="sleep-info">
+            <div><strong>Sleep Duration:</strong> 7-9 hours</div>
+            <div><strong>Bedtime:</strong> 10:00-11:00 PM</div>
+        </div>
+        <p>Adults need consistent sleep for optimal health, productivity, and stress management. Quality often matters more than quantity.</p>
+    </div>
+
+    <div class="age-group">
+        <h4>👴 Seniors (65+ years)</h4>
+        <div class="sleep-info">
+            <div><strong>Sleep Duration:</strong> 7-8 hours</div>
+            <div><strong>Bedtime:</strong> 9:00-10:00 PM</div>
+        </div>
+        <p>Older adults may experience changes in sleep architecture, including lighter sleep and more frequent awakenings.</p>
+    </div>
+
+    <br><strong>Key Sleep Tips:</strong>
+    <ul style="margin-left:1.2em;">
+        <li>Maintain consistent sleep and wake times, even on weekends</li>
+        <li>Create a relaxing bedtime routine</li>
+        <li>Keep the bedroom cool, dark, and quiet</li>
+        <li>Avoid screens 1-2 hours before bedtime</li>
+        <li>Limit caffeine, especially in the afternoon</li>
+        <li>Exercise regularly, but not close to bedtime</li>
+    </ul>
+
+    <br><strong>Sources:</strong> National Sleep Foundation, American Academy of Sleep Medicine, Centers for Disease Control and Prevention (CDC)
+</div>
+
+<script>
+function showResult(str) {
+    document.getElementById('calc-result').innerHTML = str;
+}
+
+function getAgeGroupData(ageGroup) {
+    const ageData = {
+        'infant': { hours: 16, bedtime: '7:00 PM', description: 'Infants need frequent feeding and have irregular patterns' },
+        'baby': { hours: 13.5, bedtime: '7:00 PM', description: 'Babies are developing circadian rhythms' },
+        'toddler': { hours: 12.5, bedtime: '7:30 PM', description: 'Toddlers need early bedtime to prevent overtiredness' },
+        'preschool': { hours: 11.5, bedtime: '8:00 PM', description: 'Preschoolers may still need one nap' },
+        'school': { hours: 10.5, bedtime: '8:30 PM', description: 'Children need sleep for learning and growth' },
+        'teen': { hours: 9, bedtime: '10:00 PM', description: 'Teens have delayed sleep phase but early school times' },
+        'young-adult': { hours: 8, bedtime: '11:00 PM', description: 'Young adults often have irregular patterns' },
+        'adult': { hours: 8, bedtime: '11:00 PM', description: 'Adults need consistent sleep for health' },
+        'senior': { hours: 7.5, bedtime: '10:00 PM', description: 'Seniors may have lighter sleep patterns' }
+    };
+    return ageData[ageGroup] || { hours: 8, bedtime: '10:00 PM', description: 'General recommendation' };
+}
+
+document.getElementById('calc-btn').addEventListener('click', function() {
+    let ageGroup = document.getElementById('age-group').value;
+    let wake = document.getElementById('wake').value;
+    
+    if (!ageGroup) {
+        showResult('Please select your age group.');
+        return;
+    }
+    
+    if (!wake) {
+        showResult('Please enter your desired wake-up time.');
+        return;
+    }
+
+    let ageData = getAgeGroupData(ageGroup);
+    let [h, m] = wake.split(':').map(Number);
+    let wakeDate = new Date();
+    wakeDate.setHours(h, m, 0, 0);
+    
+    // Calculate bedtime based on sleep duration
+    let bedTime = new Date(wakeDate.getTime() - ageData.hours * 60 * 60 * 1000);
+    let bedTimeStr = bedTime.toTimeString().slice(0, 5);
+    
+    // Calculate sleep cycles (90 minutes each)
+    let cycles = [6, 5, 4, 3];
+    let cycleResults = cycles.map(c => {
+        let bed = new Date(wakeDate.getTime() - c * 90 * 60 * 1000 - 15 * 60 * 1000);
+        return bed.toTimeString().slice(0, 5);
+    });
+
+    let result = `
+        <strong>📊 Your Sleep Schedule:</strong><br><br>
+        <strong>Age Group:</strong> ${document.getElementById('age-group').selectedOptions[0].text}<br>
+        <strong>Recommended Sleep Duration:</strong> ${ageData.hours} hours<br>
+        <strong>Optimal Bedtime:</strong> ${bedTimeStr}<br>
+        <strong>Wake-up Time:</strong> ${wake}<br><br>
+        <strong>🔄 Sleep Cycle Options (90-min cycles):</strong><br>
+        ${cycleResults.map((time, i) => `${cycles[i]} cycles: ${time}`).join('<br>')}<br><br>
+        <strong>💡 Note:</strong> ${ageData.description}
+    `;
+    
+    showResult(result);
+});
+
+// Auto-calculate when age group changes
+document.getElementById('age-group').addEventListener('change', function() {
+    if (document.getElementById('wake').value) {
+        document.getElementById('calc-btn').click();
+    }
+});
+</script>
+</body>
+</html>

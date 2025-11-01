@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Passport Photo Maker - FREE Official Photo Creator Tool</title>
+  <meta name="description" content="Free passport photo maker! Create official passport photos, visa photos, ID card photos. Multiple country standards. Professional quality. 100% free!">
+  <meta name="keywords" content="passport photo maker, passport photo creator, visa photo maker, ID photo generator, official photo maker, government photo tool, passport photo editor, visa application photo, ID card photo, document photo maker, passport photo size, visa photo size, official document photo, passport photo online, government photo requirements, passport photo generator, visa photo creator, ID photo editor, official photo editor, document photo tool, passport application photo, visa photo online, government ID photo">
+  <meta name="author" content="Scribble Tools">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://scribbletools.in/client/tools/image/passport-photo-maker.html">
+  <meta property="og:title" content="Passport Photo Maker - FREE Official Photo Creator Tool">
+  <meta property="og:description" content="Free passport photo maker! Create official passport photos, visa photos, ID card photos. Multiple country standards. Professional quality. 100% free!">
+  <meta property="og:image" content="https://scribbletools.in/assets/og-image.svg">
+  <meta property="og:site_name" content="Scribble Tools">
+  <meta property="og:locale" content="en_US">
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://scribbletools.in/client/tools/image/passport-photo-maker.html">
+  <meta property="twitter:title" content="Passport Photo Maker - FREE Official Photo Creator Tool">
+  <meta property="twitter:description" content="Free passport photo maker! Create official passport photos, visa photos, ID card photos. Multiple country standards. Professional quality. 100% free!">
+  <meta property="twitter:image" content="https://scribbletools.in/assets/og-image.svg">
+  
+  <!-- Additional SEO Meta Tags -->
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Scribble Tools">
+  <meta name="generator" content="Scribble Tools">
+  <meta name="application-name" content="Passport Photo Maker">
+  <meta name="apple-mobile-web-app-title" content="Passport Photo Maker">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#D9534F">
+  <meta name="msapplication-navbutton-color" content="#D9534F">
+  <meta name="apple-mobile-web-app-status-bar-style" content="#D9534F">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://scribbletools.in/client/tools/image/passport-photo-maker.html">
+  
+  <!-- Preconnect for Performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Passport Photo Maker Tool",
+    "description": "Free online tool for creating official passport photos, visa photos, and ID card photos. Supports multiple country standards and requirements.",
+    "url": "https://scribbletools.in/client/tools/image/passport-photo-maker.html",
+    "applicationCategory": "MultimediaApplication",
+    "operatingSystem": "Any",
+    "permissions": "browser",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "featureList": [
+      "Create passport photos",
+      "Generate visa photos",
+      "ID card photo maker",
+      "Multiple country standards",
+      "Government compliance",
+      "Professional quality",
+      "Document photo creator",
+      "No registration required",
+      "Free to use"
+    ],
+    "provider": {
+      "@type": "Organization",
+      "name": "Scribble Tools",
+      "url": "https://scribbletools.in"
+    }
+  }
+  </script>
+  <style>
+    body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; margin: 0; }
+    .reduce-size-container { max-width: 800px; margin: 3em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2em 1.5em 2.5em 1.5em; }
+    .handwritten { font-family: 'Caveat', cursive; }
+
+    .upload-area { border: 3px dashed #D9534F; border-radius: 1em; padding: 3em 2em; text-align: center; margin: 2em 0; background: #FDFBF5; transition: all 0.3s; cursor: pointer; }
+    .upload-area:hover { background: #F0F8FF; border-color: #4682B4; }
+    .upload-area.dragover { background: #F0F8FF; border-color: #4682B4; }
+    .upload-icon { font-size: 3em; color: #D9534F; margin-bottom: 1em; }
+    .file-input { display: none; }
+    .upload-btn { background: #D9534F; color: #fff; border: none; border-radius: 0.5em; padding: 1em 2em; font-weight: 600; cursor: pointer; transition: all 0.2s; display: block; margin: 0.8em auto 0 auto; }
+    .upload-btn:hover { background: #c9302c; }
+
+    .photo-options, .controls-section { display: none; margin: 2em 0; background: #FDFBF5; border-radius: 0.7em; padding: 1.2em; border: 1px solid #FFEAA7; }
+    .form-group, .option-group { margin: 1.2em 0; }
+    .form-label, .option-label { font-weight: 600; margin-bottom: 0.5em; display: block; color: #4682B4; }
+    .option-select, .option-input { width: 100%; padding: 0.8em; border: 2px solid #EAE3D5; border-radius: 0.5em; font-size: 1em; background: #fff; }
+
+    .create-btn { background: #228B22; color: #fff; border: none; border-radius: 0.5em; padding: 1em 2em; font-weight: 600; cursor: pointer; transition: all 0.2s; width: 100%; font-size: 1.1em; }
+    .create-btn:hover { background: #1e7e1e; }
+
+    .result-section { margin-top: 2em; display: none; }
+    .result-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1em; margin: 1em 0; }
+    .result-card { background: #F0F8FF; border: 1px solid #B0C4DE; border-radius: 0.5em; padding: 1em; text-align: center; }
+    .result-card h4 { color: #4682B4; margin: 0 0 0.5em 0; }
+    .result-card .value { font-size: 1.2em; font-weight: bold; color: #D9534F; }
+
+    .preview-comparison { background: #F0FFF0; border: 1px solid #90EE90; border-radius: 0.5em; padding: 1em; margin: 1em 0; }
+    .preview-comparison h4 { color: #228B22; margin: 0 0 0.5em 0; }
+    .preview-images { display: grid; grid-template-columns: 1fr 1fr; gap: 1em; margin: 1em 0; }
+    .preview-container { text-align: center; }
+    .preview-image { max-width: 100%; max-height: 200px; border-radius: 0.5em; margin: 0.5em 0; }
+
+    .download-section { background: #F0F8FF; border: 1px solid #B0C4DE; border-radius: 0.5em; padding: 1em; margin: 1em 0; text-align: center; }
+    .download-btn { background: #4682B4; color: #fff; border: none; border-radius: 0.5em; padding: 1em 2em; font-weight: 600; cursor: pointer; transition: all 0.2s; margin: 0.5em; }
+    .download-btn:hover { background: #357abd; }
+
+    .feature-list { background: #FDFBF5; border-radius: 0.7em; padding: 1.2em; margin: 2em 0; border: 1px solid #FFEAA7; }
+    .recent-tools { background: #F8F9FA; border-radius: 0.7em; padding: 1.2em; margin: 1.5em 0; }
+
+    .progress-bar { background: #F0F8FF; border-radius: 0.5em; margin-top: 1.2em; height: 1.5em; overflow: hidden; border: 1px solid #B0C4DE; position: relative; display: none; }
+    .progress-fill { height: 100%; width: 0; background: linear-gradient(90deg,#D9534F,#F0AD4E,#5BC0DE,#5CB85C,#A569BD); transition: width 0.2s; }
+    .progress-text { position: absolute; left: 50%; top: 0; transform: translateX(-50%); color: #333; font-weight: 600; line-height: 1.5em; font-size: 1em; }
+
+    @media (max-width: 600px) { 
+      .reduce-size-container { padding: 1em 0.2em; }
+      .preview-images { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<main>
+  <div class="reduce-size-container">
+    <header>
+      <h1 class="handwritten text-5xl text-[#D9534F] mb-4">Passport Photo Maker</h1>
+      <p style="font-size:1.2em; margin-bottom:1em;">Create official-sized passport photos (US, UK, Canada, Schengen, India, and more). Fast, privacy-first, and free.</p>
+    </header>
+
+    <nav class="related-links" aria-label="Related image tools">
+      <strong>Related:</strong>
+      <a href="/client/tools/image/resize-image-600x600.html">Resize 600×600</a>
+      <a href="/client/tools/image/resize-image-35mm-45mm.html">35×45mm</a>
+      <a href="/client/tools/image/remove-image-background.html">Remove Background</a>
+      <a href="/client/tools/image/add-name-dob-photo.html">Add Name & DOB</a>
+    </nav>
+
+    <div style="background:#FFF3CD; border:1px solid #FFD700; border-radius:0.7em; padding:1em; margin:1.2em 0; color:#B8860B; font-weight:bold; font-size:1.05em;">
+      🛂 <b>Generate passport-ready photos to exact specifications.</b> Choose country/type, background, and download instantly.
+    </div>
+
+    <section aria-labelledby="instructions-title" style="background: #F8FBFF; border-radius: 0.7em; padding: 1.5em; margin: 2em 0; border: 1px solid #4682B4;">
+      <h2 id="instructions-title" style="color:#4682B4; margin-bottom: 1em; font-size: 1.5em;">How to Use</h2>
+      <ol class="step-list" style="margin-left: 1.5em; line-height: 1.6;">
+        <li><strong style="color: #4682B4">Upload Your Photo:</strong>
+          <ul style="margin: 0.5em 0 0.5em 1.5em; color: #666;">
+            <li>Drag & drop your photo into the upload area</li>
+            <li>Or click "Choose File" to browse</li>
+          </ul>
+        </li>
+        <li><strong style="color: #4682B4">Choose Options:</strong>
+          <ul style="margin: 0.5em 0 0.5em 1.5em; color: #666;">
+            <li>Select Country/Type (e.g., US 2×2 inch, UK 35×45mm)</li>
+            <li>Pick background color (white, light blue, light gray)</li>
+          </ul>
+        </li>
+        <li><strong style="color: #4682B4">Create & Download:</strong>
+          <ul style="margin: 0.5em 0 0.5em 1.5em; color: #666;">
+            <li>Click "Create Passport Photo"</li>
+            <li>Review preview, then download</li>
+          </ul>
+        </li>
+      </ol>
+    </section>
+
+    <section class="example-section" style="background: #FDFBF5; border: 1px solid #FFEAA7; border-radius: 0.7em; padding: 1.5em; margin: 2em 0;">
+      <h3 style="color: #4682B4; margin-bottom: 1em;">Common Uses & Tips</h3>
+      <div style="margin-bottom: 1.2em;">
+        <h4 style="color: #FF6B6B; margin-bottom: 0.5em;">📦 Common Uses</h4>
+        <ul style="color: #666; margin-left: 1.2em;">
+          <li>Passport and visa applications</li>
+          <li>ID cards and official documents</li>
+          <li>Work permit and student ID photos</li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="color: #FF6B6B; margin-bottom: 0.5em;">💡 Pro Tips</h4>
+        <ul style="color: #666; margin-left: 1.2em;">
+          <li>Use a well-lit photo with a neutral expression</li>
+          <li>Ensure face is centered and clearly visible</li>
+          <li>Use white/light background for best results</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="privacy-section">
+      <h2 style="color:#D9534F;">Privacy Notice</h2>
+      <div style="background: #FFF3CD; border: 1px solid #FFEAA7; border-radius: 0.5em; padding: 1em; margin: 1em 0; font-size: 0.95em; color: #856404;">
+        <strong>🔒 Your files are never uploaded or stored. All processing happens in your browser.</strong>
+      </div>
+    </section>
+
+    <div class="upload-area" id="upload-area" tabindex="0" aria-label="Upload photo area. Drag and drop or click to select a photo.">
+      <div class="upload-icon" aria-hidden="true">🖼️</div>
+      <h3>Drag & Drop your photo here</h3>
+      <p>or click to browse files</p>
+      <input type="file" id="file-input" class="file-input" accept="image/*" aria-label="Choose image file">
+      <button class="upload-btn" id="choose-file-btn" aria-label="Choose File">Choose File</button>
+      <div class="progress-bar" id="upload-progress-bar">
+        <div class="progress-fill" id="upload-progress-fill"></div>
+        <span class="progress-text" id="upload-progress-text">Uploading: 0%</span>
+      </div>
+    </div>
+
+    <div class="photo-options" id="photo-options">
+      <h3 style="color: #D9534F; margin-bottom: 1em;">Passport Photo Options</h3>
+      <div class="option-group">
+        <label class="option-label">Country/Type:</label>
+        <select id="passport-type" class="option-select">
+          <option value="india">India Passport (35x45mm)</option>
+          <option value="us">US Passport (2x2 inch)</option>
+          <option value="uk">UK Passport (35x45mm)</option>
+          <option value="canada">Canada Passport (50x70mm)</option>
+          <option value="australia">Australia Passport (35x45mm)</option>
+          <option value="schengen">Schengen Visa (35x45mm)</option>
+          <option value="custom">Custom Size</option>
+        </select>
+      </div>
+      <div class="option-group" id="custom-size-group" style="display:none;">
+        <label class="option-label">Custom Size (pixels):</label>
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 1em;">
+          <input type="number" id="custom-width" class="option-input" placeholder="Width (px)" min="100" max="3000" step="1">
+          <input type="number" id="custom-height" class="option-input" placeholder="Height (px)" min="100" max="3000" step="1">
+        </div>
+        <small style="color:#666; display:block; margin-top:4px;">Enter values between 100 and 3000 pixels</small>
+      </div>
+      <div class="option-group">
+        <label class="option-label">Background Color:</label>
+        <select id="bg-color" class="option-select">
+          <option value="white">White</option>
+          <option value="blue">Light Blue</option>
+          <option value="gray">Light Gray</option>
+        </select>
+      </div>
+      <button class="create-btn" id="create-photo-btn">Create Passport Photo</button>
+    </div>
+
+    <div class="result-section" id="result-section">
+      <div class="result-grid" id="result-grid"></div>
+      <div class="preview-comparison" id="preview-comparison"></div>
+      <div class="download-section" id="download-section"></div>
+    </div>
+
+    <section class="feature-list">
+      <h2 style="color: #4682B4; margin-bottom: 1em;">Key Features</h2>
+      <ul style="list-style: none; padding-left: 0;">
+        <li>✓ Official sizes: US, UK, Canada, Schengen, India, and more</li>
+        <li>✓ Background options: white, light blue, light gray</li>
+        <li>✓ Centered scaling to fit exact dimensions</li>
+        <li>✓ Instant preview and JPEG download</li>
+        <li>✓ Works entirely in your browser (privacy-first)</li>
+      </ul>
+    </section>
+
+    <nav class="recent-tools" aria-label="Recently used tools">
+      <strong>Recent Tools:</strong>
+      <div class="recent-tools-list" style="display:inline-block;">
+        <a href="/client/tools/image/resize-image-600x600.html">Resize 600×600</a>
+        <a href="/client/tools/image/image-converter.html">Image Converter</a>
+        <a href="/client/tools/image/image-compressor.html">Image Compressor</a>
+        <span class="separator" style="margin:0 0.5em; color:#999;">•</span>
+        <a href="#" id="clear-recent" style="color:#D9534F; font-size:0.9em;">Clear History</a>
+      </div>
+    </nav>
+  </div>
+</main>
+
+<div id="loading-overlay" style="display:none; position:fixed; z-index:9999; top:0; left:0; width:100vw; height:100vh; background:rgba(255,255,255,0.92); align-items:center; justify-content:center;">
+  <div style="text-align:center;">
+    <div class="scribble-loader" aria-label="Processing, please wait...">
+      <div class="scribble-dot"></div>
+      <div class="scribble-dot"></div>
+      <div class="scribble-dot"></div>
+      <div class="scribble-dot"></div>
+      <div class="scribble-dot"></div>
+    </div>
+    <div style="font-family:'Caveat',cursive; font-size:2.2em; color:#D9534F; margin-top:1.2em;">Creating...</div>
+    <div style="font-size:1.1em; color:#333; margin-top:0.5em;">Please wait while we create your passport photo.</div>
+  </div>
+</div>
+<style>
+.scribble-loader { display:flex; gap:0.5em; justify-content:center; align-items:center; margin-top:2em; }
+.scribble-dot { width: 0.8em; height: 0.8em; background: #D9534F; border-radius: 50%; animation: scribble-bounce 1.4s ease-in-out infinite both; }
+.scribble-dot:nth-child(1){ animation-delay:-0.32s;} .scribble-dot:nth-child(2){ animation-delay:-0.16s;} .scribble-dot:nth-child(3){ animation-delay:0s;} .scribble-dot:nth-child(4){ animation-delay:0.16s;} .scribble-dot:nth-child(5){ animation-delay:0.32s; }
+@keyframes scribble-bounce { 0%,80%,100%{ transform:scale(0);} 40%{ transform:scale(1);} }
+.conversion-success-card { display:flex; flex-direction:column; align-items:center; justify-content:center; background:#E8F5E8; border:2px solid #5CB85C; border-radius:0.7em; padding:1.2em 1em 1.5em 1em; margin-bottom:1em; margin-top:0.5em; box-shadow:0 2px 12px #eae3d5; }
+.success-icon { font-size:2.2em; color:#5CB85C; margin-bottom:0.3em; }
+.success-message { font-size:1.15em; color:#228B22; font-family:'Caveat',cursive; margin-bottom:0.7em; text-align:center; }
+.download-btn { display:inline-block; margin-top:0.5em; margin-bottom:0.2em; font-size:1.08em; padding:0.9em 2em; }
+</style>
+
+<script>
+(function() {
+  'use strict';
+  const uploadArea = document.getElementById('upload-area');
+  const fileInput = document.getElementById('file-input');
+  const chooseFileBtn = document.getElementById('choose-file-btn');
+  const progressBar = document.getElementById('upload-progress-bar');
+  const progressFill = document.getElementById('upload-progress-fill');
+  const progressText = document.getElementById('upload-progress-text');
+  const photoOptions = document.getElementById('photo-options');
+  const createPhotoBtn = document.getElementById('create-photo-btn');
+  const resultSection = document.getElementById('result-section');
+  const resultGrid = document.getElementById('result-grid');
+  const previewComparison = document.getElementById('preview-comparison');
+  const downloadSection = document.getElementById('download-section');
+  const loadingOverlay = document.getElementById('loading-overlay');
+  const typeSelect = document.getElementById('passport-type');
+  const customSizeGroup = document.getElementById('custom-size-group');
+  const customWidthInput = document.getElementById('custom-width');
+  const customHeightInput = document.getElementById('custom-height');
+
+  let uploadedFile = null;
+
+  const passportSpecs = {
+    us: { width: 600, height: 600, name: 'US Passport (2x2 inch)' },
+    uk: { width: 413, height: 531, name: 'UK Passport (35x45mm)' },
+    canada: { width: 591, height: 827, name: 'Canada Passport (50x70mm)' },
+    australia: { width: 413, height: 531, name: 'Australia Passport (35x45mm)' },
+    schengen: { width: 413, height: 531, name: 'Schengen Visa (35x45mm)' },
+    india: { width: 413, height: 531, name: 'India Passport (35x45mm)' },
+    custom: { width: 413, height: 531, name: 'Custom Size' }
+  };
+
+  chooseFileBtn.addEventListener('click', e => { e.preventDefault(); fileInput.click(); });
+  uploadArea.addEventListener('click', e => { if (e.target === uploadArea) fileInput.click(); });
+  uploadArea.addEventListener('dragover', e => { e.preventDefault(); uploadArea.classList.add('dragover'); });
+  uploadArea.addEventListener('dragleave', () => uploadArea.classList.remove('dragover'));
+  uploadArea.addEventListener('drop', e => { e.preventDefault(); uploadArea.classList.remove('dragover'); if (e.dataTransfer.files.length) startUploadProgress(e.dataTransfer.files[0]); });
+  fileInput.addEventListener('change', e => { if (e.target.files.length) { startUploadProgress(e.target.files[0]); fileInput.value=''; } });
+  uploadArea.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') fileInput.click(); });
+  // Toggle custom size inputs when selecting type
+  function toggleCustomSize() { customSizeGroup.style.display = (typeSelect.value === 'custom') ? 'block' : 'none'; }
+  typeSelect.addEventListener('change', toggleCustomSize);
+  toggleCustomSize();
+
+  function startUploadProgress(file) {
+    if (file.size < 10 * 1024) { alert('File size must be at least 10 KB'); return; }
+    if (file.size > 10 * 1024 * 1024) { alert('File size must be less than 10 MB'); return; }
+
+    uploadedFile = file;
+    progressBar.style.display = 'block';
+    progressText.textContent = 'Uploading...';
+    let progress = 0;
+    const timer = setInterval(() => {
+      progress = Math.min(100, progress + Math.random() * 20);
+      progressFill.style.width = progress + '%';
+      progressText.textContent = `Uploading: ${Math.round(progress)}%`;
+      if (progress >= 100) { clearInterval(timer); setTimeout(() => { progressBar.style.display = 'none'; photoOptions.style.display = 'block'; }, 300); }
+    }, 120);
+  }
+
+  createPhotoBtn.addEventListener('click', () => {
+    if (!uploadedFile) return;
+    loadingOverlay.style.display = 'flex'; document.body.style.overflow = 'hidden';
+
+    const type = document.getElementById('passport-type').value;
+    const bg = document.getElementById('bg-color').value;
+    let specs = passportSpecs[type];
+    if (type === 'custom') {
+      const cw = parseInt(customWidthInput.value, 10);
+      const ch = parseInt(customHeightInput.value, 10);
+      if (!cw || !ch || cw < 100 || ch < 100 || cw > 3000 || ch > 3000) {
+        alert('Enter valid custom pixel sizes (100–3000).');
+        finish();
+        return;
+      }
+      specs = { width: cw, height: ch, name: `Custom Size (${cw}x${ch})` };
+    }
+
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    const img = new Image();
+
+    img.onload = function() {
+      canvas.width = specs.width; canvas.height = specs.height;
+      const bgColors = { white: '#FFFFFF', blue: '#E6F3FF', gray: '#F5F5F5' };
+      ctx.fillStyle = bgColors[bg]; ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      const scale = Math.min(canvas.width / img.width, canvas.height / img.height);
+      const w = img.width * scale, h = img.height * scale;
+      const x = (canvas.width - w) / 2, y = (canvas.height - h) / 2;
+      ctx.drawImage(img, x, y, w, h);
+
+      canvas.toBlob(blob => {
+        if (!blob) { alert('Error creating passport photo. Please try again.'); finish(); return; }
+        displayResults(blob, specs);
+        finish();
+      }, 'image/jpeg', 0.9);
+    };
+    img.src = URL.createObjectURL(uploadedFile);
+  });
+
+  function finish() { loadingOverlay.style.display = 'none'; document.body.style.overflow = 'auto'; }
+
+  function displayResults(blob, specs) {
+    const originalSize = (uploadedFile.size / 1024).toFixed(2);
+    const finalSize = (blob.size / 1024).toFixed(2);
+
+    resultGrid.innerHTML = `
+      <div class="result-card"><h4>📏 Dimensions</h4><div class="value">${specs.width} × ${specs.height}px</div></div>
+      <div class="result-card"><h4>📊 Original Size</h4><div class="value">${originalSize} KB</div></div>
+      <div class="result-card"><h4>📊 Final Size</h4><div class="value">${finalSize} KB</div></div>
+    `;
+
+    const originalUrl = URL.createObjectURL(uploadedFile);
+    const finalUrl = URL.createObjectURL(blob);
+    previewComparison.innerHTML = `
+      <h4>🖼️ Before & After Comparison</h4>
+      <div class="preview-images">
+        <div class="preview-container"><h5>Original Photo</h5><img src="${originalUrl}" alt="Original" class="preview-image"><p>${originalSize} KB</p></div>
+        <div class="preview-container"><h5>Passport Photo</h5><img src="${finalUrl}" alt="Passport" class="preview-image"><p>${finalSize} KB</p></div>
+      </div>
+    `;
+
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a'); a.href = url; a.download = `passport_photo_${specs.width}x${specs.height}.jpg`; a.className = 'download-btn'; a.textContent = 'Download Passport Photo';
+    downloadSection.innerHTML = `
+      <div class="conversion-success-card"><div class="success-icon">✅</div><div class="success-message">Your passport photo has been <b>successfully created!</b></div></div>
+    `;
+    downloadSection.appendChild(a);
+    resultSection.style.display = 'block';
+  }
+})();
+
+// Recent tools functionality (shared pattern)
+const RECENT_TOOLS_KEY = 'recentImageTools';
+const MAX_RECENT_TOOLS = 4;
+function initRecentTools() {
+  const currentToolData = { name: 'Passport Photo Maker', url: window.location.pathname };
+  addToRecentTools(currentToolData); updateRecentToolsList();
+  const clearRecentBtn = document.getElementById('clear-recent');
+  if (clearRecentBtn) { clearRecentBtn.onclick = function(e) { e.preventDefault(); localStorage.removeItem(RECENT_TOOLS_KEY); updateRecentToolsList(); }; }
+}
+function addToRecentTools(toolData) {
+  let recentTools = JSON.parse(localStorage.getItem(RECENT_TOOLS_KEY) || '[]');
+  recentTools = recentTools.filter(t => t.url !== toolData.url);
+  recentTools.unshift(toolData); recentTools = recentTools.slice(0, MAX_RECENT_TOOLS);
+  localStorage.setItem(RECENT_TOOLS_KEY, JSON.stringify(recentTools));
+}
+function updateRecentToolsList() {
+  const recentToolsList = document.querySelector('.recent-tools-list'); if (!recentToolsList) return;
+  const recentTools = JSON.parse(localStorage.getItem(RECENT_TOOLS_KEY) || '[]');
+  if (recentTools.length === 0) { recentToolsList.innerHTML = '<span style="color:#666;">No recent tools</span>'; return; }
+  const html = recentTools
+    .filter(t => t.url !== window.location.pathname)
+    .map(t => `<a href="${t.url}">${t.name}</a>`)
+    .join('<span class="separator" style="margin:0 0.5em; color:#999;">•</span>');
+  recentToolsList.innerHTML = html +
+    '<span class="separator" style="margin:0 0.5em; color:#999;">•</span>' +
+    '<a href="#" id="clear-recent" style="color:#D9534F; font-size:0.9em;">Clear History</a>';
+}
+if (document.readyState !== 'loading') { initRecentTools(); } else { document.addEventListener('DOMContentLoaded', initRecentTools); }
+</script>
+</body>
+</html>

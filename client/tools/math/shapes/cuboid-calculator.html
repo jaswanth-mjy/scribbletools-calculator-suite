@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Cuboid Calculator - Volume, Surface Area & Diagonal Calculator | ScribbleTools</title>
+    <meta name="description" content="Calculate cuboid volume, surface area, and diagonal with our comprehensive rectangular prism calculator. Perfect for construction, packaging, storage planning, and geometry homework with instant 3D calculations.">
+    <meta name="keywords" content="cuboid calculator, rectangular prism calculator, cuboid volume calculator, cuboid surface area calculator, 3D shape calculator, box calculator, geometry calculator, construction calculator, packaging calculator, storage calculator, math homework, 3D geometry">
+    <meta name="author" content="ScribbleTools">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://scribbletools.in/client/tools/math/shapes/cuboid-calculator.html">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Free Cuboid Calculator - Volume, Surface Area & Diagonal Calculator">
+    <meta property="og:description" content="Calculate cuboid volume, surface area, and diagonal for rectangular prisms. Perfect for construction, packaging, and geometry projects with instant calculations.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://scribbletools.in/client/tools/math/shapes/cuboid-calculator.html">
+    <meta property="og:image" content="https://scribbletools.in/assets/og-image.svg">
+    <meta property="og:site_name" content="ScribbleTools">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Free Cuboid Calculator - Volume, Surface Area & Diagonal Calculator">
+    <meta name="twitter:description" content="Calculate all cuboid measurements for construction and geometry projects with instant 3D calculations.">
+    <meta name="twitter:image" content="https://scribbletools.in/assets/og-image.svg">
+    
+    <!-- Additional SEO Meta Tags -->
+    <meta name="theme-color" content="#D9534F">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Cuboid Calculator">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    
+    <!-- Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Cuboid Calculator",
+        "description": "Calculate cuboid volume, surface area, and diagonal from length, width, and height dimensions for construction and geometry projects.",
+        "url": "https://scribbletools.in/client/tools/math/shapes/cuboid-calculator.html",
+        "applicationCategory": "EducationalApplication",
+        "operatingSystem": "Any",
+        "permissions": "browser",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "featureList": [
+            "Cuboid volume calculation",
+            "Cuboid surface area calculation",
+            "Space diagonal calculation",
+            "Construction planning",
+            "Packaging estimation",
+            "Storage planning"
+        ]
+    }
+    </script>
+    <style>
+        body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; }
+        .geo-calc-container { max-width: 400px; margin: 3em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2em 1.5em 2.5em 1.5em; }
+        .handwritten { font-family: 'Caveat', cursive; }
+        .geo-calc-label { font-weight: 600; margin-bottom: 0.5em; display: block; }
+        .geo-calc-input, .geo-calc-select { width: 100%; padding: 1em; border: 2px solid #EAE3D5; border-radius: 0.7em; font-size: 1.1em; margin-bottom: 1em; background: #FDFBF5; text-align: center; font-family: 'Fira Code', monospace; }
+        .geo-calc-btn { background: #fff; color: #D9534F; border: 2px solid #D9534F; border-radius: 0.5em; padding: 0.7em 2em; font-weight: 600; font-size: 1.1em; cursor: pointer; transition: all 0.2s; margin-bottom: 1em; }
+        .geo-calc-btn:hover { background: #D9534F; color: #fff; }
+        .geo-calc-result { background: #FDFBF5; border: 2px solid #D9534F; border-radius: 0.7em; padding: 1em; font-size: 1.18em; color: #D9534F; min-height: 1.7em; margin-bottom: 1em; text-align: center; font-family: 'Fira Code', monospace; font-weight: bold; max-height: 300px; overflow-y: auto; word-break: break-word; transition: height 0.2s; }
+        .input-group { margin-bottom: 1em; }
+        .dimension-inputs { display: grid; grid-template-columns: 1fr; gap: 0.5em; }
+        .geo-calc-desc { max-width: fit-content; margin: 2.5em auto 0 auto; background:#FDFBF5; border:2px solid #EAE3D5; border-radius:0.9em; padding:1.2em 1em; font-size:1.08em; color:#333; line-height:1.7; }
+        @media (max-width: 600px) { 
+            .geo-calc-container { padding: 1em 0.2em; }
+        }
+    </style>
+</head>
+<body>
+<div class="geo-calc-container">
+    <h2 class="handwritten text-5xl text-[#D9534F] mb-4">Cuboid Calculator</h2>
+    
+    <div class="input-group">
+        <label class="geo-calc-label">Cuboid Dimensions:</label>
+        <div class="dimension-inputs">
+            <input id="length" class="geo-calc-input" type="number" min="0" step="any" placeholder="Length">
+            <input id="width" class="geo-calc-input" type="number" min="0" step="any" placeholder="Width">
+            <input id="height" class="geo-calc-input" type="number" min="0" step="any" placeholder="Height">
+        </div>
+    </div>
+    
+    <button type="button" class="geo-calc-btn" onclick="calculateCuboid()">Calculate Cuboid</button>
+    <div class="geo-calc-result" id="result">Enter length, width, and height to calculate cuboid properties</div>
+</div>
+
+<div class="geo-calc-desc">
+    <strong style="font-size:1.18em; color:#D9534F;">About the Cuboid Calculator</strong><br><br>
+    Calculate volume and surface areas of a cuboid (rectangular prism) from its three dimensions.<br><br>
+    <b>Formulas:</b>
+    <ul style="margin-left:1.2em; margin-bottom:0.7em;">
+        <li>Volume: <code>V = length × width × height</code></li>
+        <li>Total Surface Area: <code>TSA = 2(lw + wh + hl)</code></li>
+        <li>Lateral Surface Area: <code>LSA = 2h(l + w)</code></li>
+        <li>Space Diagonal: <code>d = √(l² + w² + h²)</code></li>
+    </ul>
+    <b>Use Cases:</b>
+    <ul style="margin-left:1.2em;">
+        <li>Container and packaging calculations</li>
+        <li>Room volume and wall area calculations</li>
+        <li>Material estimation for boxes and tanks</li>
+        <li>Engineering and architectural planning</li>
+    </ul>
+    <b>Why use this calculator?</b> Complete cuboid analysis with detailed calculations and clear results.<br>
+</div>
+
+<script>
+function formatNumber(num) {
+    if (Math.abs(num) < 1e-10) return '0';
+    if (Math.abs(num) >= 1e10) return num.toExponential(6);
+    return parseFloat(num.toFixed(8)).toString();
+}
+
+function calculateCuboid() {
+    const length = parseFloat(document.getElementById('length').value);
+    const width = parseFloat(document.getElementById('width').value);
+    const height = parseFloat(document.getElementById('height').value);
+    
+    if (isNaN(length) || isNaN(width) || isNaN(height) || length <= 0 || width <= 0 || height <= 0) {
+        document.getElementById('result').textContent = 'Please enter positive numbers for all dimensions.';
+        return;
+    }
+    
+    try {
+        const volume = length * width * height;
+        const totalSurfaceArea = 2 * (length * width + width * height + height * length);
+        const lateralSurfaceArea = 2 * height * (length + width);
+        const diagonal = Math.sqrt(length * length + width * width + height * height);
+        
+        const result = `
+<strong>Cuboid Properties:</strong>
+
+• Length: ${formatNumber(length)}
+• Width: ${formatNumber(width)}
+• Height: ${formatNumber(height)}
+• Volume: ${formatNumber(volume)}
+• Total Surface Area: ${formatNumber(totalSurfaceArea)}
+• Lateral Surface Area: ${formatNumber(lateralSurfaceArea)}
+• Space Diagonal: ${formatNumber(diagonal)}
+
+<strong>Calculations:</strong>
+• Volume = l × w × h = ${formatNumber(length)} × ${formatNumber(width)} × ${formatNumber(height)} = ${formatNumber(volume)}
+• TSA = 2(lw + wh + hl) = 2(${formatNumber(length * width)} + ${formatNumber(width * height)} + ${formatNumber(height * length)}) = ${formatNumber(totalSurfaceArea)}
+• LSA = 2h(l + w) = 2 × ${formatNumber(height)} × (${formatNumber(length)} + ${formatNumber(width)}) = ${formatNumber(lateralSurfaceArea)}
+• Diagonal = √(l² + w² + h²) = ${formatNumber(diagonal)}
+        `.trim();
+        
+        document.getElementById('result').innerHTML = result;
+        
+    } catch (error) {
+        document.getElementById('result').textContent = 'Error in calculation. Please check your input.';
+    }
+}
+
+// Allow Enter key to calculate
+['length', 'width', 'height'].forEach(id => {
+    document.getElementById(id).addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+            calculateCuboid();
+        }
+    });
+});
+</script>
+</body>
+</html>

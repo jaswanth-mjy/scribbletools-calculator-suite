@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Primary Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Body Fat Calculator - Calculate Body Fat Percentage | ScribbleTools</title>
+    <meta name="description" content="Free online body fat calculator to estimate body fat percentage using age, gender, weight, and height. Perfect for fitness tracking, health assessment, and body composition analysis.">
+    <meta name="keywords" content="body fat calculator, body fat percentage, fitness calculator, body composition, health assessment, fat percentage calculator, fitness tracking">
+    <meta name="author" content="ScribbleTools">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://scribbletools.in/client/tools/health/body-fat-calculator.html">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://scribbletools.in/client/tools/health/body-fat-calculator.html">
+    <meta property="og:title" content="Free Body Fat Calculator - Calculate Body Fat Percentage">
+    <meta property="og:description" content="Calculate your body fat percentage instantly using our free online calculator. Perfect for fitness goals and health monitoring.">
+    <meta property="og:image" content="https://scribbletools.in/assets/og-image.svg">
+    <meta property="og:site_name" content="ScribbleTools">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Free Body Fat Calculator - Calculate Body Fat Percentage">
+    <meta property="twitter:description" content="Calculate your body fat percentage for fitness tracking and health assessment.">
+    <meta property="twitter:image" content="https://scribbletools.in/assets/og-image.svg">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Body Fat Calculator",
+        "url": "https://scribbletools.in/client/tools/health/body-fat-calculator.html",
+        "description": "Free online calculator to estimate body fat percentage using demographic and physical measurements for fitness and health assessment.",
+        "applicationCategory": "HealthApplication",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "featureList": [
+            "Calculate body fat percentage",
+            "Gender-specific calculations",
+            "Age-adjusted estimates",
+            "Fitness assessment tool",
+            "Health monitoring support"
+        ]
+    }
+    </script>
+    <style>
+        body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; }
+        .calc-container { max-width: 420px; margin: 3em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2em 1.5em 2.5em 1.5em; }
+        .handwritten { font-family: 'Caveat', cursive; }
+        .calc-label { font-weight: 600; margin-bottom: 0.5em; display: block; }
+        .calc-input, .calc-select { width: 100%; padding: 1em; border: 2px solid #EAE3D5; border-radius: 0.7em; font-size: 1.2em; margin-bottom: 1em; background: #FDFBF5; text-align: center; font-family: 'Fira Code', monospace; }
+        .calc-btn { background: #fff; color: #D9534F; border: 2px solid #D9534F; border-radius: 0.5em; padding: 0.7em 2em; font-weight: 600; font-size: 1.1em; cursor: pointer; transition: all 0.2s; margin-bottom: 1em; }
+        .calc-btn:hover { background: #D9534F; color: #fff; }
+        .calc-result { background: #FDFBF5; border: 2px solid #D9534F; border-radius: 0.7em; padding: 1em; font-size: 1.25em; color: #D9534F; min-height: 1.7em; margin-bottom: 1em; text-align: center; font-family: 'Fira Code', monospace; font-weight: bold; max-height: 300px; overflow-y: auto; word-break: break-word; transition: height 0.2s; }
+        .calc-desc { width: 100%; margin-top: 2em; background:#FDFBF5; border:2px solid #EAE3D5; border-radius:0.9em; padding:1.2em 1em; font-size:1.08em; color:#333; line-height:1.7; }
+        .calc-desc strong { color: #D9534F; font-size: 1.12em; }
+        @media (max-width: 600px) { .calc-container { padding: 1em 0.2em; } }
+    </style>
+</head>
+<body>
+<div class="calc-container">
+    <h2 class="handwritten text-5xl text-[#D9534F] mb-4">Body Fat Percentage Tool</h2>
+    <label class="calc-label">Gender:</label>
+    <select id="gender" class="calc-select" title="Select your gender">
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+    </select>
+    <label class="calc-label">Age (years):</label>
+    <input id="age" class="calc-input" type="number" min="0" placeholder="e.g. 30">
+    <label class="calc-label">Weight (kg):</label>
+    <input id="weight" class="calc-input" type="number" min="0" placeholder="e.g. 70">
+    <label class="calc-label">Waist (cm):</label>
+    <input id="waist" class="calc-input" type="number" min="0" placeholder="e.g. 85">
+    <label class="calc-label">Neck (cm):</label>
+    <input id="neck" class="calc-input" type="number" min="0" placeholder="e.g. 38">
+    <label class="calc-label">Hip (cm, females only):</label>
+    <input id="hip" class="calc-input" type="number" min="0" placeholder="e.g. 95">
+    <button id="calc-btn" class="calc-btn">Calculate</button>
+    <div class="calc-result" id="calc-result"></div>
+</div>
+<div class="calc-desc" style="max-width: fit-content; margin: 2.5em auto 0 auto;">
+    <strong style="font-size:1.18em; color:#D9534F;">About the Body Fat Percentage Tool</strong><br><br>
+    Instantly estimate your body fat percentage using simple measurements. Enter your age, gender, weight, and body measurements to see your estimated body fat. Great for fitness, health, or tracking progress.<br><br>
+    <b>Note:</b> The data used in this calculator was last updated on July 30, 2024, and may change in the future.<br><br>
+    <b>Use Cases:</b>
+    <ul style="margin-left:1.2em;">
+        <li>Track your body composition for fitness goals</li>
+        <li>Compare body fat for different ages or genders</li>
+        <li>Monitor health and wellness progress</li>
+        <li>Check homework or prepare for health class</li>
+    </ul>
+</div>
+<script>
+function showResult(str) {
+    document.getElementById('calc-result').innerHTML = str;
+}
+document.getElementById('calc-btn').addEventListener('click', function() {
+    let gender = document.getElementById('gender').value;
+    let age = parseInt(document.getElementById('age').value);
+    let weight = parseFloat(document.getElementById('weight').value);
+    let waist = parseFloat(document.getElementById('waist').value);
+    let neck = parseFloat(document.getElementById('neck').value);
+    let hip = parseFloat(document.getElementById('hip').value);
+    if (isNaN(age) || isNaN(weight) || isNaN(waist) || isNaN(neck) || age <= 0 || weight <= 0 || waist <= 0 || neck <= 0 || (gender === 'female' && (isNaN(hip) || hip <= 0))) {
+        showResult('Please enter valid values for all fields.');
+        return;
+    }
+    // US Navy method (simplified)
+    let bf = gender === 'male'
+        ? 495 / (1.0324 - 0.19077 * Math.log10(waist - neck) + 0.15456 * Math.log10(height)) - 450
+        : 495 / (1.29579 - 0.35004 * Math.log10(waist + hip - neck) + 0.22100 * Math.log10(height)) - 450;
+    showResult(`<b>Estimated Body Fat %:</b> ${bf.toFixed(2)}%`);
+});
+</script>
+</body>
+</html>

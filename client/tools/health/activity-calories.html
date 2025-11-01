@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Activity Calories Calculator - Exercise & Workout Calorie Burn Calculator | ScribbleTools</title>
+    <meta name="description" content="Calculate calories burned during exercise and daily activities with our comprehensive activity calories calculator. Track cardio, strength training, sports, and daily activities for fitness goals.">
+    <meta name="keywords" content="activity calories calculator, exercise calories calculator, calories burned calculator, workout calories, fitness tracker, cardio calories, strength training calories, sports calories, MET calculator, calorie burn, fitness calculator">
+    <meta name="author" content="ScribbleTools">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://scribbletools.in/client/tools/health/activity-calories.html">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Free Activity Calories Calculator - Exercise & Workout Calorie Burn Calculator">
+    <meta property="og:description" content="Calculate calories burned during exercise and activities. Track cardio, strength training, sports, and daily activities for effective fitness planning.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://scribbletools.in/client/tools/health/activity-calories.html">
+    <meta property="og:image" content="https://scribbletools.in/assets/og-image.svg">
+    <meta property="og:site_name" content="ScribbleTools">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Free Activity Calories Calculator - Exercise & Workout Calorie Burn Calculator">
+    <meta name="twitter:description" content="Calculate calories burned during exercise and activities for effective fitness tracking and weight management.">
+    <meta name="twitter:image" content="https://scribbletools.in/assets/og-image.svg">
+    
+    <!-- Additional SEO Meta Tags -->
+    <meta name="theme-color" content="#D9534F">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Activity Calories Calculator">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    
+    <!-- Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Activity Calories Calculator",
+        "description": "Calculate calories burned during various activities and exercises using scientifically validated MET values for fitness tracking and weight management.",
+        "url": "https://scribbletools.in/client/tools/health/activity-calories.html",
+        "applicationCategory": "HealthApplication",
+        "operatingSystem": "Any",
+        "permissions": "browser",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "featureList": [
+            "Exercise calorie calculation",
+            "Activity-based calorie burn",
+            "MET value calculations",
+            "Cardio activity tracking",
+            "Strength training calories",
+            "Sports calorie estimation",
+            "Daily activity calories"
+        ]
+    }
+    </script>
+    <style>
+        body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; }
+        .calc-container { max-width: 420px; margin: 3em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2em 1.5em 2.5em 1.5em; }
+        .handwritten { font-family: 'Caveat', cursive; }
+        .calc-label { font-weight: 600; margin-bottom: 0.5em; display: block; }
+        .calc-input, .calc-select { width: 100%; padding: 1em; border: 2px solid #EAE3D5; border-radius: 0.7em; font-size: 1.2em; margin-bottom: 1em; background: #FDFBF5; text-align: center; font-family: 'Fira Code', monospace; }
+        .calc-btn { background: #fff; color: #D9534F; border: 2px solid #D9534F; border-radius: 0.5em; padding: 0.7em 2em; font-weight: 600; font-size: 1.1em; cursor: pointer; transition: all 0.2s; margin-bottom: 1em; }
+        .calc-btn:hover { background: #D9534F; color: #fff; }
+        .calc-result { background: #FDFBF5; border: 2px solid #D9534F; border-radius: 0.7em; padding: 1em; font-size: 1.25em; color: #D9534F; min-height: 1.7em; margin-bottom: 1em; text-align: center; font-family: 'Fira Code', monospace; font-weight: bold; max-height: 300px; overflow-y: auto; word-break: break-word; transition: height 0.2s; }
+        .calc-desc { width: 100%; margin-top: 2em; background:#FDFBF5; border:2px solid #EAE3D5; border-radius:0.9em; padding:1.2em 1em; font-size:1.08em; color:#333; line-height:1.7; }
+        .calc-desc strong { color: #D9534F; font-size: 1.12em; }
+        @media (max-width: 600px) { .calc-container { padding: 1em 0.2em; } }
+    </style>
+</head>
+<body>
+<div class="calc-container">
+    <h2 class="handwritten text-5xl text-[#D9534F] mb-4">Activity Calories Calculator</h2>
+    <label class="calc-label">Activity Category:</label>
+    <select id="category" class="calc-select" title="Select activity category">
+        <option value="">Select a category</option>
+        <option value="cardio">Cardiovascular</option>
+        <option value="strength">Strength Training</option>
+        <option value="sports">Sports</option>
+        <option value="daily">Daily Activities</option>
+        <option value="outdoor">Outdoor Activities</option>
+        <option value="water">Water Activities</option>
+    </select>
+    <label class="calc-label">Specific Activity:</label>
+    <select id="activity" class="calc-select" title="Select specific activity">
+        <option value="">Select category first</option>
+    </select>
+    <label class="calc-label">Weight (kg):</label>
+    <input id="weight" class="calc-input" type="number" min="0" placeholder="e.g. 70">
+    <label class="calc-label">Duration (minutes):</label>
+    <input id="duration" class="calc-input" type="number" min="0" placeholder="e.g. 30">
+    <button id="calc-btn" class="calc-btn">Calculate Calories</button>
+    <div class="calc-result" id="calc-result"></div>
+</div>
+<div class="calc-desc" style="max-width: fit-content; margin: 2.5em auto 0 auto;">
+    <strong style="font-size:1.18em; color:#D9534F;">About the Activity Calories Calculator</strong><br><br>
+    Calculate calories burned for hundreds of activities using scientifically validated MET values. Choose from cardio, strength training, sports, daily activities, and more.<br><br>
+    <b>Calorie Burn Factors:</b>
+    <ul style="margin-left:1.2em;">
+        <li><b>Body Weight:</b> Heavier individuals burn more calories</li>
+        <li><b>Activity Intensity:</b> Higher METs = more calories burned</li>
+        <li><b>Duration:</b> Longer activities burn more total calories</li>
+        <li><b>Individual Variation:</b> ±10-20% variation is normal</li>
+    </ul><br>
+    <b>Use Cases:</b>
+    <ul style="margin-left:1.2em;">
+        <li>Track calories for weight management goals</li>
+        <li>Compare calorie burn across different activities</li>
+        <li>Plan exercise routines for specific calorie targets</li>
+        <li>Monitor daily activity and energy expenditure</li>
+    </ul>
+</div>
+<script>
+function showResult(str) {
+    document.getElementById('calc-result').innerHTML = str;
+}
+// Activity database with MET values
+const activities = {
+    cardio: {
+        'Walking, slow pace (2 mph)': 2.0,
+        'Walking, moderate pace (3 mph)': 3.0,
+        'Walking, brisk pace (3.5 mph)': 4.0,
+        'Walking, very brisk (4 mph)': 5.0,
+        'Jogging, general': 7.0,
+        'Running, 6 mph': 9.8,
+        'Running, 7 mph': 11.0,
+        'Running, 8 mph': 11.8,
+        'Running, 10 mph': 14.5,
+        'Cycling, leisure (10 mph)': 4.0,
+        'Cycling, moderate (12-14 mph)': 8.0,
+        'Cycling, vigorous (14-16 mph)': 10.0,
+        'Cycling, racing (16-19 mph)': 12.0,
+        'Elliptical trainer, general': 5.0,
+        'Stair climbing machine': 7.0,
+        'Rowing machine, moderate': 7.0,
+        'Rowing machine, vigorous': 8.5
+    },
+    strength: {
+        'Weight lifting, light effort': 3.0,
+        'Weight lifting, moderate effort': 5.0,
+        'Weight lifting, vigorous effort': 6.0,
+        'Bodyweight exercises (push-ups, sit-ups)': 3.8,
+        'Circuit training, general': 8.0,
+        'CrossFit': 5.6,
+        'Calisthenics, moderate': 4.5,
+        'Calisthenics, vigorous': 8.0
+    },
+    sports: {
+        'Basketball, general': 6.5,
+        'Basketball, competitive': 8.0,
+        'Tennis, singles': 8.0,
+        'Tennis, doubles': 6.0,
+        'Soccer, general': 7.0,
+        'Soccer, competitive': 10.0,
+        'Volleyball, recreational': 3.0,
+        'Volleyball, competitive': 6.0,
+        'Golf, carrying clubs': 4.3,
+        'Golf, using cart': 3.5,
+        'Baseball/Softball': 5.0,
+        'Hockey': 8.0,
+        'Martial arts': 10.3
+    },
+    daily: {
+        'Sleeping': 0.9,
+        'Watching TV': 1.3,
+        'Reading': 1.3,
+        'Cooking': 2.5,
+        'Cleaning house, general': 3.3,
+        'Gardening, general': 4.0,
+        'Mowing lawn, walking': 5.5,
+        'Grocery shopping': 2.3,
+        'Playing with children': 4.0,
+        'Dancing, ballroom': 3.0,
+        'Dancing, aerobic': 6.0
+    },
+    outdoor: {
+        'Hiking, cross-country': 6.0,
+        'Rock climbing': 8.0,
+        'Skiing, alpine': 7.0,
+        'Skiing, cross-country': 9.0,
+        'Snowboarding': 5.3,
+        'Kayaking': 5.0,
+        'Canoeing': 4.0,
+        'Fishing': 2.5,
+        'Hunting': 5.0
+    },
+    water: {
+        'Swimming, leisure': 6.0,
+        'Swimming, laps freestyle, slow': 7.0,
+        'Swimming, laps freestyle, fast': 10.0,
+        'Swimming, backstroke': 7.0,
+        'Swimming, breaststroke': 10.0,
+        'Swimming, butterfly': 13.8,
+        'Water aerobics': 4.0,
+        'Water jogging': 9.8,
+        'Surfing': 3.0,
+        'Water skiing': 6.0
+    }
+};
+
+// Update activity dropdown when category changes
+document.getElementById('category').addEventListener('change', function() {
+    const activitySelect = document.getElementById('activity');
+    const category = this.value;
+    
+    // Clear existing options
+    activitySelect.innerHTML = '<option value="">Select an activity</option>';
+    
+    if (category && activities[category]) {
+        Object.keys(activities[category]).forEach(activity => {
+            const option = document.createElement('option');
+            option.value = activities[category][activity];
+            option.textContent = activity;
+            activitySelect.appendChild(option);
+        });
+    }
+});
+
+document.getElementById('calc-btn').addEventListener('click', function() {
+    let activityMets = parseFloat(document.getElementById('activity').value);
+    let weight = parseFloat(document.getElementById('weight').value);
+    let duration = parseFloat(document.getElementById('duration').value);
+    
+    if (isNaN(activityMets) || activityMets <= 0) {
+        showResult('Please select an activity.');
+        return;
+    }
+    
+    if (isNaN(weight) || weight <= 0) {
+        showResult('Please enter a valid weight.');
+        return;
+    }
+    
+    if (isNaN(duration) || duration <= 0) {
+        showResult('Please enter a valid duration.');
+        return;
+    }
+    
+    // Calculate calories: METs × weight (kg) × time (hours)
+    let calories = activityMets * weight * (duration / 60);
+    
+    // Calculate calories per minute
+    let caloriesPerMinute = calories / duration;
+    
+    // Determine intensity level
+    let intensity;
+    if (activityMets < 3.0) intensity = 'Light';
+    else if (activityMets < 6.0) intensity = 'Moderate';
+    else intensity = 'Vigorous';
+    
+    // Get selected activity name
+    let activitySelect = document.getElementById('activity');
+    let activityName = activitySelect.options[activitySelect.selectedIndex].text;
+    
+    let result = `<b>Activity:</b> ${activityName}<br><br>
+                  <b>Total Calories:</b> ${calories.toFixed(0)} kcal<br>
+                  <b>Calories/minute:</b> ${caloriesPerMinute.toFixed(1)} kcal<br>
+                  <b>METs Value:</b> ${activityMets}<br>
+                  <b>Intensity:</b> ${intensity}<br><br>
+                  <b>Duration:</b> ${duration} minutes<br>
+                  <b>Body Weight:</b> ${weight} kg`;
+    
+    showResult(result);
+});
+</script>
+</body>
+</html>

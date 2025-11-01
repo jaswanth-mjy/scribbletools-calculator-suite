@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Retirement Calculator - Free Retirement Planning & Savings Calculator</title>
+    <meta name="description" content="Free retirement calculator to plan your financial future. Calculate how much you need to save for retirement and track your progress toward financial independence.">
+    <meta name="keywords" content="retirement calculator, retirement planning, retirement savings, financial independence, retirement fund calculator, pension planning">
+    <meta name="author" content="ScribbleTools">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://scribbletools.in/client/tools/financial/retirement-calculator.html">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://scribbletools.in/client/tools/financial/retirement-calculator.html">
+    <meta property="og:title" content="Retirement Calculator - Free Retirement Planning & Savings Calculator">
+    <meta property="og:description" content="Plan your retirement with our free calculator. Calculate retirement savings needs and track your progress toward financial independence.">
+    <meta property="og:image" content="https://scribbletools.in/assets/og-image.svg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://scribbletools.in/client/tools/financial/retirement-calculator.html">
+    <meta property="twitter:title" content="Retirement Calculator - Free Retirement Planning & Savings Calculator">
+    <meta property="twitter:description" content="Plan your retirement with our free calculator. Calculate retirement savings needs and financial independence goals.">
+    <meta property="twitter:image" content="https://scribbletools.in/assets/og-image.svg">
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Retirement Calculator",
+      "description": "Free online retirement calculator for planning retirement savings and calculating financial independence goals",
+      "url": "https://scribbletools.in/client/tools/financial/retirement-calculator.html",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Web Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "ScribbleTools"
+      }
+    }
+    </script>
+    <style>
+        body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; }
+        .calc-container { max-width: 420px; margin: 3em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2em 1.5em 2.5em 1.5em; }
+        .handwritten { font-family: 'Caveat', cursive; }
+        .calc-label { font-weight: 600; margin-bottom: 0.5em; display: block; }
+        .calc-input { width: 100%; padding: 1em; border: 2px solid #EAE3D5; border-radius: 0.7em; font-size: 1.2em; margin-bottom: 1em; background: #FDFBF5; text-align: center; font-family: 'Fira Code', monospace; }
+        .calc-btn { background: #fff; color: #D9534F; border: 2px solid #D9534F; border-radius: 0.5em; padding: 0.7em 2em; font-weight: 600; font-size: 1.1em; cursor: pointer; transition: all 0.2s; margin-bottom: 1em; }
+        .calc-btn:hover { background: #D9534F; color: #fff; }
+        .calc-result { background: #FDFBF5; border: 2px solid #D9534F; border-radius: 0.7em; padding: 1em; font-size: 1.25em; color: #D9534F; min-height: 1.7em; margin-bottom: 1em; text-align: center; font-family: 'Fira Code', monospace; font-weight: bold; max-height: 300px; overflow-y: auto; word-break: break-word; transition: height 0.2s; }
+        .calc-desc { width: 100%; margin-top: 2em; background:#FDFBF5; border:2px solid #EAE3D5; border-radius:0.9em; padding:1.2em 1em; font-size:1.08em; color:#333; line-height:1.7; }
+        .calc-desc strong { color: #D9534F; font-size: 1.12em; }
+        @media (max-width: 600px) { .calc-container { padding: 1em 0.2em; } }
+    </style>
+</head>
+<body>
+<div class="calc-container">
+    <h2 class="handwritten text-5xl text-[#D9534F] mb-4">Retirement Calculator</h2>
+    <label class="calc-label">Current Savings ($):</label>
+    <input id="savings" class="calc-input" type="number" min="0" placeholder="e.g. 50000">
+    <label class="calc-label">Annual Contribution ($):</label>
+    <input id="contribution" class="calc-input" type="number" min="0" placeholder="e.g. 6000">
+    <label class="calc-label">Expected Annual Return (%):</label>
+    <input id="rate" class="calc-input" type="number" min="0" step="0.01" placeholder="e.g. 7">
+    <label class="calc-label">Years to Retirement:</label>
+    <input id="years" class="calc-input" type="number" min="1" placeholder="e.g. 25">
+    <button id="calc-btn" class="calc-btn">Calculate</button>
+    <div class="calc-result" id="calc-result"></div>
+</div>
+<div class="calc-desc" style="max-width: fit-content; margin: 2.5em auto 0 auto;">
+    <strong style="font-size:1.18em; color:#D9534F;">About the Retirement Calculator</strong><br><br>
+    Instantly estimate how much you could have saved by retirement, including your current savings, annual contributions, and investment returns. Enter your details to see your future retirement balance. Great for planning, budgeting, or comparing retirement strategies.<br><br>
+    
+    <h3 style="color:#D9534F; margin-top:2em;">How to Use the Retirement Calculator</h3>
+    <ol style="margin-left:1.2em;">
+        <li><strong>Current Savings:</strong> Enter the total amount you currently have saved for retirement</li>
+        <li><strong>Annual Contribution:</strong> Input how much you plan to contribute each year</li>
+        <li><strong>Expected Annual Return:</strong> Enter the expected average annual return on your investments (typically 6-10%)</li>
+        <li><strong>Years to Retirement:</strong> Input how many years until you plan to retire</li>
+        <li><strong>Calculate:</strong> Click to see your projected retirement balance and total contributions</li>
+    </ol>
+    
+    <h3 style="color:#D9534F; margin-top:2em;">Retirement Savings Fundamentals</h3>
+    <div style="background:#f8f9fa; padding:15px; border-radius:5px;">
+        <strong>The Power of Starting Early:</strong><br>
+        • <strong>Compound Interest:</strong> Your money earns returns, which then earn returns<br>
+        • <strong>Time Advantage:</strong> Starting 10 years earlier can double retirement wealth<br>
+        • <strong>Dollar-Cost Averaging:</strong> Regular contributions smooth out market volatility<br>
+        • <strong>Habit Formation:</strong> Early saving builds lifelong financial discipline<br>
+        <em>Example: $200/month from age 25-65 vs $400/month from age 35-65 - same total contributions, but early starter has significantly more wealth!</em>
+    </div>
+    
+    <h3 style="color:#D9534F; margin-top:2em;">Common Retirement Savings Guidelines</h3>
+    <ul style="margin-left:1.2em;">
+        <li><strong>10x Rule:</strong> Save 10-12 times final salary by retirement</li>
+        <li><strong>Age-Based Milestones:</strong> Save 1x salary by 30, 3x by 40, 6x by 50, 8x by 60</li>
+        <li><strong>4% Rule:</strong> Plan to withdraw 4% of retirement savings annually</li>
+        <li><strong>80% Replacement:</strong> Need 80% of pre-retirement income</li>
+        <li><strong>15% Savings Rate:</strong> Save 15% of gross income including employer match</li>
+        <li><strong>50/30/20 Rule:</strong> 50% needs, 30% wants, 20% savings (including retirement)</li>
+    </ul>
+    
+    <h3 style="color:#D9534F; margin-top:2em;">Investment Return Expectations</h3>
+    <div style="background:#f8f9fa; padding:15px; border-radius:5px;">
+        <strong>Historical Market Returns (1926-2023):</strong><br>
+        • <strong>Stocks:</strong> ~10% average annual return (high volatility)<br>
+        • <strong>Bonds:</strong> ~5-6% average annual return (lower volatility)<br>
+        • <strong>Mixed Portfolio:</strong> 7-8% for balanced 60/40 stocks/bonds<br>
+        • <strong>Conservative Estimate:</strong> Use 6-7% for planning purposes<br>
+        • <strong>Inflation Impact:</strong> Real returns ~3-4% after 3% inflation<br>
+        <em>Past performance doesn't guarantee future results - use conservative estimates!</em>
+    </div>
+    
+    <h3 style="color:#D9534F; margin-top:2em;">Types of Retirement Accounts</h3>
+    <ul style="margin-left:1.2em;">
+        <li><strong>401(k):</strong> Employer-sponsored, often with matching (up to $23,000/year in 2024)</li>
+        <li><strong>Traditional IRA:</strong> Tax-deductible contributions, taxed in retirement ($7,000/year limit)</li>
+        <li><strong>Roth IRA:</strong> After-tax contributions, tax-free growth and withdrawals</li>
+        <li><strong>SEP-IRA:</strong> Self-employed retirement accounts (up to 25% of income)</li>
+        <li><strong>403(b):</strong> Non-profit and government employee retirement plans</li>
+        <li><strong>Taxable Accounts:</strong> No contribution limits but no tax advantages</li>
+    </ul>
+    
+    <h3 style="color:#D9534F; margin-top:2em;">Maximizing Employer Benefits</h3>
+    <ul style="margin-left:1.2em;">
+        <li><strong>Company Match:</strong> Always contribute enough to get full employer match</li>
+        <li><strong>Vesting Schedules:</strong> Understand when employer contributions become yours</li>
+        <li><strong>Auto-Escalation:</strong> Increase contributions automatically each year</li>
+        <li><strong>Rollover Strategy:</strong> Move 401(k) when changing jobs to maintain growth</li>
+        <li><strong>Loan Provisions:</strong> Understand 401(k) loan rules and risks</li>
+        <li><strong>Investment Options:</strong> Choose low-fee funds within your plan</li>
+    </ul>
+    
+    <h3 style="color:#D9534F; margin-top:2em;">Age-Based Investment Strategies</h3>
+    <div style="background:#f8f9fa; padding:15px; border-radius:5px;">
+        <strong>Asset Allocation by Life Stage:</strong><br><br>
+        <strong>20s-30s (Growth Phase):</strong><br>
+        • 80-90% stocks, 10-20% bonds<br>
+        • Focus on growth and long-term wealth building<br><br>
+        <strong>40s-50s (Accumulation Phase):</strong><br>
+        • 70-80% stocks, 20-30% bonds<br>
+        • Balance growth with some stability<br><br>
+        <strong>60s+ (Preservation Phase):</strong><br>
+        • 50-70% stocks, 30-50% bonds<br>
+        • Shift toward income and capital preservation<br>
+        <em>Rule of thumb: Stock percentage = 100 - your age</em>
+    </div>
+    
+    <h3 style="color:#D9534F; margin-top:2em;">Catch-Up Contributions (Age 50+)</h3>
+    <div style="background:#f8f9fa; padding:15px; border-radius:5px;">
+        <strong>2024 Contribution Limits (with catch-up):</strong><br>
+        • <strong>401(k):</strong> $23,000 + $7,500 catch-up = $30,500 total<br>
+        • <strong>Traditional/Roth IRA:</strong> $7,000 + $1,000 catch-up = $8,000 total<br>
+        • <strong>SEP-IRA:</strong> Up to $69,000 (25% of compensation)<br>
+        • <strong>Simple IRA:</strong> $16,000 + $3,500 catch-up = $19,500 total<br>
+        <em>Use catch-up contributions if you're behind on retirement savings!</em>
+    </div>
+    
+    <b>Note:</b> The data used in this calculator was last updated on July 30, 2024, and may change in the future.<br><br>
+    <b>Use Cases:</b>
+    <ul style="margin-left:1.2em;">
+        <li>Plan for retirement and see how your savings can grow</li>
+        <li>Compare different contribution rates or investment returns</li>
+        <li>Check how more years or higher returns affect your retirement</li>
+        <li>Determine if you're on track to meet retirement goals</li>
+        <li>Calculate the impact of starting retirement savings later in life</li>
+        <li>Compare traditional vs Roth IRA contribution strategies</li>
+    </ul>
+</div>
+<script>
+function showResult(str) {
+    document.getElementById('calc-result').innerHTML = str;
+}
+document.getElementById('calc-btn').addEventListener('click', function() {
+    let savings = parseFloat(document.getElementById('savings').value);
+    let contribution = parseFloat(document.getElementById('contribution').value);
+    let rate = parseFloat(document.getElementById('rate').value);
+    let years = parseInt(document.getElementById('years').value);
+    if (isNaN(savings) || isNaN(contribution) || isNaN(rate) || isNaN(years) || savings < 0 || contribution < 0 || rate < 0 || years <= 0) {
+        showResult('Please enter valid values for all fields.');
+        return;
+    }
+    let r = rate / 100;
+    let future = savings * Math.pow(1 + r, years);
+    for (let i = 1; i <= years; i++) {
+        future += contribution * Math.pow(1 + r, years - i);
+    }
+    showResult(`<b>Estimated Retirement Savings:</b> $${future.toFixed(2)}`);
+});
+</script>
+</body>
+</html>

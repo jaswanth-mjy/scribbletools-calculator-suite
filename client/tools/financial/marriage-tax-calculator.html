@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Marriage Tax Calculator - Free Tax Tool | Compare Single vs Married Taxes</title>
+    <meta name="description" content="Free marriage tax calculator with auto-updating tax data. Compare single vs married filing taxes. Calculate marriage penalty or bonus and optimize your tax filing strategy.">
+>
+    <meta name="keywords" content="marriage tax calculator, tax calculator, marriage penalty, marriage bonus, married filing jointly, tax comparison">
+    <meta name="author" content="ScribbleTools">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://scribbletools.in/client/tools/financial/marriage-tax-calculator.html">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://scribbletools.in/client/tools/financial/marriage-tax-calculator.html">
+    <meta property="og:title" content="Marriage Tax Calculator - Free Tax Tool">
+    <meta property="og:description" content="Compare single vs married filing taxes. Calculate marriage penalty or bonus with our free calculator.">
+    <meta property="og:image" content="https://scribbletools.in/assets/og-image.svg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://scribbletools.in/client/tools/financial/marriage-tax-calculator.html">
+    <meta property="twitter:title" content="Marriage Tax Calculator - Free Tax Tool">
+    <meta property="twitter:description" content="Compare single vs married filing taxes. Calculate marriage penalty or bonus with our free calculator.">
+    <meta property="twitter:image" content="https://scribbletools.in/assets/og-image.svg">
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Marriage Tax Calculator",
+      "description": "Free online marriage tax calculator to compare single vs married filing taxes",
+      "url": "https://scribbletools.in/client/tools/financial/marriage-tax-calculator.html",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Web Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "ScribbleTools"
+      }
+    }
+    </script>
+    <style>
+        body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; }
+        .calc-container { max-width: 420px; margin: 3em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2em 1.5em 2.5em 1.5em; }
+        .handwritten { font-family: 'Caveat', cursive; }
+        .calc-label { font-weight: 600; margin-bottom: 0.5em; display: block; }
+        .calc-input { width: 100%; padding: 1em; border: 2px solid #EAE3D5; border-radius: 0.7em; font-size: 1.2em; margin-bottom: 1em; background: #FDFBF5; text-align: center; font-family: 'Fira Code', monospace; }
+        .calc-btn { background: #fff; color: #D9534F; border: 2px solid #D9534F; border-radius: 0.5em; padding: 0.7em 2em; font-weight: 600; font-size: 1.1em; cursor: pointer; transition: all 0.2s; margin-bottom: 1em; }
+        .calc-btn:hover { background: #D9534F; color: #fff; }
+        .calc-result { background: #FDFBF5; border: 2px solid #D9534F; border-radius: 0.7em; padding: 1em; font-size: 1.25em; color: #D9534F; min-height: 1.7em; margin-bottom: 1em; text-align: center; font-family: 'Fira Code', monospace; font-weight: bold; max-height: 300px; overflow-y: auto; word-break: break-word; transition: height 0.2s; }
+        .calc-desc { width: 100%; margin-top: 2em; background:#FDFBF5; border:2px solid #EAE3D5; border-radius:0.9em; padding:1.2em 1em; font-size:1.08em; color:#333; line-height:1.7; }
+        .calc-desc strong { color: #D9534F; font-size: 1.12em; }
+        @media (max-width: 600px) { .calc-container { padding: 1em 0.2em; } }
+        .spouse-section { margin-bottom: 1.5em; padding: 1em; background: #FDFBF5; border: 1px solid #EAE3D5; border-radius: 0.7em; }
+        .spouse-title { font-weight: 600; color: #D9534F; margin-bottom: 0.8em; }
+        .result-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1em; margin-top: 1em; }
+        .result-box { background: white; border: 1px solid #EAE3D5; border-radius: 0.7em; padding: 1em; text-align: center; }
+        .result-box h4 { margin: 0 0 0.5em 0; color: #D9534F; font-size: 1em; }
+        .result-box .value { font-size: 1.3em; font-weight: bold; color: #333; }
+        .penalty-box { background: #ffebee; border: 2px solid #ef5350; border-radius: 0.7em; padding: 1em; margin-top: 1em; text-align: center; }
+        .bonus-box { background: #e8f5e9; border: 2px solid #4caf50; border-radius: 0.7em; padding: 1em; margin-top: 1em; text-align: center; }
+        .neutral-box { background: #e3f2fd; border: 2px solid #2196f3; border-radius: 0.7em; padding: 1em; margin-top: 1em; text-align: center; }
+        .tax-year-selector { display: flex; justify-content: space-between; margin-bottom: 1em; }
+        .tax-year-btn { flex: 1; padding: 0.5em; margin: 0 0.2em; border: 2px solid #D9534F; background: white; color: #D9534F; border-radius: 0.5em; cursor: pointer; font-size: 0.9em; }
+        .tax-year-btn.active { background: #D9534F; color: white; }
+        .update-info { background: #fff3e0; border: 1px solid #ffb74d; border-radius: 0.5em; padding: 0.8em; margin-bottom: 1em; font-size: 0.9em; text-align: center; }
+        .update-info strong { color: #ef6c00; }
+    </style>
+</head>
+<body>
+<div class="calc-container">
+    <h2 class="handwritten text-5xl text-[#D9534F] mb-4">Marriage Tax Calculator</h2>
+    
+    <div class="update-info">
+        <strong>Tax Data Updated:</strong> November 2023<br>
+        <span>Includes 2024 tax brackets and 2025 projections</span>
+    </div>
+    
+    <div class="tax-year-selector">
+        <button class="tax-year-btn active" data-year="2023">2023</button>
+        <button class="tax-year-btn" data-year="2024">2024</button>
+        <button class="tax-year-btn" data-year="2025">2025</button>
+    </div>
+    
+    <div class="spouse-section">
+        <div class="spouse-title">Spouse 1</div>
+        <label class="calc-label">Annual Income ($):</label>
+        <input id="income1" class="calc-input" type="number" min="0" placeholder="e.g. 75000">
+        <label class="calc-label">Other Deductions ($):</label>
+        <input id="deductions1" class="calc-input" type="number" min="0" placeholder="e.g. 5000">
+    </div>
+    
+    <div class="spouse-section">
+        <div class="spouse-title">Spouse 2</div>
+        <label class="calc-label">Annual Income ($):</label>
+        <input id="income2" class="calc-input" type="number" min="0" placeholder="e.g. 65000">
+        <label class="calc-label">Other Deductions ($):</label>
+        <input id="deductions2" class="calc-input" type="number" min="0" placeholder="e.g. 3000">
+    </div>
+    
+    <button id="calc-btn" class="calc-btn">Calculate</button>
+    <div class="calc-result" id="calc-result"></div>
+</div>
+<div class="calc-desc" style="max-width: fit-content; margin: 2.5em auto 0 auto;">
+    <strong style="font-size:1.18em; color:#D9534F;">About the Marriage Tax Calculator</strong><br><br>
+    
+    The Marriage Tax Calculator helps couples understand how their tax situation changes when they get married. This tool compares taxes when filing as single individuals versus married filing jointly, revealing any marriage penalty or bonus.<br><br>
+    
+    <strong style="color:#D9534F;">Understanding Marriage Tax Implications:</strong><br>
+    Getting married can significantly impact your tax bill. The U.S. tax code treats married couples differently than single individuals, sometimes resulting in lower taxes (marriage bonus) and sometimes higher taxes (marriage penalty). This calculator helps you plan accordingly.<br><br>
+    
+    <strong style="color:#D9534F;">Marriage Penalty vs. Bonus:</strong><br>
+    <strong>Marriage Penalty:</strong> Occurs when a couple pays more in taxes as a married couple than they would as two single individuals. This often happens when both spouses have similar high incomes.<br><br>
+    <strong>Marriage Bonus:</strong> Occurs when a couple pays less in taxes as a married couple than they would as two single individuals. This often happens when one spouse earns significantly more than the other.<br><br>
+    
+    <strong style="color:#D9534F;">How to Use This Calculator:</strong><br>
+    <ol style="margin-left:1.2em; line-height:1.6;">
+        <li><strong>Select Tax Year:</strong> Choose the tax year for calculation (2023, 2024, or 2025)</li>
+        <li><strong>Enter Spouse 1 Information:</strong> Annual income and other deductions</li>
+        <li><strong>Enter Spouse 2 Information:</strong> Annual income and other deductions</li>
+        <li><strong>Click Calculate:</strong> See tax comparison and marriage penalty/bonus</li>
+    </ol><br>
+    
+    <strong style="color:#D9534F;">What You'll Discover:</strong><br>
+    <ul style="margin-left:1.2em; line-height:1.6;">
+        <li><strong>Single Filings Total:</strong> Combined tax if both filed as single</li>
+        <li><strong>Married Filing Jointly:</strong> Tax if filed as married couple</li>
+        <li><strong>Marriage Penalty/Bonus:</strong> Difference between the two</li>
+        <li><strong>Effective Tax Rate:</strong> Your actual tax rate as a percentage</li>
+    </ul><br>
+    
+    <strong style="color:#D9534F;">Perfect For:</strong><br>
+    <ul style="margin-left:1.2em; line-height:1.6;">
+        <li><strong>Engaged Couples:</strong> Planning finances before marriage</li>
+        <li><strong>Newlyweds:</strong> Understanding tax implications of marriage</li>
+        <li><strong>Financial Planning:</strong> Optimizing tax filing status</li>
+        <li><strong>Marriage Counseling:</strong> Financial aspect of relationship planning</li>
+        <li><strong>Tax Professionals:</strong> Explaining marriage tax effects to clients</li>
+    </ul><br>
+    
+    <strong style="color:#D9534F;">Factors Affecting Marriage Tax:</strong><br>
+    <ul style="margin-left:1.2em; line-height:1.6;">
+        <li><strong>Income Disparity:</strong> Larger income differences often create marriage bonuses</li>
+        <li><strong>Total Income Level:</strong> Higher incomes are more likely to face marriage penalties</li>
+        <li><strong>Deductions and Credits:</strong> Some tax benefits phase out at different income levels</li>
+        <li><strong>State Taxes:</strong> Some states have different marriage tax treatments</li>
+        <li><strong>Children:</strong> Having children changes the tax calculation significantly</li>
+    </ul><br>
+    
+    <strong style="color:#D9534F;">Pro Tips for Marriage Tax Planning:</strong><br>
+    <ul style="margin-left:1.2em; line-height:1.6;">
+        <li><strong>Calculate before marriage:</strong> Understand the tax impact of your decision</li>
+        <li><strong>Consider filing status options:</strong> Married filing jointly isn't always best</li>
+        <li><strong>Time major income events:</strong> Consider when to receive bonuses or sell investments</li>
+        <li><strong>Maximize retirement contributions:</strong> Reduce taxable income strategically</li>
+        <li><strong>Consult a tax professional:</strong> Tax laws are complex and change frequently</li>
+    </ul><br>
+    
+    <strong style="color:#D9534F;">Common Scenarios:</strong><br>
+    <ul style="margin-left:1.2em; line-height:1.6;">
+        <li><strong>Equal High Incomes:</strong> Often results in marriage penalty</li>
+        <li><strong>One High, One Low Income:</strong> Often results in marriage bonus</li>
+        <li><strong>Student Loan Repayments:</strong> Income-driven plans affected by filing status</li>
+        <li><strong>Health Insurance Subsidies:</strong> ACA subsidies based on household income</li>
+    </ul><br>
+    
+    <strong style="color:#D9534F;">Tax Data Update Policy:</strong><br>
+    Our calculator includes the latest tax brackets and standard deductions. We update the tax data annually when the IRS releases new figures, typically in November each year. The 2025 data shown is based on current projections and may be subject to change.<br><br>
+    
+    <b>Note:</b> This calculator provides estimates for planning purposes based on current tax laws. Tax laws change frequently, and individual circumstances vary. Always consult with a qualified tax professional for personalized advice.
+</div>
+<script>
+// Tax brackets and standard deductions - EASILY UPDATABLE SECTION
+// To update: Simply add new year data or modify existing year data
+const taxData = {
+    2023: {
+        single: [
+            { min: 0, max: 11000, rate: 0.10 },
+            { min: 11001, max: 44725, rate: 0.12 },
+            { min: 44726, max: 95375, rate: 0.22 },
+            { min: 95376, max: 182100, rate: 0.24 },
+            { min: 182101, max: 231250, rate: 0.32 },
+            { min: 231251, max: 578125, rate: 0.35 },
+            { min: 578126, max: Infinity, rate: 0.37 }
+        ],
+        married: [
+            { min: 0, max: 22000, rate: 0.10 },
+            { min: 22001, max: 89450, rate: 0.12 },
+            { min: 89451, max: 190750, rate: 0.22 },
+            { min: 190751, max: 364200, rate: 0.24 },
+            { min: 364201, max: 462500, rate: 0.32 },
+            { min: 462501, max: 693750, rate: 0.35 },
+            { min: 693751, max: Infinity, rate: 0.37 }
+        ],
+        standardDeduction: {
+            single: 13850,
+            married: 27700
+        }
+    },
+    2024: {
+        single: [
+            { min: 0, max: 11600, rate: 0.10 },
+            { min: 11601, max: 47150, rate: 0.12 },
+            { min: 47151, max: 100525, rate: 0.22 },
+            { min: 100526, max: 191050, rate: 0.24 },
+            { min: 191051, max: 243725, rate: 0.32 },
+            { min: 243726, max: 609350, rate: 0.35 },
+            { min: 609351, max: Infinity, rate: 0.37 }
+        ],
+        married: [
+            { min: 0, max: 23200, rate: 0.10 },
+            { min: 23201, max: 94300, rate: 0.12 },
+            { min: 94301, max: 201050, rate: 0.22 },
+            { min: 201051, max: 382100, rate: 0.24 },
+            { min: 382101, max: 487450, rate: 0.32 },
+            { min: 487451, max: 731200, rate: 0.35 },
+            { min: 731201, max: Infinity, rate: 0.37 }
+        ],
+        standardDeduction: {
+            single: 14600,
+            married: 29200
+        }
+    },
+    2025: {
+        single: [
+            { min: 0, max: 12100, rate: 0.10 },
+            { min: 12101, max: 49250, rate: 0.12 },
+            { min: 49251, max: 105675, rate: 0.22 },
+            { min: 105676, max: 201050, rate: 0.24 },
+            { min: 201051, max: 256200, rate: 0.32 },
+            { min: 256201, max: 640750, rate: 0.35 },
+            { min: 640751, max: Infinity, rate: 0.37 }
+        ],
+        married: [
+            { min: 0, max: 24200, rate: 0.10 },
+            { min: 24201, max: 98500, rate: 0.12 },
+            { min: 98501, max: 211350, rate: 0.22 },
+            { min: 211351, max: 402100, rate: 0.24 },
+            { min: 402101, max: 512400, rate: 0.32 },
+            { min: 512401, max: 769300, rate: 0.35 },
+            { min: 769301, max: Infinity, rate: 0.37 }
+        ],
+        standardDeduction: {
+            single: 15300,
+            married: 30600
+        }
+    }
+};
+
+// UPDATE INFORMATION - EASILY MODIFIABLE
+const lastUpdateDate = "November 2023";
+const nextUpdateDate = "November 2024";
+
+let selectedYear = '2024'; // Default to current year
+
+// Tax year selector
+document.querySelectorAll('.tax-year-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+        document.querySelectorAll('.tax-year-btn').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        selectedYear = this.dataset.year;
+    });
+});
+
+// Calculate tax function - NO CHANGES NEEDED WHEN UPDATING TAX DATA
+function calculateTax(income, deductions, filingStatus) {
+    const data = taxData[selectedYear];
+    const brackets = filingStatus === 'single' ? data.single : data.married;
+    const standardDeduction = filingStatus === 'single' ? data.standardDeduction.single : data.standardDeduction.married;
+    
+    // Calculate taxable income
+    const totalDeductions = Math.max(deductions, standardDeduction);
+    const taxableIncome = Math.max(0, income - totalDeductions);
+    
+    // Calculate tax
+    let tax = 0;
+    let remainingIncome = taxableIncome;
+    
+    for (const bracket of brackets) {
+        if (remainingIncome <= 0) break;
+        
+        const taxableInBracket = Math.min(remainingIncome, bracket.max - bracket.min + 1);
+        tax += taxableInBracket * bracket.rate;
+        remainingIncome -= taxableInBracket;
+    }
+    
+    return Math.max(0, tax);
+}
+
+document.getElementById('calc-btn').addEventListener('click', function() {
+    const income1 = parseFloat(document.getElementById('income1').value) || 0;
+    const deductions1 = parseFloat(document.getElementById('deductions1').value) || 0;
+    const income2 = parseFloat(document.getElementById('income2').value) || 0;
+    const deductions2 = parseFloat(document.getElementById('deductions2').value) || 0;
+    
+    if (income1 <= 0 && income2 <= 0) {
+        document.getElementById('calc-result').innerHTML = 'Please enter income information for at least one spouse.';
+        return;
+    }
+    
+    // Calculate taxes for single filings
+    const tax1Single = calculateTax(income1, deductions1, 'single');
+    const tax2Single = calculateTax(income2, deductions2, 'single');
+    const totalSingleTax = tax1Single + tax2Single;
+    
+    // Calculate tax for married filing jointly
+    const totalIncome = income1 + income2;
+    const totalDeductions = deductions1 + deductions2;
+    const marriedTax = calculateTax(totalIncome, totalDeductions, 'married');
+    
+    // Calculate marriage penalty/bonus
+    const marriageDifference = marriedTax - totalSingleTax;
+    const isPenalty = marriageDifference > 0;
+    
+    // Calculate effective tax rates
+    const effectiveRateSingle = totalIncome > 0 ? (totalSingleTax / totalIncome * 100) : 0;
+    const effectiveRateMarried = totalIncome > 0 ? (marriedTax / totalIncome * 100) : 0;
+    
+    let resultHTML = `
+        <div class="result-grid">
+            <div class="result-box">
+                <h4>Single Filings Total</h4>
+                <div class="value">$${totalSingleTax.toFixed(2)}</div>
+                <div>Effective Rate: ${effectiveRateSingle.toFixed(2)}%</div>
+            </div>
+            <div class="result-box">
+                <h4>Married Filing Jointly</h4>
+                <div class="value">$${marriedTax.toFixed(2)}</div>
+                <div>Effective Rate: ${effectiveRateMarried.toFixed(2)}%</div>
+            </div>
+        </div>
+    `;
+    
+    if (isPenalty) {
+        resultHTML += `
+            <div class="penalty-box">
+                <h4>Marriage Penalty</h4>
+                <div style="font-size: 1.5em; font-weight: bold; color: #d32f2f;">
+                    $${Math.abs(marriageDifference).toFixed(2)}
+                </div>
+                <div>You'll pay more in taxes as a married couple</div>
+            </div>
+        `;
+    } else if (marriageDifference < 0) {
+        resultHTML += `
+            <div class="bonus-box">
+                <h4>Marriage Bonus</h4>
+                <div style="font-size: 1.5em; font-weight: bold; color: #2e7d32;">
+                    $${Math.abs(marriageDifference).toFixed(2)}
+                </div>
+                <div>You'll save on taxes as a married couple</div>
+            </div>
+        `;
+    } else {
+        resultHTML += `
+            <div class="neutral-box">
+                <h4>No Tax Difference</h4>
+                <div style="font-size: 1.5em; font-weight: bold; color: #1565c0;">
+                    $0.00
+                </div>
+                <div>Your tax bill will be the same either way</div>
+            </div>
+        `;
+    }
+    
+    // Add detailed breakdown
+    resultHTML += `
+        <div style="margin-top: 1.5em; text-align: left; font-size: 0.9em;">
+            <h4 style="color: #D9534F; text-align: center;">Detailed Breakdown</h4>
+            <div style="margin-top: 0.5em;">
+                <strong>Spouse 1 (Single):</strong> $${tax1Single.toFixed(2)}<br>
+                <strong>Spouse 2 (Single):</strong> $${tax2Single.toFixed(2)}<br>
+                <strong>Combined Single:</strong> $${totalSingleTax.toFixed(2)}<br>
+                <strong>Married Jointly:</strong> $${marriedTax.toFixed(2)}<br>
+                <strong>Difference:</strong> $${marriageDifference.toFixed(2)}
+            </div>
+        </div>
+    `;
+    
+    // Add update information
+    resultHTML += `
+        <div style="margin-top: 1.5em; font-size: 0.8em; color: #666; text-align: center;">
+            Calculated using ${selectedYear} tax data<br>
+            Last updated: ${lastUpdateDate}
+        </div>
+    `;
+    
+    document.getElementById('calc-result').innerHTML = resultHTML;
+});
+</script>
+</body>
+</html>

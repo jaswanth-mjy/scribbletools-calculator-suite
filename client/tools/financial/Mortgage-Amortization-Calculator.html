@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Primary Meta Tags -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mortgage Amortization Calculator | Free Loan Schedule Calculator - Payment Breakdown</title>
+  <meta name="title" content="Mortgage Amortization Calculator | Free Loan Schedule Calculator - Payment Breakdown">
+  <meta name="description" content="Calculate detailed mortgage amortization schedule with principal & interest breakdown. Free mortgage calculator shows payment-by-payment schedule for home loans. Plan your mortgage payments effectively.">
+  <meta name="keywords" content="mortgage amortization calculator, loan amortization, mortgage payment schedule, home loan calculator, principal and interest calculator, mortgage breakdown, loan schedule, real estate calculator, mortgage planning">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="English">
+  <meta name="author" content="Mortgage Amortization Calculator">
+  
+  <!-- Geographic Tags -->
+  <meta name="geo.region" content="US">
+  <meta name="geo.placename" content="United States">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://scribbletools.in/client/tools/financial/Mortgage-Amortization-Calculator.html">
+  <meta property="og:title" content="Mortgage Amortization Calculator | Free Loan Schedule Calculator">
+  <meta property="og:description" content="Calculate detailed mortgage amortization schedule with principal & interest breakdown. Free tool for home buyers and real estate professionals.">
+  <meta property="og:image" content="https://scribbletools.in/assets/og-image.svg">
+  <meta property="og:image:alt" content="Mortgage Amortization Calculator Tool">
+  <meta property="og:site_name" content="All-in-One Tools">
+  <meta property="og:locale" content="en_US">
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://scribbletools.in/client/tools/financial/Mortgage-Amortization-Calculator.html">
+  <meta property="twitter:title" content="Mortgage Amortization Calculator | Free Loan Schedule Calculator">
+  <meta property="twitter:description" content="Calculate detailed mortgage amortization schedule with principal & interest breakdown. Free tool for home buyers.">
+  <meta property="twitter:image" content="https://scribbletools.in/assets/og-image.svg">
+  <meta property="twitter:image:alt" content="Mortgage Amortization Calculator Tool">
+  
+  <!-- Additional SEO Meta Tags -->
+  <meta name="application-name" content="Mortgage Amortization Calculator">
+  <meta name="msapplication-TileColor" content="#228B22">
+  <meta name="theme-color" content="#228B22">
+  <link rel="canonical" href="https://scribbletools.in/client/tools/financial/Mortgage-Amortization-Calculator.html">
+  
+  <!-- Preconnect for Performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+      "@context": "https://schema.org",
+      "@type": ["WebApplication", "SoftwareApplication"],
+      "name": "Mortgage Amortization Calculator",
+      "description": "Calculate detailed mortgage amortization schedules showing payment-by-payment breakdown of principal and interest. Essential tool for home buyers, real estate professionals, and mortgage planning.",
+      "url": "https://scribbletools.in/client/tools/financial/Mortgage-Amortization-Calculator.html",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Web Browser",
+      "permissions": "browser",
+      "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+      },
+      "creator": {
+          "@type": "Organization",
+          "name": "All-in-One Tools"
+      },
+      "featureList": [
+          "Detailed amortization schedule",
+          "Principal and interest breakdown",
+          "Payment-by-payment analysis",
+          "Total interest calculation",
+          "Mortgage planning tool",
+          "Real estate calculations",
+          "Loan schedule generator"
+      ],
+      "keywords": "mortgage amortization, loan schedule, principal interest, home loan calculator, mortgage planning, real estate",
+      "mainEntity": {
+          "@type": "FinancialProduct",
+          "name": "Mortgage Amortization Schedule",
+          "description": "Detailed breakdown of mortgage payments showing how much goes to principal vs interest over the life of the loan"
+      }
+  }
+  </script>
+  
+  <style>
+    .mortgage-amortization-tool body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; }
+    .mortgage-amortization-tool main { display: block; }
+    .mortgage-amortization-tool .reduce-size-container { max-width: 800px; margin: 3em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2em 1.5em 2.5em 1.5em; }
+    .mortgage-amortization-tool .handwritten { font-family: 'Caveat', cursive; }
+    .mortgage-amortization-tool .form-group { margin: 1.2em 0; }
+    .mortgage-amortization-tool .form-label { font-weight: 600; margin-bottom: 0.5em; display: block; color: #4682B4; }
+    .mortgage-amortization-tool .form-input { width: 100%; padding: 0.8em; border: 2px solid #EAE3D5; border-radius: 0.5em; font-size: 1em; margin-bottom: 1em; background: #fff; }
+    .mortgage-amortization-tool .process-btn { background: #228B22; color: #fff; border: none; border-radius: 0.5em; padding: 1em 2em; font-weight: 600; cursor: pointer; transition: all 0.2s; width: 100%; font-size: 1.1em; }
+    .mortgage-amortization-tool .process-btn:hover { background: #1e7e1e; }
+    .mortgage-amortization-tool .clear-btn { background: #6c757d; color: #fff; border: none; border-radius: 0.5em; padding: 0.8em 1.5em; font-weight: 600; cursor: pointer; transition: all 0.2s; margin-top: 1em; }
+    .mortgage-amortization-tool .clear-btn:hover { background: #5a6268; }
+    .mortgage-amortization-tool .results-section { display: none; margin-top: 2em; }
+    .mortgage-amortization-tool .results-section h3 { color: #4682B4; margin-bottom: 1em; }
+    .mortgage-amortization-tool .amortization-table { width: 100%; border-collapse: collapse; margin-top: 1em; }
+    .mortgage-amortization-tool .amortization-table th, .mortgage-amortization-tool .amortization-table td { border: 1px solid #ddd; padding: 8px; text-align: right; }
+    .mortgage-amortization-tool .amortization-table th { background-color: #f2f2f2; }
+    .mortgage-amortization-tool .step-list { margin: 1.2em 0 1.2em 1.2em; padding: 0; }
+    .mortgage-amortization-tool .step-list li { margin-bottom: 0.7em; color: #666; }
+    .mortgage-amortization-tool .step-list li strong { color: #4682B4; }
+  </style>
+</head>
+<body>
+<main>
+  <div class="mortgage-amortization-tool">
+    <div class="reduce-size-container">
+      <header>
+        <h1 style="font-family: 'Caveat', cursive; font-size: 3em; color: #FF6B6B; margin-bottom: 0.5em;">Mortgage Amortization Calculator</h1>
+        <p style="font-size:1.2em; margin-bottom:1em;">See a detailed, payment-by-payment breakdown of your mortgage. Understand how much principal and interest you'll pay over the life of your loan.</p>
+      </header>
+
+      <section aria-labelledby="instructions-title" style="background: #F8FBFF; border-radius: 0.7em; padding: 1.5em; margin: 2em 0; border: 1px solid #4682B4;">
+        <h2 id="instructions-title" style="color:#4682B4; margin-bottom: 1em; font-size: 1.5em;">How to Use</h2>
+        <ol class="step-list" style="margin-left: 1.5em; line-height: 1.6;">
+          <li><strong style="color: #4682B4">Enter Loan Details:</strong>
+            <ul style="margin: 0.5em 0 0.5em 1.5em; color: #666;">
+              <li>Input the total loan amount.</li>
+              <li>Provide the annual interest rate.</li>
+              <li>Specify the loan term in years.</li>
+            </ul>
+          </li>
+          <li><strong style="color: #4682B4">Calculate Schedule:</strong>
+            <ul style="margin: 0.5em 0 0.5em 1.5em; color: #666;">
+              <li>Click "Calculate Amortization" to generate the schedule.</li>
+            </ul>
+          </li>
+          <li><strong style="color: #4682B4">Review Your Results:</strong>
+            <ul style="margin: 0.5em 0 0.5em 1.5em; color: #666;">
+              <li>View the full amortization table showing principal, interest, and balance for each payment.</li>
+            </ul>
+          </li>
+        </ol>
+      </section>
+
+      <div class="tool-interface">
+        <div class="form-group">
+          <label for="loan-amount" class="form-label">Loan Amount ($):</label>
+          <input type="number" id="loan-amount" class="form-input" placeholder="e.g., 300000" />
+        </div>
+        <div class="form-group">
+          <label for="interest-rate" class="form-label">Annual Interest Rate (%):</label>
+          <input type="number" id="interest-rate" class="form-input" placeholder="e.g., 3.5" />
+        </div>
+        <div class="form-group">
+          <label for="loan-term" class="form-label">Loan Term (Years):</label>
+          <input type="number" id="loan-term" class="form-input" placeholder="e.g., 30" />
+        </div>
+        <div class="form-group">
+          <button class="process-btn" id="process-btn">Calculate Amortization</button>
+          <button class="clear-btn" id="clear-btn">Clear</button>
+        </div>
+      </div>
+
+      <div class="results-section" id="results-section">
+        <h3>Amortization Schedule</h3>
+        <div id="summary"></div>
+        <table class="amortization-table">
+          <thead>
+            <tr>
+              <th>Month</th>
+              <th>Principal</th>
+              <th>Interest</th>
+              <th>Total Payment</th>
+              <th>Balance</th>
+            </tr>
+          </thead>
+          <tbody id="amortization-tbody">
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script>
+(function() {
+  'use strict';
+
+  window.initializeMortgageAmortizationTool = function() {
+    init();
+  };
+
+  function init() {
+    document.getElementById('process-btn').onclick = calculateAmortization;
+    document.getElementById('clear-btn').onclick = reset;
+  }
+
+  function reset() {
+    document.getElementById('loan-amount').value = '';
+    document.getElementById('interest-rate').value = '';
+    document.getElementById('loan-term').value = '';
+    document.getElementById('results-section').style.display = 'none';
+    document.getElementById('amortization-tbody').innerHTML = '';
+    document.getElementById('summary').innerHTML = '';
+  }
+
+  function calculateAmortization() {
+    const principal = parseFloat(document.getElementById('loan-amount').value);
+    const annualInterestRate = parseFloat(document.getElementById('interest-rate').value);
+    const years = parseInt(document.getElementById('loan-term').value);
+
+    if (isNaN(principal) || isNaN(annualInterestRate) || isNaN(years) || principal <= 0 || annualInterestRate <= 0 || years <= 0) {
+      alert('Please enter valid positive numbers for all fields.');
+      return;
+    }
+
+    const monthlyInterestRate = annualInterestRate / 100 / 12;
+    const numberOfPayments = years * 12;
+    
+    const monthlyPayment = principal * (monthlyInterestRate * Math.pow(1 + monthlyInterestRate, numberOfPayments)) / (Math.pow(1 + monthlyInterestRate, numberOfPayments) - 1);
+
+    let balance = principal;
+    let totalInterest = 0;
+    const tableBody = document.getElementById('amortization-tbody');
+    tableBody.innerHTML = '';
+
+    for (let i = 1; i <= numberOfPayments; i++) {
+      const interestForMonth = balance * monthlyInterestRate;
+      const principalForMonth = monthlyPayment - interestForMonth;
+      balance -= principalForMonth;
+      totalInterest += interestForMonth;
+
+      const row = `<tr>
+        <td>${i}</td>
+        <td>$${principalForMonth.toFixed(2)}</td>
+        <td>$${interestForMonth.toFixed(2)}</td>
+        <td>$${monthlyPayment.toFixed(2)}</td>
+        <td>$${balance.toFixed(2)}</td>
+      </tr>`;
+      tableBody.innerHTML += row;
+    }
+    
+    const summary = `
+        <p><strong>Monthly Payment:</strong> $${monthlyPayment.toFixed(2)}</p>
+        <p><strong>Total Payments:</strong> $${(monthlyPayment * numberOfPayments).toFixed(2)}</p>
+        <p><strong>Total Interest Paid:</strong> $${totalInterest.toFixed(2)}</p>
+    `;
+    document.getElementById('summary').innerHTML = summary;
+    document.getElementById('results-section').style.display = 'block';
+  }
+
+  if (document.readyState !== 'loading') {
+    setTimeout(init, 50);
+  } else {
+    document.addEventListener('DOMContentLoaded', () => setTimeout(init, 50));
+  }
+
+})();
+</script>
+</body>
+</html>

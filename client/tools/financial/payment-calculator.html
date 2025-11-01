@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Payment Calculator - Free Loan & Mortgage Payment Calculator</title>
+    <meta name="description" content="Free payment calculator for loans and mortgages. Calculate monthly payments, total interest, and payment schedules for any loan amount and interest rate.">
+    <meta name="keywords" content="payment calculator, loan payment calculator, monthly payment calculator, mortgage payment calculator, installment calculator">
+    <meta name="author" content="ScribbleTools">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://scribbletools.in/client/tools/financial/payment-calculator.html">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://scribbletools.in/client/tools/financial/payment-calculator.html">
+    <meta property="og:title" content="Payment Calculator - Free Loan & Mortgage Payment Calculator">
+    <meta property="og:description" content="Calculate loan and mortgage payments with our free payment calculator. Get instant results for monthly payments and total costs.">
+    <meta property="og:image" content="https://scribbletools.in/assets/og-image.svg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://scribbletools.in/client/tools/financial/payment-calculator.html">
+    <meta property="twitter:title" content="Payment Calculator - Free Loan & Mortgage Payment Calculator">
+    <meta property="twitter:description" content="Calculate loan and mortgage payments with our free payment calculator. Instant financial results.">
+    <meta property="twitter:image" content="https://scribbletools.in/assets/og-image.svg">
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Payment Calculator",
+      "description": "Free online payment calculator for calculating monthly loan and mortgage payments, interest costs, and payment schedules",
+      "url": "https://scribbletools.in/client/tools/financial/payment-calculator.html",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Web Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "ScribbleTools"
+      }
+    }
+    </script>
+    <style>
+        body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; }
+        .calc-container { max-width: 420px; margin: 3em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2em 1.5em 2.5em 1.5em; }
+        .handwritten { font-family: 'Caveat', cursive; }
+        .calc-label { font-weight: 600; margin-bottom: 0.5em; display: block; }
+        .calc-input { width: 100%; padding: 1em; border: 2px solid #EAE3D5; border-radius: 0.7em; font-size: 1.2em; margin-bottom: 1em; background: #FDFBF5; text-align: center; font-family: 'Fira Code', monospace; }
+        .calc-btn { background: #fff; color: #D9534F; border: 2px solid #D9534F; border-radius: 0.5em; padding: 0.7em 2em; font-weight: 600; font-size: 1.1em; cursor: pointer; transition: all 0.2s; margin-bottom: 1em; }
+        .calc-btn:hover { background: #D9534F; color: #fff; }
+        .calc-result { background: #FDFBF5; border: 2px solid #D9534F; border-radius: 0.7em; padding: 1em; font-size: 1.25em; color: #D9534F; min-height: 1.7em; margin-bottom: 1em; text-align: center; font-family: 'Fira Code', monospace; font-weight: bold; max-height: 300px; overflow-y: auto; word-break: break-word; transition: height 0.2s; }
+        .calc-desc { width: 100%; margin-top: 2em; background:#FDFBF5; border:2px solid #EAE3D5; border-radius:0.9em; padding:1.2em 1em; font-size:1.08em; color:#333; line-height:1.7; }
+        .calc-desc strong { color: #D9534F; font-size: 1.12em; }
+        @media (max-width: 600px) { .calc-container { padding: 1em 0.2em; } }
+    </style>
+</head>
+<body>
+<div class="calc-container">
+    <h2 class="handwritten text-5xl text-[#D9534F] mb-4">Payment Calculator</h2>
+    <label class="calc-label">Total Amount ($):</label>
+    <input id="amount" class="calc-input" type="number" min="0" placeholder="e.g. 1200">
+    <label class="calc-label">Number of Payments:</label>
+    <input id="payments" class="calc-input" type="number" min="1" placeholder="e.g. 12">
+    <button id="calc-btn" class="calc-btn">Calculate</button>
+    <div class="calc-result" id="calc-result"></div>
+</div>
+
+<div class="calc-desc" style="max-width: fit-content; margin: 2.5em auto 0 auto;">
+    <strong style="font-size:1.18em; color:#D9534F;">About the Payment Calculator</strong><br><br>
+    Instantly split any total amount into equal payments. Enter your total and the number of payments to see how much you'll pay each time. Great for budgeting, loans, subscriptions, or splitting bills.<br><br>
+    
+    <h3 style="color:#D9534F; margin-top:2em;">How to Use the Payment Calculator</h3>
+    <ol style="margin-left:1.2em;">
+        <li><strong>Enter Total Amount:</strong> Input the total cost or bill amount you need to pay</li>
+        <li><strong>Number of Payments:</strong> Enter how many equal payments you want to make</li>
+        <li><strong>Calculate:</strong> See the amount for each individual payment</li>
+        <li><strong>Plan Your Budget:</strong> Use the result to plan your monthly or weekly budget</li>
+    </ol>
+    
+    <h3 style="color:#D9534F; margin-top:2em;">Example Payment Scenarios</h3>
+    <div style="background:#f8f9fa; padding:15px; border-radius:5px;">
+        <strong>Common Payment Situations:</strong><br>
+        • $2,400 annual insurance premium ÷ 12 months = $200/month<br>
+        • $600 vacation cost ÷ 6 months = $100/month savings needed<br>
+        • $3,000 emergency fund ÷ 10 months = $300/month to save<br>
+        • $800 group dinner ÷ 8 people = $100 per person<br>
+        <em>Breaking large amounts into smaller payments makes budgeting easier!</em>
+    </div>
+    
+    <h3 style="color:#D9534F; margin-top:2em;">Types of Payment Plans</h3>
+    <ul style="margin-left:1.2em;">
+        <li><strong>Equal Installments:</strong> Same amount each payment period</li>
+        <li><strong>Interest-Free Financing:</strong> Retailers offer 0% interest payment plans</li>
+        <li><strong>Layaway Programs:</strong> Pay over time before receiving item</li>
+        <li><strong>Subscription Billing:</strong> Monthly or annual recurring payments</li>
+        <li><strong>Installment Loans:</strong> Fixed payments with interest included</li>
+        <li><strong>Buy Now, Pay Later:</strong> Short-term payment plans (2-8 weeks)</li>
+    </ul>
+    
+    <h3 style="color:#D9534F; margin-top:2em;">Payment Frequency Options</h3>
+    <div style="background:#f8f9fa; padding:15px; border-radius:5px;">
+        <strong>How Payment Frequency Affects Budgeting:</strong><br>
+        • Weekly: 52 payments per year (good for tight budgets)<br>
+        • Bi-weekly: 26 payments per year (aligns with paychecks)<br>
+        • Monthly: 12 payments per year (most common)<br>
+        • Quarterly: 4 payments per year (for larger amounts)<br>
+        • Annual: 1 payment per year (often discounted)<br>
+        <em>More frequent payments can make large expenses more manageable!</em>
+    </div>
+    
+    <h3 style="color:#D9534F; margin-top:2em;">Budgeting with Payment Plans</h3>
+    <ul style="margin-left:1.2em;">
+        <li><strong>50/30/20 Rule:</strong> 50% needs, 30% wants, 20% savings and debt payments</li>
+        <li><strong>Track All Payments:</strong> List all recurring and planned payments</li>
+        <li><strong>Emergency Buffer:</strong> Keep extra funds for unexpected expenses</li>
+        <li><strong>Payment Calendar:</strong> Know when each payment is due</li>
+        <li><strong>Automate When Possible:</strong> Set up automatic payments to avoid late fees</li>
+        <li><strong>Review Regularly:</strong> Adjust payment plans as income changes</li>
+    </ul>
+    
+    <h3 style="color:#D9534F; margin-top:2em;">Smart Payment Strategies</h3>
+    <ul style="margin-left:1.2em;">
+        <li><strong>Pay Early When Discounted:</strong> Many services offer discounts for annual payments</li>
+        <li><strong>Avoid Interest:</strong> Use 0% financing instead of credit cards when available</li>
+        <li><strong>Set Up Sinking Funds:</strong> Save monthly for annual expenses</li>
+        <li><strong>Compare Total Costs:</strong> Factor in any fees or interest charges</li>
+        <li><strong>Read the Fine Print:</strong> Understand penalties for missed payments</li>
+        <li><strong>Have a Backup Plan:</strong> Know what happens if you can't make a payment</li>
+    </ul>
+    
+    <h3 style="color:#D9534F; margin-top:2em;">When Payment Plans Make Sense</h3>
+    <div style="background:#f8f9fa; padding:15px; border-radius:5px;">
+        <strong>Good Times to Use Payment Plans:</strong><br>
+        • Large, predictable expenses (insurance, taxes)<br>
+        • Emergency purchases when you lack cash reserves<br>
+        • Taking advantage of 0% interest offers<br>
+        • Budgeting for annual or semi-annual bills<br>
+        • Group purchases or shared expenses<br><br>
+        <strong>When to Avoid Payment Plans:</strong><br>
+        • High interest rates or fees<br>
+        • Unnecessary purchases you can't afford<br>
+        • When you have sufficient emergency funds<br>
+        <em>Payment plans should improve your financial situation, not strain it!</em>
+    </div>
+    
+    <h3 style="color:#D9534F; margin-top:2em;">Digital Payment Tools</h3>
+    <ul style="margin-left:1.2em;">
+        <li><strong>Banking Apps:</strong> Schedule recurring transfers to savings for planned expenses</li>
+        <li><strong>Budgeting Apps:</strong> Track payment due dates and amounts</li>
+        <li><strong>Calendar Reminders:</strong> Set alerts for payment due dates</li>
+        <li><strong>Automatic Payments:</strong> Set up autopay for fixed amounts</li>
+        <li><strong>Split Payment Apps:</strong> Venmo, PayPal for group expenses</li>
+        <li><strong>BNPL Services:</strong> Klarna, Afterpay for short-term payment plans</li>
+    </ul>
+    
+    <h3 style="color:#D9534F; margin-top:2em;">Payment Plan Red Flags</h3>
+    <ul style="margin-left:1.2em;">
+        <li><strong>Hidden Fees:</strong> Setup fees, processing charges, or penalties</li>
+        <li><strong>High Interest Rates:</strong> APR significantly higher than alternatives</li>
+        <li><strong>Aggressive Sales Tactics:</strong> Pressure to sign up immediately</li>
+        <li><strong>No Early Payment Options:</strong> Inability to pay off early without penalties</li>
+        <li><strong>Unclear Terms:</strong> Vague or confusing payment conditions</li>
+        <li><strong>Credit Impact:</strong> Hard credit pulls for simple payment plans</li>
+    </ul>
+    
+    <h3 style="color:#D9534F; margin-top:2em;">Tax and Legal Considerations</h3>
+    <div style="background:#f8f9fa; padding:15px; border-radius:5px;">
+        <strong>Important Considerations:</strong><br>
+        • Business payments may be tax-deductible when paid<br>
+        • Personal payments typically use after-tax dollars<br>
+        • Payment plans may affect credit scores<br>
+        • Consumer protection laws apply to payment plans<br>
+        • Some plans require disclosure like loans<br>
+        • Written agreements protect both parties<br>
+        <em>Understand your rights and obligations before signing payment agreements!</em>
+    </div>
+    
+    <b>Note:</b> The data used in this calculator was last updated on July 30, 2024, and may change in the future. This calculator divides amounts evenly - actual payment plans may include interest or fees.<br><br>
+    <b>Use Cases:</b>
+    <ul style="margin-left:1.2em;">
+        <li>Split large bills or expenses into manageable monthly payments</li>
+        <li>Plan payment schedules for loans, subscriptions, or services</li>
+        <li>Budget for major purchases by calculating required savings amounts</li>
+        <li>Divide group expenses evenly among participants</li>
+        <li>Calculate sinking fund contributions for annual expenses</li>
+        <li>Determine affordability of payment plans and financing options</li>
+    </ul>
+</div>
+<script>
+function showResult(str) {
+    document.getElementById('calc-result').innerHTML = str;
+}
+document.getElementById('calc-btn').addEventListener('click', function() {
+    let amount = parseFloat(document.getElementById('amount').value);
+    let payments = parseInt(document.getElementById('payments').value);
+    if (isNaN(amount) || isNaN(payments) || amount < 0 || payments <= 0) {
+        showResult('Please enter valid values for all fields.');
+        return;
+    }
+    let perPayment = amount / payments;
+    showResult(`<b>Each Payment:</b> $${perPayment.toFixed(2)}`);
+});
+</script>
+</body>
+</html>

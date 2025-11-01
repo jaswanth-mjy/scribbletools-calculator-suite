@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Inflation Calculator - Calculate Inflation Impact on Money & Prices</title>
+    <meta name="description" content="Free inflation calculator to see how inflation affects your money over time. Calculate the purchasing power of money and price changes due to inflation.">
+    <meta name="keywords" content="inflation calculator, inflation rate calculator, purchasing power calculator, cost of living calculator, inflation impact calculator">
+    <meta name="author" content="ScribbleTools">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://scribbletools.in/client/tools/financial/inflation-calculator.html">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://scribbletools.in/client/tools/financial/inflation-calculator.html">
+    <meta property="og:title" content="Inflation Calculator - Calculate Inflation Impact on Money & Prices">
+    <meta property="og:description" content="Calculate how inflation affects your money and purchasing power over time with our free inflation calculator.">
+    <meta property="og:image" content="https://scribbletools.in/assets/og-image.svg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://scribbletools.in/client/tools/financial/inflation-calculator.html">
+    <meta property="twitter:title" content="Inflation Calculator - Calculate Inflation Impact on Money & Prices">
+    <meta property="twitter:description" content="Calculate how inflation affects your money and purchasing power over time. Free inflation calculator.">
+    <meta property="twitter:image" content="https://scribbletools.in/assets/og-image.svg">
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Inflation Calculator",
+      "description": "Free online inflation calculator to calculate the impact of inflation on money purchasing power and price changes over time",
+      "url": "https://scribbletools.in/client/tools/financial/inflation-calculator.html",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Web Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "ScribbleTools"
+      }
+    }
+    </script>
+    <style>
+        body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; }
+        .calc-container { max-width: 420px; margin: 3em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2em 1.5em 2.5em 1.5em; }
+        .handwritten { font-family: 'Caveat', cursive; }
+        .calc-label { font-weight: 600; margin-bottom: 0.5em; display: block; }
+        .calc-input { width: 100%; padding: 1em; border: 2px solid #EAE3D5; border-radius: 0.7em; font-size: 1.2em; margin-bottom: 1em; background: #FDFBF5; text-align: center; font-family: 'Fira Code', monospace; }
+        .calc-btn { background: #fff; color: #D9534F; border: 2px solid #D9534F; border-radius: 0.5em; padding: 0.7em 2em; font-weight: 600; font-size: 1.1em; cursor: pointer; transition: all 0.2s; margin-bottom: 1em; }
+        .calc-btn:hover { background: #D9534F; color: #fff; }
+        .calc-result { background: #FDFBF5; border: 2px solid #D9534F; border-radius: 0.7em; padding: 1em; font-size: 1.25em; color: #D9534F; min-height: 1.7em; margin-bottom: 1em; text-align: center; font-family: 'Fira Code', monospace; font-weight: bold; max-height: 300px; overflow-y: auto; word-break: break-word; transition: height 0.2s; }
+        .calc-desc { width: 100%; margin-top: 2em; background:#FDFBF5; border:2px solid #EAE3D5; border-radius:0.9em; padding:1.2em 1em; font-size:1.08em; color:#333; line-height:1.7; }
+        .calc-desc strong { color: #D9534F; font-size: 1.12em; }
+        @media (max-width: 600px) { .calc-container { padding: 1em 0.2em; } }
+    </style>
+</head>
+<body>
+<div class="calc-container">
+    <h2 class="handwritten text-5xl text-[#D9534F] mb-4">Inflation Calculator</h2>
+    <label class="calc-label">Amount ($):</label>
+    <input id="amount" class="calc-input" type="number" min="0" placeholder="e.g. 100">
+    <label class="calc-label">Start Year:</label>
+    <input id="start" class="calc-input" type="number" min="1900" max="2100" placeholder="e.g. 2000">
+    <label class="calc-label">End Year:</label>
+    <input id="end" class="calc-input" type="number" min="1900" max="2100" placeholder="e.g. 2024">
+    <label class="calc-label">Average Inflation Rate (%):</label>
+    <input id="rate" class="calc-input" type="number" min="0" step="0.01" placeholder="e.g. 2.5">
+    <button id="calc-btn" class="calc-btn">Calculate</button>
+    <div class="calc-result" id="calc-result"></div>
+</div>
+<div class="calc-desc" style="max-width: fit-content; margin: 2.5em auto 0 auto;">
+    <strong style="font-size:1.18em; color:#D9534F;">About the Inflation Calculator</strong><br><br>
+    Instantly see how the value of money changes over time due to inflation. Enter an amount, start year, end year, and average inflation rate to see what your money is worth in the future or past. Great for financial planning, history, or understanding the cost of living.<br><br>
+    
+    <h3 style="color:#D9534F; margin-top:2em;">How to Use the Inflation Calculator</h3>
+    <ol style="margin-left:1.2em;">
+        <li><strong>Enter Amount:</strong> Input the dollar amount you want to calculate</li>
+        <li><strong>Start Year:</strong> Enter the beginning year for your calculation</li>
+        <li><strong>End Year:</strong> Input the ending year you want to compare to</li>
+        <li><strong>Inflation Rate:</strong> Enter the average annual inflation rate (historical average ~2.5%)</li>
+        <li><strong>Calculate:</strong> See the equivalent value adjusted for inflation</li>
+    </ol>
+    
+    <h3 style="color:#D9534F; margin-top:2em;">Understanding Inflation Fundamentals</h3>
+    <div style="background:#f8f9fa; padding:15px; border-radius:5px;">
+        <strong>What Inflation Really Means:</strong><br>
+        • <strong>Purchasing Power Decline:</strong> Your money buys less over time<br>
+        • <strong>Price Level Increases:</strong> General rise in cost of goods and services<br>
+        • <strong>Currency Devaluation:</strong> Each dollar becomes worth less<br>
+        • <strong>Compound Effect:</strong> Small annual increases compound significantly<br>
+        • <strong>Historical Average:</strong> US inflation averages ~2.5-3% annually since 1913<br>
+        <em>A 3% inflation rate means prices double approximately every 23 years!</em>
+    </div>
+    
+    <h3 style="color:#D9534F; margin-top:2em;">Causes of Inflation</h3>
+    <ul style="margin-left:1.2em;">
+        <li><strong>Demand-Pull Inflation:</strong> Too much money chasing too few goods</li>
+        <li><strong>Cost-Push Inflation:</strong> Rising production costs passed to consumers</li>
+        <li><strong>Monetary Policy:</strong> Central bank increasing money supply</li>
+        <li><strong>Supply Chain Disruptions:</strong> Shortages driving up prices</li>
+        <li><strong>Energy Price Increases:</strong> Oil/gas costs affecting all sectors</li>
+        <li><strong>Labor Shortages:</strong> Wage increases leading to higher prices</li>
+        <li><strong>Government Spending:</strong> Excessive spending can fuel inflation</li>
+    </ul>
+    
+    <h3 style="color:#D9534F; margin-top:2em;">Historical Inflation Periods</h3>
+    <div style="background:#f8f9fa; padding:15px; border-radius:5px;">
+        <strong>Notable Inflation Eras in US History:</strong><br><br>
+        <strong>The Great Inflation (1965-1982):</strong><br>
+        • Peak inflation reached 14.8% in 1980<br>
+        • Caused by oil crises and expansionary policies<br>
+        • Required aggressive Fed action to control<br><br>
+        <strong>Post-2008 Financial Crisis (2009-2019):</strong><br>
+        • Unusually low inflation below 2% target<br>
+        • Despite massive monetary stimulus<br><br>
+        <strong>COVID-19 Pandemic (2020-2023):</strong><br>
+        • Inflation reached 9.1% in June 2022<br>
+        • Supply chain issues and fiscal stimulus<br>
+        <em>Understanding these periods helps predict future inflation trends!</em>
+    </div>
+    
+    <h3 style="color:#D9534F; margin-top:2em;">Inflation's Impact on Different Assets</h3>
+    <ul style="margin-left:1.2em;">
+        <li><strong>Cash and Savings:</strong> Lose purchasing power over time</li>
+        <li><strong>Fixed-Rate Debt:</strong> Become easier to pay off (debt decreases in real terms)</li>
+        <li><strong>Real Estate:</strong> Generally appreciates with or above inflation</li>
+        <li><strong>Stocks:</strong> Mixed results - some companies benefit, others hurt</li>
+        <li><strong>Commodities:</strong> Often rise with inflation (gold, oil, food)</li>
+        <li><strong>TIPS (Treasury Inflation-Protected Securities):</strong> Designed to keep pace</li>
+        <li><strong>Foreign Currency:</strong> Relative inflation rates affect exchange rates</li>
+    </ul>
+    
+    <h3 style="color:#D9534F; margin-top:2em;">Protecting Yourself from Inflation</h3>
+    <div style="background:#f8f9fa; padding:15px; border-radius:5px;">
+        <strong>Inflation Hedging Strategies:</strong><br><br>
+        <strong>Investment Approaches:</strong><br>
+        • <strong>Stock Market:</strong> Historically outpaces inflation long-term<br>
+        • <strong>Real Estate:</strong> Property values and rents typically rise with inflation<br>
+        • <strong>Commodities:</strong> Physical goods maintain intrinsic value<br>
+        • <strong>TIPS:</strong> Government bonds that adjust with inflation<br>
+        • <strong>I-Bonds:</strong> Savings bonds with inflation adjustments<br><br>
+        <strong>Practical Strategies:</strong><br>
+        • Lock in fixed-rate debt before rates rise<br>
+        • Negotiate cost-of-living adjustments in salary<br>
+        • Buy durable goods before prices increase<br>
+        <em>Diversification across asset classes provides the best protection!</em>
+    </div>
+    
+    <h3 style="color:#D9534F; margin-top:2em;">Calculating Real vs Nominal Returns</h3>
+    <ul style="margin-left:1.2em;">
+        <li><strong>Nominal Return:</strong> The stated return without adjusting for inflation</li>
+        <li><strong>Real Return:</strong> Return after accounting for inflation's impact</li>
+        <li><strong>Formula:</strong> Real Return = (1 + Nominal Return) ÷ (1 + Inflation Rate) - 1</li>
+        <li><strong>Example:</strong> 7% investment return with 3% inflation = ~3.9% real return</li>
+        <li><strong>Importance:</strong> Real returns show actual purchasing power gains</li>
+        <li><strong>Planning Impact:</strong> Use real returns for long-term financial planning</li>
+    </ul>
+    
+    <h3 style="color:#D9534F; margin-top:2em;">Cost of Living Adjustments (COLA)</h3>
+    <ul style="margin-left:1.2em;">
+        <li><strong>Social Security:</strong> Annual COLA based on Consumer Price Index</li>
+        <li><strong>Government Employees:</strong> Often receive automatic inflation adjustments</li>
+        <li><strong>Union Contracts:</strong> May include COLA clauses for wage protection</li>
+        <li><strong>Rental Agreements:</strong> Some leases have built-in inflation escalators</li>
+        <li><strong>Private Sector:</strong> Varies widely by company and industry</li>
+        <li><strong>Negotiation Strategy:</strong> Request COLA provisions in contracts</li>
+    </ul>
+    
+    <h3 style="color:#D9534F; margin-top:2em;">International Inflation Comparisons</h3>
+    <div style="background:#f8f9fa; padding:15px; border-radius:5px;">
+        <strong>Global Inflation Variations:</strong><br><br>
+        <strong>Developed Countries (2024 targets):</strong><br>
+        • United States: ~2% Federal Reserve target<br>
+        • European Union: ~2% ECB target<br>
+        • Japan: ~2% (historically struggled with deflation)<br>
+        • Canada: 1-3% Bank of Canada range<br><br>
+        <strong>Emerging Markets:</strong><br>
+        • Often experience higher, more volatile inflation<br>
+        • Currency instability can drive inflation<br>
+        • Political factors significantly impact rates<br>
+        <em>Exchange rates between countries reflect relative inflation differences!</em>
+    </div>
+    
+    <h3 style="color:#D9534F; margin-top:2em;">Hyperinflation Warning Signs</h3>
+    <ul style="margin-left:1.2em;">
+        <li><strong>Definition:</strong> Inflation exceeding 50% per month</li>
+        <li><strong>Historical Examples:</strong> Germany 1920s, Zimbabwe 2008, Venezuela 2010s</li>
+        <li><strong>Causes:</strong> Loss of confidence in currency, massive money printing</li>
+        <li><strong>Warning Signs:</strong> Rapid currency devaluation, goods shortages</li>
+        <li><strong>Protection:</strong> Foreign currency, precious metals, foreign assets</li>
+        <li><strong>Recovery:</strong> Usually requires new currency or dramatic policy changes</li>
+    </ul>
+    
+    <h3 style="color:#D9534F; margin-top:2em;">Inflation and Retirement Planning</h3>
+    <div style="background:#f8f9fa; padding:15px; border-radius:5px;">
+        <strong>Long-Term Retirement Considerations:</strong><br>
+        • <strong>30-Year Impact:</strong> 3% inflation makes $1,000 worth ~$412<br>
+        • <strong>Healthcare Inflation:</strong> Often exceeds general inflation rates<br>
+        • <strong>Fixed Income Risk:</strong> Pensions and bonds lose purchasing power<br>
+        • <strong>Planning Strategy:</strong> Assume 2.5-3% annual inflation minimum<br>
+        • <strong>Asset Allocation:</strong> Include inflation-hedging investments<br>
+        • <strong>Withdrawal Strategy:</strong> Plan for increasing expenses over time<br>
+        <em>Inflation is one of the biggest threats to retirement security!</em>
+    </div>
+    
+    <h3 style="color:#D9534F; margin-top:2em;">Business Planning and Inflation</h3>
+    <ul style="margin-left:1.2em;">
+        <li><strong>Pricing Strategy:</strong> Build inflation assumptions into long-term contracts</li>
+        <li><strong>Cost Management:</strong> Monitor supplier price increases closely</li>
+        <li><strong>Wage Planning:</strong> Budget for annual salary increases</li>
+        <li><strong>Investment Decisions:</strong> Consider inflation in NPV calculations</li>
+        <li><strong>Debt Strategy:</strong> Fixed-rate debt becomes cheaper with inflation</li>
+        <li><strong>Inventory Management:</strong> Consider stocking up before price increases</li>
+    </ul>
+    
+    <h3 style="color:#D9534F; margin-top:2em;">Deflation: The Other Side</h3>
+    <ul style="margin-left:1.2em;">
+        <li><strong>Definition:</strong> General decrease in prices over time</li>
+        <li><strong>Causes:</strong> Decreased demand, technological improvements, recession</li>
+        <li><strong>Historical Example:</strong> Great Depression 1930s, Japan 1990s-2000s</li>
+        <li><strong>Economic Danger:</strong> Can create deflationary spiral</li>
+        <li><strong>Debt Impact:</strong> Makes fixed debt more expensive in real terms</li>
+        <li><strong>Policy Response:</strong> Central banks typically fight deflation aggressively</li>
+    </ul>
+    
+    <h3 style="color:#D9534F; margin-top:2em;">Measuring Inflation Accurately</h3>
+    <div style="background:#f8f9fa; padding:15px; border-radius:5px;">
+        <strong>Key Inflation Indicators:</strong><br>
+        • <strong>Consumer Price Index (CPI):</strong> Most common measure, includes housing, food, energy<br>
+        • <strong>Core CPI:</strong> Excludes volatile food and energy prices<br>
+        • <strong>Producer Price Index (PPI):</strong> Wholesale prices, leading indicator<br>
+        • <strong>Personal Consumption Expenditures (PCE):</strong> Fed's preferred measure<br>
+        • <strong>GDP Deflator:</strong> Broadest measure of price changes<br>
+        <em>Different measures can show different inflation rates at the same time!</em>
+    </div>
+    
+    <h3 style="color:#D9534F; margin-top:2em;">Personal Inflation Rate</h3>
+    <ul style="margin-left:1.2em;">
+        <li><strong>Individual Variations:</strong> Your personal inflation may differ from national average</li>
+        <li><strong>Spending Patterns:</strong> Heavy users of inflating categories feel more impact</li>
+        <li><strong>Geographic Differences:</strong> Coastal areas often have higher inflation</li>
+        <li><strong>Age Factors:</strong> Seniors face higher healthcare inflation</li>
+        <li><strong>Income Levels:</strong> Lower incomes more affected by food/energy inflation</li>
+        <li><strong>Tracking Method:</strong> Monitor your own spending categories annually</li>
+    </ul>
+        <li><strong>Causes:</strong> Increased demand, rising production costs, monetary policy</li>
+        <li><strong>Measurement:</strong> Consumer Price Index (CPI) tracks inflation rates</li>
+        <li><strong>Target Rate:</strong> Federal Reserve aims for ~2% annual inflation</li>
+        <li><strong>Impact:</strong> Reduces purchasing power of money over time</li>
+        <li><strong>Deflation:</strong> Opposite effect - prices decrease (rare and problematic)</li>
+    </ul>
+    
+    <h3 style="color:#D9534F; margin-top:2em;">Historical US Inflation Rates</h3>
+    <div style="background:#f8f9fa; padding:15px; border-radius:5px;">
+        <strong>Notable Inflation Periods:</strong><br>
+        • 1970s-1980s: Peak of 13.5% (1980)<br>
+        • 1990s-2000s: Stable 2-3% range<br>
+        • 2008-2015: Very low, near 0% during recession<br>
+        • 2021-2023: Spike to 9.1% peak (2022), returning to normal<br>
+        • Long-term Average: ~2.5% annually since 1913<br>
+        <em>Inflation varies significantly based on economic conditions!</em>
+    </div>
+    
+    <h3 style="color:#D9534F; margin-top:2em;">Protecting Against Inflation</h3>
+    <ul style="margin-left:1.2em;">
+        <li><strong>Invest in Assets:</strong> Stocks, real estate, and commodities typically outpace inflation</li>
+        <li><strong>TIPS (Treasury Inflation-Protected Securities):</strong> Government bonds that adjust with inflation</li>
+        <li><strong>I Bonds:</strong> Savings bonds with inflation adjustment (up to $10,000/year)</li>
+        <li><strong>Real Estate:</strong> Property values and rents often rise with inflation</li>
+        <li><strong>Commodities:</strong> Gold, oil, and agricultural products hedge against inflation</li>
+        <li><strong>Fixed-Rate Debt:</strong> Inflation makes your debt easier to pay off</li>
+    </ul>
+    
+    <h3 style="color:#D9534F; margin-top:2em;">Real vs Nominal Returns</h3>
+    <div style="background:#f8f9fa; padding:15px; border-radius:5px;">
+        <strong>Understanding True Investment Returns:</strong><br>
+        • Nominal Return: What you see on statements (e.g., 8% stock market gain)<br>
+        • Real Return: Adjusted for inflation (8% - 2.5% inflation = 5.5% real gain)<br>
+        • Rule of 72: Money doubles in 72 ÷ inflation rate years due to inflation<br>
+        • At 2.5% inflation: Purchasing power halves every 29 years<br>
+        <em>Always consider inflation when evaluating investment performance!</em>
+    </div>
+    
+    <h3 style="color:#D9534F; margin-top:2em;">Categories Most Affected by Inflation</h3>
+    <ul style="margin-left:1.2em;">
+        <li><strong>Energy:</strong> Gasoline, heating oil, and electricity prices fluctuate significantly</li>
+        <li><strong>Housing:</strong> Rent, home prices, and construction costs rise with inflation</li>
+        <li><strong>Food:</strong> Grocery prices affected by supply chain and weather</li>
+        <li><strong>Healthcare:</strong> Medical costs typically rise faster than general inflation</li>
+        <li><strong>Education:</strong> College tuition has outpaced inflation for decades</li>
+        <li><strong>Transportation:</strong> Vehicle prices and maintenance costs</li>
+    </ul>
+    
+    <h3 style="color:#D9534F; margin-top:2em;">Salary and Inflation Planning</h3>
+    <ul style="margin-left:1.2em;">
+        <li><strong>Annual Raises:</strong> Aim for raises that at least match inflation rate</li>
+        <li><strong>Career Growth:</strong> Skill development helps outpace inflation long-term</li>
+        <li><strong>Cost of Living Adjustments:</strong> Some employers provide automatic COLA increases</li>
+        <li><strong>Fixed vs Variable Income:</strong> Fixed pensions lose value; variable income can adjust</li>
+        <li><strong>Social Security:</strong> Includes automatic cost-of-living adjustments (COLA)</li>
+    </ul>
+    
+    <h3 style="color:#D9534F; margin-top:2em;">Global Inflation Comparison</h3>
+    <div style="background:#f8f9fa; padding:15px; border-radius:5px;">
+        <strong>International Perspective (2023 average):</strong><br>
+        • United States: 4.1%<br>
+        • European Union: 5.5%<br>
+        • Japan: 3.3% (historically very low)<br>
+        • Developing Nations: Often 5-15% annually<br>
+        • Hyperinflation: Venezuela, Zimbabwe experienced extreme cases<br>
+        <em>Stable governments and monetary policy help control inflation!</em>
+    </div>
+    
+    <b>Note:</b> The data used in this calculator was last updated on July 30, 2024, and may change in the future. Use historical averages or current economic forecasts for more accurate projections.<br><br>
+    <b>Use Cases:</b>
+    <ul style="margin-left:1.2em;">
+        <li>Compare the purchasing power of money across different time periods</li>
+        <li>Plan for retirement by understanding how inflation affects savings</li>
+        <li>Calculate real returns on investments after adjusting for inflation</li>
+        <li>Understand historical context of prices from different eras</li>
+        <li>Project future costs for major purchases like homes or education</li>
+        <li>Evaluate whether your salary increases keep pace with cost of living</li>
+    </ul>
+</div>
+<script>
+function showResult(str) {
+    document.getElementById('calc-result').innerHTML = str;
+}
+document.getElementById('calc-btn').addEventListener('click', function() {
+    let amount = parseFloat(document.getElementById('amount').value);
+    let start = parseInt(document.getElementById('start').value);
+    let end = parseInt(document.getElementById('end').value);
+    let rate = parseFloat(document.getElementById('rate').value);
+    if (isNaN(amount) || isNaN(start) || isNaN(end) || isNaN(rate) || amount < 0 || start < 1900 || end < 1900 || rate < 0 || end < start) {
+        showResult('Please enter valid values for all fields.');
+        return;
+    }
+    let years = end - start;
+    let future = amount * Math.pow(1 + rate / 100, years);
+    showResult(`<b>Adjusted Value:</b> $${future.toFixed(2)}`);
+});
+</script>
+</body>
+</html>

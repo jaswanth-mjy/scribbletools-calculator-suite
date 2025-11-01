@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Compound Interest Calculator - Free Investment Growth Calculator</title>
+    <meta name="description" content="Free compound interest calculator to see how your investments grow over time. Calculate compound returns with regular contributions and different compounding frequencies.">
+    <meta name="keywords" content="compound interest calculator, investment calculator, savings growth, compound returns, interest calculator, investment growth calculator">
+    <meta name="author" content="ScribbleTools">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://scribbletools.in/client/tools/financial/compound-interest-calculator.html">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://scribbletools.in/client/tools/financial/compound-interest-calculator.html">
+    <meta property="og:title" content="Compound Interest Calculator - Free Investment Growth Calculator">
+    <meta property="og:description" content="Calculate compound interest and see how your investments grow over time. Free calculator with different compounding frequencies.">
+    <meta property="og:image" content="https://scribbletools.in/assets/og-image.svg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://scribbletools.in/client/tools/financial/compound-interest-calculator.html">
+    <meta property="twitter:title" content="Compound Interest Calculator - Free Investment Growth Calculator">
+    <meta property="twitter:description" content="Calculate compound interest and see how your investments grow over time. Free calculator with instant results.">
+    <meta property="twitter:image" content="https://scribbletools.in/assets/og-image.svg">
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Compound Interest Calculator",
+      "description": "Free online compound interest calculator to calculate investment growth and savings returns over time",
+      "url": "https://scribbletools.in/client/tools/financial/compound-interest-calculator.html",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Web Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "ScribbleTools"
+      }
+    }
+    </script>
+    <style>
+        body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; }
+        .calc-container { max-width: 420px; margin: 3em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2em 1.5em 2.5em 1.5em; }
+        .handwritten { font-family: 'Caveat', cursive; }
+        .calc-label { font-weight: 600; margin-bottom: 0.5em; display: block; }
+        .calc-input { width: 100%; padding: 1em; border: 2px solid #EAE3D5; border-radius: 0.7em; font-size: 1.2em; margin-bottom: 1em; background: #FDFBF5; text-align: center; font-family: 'Fira Code', monospace; }
+        .calc-btn { background: #fff; color: #D9534F; border: 2px solid #D9534F; border-radius: 0.5em; padding: 0.7em 2em; font-weight: 600; font-size: 1.1em; cursor: pointer; transition: all 0.2s; margin-bottom: 1em; }
+        .calc-btn:hover { background: #D9534F; color: #fff; }
+        .calc-result { background: #FDFBF5; border: 2px solid #D9534F; border-radius: 0.7em; padding: 1em; font-size: 1.25em; color: #D9534F; min-height: 1.7em; margin-bottom: 1em; text-align: center; font-family: 'Fira Code', monospace; font-weight: bold; max-height: 300px; overflow-y: auto; word-break: break-word; transition: height 0.2s; }
+        .calc-desc { width: 100%; margin-top: 2em; background:#FDFBF5; border:2px solid #EAE3D5; border-radius:0.9em; padding:1.2em 1em; font-size:1.08em; color:#333; line-height:1.7; }
+        .calc-desc strong { color: #D9534F; font-size: 1.12em; }
+        @media (max-width: 600px) { .calc-container { padding: 1em 0.2em; } }
+    </style>
+</head>
+<body>
+<div class="calc-container">
+    <h2 class="handwritten text-5xl text-[#D9534F] mb-4">Compound Interest Calculator</h2>
+    <label class="calc-label">Principal Amount:</label>
+    <input id="principal" class="calc-input" type="number" min="0" placeholder="e.g. 1000">
+    <label class="calc-label">Interest Rate (% per year):</label>
+    <input id="rate" class="calc-input" type="number" min="0" step="0.01" placeholder="e.g. 5">
+    <label class="calc-label">Years:</label>
+    <input id="years" class="calc-input" type="number" min="1" placeholder="e.g. 10">
+    <label class="calc-label">Compounds per Year:</label>
+    <input id="compounds" class="calc-input" type="number" min="1" placeholder="e.g. 12">
+    <button id="calc-btn" class="calc-btn">Calculate</button>
+    <div class="calc-result" id="calc-result"></div>
+</div>
+<div class="calc-desc" style="max-width: fit-content; margin: 2.5em auto 0 auto;">
+    <strong style="font-size:1.18em; color:#D9534F;">About the Compound Interest Calculator</strong><br><br>
+    
+    The Compound Interest Calculator demonstrates one of the most powerful forces in finance - how your money can grow exponentially over time. Albert Einstein allegedly called compound interest "the eighth wonder of the world," and this tool shows you exactly why by calculating how your investments can multiply through the magic of earning interest on interest.<br><br>
+    
+    <strong style="color:#D9534F;">What is Compound Interest?</strong><br>
+    Compound interest means earning interest not only on your original investment (principal) but also on all the interest you've previously earned. Unlike simple interest, compound interest accelerates your wealth building because your money grows faster each year.<br><br>
+    
+    <strong style="color:#D9534F;">How to Use This Calculator:</strong><br>
+    <ol style="margin-left:1.2em; line-height:1.6;">
+        <li><strong>Initial Amount:</strong> Your starting investment or savings balance</li>
+        <li><strong>Interest Rate:</strong> Annual percentage rate (APR) as a whole number</li>
+        <li><strong>Time Period:</strong> Number of years you'll let your money grow</li>
+        <li><strong>Compounding Frequency:</strong> How often interest is calculated per year:
+            <ul style="margin-left:1em; margin-top:0.5em;">
+                <li>1 = Annually (once per year)</li>
+                <li>2 = Semi-annually (twice per year)</li>
+                <li>4 = Quarterly (four times per year)</li>
+                <li>12 = Monthly (twelve times per year)</li>
+                <li>365 = Daily compounding</li>
+            </ul>
+        </li>
+        <li><strong>Click Calculate:</strong> See your future wealth and total interest earned</li>
+    </ol><br>
+    
+    <strong style="color:#D9534F;">What You'll Discover:</strong><br>
+    <ul style="margin-left:1.2em; line-height:1.6;">
+        <li><strong>Future Value:</strong> How much your investment will be worth</li>
+        <li><strong>Interest Earned:</strong> Total interest gained from compounding</li>
+        <li><strong>Growth Multiplier:</strong> How many times your money multiplied</li>
+        <li><strong>Compounding Power:</strong> Why starting early makes such a huge difference</li>
+    </ul><br>
+    
+    <strong style="color:#D9534F;">Perfect For:</strong><br>
+    <ul style="margin-left:1.2em; line-height:1.6;">
+        <li><strong>Retirement Planning:</strong> See how 401k and IRA investments can grow</li>
+        <li><strong>Education Savings:</strong> Plan for college costs with 529 plans</li>
+        <li><strong>Investment Decisions:</strong> Compare different savings accounts or CDs</li>
+        <li><strong>Long-term Goals:</strong> Calculate savings needed for major purchases</li>
+        <li><strong>Financial Education:</strong> Understand the time value of money</li>
+        <li><strong>Debt Understanding:</strong> See how compound interest works against you in debt</li>
+    </ul><br>
+    
+    <strong style="color:#D9534F;">The Power of Starting Early:</strong><br>
+    <ul style="margin-left:1.2em; line-height:1.6;">
+        <li><strong>Age 25:</strong> $1,000 at 7% for 40 years = $14,974</li>
+        <li><strong>Age 35:</strong> $1,000 at 7% for 30 years = $7,612</li>
+        <li><strong>Age 45:</strong> $1,000 at 7% for 20 years = $3,870</li>
+        <li><strong>Lesson:</strong> Starting 10 years earlier nearly doubles your money!</li>
+    </ul><br>
+    
+    <strong style="color:#D9534F;">Compounding Frequency Impact:</strong><br>
+    <ul style="margin-left:1.2em; line-height:1.6;">
+        <li><strong>$10,000 at 5% for 20 years:</strong></li>
+        <li>Annual compounding: $26,533</li>
+        <li>Monthly compounding: $27,126</li>
+        <li>Daily compounding: $27,183</li>
+        <li><strong>Insight:</strong> Higher frequency helps, but the effect diminishes</li>
+    </ul><br>
+    
+    <strong style="color:#D9534F;">Real-World Applications:</strong><br>
+    <ul style="margin-left:1.2em; line-height:1.6;">
+        <li><strong>High-Yield Savings:</strong> Online banks often compound daily</li>
+        <li><strong>Stock Market:</strong> Historical average ~10% annual return</li>
+        <li><strong>Bonds and CDs:</strong> Typically compound annually or semi-annually</li>
+        <li><strong>Credit Card Debt:</strong> Usually compounds daily (work against you!)</li>
+    </ul><br>
+    
+    <b>Remember:</b> This calculator shows the mathematical power of compound interest. Real investments involve risk and may not provide steady returns. Past performance doesn't guarantee future results, but understanding compounding helps you make better long-term financial decisions.
+</div>
+<script>
+function showResult(str) {
+    document.getElementById('calc-result').innerHTML = str;
+}
+document.getElementById('calc-btn').addEventListener('click', function() {
+    let principal = parseFloat(document.getElementById('principal').value);
+    let rate = parseFloat(document.getElementById('rate').value);
+    let years = parseInt(document.getElementById('years').value);
+    let compounds = parseInt(document.getElementById('compounds').value);
+    if (isNaN(principal) || isNaN(rate) || isNaN(years) || isNaN(compounds) || principal <= 0 || rate < 0 || years <= 0 || compounds <= 0) {
+        showResult('Please enter valid values for all fields.');
+        return;
+    }
+    let r = rate / 100;
+    let fv = principal * Math.pow(1 + r / compounds, compounds * years);
+    showResult(`<b>Future Value:</b> $${fv.toFixed(2)}`);
+});
+</script>
+</body>
+</html>

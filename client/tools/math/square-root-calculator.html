@@ -1,0 +1,140 @@
+<!-- File: tools/math/square-root-calculator.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Primary Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Square Root Calculator - Calculate √ of Any Number | ScribbleTools</title>
+    <meta name="description" content="Free online square root calculator to find the square root (√) of any positive number. Perfect for math homework, engineering calculations, and scientific applications. Instant accurate results.">
+    <meta name="keywords" content="square root calculator, sqrt calculator, radical calculator, math calculator, square root finder, math homework, engineering calculator">
+    <meta name="author" content="ScribbleTools">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://scribbletools.in/client/tools/math/square-root-calculator.html">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://scribbletools.in/client/tools/math/square-root-calculator.html">
+    <meta property="og:title" content="Free Square Root Calculator - Calculate √ of Any Number">
+    <meta property="og:description" content="Calculate square roots instantly with our free online calculator. Perfect for math, engineering, and scientific applications.">
+    <meta property="og:image" content="https://scribbletools.in/assets/og-image.svg">
+    <meta property="og:site_name" content="ScribbleTools">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Free Square Root Calculator - Calculate √ of Any Number">
+    <meta property="twitter:description" content="Calculate square roots instantly. Perfect for math homework and engineering calculations.">
+    <meta property="twitter:image" content="https://scribbletools.in/assets/og-image.svg">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Square Root Calculator",
+        "url": "https://scribbletools.in/client/tools/math/square-root-calculator.html",
+        "description": "Free online calculator to find the square root of any positive number with high precision results.",
+        "applicationCategory": "EducationApplication",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "featureList": [
+            "Calculate square roots of any positive number",
+            "High precision decimal results",
+            "Perfect square identification",
+            "Instant calculation results",
+            "Educational math tool"
+        ]
+    }
+    </script>
+    <style>
+        body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; }
+        .sqrt-calc-container { max-width: 400px; margin: 3em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2em 1.5em 2.5em 1.5em; }
+        .handwritten { font-family: 'Caveat', cursive; }
+        .sqrt-calc-label { font-weight: 600; margin-bottom: 0.5em; display: block; }
+        .sqrt-calc-input { width: 100%; padding: 1em; border: 2px solid #EAE3D5; border-radius: 0.7em; font-size: 1.2em; margin-bottom: 1em; background: #FDFBF5; text-align: center; font-family: 'Fira Code', monospace; }
+        .sqrt-calc-btn { background: #fff; color: #D9534F; border: 2px solid #D9534F; border-radius: 0.5em; padding: 0.7em 2em; font-weight: 600; font-size: 1.1em; cursor: pointer; transition: all 0.2s; margin-bottom: 1em; }
+        .sqrt-calc-btn:hover { background: #D9534F; color: #fff; }
+        .sqrt-calc-result { background: #FDFBF5; border: 2px solid #D9534F; border-radius: 0.7em; padding: 1em; font-size: 1.25em; color: #D9534F; min-height: 1.7em; margin-bottom: 1em; text-align: center; font-family: 'Fira Code', monospace; font-weight: bold; max-height: 300px; overflow-y: auto; word-break: break-word; transition: height 0.2s; }
+        .sqrt-calc-desc { width: 100%; margin-top: 2em; background:#FDFBF5; border:2px solid #EAE3D5; border-radius:0.9em; padding:1.2em 1em; font-size:1.08em; color:#333; line-height:1.7; }
+        .sqrt-calc-desc strong { color: #D9534F; font-size: 1.12em; }
+        @media (max-width: 600px) { .sqrt-calc-container { padding: 1em 0.2em; } }
+    </style>
+</head>
+<body>
+<div class="sqrt-calc-container">
+    <h2 class="handwritten text-5xl text-[#D9534F] mb-4">Square Root Calculator</h2>
+    <label class="sqrt-calc-label">Enter a number to find its square root:</label>
+    <input id="sqrt-input" class="sqrt-calc-input" placeholder="e.g. 25 or 2">
+    <button id="sqrt-calc-calc" class="sqrt-calc-btn">Calculate</button>
+    <div class="sqrt-calc-result" id="sqrt-calc-result"></div>
+</div>
+<div class="sqrt-calc-desc" style="max-width: 540px; margin: 2.5em auto 0 auto; background:#FDFBF5; border:2px solid #EAE3D5; border-radius:0.9em; padding:1.2em 1em; font-size:1.08em; color:#333; line-height:1.7;">
+    <strong style="font-size:1.18em; color:#D9534F;">About the Square Root Calculator</strong><br><br>
+    Enter any positive number to instantly find its square root. Supports decimals and large numbers.<br><br>
+    <b>Features:</b>
+    <ul style="margin-left:1.2em; margin-bottom:0.7em;">
+        <li>Calculates the principal (positive) square root</li>
+        <li>Shows both the exact and decimal result (if possible)</li>
+        <li>Responsive, mobile-friendly, and distraction-free</li>
+        <li>Instant feedback for invalid input or negative numbers</li>
+    </ul>
+    <b>Use Cases:</b>
+    <ul style="margin-left:1.2em;">
+        <li>Find the square root for homework, school, or college</li>
+        <li>Check answers for math class or exams</li>
+        <li>Calculate roots for geometry, physics, or engineering</li>
+        <li>Convert between area and side length for squares</li>
+    </ul>
+    <b>Why use this calculator?</b> No ads, no clutter, no tracking—just a beautiful, reliable square root calculator you can use anywhere.<br>
+</div>
+<script>
+function showResult(str) {
+    document.getElementById('sqrt-calc-result').textContent = str;
+}
+document.getElementById('sqrt-calc-calc').addEventListener('click', function() {
+    let val = document.getElementById('sqrt-input').value.trim();
+    if (!val) return showResult('Enter a number.');
+    
+    let num = parseFloat(val);
+    if (isNaN(num)) return showResult('Invalid input. Please enter a valid number.');
+    if (!isFinite(num)) return showResult('Invalid input. Number must be finite.');
+    if (num < 0) return showResult('No real square root for negative numbers. Result would be imaginary.');
+    
+    let sqrt = Math.sqrt(num);
+    let isExact = Number.isInteger(sqrt);
+    let rounded = Math.round(sqrt * 1000000) / 1000000; // Round to 6 decimal places
+    
+    let result = `√${num} = ${rounded}`;
+    if (isExact) {
+        result += ' (exact integer result)';
+    }
+    
+    // Add some helpful context
+    if (num === 0) {
+        result += ' (square root of zero is zero)';
+    } else if (num === 1) {
+        result += ' (square root of one is one)';
+    } else if (num === 4) {
+        result += ' (perfect square)';
+    } else if (num === 9) {
+        result += ' (perfect square)';
+    } else if (num === 16) {
+        result += ' (perfect square)';
+    } else if (num === 25) {
+        result += ' (perfect square)';
+    } else if (Number.isInteger(sqrt)) {
+        result += ' (perfect square)';
+    }
+    
+    showResult(result);
+});
+document.getElementById('sqrt-input').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') {
+        document.getElementById('sqrt-calc-calc').click();
+    }
+});
+</script>
+</html>

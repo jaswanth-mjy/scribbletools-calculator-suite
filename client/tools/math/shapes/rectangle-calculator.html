@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Rectangle Calculator - Area, Perimeter & Diagonal Calculator | ScribbleTools</title>
+    <meta name="description" content="Calculate rectangle area, perimeter, and diagonal with our free online calculator. Perfect for construction, flooring, gardening, and geometry homework with instant calculations from length and width.">
+    <meta name="keywords" content="rectangle calculator, rectangle area calculator, rectangle perimeter calculator, rectangle diagonal calculator, geometry calculator, area calculator, construction calculator, flooring calculator, room calculator, garden calculator, math homework, geometry formulas">
+    <meta name="author" content="ScribbleTools">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://scribbletools.in/client/tools/math/shapes/rectangle-calculator.html">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Free Rectangle Calculator - Area, Perimeter & Diagonal Calculator">
+    <meta property="og:description" content="Calculate rectangle area, perimeter, and diagonal from length and width. Perfect for construction, flooring projects, and geometry homework.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://scribbletools.in/client/tools/math/shapes/rectangle-calculator.html">
+    <meta property="og:image" content="https://scribbletools.in/assets/og-image.svg">
+    <meta property="og:site_name" content="ScribbleTools">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Free Rectangle Calculator - Area, Perimeter & Diagonal Calculator">
+    <meta name="twitter:description" content="Calculate rectangle measurements for construction and geometry projects with instant results.">
+    <meta name="twitter:image" content="https://scribbletools.in/assets/og-image.svg">
+    
+    <!-- Additional SEO Meta Tags -->
+    <meta name="theme-color" content="#D9534F">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Rectangle Calculator">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    
+    <!-- Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Rectangle Calculator",
+        "description": "Calculate rectangle area, perimeter, and diagonal from length and width dimensions for construction and geometry projects.",
+        "url": "https://scribbletools.in/client/tools/math/shapes/rectangle-calculator.html",
+        "applicationCategory": "EducationalApplication",
+        "operatingSystem": "Any",
+        "permissions": "browser",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "featureList": [
+            "Rectangle area calculation",
+            "Rectangle perimeter calculation",
+            "Rectangle diagonal calculation",
+            "Construction planning",
+            "Flooring estimation",
+            "Geometry homework support"
+        ]
+    }
+    </script>
+    <style>
+        body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; }
+        .geo-calc-container { max-width: 400px; margin: 3em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2em 1.5em 2.5em 1.5em; }
+        .handwritten { font-family: 'Caveat', cursive; }
+        .geo-calc-label { font-weight: 600; margin-bottom: 0.5em; display: block; }
+        .geo-calc-input, .geo-calc-select { width: 100%; padding: 1em; border: 2px solid #EAE3D5; border-radius: 0.7em; font-size: 1.1em; margin-bottom: 1em; background: #FDFBF5; text-align: center; font-family: 'Fira Code', monospace; }
+        .geo-calc-btn { background: #fff; color: #D9534F; border: 2px solid #D9534F; border-radius: 0.5em; padding: 0.7em 2em; font-weight: 600; font-size: 1.1em; cursor: pointer; transition: all 0.2s; margin-bottom: 1em; }
+        .geo-calc-btn:hover { background: #D9534F; color: #fff; }
+        .geo-calc-result { background: #FDFBF5; border: 2px solid #D9534F; border-radius: 0.7em; padding: 1em; font-size: 1.18em; color: #D9534F; min-height: 1.7em; margin-bottom: 1em; text-align: center; font-family: 'Fira Code', monospace; font-weight: bold; max-height: 300px; overflow-y: auto; word-break: break-word; transition: height 0.2s; }
+        .input-group { margin-bottom: 1em; }
+        .input-row { display: flex; gap: 1em; }
+        .input-row .geo-calc-input { flex: 1; }
+        .geo-calc-desc { max-width: fit-content; margin: 2.5em auto 0 auto; background:#FDFBF5; border:2px solid #EAE3D5; border-radius:0.9em; padding:1.2em 1em; font-size:1.08em; color:#333; line-height:1.7; }
+        @media (max-width: 600px) { 
+            .geo-calc-container { padding: 1em 0.2em; }
+            .input-row { flex-direction: column; gap: 0; }
+        }
+    </style>
+</head>
+<body>
+<div class="geo-calc-container">
+    <h2 class="handwritten text-5xl text-[#D9534F] mb-4">Rectangle Calculator</h2>
+    
+    <div class="input-group">
+        <label class="geo-calc-label">Rectangle Dimensions:</label>
+        <div class="input-row">
+            <input id="length" class="geo-calc-input" type="number" min="0" step="any" placeholder="Length">
+            <input id="width" class="geo-calc-input" type="number" min="0" step="any" placeholder="Width">
+        </div>
+    </div>
+    
+    <button type="button" class="geo-calc-btn" onclick="calculateRectangle()">Calculate Rectangle</button>
+    <div class="geo-calc-result" id="result">Enter length and width to calculate rectangle properties</div>
+</div>
+
+<div class="geo-calc-desc">
+    <strong style="font-size:1.18em; color:#D9534F;">About the Rectangle Calculator</strong><br><br>
+    Calculate area and perimeter of a rectangle from length and width dimensions.<br><br>
+    <b>Formulas:</b>
+    <ul style="margin-left:1.2em; margin-bottom:0.7em;">
+        <li>Area: <code>A = length × width</code></li>
+        <li>Perimeter: <code>P = 2(length + width)</code></li>
+        <li>Diagonal: <code>d = √(length² + width²)</code></li>
+    </ul>
+    <b>Use Cases:</b>
+    <ul style="margin-left:1.2em;">
+        <li>Room and floor area calculations</li>
+        <li>Construction and architectural planning</li>
+        <li>Material estimation for rectangular surfaces</li>
+        <li>Geometry homework and educational purposes</li>
+    </ul>
+    <b>Why use this calculator?</b> Quick and accurate rectangle calculations with clear step-by-step results.<br>
+</div>
+
+<script>
+function formatNumber(num) {
+    if (Math.abs(num) < 1e-10) return '0';
+    if (Math.abs(num) >= 1e10) return num.toExponential(6);
+    return parseFloat(num.toFixed(8)).toString();
+}
+
+function calculateRectangle() {
+    const length = parseFloat(document.getElementById('length').value);
+    const width = parseFloat(document.getElementById('width').value);
+    
+    if (isNaN(length) || isNaN(width) || length <= 0 || width <= 0) {
+        document.getElementById('result').textContent = 'Please enter positive numbers for both length and width.';
+        return;
+    }
+    
+    try {
+        const area = length * width;
+        const perimeter = 2 * (length + width);
+        const diagonal = Math.sqrt(length * length + width * width);
+        
+        const result = `
+<strong>Rectangle Properties:</strong>
+
+• Length: ${formatNumber(length)}
+• Width: ${formatNumber(width)}
+• Area: ${formatNumber(area)}
+• Perimeter: ${formatNumber(perimeter)}
+• Diagonal: ${formatNumber(diagonal)}
+
+<strong>Calculations:</strong>
+• Area = length × width = ${formatNumber(length)} × ${formatNumber(width)} = ${formatNumber(area)}
+• Perimeter = 2(length + width) = 2(${formatNumber(length)} + ${formatNumber(width)}) = ${formatNumber(perimeter)}
+• Diagonal = √(length² + width²) = √(${formatNumber(length)}² + ${formatNumber(width)}²) = ${formatNumber(diagonal)}
+        `.trim();
+        
+        document.getElementById('result').innerHTML = result;
+        
+    } catch (error) {
+        document.getElementById('result').textContent = 'Error in calculation. Please check your input.';
+    }
+}
+
+// Allow Enter key to calculate
+document.getElementById('length').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') {
+        calculateRectangle();
+    }
+});
+
+document.getElementById('width').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') {
+        calculateRectangle();
+    }
+});
+</script>
+</body>
+</html>
+</html>

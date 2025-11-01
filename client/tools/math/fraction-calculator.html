@@ -1,0 +1,184 @@
+<!-- File: tools/math/fraction-calculator.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Primary Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Fraction Calculator - Add, Subtract, Multiply, Divide Fractions | ScribbleTools</title>
+    <meta name="description" content="Free online fraction calculator to add, subtract, multiply, and divide fractions. Convert mixed numbers, decimals to fractions, and simplify results. Perfect for homework, cooking, and construction.">
+    <meta name="keywords" content="fraction calculator, add fractions, subtract fractions, multiply fractions, divide fractions, mixed numbers, simplify fractions, math calculator">
+    <meta name="author" content="ScribbleTools">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://scribbletools.in/client/tools/math/fraction-calculator.html">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://scribbletools.in/client/tools/math/fraction-calculator.html">
+    <meta property="og:title" content="Free Fraction Calculator - Add, Subtract, Multiply, Divide Fractions">
+    <meta property="og:description" content="Calculate fractions easily with our free online tool. Add, subtract, multiply, divide fractions and mixed numbers.">
+    <meta property="og:image" content="https://scribbletools.in/assets/og-image.svg">
+    <meta property="og:site_name" content="ScribbleTools">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Free Fraction Calculator - Add, Subtract, Multiply, Divide Fractions">
+    <meta property="twitter:description" content="Calculate fractions easily with our free online tool. Perfect for homework and cooking.">
+    <meta property="twitter:image" content="https://scribbletools.in/assets/og-image.svg">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Fraction Calculator",
+        "url": "https://scribbletools.in/client/tools/math/fraction-calculator.html",
+        "description": "Free online fraction calculator for mathematical operations with fractions, mixed numbers, and decimal conversions.",
+        "applicationCategory": "EducationApplication",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "featureList": [
+            "Add, subtract, multiply, divide fractions",
+            "Handle mixed numbers and improper fractions",
+            "Simplify fractions automatically",
+            "Convert decimals to fractions",
+            "Step-by-step calculations"
+        ]
+    }
+    </script>
+    <style>
+        body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; }
+        .frac-calc-container { max-width: 400px; margin: 3em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2em 1.5em 2.5em 1.5em; }
+        .handwritten { font-family: 'Caveat', cursive; }
+        .frac-calc-label { font-weight: 600; margin-bottom: 0.5em; display: block; }
+        .frac-calc-input { width: 100%; padding: 1em; border: 2px solid #EAE3D5; border-radius: 0.7em; font-size: 1.2em; margin-bottom: 1em; background: #FDFBF5; text-align: center; font-family: 'Fira Code', monospace; }
+        .frac-calc-btn { background: #fff; color: #D9534F; border: 2px solid #D9534F; border-radius: 0.5em; padding: 0.7em 2em; font-weight: 600; font-size: 1.1em; cursor: pointer; transition: all 0.2s; margin-bottom: 1em; }
+        .frac-calc-btn:hover { background: #D9534F; color: #fff; }
+        .frac-calc-result { background: #FDFBF5; border: 2px solid #D9534F; border-radius: 0.7em; padding: 1em; font-size: 1.25em; color: #D9534F; min-height: 1.7em; margin-bottom: 1em; text-align: center; font-family: 'Fira Code', monospace; font-weight: bold; }
+        .frac-calc-desc { width: 100%; margin-top: 2em; background:#FDFBF5; border:2px solid #EAE3D5; border-radius:0.9em; padding:1.2em 1em; font-size:1.08em; color:#333; line-height:1.7; }
+        .frac-calc-desc strong { color: #D9534F; font-size: 1.12em; }
+        @media (max-width: 600px) { .frac-calc-container { padding: 1em 0.2em; } }
+    </style>
+</head>
+<body>
+<div class="frac-calc-container">
+    <h2 class="handwritten text-5xl text-[#D9534F] mb-4">Fraction Calculator</h2>
+    <label class="frac-calc-label">Enter a fraction expression (e.g. <code>3/4 + 1/2</code>, <code>1 1/2 * 2/3</code>, <code>0.75 - 1/5</code>):</label>
+    <input id="frac-input" class="frac-calc-input" placeholder="e.g. 3/4 + 1/2 or 1 1/2 * 2/3">
+    <button id="frac-calc-calc" class="frac-calc-btn">Calculate</button>
+    <div class="frac-calc-result" id="frac-calc-result" style="min-height:1.7em; max-height:300px; overflow-y:auto; word-break:break-word; transition:height 0.2s;"></div>
+</div>
+<div class="frac-calc-desc" style="max-width: fit-content; margin: 2.5em auto 0 auto; background:#FDFBF5; border:2px solid #EAE3D5; border-radius:0.9em; padding:1.2em 1em; font-size:1.08em; color:#333; line-height:1.7;">
+    <strong style="font-size:1.18em; color:#D9534F;">About the Fraction Calculator</strong><br><br>
+    Enter any fraction expression (add, subtract, multiply, divide, simplify, convert, compare). Supports mixed numbers, improper fractions, and decimals. <br><br>
+    <b>Features:</b>
+    <ul style="margin-left:1.2em; margin-bottom:0.7em;">
+        <li>Handles all basic fraction operations in a single line</li>
+        <li>Supports mixed numbers (e.g. 1 1/2), improper fractions, and decimals</li>
+        <li>Shows result in both fraction and decimal form</li>
+        <li>Responsive, mobile-friendly, and distraction-free</li>
+    </ul>
+    <b>Use Cases:</b>
+    <ul style="margin-left:1.2em;">
+        <li>Homework help: add, subtract, multiply, or divide fractions</li>
+        <li>Convert recipes or measurements between fractions and decimals</li>
+        <li>Compare fractions for school, cooking, or construction</li>
+        <li>Simplify answers for math class or exams</li>
+        <li>Convert improper fractions to mixed numbers and vice versa</li>
+    </ul>
+    <b>Why use this calculator?</b> No ads, no clutter, no tracking—just a beautiful, reliable fraction calculator you can use anywhere.<br>
+</div>
+<script>
+function parseFraction(str) {
+    str = str.trim();
+    if (!str) return null;
+    // Mixed number: "1 1/2"
+    let match = str.match(/^(-?\d+)\s+(\d+)\/(\d+)$/);
+    if (match) {
+        let sign = match[1][0] === '-' ? -1 : 1;
+        let whole = Math.abs(parseInt(match[1]));
+        let num = parseInt(match[2]);
+        let den = parseInt(match[3]);
+        return { n: sign * (whole * den + num), d: den };
+    }
+    // Simple fraction: "3/4"
+    match = str.match(/^(-?\d+)\/(\d+)$/);
+    if (match) return { n: parseInt(match[1]), d: parseInt(match[2]) };
+    // Decimal: "0.75"
+    if (/^-?\d*\.\d+$/.test(str)) {
+        let f = parseFloat(str);
+        let d = 1, n = f;
+        while (n % 1 !== 0) { n *= 10; d *= 10; }
+        return { n: Math.round(n), d: d };
+    }
+    // Integer
+    if (/^-?\d+$/.test(str)) return { n: parseInt(str), d: 1 };
+    return null;
+}
+function gcd(a, b) { return b ? gcd(b, a % b) : Math.abs(a); }
+function simplify(frac) {
+    let g = gcd(frac.n, frac.d);
+    return { n: frac.n / g, d: frac.d / g };
+}
+function toMixed(frac) {
+    let n = Math.abs(frac.n), d = frac.d, sign = frac.n < 0 ? -1 : 1;
+    let whole = Math.floor(n / d);
+    let rem = n % d;
+    return (sign < 0 ? '-' : '') + (whole ? whole + (rem ? ' ' : '') : '') + (rem ? rem + '/' + d : '');
+}
+function toDecimal(frac) { return (frac.n / frac.d).toString(); }
+function toFraction(dec) {
+    let f = parseFloat(dec);
+    let d = 1, n = f;
+    while (n % 1 !== 0) { n *= 10; d *= 10; }
+    return simplify({ n: Math.round(n), d: d });
+}
+function showResult(str) {
+    document.getElementById('frac-calc-result').textContent = str;
+}
+function evaluateFractionExpr(expr) {
+    // Replace unicode minus with normal minus
+    expr = expr.replace(/−/g, '-');
+    // Replace mixed numbers (e.g. 1 1/2) with (1+1/2)
+    expr = expr.replace(/(\d+)\s+(\d+)\/(\d+)/g, '($1+$2/$3)');
+    // Replace all fractions with (n/d)
+    expr = expr.replace(/(\d+)\/(\d+)/g, '($1/$2)');
+    
+    try {
+        // Validate expression contains only safe characters
+        if (!/^[0-9+\-*/.() ]+$/.test(expr)) {
+            throw new Error('Invalid characters in expression');
+        }
+        
+        // Use Function constructor for safer evaluation
+        let val = new Function('return ' + expr)();
+        
+        if (typeof val !== 'number' || !isFinite(val)) {
+            throw new Error('Invalid calculation result');
+        }
+        
+        // Try to convert to fraction
+        let frac = toFraction(val);
+        let mixed = toMixed(frac);
+        showResult(`${expr.replace(/\s+/g,'')} = ${frac.n}/${frac.d} (${mixed}) = ${val}`);
+    } catch (e) {
+        showResult('Error: Invalid expression - please use only numbers and basic math operators (+, -, *, /, parentheses)');
+    }
+}
+document.getElementById('frac-calc-calc').addEventListener('click', function() {
+    let expr = document.getElementById('frac-input').value;
+    if (!expr.trim()) return showResult('Enter a fraction expression.');
+    evaluateFractionExpr(expr);
+});
+document.getElementById('frac-input').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') {
+        let expr = document.getElementById('frac-input').value;
+        if (!expr.trim()) return showResult('Enter a fraction expression.');
+        evaluateFractionExpr(expr);
+    }
+});
+</script>
+</html>

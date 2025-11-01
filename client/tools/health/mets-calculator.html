@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Primary Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>METs Calculator | Metabolic Equivalent Calculator - Exercise Intensity & Calorie Burn Tool</title>
+    <meta name="title" content="METs Calculator | Metabolic Equivalent Calculator - Exercise Intensity & Calorie Burn Tool">
+    <meta name="description" content="Calculate METs (Metabolic Equivalents) for any activity to measure exercise intensity and calorie burn. Free fitness calculator for walking, running, cycling & 50+ activities. Track workout intensity.">
+    <meta name="keywords" content="METs calculator, metabolic equivalent, exercise intensity, calorie burn calculator, fitness tracker, activity calculator, workout intensity, exercise METs, fitness calculator, cardio calculator">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <meta name="author" content="METs Calculator Tool">
+    
+    <!-- Geographic Tags -->
+    <meta name="geo.region" content="US">
+    <meta name="geo.placename" content="United States">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://scribbletools.in/client/tools/health/mets-calculator.html">
+    <meta property="og:title" content="METs Calculator | Metabolic Equivalent Calculator - Exercise Intensity Tool">
+    <meta property="og:description" content="Calculate METs for any activity to measure exercise intensity and calorie burn. Free fitness calculator for 50+ activities including walking, running, cycling.">
+    <meta property="og:image" content="https://scribbletools.in/assets/og-image.svg">
+    <meta property="og:image:alt" content="METs Calculator Tool">
+    <meta property="og:site_name" content="All-in-One Tools">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://scribbletools.in/client/tools/health/mets-calculator.html">
+    <meta property="twitter:title" content="METs Calculator | Metabolic Equivalent Calculator - Exercise Intensity Tool">
+    <meta property="twitter:description" content="Calculate METs for any activity to measure exercise intensity and calorie burn. Free fitness calculator for 50+ activities.">
+    <meta property="twitter:image" content="https://scribbletools.in/assets/og-image.svg">
+    <meta property="twitter:image:alt" content="METs Calculator Tool">
+    
+    <!-- Additional SEO Meta Tags -->
+    <meta name="application-name" content="METs Calculator">
+    <meta name="msapplication-TileColor" content="#D9534F">
+    <meta name="theme-color" content="#D9534F">
+    <link rel="canonical" href="https://scribbletools.in/client/tools/health/mets-calculator.html">
+    
+    <!-- Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": ["WebApplication", "SoftwareApplication"],
+        "name": "METs Calculator",
+        "description": "Calculate Metabolic Equivalents (METs) for various physical activities to measure exercise intensity and estimate calorie burn. Includes 50+ common activities from walking to high-intensity sports.",
+        "url": "https://scribbletools.in/client/tools/health/mets-calculator.html",
+        "applicationCategory": "HealthApplication",
+        "operatingSystem": "Web Browser",
+        "permissions": "browser",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "creator": {
+            "@type": "Organization",
+            "name": "All-in-One Tools"
+        },
+        "featureList": [
+            "METs calculation for 50+ activities",
+            "Exercise intensity measurement",
+            "Calorie burn estimation",
+            "Activity comparison tool",
+            "Fitness tracking support",
+            "Custom METs input",
+            "Workout intensity analysis"
+        ],
+        "keywords": "METs, metabolic equivalent, exercise intensity, calorie burn, fitness calculator, activity calculator, workout tracker",
+        "mainEntity": {
+            "@type": "MedicalCalculator",
+            "name": "Metabolic Equivalent (MET) Calculation",
+            "description": "Standardized measure of exercise intensity based on oxygen consumption relative to resting metabolic rate"
+        }
+    }
+    </script>
+    <style>
+        body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; }
+        .calc-container { max-width: 420px; margin: 3em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2em 1.5em 2.5em 1.5em; }
+        .handwritten { font-family: 'Caveat', cursive; }
+        .calc-label { font-weight: 600; margin-bottom: 0.5em; display: block; }
+        .calc-input { width: 100%; padding: 1em; border: 2px solid #EAE3D5; border-radius: 0.7em; font-size: 1.2em; margin-bottom: 1em; background: #FDFBF5; text-align: center; font-family: 'Fira Code', monospace; }
+        .calc-btn { background: #fff; color: #D9534F; border: 2px solid #D9534F; border-radius: 0.5em; padding: 0.7em 2em; font-weight: 600; font-size: 1.1em; cursor: pointer; transition: all 0.2s; margin-bottom: 1em; }
+        .calc-btn:hover { background: #D9534F; color: #fff; }
+        .calc-result { background: #FDFBF5; border: 2px solid #D9534F; border-radius: 0.7em; padding: 1em; font-size: 1.25em; color: #D9534F; min-height: 1.7em; margin-bottom: 1em; text-align: center; font-family: 'Fira Code', monospace; font-weight: bold; max-height: 300px; overflow-y: auto; word-break: break-word; transition: height 0.2s; }
+        .calc-desc { width: 100%; margin-top: 2em; background:#FDFBF5; border:2px solid #EAE3D5; border-radius:0.9em; padding:1.2em 1em; font-size:1.08em; color:#333; line-height:1.7; }
+        .calc-desc strong { color: #D9534F; font-size: 1.12em; }
+        @media (max-width: 600px) { .calc-container { padding: 1em 0.2em; } }
+    </style>
+</head>
+<body>
+<div class="calc-container">
+    <h2 class="handwritten text-5xl text-[#D9534F] mb-4">METs Activity Calculator</h2>
+    <label class="calc-label">Activity:</label>
+    <select id="activity" class="calc-input">
+        <option value="custom">Custom METs Value</option>
+        <option value="1.0">Sleeping (1.0)</option>
+        <option value="1.3">Watching TV (1.3)</option>
+        <option value="2.0">Walking slowly (2.0)</option>
+        <option value="3.0">Walking moderate (3.0)</option>
+        <option value="4.0">Walking brisk (4.0)</option>
+        <option value="5.0">Walking very brisk (5.0)</option>
+        <option value="6.0">Jogging (6.0)</option>
+        <option value="8.0">Running 6mph (8.0)</option>
+        <option value="10.0">Running 7mph (10.0)</option>
+        <option value="12.0">Running 8mph (12.0)</option>
+        <option value="15.0">Running 10mph (15.0)</option>
+        <option value="4.0">Cycling leisure (4.0)</option>
+        <option value="6.0">Cycling moderate (6.0)</option>
+        <option value="8.0">Cycling vigorous (8.0)</option>
+        <option value="12.0">Cycling racing (12.0)</option>
+        <option value="6.0">Swimming leisure (6.0)</option>
+        <option value="8.0">Swimming laps (8.0)</option>
+        <option value="10.0">Swimming vigorous (10.0)</option>
+        <option value="3.0">Strength training (3.0)</option>
+        <option value="5.0">Aerobics general (5.0)</option>
+        <option value="7.0">Basketball (7.0)</option>
+        <option value="8.0">Tennis (8.0)</option>
+        <option value="10.0">Soccer (10.0)</option>
+    </select>
+    <label class="calc-label">Custom METs Value (if selected above):</label>
+    <input id="customMets" class="calc-input" type="number" min="0" step="0.1" placeholder="e.g. 6.5" disabled>
+    <label class="calc-label">Weight (kg):</label>
+    <input id="weight" class="calc-input" type="number" min="0" placeholder="e.g. 70">
+    <label class="calc-label">Duration (minutes):</label>
+    <input id="duration" class="calc-input" type="number" min="0" placeholder="e.g. 30">
+    <button id="calc-btn" class="calc-btn">Calculate METs</button>
+    <div class="calc-result" id="calc-result"></div>
+</div>
+<div class="calc-desc" style="max-width: fit-content; margin: 2.5em auto 0 auto;">
+    <strong style="font-size:1.18em; color:#D9534F;">About the METs Activity Calculator</strong><br><br>
+    Calculate calories burned and energy expenditure using METs (Metabolic Equivalent of Task) values for various activities. METs represent the ratio of energy expended during activity to resting metabolic rate.<br><br>
+    <b>METs Intensity Levels:</b>
+    <ul style="margin-left:1.2em;">
+        <li><b>Light:</b> 1.5-3.0 METs (walking, light housework)</li>
+        <li><b>Moderate:</b> 3.0-6.0 METs (brisk walking, dancing)</li>
+        <li><b>Vigorous:</b> 6.0+ METs (running, competitive sports)</li>
+    </ul><br>
+    <b>Use Cases:</b>
+    <ul style="margin-left:1.2em;">
+        <li>Track calories burned for weight management</li>
+        <li>Compare energy expenditure across activities</li>
+        <li>Plan exercise intensity for fitness goals</li>
+        <li>Monitor daily activity levels</li>
+    </ul>
+</div>
+<script>
+function showResult(str) {
+    document.getElementById('calc-result').innerHTML = str;
+}
+// Enable/disable custom METs input based on selection
+document.getElementById('activity').addEventListener('change', function() {
+    let customInput = document.getElementById('customMets');
+    if (this.value === 'custom') {
+        customInput.disabled = false;
+        customInput.placeholder = 'Enter METs value';
+    } else {
+        customInput.disabled = true;
+        customInput.value = '';
+        customInput.placeholder = 'e.g. 6.5';
+    }
+});
+
+document.getElementById('calc-btn').addEventListener('click', function() {
+    let activity = document.getElementById('activity').value;
+    let customMets = parseFloat(document.getElementById('customMets').value);
+    let weight = parseFloat(document.getElementById('weight').value);
+    let duration = parseFloat(document.getElementById('duration').value);
+    
+    if (isNaN(weight) || weight <= 0) {
+        showResult('Please enter a valid weight.');
+        return;
+    }
+    
+    if (isNaN(duration) || duration <= 0) {
+        showResult('Please enter a valid duration.');
+        return;
+    }
+    
+    let mets;
+    if (activity === 'custom') {
+        if (isNaN(customMets) || customMets <= 0) {
+            showResult('Please enter a valid custom METs value.');
+            return;
+        }
+        mets = customMets;
+    } else {
+        mets = parseFloat(activity);
+    }
+    
+    // Calculate calories: METs × weight (kg) × time (hours)
+    let calories = mets * weight * (duration / 60);
+    
+    // Calculate total energy expenditure
+    let totalMETMinutes = mets * duration;
+    
+    // Determine intensity level
+    let intensity;
+    if (mets < 3.0) intensity = 'Light';
+    else if (mets < 6.0) intensity = 'Moderate';
+    else intensity = 'Vigorous';
+    
+    let result = `<b>Activity Analysis:</b><br><br>
+                  <b>METs Value:</b> ${mets.toFixed(1)}<br>
+                  <b>Intensity:</b> ${intensity}<br><br>
+                  <b>Calories Burned:</b> ${calories.toFixed(0)} kcal<br>
+                  <b>MET-minutes:</b> ${totalMETMinutes.toFixed(0)}<br>
+                  <b>Energy Rate:</b> ${(calories / (duration / 60)).toFixed(1)} kcal/hour`;
+    
+    showResult(result);
+});
+</script>
+</body>
+</html>

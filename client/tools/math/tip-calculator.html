@@ -1,0 +1,181 @@
+<!-- File: tools/math/tip-calculator.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Primary Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Tip Calculator - Calculate Tips & Split Bills | ScribbleTools</title>
+    <meta name="description" content="Free online tip calculator to calculate tips, total bills, and split costs. Perfect for restaurants, bars, cafes, and group dining. Calculate 15%, 18%, 20% tips instantly with bill splitting.">
+    <meta name="keywords" content="tip calculator, restaurant tip calculator, bill split calculator, gratuity calculator, dining tip calculator, service tip, restaurant calculator">
+    <meta name="author" content="ScribbleTools">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://scribbletools.in/client/tools/math/tip-calculator.html">
+    
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#D9534F">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://scribbletools.in/client/tools/math/tip-calculator.html">
+    <meta property="og:title" content="Free Tip Calculator - Calculate Tips & Split Bills">
+    <meta property="og:description" content="Calculate restaurant tips, total bills, and split costs with friends instantly. Perfect for dining out and group meals.">
+    <meta property="og:image" content="https://scribbletools.in/assets/og-image.svg">
+    <meta property="og:site_name" content="ScribbleTools">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://scribbletools.in/client/tools/math/tip-calculator.html">
+    <meta property="twitter:title" content="Free Tip Calculator - Calculate Tips & Split Bills">
+    <meta property="twitter:description" content="Calculate restaurant tips, total bills, and split costs with friends instantly. Perfect for dining out.">
+    <meta property="twitter:image" content="https://scribbletools.in/assets/og-image.svg">
+    <meta name="twitter:site" content="@scribbletools">
+    
+    <!-- Performance Optimization -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Tip Calculator",
+        "url": "https://scribbletools.in/client/tools/math/tip-calculator.html",
+        "description": "Free online tip calculator for restaurants, bars, and service industries. Calculate gratuity, total bills, and split costs among multiple people.",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "Any",
+        "permissions": "browser",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "ScribbleTools",
+            "url": "https://scribbletools.in"
+        },
+        "featureList": [
+            "Calculate restaurant tips (15%, 18%, 20%)",
+            "Total bill calculation with tip",
+            "Bill splitting among multiple people",
+            "Custom tip percentage support",
+            "Instant calculation results",
+            "Mobile-friendly for dining out",
+            "No registration required"
+        ],
+        "audience": {
+            "@type": "Audience",
+            "audienceType": "Restaurant Diners, Service Users, Group Diners"
+        }
+    }
+    </script>
+    <style>
+        body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; }
+        .tip-calc-container { max-width: 400px; margin: 3em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2em 1.5em 2.5em 1.5em; }
+        .handwritten { font-family: 'Caveat', cursive; }
+        .tip-calc-label { font-weight: 600; margin-bottom: 0.5em; display: block; }
+        .tip-calc-input { width: 100%; padding: 1em; border: 2px solid #EAE3D5; border-radius: 0.7em; font-size: 1.2em; margin-bottom: 1em; background: #FDFBF5; text-align: center; font-family: 'Fira Code', monospace; }
+        .tip-calc-btn { background: #fff; color: #D9534F; border: 2px solid #D9534F; border-radius: 0.5em; padding: 0.7em 2em; font-weight: 600; font-size: 1.1em; cursor: pointer; transition: all 0.2s; margin-bottom: 1em; }
+        .tip-calc-btn:hover { background: #D9534F; color: #fff; }
+        .tip-calc-result { background: #FDFBF5; border: 2px solid #D9534F; border-radius: 0.7em; padding: 1em; font-size: 1.25em; color: #D9534F; min-height: 1.7em; margin-bottom: 1em; text-align: center; font-family: 'Fira Code', monospace; font-weight: bold; max-height: 300px; overflow-y: auto; word-break: break-word; transition: height 0.2s; }
+        .tip-calc-desc { width: 100%; margin-top: 2em; background:#FDFBF5; border:2px solid #EAE3D5; border-radius:0.9em; padding:1.2em 1em; font-size:1.08em; color:#333; line-height:1.7; }
+        .tip-calc-desc strong { color: #D9534F; font-size: 1.12em; }
+        @media (max-width: 600px) { .tip-calc-container { padding: 1em 0.2em; } }
+    </style>
+</head>
+<body>
+<div class="tip-calc-container">
+    <h2 class="handwritten text-5xl text-[#D9534F] mb-4">Tip Calculator</h2>
+    <label class="tip-calc-label">Enter bill amount, tip percent, and (optional) number of people (e.g. <code>80, 15, 2</code>):</label>
+    <input id="tip-input" class="tip-calc-input" placeholder="e.g. 80, 15, 2">
+    <button id="tip-calc-calc" class="tip-calc-btn">Calculate</button>
+    <div class="tip-calc-result" id="tip-calc-result"></div>
+</div>
+<div class="tip-calc-desc" style="max-width: 540px; margin: 2.5em auto 0 auto; background:#FDFBF5; border:2px solid #EAE3D5; border-radius:0.9em; padding:1.2em 1em; font-size:1.08em; color:#333; line-height:1.7;">
+    <strong style="font-size:1.18em; color:#D9534F;">About the Tip Calculator</strong><br><br>
+    Enter the bill amount, tip percent, and (optionally) the number of people to instantly calculate the tip, total, and per-person split. Supports decimals and large numbers.<br><br>
+    <b>Features:</b>
+    <ul style="margin-left:1.2em; margin-bottom:0.7em;">
+        <li>Calculates tip, total bill, and per-person split</li>
+        <li>Supports decimals and large numbers</li>
+        <li>Responsive, mobile-friendly, and distraction-free</li>
+        <li>Instant feedback for invalid input</li>
+    </ul>
+    <b>Use Cases:</b>
+    <ul style="margin-left:1.2em;">
+        <li>Calculate tips at restaurants, cafes, or bars</li>
+        <li>Split bills with friends or family</li>
+        <li>Check receipts or compare tip amounts</li>
+        <li>Quickly calculate tip for business or personal use</li>
+    </ul>
+    <b>Why use this calculator?</b> No ads, no clutter, no tracking—just a beautiful, reliable tip calculator you can use anywhere.<br>
+</div>
+<script>
+function showResult(str) {
+    document.getElementById('tip-calc-result').textContent = str;
+}
+document.getElementById('tip-calc-calc').addEventListener('click', function() {
+    let val = document.getElementById('tip-input').value.trim();
+    if (!val) return showResult('Enter bill amount, tip percent, and (optional) number of people.');
+    
+    let parts = val.split(',').map(x => x.trim());
+    if (parts.length < 2) {
+        return showResult('Please enter at least bill amount and tip percent (e.g., "50, 15" or "50, 15, 4")');
+    }
+    
+    let bill = parseFloat(parts[0]);
+    let percent = parseFloat(parts[1]);
+    let people = parts.length >= 3 ? parseFloat(parts[2]) : 1;
+    
+    // Validation
+    if (isNaN(bill) || !isFinite(bill) || bill < 0) {
+        return showResult('Invalid bill amount. Please enter a positive number.');
+    }
+    if (isNaN(percent) || !isFinite(percent) || percent < 0) {
+        return showResult('Invalid tip percent. Please enter a positive number.');
+    }
+    if (isNaN(people) || !isFinite(people) || people <= 0 || !Number.isInteger(people)) {
+        return showResult('Invalid number of people. Please enter a positive whole number.');
+    }
+    
+    // Reasonable validation ranges
+    if (bill > 100000) {
+        return showResult('Bill amount seems unusually large. Please check the amount.');
+    }
+    if (percent > 100) {
+        return showResult('Tip percent over 100% seems unusual. Please check the percentage.');
+    }
+    if (people > 100) {
+        return showResult('Number of people seems unusually large. Please check the count.');
+    }
+    
+    let tip = bill * percent / 100;
+    let total = bill + tip;
+    let perPerson = total / people;
+    
+    // Format results nicely
+    let billFormatted = bill.toFixed(2);
+    let tipFormatted = tip.toFixed(2);
+    let totalFormatted = total.toFixed(2);
+    let perPersonFormatted = perPerson.toFixed(2);
+    
+    let result = `Bill: $${billFormatted}\n`;
+    result += `Tip: ${percent}% = $${tipFormatted}\n`;
+    result += `Total: $${totalFormatted}`;
+    
+    if (people > 1) {
+        result += `\nPer Person: $${perPersonFormatted} (${people} people)`;
+    }
+    
+    showResult(result);
+});
+document.getElementById('tip-input').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') {
+        document.getElementById('tip-calc-calc').click();
+    }
+});
+</script>
+</html>

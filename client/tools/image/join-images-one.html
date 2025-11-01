@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Join Images - FREE Photo Collage & Image Combiner Tool</title>
+  <meta name="description" content="Free image combiner! Join multiple images into one photo collage. Combine photos horizontally, vertically, or in grids. Perfect for social media. 100% free!">
+  <meta name="keywords" content="join images, combine images, image combiner, photo collage maker, merge photos, image joiner, photo merger, combine pictures, image stitcher, photo combiner, collage maker, photo grid, image concatenate, picture joiner, photo mosaic, image merge tool, social media collage, Instagram collage, photo layout, image compositor, picture merger, multi photo combine, image fusion, photo blender, image assembly">
+  <meta name="author" content="Scribble Tools">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://scribbletools.in/client/tools/image/join-images-one.html">
+  <meta property="og:title" content="Join Images - FREE Photo Collage & Image Combiner Tool">
+  <meta property="og:description" content="Free image combiner! Join multiple images into one photo collage. Combine photos horizontally, vertically, or in grids. Perfect for social media. 100% free!">
+  <meta property="og:image" content="https://scribbletools.in/assets/og-image.svg">
+  <meta property="og:site_name" content="Scribble Tools">
+  <meta property="og:locale" content="en_US">
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://scribbletools.in/client/tools/image/join-images-one.html">
+  <meta property="twitter:title" content="Join Images - FREE Photo Collage & Image Combiner Tool">
+  <meta property="twitter:description" content="Free image combiner! Join multiple images into one photo collage. Combine photos horizontally, vertically, or in grids. Perfect for social media. 100% free!">
+  <meta property="twitter:image" content="https://scribbletools.in/assets/og-image.svg">
+  
+  <!-- Additional SEO Meta Tags -->
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Scribble Tools">
+  <meta name="generator" content="Scribble Tools">
+  <meta name="application-name" content="Image Combiner Tool">
+  <meta name="apple-mobile-web-app-title" content="Image Joiner">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#D9534F">
+  <meta name="msapplication-navbutton-color" content="#D9534F">
+  <meta name="apple-mobile-web-app-status-bar-style" content="#D9534F">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://scribbletools.in/client/tools/image/join-images-one.html">
+  
+  <!-- Preconnect for Performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Image Combiner Tool",
+    "description": "Free online tool for joining multiple images into one photo collage. Combine photos horizontally, vertically, or in custom grids.",
+    "url": "https://scribbletools.in/client/tools/image/join-images-one.html",
+    "applicationCategory": "MultimediaApplication",
+    "operatingSystem": "Any",
+    "permissions": "browser",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "featureList": [
+      "Join multiple images",
+      "Photo collage maker",
+      "Horizontal and vertical layouts",
+      "Grid arrangements",
+      "Social media optimization",
+      "Custom image spacing",
+      "No registration required",
+      "Free to use"
+    ],
+    "provider": {
+      "@type": "Organization",
+      "name": "Scribble Tools",
+      "url": "https://scribbletools.in"
+    }
+  }
+  </script>
+  <style>
+    body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; margin: 0; }
+    .reduce-size-container { max-width: 900px; margin: 3em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2em 1.5em 2.5em 1.5em; }
+    .handwritten { font-family: 'Caveat', cursive; }
+
+    .upload-area { border: 3px dashed #D9534F; border-radius: 1em; padding: 3em 2em; text-align: center; margin: 2em 0; background: #FDFBF5; transition: all 0.3s; cursor: pointer; }
+    .upload-area:hover { background: #F0F8FF; border-color: #4682B4; }
+    .upload-area.dragover { background: #F0F8FF; border-color: #4682B4; }
+    .upload-icon { font-size: 3em; color: #D9534F; margin-bottom: 1em; }
+    .file-input { display: none; }
+    .upload-btn { background: #D9534F; color: #fff; border: none; border-radius: 0.5em; padding: 1em 2em; font-weight: 600; cursor: pointer; transition: all 0.2s; display: block; margin: 0.8em auto 0 auto; }
+    .upload-btn:hover { background: #c9302c; }
+
+    .images-preview { display: none; margin: 2em 0; }
+    .images-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 12px; margin-top: 0.8em; }
+    .image-item { position: relative; border: 2px solid #EAE3D5; border-radius: 0.5em; overflow: hidden; background: #fff; }
+    .image-item img { width: 100%; height: 120px; object-fit: cover; display: block; }
+    .remove-image { position: absolute; top: 6px; right: 6px; background: #dc3545; color: #fff; border: none; border-radius: 50%; width: 24px; height: 24px; cursor: pointer; font-size: 0.9em; display: flex; align-items: center; justify-content: center; }
+
+    .controls-section { display: none; margin: 2em 0; background: #FDFBF5; border-radius: 0.7em; padding: 1.2em; border: 1px solid #FFEAA7; }
+    .form-group { margin: 1.2em 0; }
+    .form-label { font-weight: 600; margin-bottom: 0.5em; display: block; color: #4682B4; }
+    .form-select { width: 100%; padding: 0.8em; border: 2px solid #EAE3D5; border-radius: 0.5em; font-size: 1em; background: #fff; }
+    .process-btn { background: #228B22; color: #fff; border: none; border-radius: 0.5em; padding: 1em 2em; font-weight: 600; cursor: pointer; transition: all 0.2s; width: 100%; font-size: 1.1em; }
+    .process-btn:hover { background: #1e7e1e; }
+
+    .preview-container { display: none; text-align: center; margin: 2em 0; }
+    .joined-preview { max-width: 100%; max-height: 500px; border: 2px solid #EAE3D5; border-radius: 0.7em; box-shadow: 0 2px 8px #eae3d5; margin-top: 1em; }
+
+    .download-section { display: none; background: #F0F8FF; border: 1px solid #B0C4DE; border-radius: 0.5em; padding: 1em; text-align: center; margin-top: 1em; }
+    .download-btn { background: #4682B4; color: #fff; border: none; border-radius: 0.5em; padding: 0.9em 2em; font-weight: 600; cursor: pointer; transition: all 0.2s; margin: 0.5em; }
+    .download-btn:hover { background: #357abd; }
+
+    .feature-list { background: #FDFBF5; border-radius: 0.7em; padding: 1.2em; margin: 2em 0; border: 1px solid #FFEAA7; }
+    .recent-tools { background: #F8F9FA; border-radius: 0.7em; padding: 1.2em; margin: 1.5em 0; }
+
+    @media (max-width: 600px) { .reduce-size-container { padding: 1em 0.2em; } }
+  </style>
+</head>
+<body>
+<main>
+  <div class="reduce-size-container">
+    <header>
+      <h1 class="handwritten text-5xl text-[#D9534F] mb-4">Join Images</h1>
+      <p style="font-size:1.2em; margin-bottom:1em;">Combine multiple images into one canvas. Join horizontally, vertically, or as a grid. Fast, privacy-first, and free.</p>
+    </header>
+
+    <nav class="related-links" aria-label="Related image tools">
+      <strong>Related:</strong>
+      <a href="/client/tools/image/split-image.html">Split Image</a>
+      <a href="/client/tools/image/image-converter.html">Image Converter</a>
+      <a href="/client/tools/image/image-compressor.html">Image Compressor</a>
+      <a href="/client/tools/image/resize-image-pixel.html">Resize by Pixel</a>
+    </nav>
+
+    <div style="background:#FFF3CD; border:1px solid #FFD700; border-radius:0.7em; padding:1em; margin:1.2em 0; color:#B8860B; font-weight:bold; font-size:1.05em;">
+      🔗 <b>Join images in your browser with full control.</b> Works with JPG, PNG, GIF, BMP, WEBP.
+    </div>
+
+    <section aria-labelledby="instructions-title" style="background: #F8FBFF; border-radius: 0.7em; padding: 1.5em; margin: 2em 0; border: 1px solid #4682B4;">
+      <h2 id="instructions-title" style="color:#4682B4; margin-bottom: 1em; font-size: 1.5em;">How to Use</h2>
+      <ol class="step-list" style="margin-left: 1.5em; line-height: 1.6;">
+        <li><strong style="color: #4682B4">Upload Images:</strong>
+          <ul style="margin: 0.5em 0 0.5em 1.5em; color: #666;">
+            <li>Drag & drop multiple images into the upload area</li>
+            <li>Or click "Choose File" and select multiple images</li>
+          </ul>
+        </li>
+        <li><strong style="color: #4682B4">Choose Join Method:</strong>
+          <ul style="margin: 0.5em 0 0.5em 1.5em; color: #666;">
+            <li>Horizontal, Vertical, or Grid</li>
+            <li>Pick sizing mode: Fit, Crop, or Keep Original</li>
+          </ul>
+        </li>
+        <li><strong style="color: #4682B4">Generate & Download:</strong>
+          <ul style="margin: 0.5em 0 0.5em 1.5em; color: #666;">
+            <li>Click "Join Images" to combine</li>
+            <li>Download the merged result</li>
+          </ul>
+        </li>
+      </ol>
+    </section>
+
+    <section class="example-section" style="background: #FDFBF5; border: 1px solid #FFEAA7; border-radius: 0.7em; padding: 1.5em; margin: 2em 0;">
+      <h3 style="color: #4682B4; margin-bottom: 1em;">Common Uses & Tips</h3>
+      <div style="margin-bottom: 1.2em;">
+        <h4 style="color: #FF6B6B; margin-bottom: 0.5em;">📦 Common Uses</h4>
+        <ul style="color: #666; margin-left: 1.2em;">
+          <li>Merge screenshots into a single long image</li>
+          <li>Create panoramic sequences horizontally</li>
+          <li>Assemble product shots or moodboards in a grid</li>
+          <li>Combine before/after photos vertically</li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="color: #FF6B6B; margin-bottom: 0.5em;">💡 Pro Tips</h4>
+        <ul style="color: #666; margin-left: 1.2em;">
+          <li>Use Fit sizing to preserve aspect ratio without distortion</li>
+          <li>Use Crop sizing to fill exact cells in grid layouts</li>
+          <li>Keep images similar in size for best alignment</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="privacy-section">
+      <h2 style="color:#D9534F;">Privacy Notice</h2>
+      <div style="background: #FFF3CD; border: 1px solid #FFEAA7; border-radius: 0.5em; padding: 1em; margin: 1em 0; font-size: 0.95em; color: #856404;">
+        <strong>🔒 Your files are never uploaded or stored. All processing happens in your browser.</strong>
+      </div>
+    </section>
+
+    <div class="upload-area" id="upload-area" tabindex="0" aria-label="Upload images area. Drag and drop or click to select images.">
+      <div class="upload-icon" aria-hidden="true">🖼️</div>
+      <h3>Drag & Drop your images here</h3>
+      <p>or click to browse files (select multiple)</p>
+      <input type="file" id="file-input" class="file-input" accept="image/*" multiple aria-label="Choose images">
+      <button class="upload-btn" id="choose-file-btn" aria-label="Choose File">Choose File</button>
+    </div>
+
+    <div class="images-preview" id="images-preview">
+      <h3>Selected Images (<span id="image-count">0</span>)</h3>
+      <div class="images-grid" id="images-grid"></div>
+      <button class="upload-btn" id="clear-images-btn" style="background:#6c757d;">Clear All</button>
+    </div>
+
+    <div class="controls-section" id="controls-section">
+      <div class="form-group">
+        <label class="form-label" for="method-select">Join Method</label>
+        <select id="method-select" class="form-select">
+          <option value="horizontal">Horizontal</option>
+          <option value="vertical">Vertical</option>
+          <option value="grid">Grid</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="sizing-select">Sizing Mode</label>
+        <select id="sizing-select" class="form-select">
+          <option value="fit">Fit to size</option>
+          <option value="crop">Crop to fit</option>
+          <option value="original">Keep original</option>
+        </select>
+      </div>
+      <button class="process-btn" id="join-btn" type="button">Join Images</button>
+    </div>
+
+    <div class="preview-container" id="preview-container">
+      <h3>Joined Image Result</h3>
+      <canvas id="result-canvas" class="joined-preview"></canvas>
+    </div>
+
+    <div class="download-section" id="download-section">
+      <button class="download-btn" id="download-result" type="button">Download Result</button>
+      <button class="download-btn" id="reset-btn" type="button" style="background:#6c757d;">Start Over</button>
+    </div>
+
+    <section class="feature-list">
+      <h2 style="color: #4682B4; margin-bottom: 1em;">Key Features</h2>
+      <ul style="list-style: none; padding-left: 0;">
+        <li>✓ Join images horizontally, vertically, or as a grid</li>
+        <li>✓ Fit, crop, or preserve original sizes</li>
+        <li>✓ Instant preview and download</li>
+        <li>✓ Works entirely in your browser (privacy-first)</li>
+        <li>✓ No watermarks, no signup</li>
+      </ul>
+    </section>
+
+    <nav class="recent-tools" aria-label="Recently used tools">
+      <strong>Recent Tools:</strong>
+      <div class="recent-tools-list" style="display:inline-block;">
+        <a href="/client/tools/image/split-image.html">Split Image</a>
+        <a href="/client/tools/image/image-converter.html">Image Converter</a>
+        <a href="/client/tools/image/image-compressor.html">Image Compressor</a>
+        <span class="separator" style="margin:0 0.5em; color:#999;">•</span>
+        <a href="#" id="clear-recent" style="color:#D9534F; font-size:0.9em;">Clear History</a>
+      </div>
+    </nav>
+  </div>
+</main>
+
+<script>
+(function() {
+  'use strict';
+  const uploadArea = document.getElementById('upload-area');
+  const fileInput = document.getElementById('file-input');
+  const chooseFileBtn = document.getElementById('choose-file-btn');
+  const imagesPreview = document.getElementById('images-preview');
+  const imagesGrid = document.getElementById('images-grid');
+  const imageCount = document.getElementById('image-count');
+  const clearImagesBtn = document.getElementById('clear-images-btn');
+  const controlsSection = document.getElementById('controls-section');
+  const methodSelect = document.getElementById('method-select');
+  const sizingSelect = document.getElementById('sizing-select');
+  const joinBtn = document.getElementById('join-btn');
+  const previewContainer = document.getElementById('preview-container');
+  const resultCanvas = document.getElementById('result-canvas');
+  const downloadSection = document.getElementById('download-section');
+  const downloadBtn = document.getElementById('download-result');
+  const resetBtn = document.getElementById('reset-btn');
+
+  let uploadedImages = []; // { image: Image, name: string }
+
+  // Upload events
+  chooseFileBtn.addEventListener('click', e => { e.preventDefault(); fileInput.click(); });
+  uploadArea.addEventListener('click', e => { if (e.target === uploadArea) fileInput.click(); });
+  uploadArea.addEventListener('dragover', e => { e.preventDefault(); uploadArea.classList.add('dragover'); });
+  uploadArea.addEventListener('dragleave', () => uploadArea.classList.remove('dragover'));
+  uploadArea.addEventListener('drop', e => { e.preventDefault(); uploadArea.classList.remove('dragover'); if (e.dataTransfer.files.length) handleFiles(e.dataTransfer.files); });
+  fileInput.addEventListener('change', e => { if (e.target.files.length) { handleFiles(e.target.files); fileInput.value = ''; } });
+  uploadArea.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') fileInput.click(); });
+
+  function handleFiles(fileList) {
+    Array.from(fileList).forEach(file => {
+      if (!file.type.startsWith('image/')) return;
+      const reader = new FileReader();
+      reader.onload = ev => {
+        const img = new Image();
+        img.onload = () => {
+          uploadedImages.push({ image: img, name: file.name });
+          renderImages();
+        };
+        img.src = ev.target.result;
+      };
+      reader.readAsDataURL(file);
+    });
+  }
+
+  function renderImages() {
+    imageCount.textContent = uploadedImages.length;
+    imagesGrid.innerHTML = '';
+    uploadedImages.forEach((item, idx) => {
+      const div = document.createElement('div');
+      div.className = 'image-item';
+      div.innerHTML = `<img src="${item.image.src}" alt="${item.name}"><button class="remove-image" data-idx="${idx}">×</button>`;
+      imagesGrid.appendChild(div);
+    });
+    imagesPreview.style.display = uploadedImages.length ? 'block' : 'none';
+    controlsSection.style.display = uploadedImages.length > 1 ? 'block' : 'none';
+    joinBtn.disabled = uploadedImages.length < 2;
+  }
+
+  imagesGrid.addEventListener('click', e => {
+    if (e.target.classList.contains('remove-image')) {
+      const idx = parseInt(e.target.getAttribute('data-idx'), 10);
+      uploadedImages.splice(idx, 1);
+      renderImages();
+    }
+  });
+
+  clearImagesBtn.addEventListener('click', () => { uploadedImages = []; renderImages(); previewContainer.style.display = 'none'; downloadSection.style.display = 'none'; });
+
+  joinBtn.addEventListener('click', () => {
+    if (uploadedImages.length < 2) return;
+    const method = methodSelect.value; const sizing = sizingSelect.value;
+    joinImages(method, sizing);
+  });
+
+  function joinImages(method, sizing) {
+    const ctx = resultCanvas.getContext('2d');
+    // Determine base size
+    let maxW = 0, maxH = 0, sumW = 0, sumH = 0;
+    uploadedImages.forEach(({ image }) => { maxW = Math.max(maxW, image.width); maxH = Math.max(maxH, image.height); sumW += image.width; sumH += image.height; });
+
+    if (method === 'horizontal') {
+      resultCanvas.width = sizing === 'original' ? sumW : maxW * uploadedImages.length;
+      resultCanvas.height = sizing === 'original' ? maxH : maxH;
+      let x = 0;
+      uploadedImages.forEach(({ image }) => {
+        const { w, h } = targetSize(image, maxW, maxH, sizing);
+        ctx.drawImage(image, x, 0, w, h); x += sizing === 'original' ? image.width : maxW;
+      });
+    } else if (method === 'vertical') {
+      resultCanvas.width = sizing === 'original' ? maxW : maxW;
+      resultCanvas.height = sizing === 'original' ? sumH : maxH * uploadedImages.length;
+      let y = 0;
+      uploadedImages.forEach(({ image }) => {
+        const { w, h } = targetSize(image, maxW, maxH, sizing);
+        ctx.drawImage(image, 0, y, w, h); y += sizing === 'original' ? image.height : maxH;
+      });
+    } else if (method === 'grid') {
+      const cols = Math.ceil(Math.sqrt(uploadedImages.length));
+      const rows = Math.ceil(uploadedImages.length / cols);
+      resultCanvas.width = sizing === 'original' ? maxW * cols : maxW * cols;
+      resultCanvas.height = sizing === 'original' ? maxH * rows : maxH * rows;
+      uploadedImages.forEach(({ image }, i) => {
+        const col = i % cols; const row = Math.floor(i / cols);
+        const x = col * maxW; const y = row * maxH;
+        const { w, h } = targetSize(image, maxW, maxH, sizing);
+        ctx.drawImage(image, x, y, w, h);
+      });
+    }
+
+    previewContainer.style.display = 'block';
+    downloadSection.style.display = 'block';
+  }
+
+  function targetSize(image, maxW, maxH, sizing) {
+    if (sizing === 'original') return { w: image.width, h: image.height };
+    if (sizing === 'fit') {
+      // Fit within maxW x maxH, preserving aspect
+      const scale = Math.min(maxW / image.width, maxH / image.height);
+      return { w: Math.round(image.width * scale), h: Math.round(image.height * scale) };
+    }
+    // crop: fill the area (may distort slightly to fill exact cell)
+    return { w: maxW, h: maxH };
+  }
+
+  downloadBtn.addEventListener('click', () => {
+    const a = document.createElement('a');
+    a.download = 'joined-image.png';
+    a.href = resultCanvas.toDataURL('image/png');
+    a.click();
+  });
+
+  resetBtn.addEventListener('click', () => {
+    uploadedImages = []; renderImages(); previewContainer.style.display = 'none'; downloadSection.style.display = 'none';
+  });
+})();
+
+// Recent tools functionality (shared pattern)
+const RECENT_TOOLS_KEY = 'recentImageTools';
+const MAX_RECENT_TOOLS = 4;
+function initRecentTools() {
+  const currentToolData = { name: 'Join Images', url: window.location.pathname };
+  addToRecentTools(currentToolData); updateRecentToolsList();
+  const clearRecentBtn = document.getElementById('clear-recent');
+  if (clearRecentBtn) {
+    clearRecentBtn.onclick = function(e) {
+      e.preventDefault(); localStorage.removeItem(RECENT_TOOLS_KEY); updateRecentToolsList();
+    };
+  }
+}
+function addToRecentTools(toolData) {
+  let recentTools = JSON.parse(localStorage.getItem(RECENT_TOOLS_KEY) || '[]');
+  recentTools = recentTools.filter(t => t.url !== toolData.url);
+  recentTools.unshift(toolData); recentTools = recentTools.slice(0, MAX_RECENT_TOOLS);
+  localStorage.setItem(RECENT_TOOLS_KEY, JSON.stringify(recentTools));
+}
+function updateRecentToolsList() {
+  const recentToolsList = document.querySelector('.recent-tools-list'); if (!recentToolsList) return;
+  const recentTools = JSON.parse(localStorage.getItem(RECENT_TOOLS_KEY) || '[]');
+  if (recentTools.length === 0) { recentToolsList.innerHTML = '<span style="color:#666;">No recent tools</span>'; return; }
+  const html = recentTools
+    .filter(t => t.url !== window.location.pathname)
+    .map(t => `<a href="${t.url}">${t.name}</a>`)
+    .join('<span class="separator" style="margin:0 0.5em; color:#999;">•</span>');
+  recentToolsList.innerHTML = html +
+    '<span class="separator" style="margin:0 0.5em; color:#999;">•</span>' +
+    '<a href="#" id="clear-recent" style="color:#D9534F; font-size:0.9em;">Clear History</a>';
+}
+if (document.readyState !== 'loading') { initRecentTools(); } else { document.addEventListener('DOMContentLoaded', initRecentTools); }
+</script>
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Standard Deviation Calculator - FREE Variance & Statistics Tool</title>
+    <meta name="description" content="Free standard deviation calculator! Calculate population & sample standard deviation, variance, mean instantly. Perfect for statistics, data analysis. 100% free!">
+    <meta name="keywords" content="standard deviation calculator, variance calculator, statistics calculator, population standard deviation, sample standard deviation, data spread calculator, statistical analysis tool, data variability calculator, statistics solver, variance analysis tool, statistical measures calculator, data dispersion calculator, statistical computation tool, math statistics calculator, research statistics tool, data science calculator, statistical variance tool, standard deviation solver, data analysis calculator, statistical deviation calculator, variance estimation tool, statistical spread calculator, data distribution calculator, statistics homework calculator, mathematical statistics tool">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://scribbletools.in/client/tools/math/standard-deviation-calculator.html">
+    <meta property="og:title" content="Standard Deviation Calculator - FREE Variance & Statistics Tool">
+    <meta property="og:description" content="Free standard deviation calculator! Calculate population & sample standard deviation, variance, mean instantly. Perfect for statistics, data analysis. 100% free!">
+    <meta property="og:image" content="https://scribbletools.in/assets/og-image.svg">
+    <meta property="og:site_name" content="Scribble Tools">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://scribbletools.in/client/tools/math/standard-deviation-calculator.html">
+    <meta property="twitter:title" content="Standard Deviation Calculator - FREE Variance & Statistics Tool">
+    <meta property="twitter:description" content="Free standard deviation calculator! Calculate population & sample standard deviation, variance, mean instantly. Perfect for statistics, data analysis. 100% free!">
+    <meta property="twitter:image" content="https://scribbletools.in/assets/og-image.svg">
+    
+    <!-- Additional SEO Meta Tags -->
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Scribble Tools">
+    <meta name="generator" content="Scribble Tools">
+    <meta name="application-name" content="Standard Deviation Calculator">
+    <meta name="apple-mobile-web-app-title" content="Standard Deviation">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#D9534F">
+    <meta name="msapplication-navbutton-color" content="#D9534F">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#D9534F">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://scribbletools.in/client/tools/math/standard-deviation-calculator.html">
+    
+    <!-- Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Standard Deviation Calculator",
+      "description": "Free online calculator for computing standard deviation, variance, and mean from a dataset. Supports both population and sample standard deviation calculations.",
+      "url": "https://scribbletools.in/client/tools/math/standard-deviation-calculator.html",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "Any",
+      "permissions": "browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "featureList": [
+        "Standard deviation calculation",
+        "Variance calculation",
+        "Mean calculation",
+        "Population statistics",
+        "Sample statistics",
+        "Data analysis",
+        "Educational tool",
+        "Free to use"
+      ],
+      "provider": {
+        "@type": "Organization",
+        "name": "Scribble Tools",
+        "url": "https://scribbletools.in"
+      }
+    }
+    </script>
+    <style>
+        body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; }
+        .geo-calc-container { max-width: 400px; margin: 3em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2em 1.5em 2.5em 1.5em; }
+        .handwritten { font-family: 'Caveat', cursive; }
+        .geo-calc-label { font-weight: 600; margin-bottom: 0.5em; display: block; }
+        .geo-calc-input { width: 100%; padding: 1em; border: 2px solid #EAE3D5; border-radius: 0.7em; font-size: 1.1em; margin-bottom: 1em; background: #FDFBF5; text-align: center; font-family: 'Fira Code', monospace; }
+        .geo-calc-btn { background: #fff; color: #D9534F; border: 2px solid #D9534F; border-radius: 0.5em; padding: 0.7em 2em; font-weight: 600; font-size: 1.1em; cursor: pointer; transition: all 0.2s; margin-bottom: 1em; }
+        .geo-calc-btn:hover { background: #D9534F; color: #fff; }
+        .geo-calc-result { background: #FDFBF5; border: 2px solid #D9534F; border-radius: 0.7em; padding: 1em; font-size: 1.18em; color: #D9534F; min-height: 1.7em; margin-bottom: 1em; text-align: center; font-family: 'Fira Code', monospace; font-weight: bold; max-height: 300px; overflow-y: auto; word-break: break-word; transition: height 0.2s; }
+        @media (max-width: 600px) { .geo-calc-container { padding: 1em 0.2em; } }
+    </style>
+</head>
+<body>
+<div class="geo-calc-container">
+    <h2 class="handwritten text-5xl text-[#D9534F] mb-4">Standard Deviation Calculator</h2>
+    <label class="geo-calc-label" for="numbers">Enter numbers separated by commas:</label>
+    <input class="geo-calc-input" id="numbers" placeholder="e.g. 5, 10, 15, 20">
+    <button type="button" class="geo-calc-btn" onclick="calculateSD()">Calculate</button>
+    <div class="geo-calc-result" id="result"></div>
+</div>
+<div class="geo-calc-desc" style="max-width: fit-content; margin: 2.5em auto 0 auto; background:#FDFBF5; border:2px solid #EAE3D5; border-radius:0.9em; padding:1.2em 1em; font-size:1.08em; color:#333; line-height:1.7;">
+    <strong style="font-size:1.18em; color:#D9534F;">About Standard Deviation</strong><br><br>
+    <b>Standard Deviation (σ or s):</b> Measures the spread of a set of numbers from their mean.<br>
+    <b>Mean (μ or x̄):</b> The average of the numbers.<br>
+    <b>Variance (σ² or s²):</b> The average of the squared differences from the mean.<br><br>
+    <b>Formulas:</b>
+    <ul style="margin-left:1.2em; margin-bottom:0.7em;">
+        <li>Mean: <code>μ = (x₁ + x₂ + ... + xₙ) / n</code></li>
+        <li>Variance (Population): <code>σ² = Σ(xᵢ - μ)² / n</code></li>
+        <li>Variance (Sample): <code>s² = Σ(xᵢ - x̄)² / (n-1)</code></li>
+        <li>Standard Deviation: <code>σ = √σ²</code> or <code>s = √s²</code></li>
+    </ul>
+    <b>Use Cases:</b>
+    <ul style="margin-left:1.2em;">
+        <li>Understanding data spread and consistency</li>
+        <li>Comparing variability between datasets</li>
+        <li>Statistical analysis in science, business, and research</li>
+    </ul>
+</div>
+<script>
+function calculateSD() {
+    const input = document.getElementById('numbers').value;
+    if (!input.trim()) {
+        document.getElementById('result').textContent = 'Please enter a list of numbers.';
+        return;
+    }
+    const nums = input.split(',').map(x => parseFloat(x.trim())).filter(x => !isNaN(x));
+    if (nums.length < 2) {
+        document.getElementById('result').textContent = 'Enter at least two valid numbers.';
+        return;
+    }
+    const mean = nums.reduce((a, b) => a + b, 0) / nums.length;
+    const variance = nums.reduce((a, b) => a + Math.pow(b - mean, 2), 0) / nums.length;
+    const stddev = Math.sqrt(variance);
+    document.getElementById('result').innerHTML = `<b>Standard Deviation:</b> ${stddev}<br><b>Mean:</b> ${mean}<br><b>Variance:</b> ${variance}`;
+}
+</script>
+</body>
+</html>

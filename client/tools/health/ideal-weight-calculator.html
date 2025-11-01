@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Primary Meta Tags -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Ideal Weight Calculator - Multiple Scientific Formulas | ScribbleTools</title>
+  <meta name="description" content="Calculate your ideal body weight using multiple scientific formulas (Hamwi, Devine, Robinson, Miller). Free online tool for healthy weight goals and fitness planning.">
+  <meta name="keywords" content="ideal weight calculator, ideal body weight, healthy weight calculator, target weight calculator, fitness calculator, weight goals, health calculator">
+  <meta name="author" content="ScribbleTools">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://scribbletools.in/client/tools/health/ideal-weight-calculator.html">
+  
+  <!-- Theme Color -->
+  <meta name="theme-color" content="#228B22">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://scribbletools.in/client/tools/health/ideal-weight-calculator.html">
+  <meta property="og:title" content="Free Ideal Weight Calculator - Multiple Scientific Formulas">
+  <meta property="og:description" content="Calculate your ideal body weight using proven scientific formulas. Perfect for fitness goals and healthy weight planning.">
+  <meta property="og:image" content="https://scribbletools.in/assets/og-image.svg">
+  <meta property="og:site_name" content="ScribbleTools">
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://scribbletools.in/client/tools/health/ideal-weight-calculator.html">
+  <meta property="twitter:title" content="Free Ideal Weight Calculator - Multiple Scientific Formulas">
+  <meta property="twitter:description" content="Calculate your ideal body weight using proven scientific formulas for healthy weight goals.">
+  <meta property="twitter:image" content="https://scribbletools.in/assets/og-image.svg">
+  <meta name="twitter:site" content="@scribbletools">
+  
+  <!-- Performance Optimization -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="dns-prefetch" href="//fonts.googleapis.com">
+  
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Ideal Weight Calculator",
+      "url": "https://scribbletools.in/client/tools/health/ideal-weight-calculator.html",
+      "description": "Free online calculator to determine ideal body weight using multiple scientific formulas including Hamwi, Devine, Robinson, and Miller methods.",
+      "applicationCategory": "HealthApplication",
+      "operatingSystem": "Any",
+      "permissions": "browser",
+      "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+      },
+      "publisher": {
+          "@type": "Organization",
+          "name": "ScribbleTools",
+          "url": "https://scribbletools.in"
+      },
+      "featureList": [
+          "Calculate ideal weight using Hamwi formula",
+          "Devine formula for ideal body weight",
+          "Robinson and Miller weight calculations",
+          "Support for different height measurements",
+          "Gender-specific calculations",
+          "Multiple scientific formulas comparison",
+          "Health and fitness planning tool"
+      ],
+      "audience": {
+          "@type": "EducationalAudience",
+          "educationalRole": ["fitness enthusiast", "health coach", "individual", "medical professional"]
+      }
+  }
+  </script>
+  <style>
+    body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; }
+    main { display: block; }
+    .reduce-size-container { max-width: 800px; margin: 3em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2em 1.5em 2.5em 1.5em; }
+    .handwritten { font-family: 'Caveat', cursive; }
+    .form-group { margin: 1.2em 0; }
+    .form-label { font-weight: 600; margin-bottom: 0.5em; display: block; }
+    .form-input { width: 100%; padding: 0.8em; border: 2px solid #EAE3D5; border-radius: 0.5em; font-size: 1em; margin-bottom: 1em; }
+    .form-select { width: 100%; padding: 0.8em; border: 2px solid #EAE3D5; border-radius: 0.5em; font-size: 1em; margin-bottom: 1em; }
+    .calculate-btn { background: #228B22; color: #fff; border: none; border-radius: 0.5em; padding: 1em 2em; font-weight: 600; cursor: pointer; transition: all 0.2s; width: 100%; font-size: 1.1em; }
+    .calculate-btn:hover { background: #1e7e1e; }
+    .result-section { margin-top: 2em; text-align: center; }
+    .result-card { background: #F0F8FF; border: 2px solid #4682B4; border-radius: 0.7em; padding: 1.5em; margin: 1em 0; text-align: left; }
+    .result-card h4 { color: #4682B4; margin: 0 0 0.5em 0; text-align: center; }
+    .result-value { font-size: 1.8em; font-weight: bold; color: #D9534F; margin: 0.5em 0; text-align: center; }
+    .result-item { display: flex; justify-content: space-between; padding: 0.5em 0; border-bottom: 1px solid #eee; }
+    .result-item:last-child { border-bottom: none; }
+    .formula-name { font-weight: 600; color: #4682B4; }
+    .weight-value { font-weight: bold; color: #D9534F; }
+    .example-section { background: #FDFBF5; border: 1px solid #FFEAA7; border-radius: 0.7em; padding: 1.2em; margin: 2em 0; }
+    .example-section h3 { color: #4682B4; margin-bottom: 0.5em; }
+    .related-links { margin-top: 2em; font-size: 1em; }
+    .related-links a { color: #D9534F; text-decoration: underline; margin-right: 1.2em; }
+    .related-links a:hover { color: #357abd; }
+    .step-list { margin: 1.2em 0 1.2em 1.2em; padding: 0; }
+    .step-list li { margin-bottom: 0.7em; }
+    .sr-only { position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden; }
+    @media (max-width: 600px) { .reduce-size-container { padding: 1em 0.2em; } }
+  </style>
+</head>
+<body>
+<main>
+  <div class="reduce-size-container">
+    <header>
+      <h1 class="handwritten text-5xl text-[#D9534F] mb-4">Ideal Weight Calculator</h1>
+      <p style="font-size:1.2em; margin-bottom:1em;">Calculate your ideal body weight using multiple scientific formulas. Fast, privacy-first, and free. No data is stored.</p>
+    </header>
+    <nav class="related-links" aria-label="Related health tools">
+      <strong>Related:</strong>
+      <a href="bmi-calculator.html">BMI Calculator</a>
+      <a href="body-fat-calculator.html">Body Fat Calculator</a>
+      <a href="healthy-weight.html">Healthy Weight Range</a>
+      <a href="calorie-calculator.html">Calorie Calculator</a>
+    </nav>
+    <section aria-labelledby="instructions-title">
+      <div style="background:#FFF3CD; border:1px solid #FFD700; border-radius:0.7em; padding:1em; margin-bottom:1.2em; color:#B8860B; font-weight:bold; font-size:1.1em;">
+        ⚠️ <b>Medical Disclaimer:</b> These calculations are for informational purposes only. Consult healthcare professionals for medical advice.
+      </div>
+      <h2 id="instructions-title" style="margin-top:2em; color:#228B22;">How to Use</h2>
+      <ol class="step-list">
+        <li><strong>Enter</strong> your height, gender, and age.</li>
+        <li><strong>Select</strong> your preferred units (metric or imperial).</li>
+        <li>Click <strong>Calculate</strong> to see your ideal weight using multiple formulas.</li>
+      </ol>
+    </section>
+    <section class="example-section" aria-labelledby="examples-title">
+      <h3 id="examples-title">Formulas Used</h3>
+      <ul style="margin-top:1em;">
+        <li><strong>Robinson (1983):</strong> Most commonly used in clinical settings</li>
+        <li><strong>Miller (1983):</strong> Alternative to Robinson formula</li>
+        <li><strong>Devine (1974):</strong> Popular in pharmaceutical calculations</li>
+        <li><strong>Hamwi (1964):</strong> Simple and practical approach</li>
+        <li><strong>Healthy BMI Range:</strong> Weight range for BMI 18.5-24.9</li>
+      </ul>
+    </section>
+    <section aria-labelledby="privacy-title">
+      <h2 id="privacy-title" style="color:#D9534F;">Privacy Notice</h2>
+      <div style="background: #FFF3CD; border: 1px solid #FFEAA7; border-radius: 0.5em; padding: 1em; margin: 1em 0; font-size: 0.95em; color: #856404;">
+        <strong>🔒 All calculations are done in your browser. No data is sent to servers or stored.</strong>
+      </div>
+    </section>
+    <section aria-labelledby="calculator-title">
+      <h2 id="calculator-title" class="sr-only">Ideal Weight Calculator Interface</h2>
+      <form id="weight-form" autocomplete="off">
+        <div class="form-group">
+          <label class="form-label" for="height">Height:
+            <span title="Enter your height in the selected unit." style="cursor:help; color:#4682B4;">&#9432;</span>
+          </label>
+          <div style="display: flex; gap: 0.5em; align-items: center;">
+            <input type="number" id="height" class="form-input" placeholder="170" min="1" step="0.1" aria-label="Height" style="flex: 1;">
+            <select id="height-unit" class="form-select" style="flex: 0 0 auto; width: auto; margin-bottom: 1em;">
+              <option value="cm">cm</option>
+              <option value="inches">inches</option>
+              <option value="feet">feet</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group" id="feet-inches-group" style="display: none;">
+          <label class="form-label" for="height-inches">Additional Inches:
+            <span title="Enter additional inches if height is in feet." style="cursor:help; color:#4682B4;">&#9432;</span>
+          </label>
+          <input type="number" id="height-inches" class="form-input" placeholder="0" min="0" max="11" step="1" aria-label="Additional Inches">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="gender">Gender:
+            <span title="Gender affects ideal weight calculations." style="cursor:help; color:#4682B4;">&#9432;</span>
+          </label>
+          <select id="gender" class="form-select" aria-label="Gender">
+            <option value="">Select Gender...</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="age">Age (optional):
+            <span title="Age may affect some ideal weight calculations." style="cursor:help; color:#4682B4;">&#9432;</span>
+          </label>
+          <input type="number" id="age" class="form-input" placeholder="30" min="1" max="120" step="1" aria-label="Age">
+        </div>
+        <button class="calculate-btn" id="calculate-btn" type="button" aria-label="Calculate Ideal Weight">Calculate Ideal Weight</button>
+      </form>
+      <div class="result-section" id="result-section" style="display: none;">
+        <div class="conversion-success-card" style="display:inline-block; margin-top:1em; background:#E8F5E8; border:2px solid #5CB85C; border-radius:0.7em; padding:1.2em 1em 1.5em 1em; margin-bottom:1em; box-shadow:0 2px 12px #eae3d5;">
+          <div class="success-icon" style="font-size:2.2em; color:#5CB85C; margin-bottom:0.3em;">✅</div>
+          <div class="success-message" style="font-size:1.15em; color:#228B22; font-family:'Caveat',cursive; margin-bottom:0.7em; text-align:center;">Your ideal weight calculations are ready!</div>
+          <div id="results-display" style="text-align: left;"></div>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+<script>
+function initializeIdealWeightCalculator() {
+  const heightUnitSelect = document.getElementById('height-unit');
+  const feetInchesGroup = document.getElementById('feet-inches-group');
+  const calculateBtn = document.getElementById('calculate-btn');
+  const resultSection = document.getElementById('result-section');
+  const resultsDisplay = document.getElementById('results-display');
+
+  heightUnitSelect.addEventListener('change', function() {
+    if (this.value === 'feet') {
+      feetInchesGroup.style.display = 'block';
+    } else {
+      feetInchesGroup.style.display = 'none';
+    }
+  });
+
+  calculateBtn.addEventListener('click', function() {
+    const heightValue = parseFloat(document.getElementById('height').value);
+    const heightUnit = document.getElementById('height-unit').value;
+    const heightInches = parseFloat(document.getElementById('height-inches').value) || 0;
+    const gender = document.getElementById('gender').value;
+    const age = parseInt(document.getElementById('age').value) || 25;
+
+    if (!heightValue || heightValue <= 0) {
+      alert('Please enter a valid height.');
+      return;
+    }
+
+    if (!gender) {
+      alert('Please select your gender.');
+      return;
+    }
+
+    // Convert height to cm
+    let heightCm;
+    switch(heightUnit) {
+      case 'inches':
+        heightCm = heightValue * 2.54;
+        break;
+      case 'feet':
+        heightCm = (heightValue * 12 + heightInches) * 2.54;
+        break;
+      default:
+        heightCm = heightValue;
+    }
+
+    // Convert to inches for calculations
+    const heightInchesTotal = heightCm / 2.54;
+
+    // Calculate ideal weights using different formulas
+    const results = {};
+
+    // Robinson Formula (1983)
+    if (gender === 'male') {
+      results.robinson = 52 + 1.9 * (heightInchesTotal - 60);
+    } else {
+      results.robinson = 49 + 1.7 * (heightInchesTotal - 60);
+    }
+
+    // Miller Formula (1983)
+    if (gender === 'male') {
+      results.miller = 56.2 + 1.41 * (heightInchesTotal - 60);
+    } else {
+      results.miller = 53.1 + 1.36 * (heightInchesTotal - 60);
+    }
+
+    // Devine Formula (1974)
+    if (gender === 'male') {
+      results.devine = 50 + 2.3 * (heightInchesTotal - 60);
+    } else {
+      results.devine = 45.5 + 2.3 * (heightInchesTotal - 60);
+    }
+
+    // Hamwi Formula (1964)
+    if (gender === 'male') {
+      results.hamwi = 48 + 2.7 * (heightInchesTotal - 60);
+    } else {
+      results.hamwi = 45.5 + 2.2 * (heightInchesTotal - 60);
+    }
+
+    // Healthy BMI Range (18.5 - 24.9)
+    const heightM = heightCm / 100;
+    const minHealthyWeight = 18.5 * heightM * heightM;
+    const maxHealthyWeight = 24.9 * heightM * heightM;
+
+    // Calculate average
+    const formulaWeights = [results.robinson, results.miller, results.devine, results.hamwi];
+    const averageWeight = formulaWeights.reduce((sum, weight) => sum + weight, 0) / formulaWeights.length;
+
+    // Display results
+    resultsDisplay.innerHTML = `
+      <div class="result-card">
+        <h4>Average Ideal Weight</h4>
+        <div class="result-value">${averageWeight.toFixed(1)} kg (${(averageWeight * 2.205).toFixed(1)} lbs)</div>
+      </div>
+      
+      <div class="result-card">
+        <h4>Individual Formula Results</h4>
+        <div class="result-item">
+          <span class="formula-name">Robinson (1983):</span>
+          <span class="weight-value">${results.robinson.toFixed(1)} kg (${(results.robinson * 2.205).toFixed(1)} lbs)</span>
+        </div>
+        <div class="result-item">
+          <span class="formula-name">Miller (1983):</span>
+          <span class="weight-value">${results.miller.toFixed(1)} kg (${(results.miller * 2.205).toFixed(1)} lbs)</span>
+        </div>
+        <div class="result-item">
+          <span class="formula-name">Devine (1974):</span>
+          <span class="weight-value">${results.devine.toFixed(1)} kg (${(results.devine * 2.205).toFixed(1)} lbs)</span>
+        </div>
+        <div class="result-item">
+          <span class="formula-name">Hamwi (1964):</span>
+          <span class="weight-value">${results.hamwi.toFixed(1)} kg (${(results.hamwi * 2.205).toFixed(1)} lbs)</span>
+        </div>
+      </div>
+      
+      <div class="result-card">
+        <h4>Healthy BMI Range</h4>
+        <div class="result-item">
+          <span class="formula-name">Minimum (BMI 18.5):</span>
+          <span class="weight-value">${minHealthyWeight.toFixed(1)} kg (${(minHealthyWeight * 2.205).toFixed(1)} lbs)</span>
+        </div>
+        <div class="result-item">
+          <span class="formula-name">Maximum (BMI 24.9):</span>
+          <span class="weight-value">${maxHealthyWeight.toFixed(1)} kg (${(maxHealthyWeight * 2.205).toFixed(1)} lbs)</span>
+        </div>
+      </div>
+      
+      <div style="margin-top: 1em; font-size: 0.9em; color: #666; text-align: left;">
+        <p><strong>Your Details:</strong> ${gender.charAt(0).toUpperCase() + gender.slice(1)}, ${heightCm.toFixed(1)} cm (${heightInchesTotal.toFixed(1)}")</p>
+        <p><strong>Note:</strong> These are estimates based on height and gender. Individual body composition, muscle mass, and bone density can significantly affect ideal weight.</p>
+      </div>
+    `;
+
+    resultSection.style.display = 'block';
+  });
+}
+
+// SPA/Router support
+if (window.initializeIdealWeightCalculator === undefined) {
+  window.initializeIdealWeightCalculator = initializeIdealWeightCalculator;
+}
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initializeIdealWeightCalculator);
+} else {
+  initializeIdealWeightCalculator();
+}
+</script>
+</body>
+</html>

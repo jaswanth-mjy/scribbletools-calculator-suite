@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Circle Crop Image - FREE Online Circular Photo Cropper Tool</title>
+  <meta name="description" content="Free online circle crop tool! Crop images into perfect circles instantly. Profile picture maker, avatar cropper, round photo editor. 100% free circular image cropping tool!">
+  <meta name="keywords" content="circle crop, circular crop, round image crop, profile picture cropper, avatar cropper, circle image editor, round photo cropper, circular photo editor, crop image to circle, make circular image, round crop tool, circle photo maker, profile pic cropper, avatar maker, circular image creator, round image maker, crop photos in circle, circular avatar creator, round profile picture, circle image cropper, circular crop tool, round photo maker, circle picture editor, avatar photo cropper, circular image editor, round image editor, circle crop online, profile picture editor, circular photo cropper, round avatar maker, circle photo cropper, circular picture editor">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://scribbletools.in/client/tools/image/circle-crop.html">
+  <meta property="og:title" content="Circle Crop Image - FREE Online Circular Photo Cropper Tool">
+  <meta property="og:description" content="Free online circle crop tool! Crop images into perfect circles instantly. Profile picture maker, avatar cropper, round photo editor. 100% free circular image cropping tool!">
+  <meta property="og:image" content="https://scribbletools.in/assets/og-image.svg">
+  <meta property="og:site_name" content="Scribble Tools">
+  <meta property="og:locale" content="en_US">
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://scribbletools.in/client/tools/image/circle-crop.html">
+  <meta property="twitter:title" content="Circle Crop Image - FREE Online Circular Photo Cropper Tool">
+  <meta property="twitter:description" content="Free online circle crop tool! Crop images into perfect circles instantly. Profile picture maker, avatar cropper, round photo editor. 100% free circular image cropping tool!">
+  <meta property="twitter:image" content="https://scribbletools.in/assets/og-image.svg">
+  
+  <!-- Additional SEO Meta Tags -->
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Scribble Tools">
+  <meta name="generator" content="Scribble Tools">
+  <meta name="application-name" content="Circle Crop Tool">
+  <meta name="apple-mobile-web-app-title" content="Circle Crop Tool">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#D9534F">
+  <meta name="msapplication-navbutton-color" content="#D9534F">
+  <meta name="apple-mobile-web-app-status-bar-style" content="#D9534F">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://scribbletools.in/client/tools/image/circle-crop.html">
+  
+  <!-- Preconnect for Performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Circle Crop Tool",
+    "description": "Free online tool to crop images into perfect circles. Create circular profile pictures, avatars, and round photos instantly with our circle crop editor.",
+    "url": "https://scribbletools.in/client/tools/image/circle-crop.html",
+    "applicationCategory": "MultimediaApplication",
+    "operatingSystem": "Any",
+    "permissions": "browser",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "featureList": [
+      "Crop images to perfect circles",
+      "Profile picture creator",
+      "Avatar maker",
+      "Round photo editor",
+      "Free to use",
+      "No registration required"
+    ],
+    "provider": {
+      "@type": "Organization",
+      "name": "Scribble Tools",
+      "url": "https://scribbletools.in"
+    }
+  }
+  </script>
+  <style>
+    .circle-crop-tool body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; margin: 0; }
+    .circle-crop-tool .reduce-size-container { max-width: 800px; margin: 3em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2.5em 2em 2.5em 2em; }
+    .circle-crop-tool .handwritten { font-family: 'Caveat', cursive; }
+    .circle-crop-tool .main-btn { font-size: 1.2em; color: #fff; background: #4682B4; padding: 1.2em 2.5em; border-radius: 0.7em; text-decoration: none; font-weight: 700; box-shadow: 0 2px 8px #eae3d5; border: none; cursor: pointer; transition: background 0.2s; margin-top: 2.5em; }
+    .circle-crop-tool .main-btn:hover { background: #357abd; }
+    .circle-crop-tool .related-links { margin-top: 2em; font-size: 1em; }
+    .circle-crop-tool .related-links a { color: #D9534F; text-decoration: underline; margin-right: 1.2em; }
+    .circle-crop-tool .related-links a:hover { color: #357abd; }
+    .circle-crop-tool .step-list { margin: 1.2em 0 1.2em 1.2em; padding: 0; }
+    .circle-crop-tool .step-list li { margin-bottom: 0.7em; }
+    .circle-crop-tool .example-section { background: #FDFBF5; border: 1px solid #FFEAA7; border-radius: 0.7em; padding: 1.2em; margin: 2em 0; }
+    .circle-crop-tool .example-section h3 { color: #4682B4; margin-bottom: 0.5em; }
+    .circle-crop-tool .example-img { max-width: 120px; border-radius: 0.4em; margin: 0.5em; border: 1px solid #eee; }
+    .circle-crop-tool .privacy-section { margin: 2em 0; }
+    .circle-crop-tool .privacy-section strong { color: #D9534F; }
+    .circle-crop-tool .upload-area { border: 3px dashed #D9534F; border-radius: 1em; padding: 3em 2em; text-align: center; margin: 2em 0; background: #FDFBF5; transition: all 0.3s; cursor: pointer; }
+    .circle-crop-tool .upload-area:hover { background: #F0F8FF; border-color: #4682B4; }
+    .circle-crop-tool .upload-icon { font-size: 3em; color: #D9534F; margin-bottom: 1em; }
+    .circle-crop-tool .file-input { display: none; }
+    .circle-crop-tool .upload-btn { background: #D9534F; color: #fff; border: none; border-radius: 0.5em; padding: 1em 2em; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+    .circle-crop-tool .upload-btn:hover { background: #c9302c; }
+    .circle-crop-tool .preview-section-upload { margin-top: 2em; text-align: center; display: none; }
+    .circle-crop-tool .preview-section-upload h3 { color: #4682B4; margin-bottom: 1em; }
+    .circle-crop-tool .uploaded-preview { max-width: 100%; max-height: 300px; border-radius: 0.5em; margin: 1em 0; border: 2px solid #EAE3D5; }
+    .circle-crop-tool .clear-btn { background: #6c757d; color: #fff; border: none; border-radius: 0.5em; padding: 0.8em 1.5em; font-weight: 600; cursor: pointer; transition: all 0.2s; margin: 1em; }
+    .circle-crop-tool .clear-btn:hover { background: #5a6268; }
+    .circle-crop-tool .cropper-container { text-align: center; margin: 2em 0; }
+    .circle-crop-tool #main-canvas { background: #fff; border: 1px solid #EAE3D5; border-radius: 1em; box-shadow: 0 2px 8px #eae3d5; max-width: 100%; height: auto; display: block; margin: 0 auto; }
+    .circle-crop-tool .slider-group { margin: 1.5em 0; display: flex; align-items: center; justify-content: center; gap: 1em; }
+    .circle-crop-tool .slider-group label { font-weight: 600; }
+    .circle-crop-tool .slider-group input[type=range] { width: 180px; }
+    .circle-crop-tool .preview-section { text-align: center; margin: 2em 0; }
+    .circle-crop-tool #preview-canvas { background: #fff; border: 1px solid #EAE3D5; border-radius: 50%; box-shadow: 0 2px 8px #eae3d5; margin: 0 auto; display: block; }
+    .circle-crop-tool .download-btn { background: #4682B4; color: #fff; border: none; border-radius: 0.5em; padding: 1em 2em; font-weight: 600; cursor: pointer; transition: all 0.2s; width: 100%; font-size: 1.1em; margin-top: 1.5em; max-width: 300px; }
+    .circle-crop-tool .download-btn:hover { background: #357abd; }
+    .circle-crop-tool .feature-list { background: #FDFBF5; border-radius: 0.7em; padding: 1.2em; margin: 2em 0; border: 1px solid #FFEAA7; }
+    .circle-crop-tool .feature-list h3 { color: #4682B4; margin-bottom: 1em; font-weight: 600; }
+    .circle-crop-tool .feature-list ul { list-style: none; padding: 0; }
+    .circle-crop-tool .feature-list li { margin-bottom: 0.7em; font-size: 1.1em; }
+    @media (max-width: 600px) { .circle-crop-tool .reduce-size-container { padding: 1em 0.2em; } }
+  </style>
+</head>
+<body>
+<main>
+  <div class="circle-crop-tool">
+    <div class="reduce-size-container">
+        <header>
+      
+      <h1 class="handwritten text-5xl text-[#D9534F] mb-4">Circle Crop Image</h1>
+      <p style="font-size:1.2em; margin-bottom:1.2em;">Transform your photos into perfect circles with our easy-to-use cropping tool. Perfect for profile pictures, logos, and social media icons. Fast, privacy-first, and completely free.</p>
+      
+      <nav class="related-links" aria-label="Related image tools">
+        <strong>Related:</strong>
+        <a href="../add-name-dob-photo.html">Add Name & DOB</a>
+        <a href="../black-white-image.html">Black & White Image</a>
+        <a href="../image-compressor.html">Image Compressor</a>
+        <a href="../resize-image-pixel.html">Resize by Pixel</a>
+      </nav>
+
+      <div style="background:#FFF3CD; border:1px solid #FFD700; border-radius:0.7em; padding:1em; margin-bottom:1.2em; color:#B8860B; font-weight:bold; font-size:1.1em;">
+        🎯 <b>Create perfect circular images in seconds.</b> Ideal for profile pictures, logos, social media icons, and any design needing round images.
+      </div>
+      
+      <section aria-labelledby="instructions-title" style="background: #F8FBFF; border-radius: 0.7em; padding: 1.5em; margin: 2em 0; border: 1px solid #4682B4;">
+        <h2 id="instructions-title" style="color:#4682B4; margin-bottom: 1em; font-size: 1.5em;">How to Use</h2>
+        <ol class="step-list" style="margin-left: 1.5em; line-height: 1.6;">
+          <li><strong style="color: #4682B4">Upload Your Image:</strong>
+            <ul style="margin: 0.5em 0 0.5em 1.5em; color: #666;">
+              <li>Drag & drop your photo into the upload area</li>
+              <li>Or click "Choose File" to select from your device</li>
+              <li>Supports JPG, PNG, and other common formats</li>
+            </ul>
+          </li>
+          <li><strong style="color: #4682B4">Position & Size:</strong>
+            <ul style="margin: 0.5em 0 0.5em 1.5em; color: #666;">
+              <li>Move the circle to frame your subject</li>
+              <li>Use the slider to adjust circle size</li>
+              <li>Watch the live preview update in real-time</li>
+            </ul>
+          </li>
+          <li><strong style="color: #4682B4">Preview & Download:</strong>
+            <ul style="margin: 0.5em 0 0.5em 1.5em; color: #666;">
+              <li>Check the preview for perfect positioning</li>
+              <li>Click "Download" to save your circular image</li>
+              <li>Get a transparent background PNG automatically</li>
+            </ul>
+          </li>
+        </ol>
+      </section>
+    </header>
+
+    <section class="example-section" style="background: #FDFBF5; border: 1px solid #FFEAA7; border-radius: 0.7em; padding: 1.5em; margin: 2em 0;">
+      <h3 style="color: #4682B4; margin-bottom: 1em;">Creative Use Cases & Tips</h3>
+      
+      <div style="margin-bottom: 1.5em;">
+        <h4 style="color: #FF6B6B; margin-bottom: 0.5em;">👤 Profile Pictures</h4>
+        <ul style="color: #666; margin-left: 1.2em;">
+          <li>LinkedIn: 400x400 pixels</li>
+          <li>Instagram: 320x320 pixels</li>
+          <li>Twitter: 400x400 pixels</li>
+          <li>Facebook: 170x170 pixels</li>
+        </ul>
+      </div>
+      
+      <div style="margin-bottom: 1.5em;">
+        <h4 style="color: #FF6B6B; margin-bottom: 0.5em;">🎨 Design Elements</h4>
+        <ul style="color: #666; margin-left: 1.2em;">
+          <li>Company logos</li>
+          <li>Team member photos</li>
+          <li>Website icons</li>
+          <li>Circular badges</li>
+        </ul>
+      </div>
+      
+      <div>
+        <h4 style="color: #FF6B6B; margin-bottom: 0.5em;">💡 Pro Tips</h4>
+        <ul style="color: #666; margin-left: 1.2em;">
+          <li>Use high-resolution images for best quality</li>
+          <li>Center important details in the frame</li>
+          <li>Consider leaving space around edges</li>
+          <li>Check preview at intended display size</li>
+        </ul>
+      </div>
+    </section>
+    <section class="privacy-section">
+      <h2 style="color:#D9534F;">Privacy Notice</h2>
+      <div style="background: #FFF3CD; border: 1px solid #FFEAA7; border-radius: 0.5em; padding: 1em; margin: 1em 0; font-size: 0.95em; color: #856404;">
+        <strong>🔒 Your files are never uploaded or stored. All processing happens in your browser.</strong>
+      </div>
+    </section>
+    <div class="upload-area" id="upload-area" tabindex="0" aria-label="Upload image area. Drag and drop or click to select an image.">
+      <div class="upload-icon" aria-hidden="true">🖼️</div>
+      <h3>Drag & Drop your image here</h3>
+      <p>or click to browse files</p>
+      <input type="file" id="file-input" class="file-input" accept="image/*" aria-label="Choose image file">
+      <button class="upload-btn" id="choose-file-btn" style="display:block; margin: 0 auto 1.5em auto;" aria-label="Choose File">Choose File</button>
+    </div>
+    
+    <div class="preview-section-upload" id="preview-section-upload">
+      <h3>📷 Uploaded Image Preview</h3>
+      <img id="preview-image-upload" class="uploaded-preview" alt="Uploaded image preview">
+      <div style="margin-top: 1em;">
+        <button class="clear-btn" id="clear-btn" type="button">🔄 Upload Different Image</button>
+      </div>
+    </div>
+    
+    <div class="cropper-container" id="cropper-container" style="display:none;">
+      <canvas id="main-canvas" width="400" height="400"></canvas>
+      <div class="slider-group">
+        <label for="circle-radius">Circle Size:</label>
+        <input type="range" id="circle-radius" min="40" max="400" value="150">
+      </div>
+      <div style="margin-top: 1em;">
+        <button class="clear-btn" id="clear-cropper-btn" type="button">🔄 Start Over</button>
+      </div>
+    </div>
+    <div class="preview-section" id="preview-section" style="display:none;">
+      <h4 style="color:#228B22; font-size:1.1em; margin-bottom:0.5em;">Live Cropped Preview</h4>
+      <canvas id="preview-canvas" width="200" height="200"></canvas>
+      <button class="download-btn" id="download-btn" type="button">Download Cropped Image</button>
+      <div style="margin-top: 1em;">
+        <button class="clear-btn" id="download-clear-btn" type="button">🔄 Crop Another Image</button>
+      </div>
+    </div>
+
+    <div class="feature-list" style="background: #F8F9FA; border-radius: 0.7em; padding: 1.2em; margin: 1.5em 0;">
+      <h2 style="color: #4682B4; margin-bottom: 1em;">Key Features</h2>
+      <ul>
+        <li>✨ Perfect circle cropping with live preview</li>
+        <li>🎯 Adjustable crop area with resize handle</li>
+        <li>🔒 Privacy-focused: all processing done in your browser</li>
+        <li>⚡ Instant download in high quality PNG format</li>
+        <li>💫 Ideal for profile pictures and social media</li>
+        <li>🎨 Clean, professional output every time</li>
+        <li>📱 Works on all devices</li>
+        <li>🆓 No registration required</li>
+      </ul>
+    </div>
+
+    <nav class="recent-tools" aria-label="Recently used tools" style="background: #F8F9FA; border-radius: 0.7em; padding: 1.2em; margin: 1.5em 0;">
+      <strong>Recent Tools:</strong>
+      <div class="recent-tools-list" style="display: inline-block;">
+        <a href="/client/tools/image/add-name-dob-photo.html">Add Name & DOB</a>
+        <a href="/client/tools/image/image-color-picker.html">Color Picker</a>
+        <a href="/client/tools/image/black-white-image.html">Black & White</a>
+        <span class="separator" style="margin: 0 0.5em; color: #999;">•</span>
+        <a href="#" id="clear-recent" style="color: #D9534F; font-size: 0.9em;">Clear History</a>
+      </div>
+    </nav>
+      </div>
+  </div> <!-- Close circle-crop-tool wrapper -->
+</main>
+<script>
+// Circle Crop Tool - Clean initialization
+(function() {
+  'use strict';
+  
+  let uploadedImage = null;
+  let imgObj = null;
+  let dragging = false;
+  let dragOffsetX = 0;
+  let dragOffsetY = 0;
+  let circle = { x: 200, y: 200, r: 150 };
+  let isInitialized = false;
+
+  // Global initialization function for the main app
+  window.initializeCircleCropTool = function() {
+    console.log('🔧 Initializing Circle Crop tool...');
+    reset();
+    init();
+  };
+
+  function reset() {
+    console.log('Resetting circle crop tool state...');
+    uploadedImage = null;
+    imgObj = null;
+    dragging = false;
+    dragOffsetX = 0;
+    dragOffsetY = 0;
+    circle = { x: 200, y: 200, r: 150 };
+    isInitialized = false;
+    
+    // Reset UI elements
+    const elements = {
+      uploadArea: document.getElementById('upload-area'),
+      previewSectionUpload: document.getElementById('preview-section-upload'),
+      cropperContainer: document.getElementById('cropper-container'),
+      previewSection: document.getElementById('preview-section'),
+      fileInput: document.getElementById('file-input'),
+      circleRadiusSlider: document.getElementById('circle-radius')
+    };
+    
+    if (elements.uploadArea) elements.uploadArea.style.display = 'block';
+    if (elements.previewSectionUpload) elements.previewSectionUpload.style.display = 'none';
+    if (elements.cropperContainer) elements.cropperContainer.style.display = 'none';
+    if (elements.previewSection) elements.previewSection.style.display = 'none';
+    if (elements.fileInput) elements.fileInput.value = '';
+    if (elements.circleRadiusSlider) elements.circleRadiusSlider.value = 150;
+    
+    // Clear canvases and reset to default size
+    const mainCanvas = document.getElementById('main-canvas');
+    const previewCanvas = document.getElementById('preview-canvas');
+    if (mainCanvas) {
+      mainCanvas.width = 400;
+      mainCanvas.height = 400;
+      const ctx = mainCanvas.getContext('2d');
+      ctx.clearRect(0, 0, mainCanvas.width, mainCanvas.height);
+    }
+    if (previewCanvas) {
+      const ctx = previewCanvas.getContext('2d');
+      ctx.clearRect(0, 0, previewCanvas.width, previewCanvas.height);
+    }
+  }
+
+  function init() {
+    if (isInitialized) {
+      console.log('Already initialized');
+      return;
+    }
+
+    console.log('Setting up circle crop event listeners...');
+    
+    // Get elements
+    const uploadArea = document.getElementById('upload-area');
+    const fileInput = document.getElementById('file-input');
+    const chooseFileBtn = document.getElementById('choose-file-btn');
+    
+    if (!uploadArea || !fileInput || !chooseFileBtn) {
+      console.error('Critical elements missing:', {
+        uploadArea: !!uploadArea,
+        fileInput: !!fileInput,
+        chooseFileBtn: !!chooseFileBtn
+      });
+      setTimeout(init, 100); // Retry
+      return;
+    }
+
+    // Remove old listeners by cloning
+    [uploadArea, fileInput, chooseFileBtn].forEach(el => {
+      if (el && el.parentNode) {
+        const newEl = el.cloneNode(true);
+        el.parentNode.replaceChild(newEl, el);
+      }
+    });
+
+    // Re-get elements after cloning
+    const newUploadArea = document.getElementById('upload-area');
+    const newFileInput = document.getElementById('file-input');
+    const newChooseFileBtn = document.getElementById('choose-file-btn');
+
+    // Click handlers
+    if (newChooseFileBtn) {
+      newChooseFileBtn.onclick = function(e) {
+        console.log('🖱️ Choose file clicked');
+        e.preventDefault();
+        newFileInput.click();
+      };
+    }
+
+    if (newUploadArea) {
+      newUploadArea.onclick = function(e) {
+        console.log('🖱️ Upload area clicked');
+        if (e.target !== newChooseFileBtn) {
+          newFileInput.click();
+        }
+      };
+    }
+
+    // File input change
+    if (newFileInput) {
+      newFileInput.onchange = function(e) {
+        console.log('📁 File selected:', e.target.files.length);
+        if (e.target.files.length > 0) {
+          handleFile(e.target.files[0]);
+        }
+      };
+    }
+
+    // Drag and drop
+    if (newUploadArea) {
+      newUploadArea.ondragover = function(e) {
+        e.preventDefault();
+        newUploadArea.style.backgroundColor = '#F0F8FF';
+      };
+
+      newUploadArea.ondragleave = function(e) {
+        newUploadArea.style.backgroundColor = '#FDFBF5';
+      };
+
+      newUploadArea.ondrop = function(e) {
+        e.preventDefault();
+        newUploadArea.style.backgroundColor = '#FDFBF5';
+        const files = e.dataTransfer.files;
+        if (files.length > 0) {
+          handleFile(files[0]);
+        }
+      };
+
+      // Keyboard accessibility
+      newUploadArea.onkeydown = function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          newFileInput.click();
+        }
+      };
+    }
+
+    // Clear buttons
+    ['clear-btn', 'clear-cropper-btn', 'download-clear-btn'].forEach(id => {
+      const btn = document.getElementById(id);
+      if (btn) btn.onclick = reset;
+    });
+
+    // Download button
+    const downloadBtn = document.getElementById('download-btn');
+    if (downloadBtn) {
+      downloadBtn.onclick = function(e) {
+        e.preventDefault();
+        downloadImage();
+      };
+    }
+
+    // Setup canvas interactions
+    setupCanvasInteractions();
+
+    isInitialized = true;
+    console.log('✅ Circle Crop tool initialized successfully');
+  }
+
+  function handleFile(file) {
+    console.log('📷 Processing file:', file.name);
+    
+    if (!file.type.startsWith('image/')) {
+      alert('❌ Please upload a valid image file.');
+      return;
+    }
+
+    uploadedImage = file;
+    
+    // Show preview of uploaded image
+    const previewImageUpload = document.getElementById('preview-image-upload');
+    const uploadArea = document.getElementById('upload-area');
+    const previewSectionUpload = document.getElementById('preview-section-upload');
+    
+    if (previewImageUpload) previewImageUpload.src = URL.createObjectURL(file);
+    if (uploadArea) uploadArea.style.display = 'none';
+    if (previewSectionUpload) previewSectionUpload.style.display = 'block';
+    
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      imgObj = new Image();
+      imgObj.onload = function() {
+        const cropperContainer = document.getElementById('cropper-container');
+        const previewSection = document.getElementById('preview-section');
+        const mainCanvas = document.getElementById('main-canvas');
+        const circleRadiusSlider = document.getElementById('circle-radius');
+        
+        // Dynamically resize canvas to maintain image aspect ratio
+        if (mainCanvas) {
+          const maxCanvasSize = 600; // Maximum canvas size for display
+          const imgAspectRatio = imgObj.width / imgObj.height;
+          
+          let canvasWidth, canvasHeight;
+          
+          if (imgAspectRatio > 1) {
+            // Landscape image
+            canvasWidth = Math.min(maxCanvasSize, imgObj.width);
+            canvasHeight = canvasWidth / imgAspectRatio;
+          } else {
+            // Portrait or square image
+            canvasHeight = Math.min(maxCanvasSize, imgObj.height);
+            canvasWidth = canvasHeight * imgAspectRatio;
+          }
+          
+          // Ensure minimum size
+          if (canvasWidth < 300) {
+            canvasWidth = 300;
+            canvasHeight = canvasWidth / imgAspectRatio;
+          }
+          if (canvasHeight < 300) {
+            canvasHeight = 300;
+            canvasWidth = canvasHeight * imgAspectRatio;
+          }
+          
+          mainCanvas.width = canvasWidth;
+          mainCanvas.height = canvasHeight;
+          
+          // Center circle and update slider range
+          circle.x = canvasWidth / 2;
+          circle.y = canvasHeight / 2;
+          circle.r = Math.min(canvasWidth, canvasHeight) / 4;
+          
+          // Update slider max value based on canvas size
+          if (circleRadiusSlider) {
+            circleRadiusSlider.max = Math.min(canvasWidth, canvasHeight) / 2;
+            circleRadiusSlider.value = circle.r;
+          }
+        }
+        
+        if (cropperContainer) cropperContainer.style.display = 'block';
+        if (previewSection) previewSection.style.display = 'block';
+        
+        drawMainCanvas();
+        drawPreviewCanvas();
+      };
+      imgObj.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+  }
+
+  function setupCanvasInteractions() {
+    const mainCanvas = document.getElementById('main-canvas');
+    const circleRadiusSlider = document.getElementById('circle-radius');
+    
+    if (!mainCanvas) return;
+
+    // Mouse interactions
+    mainCanvas.onmousedown = function(e) {
+      if (!imgObj) return;
+      const rect = mainCanvas.getBoundingClientRect();
+      const mx = e.clientX - rect.left;
+      const my = e.clientY - rect.top;
+      
+      // Check if near resize handle
+      const dist = Math.hypot(mx - (circle.x + circle.r), my - circle.y);
+      if (dist < 14) {
+        dragging = 'resize';
+        dragOffsetX = mx - (circle.x + circle.r);
+        dragOffsetY = my - circle.y;
+      } else if (Math.hypot(mx - circle.x, my - circle.y) < circle.r) {
+        dragging = 'move';
+        dragOffsetX = mx - circle.x;
+        dragOffsetY = my - circle.y;
+      } else {
+        dragging = false;
+      }
+    };
+
+    mainCanvas.onmousemove = function(e) {
+      if (!imgObj || !dragging) return;
+      const rect = mainCanvas.getBoundingClientRect();
+      const mx = e.clientX - rect.left;
+      const my = e.clientY - rect.top;
+      
+      if (dragging === 'move') {
+        circle.x = Math.max(circle.r, Math.min(mainCanvas.width - circle.r, mx - dragOffsetX));
+        circle.y = Math.max(circle.r, Math.min(mainCanvas.height - circle.r, my - dragOffsetY));
+      } else if (dragging === 'resize') {
+        let newR = Math.max(40, Math.min(mainCanvas.width/2, mx - circle.x - dragOffsetX));
+        newR = Math.min(newR, circle.x, mainCanvas.width - circle.x, circle.y, mainCanvas.height - circle.y);
+        circle.r = newR;
+        if (circleRadiusSlider) circleRadiusSlider.value = circle.r;
+      }
+      drawMainCanvas();
+      drawPreviewCanvas();
+    };
+
+    mainCanvas.onmouseup = function() { dragging = false; };
+    mainCanvas.onmouseleave = function() { dragging = false; };
+
+    // Slider control
+    if (circleRadiusSlider) {
+      circleRadiusSlider.oninput = function() {
+        circle.r = parseInt(circleRadiusSlider.value);
+        // Keep circle within bounds
+        circle.x = Math.max(circle.r, Math.min(mainCanvas.width - circle.r, circle.x));
+        circle.y = Math.max(circle.r, Math.min(mainCanvas.height - circle.r, circle.y));
+        drawMainCanvas();
+        drawPreviewCanvas();
+      };
+    }
+  }
+
+  function drawMainCanvas() {
+    const mainCanvas = document.getElementById('main-canvas');
+    if (!mainCanvas || !imgObj) return;
+    
+    const mainCtx = mainCanvas.getContext('2d');
+    mainCtx.clearRect(0, 0, mainCanvas.width, mainCanvas.height);
+    
+    // Draw image maintaining aspect ratio and filling the canvas
+    const canvasAspect = mainCanvas.width / mainCanvas.height;
+    const imgAspect = imgObj.width / imgObj.height;
+    
+    let drawWidth, drawHeight, offsetX = 0, offsetY = 0;
+    
+    if (imgAspect > canvasAspect) {
+      // Image is wider than canvas ratio - fit by height
+      drawHeight = mainCanvas.height;
+      drawWidth = drawHeight * imgAspect;
+      offsetX = (mainCanvas.width - drawWidth) / 2;
+    } else {
+      // Image is taller than canvas ratio - fit by width
+      drawWidth = mainCanvas.width;
+      drawHeight = drawWidth / imgAspect;
+      offsetY = (mainCanvas.height - drawHeight) / 2;
+    }
+    
+    mainCtx.drawImage(imgObj, offsetX, offsetY, drawWidth, drawHeight);
+    
+    // Draw semi-transparent overlay outside circle
+    mainCtx.save();
+    mainCtx.fillStyle = 'rgba(0, 0, 0, 0.5)';
+    mainCtx.fillRect(0, 0, mainCanvas.width, mainCanvas.height);
+    mainCtx.globalCompositeOperation = 'destination-out';
+    mainCtx.beginPath();
+    mainCtx.arc(circle.x, circle.y, circle.r, 0, 2 * Math.PI);
+    mainCtx.fill();
+    mainCtx.restore();
+    
+    // Draw circle overlay
+    mainCtx.save();
+    mainCtx.beginPath();
+    mainCtx.arc(circle.x, circle.y, circle.r, 0, 2 * Math.PI);
+    mainCtx.strokeStyle = '#D9534F';
+    mainCtx.lineWidth = 3;
+    mainCtx.shadowColor = '#fff';
+    mainCtx.shadowBlur = 8;
+    mainCtx.stroke();
+    mainCtx.restore();
+    
+    // Draw resize handle
+    mainCtx.beginPath();
+    mainCtx.arc(circle.x + circle.r, circle.y, 8, 0, 2 * Math.PI);
+    mainCtx.fillStyle = '#4682B4';
+    mainCtx.fill();
+    mainCtx.strokeStyle = '#fff';
+    mainCtx.lineWidth = 2;
+    mainCtx.stroke();
+  }
+
+  function drawPreviewCanvas() {
+    const previewCanvas = document.getElementById('preview-canvas');
+    const mainCanvas = document.getElementById('main-canvas');
+    if (!previewCanvas || !imgObj || !mainCanvas) return;
+    
+    const previewCtx = previewCanvas.getContext('2d');
+    previewCtx.clearRect(0, 0, previewCanvas.width, previewCanvas.height);
+    
+    // Calculate how the image is positioned in the main canvas
+    const canvasAspect = mainCanvas.width / mainCanvas.height;
+    const imgAspect = imgObj.width / imgObj.height;
+    
+    let drawWidth, drawHeight, offsetX = 0, offsetY = 0;
+    
+    if (imgAspect > canvasAspect) {
+      // Image is wider than canvas ratio - fit by height
+      drawHeight = mainCanvas.height;
+      drawWidth = drawHeight * imgAspect;
+      offsetX = (mainCanvas.width - drawWidth) / 2;
+    } else {
+      // Image is taller than canvas ratio - fit by width
+      drawWidth = mainCanvas.width;
+      drawHeight = drawWidth / imgAspect;
+      offsetY = (mainCanvas.height - drawHeight) / 2;
+    }
+    
+    // Calculate the scale factor from canvas to image
+    const scaleX = imgObj.width / drawWidth;
+    const scaleY = imgObj.height / drawHeight;
+    
+    // Calculate crop area in original image coordinates
+    const cropX = (circle.x - circle.r - offsetX) * scaleX;
+    const cropY = (circle.y - circle.r - offsetY) * scaleY;
+    const cropSize = 2 * circle.r * scaleX;
+    
+    // Ensure crop area is within image bounds
+    const safeCropX = Math.max(0, Math.min(imgObj.width - cropSize, cropX));
+    const safeCropY = Math.max(0, Math.min(imgObj.height - cropSize, cropY));
+    const safeCropSize = Math.min(cropSize, imgObj.width - safeCropX, imgObj.height - safeCropY);
+    
+    // Draw cropped circle
+    previewCtx.save();
+    previewCtx.beginPath();
+    previewCtx.arc(previewCanvas.width/2, previewCanvas.height/2, previewCanvas.width/2, 0, 2*Math.PI);
+    previewCtx.closePath();
+    previewCtx.clip();
+    
+    if (safeCropSize > 0) {
+      previewCtx.drawImage(
+        imgObj,
+        safeCropX, safeCropY, safeCropSize, safeCropSize,
+        0, 0, previewCanvas.width, previewCanvas.height
+      );
+    }
+    
+    previewCtx.restore();
+  }
+
+  function downloadImage() {
+    if (!uploadedImage) {
+      alert('❌ Please upload an image first.');
+      return;
+    }
+    
+    const previewCanvas = document.getElementById('preview-canvas');
+    if (!previewCanvas) return;
+    
+    previewCanvas.toBlob(function(blob) {
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `circle-cropped-${uploadedImage.name.split('.')[0]}.png`;
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(() => {
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+        setTimeout(reset, 2000); // Auto-clear after download
+      }, 100);
+    }, 'image/png');
+  }
+
+  // Auto-initialize if DOM is ready
+  if (document.readyState !== 'loading') {
+    setTimeout(init, 50);
+  } else {
+    document.addEventListener('DOMContentLoaded', function() {
+      setTimeout(init, 50);
+    });
+  }
+
+})();
+</script>
+</body>
+</html>

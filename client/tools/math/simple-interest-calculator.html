@@ -1,0 +1,127 @@
+<!-- File: tools/math/simple-interest-calculator.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Simple Interest Calculator - Calculate Interest & Total Amount | ScribbleTools</title>
+    <meta name="description" content="Calculate simple interest and total amount with our free online calculator. Perfect for loans, savings, investments, and financial planning with instant calculations for principal, rate, and time.">
+    <meta name="keywords" content="simple interest calculator, interest calculator, loan calculator, savings calculator, investment calculator, financial calculator, principal interest calculator, compound interest, financial planning, banking calculator, interest rate calculator, money calculator, finance tools">
+    <meta name="author" content="ScribbleTools">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://scribbletools.in/client/tools/math/simple-interest-calculator.html">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Free Simple Interest Calculator - Calculate Interest & Total Amount">
+    <meta property="og:description" content="Calculate simple interest for loans, savings, and investments. Get instant results for principal, rate, and time calculations with our free financial tool.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://scribbletools.in/client/tools/math/simple-interest-calculator.html">
+    <meta property="og:image" content="https://scribbletools.in/assets/og-image.svg">
+    <meta property="og:site_name" content="ScribbleTools">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Free Simple Interest Calculator - Calculate Interest & Total Amount">
+    <meta name="twitter:description" content="Calculate simple interest for financial planning. Perfect for loans, savings, and investment calculations.">
+    <meta name="twitter:image" content="https://scribbletools.in/assets/og-image.svg">
+    
+    <!-- Additional SEO Meta Tags -->
+    <meta name="theme-color" content="#D9534F">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Simple Interest Calculator">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    
+    <!-- Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Simple Interest Calculator",
+        "description": "Calculate simple interest and total amount for loans, savings, and investments with instant financial calculations.",
+        "url": "https://scribbletools.in/client/tools/math/simple-interest-calculator.html",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "Any",
+        "permissions": "browser",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "featureList": [
+            "Simple interest calculation",
+            "Total amount calculation",
+            "Financial planning support",
+            "Loan interest calculation",
+            "Savings planning",
+            "Investment analysis"
+        ]
+    }
+    </script>
+    <style>
+        body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; }
+        .si-calc-container { max-width: 400px; margin: 3em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2em 1.5em 2.5em 1.5em; }
+        .handwritten { font-family: 'Caveat', cursive; }
+        .si-calc-label { font-weight: 600; margin-bottom: 0.5em; display: block; }
+        .si-calc-input { width: 100%; padding: 1em; border: 2px solid #EAE3D5; border-radius: 0.7em; font-size: 1.2em; margin-bottom: 1em; background: #FDFBF5; text-align: center; font-family: 'Fira Code', monospace; }
+        .si-calc-btn { background: #fff; color: #D9534F; border: 2px solid #D9534F; border-radius: 0.5em; padding: 0.7em 2em; font-weight: 600; font-size: 1.1em; cursor: pointer; transition: all 0.2s; margin-bottom: 1em; }
+        .si-calc-btn:hover { background: #D9534F; color: #fff; }
+        .si-calc-result { background: #FDFBF5; border: 2px solid #D9534F; border-radius: 0.7em; padding: 1em; font-size: 1.25em; color: #D9534F; min-height: 1.7em; margin-bottom: 1em; text-align: center; font-family: 'Fira Code', monospace; font-weight: bold; max-height: 300px; overflow-y: auto; word-break: break-word; transition: height 0.2s; }
+        .si-calc-desc { width: 100%; margin-top: 2em; background:#FDFBF5; border:2px solid #EAE3D5; border-radius:0.9em; padding:1.2em 1em; font-size:1.08em; color:#333; line-height:1.7; }
+        .si-calc-desc strong { color: #D9534F; font-size: 1.12em; }
+        @media (max-width: 600px) { .si-calc-container { padding: 1em 0.2em; } }
+    </style>
+</head>
+<body>
+<div class="si-calc-container">
+    <h2 class="handwritten text-5xl text-[#D9534F] mb-4">Simple Interest Calculator</h2>
+    <label class="si-calc-label">Enter principal, rate (%), and time (years) (e.g. <code>1000, 5, 2</code>):</label>
+    <input id="si-input" class="si-calc-input" placeholder="e.g. 1000, 5, 2">
+    <button id="si-calc-calc" class="si-calc-btn">Calculate</button>
+    <div class="si-calc-result" id="si-calc-result"></div>
+</div>
+<div class="si-calc-desc" style="max-width: 540px; margin: 2.5em auto 0 auto; background:#FDFBF5; border:2px solid #EAE3D5; border-radius:0.9em; padding:1.2em 1em; font-size:1.08em; color:#333; line-height:1.7;">
+    <strong style="font-size:1.18em; color:#D9534F;">About the Simple Interest Calculator</strong><br><br>
+    Enter the principal, annual interest rate, and time in years to instantly calculate the simple interest and total amount. Supports decimals and large numbers.<br><br>
+    <b>Features:</b>
+    <ul style="margin-left:1.2em; margin-bottom:0.7em;">
+        <li>Calculates simple interest and total amount</li>
+        <li>Supports decimals and large numbers</li>
+        <li>Responsive, mobile-friendly, and distraction-free</li>
+        <li>Instant feedback for invalid input</li>
+    </ul>
+    <b>Use Cases:</b>
+    <ul style="margin-left:1.2em;">
+        <li>Calculate interest for loans, savings, or investments</li>
+        <li>Check homework or perform quick math for school, college, or tutoring</li>
+        <li>Compare interest for different rates or time periods</li>
+        <li>Financial planning and budgeting</li>
+    </ul>
+    <b>Why use this calculator?</b> No ads, no clutter, no tracking—just a beautiful, reliable simple interest calculator you can use anywhere.<br>
+</div>
+<script>
+function showResult(str) {
+    document.getElementById('si-calc-result').textContent = str;
+}
+document.getElementById('si-calc-calc').addEventListener('click', function() {
+    let val = document.getElementById('si-input').value.trim();
+    if (!val) return showResult('Enter principal, rate, and time.');
+    let parts = val.split(',').map(x => parseFloat(x.trim()));
+    if (parts.length < 3 || isNaN(parts[0]) || isNaN(parts[1]) || isNaN(parts[2])) return showResult('Invalid input.');
+    let principal = parts[0], rate = parts[1], time = parts[2];
+    let interest = principal * rate * time / 100;
+    let total = principal + interest;
+    showResult(`Principal: ${principal}\nRate: ${rate}%\nTime: ${time} years\nSimple Interest: ${interest}\nTotal Amount: ${total}`);
+});
+document.getElementById('si-input').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') {
+        document.getElementById('si-calc-calc').click();
+    }
+});
+</script>
+</html>

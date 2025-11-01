@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Body Type Calculator - FREE Somatotype & Body Shape Identifier Tool</title>
+    <meta name="description" content="Free body type calculator! Identify your somatotype (ectomorph, mesomorph, endomorph) and body shape instantly. Perfect fitness and fashion planning tool. 100% free!">
+    <meta name="keywords" content="body type calculator, somatotype calculator, ectomorph mesomorph endomorph calculator, body shape calculator, body type identifier, fitness body type, body composition calculator, somatotype test, body type assessment, body shape identifier, fitness somatotype, body type analysis, physique calculator, body frame calculator, morphology calculator, body structure calculator, anthropometric calculator, body type classification, somatotype identification, body shape analysis, fitness body assessment, physique type calculator, body morphology, constitutional type calculator, body build calculator, somatic type calculator, body configuration calculator, anatomical body type, physical constitution calculator, body geometry calculator, morphological calculator">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://scribbletools.in/client/tools/health/body-type.html">
+    <meta property="og:title" content="Body Type Calculator - FREE Somatotype & Body Shape Identifier Tool">
+    <meta property="og:description" content="Free body type calculator! Identify your somatotype (ectomorph, mesomorph, endomorph) and body shape instantly. Perfect fitness and fashion planning tool. 100% free!">
+    <meta property="og:image" content="https://scribbletools.in/assets/og-image.svg">
+    <meta property="og:site_name" content="Scribble Tools">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://scribbletools.in/client/tools/health/body-type.html">
+    <meta property="twitter:title" content="Body Type Calculator - FREE Somatotype & Body Shape Identifier Tool">
+    <meta property="twitter:description" content="Free body type calculator! Identify your somatotype (ectomorph, mesomorph, endomorph) and body shape instantly. Perfect fitness and fashion planning tool. 100% free!">
+    <meta property="twitter:image" content="https://scribbletools.in/assets/og-image.svg">
+    
+    <!-- Additional SEO Meta Tags -->
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Scribble Tools">
+    <meta name="generator" content="Scribble Tools">
+    <meta name="application-name" content="Body Type Calculator">
+    <meta name="apple-mobile-web-app-title" content="Body Type Calculator">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#D9534F">
+    <meta name="msapplication-navbutton-color" content="#D9534F">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#D9534F">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://scribbletools.in/client/tools/health/body-type.html">
+    
+    <!-- Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Body Type Calculator",
+      "description": "Free online body type calculator to identify somatotype (ectomorph, mesomorph, endomorph) and body shape for fitness planning and personal styling.",
+      "url": "https://scribbletools.in/client/tools/health/body-type.html",
+      "applicationCategory": "HealthApplication",
+      "operatingSystem": "Any",
+      "permissions": "browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "featureList": [
+        "Identify body type/somatotype",
+        "Ectomorph, mesomorph, endomorph classification",
+        "Body shape analysis",
+        "Fitness planning assistance",
+        "Free to use",
+        "Instant results"
+      ],
+      "provider": {
+        "@type": "Organization",
+        "name": "Scribble Tools",
+        "url": "https://scribbletools.in"
+      }
+    }
+    </script>
+    <style>
+        body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; }
+        .calc-container { max-width: 420px; margin: 3em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2em 1.5em 2.5em 1.5em; }
+        .handwritten { font-family: 'Caveat', cursive; }
+        .calc-label { font-weight: 600; margin-bottom: 0.5em; display: block; }
+        .calc-input { width: 100%; padding: 1em; border: 2px solid #EAE3D5; border-radius: 0.7em; font-size: 1.2em; margin-bottom: 1em; background: #FDFBF5; text-align: center; font-family: 'Fira Code', monospace; }
+        .calc-btn { background: #fff; color: #D9534F; border: 2px solid #D9534F; border-radius: 0.5em; padding: 0.7em 2em; font-weight: 600; font-size: 1.1em; cursor: pointer; transition: all 0.2s; margin-bottom: 1em; }
+        .calc-btn:hover { background: #D9534F; color: #fff; }
+        .calc-result { background: #FDFBF5; border: 2px solid #D9534F; border-radius: 0.7em; padding: 1em; font-size: 1.25em; color: #D9534F; min-height: 1.7em; margin-bottom: 1em; text-align: center; font-family: 'Fira Code', monospace; font-weight: bold; max-height: 300px; overflow-y: auto; word-break: break-word; transition: height 0.2s; }
+        .calc-desc { width: 100%; margin-top: 2em; background:#FDFBF5; border:2px solid #EAE3D5; border-radius:0.9em; padding:1.2em 1em; font-size:1.08em; color:#333; line-height:1.7; }
+        .calc-desc strong { color: #D9534F; font-size: 1.12em; }
+        @media (max-width: 600px) { .calc-container { padding: 1em 0.2em; } }
+    </style>
+</head>
+<body>
+<div class="calc-container">
+    <h2 class="handwritten text-5xl text-[#D9534F] mb-4">Body Type Identifier</h2>
+    <label class="calc-label">Shoulder Width (cm):</label>
+    <input id="shoulders" class="calc-input" type="number" min="0" placeholder="e.g. 45">
+    <label class="calc-label">Waist (cm):</label>
+    <input id="waist" class="calc-input" type="number" min="0" placeholder="e.g. 80">
+    <label class="calc-label">Hip (cm):</label>
+    <input id="hip" class="calc-input" type="number" min="0" placeholder="e.g. 95">
+    <button id="calc-btn" class="calc-btn">Identify</button>
+    <div class="calc-result" id="calc-result"></div>
+</div>
+<div class="calc-desc" style="max-width: fit-content; margin: 2.5em auto 0 auto;">
+    <strong style="font-size:1.18em; color:#D9534F;">About the Body Type Identifier</strong><br><br>
+    Instantly estimate your body type (e.g. ectomorph, mesomorph, endomorph, or common shape) using your measurements. Enter your shoulder, waist, and hip measurements to see your likely body type. Great for fitness, health, or personal style.<br><br>
+    <b>Note:</b> The data used in this calculator was last updated on July 30, 2024, and may change in the future.<br><br>
+    <b>Use Cases:</b>
+    <ul style="margin-left:1.2em;">
+        <li>Identify your body type for fitness or fashion</li>
+        <li>Compare body types for different measurements</li>
+        <li>Set realistic fitness or health goals</li>
+        <li>Check homework or prepare for health class</li>
+    </ul>
+</div>
+<script>
+function showResult(str) {
+    document.getElementById('calc-result').innerHTML = str;
+}
+document.getElementById('calc-btn').addEventListener('click', function() {
+    let shoulders = parseFloat(document.getElementById('shoulders').value);
+    let waist = parseFloat(document.getElementById('waist').value);
+    let hip = parseFloat(document.getElementById('hip').value);
+    if (isNaN(shoulders) || isNaN(waist) || isNaN(hip) || shoulders <= 0 || waist <= 0 || hip <= 0) {
+        showResult('Please enter valid values for all fields.');
+        return;
+    }
+    let type = '';
+    if (shoulders > hip && waist < hip) type = 'Triangle (Pear)';
+    else if (shoulders < hip && waist < shoulders) type = 'Inverted Triangle (Apple)';
+    else if (shoulders === hip && waist < shoulders) type = 'Rectangle';
+    else type = 'Hourglass or Balanced';
+    showResult(`<b>Estimated Body Type:</b> ${type}`);
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Annuity Calculator - Free Retirement Tool | Calculate Annuity Payments</title>
+    <meta name="description" content="Free annuity calculator to calculate present value, future value, and periodic payments. Calculate annuity for retirement planning and investment analysis.">
+    <meta name="keywords" content="annuity calculator, present value calculator, future value calculator, retirement calculator, pension calculator, annuity payment">
+    <meta name="author" content="ScribbleTools">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://scribbletools.in/client/tools/financial/annuity-calculator.html">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://scribbletools.in/client/tools/financial/annuity-calculator.html">
+    <meta property="og:title" content="Annuity Calculator - Free Retirement Tool">
+    <meta property="og:description" content="Calculate annuity payments, present value, and future value. Free tool for retirement planning and investment analysis.">
+    <meta property="og:image" content="https://scribbletools.in/assets/og-image.svg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://scribbletools.in/client/tools/financial/annuity-calculator.html">
+    <meta property="twitter:title" content="Annuity Calculator - Free Retirement Tool">
+    <meta property="twitter:description" content="Calculate annuity payments, present value, and future value. Free tool for retirement planning and investment analysis.">
+    <meta property="twitter:image" content="https://scribbletools.in/assets/og-image.svg">
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Annuity Calculator",
+      "description": "Free online annuity calculator to calculate present value, future value, and periodic payments",
+      "url": "https://scribbletools.in/client/tools/financial/annuity-calculator.html",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Web Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "ScribbleTools"
+      }
+    }
+    </script>
+    <style>
+        body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; }
+        .calc-container { max-width: 420px; margin: 3em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2em 1.5em 2.5em 1.5em; }
+        .handwritten { font-family: 'Caveat', cursive; }
+        .calc-label { font-weight: 600; margin-bottom: 0.5em; display: block; }
+        .calc-input { width: 100%; padding: 1em; border: 2px solid #EAE3D5; border-radius: 0.7em; font-size: 1.2em; margin-bottom: 1em; background: #FDFBF5; text-align: center; font-family: 'Fira Code', monospace; }
+        .calc-btn { background: #fff; color: #D9534F; border: 2px solid #D9534F; border-radius: 0.5em; padding: 0.7em 2em; font-weight: 600; font-size: 1.1em; cursor: pointer; transition: all 0.2s; margin-bottom: 1em; }
+        .calc-btn:hover { background: #D9534F; color: #fff; }
+        .calc-result { background: #FDFBF5; border: 2px solid #D9534F; border-radius: 0.7em; padding: 1em; font-size: 1.25em; color: #D9534F; min-height: 1.7em; margin-bottom: 1em; text-align: center; font-family: 'Fira Code', monospace; font-weight: bold; max-height: 300px; overflow-y: auto; word-break: break-word; transition: height 0.2s; }
+        .calc-desc { width: 100%; margin-top: 2em; background:#FDFBF5; border:2px solid #EAE3D5; border-radius:0.9em; padding:1.2em 1em; font-size:1.08em; color:#333; line-height:1.7; }
+        .calc-desc strong { color: #D9534F; font-size: 1.12em; }
+        @media (max-width: 600px) { .calc-container { padding: 1em 0.2em; } }
+        .calculation-type-selector { display: flex; justify-content: space-between; margin-bottom: 1em; }
+        .calculation-type-btn { flex: 1; padding: 0.5em; margin: 0 0.2em; border: 2px solid #D9534F; background: white; color: #D9534F; border-radius: 0.5em; cursor: pointer; font-size: 0.9em; }
+        .calculation-type-btn.active { background: #D9534F; color: white; }
+        .annuity-type-selector { display: flex; justify-content: space-between; margin-top: 1em; }
+        .annuity-type-btn { flex: 1; padding: 0.5em; margin: 0 0.2em; border: 2px solid #5cb85c; background: white; color: #5cb85c; border-radius: 0.5em; cursor: pointer; font-size: 0.9em; }
+        .annuity-type-btn.active { background: #5cb85c; color: white; }
+        .result-box { background: white; border: 1px solid #EAE3D5; border-radius: 0.5em; padding: 0.8em; margin: 0.5em 0; text-align: center; }
+        .result-box h4 { margin: 0 0 0.5em 0; color: #D9534F; }
+        .input-group { margin-bottom: 1em; }
+        .input-group label { font-weight: 600; margin-bottom: 0.5em; display: block; }
+        .input-group input { width: 100%; padding: 1em; border: 2px solid #EAE3D5; border-radius: 0.7em; font-size: 1.2em; background: #FDFBF5; text-align: center; font-family: 'Fira Code', monospace; }
+    </style>
+</head>
+<body>
+<div class="calc-container">
+    <h2 class="handwritten text-5xl text-[#D9534F] mb-4">Annuity Calculator</h2>
+    
+    <div class="calculation-type-selector">
+        <button class="calculation-type-btn active" data-calc="payment">Calculate Payment</button>
+        <button class="calculation-type-btn" data-calc="present">Calculate Present Value</button>
+        <button class="calculation-type-btn" data-calc="future">Calculate Future Value</button>
+    </div>
+    
+    <div id="paymentInputs">
+        <div class="input-group">
+            <label>Present Value ($):</label>
+            <input id="presentValue" type="number" min="0" placeholder="e.g. 100000">
+        </div>
+        <div class="input-group">
+            <label>Interest Rate (%):</label>
+            <input id="interestRate" type="number" min="0" step="0.01" placeholder="e.g. 5">
+        </div>
+        <div class="input-group">
+            <label>Number of Periods:</label>
+            <input id="numPeriods" type="number" min="1" placeholder="e.g. 20">
+        </div>
+    </div>
+    
+    <div id="presentValueInputs" style="display: none;">
+        <div class="input-group">
+            <label>Payment Amount ($):</label>
+            <input id="paymentAmount" type="number" min="0" placeholder="e.g. 500">
+        </div>
+        <div class="input-group">
+            <label>Interest Rate (%):</label>
+            <input id="interestRatePV" type="number" min="0" step="0.01" placeholder="e.g. 5">
+        </div>
+        <div class="input-group">
+            <label>Number of Periods:</label>
+            <input id="numPeriodsPV" type="number" min="1" placeholder="e.g. 20">
+        </div>
+    </div>
+    
+    <div id="futureValueInputs" style="display: none;">
+        <div class="input-group">
+            <label>Payment Amount ($):</label>
+            <input id="paymentAmountFV" type="number" min="0" placeholder="e.g. 500">
+        </div>
+        <div class="input-group">
+            <label>Interest Rate (%):</label>
+            <input id="interestRateFV" type="number" min="0" step="0.01" placeholder="e.g. 5">
+        </div>
+        <div class="input-group">
+            <label>Number of Periods:</label>
+            <input id="numPeriodsFV" type="number" min="1" placeholder="e.g. 20">
+        </div>
+    </div>
+    
+    <div class="annuity-type-selector">
+        <button class="annuity-type-btn active" data-type="ordinary">Ordinary Annuity</button>
+        <button class="annuity-type-btn" data-type="due">Annuity Due</button>
+    </div>
+    
+    <button id="calc-btn" class="calc-btn">Calculate</button>
+    <div class="calc-result" id="calc-result"></div>
+</div>
+<div class="calc-desc" style="max-width: fit-content; margin: 2.5em auto 0 auto;">
+    <strong style="font-size:1.18em; color:#D9534F;">About the Annuity Calculator</strong><br><br>
+    
+    The Annuity Calculator helps you calculate payments, present values, and future values for annuities. This tool is essential for retirement planning, pension analysis, and understanding the time value of money for regular payment streams.<br><br>
+    
+    <strong style="color:#D9534F;">What is an Annuity?</strong><br>
+    An annuity is a series of equal payments made at regular intervals. Common examples include mortgage payments, car loans, retirement pensions, and insurance payouts. Annuities help you understand how money grows or shrinks over time with regular contributions or withdrawals.<br><br>
+    
+    <strong style="color:#D9534F;">Types of Annuities:</strong><br>
+    <strong>Ordinary Annuity:</strong> Payments are made at the end of each period (e.g., most mortgages and loans).<br><br>
+    <strong>Annuity Due:</strong> Payments are made at the beginning of each period (e.g., rent payments, insurance premiums).<br><br>
+    
+    <strong style="color:#D9534F;">How to Use This Calculator:</strong><br>
+    <ol style="margin-left:1.2em; line-height:1.6;">
+        <li><strong>Select Calculation Type:</strong> Choose to calculate Payment, Present Value, or Future Value</li>
+        <li><strong>Enter Required Values:</strong> Fill in the known values based on your calculation type</li>
+        <li><strong>Interest Rate:</strong> Enter the annual interest rate as a percentage</li>
+        <li><strong>Number of Periods:</strong> Enter the total number of payment periods</li>
+        <li><strong>Select Annuity Type:</strong> Choose Ordinary or Annuity Due</li>
+        <li><strong>Click Calculate:</strong> See your calculated result</li>
+    </ol><br>
+    
+    <strong style="color:#D9534F;">What You'll Discover:</strong><br>
+    <ul style="margin-left:1.2em; line-height:1.6;">
+        <li><strong>Payment Amount:</strong> How much to pay each period</li>
+        <li><strong>Present Value:</strong> Current worth of future payments</li>
+        <li><strong>Future Value:</strong> Value of payments at a future date</li>
+        <li><strong>Total Payments:</strong> Sum of all payments over the annuity period</li>
+        <li><strong>Interest Impact:</strong> How interest affects the annuity value</li>
+    </ul><br>
+    
+    <strong style="color:#D9534F;">Perfect For:</strong><br>
+    <ul style="margin-left:1.2em; line-height:1.6;">
+        <li><strong>Retirement Planning:</strong> Calculating pension payouts and retirement income</li>
+        <li><strong>Loan Analysis:</strong> Understanding mortgage and auto loan payments</li>
+        <li><strong>Investment Planning:</strong> Projecting growth of regular investments</li>
+        <li><strong>Insurance Planning:</strong> Evaluating annuity insurance products</li>
+        <li><strong>Education Planning:</strong> Calculating college fund contributions</li>
+    </ul><br>
+    
+    <strong style="color:#D9534F;">Pro Tips for Annuity Planning:</strong><br>
+    <ul style="margin-left:1.2em; line-height:1.6;">
+        <li><strong>Higher interest rates = lower payments:</strong> For the same present value</li>
+        <li><strong>Longer terms = lower payments:</strong> But more total interest paid</li>
+        <li><strong>Annuity Due payments are higher:</strong> Because money is paid earlier</li>
+        <li><strong>Present value decreases with higher rates:</strong> Future money is worth less</li>
+        <li><strong>Future value increases with higher rates:</strong> Money grows faster</li>
+    </ul><br>
+    
+    <strong style="color:#D9534F;">Common Annuity Scenarios:</strong><br>
+    <ul style="margin-left:1.2em; line-height:1.6;">
+        <li><strong>Retirement Income:</strong> Converting savings to regular pension payments</li>
+        <li><strong>Mortgage Payments:</strong> Fixed monthly payments over 15-30 years</li>
+        <li><strong>Car Loan:</strong> Fixed payments over 3-7 years</li>
+        <li><strong>College Savings:</strong> Regular contributions growing until college</li>
+        <li><strong>Lottery Winnings:</strong> Lump sum vs. annuity payments</li>
+    </ul><br>
+    
+    <b>Note:</b> This calculator provides estimates for planning purposes. Actual annuity terms may vary based on financial institution policies, fees, taxes, and other factors. Consult with financial advisors for personalized annuity advice.
+</div>
+<script>
+// Calculation type selector
+document.querySelectorAll('.calculation-type-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+        document.querySelectorAll('.calculation-type-btn').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        
+        const calcType = this.dataset.calc;
+        document.getElementById('paymentInputs').style.display = calcType === 'payment' ? 'block' : 'none';
+        document.getElementById('presentValueInputs').style.display = calcType === 'present' ? 'block' : 'none';
+        document.getElementById('futureValueInputs').style.display = calcType === 'future' ? 'block' : 'none';
+    });
+});
+
+// Annuity type selector
+document.querySelectorAll('.annuity-type-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+        document.querySelectorAll('.annuity-type-btn').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+    });
+});
+
+document.getElementById('calc-btn').addEventListener('click', function() {
+    const calcType = document.querySelector('.calculation-type-btn.active').dataset.calc;
+    const annuityType = document.querySelector('.annuity-type-btn.active').dataset.type;
+    
+    let presentValue, interestRate, numPeriods, paymentAmount;
+    
+    if (calcType === 'payment') {
+        presentValue = parseFloat(document.getElementById('presentValue').value);
+        interestRate = parseFloat(document.getElementById('interestRate').value);
+        numPeriods = parseFloat(document.getElementById('numPeriods').value);
+        
+        if (isNaN(presentValue) || isNaN(interestRate) || isNaN(numPeriods) || 
+            presentValue <= 0 || interestRate < 0 || numPeriods <= 0) {
+            document.getElementById('calc-result').innerHTML = 'Please enter valid values for all fields.';
+            return;
+        }
+    } else if (calcType === 'present') {
+        paymentAmount = parseFloat(document.getElementById('paymentAmount').value);
+        interestRate = parseFloat(document.getElementById('interestRatePV').value);
+        numPeriods = parseFloat(document.getElementById('numPeriodsPV').value);
+        
+        if (isNaN(paymentAmount) || isNaN(interestRate) || isNaN(numPeriods) || 
+            paymentAmount <= 0 || interestRate < 0 || numPeriods <= 0) {
+            document.getElementById('calc-result').innerHTML = 'Please enter valid values for all fields.';
+            return;
+        }
+    } else if (calcType === 'future') {
+        paymentAmount = parseFloat(document.getElementById('paymentAmountFV').value);
+        interestRate = parseFloat(document.getElementById('interestRateFV').value);
+        numPeriods = parseFloat(document.getElementById('numPeriodsFV').value);
+        
+        if (isNaN(paymentAmount) || isNaN(interestRate) || isNaN(numPeriods) || 
+            paymentAmount <= 0 || interestRate < 0 || numPeriods <= 0) {
+            document.getElementById('calc-result').innerHTML = 'Please enter valid values for all fields.';
+            return;
+        }
+    }
+    
+    const r = interestRate / 100;
+    const n = numPeriods;
+    let result = 0;
+    let resultHTML = '';
+    
+    if (annuityType === 'ordinary') {
+        if (calcType === 'payment') {
+            // Calculate payment for ordinary annuity
+            result = presentValue * r / (1 - Math.pow(1 + r, -n));
+            resultHTML = `
+                <div class="result-box">
+                    <h4>Periodic Payment</h4>
+                    $${result.toFixed(2)}
+                </div>
+                <div class="result-box">
+                    <h4>Total Payments</h4>
+                    $${(result * n).toFixed(2)}
+                </div>
+                <div class="result-box">
+                    <h4>Total Interest</h4>
+                    $${(result * n - presentValue).toFixed(2)}
+                </div>
+            `;
+        } else if (calcType === 'present') {
+            // Calculate present value for ordinary annuity
+            result = paymentAmount * (1 - Math.pow(1 + r, -n)) / r;
+            resultHTML = `
+                <div class="result-box">
+                    <h4>Present Value</h4>
+                    $${result.toFixed(2)}
+                </div>
+                <div class="result-box">
+                    <h4>Total Payments</h4>
+                    $${(paymentAmount * n).toFixed(2)}
+                </div>
+                <div class="result-box">
+                    <h4>Total Interest</h4>
+                    $${(paymentAmount * n - result).toFixed(2)}
+                </div>
+            `;
+        } else if (calcType === 'future') {
+            // Calculate future value for ordinary annuity
+            result = paymentAmount * (Math.pow(1 + r, n) - 1) / r;
+            resultHTML = `
+                <div class="result-box">
+                    <h4>Future Value</h4>
+                    $${result.toFixed(2)}
+                </div>
+                <div class="result-box">
+                    <h4>Total Payments</h4>
+                    $${(paymentAmount * n).toFixed(2)}
+                </div>
+                <div class="result-box">
+                    <h4>Total Interest</h4>
+                    $${(result - paymentAmount * n).toFixed(2)}
+                </div>
+            `;
+        }
+    } else {
+        // Annuity Due
+        if (calcType === 'payment') {
+            // Calculate payment for annuity due
+            result = presentValue * r / ((1 - Math.pow(1 + r, -n)) * (1 + r));
+            resultHTML = `
+                <div class="result-box">
+                    <h4>Periodic Payment</h4>
+                    $${result.toFixed(2)}
+                </div>
+                <div class="result-box">
+                    <h4>Total Payments</h4>
+                    $${(result * n).toFixed(2)}
+                </div>
+                <div class="result-box">
+                    <h4>Total Interest</h4>
+                    $${(result * n - presentValue).toFixed(2)}
+                </div>
+            `;
+        } else if (calcType === 'present') {
+            // Calculate present value for annuity due
+            result = paymentAmount * (1 - Math.pow(1 + r, -n)) / r * (1 + r);
+            resultHTML = `
+                <div class="result-box">
+                    <h4>Present Value</h4>
+                    $${result.toFixed(2)}
+                </div>
+                <div class="result-box">
+                    <h4>Total Payments</h4>
+                    $${(paymentAmount * n).toFixed(2)}
+                </div>
+                <div class="result-box">
+                    <h4>Total Interest</h4>
+                    $${(paymentAmount * n - result).toFixed(2)}
+                </div>
+            `;
+        } else if (calcType === 'future') {
+            // Calculate future value for annuity due
+            result = paymentAmount * (Math.pow(1 + r, n) - 1) / r * (1 + r);
+            resultHTML = `
+                <div class="result-box">
+                    <h4>Future Value</h4>
+                    $${result.toFixed(2)}
+                </div>
+                <div class="result-box">
+                    <h4>Total Payments</h4>
+                    $${(paymentAmount * n).toFixed(2)}
+                </div>
+                <div class="result-box">
+                    <h4>Total Interest</h4>
+                    $${(result - paymentAmount * n).toFixed(2)}
+                </div>
+            `;
+        }
+    }
+    
+    document.getElementById('calc-result').innerHTML = resultHTML;
+});
+</script>
+</body>
+</html>
