@@ -94,9 +94,10 @@
     
     <style>
         body, html {
-    overflow-x: hidden;
+    overflow-x: auto;
     width: 100%;
     margin: 0;
+    min-width: 100%;
 }
 body { 
     font-family: 'Poppins', sans-serif; 
@@ -124,7 +125,57 @@ h1, h2, h3 {
     box-sizing: border-box;
     padding: clamp(0.25rem, 3vw, 1.5rem);
     margin: 0 auto;
+    overflow-x: auto;
 }
+
+/* Smooth Horizontal Scroll for All Views */
+* {
+    scroll-behavior: smooth;
+}
+
+/* Custom Scrollbar Styling for Horizontal Scroll */
+body::-webkit-scrollbar,
+#app-container::-webkit-scrollbar,
+.container::-webkit-scrollbar {
+    height: 8px;
+    width: 8px;
+}
+
+body::-webkit-scrollbar-track,
+#app-container::-webkit-scrollbar-track,
+.container::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+}
+
+body::-webkit-scrollbar-thumb,
+#app-container::-webkit-scrollbar-thumb,
+.container::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 10px;
+    transition: background 0.3s ease;
+}
+
+body::-webkit-scrollbar-thumb:hover,
+#app-container::-webkit-scrollbar-thumb:hover,
+.container::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+}
+
+/* Firefox Scrollbar */
+body,
+#app-container,
+.container {
+    scrollbar-width: thin;
+    scrollbar-color: #667eea rgba(0, 0, 0, 0.05);
+}
+
+/* Ensure content doesn't break horizontal scroll */
+#app-container > * {
+    max-width: 100%;
+    overflow-x: auto;
+}
+
 #app-container > * { animation: fadeIn 0.5s ease-in-out; }
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
@@ -430,12 +481,15 @@ img, video {
     padding: 0.125rem;
     font-size: 0.9rem;
     line-height: 1.5;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
   }
   
   .container {
     max-width: 100vw;
     padding: 0.125rem;
     margin: 0;
+    overflow-x: auto;
   }
   
   #app-container {
@@ -446,6 +500,22 @@ img, video {
     max-width: 100%;
     box-shadow: none;
     border: none;
+    overflow-x: auto;
+  }
+  
+  /* Enhanced Mobile Horizontal Scroll */
+  * {
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Mobile-friendly scrollbar */
+  body::-webkit-scrollbar {
+    height: 6px;
+  }
+  
+  #app-container::-webkit-scrollbar,
+  .container::-webkit-scrollbar {
+    height: 6px;
   }
   
   /* Modern card-based navigation */
