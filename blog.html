@@ -4484,26 +4484,69 @@
 
     <!-- JavaScript for Category Filtering and View Tracking -->
     <script>
-        // View tracking functions
-        function getArticleViews() {
-            const views = localStorage.getItem('blogArticleViews');
-            return views ? JSON.parse(views) : {};
+        // API endpoint for blog view tracking
+        const API_ENDPOINT = 'api/track-blog-views.php';
+
+        // Fetch all article views from database
+        async function getArticleViews() {
+            try {
+                const response = await fetch(API_ENDPOINT);
+                const data = await response.json();
+                
+                if (data.success) {
+                    // Convert array to object for easy lookup
+                    const viewsObject = {};
+                    data.data.forEach(article => {
+                        viewsObject[article.article_id] = parseInt(article.view_count);
+                    });
+                    return viewsObject;
+                }
+            } catch (error) {
+                console.error('Error fetching views:', error);
+                // Fallback to localStorage if API fails
+                const views = localStorage.getItem('blogArticleViews');
+                return views ? JSON.parse(views) : {};
+            }
+            return {};
         }
 
-        function incrementArticleView(articleId) {
-            const views = getArticleViews();
-            views[articleId] = (views[articleId] || 0) + 1;
-            localStorage.setItem('blogArticleViews', JSON.stringify(views));
-            updateAllViewCounts();
+        // Increment article view count in database
+        async function incrementArticleView(articleId) {
+            try {
+                const response = await fetch(API_ENDPOINT, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ article_id: articleId })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    // Update the display immediately
+                    updateAllViewCounts();
+                    return data.data.view_count;
+                }
+            } catch (error) {
+                console.error('Error incrementing view:', error);
+                // Fallback to localStorage if API fails
+                const views = JSON.parse(localStorage.getItem('blogArticleViews') || '{}');
+                views[articleId] = (views[articleId] || 0) + 1;
+                localStorage.setItem('blogArticleViews', JSON.stringify(views));
+                updateAllViewCounts();
+            }
         }
 
-        function getViewCount(articleId) {
-            const views = getArticleViews();
+        // Get view count for specific article
+        async function getViewCount(articleId) {
+            const views = await getArticleViews();
             return views[articleId] || 0;
         }
 
-        function updateAllViewCounts() {
-            const views = getArticleViews();
+        // Update all view count displays on the page
+        async function updateAllViewCounts() {
+            const views = await getArticleViews();
             document.querySelectorAll('.view-count').forEach(element => {
                 const articleId = element.getAttribute('data-article-id');
                 const count = views[articleId] || 0;
