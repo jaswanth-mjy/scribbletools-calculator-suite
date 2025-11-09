@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ROT13 Encoder Decoder - FREE ROT13 Cipher & Text Encryption Tool</title>
+  <meta name="description" content="Free ROT13 encoder decoder! Encrypt & decrypt text with ROT13 cipher, Caesar cipher tool. Simple text encryption for puzzles, coding. 100% free!">
+  <meta name="keywords" content="rot13 encoder, rot13 decoder, rot13 cipher, caesar cipher, text encryption, text decoder, cipher tool, encryption decoder, rot13 converter, text cipher, simple encryption, letter substitution, cryptography tool, text scrambler, cipher encoder, decode rot13, encrypt text, cipher generator, text obfuscation, basic encryption">
+  <meta name="author" content="Scribble Tools">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://scribbletools.in/client/tools/text/rot13.html">
+  <meta property="og:title" content="ROT13 Encoder Decoder - FREE ROT13 Cipher & Text Encryption Tool">
+  <meta property="og:description" content="Free ROT13 encoder decoder! Encrypt & decrypt text with ROT13 cipher, Caesar cipher tool. Simple text encryption for puzzles, coding. 100% free!">
+  <meta property="og:image" content="https://scribbletools.in/assets/og-image.svg">
+  <meta property="og:site_name" content="Scribble Tools">
+  <meta property="og:locale" content="en_US">
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://scribbletools.in/client/tools/text/rot13.html">
+  <meta property="twitter:title" content="ROT13 Encoder Decoder - FREE ROT13 Cipher & Text Encryption Tool">
+  <meta property="twitter:description" content="Free ROT13 encoder decoder! Encrypt & decrypt text with ROT13 cipher, Caesar cipher tool. Simple text encryption for puzzles, coding. 100% free!">
+  <meta property="twitter:image" content="https://scribbletools.in/assets/og-image.svg">
+  
+  <!-- Additional SEO Meta Tags -->
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Scribble Tools">
+  <meta name="generator" content="Scribble Tools">
+  <meta name="application-name" content="ROT13 Cipher Tool">
+  <meta name="apple-mobile-web-app-title" content="ROT13 Tool">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#D9534F">
+  <meta name="msapplication-navbutton-color" content="#D9534F">
+  <meta name="apple-mobile-web-app-status-bar-style" content="#D9534F">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://scribbletools.in/client/tools/text/rot13.html">
+  
+  <!-- Preconnect for Performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "ROT13 Cipher Encoder & Decoder Tool",
+    "description": "Free online ROT13 cipher tool for encoding and decoding text. Simple Caesar cipher implementation for text encryption and puzzles.",
+    "url": "https://scribbletools.in/client/tools/text/rot13.html",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "Any",
+    "permissions": "browser",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "featureList": [
+      "ROT13 text encoding",
+      "ROT13 text decoding",
+      "Caesar cipher tool",
+      "Simple text encryption",
+      "Letter substitution cipher",
+      "Cryptography utility",
+      "No registration required",
+      "Free to use"
+    ],
+    "provider": {
+      "@type": "Organization",
+      "name": "Scribble Tools",
+      "url": "https://scribbletools.in"
+    }
+  }
+  </script>
+</head>
+<body>
+
+<!-- File: tools/text/rot13.html -->
+<style>
+    .rdl-textarea {
+        background-color: #FDFBF5;
+        border: 2px solid #EAE3D5;
+        border-radius: 0.5rem;
+        padding: 1rem;
+        width: 90%;
+        min-width: 320px;
+        max-width: 700px;
+        height: 100px;
+        color: #4A4A4A;
+        font-size: 1.1rem;
+        line-height: 1.6;
+        transition: all 0.2s;
+        resize: none;
+        overflow: auto;
+        box-sizing: border-box;
+        margin: 0 auto 1.2rem auto;
+        display: block;
+    }
+    .rdl-textarea:focus {
+        outline: none;
+        border-color: #D9534F;
+        box-shadow: 0 0 0 3px rgba(217, 83, 79, 0.2);
+    }
+    .rdl-utility-bar {
+        margin-top: 2.5rem;
+        display: flex;
+        gap: 1.2rem;
+        justify-content: center;
+    }
+    .rdl-utility-button {
+        background-color: #fff;
+        color: #D9534F;
+        font-weight: 600;
+        border: 2px solid #D9534F;
+        cursor: pointer;
+        padding: 0.7rem 2rem;
+        border-radius: 0.5rem;
+        transition: all 0.2s;
+        font-size: 1.1rem;
+    }
+    .rdl-utility-button:hover {
+        background-color: #D9534F;
+        color: #fff;
+    }
+    .rdl-output-box {
+        margin: 2rem auto 0 auto;
+        background: #fff;
+        border: 2px solid #D9534F;
+        border-radius: 0.7rem;
+        padding: 1.2rem 1rem;
+        min-height: 80px;
+        color: #333;
+        font-size: 1.15rem;
+        font-family: 'Fira Code', monospace;
+        letter-spacing: 1px;
+        word-break: break-word;
+        overflow: auto;
+        max-width: 700px;
+        width: 90%;
+        text-align: left;
+    }
+    .rot13-btn-bar {
+        display: flex;
+        justify-content: center;
+        gap: 1.2rem;
+        margin: 1.5rem 0 0.5rem 0;
+    }
+</style>
+<div>
+    <h2 class="handwritten text-5xl text-[#D9534F] mb-4">ROT13 Encoder / Decoder</h2>
+    <div class="mb-6 p-6 bg-amber-50/70 rounded-lg border border-amber-200">
+        <p class="text-lg text-gray-800 font-bold mb-2">The ROT13 Encoder/Decoder tool lets you quickly encode or decode text using the classic ROT13 cipher. ROT13 replaces each letter with the letter 13 positions ahead in the alphabet, making it a simple way to obfuscate spoilers, puzzle answers, or private notes. Since ROT13 is symmetric, encoding and decoding are the same operation.</p>
+        <ul class="list-disc list-inside text-gray-700 text-base mb-2">
+            <li><b>Encode/Decode:</b> Instantly apply ROT13 to your text. The same button both encodes and decodes.</li>
+            <li><b>Simple Obfuscation:</b> Hide spoilers, puzzle solutions, or sensitive info in forums, emails, or games.</li>
+            <li><b>Universal:</b> Works with any English text—letters are rotated, numbers and symbols are left unchanged.</li>
+        </ul>
+        <p class="text-base text-gray-700 mb-2"><b>How to use:</b></p>
+        <ol class="list-decimal list-inside text-gray-700 text-base mb-2">
+            <li>Paste or type your text into the input box below.</li>
+            <li>Click <b>ROT13 Encode/Decode</b> to transform your text.</li>
+            <li>View the encoded or decoded result in the output area.</li>
+            <li>Use <b>Copy</b> to copy the result, <b>Download</b> to save as a file, or <b>Clear</b> to reset.</li>
+        </ol>
+        <p class="text-base text-gray-700"><b>Example uses:</b> Hide spoilers in online discussions, encode geocaching clues, create simple ciphers for games, or decode ROT13 messages from friends.</p>
+    </div>
+    <textarea id="rot13-input" class="rdl-textarea" placeholder="Paste or type your text here..."></textarea>
+    <div class="rot13-btn-bar">
+        <button id="rot13-encode" class="rdl-utility-button">ROT13 Encode/Decode</button>
+    </div>
+    <div class="rdl-output-box" id="rot13-output"></div>
+    <div class="rdl-utility-bar">
+        <button id="rot13-copy" class="rdl-utility-button">Copy</button>
+        <button id="rot13-download" class="rdl-utility-button">Download</button>
+        <button id="rot13-clear" class="rdl-utility-button">Clear</button>
+    </div>
+</div>
+<script>
+function rot13(str) {
+    return str.replace(/[a-zA-Z]/g, function(c) {
+        return String.fromCharCode(
+            (c <= 'Z' ? 90 : 122) >= (c = c.charCodeAt(0) + 13) ? c : c - 26
+        );
+    });
+}
+function initializeRot13() {
+    const input = document.getElementById('rot13-input');
+    const output = document.getElementById('rot13-output');
+    const btnEncode = document.getElementById('rot13-encode');
+    const btnCopy = document.getElementById('rot13-copy');
+    const btnDownload = document.getElementById('rot13-download');
+    const btnClear = document.getElementById('rot13-clear');
+    btnEncode.addEventListener('click', () => {
+        output.textContent = rot13(input.value);
+    });
+    btnCopy.addEventListener('click', () => {
+        navigator.clipboard.writeText(output.textContent).then(() => {
+            const orig = btnCopy.textContent;
+            btnCopy.textContent = 'Copied!';
+            setTimeout(() => { btnCopy.textContent = orig; }, 2000);
+        });
+    });
+    btnDownload.addEventListener('click', () => {
+        const blob = new Blob([output.textContent], { type: 'text/plain' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'rot13.txt';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    });
+    btnClear.addEventListener('click', () => {
+        input.value = '';
+        output.textContent = '';
+    });
+}
+initializeRot13();
+</script>

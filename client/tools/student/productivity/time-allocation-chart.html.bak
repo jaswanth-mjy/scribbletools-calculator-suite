@@ -1,0 +1,1860 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1200, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes">
+    <title>Time Allocation Chart - Student Time Management Tool | Visualize Daily Schedule</title>
+    <meta name="description" content="Free time allocation chart for students! Visualize and optimize your daily schedule. Track study time, classes, work, and leisure activities. Perfect for time management and productivity.">
+    <meta name="keywords" content="time allocation chart, time management tool, student schedule, daily planner, time tracker, study schedule, time visualization, student productivity, time budgeting, schedule optimizer">
+    <meta name="author" content="Scribble Tools">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://scribbletools.in/client/tools/student/productivity/time-allocation.html">
+    <meta property="og:title" content="Time Allocation Chart - Student Time Management Tool">
+    <meta property="og:description" content="Free time allocation chart for students! Visualize and optimize your daily schedule. Track study time, classes, work, and leisure activities.">
+    <meta property="og:image" content="https://scribbletools.in/assets/og-image.svg">
+    <meta property="og:site_name" content="Scribble Tools">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://scribbletools.in/client/tools/student/productivity/time-allocation.html">
+    <meta property="twitter:title" content="Time Allocation Chart - Student Time Management Tool">
+    <meta property="twitter:description" content="Free time allocation chart for students! Visualize and optimize your daily schedule. Track study time, classes, work, and leisure activities.">
+    <meta property="twitter:image" content="https://scribbletools.in/assets/og-image.svg">
+    
+    <!-- Additional SEO Meta Tags -->
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Scribble Tools">
+    <meta name="generator" content="Scribble Tools">
+    <meta name="application-name" content="Time Allocation Chart">
+    <meta name="apple-mobile-web-app-title" content="Time Chart">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#667eea">
+    <meta name="msapplication-navbutton-color" content="#667eea">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#667eea">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://scribbletools.in/client/tools/student/productivity/time-allocation.html">
+    
+    <!-- Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Time Allocation Chart - Student Time Management Tool",
+        "description": "Free time allocation chart for students to visualize and optimize their daily schedule. Track study time, classes, work, and leisure activities.",
+        "url": "https://scribbletools.in/client/tools/student/productivity/time-allocation.html",
+        "applicationCategory": "ProductivityApplication",
+        "operatingSystem": "Any",
+        "permissions": "browser",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "featureList": [
+            "Visual time allocation charts",
+            "Daily schedule tracking",
+            "Activity time management",
+            "Productivity analysis",
+            "Time budgeting tools",
+            "Schedule optimization",
+            "Multiple chart types",
+            "Export functionality",
+            "No registration required"
+        ],
+        "provider": {
+            "@type": "Organization",
+            "name": "Scribble Tools",
+            "url": "https://scribbletools.in"
+        },
+        "audience": {
+            "@type": "Audience",
+            "audienceType": "Students, College Students, University Students"
+        },
+        "educationalLevel": "Higher Education",
+        "category": "Education, Productivity, Time Management"
+    }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Caveat:wght@400;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* CSS Scoping - All styles prefixed with .time-chart-root to prevent conflicts */
+        .time-chart-root body { 
+            font-family: 'Poppins', sans-serif; 
+            background: #F0F7FF; 
+            color: #333; 
+            margin: 0; 
+            padding: 10px; 
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        .time-chart-root .time-chart-container { 
+            max-width: 1000px; 
+            width: 98%;
+            margin: 0.5em auto; 
+            background: #fff; 
+            border-radius: 1em; 
+            box-shadow: 0 2px 15px #d6e4ff; 
+            padding: 1em; 
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto auto auto auto auto;
+            gap: 1em;
+            grid-template-areas: 
+                "header header"
+                "inputs chart"
+                "stats stats"
+                "templates templates"
+                "info info";
+        }
+        .time-chart-root .time-chart-header {
+            grid-area: header;
+            text-align: center;
+            padding: 1em;
+            background: linear-gradient(135deg, #059669 0%, #047857 100%);
+            border-radius: 0.8em;
+            color: white;
+        }
+        .time-chart-root .time-chart-handwritten { 
+            font-family: 'Caveat', cursive; 
+            color: #ffffff; 
+            text-align: center; 
+            font-size: 2.5rem; 
+            font-weight: 700; 
+            margin-bottom: 0.3rem; 
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .time-chart-root .time-chart-subtitle {
+            text-align: center;
+            color: #ffffff;
+            margin-bottom: 0;
+            font-size: 1.2em;
+            font-weight: 500;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+        }
+        .time-chart-root .time-chart-input-section {
+            grid-area: inputs;
+            background: #f0fdf4; 
+            border: 2px solid #10b981; 
+            border-radius: 0.8em; 
+            padding: 1em; 
+            height: fit-content;
+            box-shadow: 0 2px 12px rgba(16, 185, 129, 0.15);
+        }
+        .time-chart-root .time-chart-form-grid {
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+            gap: 1em; 
+            margin-bottom: 1em; 
+        }
+        .time-chart-root .time-chart-form-group {
+            display: flex; 
+            flex-direction: column; 
+        }
+        .time-chart-root .time-chart-form-label {
+            font-weight: 600; 
+            margin-bottom: 0.5em; 
+            display: block; 
+            color: #065f46; 
+            font-size: 1em; 
+        }
+        .time-chart-root .time-chart-form-input {
+            width: 100%; 
+            padding: 1em; 
+            border: 2px solid #6ee7b7; 
+            border-radius: 0.7em; 
+            font-size: 1.2em; 
+            margin-bottom: 1em; 
+            background: #ffffff; 
+            text-align: center; 
+            font-family: 'Fira Code', monospace; 
+            color: #047857;
+            font-weight: 600;
+        }
+        .time-chart-root .time-chart-form-input:focus {
+            outline: none; 
+            border-color: #059669; 
+            box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.2); 
+        }
+        .time-chart-root .time-chart-color-picker {
+            width: 50px; 
+            height: 50px; 
+            border: 3px solid #10b981; 
+            border-radius: 50%; 
+            cursor: pointer; 
+            margin-top: 0.5em; 
+        }
+        .time-chart-root .time-chart-btn-container {
+            display: flex; 
+            gap: 1em; 
+            justify-content: center; 
+            margin-top: 1em; 
+        }
+        .time-chart-root .time-chart-btn { 
+            background: linear-gradient(135deg, #059669, #047857); 
+            color: white; 
+            border: none; 
+            padding: 1.2em 2.5em; 
+            border-radius: 2em; 
+            cursor: pointer; 
+            font-size: 1.1em; 
+            font-weight: 600; 
+            box-shadow: 0 4px 15px rgba(5, 150, 105, 0.3); 
+            transition: all 0.3s ease; 
+            text-align: center; 
+            display: block; 
+            width: fit-content; 
+            margin: 2em auto; 
+        }
+        .time-chart-root .time-chart-btn:hover { 
+            transform: translateY(-2px); 
+            box-shadow: 0 8px 25px rgba(5, 150, 105, 0.4); 
+        }
+        .time-chart-root .time-chart-btn.secondary {
+            background: #fff; 
+            color: #059669; 
+            border: 2px solid #059669; 
+        }
+        .time-chart-root .time-chart-btn.secondary:hover {
+            background: #f0fdf4;
+        }
+        .time-chart-root .time-chart-chart-section {
+            background: #fefefe; 
+            border: 2px solid #10b981; 
+            border-radius: 0.8em; 
+            padding: 1em; 
+            grid-area: chart;
+            box-shadow: 0 2px 12px rgba(16, 185, 129, 0.15);
+        }
+        .time-chart-root .time-chart-chart-container {
+            position: relative; 
+            height: 300px; 
+            margin-bottom: 0.5em; 
+        }
+        .time-chart-root .time-chart-chart-type-selector {
+            display: flex; 
+            justify-content: center; 
+            gap: 0.5em; 
+            margin-bottom: 1em; 
+        }
+        .time-chart-root .time-chart-chart-type-btn {
+            padding: 0.5em 1em; 
+            background: #ffffff; 
+            color: #047857; 
+            border: 2px solid #6ee7b7; 
+            border-radius: 1em; 
+            cursor: pointer; 
+            font-size: 0.9em; 
+            font-weight: 600; 
+            transition: all 0.3s ease; 
+        }
+        .time-chart-root .time-chart-chart-type-btn.active {
+            background: #047857; 
+            color: white; 
+            border-color: #047857;
+        }
+        .time-chart-root .time-chart-chart-type-btn:hover {
+            transform: translateY(-1px); 
+            background: #ecfdf5;
+            border-color: #059669;
+        }
+        .time-chart-root .time-chart-chart-type-btn.active:hover {
+            background: #065f46; 
+        }
+        .time-chart-root .time-chart-stats-section {
+            background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%); 
+            color: white; 
+            border-radius: 0.8em; 
+            padding: 1em; 
+            grid-area: stats;
+        }
+        .time-chart-root .time-chart-stats-title {
+            font-family: 'Caveat', cursive; 
+            color: #ffffff; 
+            text-align: center; 
+            font-size: 1.8rem; 
+            margin-bottom: 0.7em; 
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+        }
+        .time-chart-root .time-chart-stats-grid {
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); 
+            gap: 1em; 
+        }
+        .time-chart-root .time-chart-stat-item {
+            text-align: center; 
+        }
+        .time-chart-root .time-chart-stat-value {
+            font-size: 2.5rem; 
+            font-weight: 700; 
+            margin-bottom: 0.5em; 
+            font-family: 'Fira Code', monospace; 
+        }
+        .time-chart-root .time-chart-stat-label {
+            font-size: 0.9em; 
+            opacity: 0.9; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+        }
+        .time-chart-root .time-chart-desc {
+            width: 100%; 
+            background:#fffbeb; 
+            border:2px solid #f59e0b; 
+            border-radius:0.8em; 
+            padding:1em; 
+            font-size:1em; 
+            color:#92400e; 
+            line-height:1.5; 
+            grid-area: info;
+            box-shadow: 0 2px 12px rgba(245, 158, 11, 0.15);
+        }
+        .time-chart-root .time-chart-desc strong { 
+            color: #d97706; 
+            font-size: 1.12em; 
+        }
+        .time-chart-root .time-chart-main-feature-title {
+            font-size: 1.4em; 
+            color: #b45309; 
+            font-weight: 700;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        .time-chart-root .time-chart-section-title {
+            font-family: 'Caveat', cursive; 
+            color: #047857; 
+            text-align: center; 
+            font-size: 2rem; 
+            margin-bottom: 1em; 
+            font-weight: 700;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        /* Productivity Insights Styling */
+        .time-chart-root .time-chart-insights {
+            margin-top: 1.5em;
+            padding: 1em;
+            background: #f0fdf4;
+            border: 2px solid #6ee7b7;
+            border-radius: 0.8em;
+        }
+        .time-chart-root .time-chart-insights-title {
+            color: #047857;
+            font-size: 1.3em;
+            font-weight: 700;
+            margin-bottom: 1em;
+            text-align: center;
+        }
+        .time-chart-root .time-chart-insights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1em;
+        }
+        .time-chart-root .time-chart-insight-item {
+            display: flex;
+            align-items: center;
+            background: white;
+            padding: 0.8em;
+            border-radius: 0.6em;
+            border: 2px solid #a7f3d0;
+            transition: transform 0.2s ease;
+        }
+        .time-chart-root .time-chart-insight-item:hover {
+            transform: translateY(-2px);
+        }
+        .time-chart-root .time-chart-insight-icon {
+            font-size: 1.5em;
+            margin-right: 0.8em;
+        }
+        .time-chart-root .time-chart-insight-label {
+            font-size: 0.85em;
+            color: #065f46;
+            font-weight: 600;
+        }
+        .time-chart-root .time-chart-insight-value {
+            font-size: 0.9em;
+            color: #047857;
+            font-weight: 700;
+        }
+        
+        /* Quick Actions Styling */
+        .time-chart-root .time-chart-actions {
+            display: flex;
+            justify-content: center;
+            gap: 1em;
+            margin-top: 1.5em;
+            flex-wrap: wrap;
+        }
+        .time-chart-root .time-chart-action-btn {
+            background: linear-gradient(135deg, #059669, #047857);
+            color: white;
+            border: none;
+            padding: 0.8em 1.5em;
+            border-radius: 1.5em;
+            font-size: 0.9em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5em;
+        }
+        .time-chart-root .time-chart-action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(5, 150, 105, 0.3);
+        }
+        .time-chart-root .time-chart-feature-group {
+            background: #fef3c7; 
+            border: 2px solid #fbbf24; 
+            border-radius: 0.5em; 
+            padding: 1em; 
+            margin: 0.5em 0; 
+        }
+        .time-chart-root .time-chart-feature-group h4 { 
+            color: #b45309; 
+            margin: 0 0 0.5em 0; 
+            font-weight: 700;
+        }
+        .time-chart-root .time-chart-feature-info {
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 1em; 
+            margin: 1em 0; 
+        }
+        .time-chart-root .time-chart-feature-info > div { 
+            background: white; 
+            padding: 0.5em; 
+            border-radius: 0.3em; 
+            border: 2px solid #fcd34d; 
+            color: #b45309;
+        }
+        .time-chart-root .time-chart-feature-info strong { 
+            color: #92400e; 
+            font-weight: 700;
+        }
+        .time-chart-root .time-chart-use-case-students { color: #5CB85C; }
+        .time-chart-root .time-chart-use-case-professionals { color: #5BC0DE; }
+        .time-chart-root .time-chart-use-case-changers { color: #A569BD; }
+        .time-chart-root .time-chart-use-case-freelancers { color: #F0AD4E; }
+        
+        /* Templates Section Styling */
+        .time-chart-root .time-chart-templates-section {
+            grid-area: templates;
+            background: #f0f9ff;
+            border: 2px solid #0ea5e9;
+            border-radius: 0.8em;
+            padding: 1em;
+            box-shadow: 0 2px 12px rgba(14, 165, 233, 0.15);
+        }
+        .time-chart-root .time-chart-templates-title {
+            font-family: 'Caveat', cursive;
+            color: #0369a1;
+            text-align: center;
+            font-size: 1.8rem;
+            margin-bottom: 1em;
+            font-weight: 700;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+        }
+        .time-chart-root .time-chart-templates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1em;
+            margin-bottom: 1em;
+        }
+        .time-chart-root .time-chart-template-card {
+            background: white;
+            border: 2px solid #7dd3fc;
+            border-radius: 0.8em;
+            padding: 1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .time-chart-root .time-chart-template-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(14, 165, 233, 0.2);
+            border-color: #0ea5e9;
+        }
+        .time-chart-root .time-chart-template-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8em;
+        }
+        .time-chart-root .time-chart-template-name {
+            font-weight: 600;
+            color: #0369a1;
+            font-size: 1.1em;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 80%;
+        }
+        .time-chart-root .time-chart-template-date {
+            font-size: 0.75em;
+            color: #64748b;
+        }
+        .time-chart-root .time-chart-template-preview {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.3em;
+            margin-bottom: 0.8em;
+        }
+        .time-chart-root .time-chart-template-preview-item {
+            display: flex;
+            align-items: center;
+            font-size: 0.75em;
+            color: #334155;
+        }
+        .time-chart-root .time-chart-template-preview-color {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-right: 0.3em;
+        }
+        .time-chart-root .time-chart-template-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+        .time-chart-root .time-chart-template-btn {
+            background: #0ea5e9;
+            color: white;
+            border: none;
+            padding: 0.4em 0.8em;
+            border-radius: 0.5em;
+            font-size: 0.8em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .time-chart-root .time-chart-template-btn:hover {
+            background: #0284c7;
+        }
+        .time-chart-root .time-chart-template-btn.delete {
+            background: #ef4444;
+        }
+        .time-chart-root .time-chart-template-btn.delete:hover {
+            background: #dc2626;
+        }
+        .time-chart-root .time-chart-save-template-container {
+            display: flex;
+            gap: 0.5em;
+            margin-top: 1em;
+        }
+        .time-chart-root .time-chart-template-name-input {
+            flex: 1;
+            padding: 0.6em;
+            border: 2px solid #7dd3fc;
+            border-radius: 0.5em;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9em;
+        }
+        .time-chart-root .time-chart-template-name-input:focus {
+            outline: none;
+            border-color: #0ea5e9;
+            box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.2);
+        }
+        .time-chart-root .time-chart-empty-templates {
+            text-align: center;
+            padding: 2em;
+            color: #64748b;
+            font-style: italic;
+        }
+        .time-chart-root .time-chart-templates-limit {
+            text-align: center;
+            font-size: 0.85em;
+            color: #64748b;
+            margin-top: 0.5em;
+        }
+        
+        /* Notification System Styling */
+        .time-chart-notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: white;
+            border-radius: 0.8em;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            padding: 1.5em;
+            max-width: 350px;
+            z-index: 1000;
+            transform: translateX(120%);
+            transition: transform 0.3s ease;
+            border-left: 5px solid #059669;
+        }
+        .time-chart-notification.show {
+            transform: translateX(0);
+        }
+        .time-chart-notification-title {
+            font-weight: 700;
+            margin-bottom: 0.5em;
+            color: #047857;
+            font-size: 1.1em;
+        }
+        .time-chart-notification-message {
+            margin-bottom: 1em;
+            color: #333;
+        }
+        .time-chart-notification-close {
+            background: #059669;
+            color: white;
+            border: none;
+            padding: 0.5em 1em;
+            border-radius: 0.5em;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.2s ease;
+        }
+        .time-chart-notification-close:hover {
+            background: #047857;
+        }
+        
+        @media (max-width: 768px) { 
+            .time-chart-root .time-chart-container { 
+                padding: 0.8em; 
+                margin: 0.3em auto;
+                width: 99%;
+                gap: 0.8em;
+                grid-template-columns: 1fr;
+                grid-template-areas: 
+                    "header"
+                    "inputs"
+                    "chart"
+                    "stats"
+                    "templates"
+                    "info";
+            }
+            .time-chart-root .time-chart-handwritten {
+                font-size: 2rem;
+                text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            }
+            .time-chart-root .time-chart-form-grid {
+                grid-template-columns: 1fr;
+            }
+            .time-chart-root .time-chart-stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .time-chart-root .time-chart-chart-container {
+                height: 250px;
+            }
+            .time-chart-root .time-chart-templates-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+            .time-chart-notification {
+                right: 10px;
+                left: 10px;
+                max-width: none;
+            }
+        }
+
+        @media (max-width: 1024px) and (min-width: 769px) {
+            .time-chart-root .time-chart-container {
+                width: 98%;
+                padding: 1.2em;
+                gap: 1.2em;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="../force-desktop-layout.css">
+</head>
+<body>
+    <div class="time-chart-root">
+        <div class="time-chart-container">
+            <div class="time-chart-header">
+                <h2 class="time-chart-handwritten">Time Allocation Chart</h2>
+                <p class="time-chart-subtitle">Visualize and optimize your daily schedule</p>
+            </div>
+            
+            <div class="time-chart-input-section">
+                <div class="time-chart-form-grid" id="activitiesGrid">
+                    <div class="time-chart-form-group">
+                        <label class="time-chart-form-label">Study Time</label>
+                        <input type="number" class="time-chart-form-input" id="study" placeholder="Hours per day" min="0" max="24" step="0.5" value="4">
+                        <input type="color" class="time-chart-color-picker" id="studyColor" value="#667eea">
+                    </div>
+                    <div class="time-chart-form-group">
+                        <label class="time-chart-form-label">Classes</label>
+                        <input type="number" class="time-chart-form-input" id="classes" placeholder="Hours per day" min="0" max="24" step="0.5" value="3">
+                        <input type="color" class="time-chart-color-picker" id="classesColor" value="#764ba2">
+                    </div>
+                    <div class="time-chart-form-group">
+                        <label class="time-chart-form-label">Work</label>
+                        <input type="number" class="time-chart-form-input" id="work" placeholder="Hours per day" min="0" max="24" step="0.5" value="2">
+                        <input type="color" class="time-chart-color-picker" id="workColor" value="#f39c12">
+                    </div>
+                    <div class="time-chart-form-group">
+                        <label class="time-chart-form-label">Sleep</label>
+                        <input type="number" class="time-chart-form-input" id="sleep" placeholder="Hours per day" min="0" max="24" step="0.5" value="8">
+                        <input type="color" class="time-chart-color-picker" id="sleepColor" value="#28a745">
+                    </div>
+                    <div class="time-chart-form-group">
+                        <label class="time-chart-form-label">Meals</label>
+                        <input type="number" class="time-chart-form-input" id="meals" placeholder="Hours per day" min="0" max="24" step="0.5" value="2">
+                        <input type="color" class="time-chart-color-picker" id="mealsColor" value="#ff9800">
+                    </div>
+                    <div class="time-chart-form-group">
+                        <label class="time-chart-form-label">Leisure</label>
+                        <input type="number" class="time-chart-form-input" id="leisure" placeholder="Hours per day" min="0" max="24" step="0.5" value="3">
+                        <input type="color" class="time-chart-color-picker" id="leisureColor" value="#2196f3">
+                    </div>
+                    <div class="time-chart-form-group">
+                        <label class="time-chart-form-label">Exercise</label>
+                        <input type="number" class="time-chart-form-input" id="exercise" placeholder="Hours per day" min="0" max="24" step="0.5" value="1">
+                        <input type="color" class="time-chart-color-picker" id="exerciseColor" value="#f44336">
+                    </div>
+                    <div class="time-chart-form-group">
+                        <label class="time-chart-form-label">Other</label>
+                        <input type="number" class="time-chart-form-input" id="other" placeholder="Hours per day" min="0" max="24" step="0.5" value="1">
+                        <input type="color" class="time-chart-color-picker" id="otherColor" value="#9c27b0">
+                    </div>
+                </div>
+                <div class="time-chart-btn-container">
+                    <button class="time-chart-btn" onclick="updateChart()">
+                        <i class="fas fa-sync-alt"></i> Update Chart
+                    </button>
+                    <button class="time-chart-btn secondary" onclick="resetChart()">
+                        <i class="fas fa-redo"></i> Reset
+                    </button>
+                </div>
+            </div>
+            
+            <div class="time-chart-chart-section">
+                <h3 class="time-chart-section-title">Your Time Allocation</h3>
+                <div class="time-chart-chart-type-selector">
+                    <button class="time-chart-chart-type-btn active" data-type="pie" onclick="changeChartType('pie')">Pie Chart</button>
+                    <button class="time-chart-chart-type-btn" data-type="doughnut" onclick="changeChartType('doughnut')">Doughnut</button>
+                    <button class="time-chart-chart-type-btn" data-type="bar" onclick="changeChartType('bar')">Bar Chart</button>
+                    <button class="time-chart-chart-type-btn" data-type="polarArea" onclick="changeChartType('polarArea')">Polar Area</button>
+                </div>
+                <div class="time-chart-chart-container">
+                    <canvas id="timeChart"></canvas>
+                </div>
+                
+                <!-- Productivity Insights -->
+                <div class="time-chart-insights">
+                    <h4 class="time-chart-insights-title">📈 Productivity Insights</h4>
+                    <div class="time-chart-insights-grid">
+                        <div class="time-chart-insight-item">
+                            <div class="time-chart-insight-icon">⚡</div>
+                            <div class="time-chart-insight-content">
+                                <div class="time-chart-insight-label">Peak Productivity</div>
+                                <div class="time-chart-insight-value" id="peakProductivity">Study + Work Hours</div>
+                            </div>
+                        </div>
+                        <div class="time-chart-insight-item">
+                            <div class="time-chart-insight-icon">⚖️</div>
+                            <div class="time-chart-insight-content">
+                                <div class="time-chart-insight-label">Work-Life Balance</div>
+                                <div class="time-chart-insight-value" id="workLifeBalance">Balanced</div>
+                            </div>
+                        </div>
+                        <div class="time-chart-insight-item">
+                            <div class="time-chart-insight-icon">🎯</div>
+                            <div class="time-chart-insight-content">
+                                <div class="time-chart-insight-label">Daily Efficiency</div>
+                                <div class="time-chart-insight-value" id="efficiency">Good</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Save Templates Section -->
+                <div class="time-chart-templates-section">
+                    <h4 class="time-chart-templates-title">📋 Saved Templates</h4>
+                    <div class="time-chart-templates-grid" id="templatesGrid">
+                        <!-- Templates will be dynamically added here -->
+                    </div>
+                    <div class="time-chart-save-template-container">
+                        <input type="text" class="time-chart-template-name-input" id="templateNameInput" placeholder="Enter template name..." maxlength="20">
+                        <button class="time-chart-btn" onclick="saveTemplate()">
+                            <i class="fas fa-save"></i> Save Template
+                        </button>
+                    </div>
+                    <div class="time-chart-templates-limit">You can save up to 4 templates</div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="time-chart-actions">
+                    <button class="time-chart-action-btn" onclick="optimizeSchedule()">
+                        <i class="fas fa-magic"></i> Optimize Schedule
+                    </button>
+                    <button class="time-chart-action-btn" onclick="shareChart()">
+                        <i class="fas fa-share-alt"></i> Share Chart
+                    </button>
+                </div>
+            </div>
+            
+            <div class="time-chart-stats-section">
+                <h3 class="time-chart-stats-title">Time Statistics</h3>
+                <div class="time-chart-stats-grid">
+                    <div class="time-chart-stat-item">
+                        <div class="time-chart-stat-value" id="totalHours">24</div>
+                        <div class="time-chart-stat-label">Total Hours</div>
+                    </div>
+                    <div class="time-chart-stat-item">
+                        <div class="time-chart-stat-value" id="productiveHours">7</div>
+                        <div class="time-chart-stat-label">Productive Hours</div>
+                    </div>
+                    <div class="time-chart-stat-item">
+                        <div class="time-chart-stat-value" id="restHours">9</div>
+                        <div class="time-chart-stat-label">Rest Hours</div>
+                    </div>
+                    <div class="time-chart-stat-item">
+                        <div class="time-chart-stat-value" id="balanceScore">75%</div>
+                        <div class="time-chart-stat-label">Balance Score</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="time-chart-desc">
+                <strong class="time-chart-main-feature-title">Perfect Time Management Features</strong><br><br>
+                
+                <div class="time-chart-feature-group">
+                    <h4>📊 Visual Time Allocation</h4>
+                    <div class="time-chart-feature-info">
+                        <div><strong>Multiple Chart Types:</strong> Pie, Doughnut, Bar, Polar</div>
+                        <div><strong>Color Customization:</strong> Personalize activity colors</div>
+                    </div>
+                    <p>Visualize your daily schedule with interactive charts. See exactly where your time goes and make informed decisions about your daily routine.</p>
+                </div>
+
+                <div class="time-chart-feature-group">
+                    <h4>⏰ Time Budgeting Tools</h4>
+                    <div class="time-chart-feature-info">
+                        <div><strong>24-Hour Tracking:</strong> Complete day coverage</div>
+                        <div><strong>Balance Analysis:</strong> Work-life balance metrics</div>
+                    </div>
+                    <p>Track how you spend your 24 hours and ensure you're allocating enough time to important activities while maintaining a healthy balance.</p>
+                </div>
+
+                <div class="time-chart-feature-group">
+                    <h4>📈 Productivity Analysis</h4>
+                    <div class="time-chart-feature-info">
+                        <div><strong>Productive Hours:</strong> Study, work, exercise tracking</div>
+                        <div><strong>Rest Hours:</strong> Sleep, meals, leisure monitoring</div>
+                    </div>
+                    <p>Analyze your productivity patterns and identify opportunities to optimize your schedule for better academic and personal performance.</p>
+                </div>
+
+                <div class="time-chart-feature-group">
+                    <h4>🎯 Goal Setting</h4>
+                    <div class="time-chart-feature-info">
+                        <div><strong>Daily Goals:</strong> Set and track daily targets</div>
+                        <div><strong>Balance Score:</strong> Overall schedule health metric</div>
+                    </div>
+                    <p>Set realistic time allocation goals and track your progress toward achieving a balanced and productive daily routine.</p>
+                </div>
+
+                <br><strong>Perfect for Every Student:</strong>
+                <ul style="margin-left:1.2em;">
+                    <li><span class="time-chart-use-case-students"><i class="fas fa-graduation-cap"></i></span> College Students</li>
+                    <li><span class="time-chart-use-case-professionals"><i class="fas fa-briefcase"></i></span> Working Professionals</li>
+                    <li><span class="time-chart-use-case-changers"><i class="fas fa-route"></i></span> Career Changers</li>
+                    <li><span class="time-chart-use-case-freelancers"><i class="fas fa-laptop-code"></i></span> Freelancers</li>
+                </ul>
+
+                <br><strong>Frequently Asked Questions:</strong>
+                <ul style="margin-left:1.2em;">
+                    <li><strong>How does the balance score work?</strong> It compares your time allocation to ideal ratios for optimal productivity and well-being.</li>
+                    <li><strong>Can I save my time allocation?</strong> Yes! You can save up to 4 templates with custom names.</li>
+                    <li><strong>What chart types are available?</strong> Pie, doughnut, bar, and polar area charts for different visualization preferences.</li>
+                    <li><strong>Can I customize the colors?</strong> Yes! Each activity has its own color picker for personalization.</li>
+                </ul>
+
+                <br><strong>Sources:</strong> Time Management Research, Productivity Studies, Student Success Analytics
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Chart state
+        let chartState = {
+            chartType: 'pie',
+            chart: null,
+            activities: {
+                study: { hours: 4, color: '#667eea' },
+                classes: { hours: 3, color: '#764ba2' },
+                work: { hours: 2, color: '#f39c12' },
+                sleep: { hours: 8, color: '#28a745' },
+                meals: { hours: 2, color: '#ff9800' },
+                leisure: { hours: 3, color: '#2196f3' },
+                exercise: { hours: 1, color: '#f44336' },
+                other: { hours: 1, color: '#9c27b0' }
+            }
+        };
+
+        // Templates state
+        let templatesState = {
+            templates: [],
+            maxTemplates: 4
+        };
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            loadChartState();
+            loadTemplates();
+            createChart();
+            updateStatistics();
+            updateProductivityInsights();
+            renderTemplates();
+            
+            // Add event listeners to all inputs
+            document.querySelectorAll('.time-chart-form-input').forEach(input => {
+                input.addEventListener('input', function() {
+                    // Auto-update on input change
+                    updateActivityFromInput(this.id);
+                });
+            });
+            
+            document.querySelectorAll('.time-chart-color-picker').forEach(input => {
+                input.addEventListener('input', function() {
+                    // Auto-update on color change
+                    updateActivityFromInput(this.id.replace('Color', ''));
+                });
+            });
+        });
+
+        function updateActivityFromInput(activityId) {
+            const input = document.getElementById(activityId);
+            const colorInput = document.getElementById(activityId + 'Color');
+            
+            if (input && chartState.activities[activityId]) {
+                chartState.activities[activityId].hours = parseFloat(input.value) || 0;
+            }
+            
+            if (colorInput && chartState.activities[activityId]) {
+                chartState.activities[activityId].color = colorInput.value;
+            }
+            
+            // Auto-update chart and stats
+            createChart();
+            updateStatistics();
+            updateProductivityInsights();
+            saveChartState();
+        }
+
+        function createChart() {
+            const ctx = document.getElementById('timeChart').getContext('2d');
+            
+            // Destroy existing chart if it exists
+            if (chartState.chart) {
+                chartState.chart.destroy();
+            }
+            
+            // Prepare data
+            const labels = [];
+            const data = [];
+            const backgroundColor = [];
+            
+            for (const [activity, details] of Object.entries(chartState.activities)) {
+                if (details.hours > 0) {
+                    labels.push(formatLabel(activity));
+                    data.push(details.hours);
+                    backgroundColor.push(details.color);
+                }
+            }
+            
+            // Chart configuration based on type
+            const chartConfig = {
+                type: chartState.chartType,
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        data: data,
+                        backgroundColor: backgroundColor,
+                        borderColor: backgroundColor.map(color => color + '80'),
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                font: {
+                                    family: 'Poppins',
+                                    size: 14
+                                },
+                                padding: 20
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    const label = context.label || '';
+                                    const value = context.raw || 0;
+                                    const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                    const percentage = Math.round((value / total) * 100);
+                                    return `${label}: ${value} hours (${percentage}%)`;
+                                }
+                            }
+                        }
+                    }
+                }
+            };
+            
+            // Add specific options for bar chart
+            if (chartState.chartType === 'bar') {
+                chartConfig.options.scales = {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            font: {
+                                family: 'Poppins'
+                            }
+                        }
+                    },
+                    x: {
+                        ticks: {
+                            font: {
+                                family: 'Poppins'
+                            }
+                        }
+                    }
+                };
+            }
+            
+            // Create new chart
+            chartState.chart = new Chart(ctx, chartConfig);
+        }
+
+        function updateChart() {
+            // Update activity data from inputs
+            for (const activity of Object.keys(chartState.activities)) {
+                const input = document.getElementById(activity);
+                const colorInput = document.getElementById(activity + 'Color');
+                
+                if (input) {
+                    chartState.activities[activity].hours = parseFloat(input.value) || 0;
+                }
+                
+                if (colorInput) {
+                    chartState.activities[activity].color = colorInput.value;
+                }
+            }
+            
+            // Recreate chart with new data
+            createChart();
+            updateStatistics();
+            updateProductivityInsights();
+            saveChartState();
+            
+            // Show notification
+            showNotification('Chart updated successfully!', 'success');
+        }
+
+        function resetChart() {
+            // Reset to default values
+            chartState.activities = {
+                study: { hours: 4, color: '#667eea' },
+                classes: { hours: 3, color: '#764ba2' },
+                work: { hours: 2, color: '#f39c12' },
+                sleep: { hours: 8, color: '#28a745' },
+                meals: { hours: 2, color: '#ff9800' },
+                leisure: { hours: 3, color: '#2196f3' },
+                exercise: { hours: 1, color: '#f44336' },
+                other: { hours: 1, color: '#9c27b0' }
+            };
+            
+            // Update inputs
+            for (const [activity, details] of Object.entries(chartState.activities)) {
+                const input = document.getElementById(activity);
+                const colorInput = document.getElementById(activity + 'Color');
+                
+                if (input) {
+                    input.value = details.hours;
+                }
+                
+                if (colorInput) {
+                    colorInput.value = details.color;
+                }
+            }
+            
+            // Recreate chart
+            createChart();
+            updateStatistics();
+            updateProductivityInsights();
+            saveChartState();
+            
+            // Show notification
+            showNotification('Chart reset to default values!', 'info');
+        }
+
+        function changeChartType(type) {
+            chartState.chartType = type;
+            
+            // Update button states
+            document.querySelectorAll('.time-chart-chart-type-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.getAttribute('data-type') === type) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            // Recreate chart with new type
+            createChart();
+            saveChartState();
+        }
+
+        function updateStatistics() {
+            // Calculate total hours
+            let totalHours = 0;
+            let productiveHours = 0;
+            let restHours = 0;
+            
+            for (const [activity, details] of Object.entries(chartState.activities)) {
+                totalHours += details.hours;
+                
+                // Define productive and rest activities
+                if (['study', 'classes', 'work', 'exercise'].includes(activity)) {
+                    productiveHours += details.hours;
+                } else if (['sleep', 'leisure', 'meals'].includes(activity)) {
+                    restHours += details.hours;
+                }
+            }
+            
+            // Calculate balance score (0-100%)
+            // Ideal balance: 8 hours sleep, 8 hours productive, 8 hours rest/leisure
+            const idealSleep = 8;
+            const idealProductive = 8;
+            const idealRest = 8;
+            
+            const sleepScore = Math.max(0, 100 - Math.abs(chartState.activities.sleep.hours - idealSleep) * 10);
+            const productiveScore = Math.max(0, 100 - Math.abs(productiveHours - idealProductive) * 10);
+            const restScore = Math.max(0, 100 - Math.abs(restHours - idealRest) * 10);
+            
+            const balanceScore = Math.round((sleepScore + productiveScore + restScore) / 3);
+            
+            // Update DOM
+            document.getElementById('totalHours').textContent = totalHours.toFixed(1);
+            document.getElementById('productiveHours').textContent = productiveHours.toFixed(1);
+            document.getElementById('restHours').textContent = restHours.toFixed(1);
+            document.getElementById('balanceScore').textContent = balanceScore + '%';
+        }
+
+        function formatLabel(activity) {
+            // Convert camelCase to Title Case
+            return activity.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase());
+        }
+
+        function saveChartState() {
+            try {
+                const stateData = {
+                    ...chartState,
+                    lastSaved: Date.now(),
+                    version: '1.0'
+                };
+                
+                localStorage.setItem('timeChartState', JSON.stringify(stateData));
+                console.log('Chart state saved to cache successfully');
+            } catch (e) {
+                console.error('Failed to save chart state to localStorage:', e);
+                
+                if (e.name === 'QuotaExceededError' || e.code === 22) {
+                    showNotification('Storage quota exceeded. Chart state not saved.', 'warning');
+                } else {
+                    console.warn('Chart state could not be cached');
+                }
+            }
+        }
+
+        function loadChartState() {
+            try {
+                const savedState = localStorage.getItem('timeChartState');
+                if (savedState) {
+                    const parsedState = JSON.parse(savedState);
+                    
+                    // Validate state structure
+                    if (parsedState && parsedState.activities) {
+                        // Merge with default state to ensure all properties exist
+                        chartState = { 
+                            chartType: parsedState.chartType || 'pie',
+                            chart: null, // Don't restore chart instance
+                            activities: { ...chartState.activities, ...parsedState.activities }
+                        };
+                        
+                        // Update inputs with saved values
+                        for (const [activity, details] of Object.entries(chartState.activities)) {
+                            const input = document.getElementById(activity);
+                            const colorInput = document.getElementById(activity + 'Color');
+                            
+                            if (input && typeof details.hours === 'number') {
+                                input.value = details.hours;
+                            }
+                            
+                            if (colorInput && details.color) {
+                                colorInput.value = details.color;
+                            }
+                        }
+                        
+                        console.log('Chart state loaded from cache successfully');
+                    } else {
+                        console.warn('Invalid chart state format, using defaults');
+                    }
+                }
+            } catch (e) {
+                console.error('Error loading chart state from cache:', e);
+                
+                // Try to clear corrupted data
+                try {
+                    localStorage.removeItem('timeChartState');
+                    console.log('Cleared corrupted chart state from cache');
+                } catch (clearError) {
+                    console.error('Failed to clear corrupted chart state:', clearError);
+                }
+            }
+        }
+
+        // New productivity insight functions
+        function updateProductivityInsights() {
+            const study = parseFloat(document.getElementById('study').value) || 0;
+            const work = parseFloat(document.getElementById('work').value) || 0;
+            const classes = parseFloat(document.getElementById('classes').value) || 0;
+            const exercise = parseFloat(document.getElementById('exercise').value) || 0;
+            const leisure = parseFloat(document.getElementById('leisure').value) || 0;
+            const sleep = parseFloat(document.getElementById('sleep').value) || 0;
+            
+            const productiveHours = study + work + classes;
+            const totalWakeHours = 24 - sleep;
+            
+            // Update peak productivity
+            document.getElementById('peakProductivity').textContent = `${productiveHours.toFixed(1)} hrs`;
+            
+            // Update work-life balance
+            const leisureRatio = totalWakeHours > 0 ? (leisure + exercise) / totalWakeHours : 0;
+            let balanceText = 'Needs Work';
+            if (leisureRatio >= 0.3) balanceText = 'Excellent';
+            else if (leisureRatio >= 0.2) balanceText = 'Good';
+            else if (leisureRatio >= 0.1) balanceText = 'Fair';
+            document.getElementById('workLifeBalance').textContent = balanceText;
+            
+            // Update efficiency
+            const efficiency = totalWakeHours > 0 ? productiveHours / totalWakeHours : 0;
+            let efficiencyText = 'Low';
+            if (efficiency >= 0.5) efficiencyText = 'Excellent';
+            else if (efficiency >= 0.35) efficiencyText = 'Good';
+            else if (efficiency >= 0.2) efficiencyText = 'Fair';
+            document.getElementById('efficiency').textContent = efficiencyText;
+        }
+
+        function optimizeSchedule() {
+            // Get current values
+            const currentValues = {};
+            let totalHours = 0;
+            
+            for (const activity of Object.keys(chartState.activities)) {
+                const value = parseFloat(document.getElementById(activity).value) || 0;
+                currentValues[activity] = value;
+                totalHours += value;
+            }
+            
+            // Check if total exceeds 24 hours
+            if (totalHours > 24) {
+                showNotification(`Your schedule exceeds 24 hours by ${totalHours - 24} hours. Optimizing...`, 'info');
+            } else if (totalHours < 24) {
+                showNotification(`Your schedule has ${24 - totalHours} unallocated hours. Optimizing...`, 'info');
+            }
+            
+            // Define optimal ranges for each activity
+            const optimalRanges = {
+                sleep: { min: 7, max: 9, ideal: 8 },
+                study: { min: 2, max: 6, ideal: 4 },
+                classes: { min: 1, max: 6, ideal: 3 },
+                work: { min: 0, max: 8, ideal: 2 },
+                meals: { min: 1, max: 3, ideal: 2 },
+                exercise: { min: 0.5, max: 2, ideal: 1 },
+                leisure: { min: 1, max: 5, ideal: 3 },
+                other: { min: 0, max: 2, ideal: 1 }
+            };
+            
+            // Create a new balanced schedule
+            const newValues = {};
+            let suggestions = [];
+            let updated = false;
+            
+            // First, set all activities to their ideal values
+            for (const [activity, range] of Object.entries(optimalRanges)) {
+                newValues[activity] = range.ideal;
+            }
+            
+            // Calculate the total of ideal values
+            let idealTotal = Object.values(newValues).reduce((sum, val) => sum + val, 0);
+            
+            // If ideal total is not 24, adjust proportionally
+            if (idealTotal !== 24) {
+                const adjustmentFactor = 24 / idealTotal;
+                for (const activity of Object.keys(newValues)) {
+                    newValues[activity] = Math.round(newValues[activity] * adjustmentFactor * 2) / 2; // Round to nearest 0.5
+                }
+            }
+            
+            // Check for activities that are way out of range and prioritize adjusting those
+            const priorityAdjustments = [];
+            
+            for (const [activity, value] of Object.entries(currentValues)) {
+                const range = optimalRanges[activity];
+                
+                if (value > range.max) {
+                    priorityAdjustments.push({
+                        activity,
+                        type: 'excess',
+                        amount: value - range.max,
+                        current: value,
+                        target: range.max
+                    });
+                } else if (value < range.min) {
+                    priorityAdjustments.push({
+                        activity,
+                        type: 'deficit',
+                        amount: range.min - value,
+                        current: value,
+                        target: range.min
+                    });
+                }
+            }
+            
+            // Sort by amount (largest adjustments first)
+            priorityAdjustments.sort((a, b) => b.amount - a.amount);
+            
+            // Apply priority adjustments
+            for (const adjustment of priorityAdjustments) {
+                if (adjustment.type === 'excess') {
+                    // Reduce this activity and redistribute the time
+                    const excessTime = adjustment.amount;
+                    newValues[adjustment.activity] = adjustment.target;
+                    
+                    // Redistribute excess time to activities that need it
+                    const deficitActivities = priorityAdjustments
+                        .filter(a => a.type === 'deficit')
+                        .map(a => a.activity);
+                    
+                    if (deficitActivities.length > 0) {
+                        const redistributionAmount = excessTime / deficitActivities.length;
+                        for (const activity of deficitActivities) {
+                            newValues[activity] += redistributionAmount;
+                        }
+                    }
+                    
+                    suggestions.push(`Reduced ${formatLabel(adjustment.activity)} from ${adjustment.current} to ${adjustment.target} hours`);
+                } else {
+                    // Increase this activity
+                    newValues[adjustment.activity] = adjustment.target;
+                    suggestions.push(`Increased ${formatLabel(adjustment.activity)} from ${adjustment.current} to ${adjustment.target} hours`);
+                }
+                
+                updated = true;
+            }
+            
+            // If no major issues were found but total is not 24, balance it
+            if (!updated && totalHours !== 24) {
+                suggestions.push('Balanced your schedule to total exactly 24 hours');
+                updated = true;
+            }
+            
+            // Apply the new values to the form and state
+            for (const [activity, value] of Object.entries(newValues)) {
+                document.getElementById(activity).value = value;
+                chartState.activities[activity].hours = value;
+            }
+            
+            // Update everything
+            createChart();
+            updateStatistics();
+            updateProductivityInsights();
+            saveChartState();
+            
+            // Show appropriate message
+            if (updated) {
+                showNotification(`Schedule optimized: ${suggestions.join(', ')}`, 'success');
+            } else {
+                showNotification('Your schedule is already well-balanced! 🎉', 'success');
+            }
+        }
+
+        function shareChart() {
+            // Create share data
+            const shareData = {
+                title: 'My Time Allocation Chart',
+                text: 'Check out my daily time allocation analysis!',
+                url: window.location.href
+            };
+            
+            if (navigator.share) {
+                navigator.share(shareData)
+                    .then(() => {
+                        showNotification('Chart shared successfully!', 'success');
+                    })
+                    .catch((error) => {
+                        console.log('Error sharing:', error);
+                        // Fallback to copying URL
+                        copyUrlToClipboard();
+                    });
+            } else {
+                // Fallback - copy to clipboard
+                copyUrlToClipboard();
+            }
+        }
+
+        function copyUrlToClipboard() {
+            // Create a temporary textarea to copy the URL
+            const textarea = document.createElement('textarea');
+            textarea.value = window.location.href;
+            textarea.style.position = 'fixed';
+            textarea.style.opacity = '0';
+            document.body.appendChild(textarea);
+            textarea.select();
+            
+            try {
+                document.execCommand('copy');
+                showNotification('Chart URL copied to clipboard! 📋', 'success');
+            } catch (err) {
+                console.error('Failed to copy: ', err);
+                showNotification('Failed to copy URL. Please copy manually.', 'error');
+            } finally {
+                document.body.removeChild(textarea);
+            }
+        }
+
+        // Cache Management Functions
+        function getCacheInfo() {
+            try {
+                const templateData = localStorage.getItem('timeAllocationTemplates');
+                const chartData = localStorage.getItem('timeChartState');
+                
+                const info = {
+                    templatesSize: templateData ? new Blob([templateData]).size : 0,
+                    chartSize: chartData ? new Blob([chartData]).size : 0,
+                    templatesCount: templatesState.templates.length,
+                    lastSaved: null
+                };
+                
+                if (templateData) {
+                    try {
+                        const parsed = JSON.parse(templateData);
+                        info.lastSaved = parsed.lastSaved ? new Date(parsed.lastSaved) : null;
+                    } catch (e) {
+                        console.warn('Could not parse template data for info');
+                    }
+                }
+                
+                return info;
+            } catch (e) {
+                console.error('Error getting cache info:', e);
+                return null;
+            }
+        }
+
+        function clearAllCache() {
+            if (confirm('Are you sure you want to clear all saved data? This will delete all templates and chart settings.')) {
+                try {
+                    localStorage.removeItem('timeAllocationTemplates');
+                    localStorage.removeItem('timeChartState');
+                    
+                    // Reset to defaults
+                    templatesState = { templates: [], maxTemplates: 4 };
+                    chartState = {
+                        chartType: 'pie',
+                        chart: null,
+                        activities: {
+                            study: { hours: 4, color: '#667eea' },
+                            classes: { hours: 3, color: '#764ba2' },
+                            work: { hours: 2, color: '#f39c12' },
+                            sleep: { hours: 8, color: '#28a745' },
+                            meals: { hours: 2, color: '#ff9800' },
+                            leisure: { hours: 3, color: '#2196f3' },
+                            exercise: { hours: 1, color: '#f44336' },
+                            other: { hours: 1, color: '#9c27b0' }
+                        }
+                    };
+                    
+                    // Update UI
+                    renderTemplates();
+                    resetChart();
+                    
+                    showNotification('All cached data cleared successfully! 🗑️', 'success');
+                } catch (e) {
+                    console.error('Error clearing cache:', e);
+                    showNotification('Error clearing cache data.', 'error');
+                }
+            }
+        }
+
+        // Expose cache functions to global scope for debugging
+        window.timeChartCache = {
+            getCacheInfo,
+            clearAllCache,
+            saveTemplates,
+            loadTemplates,
+            saveChartState,
+            loadChartState
+        };
+
+        function saveTemplate() {
+            const templateNameInput = document.getElementById('templateNameInput');
+            const templateName = templateNameInput.value.trim();
+            
+            if (!templateName) {
+                showNotification('Please enter a template name', 'error');
+                return;
+            }
+            
+            // Check if we've reached the maximum number of templates
+            if (templatesState.templates.length >= templatesState.maxTemplates) {
+                showNotification(`You can only save up to ${templatesState.maxTemplates} templates. Delete one first.`, 'error');
+                return;
+            }
+            
+            // Check if a template with this name already exists
+            if (templatesState.templates.some(t => t.name === templateName)) {
+                showNotification('A template with this name already exists', 'error');
+                return;
+            }
+            
+            // Create the template data
+            const templateData = {
+                id: Date.now().toString(),
+                name: templateName,
+                activities: {},
+                timestamp: new Date().toISOString()
+            };
+            
+            ['study', 'classes', 'work', 'sleep', 'meals', 'leisure', 'exercise', 'other'].forEach(id => {
+                const input = document.getElementById(id);
+                const colorInput = document.getElementById(id + 'Color');
+                if (input && colorInput) {
+                    templateData.activities[id] = {
+                        hours: parseFloat(input.value) || 0,
+                        color: colorInput.value
+                    };
+                }
+            });
+            
+            // Add the template to our state
+            templatesState.templates.push(templateData);
+            
+            // Save to localStorage
+            saveTemplates();
+            
+            // Clear the input
+            templateNameInput.value = '';
+            
+            // Re-render templates
+            renderTemplates();
+            
+            // Show success message
+            showNotification(`Template "${templateName}" saved successfully! 💾`, 'success');
+        }
+
+        function loadTemplate(templateId) {
+            const template = templatesState.templates.find(t => t.id === templateId);
+            
+            if (!template) {
+                showNotification('Template not found', 'error');
+                return;
+            }
+            
+            // Apply template values
+            for (const [id, data] of Object.entries(template.activities)) {
+                const input = document.getElementById(id);
+                const colorInput = document.getElementById(id + 'Color');
+                
+                if (input && data.hours !== undefined) {
+                    input.value = data.hours;
+                    chartState.activities[id].hours = data.hours;
+                }
+                
+                if (colorInput && data.color) {
+                    colorInput.value = data.color;
+                    chartState.activities[id].color = data.color;
+                }
+            }
+            
+            // Update chart with loaded values
+            createChart();
+            updateStatistics();
+            updateProductivityInsights();
+            saveChartState();
+            
+            const date = new Date(template.timestamp);
+            const dateStr = date.toLocaleDateString() + ' ' + date.toLocaleTimeString();
+            showNotification(`Template "${template.name}" loaded successfully! (Saved: ${dateStr})`, 'success');
+        }
+
+        function deleteTemplate(templateId) {
+            const templateIndex = templatesState.templates.findIndex(t => t.id === templateId);
+            
+            if (templateIndex === -1) {
+                showNotification('Template not found', 'error');
+                return;
+            }
+            
+            const templateName = templatesState.templates[templateIndex].name;
+            
+            // Remove the template
+            templatesState.templates.splice(templateIndex, 1);
+            
+            // Save to localStorage
+            saveTemplates();
+            
+            // Re-render templates
+            renderTemplates();
+            
+            // Show success message
+            showNotification(`Template "${templateName}" deleted`, 'info');
+        }
+
+        function saveTemplates() {
+            try {
+                // Add timestamp for cache validation
+                const templateData = {
+                    ...templatesState,
+                    lastSaved: Date.now(),
+                    version: '1.0'
+                };
+                
+                localStorage.setItem('timeAllocationTemplates', JSON.stringify(templateData));
+                console.log('Templates saved to localStorage cache successfully');
+            } catch (e) {
+                console.error('Failed to save templates to localStorage:', e);
+                
+                // Handle quota exceeded error
+                if (e.name === 'QuotaExceededError' || e.code === 22) {
+                    showNotification('Storage quota exceeded. Please delete some templates.', 'error');
+                    
+                    // Try to free some space by keeping only the most recent templates
+                    if (templatesState.templates.length > 3) {
+                        templatesState.templates = templatesState.templates.slice(-3);
+                        try {
+                            localStorage.setItem('timeAllocationTemplates', JSON.stringify({
+                                ...templatesState,
+                                lastSaved: Date.now(),
+                                version: '1.0'
+                            }));
+                            showNotification('Automatically cleaned old templates to free space.', 'info');
+                        } catch (retryError) {
+                            showNotification('Unable to save templates. Please clear browser data.', 'error');
+                        }
+                    }
+                } else {
+                    showNotification('Failed to save template to cache.', 'error');
+                }
+            }
+        }
+
+        function loadTemplates() {
+            try {
+                const savedTemplates = localStorage.getItem('timeAllocationTemplates');
+                if (savedTemplates) {
+                    const parsedState = JSON.parse(savedTemplates);
+                    
+                    // Validate cache version and structure
+                    if (parsedState && typeof parsedState === 'object') {
+                        // Check if it's the old format (without version)
+                        if (!parsedState.version && parsedState.templates) {
+                            // Migrate old format
+                            templatesState = { 
+                                templates: parsedState.templates || [],
+                                maxTemplates: 4  // Force to 4, ignore cached value
+                            };
+                            console.log('Migrated templates from old format');
+                        } else {
+                            // Use new format
+                            templatesState = { 
+                                templates: parsedState.templates || [],
+                                maxTemplates: 4  // Force to 4, ignore cached value
+                            };
+                        }
+                        
+                        // Validate template structure
+                        templatesState.templates = templatesState.templates.filter(template => 
+                            template && 
+                            template.name && 
+                            template.activities && 
+                            template.createdAt
+                        );
+                        
+                        // Force maxTemplates to 4 (safety check)
+                        templatesState.maxTemplates = 4;
+                        
+                        // If we have more than 4 templates due to old cache, keep only the 4 most recent
+                        if (templatesState.templates.length > 4) {
+                            templatesState.templates = templatesState.templates.slice(-4);
+                            console.log('Trimmed templates to maximum of 4 due to new limit');
+                        }
+                        
+                        console.log(`Loaded ${templatesState.templates.length} templates from cache`);
+                    } else {
+                        console.warn('Invalid template data format, starting fresh');
+                        templatesState.templates = [];
+                    }
+                } else {
+                    console.log('No cached templates found, starting fresh');
+                }
+            } catch (e) {
+                console.error('Error loading templates from cache:', e);
+                showNotification('Error loading saved templates. Starting fresh.', 'warning');
+                
+                // Reset to default state on error
+                templatesState = {
+                    templates: [],
+                    maxTemplates: 4
+                };
+                
+                // Try to clear corrupted data
+                try {
+                    localStorage.removeItem('timeAllocationTemplates');
+                } catch (clearError) {
+                    console.error('Failed to clear corrupted template data:', clearError);
+                }
+            }
+        }
+
+        function renderTemplates() {
+            const templatesGrid = document.getElementById('templatesGrid');
+            
+            if (templatesState.templates.length === 0) {
+                templatesGrid.innerHTML = '<div class="time-chart-empty-templates">No saved templates yet. Create your first template above!</div>';
+                return;
+            }
+            
+            templatesGrid.innerHTML = '';
+            
+            // Sort templates by timestamp (newest first)
+            const sortedTemplates = [...templatesState.templates].sort((a, b) => 
+                new Date(b.timestamp) - new Date(a.timestamp)
+            );
+            
+            sortedTemplates.forEach(template => {
+                const templateCard = document.createElement('div');
+                templateCard.className = 'time-chart-template-card';
+                
+                // Format the date
+                const date = new Date(template.timestamp);
+                const dateStr = date.toLocaleDateString();
+                
+                // Create a preview of the top activities
+                const activities = Object.entries(template.activities)
+                    .filter(([_, data]) => data.hours > 0)
+                    .sort((a, b) => b[1].hours - a[1].hours)
+                    .slice(0, 3);
+                
+                const previewHtml = activities.map(([activity, data]) => `
+                    <div class="time-chart-template-preview-item">
+                        <div class="time-chart-template-preview-color" style="background-color: ${data.color}"></div>
+                        ${formatLabel(activity)}: ${data.hours}h
+                    </div>
+                `).join('');
+                
+                templateCard.innerHTML = `
+                    <div class="time-chart-template-card-header">
+                        <div class="time-chart-template-name" title="${template.name}">${template.name}</div>
+                        <div class="time-chart-template-date">${dateStr}</div>
+                    </div>
+                    <div class="time-chart-template-preview">
+                        ${previewHtml}
+                    </div>
+                    <div class="time-chart-template-actions">
+                        <button class="time-chart-template-btn" onclick="loadTemplate('${template.id}')">
+                            <i class="fas fa-folder-open"></i> Load
+                        </button>
+                        <button class="time-chart-template-btn delete" onclick="deleteTemplate('${template.id}')">
+                            <i class="fas fa-trash"></i> Delete
+                        </button>
+                    </div>
+                `;
+                
+                templatesGrid.appendChild(templateCard);
+            });
+        }
+
+        function showNotification(message, type) {
+            // Remove any existing notifications
+            const existingNotifications = document.querySelectorAll('.time-chart-notification');
+            existingNotifications.forEach(notif => {
+                if (document.body.contains(notif)) {
+                    document.body.removeChild(notif);
+                }
+            });
+            
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.className = 'time-chart-notification';
+            
+            // Set notification style based on type
+            let borderLeftColor = '#059669'; // default green
+            let titleIcon = '✅';
+            let titleText = 'Success!';
+            
+            if (type === 'info') {
+                borderLeftColor = '#3b82f6';
+                titleIcon = 'ℹ️';
+                titleText = 'Info';
+            } else if (type === 'error') {
+                borderLeftColor = '#ef4444';
+                titleIcon = '❌';
+                titleText = 'Error';
+            }
+            
+            notification.style.borderLeftColor = borderLeftColor;
+            notification.innerHTML = `
+                <div class="time-chart-notification-title">${titleIcon} ${titleText}</div>
+                <div class="time-chart-notification-message">${message}</div>
+                <button class="time-chart-notification-close" onclick="closeNotification(this)">OK</button>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            // Show notification
+            setTimeout(() => {
+                notification.classList.add('show');
+            }, 100);
+            
+            // Auto close after 5 seconds
+            setTimeout(() => {
+                closeNotification(notification.querySelector('.time-chart-notification-close'));
+            }, 5000);
+        }
+
+        function closeNotification(button) {
+            const notification = button.closest('.time-chart-notification');
+            if (notification) {
+                notification.classList.remove('show');
+                setTimeout(() => {
+                    if (document.body.contains(notification)) {
+                        document.body.removeChild(notification);
+                    }
+                }, 300);
+            }
+        }
+
+        // Initialize the time allocation chart tool
+        window.initializeTimeAllocationChart = function() {
+            loadChartState();
+            loadTemplates();
+            createChart();
+            updateStatistics();
+            updateProductivityInsights();
+            renderTemplates();
+        };
+
+        // Auto-initialize when page loads
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initializeTimeAllocationChart);
+        } else {
+            initializeTimeAllocationChart();
+        }
+    </script>
+</body>
+</html>

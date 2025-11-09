@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1200, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes">
+    <title>Citation Generator - FREE APA MLA Chicago Citation Maker</title>
+    <meta name="description" content="Free citation generator! Create APA, MLA, Chicago style citations instantly. Academic reference maker for students, researchers. 100% free!">
+    <meta name="keywords" content="citation generator, APA citation, MLA citation, Chicago citation, bibliography generator, reference maker, academic citations, citation maker, student citation tool, research citations, citation format, bibliography creator, academic reference generator, citation style guide, free citation tool, paper citations, thesis citations, essay citations, scholarly citations, citation builder">
+    <meta name="author" content="Scribble Tools">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://scribbletools.in/client/tools/student/academic/citation-generator.html">
+    <meta property="og:title" content="Citation Generator - FREE APA MLA Chicago Citation Maker">
+    <meta property="og:description" content="Free citation generator! Create APA, MLA, Chicago style citations instantly. Academic reference maker for students, researchers. 100% free!">
+    <meta property="og:image" content="https://scribbletools.in/assets/og-image.svg">
+    <meta property="og:site_name" content="Scribble Tools">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://scribbletools.in/client/tools/student/academic/citation-generator.html">
+    <meta property="twitter:title" content="Citation Generator - FREE APA MLA Chicago Citation Maker">
+    <meta property="twitter:description" content="Free citation generator! Create APA, MLA, Chicago style citations instantly. Academic reference maker for students, researchers. 100% free!">
+    <meta property="twitter:image" content="https://scribbletools.in/assets/og-image.svg">
+    
+    <!-- Additional SEO Meta Tags -->
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Scribble Tools">
+    <meta name="generator" content="Scribble Tools">
+    <meta name="application-name" content="Citation Generator">
+    <meta name="apple-mobile-web-app-title" content="Citations">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#D9534F">
+    <meta name="msapplication-navbutton-color" content="#D9534F">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#D9534F">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://scribbletools.in/client/tools/student/academic/citation-generator.html">
+    
+    <!-- Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Academic Citation Generator Tool",
+      "description": "Free online citation generator for creating APA, MLA, and Chicago style citations and bibliographies. Perfect for students and researchers.",
+      "url": "https://scribbletools.in/client/tools/student/academic/citation-generator.html",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "Any",
+      "permissions": "browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "featureList": [
+        "APA citation format",
+        "MLA citation format",
+        "Chicago citation format",
+        "Bibliography generator",
+        "Academic reference maker",
+        "Student research tool",
+        "No registration required",
+        "Free to use"
+      ],
+      "provider": {
+        "@type": "Organization",
+        "name": "Scribble Tools",
+        "url": "https://scribbletools.in"
+      }
+    }
+    </script>
+    <style>
+        body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; margin: 0; padding: 20px; }
+        .citation-container { max-width: 900px; margin: 2em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2em; }
+        .handwritten { font-family: 'Caveat', cursive; color: #D9534F; font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; }
+        
+        .style-selector { background: #FDFBF5; border: 2px solid #EAE3D5; border-radius: 0.9em; padding: 1.5em; margin-bottom: 2em; }
+        .style-tabs { display: flex; gap: 0.8em; margin-bottom: 1.5em; flex-wrap: wrap; justify-content: center; }
+        .style-tab { background: #fff; color: #666; border: 2px solid #EAE3D5; border-radius: 0.5em; padding: 0.6em 1em; cursor: pointer; transition: all 0.2s; font-weight: 600; font-size: 0.85em; min-width: 75px; text-align: center; }
+        .style-tab.active { background: #D9534F; color: #fff; border-color: #D9534F; }
+        
+        .source-selector { margin-bottom: 1.5em; }
+        .source-tabs { display: flex; gap: 0.5em; flex-wrap: wrap; justify-content: center; }
+        .source-tab { background: #fff; color: #666; border: 1px solid #ddd; border-radius: 0.3em; padding: 0.5em 1em; cursor: pointer; transition: all 0.2s; font-size: 0.9em; }
+        .source-tab.active { background: #F39C12; color: #fff; border-color: #F39C12; }
+        
+        .form-section { background: #FDFBF5; border: 2px solid #EAE3D5; border-radius: 0.9em; padding: 1.5em; margin-bottom: 2em; }
+        .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1em; margin-bottom: 1em; }
+        .form-group { display: flex; flex-direction: column; }
+        .form-label { font-weight: 600; margin-bottom: 0.5em; color: #333; }
+        .form-input { padding: 0.8em; border: 2px solid #EAE3D5; border-radius: 0.7em; font-size: 1rem; background: #FDFBF5; font-family: 'Fira Code', monospace; }
+        .form-btn { background: #fff; color: #D9534F; border: 2px solid #D9534F; border-radius: 0.5em; padding: 0.8em 2em; font-weight: 600; font-size: 1.1em; cursor: pointer; transition: all 0.2s; margin-top: 1em; }
+        .form-btn:hover { background: #D9534F; color: #fff; }
+        
+        .result-section { background: #FDFBF5; border: 2px solid #D9534F; border-radius: 0.9em; padding: 1.5em; margin-bottom: 2em; }
+        .result-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1em; flex-wrap: wrap; gap: 1em; }
+        .result-actions { display: flex; gap: 1em; flex-wrap: wrap; }
+        .citation-output { background: #fff; border: 1px solid #ddd; border-radius: 0.5em; padding: 1.5em; font-family: 'Times New Roman', serif; font-size: 1rem; line-height: 1.6; min-height: 100px; white-space: pre-wrap; }
+        .copy-btn { background: #27AE60; color: white; border: none; border-radius: 0.3em; padding: 0.5em 1em; cursor: pointer; font-size: 0.9em; }
+        .copy-btn:hover { background: #219A52; }
+        .calendar-btn { background: #3498DB; color: white; border: none; border-radius: 0.3em; padding: 0.5em 1em; cursor: pointer; font-size: 0.9em; }
+        .calendar-btn:hover { background: #2980B9; }
+        
+        .saved-citations { margin-top: 2em; }
+        .citation-list { display: grid; gap: 1em; margin-top: 1em; }
+        .saved-citation { background: #F8F9FA; border: 1px solid #ddd; border-radius: 0.5em; padding: 1em; }
+        .saved-citation-text { font-family: 'Times New Roman', serif; margin-bottom: 0.5em; }
+        .saved-citation-meta { font-size: 0.8em; color: #666; display: flex; justify-content: space-between; align-items: center; }
+        .delete-citation { background: #D9534F; color: white; border: none; border-radius: 0.2em; padding: 0.3em 0.6em; cursor: pointer; font-size: 0.8em; }
+        
+        .citation-desc { width: 100%; margin-top: 2em; background:#FDFBF5; border:2px solid #EAE3D5; border-radius:0.9em; padding:1.2em 1em; font-size:1.08em; color:#333; line-height:1.7; max-width: 900px; margin: 2.5em auto 0 auto; }
+        .citation-desc strong { color: #D9534F; font-size: 1.18em; }
+        .result-section.hidden { display: none; }
+        .citation-desc ul { margin-left: 1.2em; }
+        .citation-desc ul.features-list { margin-bottom: 0.7em; }
+        
+        /* Modal Styles */
+        .deadline-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); display: flex; justify-content: center; align-items: center; z-index: 1000; }
+        .deadline-modal.hidden { display: none; }
+        .deadline-modal-content { background: white; border-radius: 1em; padding: 2em; max-width: 500px; width: 90%; max-height: 90%; overflow-y: auto; }
+        .deadline-modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5em; }
+        .deadline-modal-header h3 { margin: 0; color: #333; }
+        .close-modal { background: none; border: none; font-size: 2em; color: #666; cursor: pointer; line-height: 1; }
+        .close-modal:hover { color: #D9534F; }
+        .deadline-actions { display: flex; gap: 1em; justify-content: flex-end; margin-top: 1.5em; }
+        .cancel-btn { background: #666; color: white; border: none; border-radius: 0.5em; padding: 0.8em 1.5em; cursor: pointer; }
+        .cancel-btn:hover { background: #555; }
+        .form-select { padding: 0.8em; border: 2px solid #EAE3D5; border-radius: 0.7em; font-size: 1rem; background: #FDFBF5; font-family: 'Fira Code', monospace; }
+        
+        .disclaimer { 
+            background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%); 
+            border: 1px solid #f1c40f; 
+            border-radius: 8px; 
+            padding: 15px; 
+            margin-bottom: 20px; 
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .style-info { 
+            margin-bottom: 1.5em; 
+            padding: 1em; 
+            background: #f8f9fa; 
+            border-radius: 0.5em; 
+            font-size: 0.9em; 
+            color: #666; 
+            border-left: 4px solid #D9534F;
+        }
+        
+        @media (max-width: 768px) {
+            .citation-container { padding: 1em; margin: 1em; }
+            .style-tabs, .source-tabs { flex-direction: column; }
+            .form-grid { grid-template-columns: 1fr; }
+            .result-header { flex-direction: column; gap: 1em; align-items: stretch; }
+            .result-actions { justify-content: center; }
+        }
+    </style>
+    <link rel="stylesheet" href="../force-desktop-layout.css">
+</head>
+<body>
+    <div class="citation-container">
+        <h1 class="handwritten">Citation Generator</h1>
+        
+        <div class="disclaimer">
+            <strong>⚠️ Data Storage Notice:</strong> Your saved citations and research deadlines are stored locally in your browser. 
+            <strong>If you clear your browser cache or data, all saved information will be lost!</strong> 
+            We recommend copying your citations to your documents and exporting research deadlines to your calendar for backup.
+        </div>
+        
+        <!-- Citation Style Selection -->
+        <div class="style-selector">
+            <h3>Select Citation Style</h3>
+            <div class="style-tabs">
+                <button class="style-tab active" data-style="apa">APA 7th</button>
+                <button class="style-tab" data-style="mla">MLA 8th</button>
+                <button class="style-tab" data-style="chicago">Chicago</button>
+                <button class="style-tab" data-style="harvard">Harvard</button>
+                <button class="style-tab" data-style="ieee">IEEE</button>
+                <button class="style-tab" data-style="vancouver">Vancouver</button>
+                <button class="style-tab" data-style="ama">AMA</button>
+                <button class="style-tab" data-style="turabian">Turabian</button>
+                <button class="style-tab" data-style="bluebook">Bluebook</button>
+                <button class="style-tab" data-style="oscola">OSCOLA</button>
+                <button class="style-tab" data-style="asa">ASA</button>
+                <button class="style-tab" data-style="aaa">AAA</button>
+            </div>
+            
+            <div class="style-info">
+                <div id="styleDescription">
+                    <strong>APA 7th Edition:</strong> American Psychological Association style, commonly used in psychology, education, and social sciences.
+                </div>
+            </div>
+            
+            <div class="source-selector">
+                <h4>Source Type</h4>
+                <div class="source-tabs">
+                    <button class="source-tab active" data-source="book">Book</button>
+                    <button class="source-tab" data-source="journal">Journal Article</button>
+                    <button class="source-tab" data-source="website">Website</button>
+                    <button class="source-tab" data-source="newspaper">Newspaper</button>
+                    <button class="source-tab" data-source="magazine">Magazine</button>
+                    <button class="source-tab" data-source="thesis">Thesis/Dissertation</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Citation Form -->
+        <div class="form-section" id="citationForm">
+            <!-- Form content will be dynamically generated -->
+        </div>
+        
+        <!-- Generated Citation -->
+        <div class="result-section hidden" id="resultSection">
+            <div class="result-header">
+                <h3>Generated Citation</h3>
+                <div class="result-actions">
+                    <button class="copy-btn" id="copyBtn">Copy Citation</button>
+                    <button class="calendar-btn" id="addDeadlineBtn" title="Add research deadline to calendar">📅 Add Deadline</button>
+                </div>
+            </div>
+            <div class="citation-output" id="citationOutput"></div>
+            <button class="form-btn" id="saveCitationBtn">Save Citation</button>
+        </div>
+        
+        <!-- Research Deadline Modal -->
+        <div class="deadline-modal hidden" id="deadlineModal">
+            <div class="deadline-modal-content">
+                <div class="deadline-modal-header">
+                    <h3>Add Research Deadline to Calendar</h3>
+                    <button class="close-modal" id="closeModal">&times;</button>
+                </div>
+                <div class="deadline-form">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label class="form-label" for="projectTitle">Project/Paper Title *</label>
+                            <input type="text" id="projectTitle" class="form-input" placeholder="Research Paper" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="deadlineDate">Deadline Date *</label>
+                            <input type="date" id="deadlineDate" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="deadlineTime">Deadline Time *</label>
+                            <input type="time" id="deadlineTime" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="reminderDays">Additional Reminder</label>
+                            <select id="reminderDays" class="form-select">
+                                <option value="7">1 week before</option>
+                                <option value="14">2 weeks before</option>
+                                <option value="3">3 days before</option>
+                                <option value="1">1 day before</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="deadline-actions">
+                        <button class="form-btn" id="createDeadlineBtn">Create Calendar Event</button>
+                        <button class="cancel-btn" id="cancelDeadlineBtn">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Saved Citations -->
+        <div class="saved-citations" id="savedCitations">
+            <h3>Saved Citations <span id="citationCount">(0)</span></h3>
+            <div class="citation-list" id="citationList"></div>
+        </div>
+    </div>
+    
+    <div class="citation-desc">
+        <strong>About the Citation Generator</strong><br><br>
+        Generate properly formatted citations in APA, MLA, Chicago, and Harvard styles. Simply select your citation style, choose the source type, fill in the required information, and get a perfectly formatted citation instantly.<br><br>
+        <b>Features:</b>
+        <ul class="features-list">
+            <li>Support for multiple citation styles (APA 7th, MLA 8th, Chicago, Harvard)</li>
+            <li>Various source types (books, journals, websites, newspapers, magazines, theses)</li>
+            <li>Copy citations to clipboard with one click</li>
+            <li>Save and manage your citations locally</li>
+            <li>Clean, distraction-free interface</li>
+            <li>Mobile-friendly responsive design</li>
+        </ul>
+        <b>Use Cases:</b>
+        <ul>
+            <li>Create citations for research papers and essays</li>
+            <li>Build bibliographies and reference lists</li>
+            <li>Ensure proper academic formatting compliance</li>
+            <li>Save time on manual citation formatting</li>
+            <li>Learn proper citation formats through examples</li>
+        </ul>
+    </div>
+
+    <script>
+        class CitationGenerator {
+            constructor() {
+                this.currentStyle = 'apa';
+                this.currentSource = 'book';
+                this.savedCitations = this.loadSavedCitations();
+                this.init();
+            }
+
+            init() {
+                this.bindEvents();
+                this.generateForm();
+                this.renderSavedCitations();
+            }
+
+            bindEvents() {
+                // Style tabs
+                document.querySelectorAll('.style-tab').forEach(tab => {
+                    tab.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        this.setStyle(e.target.dataset.style);
+                    });
+                });
+
+                // Source tabs
+                document.querySelectorAll('.source-tab').forEach(tab => {
+                    tab.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        this.setSource(e.target.dataset.source);
+                    });
+                });
+
+                // Copy button
+                const copyBtn = document.getElementById('copyBtn');
+                if (copyBtn) {
+                    copyBtn.addEventListener('click', () => this.copyCitation());
+                }
+                
+                // Save button
+                const saveBtn = document.getElementById('saveCitationBtn');
+                if (saveBtn) {
+                    saveBtn.addEventListener('click', () => this.saveCitation());
+                }
+
+                // Calendar deadline button
+                const deadlineBtn = document.getElementById('addDeadlineBtn');
+                if (deadlineBtn) {
+                    deadlineBtn.addEventListener('click', () => this.showDeadlineModal());
+                }
+
+                // Modal event listeners
+                const closeModal = document.getElementById('closeModal');
+                const cancelBtn = document.getElementById('cancelDeadlineBtn');
+                const createBtn = document.getElementById('createDeadlineBtn');
+                const modal = document.getElementById('deadlineModal');
+
+                if (closeModal) {
+                    closeModal.addEventListener('click', () => this.hideDeadlineModal());
+                }
+
+                if (cancelBtn) {
+                    cancelBtn.addEventListener('click', () => this.hideDeadlineModal());
+                }
+
+                if (createBtn) {
+                    createBtn.addEventListener('click', () => this.createResearchDeadline());
+                }
+
+                if (modal) {
+                    modal.addEventListener('click', (e) => {
+                        if (e.target === modal) {
+                            this.hideDeadlineModal();
+                        }
+                    });
+                }
+            }
+
+            setStyle(style) {
+                this.currentStyle = style;
+                document.querySelectorAll('.style-tab').forEach(tab => tab.classList.remove('active'));
+                document.querySelector(`[data-style="${style}"]`).classList.add('active');
+                this.updateStyleDescription(style);
+                this.generateForm();
+            }
+
+            setSource(source) {
+                this.currentSource = source;
+                document.querySelectorAll('.source-tab').forEach(tab => tab.classList.remove('active'));
+                document.querySelector(`[data-source="${source}"]`).classList.add('active');
+                this.generateForm();
+            }
+
+            updateStyleDescription(style) {
+                const descriptions = {
+                    apa: '<strong>APA 7th Edition:</strong> American Psychological Association style, commonly used in psychology, education, and social sciences.',
+                    mla: '<strong>MLA 8th Edition:</strong> Modern Language Association style, widely used in literature, arts, and humanities.',
+                    chicago: '<strong>Chicago Manual of Style:</strong> Used in history, literature, and fine arts. Features author-date or notes-bibliography systems.',
+                    harvard: '<strong>Harvard Referencing:</strong> Author-date system popular in UK universities and social sciences.',
+                    ieee: '<strong>IEEE Style:</strong> Institute of Electrical and Electronics Engineers format, used in engineering and computer science.',
+                    vancouver: '<strong>Vancouver Style:</strong> Numbered citation system used in medical and scientific journals.',
+                    ama: '<strong>AMA Manual:</strong> American Medical Association style, used in medical and health science publications.',
+                    turabian: '<strong>Turabian Style:</strong> A simplified version of Chicago style, designed for student papers.',
+                    bluebook: '<strong>Bluebook:</strong> The standard legal citation system used in law schools and legal publications.',
+                    oscola: '<strong>OSCOLA:</strong> Oxford Standard for Citation of Legal Authorities, used in UK legal writing.',
+                    asa: '<strong>ASA Style:</strong> American Sociological Association format, used in sociology and social work.',
+                    aaa: '<strong>AAA Style:</strong> American Anthropological Association format, used in anthropology and archaeology.'
+                };
+                
+                const descElement = document.getElementById('styleDescription');
+                if (descElement && descriptions[style]) {
+                    descElement.innerHTML = descriptions[style];
+                }
+            }
+
+            generateForm() {
+                const formContainer = document.getElementById('citationForm');
+                if (!formContainer) return;
+                
+                const fields = this.getFieldsForSource(this.currentSource);
+                
+                const formHTML = `
+                    <h3>Enter ${this.getSourceName(this.currentSource)} Information</h3>
+                    <div class="form-grid">
+                        ${fields.map(field => `
+                            <div class="form-group">
+                                <label class="form-label" for="${field.id}">${field.label}${field.required ? ' *' : ''}</label>
+                                <input type="${field.type || 'text'}" id="${field.id}" class="form-input" 
+                                       placeholder="${field.placeholder}" ${field.required ? 'required' : ''}>
+                            </div>
+                        `).join('')}
+                    </div>
+                    <button id="generateBtn" class="form-btn">Generate Citation</button>
+                `;
+                
+                formContainer.innerHTML = formHTML;
+                
+                // Bind the generate button after creating it
+                const generateBtn = document.getElementById('generateBtn');
+                if (generateBtn) {
+                    generateBtn.addEventListener('click', () => this.generateCitation());
+                }
+            }
+
+            getFieldsForSource(source) {
+                const commonFields = {
+                    book: [
+                        { id: 'author', label: 'Author(s)', placeholder: 'Smith, J. A.', required: true },
+                        { id: 'title', label: 'Book Title', placeholder: 'The Art of Research', required: true },
+                        { id: 'publisher', label: 'Publisher', placeholder: 'Academic Press', required: true },
+                        { id: 'year', label: 'Publication Year', placeholder: '2023', required: true },
+                        { id: 'city', label: 'Publication City', placeholder: 'New York' },
+                        { id: 'edition', label: 'Edition', placeholder: '2nd edition' }
+                    ],
+                    journal: [
+                        { id: 'author', label: 'Author(s)', placeholder: 'Smith, J. A.', required: true },
+                        { id: 'title', label: 'Article Title', placeholder: 'Research Methods in Psychology', required: true },
+                        { id: 'journal', label: 'Journal Name', placeholder: 'Journal of Psychology', required: true },
+                        { id: 'volume', label: 'Volume', placeholder: '45', required: true },
+                        { id: 'issue', label: 'Issue', placeholder: '3' },
+                        { id: 'pages', label: 'Pages', placeholder: '123-145', required: true },
+                        { id: 'year', label: 'Year', placeholder: '2023', required: true },
+                        { id: 'doi', label: 'DOI', placeholder: '10.1037/0022-3514.45.3.123' }
+                    ],
+                    website: [
+                        { id: 'author', label: 'Author/Organization', placeholder: 'Smith, J. A. or Organization Name' },
+                        { id: 'title', label: 'Page Title', placeholder: 'Research Methods Guide', required: true },
+                        { id: 'website', label: 'Website Name', placeholder: 'Psychology Today', required: true },
+                        { id: 'url', label: 'URL', placeholder: 'https://www.example.com/article', required: true },
+                        { id: 'accessDate', label: 'Access Date', type: 'date', placeholder: '', required: true },
+                        { id: 'publishDate', label: 'Publication Date', type: 'date', placeholder: '' }
+                    ],
+                    newspaper: [
+                        { id: 'author', label: 'Author', placeholder: 'Smith, J. A.' },
+                        { id: 'title', label: 'Article Title', placeholder: 'Breaking News Story', required: true },
+                        { id: 'newspaper', label: 'Newspaper Name', placeholder: 'The New York Times', required: true },
+                        { id: 'date', label: 'Publication Date', type: 'date', placeholder: '', required: true },
+                        { id: 'pages', label: 'Pages', placeholder: 'A1, A3' },
+                        { id: 'url', label: 'URL (if online)', placeholder: 'https://www.nytimes.com/article' }
+                    ],
+                    magazine: [
+                        { id: 'author', label: 'Author', placeholder: 'Smith, J. A.' },
+                        { id: 'title', label: 'Article Title', placeholder: 'The Future of Technology', required: true },
+                        { id: 'magazine', label: 'Magazine Name', placeholder: 'Time Magazine', required: true },
+                        { id: 'date', label: 'Publication Date', type: 'date', placeholder: '', required: true },
+                        { id: 'pages', label: 'Pages', placeholder: '45-48' },
+                        { id: 'volume', label: 'Volume', placeholder: '150' }
+                    ],
+                    thesis: [
+                        { id: 'author', label: 'Author', placeholder: 'Smith, J. A.', required: true },
+                        { id: 'title', label: 'Thesis Title', placeholder: 'A Study of Modern Psychology', required: true },
+                        { id: 'degree', label: 'Degree Type', placeholder: 'PhD dissertation', required: true },
+                        { id: 'university', label: 'University', placeholder: 'Harvard University', required: true },
+                        { id: 'year', label: 'Year', placeholder: '2023', required: true },
+                        { id: 'database', label: 'Database', placeholder: 'ProQuest Dissertations & Theses Global' }
+                    ]
+                };
+                
+                return commonFields[source] || commonFields.book;
+            }
+
+            getSourceName(source) {
+                const names = {
+                    book: 'Book',
+                    journal: 'Journal Article',
+                    website: 'Website',
+                    newspaper: 'Newspaper Article',
+                    magazine: 'Magazine Article',
+                    thesis: 'Thesis/Dissertation'
+                };
+                return names[source] || 'Source';
+            }
+
+            generateCitation() {
+                const formData = this.getFormData();
+                
+                // Validate required fields
+                const fields = this.getFieldsForSource(this.currentSource);
+                const missingFields = fields.filter(field => field.required && !formData[field.id]);
+                
+                if (missingFields.length > 0) {
+                    alert(`Please fill in the required fields: ${missingFields.map(f => f.label).join(', ')}`);
+                    return;
+                }
+
+                const citation = this.formatCitation(formData);
+                document.getElementById('citationOutput').textContent = citation;
+                document.getElementById('resultSection').classList.remove('hidden');
+                document.getElementById('resultSection').scrollIntoView({ behavior: 'smooth' });
+            }
+
+            getFormData() {
+                const data = {};
+                const fields = this.getFieldsForSource(this.currentSource);
+                fields.forEach(field => {
+                    data[field.id] = document.getElementById(field.id)?.value || '';
+                });
+                return data;
+            }
+
+            formatCitation(data) {
+                const formatters = {
+                    apa: {
+                        book: (d) => `${d.author} (${d.year}). ${d.title}${d.edition ? ` (${d.edition})` : ''}. ${d.publisher}.`,
+                        journal: (d) => `${d.author} (${d.year}). ${d.title}. ${d.journal}, ${d.volume}${d.issue ? `(${d.issue})` : ''}, ${d.pages}.${d.doi ? ` https://doi.org/${d.doi}` : ''}`,
+                        website: (d) => `${d.author ? d.author + '. ' : ''}${d.publishDate ? `(${new Date(d.publishDate).getFullYear()}). ` : '(n.d.). '}${d.title}. ${d.website}. Retrieved ${new Date(d.accessDate).toLocaleDateString('en-US', {year: 'numeric', month: 'long', day: 'numeric'})}, from ${d.url}`,
+                        newspaper: (d) => `${d.author ? d.author + '. ' : ''}(${new Date(d.date).toLocaleDateString('en-US', {year: 'numeric', month: 'long', day: 'numeric'})}). ${d.title}. ${d.newspaper}${d.pages ? `, ${d.pages}` : ''}.${d.url ? ` ${d.url}` : ''}`,
+                        magazine: (d) => `${d.author ? d.author + '. ' : ''}(${new Date(d.date).toLocaleDateString('en-US', {year: 'numeric', month: 'long', day: 'numeric'})}). ${d.title}. ${d.magazine}${d.volume ? `, ${d.volume}` : ''}${d.pages ? `, ${d.pages}` : ''}.`,
+                        thesis: (d) => `${d.author} (${d.year}). ${d.title} [${d.degree}]. ${d.university}.${d.database ? ` ${d.database}.` : ''}`
+                    },
+                    mla: {
+                        book: (d) => `${d.author}. ${d.title}. ${d.publisher}, ${d.year}.`,
+                        journal: (d) => `${d.author}. "${d.title}." ${d.journal}, vol. ${d.volume}${d.issue ? `, no. ${d.issue}` : ''}, ${d.year}, pp. ${d.pages}.${d.doi ? ` doi:${d.doi}.` : ''}`,
+                        website: (d) => `${d.author ? d.author + '. ' : ''}"${d.title}." ${d.website}, ${d.publishDate ? new Date(d.publishDate).toLocaleDateString('en-US', {day: 'numeric', month: 'short', year: 'numeric'}) + ', ' : ''}${d.url}. Accessed ${new Date(d.accessDate).toLocaleDateString('en-US', {day: 'numeric', month: 'short', year: 'numeric'})}.`,
+                        newspaper: (d) => `${d.author ? d.author + '. ' : ''}"${d.title}." ${d.newspaper}, ${new Date(d.date).toLocaleDateString('en-US', {day: 'numeric', month: 'short', year: 'numeric'})}${d.pages ? `, ${d.pages}` : ''}.${d.url ? ` ${d.url}.` : ''}`,
+                        magazine: (d) => `${d.author ? d.author + '. ' : ''}"${d.title}." ${d.magazine}, ${new Date(d.date).toLocaleDateString('en-US', {day: 'numeric', month: 'short', year: 'numeric'})}${d.pages ? `, ${d.pages}` : ''}.`,
+                        thesis: (d) => `${d.author}. ${d.title}. ${d.year}. ${d.university}, ${d.degree}.`
+                    },
+                    chicago: {
+                        book: (d) => `${d.author}. ${d.title}${d.edition ? `. ${d.edition}` : ''}. ${d.city ? d.city + ': ' : ''}${d.publisher}, ${d.year}.`,
+                        journal: (d) => `${d.author}. "${d.title}." ${d.journal} ${d.volume}${d.issue ? `, no. ${d.issue}` : ''} (${d.year}): ${d.pages}.${d.doi ? ` https://doi.org/${d.doi}.` : ''}`,
+                        website: (d) => `${d.author ? d.author + '. ' : ''}"${d.title}." ${d.website}. ${d.publishDate ? 'Published ' + new Date(d.publishDate).toLocaleDateString('en-US', {month: 'long', day: 'numeric', year: 'numeric'}) + '. ' : ''}Accessed ${new Date(d.accessDate).toLocaleDateString('en-US', {month: 'long', day: 'numeric', year: 'numeric'})}. ${d.url}.`,
+                        newspaper: (d) => `${d.author ? d.author + '. ' : ''}"${d.title}." ${d.newspaper}, ${new Date(d.date).toLocaleDateString('en-US', {month: 'long', day: 'numeric', year: 'numeric'})}${d.pages ? `, ${d.pages}` : ''}.`,
+                        magazine: (d) => `${d.author ? d.author + '. ' : ''}"${d.title}." ${d.magazine}, ${new Date(d.date).toLocaleDateString('en-US', {month: 'long', day: 'numeric', year: 'numeric'})}${d.pages ? `, ${d.pages}` : ''}.`,
+                        thesis: (d) => `${d.author}. "${d.title}." ${d.degree}, ${d.university}, ${d.year}.`
+                    },
+                    harvard: {
+                        book: (d) => `${d.author} ${d.year}, ${d.title}${d.edition ? `, ${d.edition}` : ''}, ${d.publisher}${d.city ? `, ${d.city}` : ''}.`,
+                        journal: (d) => `${d.author} ${d.year}, '${d.title}', ${d.journal}, vol. ${d.volume}${d.issue ? `, no. ${d.issue}` : ''}, pp. ${d.pages}.${d.doi ? ` DOI: ${d.doi}.` : ''}`,
+                        website: (d) => `${d.author ? d.author + ' ' : ''}${d.publishDate ? new Date(d.publishDate).getFullYear() : 'n.d.'}, ${d.title}, ${d.website}, viewed ${new Date(d.accessDate).toLocaleDateString('en-US', {day: 'numeric', month: 'long', year: 'numeric'})}, <${d.url}>.`,
+                        newspaper: (d) => `${d.author ? d.author + ' ' : ''}${new Date(d.date).getFullYear()}, '${d.title}', ${d.newspaper}, ${new Date(d.date).toLocaleDateString('en-US', {day: 'numeric', month: 'long'})}${d.pages ? `, p. ${d.pages}` : ''}.`,
+                        magazine: (d) => `${d.author ? d.author + ' ' : ''}${new Date(d.date).getFullYear()}, '${d.title}', ${d.magazine}, ${new Date(d.date).toLocaleDateString('en-US', {day: 'numeric', month: 'long'})}${d.pages ? `, pp. ${d.pages}` : ''}.`,
+                        thesis: (d) => `${d.author} ${d.year}, '${d.title}', ${d.degree}, ${d.university}.`
+                    },
+                    ieee: {
+                        book: (d) => `${d.author}, ${d.title}${d.edition ? `, ${d.edition}` : ''}. ${d.city ? d.city + ': ' : ''}${d.publisher}, ${d.year}.`,
+                        journal: (d) => `${d.author}, "${d.title}," ${d.journal}, vol. ${d.volume}${d.issue ? `, no. ${d.issue}` : ''}, pp. ${d.pages}, ${d.year}.${d.doi ? ` doi: ${d.doi}.` : ''}`,
+                        website: (d) => `${d.author ? d.author + ', ' : ''}"${d.title}," ${d.website}. ${d.url} (accessed ${new Date(d.accessDate).toLocaleDateString('en-US', {month: 'short', day: 'numeric', year: 'numeric'})}).`,
+                        newspaper: (d) => `${d.author ? d.author + ', ' : ''}"${d.title}," ${d.newspaper}, ${new Date(d.date).toLocaleDateString('en-US', {month: 'short', day: 'numeric', year: 'numeric'})}${d.pages ? `, p. ${d.pages}` : ''}.`,
+                        magazine: (d) => `${d.author ? d.author + ', ' : ''}"${d.title}," ${d.magazine}, ${new Date(d.date).toLocaleDateString('en-US', {month: 'short', day: 'numeric', year: 'numeric'})}${d.pages ? `, pp. ${d.pages}` : ''}.`,
+                        thesis: (d) => `${d.author}, "${d.title}," ${d.degree}, ${d.university}, ${d.year}.`
+                    },
+                    vancouver: {
+                        book: (d) => `${d.author}. ${d.title}${d.edition ? `. ${d.edition}` : ''}. ${d.city ? d.city + ': ' : ''}${d.publisher}; ${d.year}.`,
+                        journal: (d) => `${d.author}. ${d.title}. ${d.journal}. ${d.year};${d.volume}${d.issue ? `(${d.issue})` : ''}:${d.pages}.${d.doi ? ` doi:${d.doi}` : ''}`,
+                        website: (d) => `${d.author ? d.author + '. ' : ''}${d.title} [Internet]. ${d.website}. ${d.publishDate ? new Date(d.publishDate).getFullYear() + ' ' : ''}[cited ${new Date(d.accessDate).getFullYear()} ${new Date(d.accessDate).toLocaleDateString('en-US', {month: 'short', day: 'numeric'})}]. Available from: ${d.url}`,
+                        newspaper: (d) => `${d.author ? d.author + '. ' : ''}${d.title}. ${d.newspaper}. ${new Date(d.date).toLocaleDateString('en-US', {year: 'numeric', month: 'short', day: 'numeric'})}${d.pages ? `;${d.pages}` : ''}.`,
+                        magazine: (d) => `${d.author ? d.author + '. ' : ''}${d.title}. ${d.magazine}. ${new Date(d.date).toLocaleDateString('en-US', {year: 'numeric', month: 'short', day: 'numeric'})}${d.pages ? `;${d.pages}` : ''}.`,
+                        thesis: (d) => `${d.author}. ${d.title} [${d.degree}]. ${d.university}; ${d.year}.`
+                    },
+                    ama: {
+                        book: (d) => `${d.author}. ${d.title}${d.edition ? `. ${d.edition}` : ''}. ${d.publisher}; ${d.year}.`,
+                        journal: (d) => `${d.author}. ${d.title}. ${d.journal}. ${d.year};${d.volume}${d.issue ? `(${d.issue})` : ''}:${d.pages}.${d.doi ? ` doi:${d.doi}` : ''}`,
+                        website: (d) => `${d.author ? d.author + '. ' : ''}${d.title}. ${d.website}. ${d.publishDate ? 'Published ' + new Date(d.publishDate).toLocaleDateString('en-US', {month: 'long', day: 'numeric', year: 'numeric'}) + '. ' : ''}Accessed ${new Date(d.accessDate).toLocaleDateString('en-US', {month: 'long', day: 'numeric', year: 'numeric'})}. ${d.url}`,
+                        newspaper: (d) => `${d.author ? d.author + '. ' : ''}${d.title}. ${d.newspaper}. ${new Date(d.date).toLocaleDateString('en-US', {month: 'long', day: 'numeric', year: 'numeric'})}${d.pages ? `:${d.pages}` : ''}.`,
+                        magazine: (d) => `${d.author ? d.author + '. ' : ''}${d.title}. ${d.magazine}. ${new Date(d.date).toLocaleDateString('en-US', {month: 'long', day: 'numeric', year: 'numeric'})}${d.pages ? `:${d.pages}` : ''}.`,
+                        thesis: (d) => `${d.author}. ${d.title} [dissertation]. ${d.university}; ${d.year}.`
+                    },
+                    turabian: {
+                        book: (d) => `${d.author}. ${d.title}${d.edition ? `. ${d.edition}` : ''}. ${d.city ? d.city + ': ' : ''}${d.publisher}, ${d.year}.`,
+                        journal: (d) => `${d.author}. "${d.title}." ${d.journal} ${d.volume}${d.issue ? `, no. ${d.issue}` : ''} (${d.year}): ${d.pages}.${d.doi ? ` https://doi.org/${d.doi}.` : ''}`,
+                        website: (d) => `${d.author ? d.author + '. ' : ''}"${d.title}." ${d.website}. Accessed ${new Date(d.accessDate).toLocaleDateString('en-US', {month: 'long', day: 'numeric', year: 'numeric'})}. ${d.url}.`,
+                        newspaper: (d) => `${d.author ? d.author + '. ' : ''}"${d.title}." ${d.newspaper}, ${new Date(d.date).toLocaleDateString('en-US', {month: 'long', day: 'numeric', year: 'numeric'})}${d.pages ? `, ${d.pages}` : ''}.`,
+                        magazine: (d) => `${d.author ? d.author + '. ' : ''}"${d.title}." ${d.magazine}, ${new Date(d.date).toLocaleDateString('en-US', {month: 'long', day: 'numeric', year: 'numeric'})}${d.pages ? `, ${d.pages}` : ''}.`,
+                        thesis: (d) => `${d.author}. "${d.title}." ${d.degree}, ${d.university}, ${d.year}.`
+                    },
+                    bluebook: {
+                        book: (d) => `${d.author}, ${d.title.toUpperCase()}${d.edition ? ` (${d.edition})` : ''} (${d.publisher} ${d.year}).`,
+                        journal: (d) => `${d.author}, ${d.title}, ${d.volume} ${d.journal.toUpperCase()} ${d.pages} (${d.year}).`,
+                        website: (d) => `${d.author ? d.author + ', ' : ''}${d.title}, ${d.website.toUpperCase()}, ${d.url} (last visited ${new Date(d.accessDate).toLocaleDateString('en-US', {month: 'short', day: 'numeric', year: 'numeric'})}).`,
+                        newspaper: (d) => `${d.author ? d.author + ', ' : ''}${d.title}, ${d.newspaper.toUpperCase()}, ${new Date(d.date).toLocaleDateString('en-US', {month: 'short', day: 'numeric', year: 'numeric'})}${d.pages ? `, at ${d.pages}` : ''}.`,
+                        magazine: (d) => `${d.author ? d.author + ', ' : ''}${d.title}, ${d.magazine.toUpperCase()}, ${new Date(d.date).toLocaleDateString('en-US', {month: 'short', day: 'numeric', year: 'numeric'})}${d.pages ? `, at ${d.pages}` : ''}.`,
+                        thesis: (d) => `${d.author}, ${d.title} (${d.year}) (unpublished ${d.degree}, ${d.university}).`
+                    },
+                    oscola: {
+                        book: (d) => `${d.author}, ${d.title} (${d.publisher} ${d.year})${d.pages ? ` ${d.pages}` : ''}.`,
+                        journal: (d) => `${d.author}, '${d.title}' (${d.year}) ${d.volume} ${d.journal} ${d.pages}.`,
+                        website: (d) => `${d.author ? d.author + ', ' : ''}'${d.title}' (${d.website}) <${d.url}> accessed ${new Date(d.accessDate).toLocaleDateString('en-US', {day: 'numeric', month: 'long', year: 'numeric'})}.`,
+                        newspaper: (d) => `${d.author ? d.author + ', ' : ''}'${d.title}' ${d.newspaper} (${new Date(d.date).toLocaleDateString('en-US', {day: 'numeric', month: 'long', year: 'numeric'})})${d.pages ? ` ${d.pages}` : ''}.`,
+                        magazine: (d) => `${d.author ? d.author + ', ' : ''}'${d.title}' ${d.magazine} (${new Date(d.date).toLocaleDateString('en-US', {day: 'numeric', month: 'long', year: 'numeric'})})${d.pages ? ` ${d.pages}` : ''}.`,
+                        thesis: (d) => `${d.author}, '${d.title}' (${d.degree}, ${d.university} ${d.year}).`
+                    },
+                    asa: {
+                        book: (d) => `${d.author}. ${d.year}. ${d.title}${d.edition ? `. ${d.edition}` : ''}. ${d.city ? d.city + ': ' : ''}${d.publisher}.`,
+                        journal: (d) => `${d.author}. ${d.year}. "${d.title}." ${d.journal} ${d.volume}${d.issue ? `(${d.issue})` : ''}:${d.pages}.`,
+                        website: (d) => `${d.author ? d.author + '. ' : ''}${d.publishDate ? new Date(d.publishDate).getFullYear() + '. ' : ''}"${d.title}." ${d.website}. Retrieved ${new Date(d.accessDate).toLocaleDateString('en-US', {month: 'long', day: 'numeric', year: 'numeric'})} (${d.url}).`,
+                        newspaper: (d) => `${d.author ? d.author + '. ' : ''}${new Date(d.date).getFullYear()}. "${d.title}." ${d.newspaper}, ${new Date(d.date).toLocaleDateString('en-US', {month: 'long', day: 'numeric'})}${d.pages ? `, ${d.pages}` : ''}.`,
+                        magazine: (d) => `${d.author ? d.author + '. ' : ''}${new Date(d.date).getFullYear()}. "${d.title}." ${d.magazine}, ${new Date(d.date).toLocaleDateString('en-US', {month: 'long', day: 'numeric'})}${d.pages ? `, ${d.pages}` : ''}.`,
+                        thesis: (d) => `${d.author}. ${d.year}. "${d.title}." ${d.degree}, ${d.university}.`
+                    },
+                    aaa: {
+                        book: (d) => `${d.author}\\n${d.year} ${d.title}${d.edition ? `. ${d.edition}` : ''}. ${d.city ? d.city + ': ' : ''}${d.publisher}.`,
+                        journal: (d) => `${d.author}\\n${d.year} ${d.title}. ${d.journal} ${d.volume}${d.issue ? `(${d.issue})` : ''}:${d.pages}.`,
+                        website: (d) => `${d.author ? d.author + '\\n' : ''}${d.publishDate ? new Date(d.publishDate).getFullYear() + ' ' : ''}${d.title}. ${d.website}, electronic document, ${d.url}, accessed ${new Date(d.accessDate).toLocaleDateString('en-US', {month: 'long', day: 'numeric', year: 'numeric'})}.`,
+                        newspaper: (d) => `${d.author ? d.author + '\\n' : ''}${new Date(d.date).getFullYear()} ${d.title}. ${d.newspaper}, ${new Date(d.date).toLocaleDateString('en-US', {month: 'long', day: 'numeric'})}${d.pages ? `:${d.pages}` : ''}.`,
+                        magazine: (d) => `${d.author ? d.author + '\\n' : ''}${new Date(d.date).getFullYear()} ${d.title}. ${d.magazine}, ${new Date(d.date).toLocaleDateString('en-US', {month: 'long', day: 'numeric'})}${d.pages ? `:${d.pages}` : ''}.`,
+                        thesis: (d) => `${d.author}\\n${d.year} ${d.title}. ${d.degree}, ${d.university}.`
+                    }
+                };
+
+                const formatter = formatters[this.currentStyle]?.[this.currentSource];
+                return formatter ? formatter(data) : 'Citation format not available';
+            }
+
+            copyCitation() {
+                const citation = document.getElementById('citationOutput').textContent;
+                navigator.clipboard.writeText(citation).then(() => {
+                    const btn = document.getElementById('copyBtn');
+                    const originalText = btn.textContent;
+                    btn.textContent = 'Copied!';
+                    setTimeout(() => btn.textContent = originalText, 2000);
+                });
+            }
+
+            saveCitation() {
+                const citation = document.getElementById('citationOutput').textContent;
+                const citationData = {
+                    id: Date.now(),
+                    text: citation,
+                    style: this.currentStyle.toUpperCase(),
+                    source: this.getSourceName(this.currentSource),
+                    date: new Date().toLocaleDateString()
+                };
+                
+                this.savedCitations.push(citationData);
+                this.saveCitationsToStorage();
+                this.renderSavedCitations();
+                
+                alert('Citation saved successfully!');
+            }
+
+            showDeadlineModal() {
+                const citation = document.getElementById('citationOutput').textContent;
+                if (!citation) {
+                    alert('Please generate a citation first!');
+                    return;
+                }
+
+                // Set default values
+                const now = new Date();
+                const weekFromNow = new Date(now.getTime() + 7 * 24 * 60 * 60 * 1000);
+                
+                document.getElementById('projectTitle').value = 'Research Paper';
+                document.getElementById('deadlineDate').value = weekFromNow.toISOString().split('T')[0];
+                document.getElementById('deadlineTime').value = '23:59';
+                document.getElementById('reminderDays').value = '7';
+                
+                // Set minimum date to today
+                document.getElementById('deadlineDate').min = now.toISOString().split('T')[0];
+                
+                document.getElementById('deadlineModal').classList.remove('hidden');
+            }
+
+            hideDeadlineModal() {
+                document.getElementById('deadlineModal').classList.add('hidden');
+            }
+
+            createResearchDeadline() {
+                const projectTitle = document.getElementById('projectTitle').value.trim();
+                const deadlineDate = document.getElementById('deadlineDate').value;
+                const deadlineTime = document.getElementById('deadlineTime').value;
+                const reminderDays = parseInt(document.getElementById('reminderDays').value);
+
+                if (!projectTitle) {
+                    alert('Please enter a project title');
+                    return;
+                }
+
+                if (!deadlineDate || !deadlineTime) {
+                    alert('Please select both deadline date and time');
+                    return;
+                }
+
+                try {
+                    const deadline = new Date(`${deadlineDate}T${deadlineTime}:00`);
+                    if (isNaN(deadline.getTime())) {
+                        alert('Invalid date or time selected');
+                        return;
+                    }
+
+                    const citation = document.getElementById('citationOutput').textContent;
+                    const formData = this.getFormData();
+                    
+                    this.generateResearchDeadlineICS({
+                        title: projectTitle,
+                        deadline: deadline,
+                        citation: citation,
+                        source: this.getSourceName(this.currentSource),
+                        style: this.currentStyle.toUpperCase(),
+                        sourceData: formData,
+                        reminderDays: reminderDays
+                    });
+
+                    this.hideDeadlineModal();
+                } catch (error) {
+                    console.error('Error creating calendar event:', error);
+                    alert('Error creating calendar event. Please check your inputs.');
+                }
+            }
+
+            addResearchDeadline() {
+                // This method is kept for backward compatibility but now just calls showDeadlineModal
+                this.showDeadlineModal();
+            }
+
+            generateResearchDeadlineICS(data) {
+                const now = new Date();
+                const formatDate = (date) => {
+                    return date.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+                };
+
+                const escapeICS = (text) => {
+                    return text.replace(/[\\;,\n]/g, (match) => {
+                        switch (match) {
+                            case '\\': return '\\\\';
+                            case ';': return '\\;';
+                            case ',': return '\\,';
+                            case '\n': return '\\n';
+                            default: return match;
+                        }
+                    });
+                };
+
+                const uid = `research-deadline-${Date.now()}@scribbletools.in`;
+                const customReminderDays = data.reminderDays || 7;
+
+                let description = `Research project deadline\\n\\n`;
+                description += `Source: ${data.source}\\n`;
+                description += `Citation Style: ${data.style}\\n\\n`;
+                description += `Generated Citation:\\n${escapeICS(data.citation)}\\n\\n`;
+                
+                if (data.sourceData.title) description += `Source Title: ${escapeICS(data.sourceData.title)}\\n`;
+                if (data.sourceData.author) description += `Author: ${escapeICS(data.sourceData.author)}\\n`;
+                if (data.sourceData.url) description += `URL: ${escapeICS(data.sourceData.url)}\\n`;
+
+                const icsContent = [
+                    'BEGIN:VCALENDAR',
+                    'VERSION:2.0',
+                    'PRODID:-//ScribbleTools//Citation Generator//EN',
+                    'CALSCALE:GREGORIAN',
+                    'METHOD:PUBLISH',
+                    'BEGIN:VEVENT',
+                    `UID:${uid}`,
+                    `DTSTAMP:${formatDate(now)}`,
+                    `DTSTART:${formatDate(data.deadline)}`,
+                    `DTEND:${formatDate(new Date(data.deadline.getTime() + 2 * 60 * 60 * 1000))}`, // 2 hour duration
+                    `SUMMARY:${escapeICS(data.title)} - Research Deadline`,
+                    `DESCRIPTION:${description}`,
+                    `LOCATION:`,
+                    `STATUS:CONFIRMED`,
+                    `PRIORITY:1`,
+                    `CATEGORIES:EDUCATION,RESEARCH,DEADLINE`,
+                    'BEGIN:VALARM',
+                    `TRIGGER:-P${customReminderDays}D`,
+                    `DESCRIPTION:Research deadline in ${customReminderDays} day${customReminderDays > 1 ? 's' : ''}`,
+                    'ACTION:DISPLAY',
+                    'END:VALARM',
+                    'BEGIN:VALARM',
+                    'TRIGGER:-P1D',
+                    'DESCRIPTION:Research deadline tomorrow',
+                    'ACTION:DISPLAY',
+                    'END:VALARM',
+                    'BEGIN:VALARM',
+                    'TRIGGER:-PT2H',
+                    'DESCRIPTION:Research deadline in 2 hours',
+                    'ACTION:DISPLAY',
+                    'END:VALARM',
+                    'END:VEVENT',
+                    'END:VCALENDAR'
+                ].join('\r\n');
+
+                const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+                const url = URL.createObjectURL(blob);
+                
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = `${data.title.replace(/[^a-z0-9]/gi, '_')}_research_deadline.ics`;
+                
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                URL.revokeObjectURL(url);
+
+                alert('Research deadline calendar event created! Import the .ics file into your calendar app.');
+            }
+
+            renderSavedCitations() {
+                const container = document.getElementById('citationList');
+                const countElement = document.getElementById('citationCount');
+                
+                if (!container || !countElement) return;
+                
+                countElement.textContent = `(${this.savedCitations.length})`;
+                
+                if (this.savedCitations.length === 0) {
+                    container.innerHTML = '<p style="text-align: center; color: #666; padding: 2em;">No saved citations yet. Generate and save your first citation!</p>';
+                    return;
+                }
+                
+                container.innerHTML = this.savedCitations
+                    .sort((a, b) => b.id - a.id)
+                    .map(citation => `
+                        <div class="saved-citation">
+                            <div class="saved-citation-text">${citation.text}</div>
+                            <div class="saved-citation-meta">
+                                <span>${citation.style} - ${citation.source} - ${citation.date}</span>
+                                <button class="delete-citation" data-citation-id="${citation.id}">Delete</button>
+                            </div>
+                        </div>
+                    `).join('');
+
+                // Bind delete buttons
+                container.querySelectorAll('.delete-citation').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        const id = parseInt(btn.dataset.citationId);
+                        this.deleteCitation(id);
+                    });
+                });
+            }
+
+            deleteCitation(id) {
+                if (confirm('Are you sure you want to delete this citation?')) {
+                    this.savedCitations = this.savedCitations.filter(c => c.id !== id);
+                    this.saveCitationsToStorage();
+                    this.renderSavedCitations();
+                }
+            }
+
+            loadSavedCitations() {
+                try {
+                    return JSON.parse(localStorage.getItem('savedCitations') || '[]');
+                } catch {
+                    return [];
+                }
+            }
+
+            saveCitationsToStorage() {
+                localStorage.setItem('savedCitations', JSON.stringify(this.savedCitations));
+            }
+        }
+
+        // Initialize the Citation Generator
+        function initializeCitationGenerator() {
+            if (window.citationGeneratorInstance) {
+                return; // Already initialized
+            }
+            try {
+                window.citationGeneratorInstance = new CitationGenerator();
+                console.log('Citation Generator initialized successfully');
+            } catch (error) {
+                console.error('Failed to initialize Citation Generator:', error);
+            }
+        }
+
+        // Multiple initialization methods for different loading scenarios
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initializeCitationGenerator);
+        } else {
+            // DOM is already ready
+            initializeCitationGenerator();
+        }
+
+        // For when loaded via AJAX/routing
+        if (window.addEventListener) {
+            window.addEventListener('load', initializeCitationGenerator);
+        }
+
+        // Immediate initialization attempt
+        setTimeout(initializeCitationGenerator, 100);
+    </script>
+</body>
+</html>

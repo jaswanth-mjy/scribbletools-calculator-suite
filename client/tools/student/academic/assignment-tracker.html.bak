@@ -1,0 +1,1458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1200, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes">
+    <title>Assignment Tracker - FREE Student Assignment & Deadline Manager</title>
+    <meta name="description" content="Free assignment tracker! Manage homework, track deadlines, organize student tasks. Academic planner for better grades. 100% free!">
+    <meta name="keywords" content="assignment tracker, homework tracker, student planner, deadline manager, academic organizer, homework planner, student task manager, assignment manager, study planner, homework scheduler, academic calendar, student productivity, assignment deadlines, homework organizer, school planner, student organization tool, academic tracker, homework reminder, assignment calendar, student dashboard">
+    <meta name="author" content="Scribble Tools">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://scribbletools.in/client/tools/student/academic/assignment-tracker.html">
+    <meta property="og:title" content="Assignment Tracker - FREE Student Assignment & Deadline Manager">
+    <meta property="og:description" content="Free assignment tracker! Manage homework, track deadlines, organize student tasks. Academic planner for better grades. 100% free!">
+    <meta property="og:image" content="https://scribbletools.in/assets/og-image.svg">
+    <meta property="og:site_name" content="Scribble Tools">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://scribbletools.in/client/tools/student/academic/assignment-tracker.html">
+    <meta property="twitter:title" content="Assignment Tracker - FREE Student Assignment & Deadline Manager">
+    <meta property="twitter:description" content="Free assignment tracker! Manage homework, track deadlines, organize student tasks. Academic planner for better grades. 100% free!">
+    <meta property="twitter:image" content="https://scribbletools.in/assets/og-image.svg">
+    
+    <!-- Additional SEO Meta Tags -->
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Scribble Tools">
+    <meta name="generator" content="Scribble Tools">
+    <meta name="application-name" content="Assignment Tracker">
+    <meta name="apple-mobile-web-app-title" content="Assignments">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#D9534F">
+    <meta name="msapplication-navbutton-color" content="#D9534F">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#D9534F">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://scribbletools.in/client/tools/student/academic/assignment-tracker.html">
+    
+    <!-- Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Student Assignment & Deadline Tracker",
+      "description": "Free online assignment tracker for students to manage homework, deadlines, and academic tasks. Improve productivity and organization.",
+      "url": "https://scribbletools.in/client/tools/student/academic/assignment-tracker.html",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "Any",
+      "permissions": "browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "featureList": [
+        "Assignment tracking",
+        "Deadline management",
+        "Homework organizer",
+        "Task prioritization",
+        "Academic calendar",
+        "Student productivity",
+        "No registration required",
+        "Free to use"
+      ],
+      "provider": {
+        "@type": "Organization",
+        "name": "Scribble Tools",
+        "url": "https://scribbletools.in"
+      }
+    }
+    </script>
+    <style>
+        /* Import Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Caveat:wght@400;600;700&family=Fira+Code:wght@400;500&display=swap');
+        
+        /* CSS Variables for consistent theming */
+        :root {
+            --primary-color: #D9534F;
+            --primary-light: #E57373;
+            --primary-dark: #C62828;
+            --secondary-color: #F39C12;
+            --secondary-light: #FFB74D;
+            --success-color: #27AE60;
+            --success-light: #66BB6A;
+            --info-color: #3498DB;
+            --info-light: #64B5F6;
+            --warning-color: #F39C12;
+            --warning-light: #FFB74D;
+            --danger-color: #E74C3C;
+            --danger-light: #EF5350;
+            --light-color: #F8F4E8;
+            --lighter-color: #FEFBF6;
+            --dark-color: #333;
+            --darker-color: #222;
+            --gray-color: #666;
+            --light-gray: #EAE3D5;
+            --white: #FFFFFF;
+            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.15);
+            --shadow-xl: 0 12px 24px rgba(0, 0, 0, 0.2);
+            --border-radius: 12px;
+            --border-radius-sm: 8px;
+            --border-radius-lg: 16px;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #F8F4E8 0%, #FEFBF6 100%);
+            color: var(--dark-color);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        /* Background decoration */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(217, 83, 79, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 90% 80%, rgba(243, 156, 18, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(52, 152, 219, 0.03) 0%, transparent 70%);
+            z-index: -1;
+        }
+        
+        /* Container */
+        .tracker-container {
+            max-width: 1000px;
+            margin: 2em auto 4em auto;
+            background: var(--white);
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-xl);
+            padding: 2.5em;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        /* Header decoration */
+        .tracker-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--info-color));
+        }
+        
+        /* Title */
+        .tracker-container .handwritten {
+            font-family: 'Caveat', cursive !important;
+            color: var(--primary-color) !important;
+            font-size: 3.5rem !important;
+            text-align: center !important;
+            margin-bottom: 2rem !important;
+            cursor: default !important;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+            text-shadow: 2px 2px 0px rgba(217, 83, 79, 0.1);
+            animation: pulse 2s infinite;
+        }
+        
+        /* Title underline animation */
+        .tracker-container .handwritten::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+            animation: expandWidth 2s ease-in-out infinite alternate;
+        }
+        
+        /* Disclaimer */
+        .disclaimer {
+            background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+            border: 1px solid #f1c40f;
+            border-radius: var(--border-radius);
+            padding: 1.2em 1.5em;
+            margin-bottom: 2em;
+            box-shadow: var(--shadow-md);
+            position: relative;
+            overflow: hidden;
+            animation: slideInLeft 0.5s ease-out 0.2s both;
+        }
+        
+        .disclaimer::before {
+            content: '⚠️';
+            position: absolute;
+            left: -10px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2.5rem;
+            opacity: 0.1;
+        }
+        
+        /* Form Section */
+        .form-section {
+            background: linear-gradient(135deg, var(--lighter-color) 0%, var(--light-color) 100%);
+            border: 2px solid var(--light-gray);
+            border-radius: var(--border-radius-lg);
+            padding: 2em;
+            margin-bottom: 2em;
+            box-shadow: var(--shadow-md);
+            position: relative;
+            overflow: hidden;
+            animation: slideInUp 0.5s ease-out 0.3s both;
+        }
+        
+        .form-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 100%);
+            pointer-events: none;
+        }
+        
+        .form-section h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.5em;
+            font-size: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .form-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--primary-color);
+        }
+        
+        /* Form Grid */
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5em;
+            margin-bottom: 1.5em;
+        }
+        
+        /* Form Group */
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        
+        .form-label {
+            font-weight: 600;
+            margin-bottom: 0.5em;
+            color: var(--dark-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5em;
+        }
+        
+        .form-label i {
+            color: var(--primary-color);
+            font-size: 0.9em;
+        }
+        
+        /* Form Inputs */
+        .form-input, .form-select, .form-textarea {
+            padding: 0.8em 1em;
+            border: 2px solid var(--light-gray);
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            background: var(--white);
+            font-family: 'Fira Code', monospace;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .form-input:focus, .form-select:focus, .form-textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(217, 83, 79, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        .form-textarea {
+            resize: vertical;
+            min-height: 100px;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        /* Form Button */
+        .form-btn {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+            border: none;
+            border-radius: var(--border-radius);
+            padding: 0.8em 2em;
+            font-weight: 600;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 1em;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5em;
+        }
+        
+        .form-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .form-btn:hover::before {
+            left: 100%;
+        }
+        
+        .form-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .form-btn:active {
+            transform: translateY(-1px);
+        }
+        
+        /* Calendar Info */
+        .calendar-info {
+            margin-top: 1.5em;
+            padding: 1em 1.5em;
+            background: linear-gradient(135deg, #E8F5FF 0%, #D1E9FF 100%);
+            border: 1px solid var(--info-color);
+            border-radius: var(--border-radius);
+            font-size: 0.9em;
+            display: flex;
+            align-items: center;
+            gap: 0.5em;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        /* Assignments Section */
+        .assignments-section {
+            margin-top: 2em;
+            animation: fadeIn 0.5s ease-out 0.4s both;
+        }
+        
+        /* Assignments Header */
+        .assignments-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5em;
+            flex-wrap: wrap;
+            gap: 1em;
+        }
+        
+        .assignments-header h3 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .assignments-header h3::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--primary-color);
+        }
+        
+        /* Toolbar Actions */
+        .toolbar-actions {
+            display: flex;
+            gap: 1.5em;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        
+        /* Filter Controls */
+        .filter-controls {
+            display: flex;
+            gap: 0.5em;
+            flex-wrap: wrap;
+            background: var(--white);
+            padding: 0.3em;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .filter-btn {
+            background: transparent;
+            color: var(--gray-color);
+            border: none;
+            border-radius: var(--border-radius-sm);
+            padding: 0.5em 1em;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .filter-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--primary-color);
+            transform: scale(0);
+            border-radius: 50%;
+            transition: transform 0.3s;
+            z-index: -1;
+        }
+        
+        .filter-btn:hover::before {
+            transform: scale(1.5);
+        }
+        
+        .filter-btn:hover {
+            color: var(--white);
+        }
+        
+        .filter-btn.active {
+            background: var(--primary-color);
+            color: var(--white);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        /* Export Controls */
+        .export-controls {
+            display: flex;
+            gap: 0.5em;
+            flex-wrap: wrap;
+        }
+        
+        .export-btn {
+            background: linear-gradient(135deg, var(--info-color) 0%, #2980B9 100%);
+            color: var(--white);
+            border: none;
+            border-radius: var(--border-radius-sm);
+            padding: 0.5em 1em;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.9em;
+            display: flex;
+            align-items: center;
+            gap: 0.3em;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .export-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        /* Assignment List */
+        .assignment-list {
+            display: grid;
+            gap: 1.5em;
+        }
+        
+        /* Assignment Card */
+        .assignment-card {
+            background: var(--white);
+            border: 2px solid var(--light-gray);
+            border-radius: var(--border-radius-lg);
+            padding: 1.5em;
+            position: relative;
+            transition: var(--transition);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            animation: slideInUp 0.3s ease-out;
+        }
+        
+        .assignment-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--gray-color);
+        }
+        
+        .assignment-card.high-priority::before {
+            background: var(--primary-color);
+        }
+        
+        .assignment-card.medium-priority::before {
+            background: var(--secondary-color);
+        }
+        
+        .assignment-card.low-priority::before {
+            background: var(--success-color);
+        }
+        
+        .assignment-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .assignment-card.completed {
+            opacity: 0.7;
+            background: linear-gradient(135deg, #E8F5E8 0%, #D4EDDA 100%);
+        }
+        
+        /* Assignment Header */
+        .assignment-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1em;
+            flex-wrap: wrap;
+            gap: 1em;
+        }
+        
+        .assignment-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: var(--dark-color);
+            margin: 0;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .assignment-course {
+            color: var(--gray-color);
+            font-size: 0.9em;
+            margin-top: 0.2em;
+            display: flex;
+            align-items: center;
+            gap: 0.3em;
+        }
+        
+        .assignment-course::before {
+            content: '📚';
+        }
+        
+        /* Assignment Actions */
+        .assignment-actions {
+            display: flex;
+            gap: 0.5em;
+            flex-wrap: wrap;
+        }
+        
+        .action-btn {
+            background: var(--white);
+            border: 1px solid var(--light-gray);
+            border-radius: var(--border-radius-sm);
+            padding: 0.4em 0.8em;
+            cursor: pointer;
+            font-size: 0.8em;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.3em;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .edit-btn:hover {
+            background: var(--secondary-color);
+            color: var(--white);
+            border-color: var(--secondary-color);
+        }
+        
+        .delete-btn:hover {
+            background: var(--danger-color);
+            color: var(--white);
+            border-color: var(--danger-color);
+        }
+        
+        .complete-btn:hover {
+            background: var(--success-color);
+            color: var(--white);
+            border-color: var(--success-color);
+        }
+        
+        .calendar-btn:hover {
+            background: var(--info-color);
+            color: var(--white);
+            border-color: var(--info-color);
+        }
+        
+        /* Assignment Details */
+        .assignment-details {
+            margin-bottom: 1em;
+        }
+        
+        .assignment-due {
+            font-weight: bold;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 0.3em;
+        }
+        
+        .assignment-priority {
+            display: inline-block;
+            padding: 0.2em 0.6em;
+            border-radius: 1em;
+            font-size: 0.8em;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-top: 0.5em;
+        }
+        
+        .priority-high {
+            background: rgba(217, 83, 79, 0.1);
+            color: var(--primary-color);
+        }
+        
+        .priority-medium {
+            background: rgba(243, 156, 18, 0.1);
+            color: var(--secondary-color);
+        }
+        
+        .priority-low {
+            background: rgba(39, 174, 96, 0.1);
+            color: var(--success-color);
+        }
+        
+        /* Progress Section */
+        .progress-section {
+            margin-top: 1em;
+        }
+        
+        .progress-bar {
+            background: var(--light-gray);
+            border-radius: 1em;
+            height: 10px;
+            overflow: hidden;
+            margin-top: 0.5em;
+            position: relative;
+        }
+        
+        .progress-fill {
+            background: linear-gradient(90deg, var(--success-color), var(--success-light));
+            height: 100%;
+            transition: width 0.5s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .progress-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.3),
+                transparent
+            );
+            transform: translateX(-100%);
+            animation: shimmer 2s infinite;
+        }
+        
+        .progress-text {
+            font-size: 0.9em;
+            color: var(--gray-color);
+            margin-bottom: 0.5em;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .progress-input {
+            width: 100px;
+            height: 6px;
+            border-radius: 3px;
+            background: var(--light-gray);
+            outline: none;
+            -webkit-appearance: none;
+        }
+        
+        .progress-input::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--success-color);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .progress-input::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+        }
+        
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 3em;
+            color: var(--gray-color);
+            background: var(--white);
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .empty-state-icon {
+            font-size: 4em;
+            margin-bottom: 1em;
+            opacity: 0.5;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.02);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        @keyframes expandWidth {
+            from {
+                width: 50px;
+            }
+            to {
+                width: 150px;
+            }
+        }
+        
+        @keyframes shimmer {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(100%);
+            }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .tracker-container {
+                padding: 1.5em;
+                margin: 1em;
+            }
+            
+            .tracker-container .handwritten {
+                font-size: 2.5rem !important;
+            }
+            
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .assignments-header {
+                flex-direction: column;
+                gap: 1em;
+                align-items: stretch;
+            }
+            
+            .toolbar-actions {
+                flex-direction: column;
+                gap: 1em;
+                width: 100%;
+            }
+            
+            .filter-controls, .export-controls {
+                justify-content: center;
+            }
+            
+            .assignment-header {
+                flex-direction: column;
+                gap: 1em;
+            }
+            
+            .assignment-actions {
+                justify-content: flex-start;
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="../force-desktop-layout.css">
+</head>
+<body>
+    <div class="tracker-container">
+        <h1 class="handwritten">Assignment Tracker</h1>
+        
+        <div class="disclaimer">
+            <strong>⚠️ Data Storage Notice:</strong> Your assignments are stored locally in your browser. 
+            <strong>If you clear your browser cache or data, all assignments will be lost!</strong> 
+            We recommend regularly exporting your assignments using the calendar export feature below to backup your data.
+        </div>
+        
+        <!-- Add Assignment Form -->
+        <div class="form-section">
+            <h3><i class="fas fa-plus-circle"></i> Add New Assignment</h3>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label class="form-label" for="title"><i class="fas fa-heading"></i> Assignment Title *</label>
+                    <input type="text" id="title" class="form-input" placeholder="e.g. Math Homework Ch. 5" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="course"><i class="fas fa-book"></i> Course/Subject</label>
+                    <input type="text" id="course" class="form-input" placeholder="e.g. Mathematics">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="dueDate"><i class="fas fa-calendar-alt"></i> Due Date *</label>
+                    <input type="date" id="dueDate" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="dueTime"><i class="fas fa-clock"></i> Due Time *</label>
+                    <input type="time" id="dueTime" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="priority"><i class="fas fa-flag"></i> Priority</label>
+                    <select id="priority" class="form-select">
+                        <option value="medium">Medium</option>
+                        <option value="high">High</option>
+                        <option value="low">Low</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="description"><i class="fas fa-align-left"></i> Description</label>
+                <textarea id="description" class="form-textarea" placeholder="Assignment details, requirements, notes..."></textarea>
+            </div>
+            <button id="addBtn" class="form-btn"><i class="fas fa-save"></i> Add Assignment</button>
+            
+            <div class="calendar-info">
+                <i class="fas fa-info-circle"></i>
+                <strong>📅 Calendar Integration:</strong> Use the calendar buttons (📅) to export assignments to Outlook, Google Calendar, Apple Calendar, and other calendar apps. The .ics files include reminders 1 day and 2 hours before due dates.
+            </div>
+        </div>
+        
+        <!-- Assignments List -->
+        <div class="assignments-section">
+            <div class="assignments-header">
+                <h3><i class="fas fa-tasks"></i> Your Assignments</h3>
+                <div class="toolbar-actions">
+                    <div class="filter-controls">
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="pending">Pending</button>
+                        <button class="filter-btn" data-filter="completed">Completed</button>
+                        <button class="filter-btn" data-filter="overdue">Overdue</button>
+                    </div>
+                    <div class="export-controls">
+                        <button id="exportAllBtn" class="export-btn" title="Export all assignments to calendar"><i class="fas fa-calendar-download"></i> Export All</button>
+                        <button id="exportPendingBtn" class="export-btn" title="Export pending assignments to calendar"><i class="fas fa-file-export"></i> Export Pending</button>
+                    </div>
+                </div>
+            </div>
+            <div class="assignment-list" id="assignmentList">
+                <div class="empty-state">
+                    <div class="empty-state-icon">📚</div>
+                    <h3>No assignments yet</h3>
+                    <p>Add your first assignment using the form above!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        class AssignmentTracker {
+            constructor() {
+                this.assignments = this.loadAssignments();
+                this.currentFilter = 'all';
+                this.editingId = null;
+                this.init();
+            }
+
+            init() {
+                this.bindEvents();
+                this.renderAssignments();
+                this.setMinDateTime();
+            }
+
+            bindEvents() {
+                const addBtn = document.getElementById('addBtn');
+                if (addBtn) {
+                    addBtn.addEventListener('click', () => this.addOrUpdateAssignment());
+                }
+                
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        this.setFilter(e.target.dataset.filter);
+                    });
+                });
+                
+                // Add Enter key support for form submission
+                const form = document.querySelector('.form-section');
+                if (form) {
+                    form.addEventListener('keypress', (e) => {
+                        if (e.key === 'Enter' && e.target.tagName === 'INPUT') {
+                            e.preventDefault();
+                            this.addOrUpdateAssignment();
+                        }
+                    });
+                }
+
+                // Export buttons
+                const exportAllBtn = document.getElementById('exportAllBtn');
+                const exportPendingBtn = document.getElementById('exportPendingBtn');
+                
+                if (exportAllBtn) {
+                    exportAllBtn.addEventListener('click', () => this.exportAllToCalendar());
+                }
+                
+                if (exportPendingBtn) {
+                    exportPendingBtn.addEventListener('click', () => this.exportPendingToCalendar());
+                }
+            }
+
+            setMinDateTime() {
+                const now = new Date();
+                const today = now.toISOString().split('T')[0];
+                
+                const dueDateInput = document.getElementById('dueDate');
+                const dueTimeInput = document.getElementById('dueTime');
+                
+                if (dueDateInput) {
+                    dueDateInput.min = today;
+                    // Set default to tomorrow
+                    const tomorrow = new Date(now);
+                    tomorrow.setDate(tomorrow.getDate() + 1);
+                    dueDateInput.value = tomorrow.toISOString().split('T')[0];
+                }
+                
+                if (dueTimeInput) {
+                    // Set default time to 11:59 PM
+                    dueTimeInput.value = '23:59';
+                }
+            }
+
+            addOrUpdateAssignment() {
+                const titleEl = document.getElementById('title');
+                const courseEl = document.getElementById('course');
+                const dueDateEl = document.getElementById('dueDate');
+                const dueTimeEl = document.getElementById('dueTime');
+                const priorityEl = document.getElementById('priority');
+                const descriptionEl = document.getElementById('description');
+
+                if (!titleEl || !dueDateEl || !dueTimeEl) {
+                    alert('Error: Form elements not found. Please refresh the page.');
+                    return;
+                }
+
+                const title = titleEl.value.trim();
+                const course = courseEl ? courseEl.value.trim() : '';
+                const dueDate = dueDateEl.value;
+                const dueTime = dueTimeEl.value;
+                const priority = priorityEl ? priorityEl.value : 'medium';
+                const description = descriptionEl ? descriptionEl.value.trim() : '';
+
+                if (!title) {
+                    alert('Please enter an assignment title');
+                    titleEl.focus();
+                    return;
+                }
+                
+                if (!dueDate) {
+                    alert('Please select a due date');
+                    dueDateEl.focus();
+                    return;
+                }
+
+                if (!dueTime) {
+                    alert('Please select a due time');
+                    dueTimeEl.focus();
+                    return;
+                }
+
+                // Combine date and time into ISO string
+                const combinedDateTime = `${dueDate}T${dueTime}:00`;
+
+                const assignment = {
+                    id: this.editingId || Date.now(),
+                    title,
+                    course,
+                    dueDate: combinedDateTime,
+                    priority,
+                    description,
+                    completed: false,
+                    progress: 0,
+                    createdAt: this.editingId ? this.assignments.find(a => a.id === this.editingId).createdAt : Date.now()
+                };
+
+                if (this.editingId) {
+                    const index = this.assignments.findIndex(a => a.id === this.editingId);
+                    if (index !== -1) {
+                        this.assignments[index] = assignment;
+                    }
+                    this.editingId = null;
+                    const addBtn = document.getElementById('addBtn');
+                    if (addBtn) addBtn.innerHTML = '<i class="fas fa-save"></i> Add Assignment';
+                } else {
+                    this.assignments.push(assignment);
+                }
+
+                this.saveAssignments();
+                this.renderAssignments();
+                this.clearForm();
+            }
+
+            editAssignment(id) {
+                const assignment = this.assignments.find(a => a.id === id);
+                if (assignment) {
+                    document.getElementById('title').value = assignment.title;
+                    document.getElementById('course').value = assignment.course;
+                    
+                    // Split datetime into separate date and time
+                    const dateTime = new Date(assignment.dueDate);
+                    const date = dateTime.toISOString().split('T')[0];
+                    const time = dateTime.toTimeString().slice(0, 5);
+                    
+                    document.getElementById('dueDate').value = date;
+                    document.getElementById('dueTime').value = time;
+                    document.getElementById('priority').value = assignment.priority;
+                    document.getElementById('description').value = assignment.description;
+                    
+                    this.editingId = id;
+                    document.getElementById('addBtn').innerHTML = '<i class="fas fa-edit"></i> Update Assignment';
+                }
+            }
+
+            deleteAssignment(id) {
+                if (confirm('Are you sure you want to delete this assignment?')) {
+                    this.assignments = this.assignments.filter(a => a.id !== id);
+                    this.saveAssignments();
+                    this.renderAssignments();
+                }
+            }
+
+            toggleComplete(id) {
+                const assignment = this.assignments.find(a => a.id === id);
+                if (assignment) {
+                    assignment.completed = !assignment.completed;
+                    assignment.progress = assignment.completed ? 100 : assignment.progress;
+                    this.saveAssignments();
+                    this.renderAssignments();
+                }
+            }
+
+            updateProgress(id, progress) {
+                const assignment = this.assignments.find(a => a.id === id);
+                if (assignment) {
+                    assignment.progress = Math.max(0, Math.min(100, progress));
+                    assignment.completed = assignment.progress === 100;
+                    this.saveAssignments();
+                    this.renderAssignments();
+                }
+            }
+
+            setFilter(filter) {
+                this.currentFilter = filter;
+                document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+                document.querySelector(`[data-filter="${filter}"]`).classList.add('active');
+                this.renderAssignments();
+            }
+
+            getFilteredAssignments() {
+                const now = new Date();
+                return this.assignments.filter(assignment => {
+                    const dueDate = new Date(assignment.dueDate);
+                    switch (this.currentFilter) {
+                        case 'completed': return assignment.completed;
+                        case 'pending': return !assignment.completed;
+                        case 'overdue': return !assignment.completed && dueDate < now;
+                        default: return true;
+                    }
+                });
+            }
+
+            renderAssignments() {
+                const container = document.getElementById('assignmentList');
+                const filteredAssignments = this.getFilteredAssignments();
+
+                if (filteredAssignments.length === 0) {
+                    container.innerHTML = `
+                        <div class="empty-state">
+                            <div class="empty-state-icon">📚</div>
+                            <h3>No assignments found</h3>
+                            <p>${this.currentFilter === 'all' ? 'Add your first assignment using the form above!' : `No ${this.currentFilter} assignments.`}</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                container.innerHTML = filteredAssignments
+                    .sort((a, b) => {
+                        if (a.completed !== b.completed) return a.completed - b.completed;
+                        return new Date(a.dueDate) - new Date(b.dueDate);
+                    })
+                    .map(assignment => this.renderAssignmentCard(assignment))
+                    .join('');
+
+                // Bind events for action buttons
+                container.querySelectorAll('.edit-btn').forEach(btn => {
+                    btn.addEventListener('click', () => this.editAssignment(parseInt(btn.dataset.id)));
+                });
+
+                container.querySelectorAll('.delete-btn').forEach(btn => {
+                    btn.addEventListener('click', () => this.deleteAssignment(parseInt(btn.dataset.id)));
+                });
+
+                container.querySelectorAll('.complete-btn').forEach(btn => {
+                    btn.addEventListener('click', () => this.toggleComplete(parseInt(btn.dataset.id)));
+                });
+
+                container.querySelectorAll('.calendar-btn').forEach(btn => {
+                    btn.addEventListener('click', () => this.exportToCalendar(parseInt(btn.dataset.id)));
+                });
+
+                container.querySelectorAll('.progress-input').forEach(input => {
+                    input.addEventListener('change', () => {
+                        this.updateProgress(parseInt(input.dataset.id), parseInt(input.value));
+                    });
+                });
+            }
+
+            renderAssignmentCard(assignment) {
+                const dueDate = new Date(assignment.dueDate);
+                const now = new Date();
+                const isOverdue = !assignment.completed && dueDate < now;
+                const timeUntilDue = this.formatTimeUntilDue(dueDate, now);
+
+                return `
+                    <div class="assignment-card ${assignment.priority}-priority ${assignment.completed ? 'completed' : ''}">
+                        <div class="assignment-header">
+                            <div>
+                                <h4 class="assignment-title">${assignment.title}</h4>
+                                ${assignment.course ? `<p class="assignment-course">${assignment.course}</p>` : ''}
+                            </div>
+                            <div class="assignment-actions">
+                                <button class="action-btn edit-btn" data-id="${assignment.id}"><i class="fas fa-edit"></i> Edit</button>
+                                <button class="action-btn complete-btn" data-id="${assignment.id}">
+                                    <i class="fas ${assignment.completed ? 'fa-undo' : 'fa-check'}"></i>
+                                    ${assignment.completed ? 'Undo' : 'Complete'}
+                                </button>
+                                <button class="action-btn calendar-btn" data-id="${assignment.id}" title="Add to Calendar"><i class="fas fa-calendar-plus"></i></button>
+                                <button class="action-btn delete-btn" data-id="${assignment.id}"><i class="fas fa-trash"></i></button>
+                            </div>
+                        </div>
+                        
+                        <div class="assignment-details">
+                            <p class="assignment-due">
+                                <i class="fas fa-clock"></i>
+                                Due: ${dueDate.toLocaleDateString()} at ${dueDate.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}
+                                ${isOverdue ? ' <strong style="color: #D9534F;">(OVERDUE)</strong>' : ` (${timeUntilDue})`}
+                            </p>
+                            <span class="assignment-priority priority-${assignment.priority}">${assignment.priority} priority</span>
+                            ${assignment.description ? `<p style="margin-top: 0.5em; color: #666;">${assignment.description}</p>` : ''}
+                        </div>
+                        
+                        <div class="progress-section">
+                            <div class="progress-text">
+                                <span>Progress: ${assignment.progress}%</span>
+                                <input type="range" class="progress-input" min="0" max="100" value="${assignment.progress}" data-id="${assignment.id}">
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: ${assignment.progress}%"></div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+
+            formatTimeUntilDue(dueDate, now) {
+                const diff = dueDate - now;
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                
+                if (days > 0) {
+                    return `${days} day${days > 1 ? 's' : ''} left`;
+                } else if (hours > 0) {
+                    return `${hours} hour${hours > 1 ? 's' : ''} left`;
+                } else if (diff > 0) {
+                    return 'Due soon';
+                }
+                return 'Overdue';
+            }
+
+            clearForm() {
+                const elements = [
+                    { id: 'title', value: '' },
+                    { id: 'course', value: '' },
+                    { id: 'dueDate', value: '' },
+                    { id: 'dueTime', value: '' },
+                    { id: 'priority', value: 'medium' },
+                    { id: 'description', value: '' }
+                ];
+                
+                elements.forEach(({ id, value }) => {
+                    const element = document.getElementById(id);
+                    if (element) {
+                        element.value = value;
+                    }
+                });
+                
+                // Reset datetime picker to tomorrow
+                setTimeout(() => this.setMinDateTime(), 100);
+            }
+
+            // Calendar Export Functions
+            exportToCalendar(id) {
+                const assignment = this.assignments.find(a => a.id === id);
+                if (assignment) {
+                    this.generateICSFile([assignment]);
+                }
+            }
+
+            exportAllToCalendar() {
+                if (this.assignments.length === 0) {
+                    alert('No assignments to export!');
+                    return;
+                }
+                this.generateICSFile(this.assignments);
+            }
+
+            exportPendingToCalendar() {
+                const pendingAssignments = this.assignments.filter(a => !a.completed);
+                if (pendingAssignments.length === 0) {
+                    alert('No pending assignments to export!');
+                    return;
+                }
+                this.generateICSFile(pendingAssignments);
+            }
+
+            generateICSFile(assignments) {
+                const icsContent = this.createICSContent(assignments);
+                const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+                const url = URL.createObjectURL(blob);
+                
+                const link = document.createElement('a');
+                link.href = url;
+                const fileName = assignments.length === 1 
+                    ? `${assignments[0].title.replace(/[^a-z0-9]/gi, '_')}_assignment.ics`
+                    : `assignments_${new Date().toISOString().split('T')[0]}.ics`;
+                link.download = fileName;
+                
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                URL.revokeObjectURL(url);
+            }
+
+            createICSContent(assignments) {
+                const now = new Date();
+                const formatDate = (date) => {
+                    return date.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+                };
+
+                let icsContent = [
+                    'BEGIN:VCALENDAR',
+                    'VERSION:2.0',
+                    'PRODID:-//ScribbleTools//Assignment Tracker//EN',
+                    'CALSCALE:GREGORIAN',
+                    'METHOD:PUBLISH'
+                ];
+
+                assignments.forEach(assignment => {
+                    const dueDate = new Date(assignment.dueDate);
+                    const reminderDate = new Date(dueDate.getTime() - (24 * 60 * 60 * 1000)); // 1 day before
+                    const createdDate = new Date(assignment.createdAt);
+                    
+                    // Generate unique UID
+                    const uid = `assignment-${assignment.id}-${assignment.createdAt}@scribbletools.in`;
+                    
+                    // Escape special characters for ICS format
+                    const escapeICS = (text) => {
+                        return text.replace(/[\\;,\n]/g, (match) => {
+                            switch (match) {
+                                case '\\': return '\\\\';
+                                case ';': return '\\;';
+                                case ',': return '\\,';
+                                case '\n': return '\\n';
+                                default: return match;
+                            }
+                        });
+                    };
+
+                    const title = escapeICS(assignment.title);
+                    const course = assignment.course ? escapeICS(assignment.course) : '';
+                    const description = assignment.description ? escapeICS(assignment.description) : '';
+                    
+                    let eventDescription = `Assignment: ${title}`;
+                    if (course) eventDescription += `\\nCourse: ${course}`;
+                    if (description) eventDescription += `\\nDescription: ${description}`;
+                    eventDescription += `\\nPriority: ${assignment.priority.toUpperCase()}`;
+                    eventDescription += `\\nProgress: ${assignment.progress}%`;
+
+                    icsContent.push(
+                        'BEGIN:VEVENT',
+                        `UID:${uid}`,
+                        `DTSTAMP:${formatDate(now)}`,
+                        `DTSTART:${formatDate(dueDate)}`,
+                        `DTEND:${formatDate(new Date(dueDate.getTime() + 60 * 60 * 1000))}`, // 1 hour duration
+                        `SUMMARY:${course ? course + ': ' : ''}${title}`,
+                        `DESCRIPTION:${eventDescription}`,
+                        `LOCATION:`,
+                        `STATUS:${assignment.completed ? 'COMPLETED' : 'CONFIRMED'}`,
+                        `PRIORITY:${assignment.priority === 'high' ? '1' : assignment.priority === 'medium' ? '5' : '9'}`,
+                        `CATEGORIES:EDUCATION,ASSIGNMENT`,
+                        'BEGIN:VALARM',
+                        'TRIGGER:-P1D',
+                        'DESCRIPTION:Assignment Due Tomorrow',
+                        'ACTION:DISPLAY',
+                        'END:VALARM',
+                        'BEGIN:VALARM',
+                        'TRIGGER:-PT2H',
+                        'DESCRIPTION:Assignment Due in 2 Hours',
+                        'ACTION:DISPLAY',
+                        'END:VALARM',
+                        'END:VEVENT'
+                    );
+                });
+
+                icsContent.push('END:VCALENDAR');
+                return icsContent.join('\r\n');
+            }
+
+            loadAssignments() {
+                try {
+                    return JSON.parse(localStorage.getItem('assignments') || '[]');
+                } catch {
+                    return [];
+                }
+            }
+
+            saveAssignments() {
+                localStorage.setItem('assignments', JSON.stringify(this.assignments));
+            }
+        }
+
+        // Initialize the Assignment Tracker
+        function initializeAssignmentTracker() {
+            if (window.assignmentTrackerInstance) {
+                return; // Already initialized
+            }
+            try {
+                window.assignmentTrackerInstance = new AssignmentTracker();
+                console.log('Assignment Tracker initialized successfully');
+            } catch (error) {
+                console.error('Failed to initialize Assignment Tracker:', error);
+            }
+        }
+
+        // Multiple initialization methods for different loading scenarios
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initializeAssignmentTracker);
+        } else {
+            // DOM is already ready
+            initializeAssignmentTracker();
+        }
+
+        // For when loaded via AJAX/routing
+        if (window.addEventListener) {
+            window.addEventListener('load', initializeAssignmentTracker);
+        }
+
+        // Immediate initialization attempt
+        setTimeout(initializeAssignmentTracker, 100);
+    </script>
+</body>
+</html>

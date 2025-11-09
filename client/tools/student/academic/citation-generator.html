@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=1200, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Citation Generator - FREE APA MLA Chicago Citation Maker</title>
     <meta name="description" content="Free citation generator! Create APA, MLA, Chicago style citations instantly. Academic reference maker for students, researchers. 100% free!">
     <meta name="keywords" content="citation generator, APA citation, MLA citation, Chicago citation, bibliography generator, reference maker, academic citations, citation maker, student citation tool, research citations, citation format, bibliography creator, academic reference generator, citation style guide, free citation tool, paper citations, thesis citations, essay citations, scholarly citations, citation builder">
@@ -80,7 +80,7 @@
     <style>
         body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; margin: 0; padding: 20px; }
         .citation-container { max-width: 900px; margin: 2em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2em; }
-        .handwritten { font-family: 'Caveat', cursive; color: #D9534F; font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; }
+        .citation-container .handwritten { font-family: 'Caveat', cursive; color: #D9534F; font-size: 2.5rem; text-align: center; margin-bottom: 1.5rem; }
         
         .style-selector { background: #FDFBF5; border: 2px solid #EAE3D5; border-radius: 0.9em; padding: 1.5em; margin-bottom: 2em; }
         .style-tabs { display: flex; gap: 0.8em; margin-bottom: 1.5em; flex-wrap: wrap; justify-content: center; }
@@ -116,11 +116,12 @@
         .saved-citation-meta { font-size: 0.8em; color: #666; display: flex; justify-content: space-between; align-items: center; }
         .delete-citation { background: #D9534F; color: white; border: none; border-radius: 0.2em; padding: 0.3em 0.6em; cursor: pointer; font-size: 0.8em; }
         
-        .citation-desc { width: 100%; margin-top: 2em; background:#FDFBF5; border:2px solid #EAE3D5; border-radius:0.9em; padding:1.2em 1em; font-size:1.08em; color:#333; line-height:1.7; max-width: 900px; margin: 2.5em auto 0 auto; }
-        .citation-desc strong { color: #D9534F; font-size: 1.18em; }
+        .citation-desc { width: 100%; margin-top: 2em; background:#FDFBF5; border:1px solid #EAE3D5; border-radius:0.5em; padding:1em 1.2em; font-size:0.9em; color:#555; line-height:1.6; max-width: 900px; margin: 2em auto 1em auto; }
+        .citation-desc strong { color: #D9534F; font-size: 1em; font-weight: 600; }
         .result-section.hidden { display: none; }
-        .citation-desc ul { margin-left: 1.2em; }
-        .citation-desc ul.features-list { margin-bottom: 0.7em; }
+        .citation-desc ul { margin-left: 1.2em; margin-top: 0.5em; margin-bottom: 0.5em; }
+        .citation-desc ul.features-list { margin-bottom: 0.5em; }
+        .citation-desc ul li { margin-bottom: 0.3em; }
         
         /* Modal Styles */
         .deadline-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); display: flex; justify-content: center; align-items: center; z-index: 1000; }

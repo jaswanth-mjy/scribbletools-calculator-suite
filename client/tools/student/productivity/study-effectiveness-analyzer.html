@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=1200, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- Enhanced SEO Meta Tags -->
     <title>Study Effectiveness Analyzer - FREE Student Study Performance Tracker & Analytics Tool</title>
@@ -150,13 +150,18 @@
         }
         
         .study-header h1 {
-            font-size: 2.5rem !important;
+            font-family: 'Caveat', cursive !important;
+            font-size: 3.5rem !important;
             margin-bottom: 15px !important;
             font-weight: 700 !important;
-            color: var(--study-color-text-on-primary) !important;
+            background: linear-gradient(135deg, #ffffff 0%, #f0f4ff 100%) !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            background-clip: text !important;
         }
         
         .study-header p {
+            font-family: 'Poppins', sans-serif !important;
             font-size: 1.1rem !important;
             opacity: 0.9 !important;
             color: var(--study-color-text-on-primary) !important;
@@ -718,6 +723,10 @@
         
         /* Responsive Design */
         @media (max-width: 768px) {
+            .study-header h1 {
+                font-size: 2.5rem !important;
+            }
+            
             .header h1 {
                 font-size: 2.2rem;
             }
@@ -752,51 +761,45 @@
                 padding: 20px;
             }
         }
+        
+        @media (max-width: 480px) {
+            .study-header h1 {
+                font-size: 2rem !important;
+            }
+            
+            .study-header p {
+                font-size: 0.9rem !important;
+            }
+            
+            .study-header {
+                padding: 1.5rem 1rem !important;
+            }
+        }
+        
+        @media (max-width: 360px) {
+            .study-header h1 {
+                font-size: 1.75rem !important;
+            }
+            
+            .study-header p {
+                font-size: 0.85rem !important;
+            }
+            
+            .study-main-container {
+                border-radius: 10px !important;
+            }
+        }
     </style>
     <link rel="stylesheet" href="../force-desktop-layout.css">
 </head>
 <body class="study-body">
     <div class="study-main-container">
         <div class="study-header">
-            <h1>📊 Study Effectiveness Analyzer</h1>
+            <h1><span style="display: inline-block; -webkit-text-fill-color: initial; background: none;">📊</span> <span style="background: linear-gradient(135deg, #ffffff 0%, #f0f4ff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Study Effectiveness Analyzer</span></h1>
             <p>Track and analyze your study sessions to maximize learning efficiency</p>
         </div>
         
         <div class="study-content">
-            <!-- SEO Content Section -->
-            <div class="study-form-section" style="margin-bottom: 25px;">
-                <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; border-radius: 10px; margin-bottom: 20px;">
-                    <h2 style="color: white; margin-top: 0;">📊 How to Use the Study Effectiveness Analyzer</h2>
-                    <p style="margin-bottom: 0; color: white;">Track and analyze your study sessions to identify patterns, optimize focus factors, and improve learning efficiency. Get data-driven insights to maximize your academic performance and study productivity.</p>
-                </div>
-                
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 20px;">
-                    <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #667eea;">
-                        <h3 style="color: #2c3e50; margin-top: 0;">📈 Analytics Benefits</h3>
-                        <ul style="margin-bottom: 0; color: #6c757d;">
-                            <li>Identify optimal study times and locations</li>
-                            <li>Track focus factors and their impact</li>
-                            <li>Monitor learning efficiency trends</li>
-                            <li>Optimize study session effectiveness</li>
-                        </ul>
-                    </div>
-                    <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #28a745;">
-                        <h3 style="color: #2c3e50; margin-top: 0;">🎯 Key Features</h3>
-                        <ul style="margin-bottom: 0; color: #6c757d;">
-                            <li>Study session tracking and scoring</li>
-                            <li>Focus factor correlation analysis</li>
-                            <li>Performance pattern visualization</li>
-                            <li>Data export for further analysis</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div style="background: #e8f5e8; padding: 15px; border-radius: 8px; margin-bottom: 15px;">
-                    <h3 style="color: #2c3e50; margin-top: 0;">🧠 Study Effectiveness Tips</h3>
-                    <p style="margin-bottom: 0; color: #6c757d;"><strong>Track Everything:</strong> Record energy levels, distractions, material difficulty, and interest to identify what affects your learning most. <strong>Find Your Peak:</strong> Use analytics to discover your most productive times and optimal study conditions.</p>
-                </div>
-            </div>
-            
             <!-- Add Session Form -->
             <div class="study-form-section">
                 <h2 class="study-form-title">Add Study Session</h2>
@@ -1099,6 +1102,49 @@
             <div class="modal-footer">
                 <button class="study-btn study-btn-secondary" onclick="closeEditModal()">Cancel</button>
                 <button class="study-btn study-btn-primary" onclick="saveEdit()">Save Changes</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- SEO Content Section -->
+    <div style="background: white; border-radius: 20px; padding: 2rem; margin-top: 3rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+        <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 2rem; border-radius: 15px; margin-bottom: 2rem; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);">
+            <h2 style="color: white; margin: 0 0 0.5rem 0; font-size: 1.8rem; font-weight: 600;">📊 How to Use the Study Effectiveness Analyzer</h2>
+            <p style="margin: 0; color: rgba(255,255,255,0.95); font-size: 1.05rem; line-height: 1.6;">Track and analyze your study sessions to identify patterns, optimize focus factors, and improve learning efficiency. Get data-driven insights to maximize your academic performance and study productivity.</p>
+        </div>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+            <div style="background: white; padding: 1.5rem; border-radius: 12px; border: 2px solid #667eea; box-shadow: 0 2px 8px rgba(102, 126, 234, 0.15); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                <h3 style="color: #667eea; margin: 0 0 1rem 0; font-size: 1.3rem; font-weight: 600; display: flex; align-items: center; gap: 0.5rem;">
+                    <span style="font-size: 1.5rem;">📈</span> Analytics Benefits
+                </h3>
+                <ul style="margin: 0; padding-left: 1.2rem; color: #555; line-height: 1.8;">
+                    <li>Identify optimal study times and locations</li>
+                    <li>Track focus factors and their impact</li>
+                    <li>Monitor learning efficiency trends</li>
+                    <li>Optimize study session effectiveness</li>
+                </ul>
+            </div>
+            
+            <div style="background: white; padding: 1.5rem; border-radius: 12px; border: 2px solid #10b981; box-shadow: 0 2px 8px rgba(16, 185, 129, 0.15); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                <h3 style="color: #10b981; margin: 0 0 1rem 0; font-size: 1.3rem; font-weight: 600; display: flex; align-items: center; gap: 0.5rem;">
+                    <span style="font-size: 1.5rem;">🎯</span> Key Features
+                </h3>
+                <ul style="margin: 0; padding-left: 1.2rem; color: #555; line-height: 1.8;">
+                    <li>Study session tracking and scoring</li>
+                    <li>Focus factor correlation analysis</li>
+                    <li>Performance pattern visualization</li>
+                    <li>Data export for further analysis</li>
+                </ul>
+            </div>
+            
+            <div style="background: white; padding: 1.5rem; border-radius: 12px; border: 2px solid #f59e0b; box-shadow: 0 2px 8px rgba(245, 158, 11, 0.15); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                <h3 style="color: #f59e0b; margin: 0 0 1rem 0; font-size: 1.3rem; font-weight: 600; display: flex; align-items: center; gap: 0.5rem;">
+                    <span style="font-size: 1.5rem;">🧠</span> Study Effectiveness Tips
+                </h3>
+                <p style="margin: 0; color: #555; line-height: 1.8;">
+                    <strong style="color: #333;">Track Everything:</strong> Record energy levels, distractions, material difficulty, and interest to identify what affects your learning most. <strong style="color: #333;">Find Your Peak:</strong> Use analytics to discover your most productive times and optimal study conditions.
+                </p>
             </div>
         </div>
     </div>

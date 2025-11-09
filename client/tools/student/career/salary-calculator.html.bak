@@ -1,0 +1,1500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1200, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes">
+    <title>Salary Calculator - FREE Student Career Planning Tool</title>
+    <meta name="description" content="Free salary calculator! Convert hourly, weekly, monthly, annual wages. Student-friendly career planning tool. Calculate income for internships, jobs. 100% free!">
+    <meta name="keywords" content="salary calculator, hourly wage calculator, annual salary converter, student salary, internship pay, career planning, wage calculator, income calculator, student jobs, part-time salary, full-time salary, entry level salary, job offer calculator, career tool, student career, employment calculator">
+    <meta name="author" content="Scribble Tools">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://scribbletools.in/client/tools/student/career/salary-calculator.html">
+    <meta property="og:title" content="Salary Calculator - FREE Student Career Planning Tool">
+    <meta property="og:description" content="Free salary calculator! Convert hourly, weekly, monthly, annual wages. Student-friendly career planning tool. Calculate income for internships, jobs. 100% free!">
+    <meta property="og:image" content="https://scribbletools.in/assets/og-image.svg">
+    <meta property="og:site_name" content="Scribble Tools">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://scribbletools.in/client/tools/student/career/salary-calculator.html">
+    <meta property="twitter:title" content="Salary Calculator - FREE Student Career Planning Tool">
+    <meta property="twitter:description" content="Free salary calculator! Convert hourly, weekly, monthly, annual wages. Student-friendly career planning tool. Calculate income for internships, jobs. 100% free!">
+    <meta property="twitter:image" content="https://scribbletools.in/assets/og-image.svg">
+    
+    <!-- Additional SEO Meta Tags -->
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Scribble Tools">
+    <meta name="generator" content="Scribble Tools">
+    <meta name="application-name" content="Salary Calculator">
+    <meta name="apple-mobile-web-app-title" content="Salary Calc">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#228B22">
+    <meta name="msapplication-navbutton-color" content="#228B22">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#228B22">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://scribbletools.in/client/tools/student/career/salary-calculator.html">
+    
+    <!-- Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Student Salary Calculator Tool",
+      "description": "Free salary calculator for students and job seekers. Convert between hourly, weekly, monthly, and annual salaries. Perfect for career planning and job offer evaluation.",
+      "url": "https://scribbletools.in/client/tools/student/career/salary-calculator.html",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "Any",
+      "permissions": "browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "featureList": [
+        "Salary conversion calculator",
+        "Hourly to annual conversion",
+        "Student-friendly interface",
+        "Career planning tool",
+        "Internship wage calculator",
+        "Job offer comparison",
+        "No registration required",
+        "Free salary tool"
+      ],
+      "provider": {
+        "@type": "Organization",
+        "name": "Scribble Tools",
+        "url": "https://scribbletools.in"
+      }
+    }
+    </script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Caveat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Salary Calculator Specific Styles - All prefixed with 'salary-calc-' to avoid conflicts */
+        /* Define variables on all possible containers to ensure they work when embedded */
+        .salary-calc-root,
+        .salary-calc-main-container,
+        .salary-calc-body,
+        body.salary-calc-body,
+        html {
+            --salary-font-primary: 'Poppins', sans-serif !important;
+            --salary-font-handwritten: 'Caveat', cursive !important;
+            
+            /* Enhanced Color Palette - Using !important for embedded contexts */
+            --salary-color-primary: #2E8B57 !important;
+            --salary-color-primary-dark: #1e6b42 !important;
+            --salary-color-primary-light: #3CB371 !important;
+            --salary-color-secondary: #4A90E2 !important;
+            --salary-color-secondary-dark: #357ABD !important;
+            --salary-color-accent: #FF6B6B !important;
+            --salary-color-accent-dark: #E55555 !important;
+            --salary-color-warning: #F39C12 !important;
+            --salary-color-success: #27AE60 !important;
+            
+            /* Background & Surface Colors */
+            --salary-color-background: linear-gradient(135deg, #F8F9FA 0%, #E9ECEF 100%) !important;
+            --salary-color-surface: #ffffff !important;
+            --salary-color-surface-alt: #F8F9FA !important;
+            --salary-color-surface-hover: #F1F3F5 !important;
+            
+            /* Text Colors */
+            --salary-color-text-primary: #2C3E50 !important;
+            --salary-color-text-secondary: #6C757D !important;
+            --salary-color-text-on-primary: #ffffff !important;
+            --salary-color-text-muted: #ADB5BD !important;
+            
+            /* Border & Shadow */
+            --salary-color-border: #DEE2E6 !important;
+            --salary-color-border-light: #F1F3F5 !important;
+            --salary-shadow-sm: 0 2px 4px rgba(0,0,0,0.08) !important;
+            --salary-shadow-md: 0 4px 12px rgba(0,0,0,0.15) !important;
+            --salary-shadow-lg: 0 8px 32px rgba(0,0,0,0.18) !important;
+            --salary-shadow-glow: 0 0 20px rgba(46, 139, 87, 0.3) !important;
+        }
+        
+        .salary-calc-body { 
+            font-family: var(--salary-font-primary); 
+            background: var(--salary-color-background); 
+            color: var(--salary-color-text-primary); 
+            margin: 0; 
+            padding: 20px; 
+            line-height: 1.7;
+            min-height: 100vh;
+            background-attachment: fixed;
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        .salary-calc-main-container { 
+            max-width: 920px !important; 
+            margin: 0 auto !important; 
+            background: #ffffff !important;
+            background: var(--salary-color-surface, #ffffff) !important; 
+            border-radius: 1.5rem !important; 
+            box-shadow: 0 8px 32px rgba(0,0,0,0.18) !important;
+            box-shadow: var(--salary-shadow-lg, 0 8px 32px rgba(0,0,0,0.18)) !important;
+            overflow: hidden !important;
+            border: 1px solid #DEE2E6 !important;
+            border: 1px solid var(--salary-color-border, #DEE2E6) !important;
+            position: relative !important;
+            animation: salary-calc-fadeInUp 0.6s ease-out !important;
+        }
+        
+        @keyframes salary-calc-fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .salary-calc-header-section {
+            background: linear-gradient(135deg, #2E8B57 0%, #4A90E2 100%) !important;
+            background: linear-gradient(135deg, var(--salary-color-primary, #2E8B57) 0%, var(--salary-color-secondary, #4A90E2) 100%) !important;
+            color: #ffffff !important;
+            color: var(--salary-color-text-on-primary, #ffffff) !important;
+            padding: 3rem 2rem !important;
+            text-align: center !important;
+            position: relative !important;
+            overflow: hidden !important;
+        }
+        
+        .salary-calc-header-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: salary-calc-headerGlow 3s ease-in-out infinite alternate;
+        }
+        
+        @keyframes salary-calc-headerGlow {
+            0% { opacity: 0.3; transform: scale(1); }
+            100% { opacity: 0.6; transform: scale(1.1); }
+        }
+        
+        .salary-calc-header-section h1 {
+            font-family: var(--salary-font-handwritten);
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .salary-calc-header-section p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            margin-bottom: 1.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .salary-calc-desktop-notice {
+            background: rgba(255, 255, 255, 0.25);
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            border-radius: 1rem;
+            padding: 1rem 1.5rem;
+            margin: 1.5rem auto 0;
+            font-size: 1rem;
+            font-weight: 500;
+            -webkit-backdrop-filter: blur(15px);
+            backdrop-filter: blur(15px);
+            max-width: 500px;
+            position: relative;
+            z-index: 2;
+            transition: all 0.3s ease;
+        }
+        
+        .salary-calc-desktop-notice:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+        
+        .salary-calc-content-section {
+            padding: 2rem;
+        }
+        
+        .salary-calc-calculator-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .salary-calc-input-section, .salary-calc-results-section {
+            background: var(--salary-color-surface-alt);
+            border: 2px solid var(--salary-color-border);
+            border-radius: 1.2rem;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .salary-calc-input-section::before, .salary-calc-results-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--salary-color-primary) 0%, var(--salary-color-secondary) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .salary-calc-input-section:hover, .salary-calc-results-section:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--salary-shadow-lg);
+            border-color: var(--salary-color-primary-light);
+        }
+        
+        .salary-calc-input-section:hover::before, .salary-calc-results-section:hover::before {
+            opacity: 1;
+        }
+        
+        .salary-calc-section-title {
+            font-family: var(--salary-font-handwritten);
+            background: linear-gradient(135deg, var(--salary-color-primary) 0%, var(--salary-color-secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 2.8rem;
+            font-weight: 700;
+            text-align: center;
+            margin: 3rem 0 2rem 0;
+            position: relative;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .salary-calc-section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--salary-color-primary) 0%, var(--salary-color-secondary) 100%);
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+        
+        .salary-calc-input-section h2, .salary-calc-results-section h2 {
+            color: var(--salary-color-primary);
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .salary-calc-form-group {
+            margin-bottom: 1.2rem;
+        }
+        
+        .salary-calc-form-label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            color: var(--salary-color-text-primary);
+            font-size: 1.05rem;
+            transition: color 0.3s ease;
+        }
+        
+        .salary-calc-form-label:hover {
+            color: var(--salary-color-primary);
+        }
+        
+        .salary-calc-form-label i {
+            color: var(--salary-color-secondary);
+            font-size: 1.1rem;
+        }
+        
+        .salary-calc-form-input, .salary-calc-form-select {
+            width: 100%;
+            padding: 1rem 1.2rem;
+            border: 2px solid var(--salary-color-border);
+            border-radius: 0.8rem;
+            font-size: 1rem;
+            font-family: var(--salary-font-primary);
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+            background: var(--salary-color-surface);
+            color: var(--salary-color-text-primary);
+        }
+        
+        .salary-calc-form-input:hover, .salary-calc-form-select:hover {
+            border-color: var(--salary-color-primary-light);
+            background: var(--salary-color-surface-hover);
+        }
+        
+        .salary-calc-form-input:focus, .salary-calc-form-select:focus {
+            outline: none !important;
+            border-color: #2E8B57 !important;
+            border-color: var(--salary-color-primary, #2E8B57) !important;
+            box-shadow: 0 0 0 4px rgba(46, 139, 87, 0.15) !important;
+            background: #ffffff !important;
+            background: var(--salary-color-surface, #ffffff) !important;
+            transform: translateY(-1px) !important;
+        }
+        
+        .salary-calc-input-group {
+            display: flex;
+            gap: 0.5rem;
+            align-items: stretch;
+        }
+        
+        .salary-calc-input-group .salary-calc-form-input {
+            flex: 1;
+        }
+        
+        .salary-calc-input-group .salary-calc-form-select {
+            flex: 0 0 120px;
+        }
+        
+        .salary-calc-btn-primary {
+            background: linear-gradient(135deg, #2E8B57 0%, #4A90E2 100%) !important;
+            background: linear-gradient(135deg, var(--salary-color-primary, #2E8B57) 0%, var(--salary-color-secondary, #4A90E2) 100%) !important;
+            color: #ffffff !important;
+            color: var(--salary-color-text-on-primary, #ffffff) !important;
+            border: none !important;
+            border-radius: 0.8rem !important;
+            padding: 1.2rem 2.5rem !important;
+            font-size: 1.1rem !important;
+            font-weight: 600 !important;
+            cursor: pointer !important;
+            transition: all 0.3s ease !important;
+            width: 100% !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            gap: 0.8rem !important;
+            text-transform: uppercase !important;
+            letter-spacing: 0.5px !important;
+            position: relative !important;
+            overflow: hidden !important;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
+            box-shadow: var(--salary-shadow-md, 0 4px 12px rgba(0,0,0,0.15)) !important;
+        }
+        
+        .salary-calc-btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .salary-calc-btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--salary-shadow-glow);
+            background: linear-gradient(135deg, var(--salary-color-primary-light) 0%, var(--salary-color-secondary-dark) 100%);
+        }
+        
+        .salary-calc-btn-primary:hover::before {
+            left: 100%;
+        }
+        
+        .salary-calc-btn-primary:active {
+            transform: translateY(-1px);
+        }
+        
+        .salary-calc-result-card {
+            background: linear-gradient(135deg, #F8FDFF 0%, #EEF7FF 100%);
+            border: 2px solid var(--salary-color-border);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .salary-calc-result-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--salary-color-accent) 0%, var(--salary-color-warning) 50%, var(--salary-color-success) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .salary-calc-result-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--salary-shadow-lg);
+            border-color: var(--salary-color-primary-light);
+            background: linear-gradient(135deg, #FFFFFF 0%, #F8FDFF 100%);
+        }
+        
+        .salary-calc-result-card:hover::before {
+            opacity: 1;
+        }
+        
+        .salary-calc-result-card h3 {
+            color: var(--salary-color-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        
+        .salary-calc-result-value {
+            font-size: 2rem !important;
+            font-weight: 800 !important;
+            color: #FF6B6B !important;
+            color: var(--salary-color-accent, #FF6B6B) !important;
+            margin: 0.8rem 0 !important;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1) !important;
+            background: linear-gradient(135deg, #FF6B6B 0%, #E55555 100%) !important;
+            background: linear-gradient(135deg, var(--salary-color-accent, #FF6B6B) 0%, var(--salary-color-accent-dark, #E55555) 100%) !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            background-clip: text !important;
+        }
+        
+        .salary-calc-result-description {
+            font-size: 0.9rem;
+            color: var(--salary-color-text-secondary);
+            font-weight: 500;
+        }
+        
+        .salary-calc-success-message {
+            background: linear-gradient(135deg, #E8F5E8 0%, #D4EDDA 100%);
+            border: 2px solid var(--salary-color-success);
+            border-radius: 1rem;
+            padding: 1.2rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            color: #155724;
+            font-weight: 600;
+            position: relative;
+            overflow: hidden;
+            animation: salary-calc-successPulse 0.5s ease-out;
+        }
+        
+        @keyframes salary-calc-successPulse {
+            0% {
+                transform: scale(0.95);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.02);
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        
+        .salary-calc-success-message::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+            animation: salary-calc-successShimmer 2s linear infinite;
+        }
+        
+        @keyframes salary-calc-successShimmer {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .salary-calc-placeholder-content {
+            text-align: center;
+            padding: 2rem;
+            color: var(--salary-color-text-secondary);
+        }
+        
+        .salary-calc-placeholder-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+        
+        .salary-calc-features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.2rem;
+            margin: 1.5rem 0;
+        }
+        
+        .salary-calc-feature-card {
+            background: linear-gradient(135deg, #FFFFFF 0%, #F8FDFF 100%);
+            border: 2px solid var(--salary-color-border-light);
+            border-radius: 1.2rem;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .salary-calc-feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(46, 139, 87, 0.02) 0%, rgba(74, 144, 226, 0.02) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .salary-calc-feature-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: var(--salary-shadow-lg);
+            border-color: var(--salary-color-primary);
+        }
+        
+        .salary-calc-feature-card:hover::before {
+            opacity: 1;
+        }
+        
+        .salary-calc-feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1.2rem;
+            background: linear-gradient(135deg, var(--salary-color-primary) 0%, var(--salary-color-secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .salary-calc-feature-card:hover .salary-calc-feature-icon {
+            transform: scale(1.2) rotate(5deg);
+            filter: drop-shadow(0 4px 8px rgba(46, 139, 87, 0.3));
+        }
+        
+        .salary-calc-feature-card h4 {
+            color: var(--salary-color-text-primary);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .salary-calc-feature-card p {
+            color: var(--salary-color-text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        .salary-calc-faq-section {
+            background: var(--salary-color-surface-alt);
+            border: 2px solid var(--salary-color-border);
+            border-radius: 0.9rem;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .salary-calc-faq-section h3 {
+            color: var(--salary-color-primary);
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .salary-calc-faq-item {
+            margin-bottom: 1.2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--salary-color-border);
+        }
+        
+        .salary-calc-faq-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .salary-calc-faq-item h4 {
+            color: var(--salary-color-text-primary);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .salary-calc-faq-item p {
+            color: var(--salary-color-text-secondary);
+            font-size: 0.95rem;
+        }
+        
+        .salary-calc-hidden {
+            display: none;
+        }
+
+        /* Comparison Tools */
+        .salary-calc-comparison-section, 
+        .salary-calc-living-calculator {
+            background: var(--salary-color-surface);
+            border: 2px solid var(--salary-color-border);
+            border-radius: 1rem;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: var(--salary-shadow-sm);
+        }
+
+        .salary-calc-comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .salary-calc-comparison-card {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border: 1px solid var(--salary-color-border-light);
+            border-radius: 0.8rem;
+            padding: 1.5rem;
+        }
+
+        .salary-calc-comparison-card h4 {
+            color: var(--salary-color-primary);
+            margin: 0 0 1rem 0;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .salary-calc-living-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .salary-calc-comparison-result,
+        .salary-calc-col-result {
+            margin-top: 1.5rem;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #f0fff4 0%, #dcfce7 100%);
+            border: 2px solid #22c55e;
+            border-radius: 0.8rem;
+            color: var(--salary-color-text-primary);
+        }
+
+        /* Use Cases */
+        .salary-calc-usecase-category {
+            margin: 2.5rem 0;
+        }
+
+        .salary-calc-usecase-category h3 {
+            color: var(--salary-color-primary);
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 0 0 1.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .salary-calc-usecases-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.2rem;
+        }
+
+        .salary-calc-usecase-card {
+            background: var(--salary-color-surface);
+            border: 1px solid var(--salary-color-border);
+            border-radius: 0.8rem;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .salary-calc-usecase-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--salary-color-primary), var(--salary-color-secondary));
+            transition: width 0.3s ease;
+        }
+
+        .salary-calc-usecase-card:hover {
+            transform: translateX(8px);
+            box-shadow: var(--salary-shadow-md);
+            border-color: var(--salary-color-primary);
+        }
+
+        .salary-calc-usecase-card:hover::before {
+            width: 8px;
+        }
+
+        .salary-calc-usecase-card h4 {
+            color: var(--salary-color-primary);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 0 0 0.8rem 0;
+        }
+
+        .salary-calc-usecase-card p {
+            color: var(--salary-color-text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin: 0.3rem 0;
+        }
+
+        .salary-calc-usecase-card p strong {
+            color: var(--salary-color-text-primary);
+            font-weight: 600;
+        }
+        
+        @media (max-width: 768px) {
+            .salary-calc-calculator-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .salary-calc-header-section h1 {
+                font-size: 2rem;
+            }
+            
+            .salary-calc-input-group {
+                flex-direction: column;
+            }
+            
+            .salary-calc-input-group .salary-calc-form-select {
+                flex: 1;
+            }
+            
+            .salary-calc-comparison-grid,
+            .salary-calc-usecases-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .salary-calc-body {
+                padding: 10px;
+            }
+            
+            .salary-calc-content-section {
+                padding: 1rem;
+            }
+            
+            .salary-calc-comparison-section,
+            .salary-calc-living-calculator {
+                padding: 1rem;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="../force-desktop-layout.css">
+</head>
+<body class="salary-calc-body salary-calc-root">
+    <div class="salary-calc-main-container">
+        <!-- Header Section -->
+        <div class="salary-calc-header-section" style="background: linear-gradient(135deg, #2E8B57 0%, #4A90E2 100%) !important; color: #ffffff !important; padding: 3rem 2rem !important;">
+            <h1 style="font-family: 'Caveat', cursive; font-size: 3rem; color: #ffffff !important; text-shadow: 2px 2px 4px rgba(0,0,0,0.2);"><i class="fas fa-calculator"></i> Salary Calculator</h1>
+            <p style="color: #ffffff !important; opacity: 0.95;">Convert between hourly, weekly, monthly, and annual salaries. Perfect for students planning careers, evaluating job offers, or calculating internship pay!</p>
+            <div class="salary-calc-desktop-notice" style="background: rgba(255, 255, 255, 0.25) !important; border: 2px solid rgba(255, 255, 255, 0.4) !important; border-radius: 1rem !important; color: #ffffff !important;">
+                <i class="fas fa-desktop" aria-hidden="true"></i>
+                <span>💡 <strong>Best for Students:</strong> Compare job offers, internship pay, and plan your career budget</span>
+            </div>
+        </div>
+
+        <div class="salary-calc-content-section">
+            <!-- Advanced Calculator Section -->
+            <div class="salary-calc-calculator-grid">
+                <div class="salary-calc-input-section">
+                    <h2><i class="fas fa-dollar-sign"></i> Salary Calculator</h2>
+                    
+                    <div class="salary-calc-form-group">
+                        <label class="salary-calc-form-label" for="salary-calc-amount">
+                            <i class="fas fa-money-bill-wave"></i> Salary Amount
+                        </label>
+                        <div class="salary-calc-input-group">
+                            <input type="number" id="salary-calc-amount" class="salary-calc-form-input" placeholder="Enter amount" min="0" step="0.01">
+                            <select id="salary-calc-period" class="salary-calc-form-select" title="Select salary period">
+                                <option value="hourly">per hour</option>
+                                <option value="daily">per day</option>
+                                <option value="weekly">per week</option>
+                                <option value="monthly">per month</option>
+                                <option value="annual" selected>per year</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="salary-calc-form-group">
+                        <label class="salary-calc-form-label" for="salary-calc-hours-per-week">
+                            <i class="fas fa-clock"></i> Hours per Week
+                        </label>
+                        <input type="number" id="salary-calc-hours-per-week" class="salary-calc-form-input" placeholder="40" min="1" max="168" step="0.5" value="40">
+                    </div>
+
+                    <div class="salary-calc-form-group">
+                        <label class="salary-calc-form-label" for="salary-calc-weeks-per-year">
+                            <i class="fas fa-calendar-alt"></i> Working Weeks per Year
+                        </label>
+                        <input type="number" id="salary-calc-weeks-per-year" class="salary-calc-form-input" placeholder="52" min="1" max="52" step="1" value="52">
+                    </div>
+
+                    <!-- Advanced Options -->
+                    <div class="salary-calc-advanced-toggle">
+                        <button type="button" id="salary-calc-advanced-btn" class="salary-calc-toggle-btn" onclick="salaryCalcToggleAdvanced()">
+                            <i class="fas fa-cog"></i> Advanced Options
+                        </button>
+                    </div>
+
+                    <div id="salary-calc-advanced-options" class="salary-calc-advanced-section salary-calc-hidden">
+                        <div class="salary-calc-form-group">
+                            <label class="salary-calc-form-label" for="salary-calc-overtime-hours">
+                                <i class="fas fa-plus-circle"></i> Overtime Hours/Week
+                            </label>
+                            <input type="number" id="salary-calc-overtime-hours" class="salary-calc-form-input" placeholder="0" min="0" max="40" step="0.5" value="0">
+                        </div>
+
+                        <div class="salary-calc-form-group">
+                            <label class="salary-calc-form-label" for="salary-calc-overtime-rate">
+                                <i class="fas fa-percentage"></i> Overtime Rate Multiplier
+                            </label>
+                            <input type="number" id="salary-calc-overtime-rate" class="salary-calc-form-input" placeholder="1.5" min="1" max="3" step="0.1" value="1.5">
+                        </div>
+
+                        <div class="salary-calc-form-group">
+                            <label class="salary-calc-form-label" for="salary-calc-bonus">
+                                <i class="fas fa-gift"></i> Annual Bonus ($)
+                            </label>
+                            <input type="number" id="salary-calc-bonus" class="salary-calc-form-input" placeholder="0" min="0" step="100" value="0">
+                        </div>
+
+                        <div class="salary-calc-form-group">
+                            <label class="salary-calc-form-label" for="salary-calc-commission">
+                                <i class="fas fa-chart-line"></i> Monthly Commission ($)
+                            </label>
+                            <input type="number" id="salary-calc-commission" class="salary-calc-form-input" placeholder="0" min="0" step="50" value="0">
+                        </div>
+
+                        <div class="salary-calc-form-group">
+                            <label class="salary-calc-form-label" for="salary-calc-benefits">
+                                <i class="fas fa-heart"></i> Benefits Value/Month ($)
+                            </label>
+                            <input type="number" id="salary-calc-benefits" class="salary-calc-form-input" placeholder="0" min="0" step="25" value="0">
+                        </div>
+                    </div>
+
+                    <button class="salary-calc-btn-primary" id="salary-calc-calculate-btn" onclick="salaryCalcCalculate()" style="background: linear-gradient(135deg, #2E8B57 0%, #4A90E2 100%) !important; color: #ffffff !important; border: none !important; border-radius: 0.8rem !important; padding: 1.2rem 2.5rem !important; font-size: 1.1rem !important; font-weight: 600 !important; cursor: pointer !important; width: 100% !important; text-transform: uppercase !important;">
+                        <i class="fas fa-calculator"></i> Calculate Salary
+                    </button>
+                </div>
+
+                <div class="salary-calc-results-section">
+                    <h2><i class="fas fa-chart-bar"></i> Comprehensive Results</h2>
+                    
+                    <div id="salary-calc-results-container" class="salary-calc-hidden">
+                        <div class="salary-calc-success-message">
+                            <i class="fas fa-check-circle"></i> Salary calculations complete!
+                        </div>
+                        
+                        <!-- Basic Breakdown -->
+                        <div class="salary-calc-results-group">
+                            <h4><i class="fas fa-money-check-alt"></i> Basic Salary Breakdown</h4>
+                            <div class="salary-calc-result-card">
+                                <h3><i class="fas fa-hourglass-half"></i> Hourly Rate</h3>
+                                <div class="salary-calc-result-value" id="salary-calc-hourly-result">$0.00</div>
+                                <div class="salary-calc-result-description">Base hourly rate</div>
+                            </div>
+
+                            <div class="salary-calc-result-card">
+                                <h3><i class="fas fa-calendar-day"></i> Daily Wage</h3>
+                                <div class="salary-calc-result-value" id="salary-calc-daily-result">$0.00</div>
+                                <div class="salary-calc-result-description">Per 8-hour day</div>
+                            </div>
+
+                            <div class="salary-calc-result-card">
+                                <h3><i class="fas fa-calendar-week"></i> Weekly Salary</h3>
+                                <div class="salary-calc-result-value" id="salary-calc-weekly-result">$0.00</div>
+                                <div class="salary-calc-result-description">Base weekly pay</div>
+                            </div>
+
+                            <div class="salary-calc-result-card">
+                                <h3><i class="fas fa-calendar"></i> Monthly Salary</h3>
+                                <div class="salary-calc-result-value" id="salary-calc-monthly-result">$0.00</div>
+                                <div class="salary-calc-result-description">Average monthly income</div>
+                            </div>
+
+                            <div class="salary-calc-result-card">
+                                <h3><i class="fas fa-calendar-alt"></i> Annual Salary</h3>
+                                <div class="salary-calc-result-value" id="salary-calc-annual-result">$0.00</div>
+                                <div class="salary-calc-result-description">Total yearly income</div>
+                            </div>
+                        </div>
+
+                        <!-- Enhanced Earnings (when applicable) -->
+                        <div id="salary-calc-enhanced-results" class="salary-calc-results-group salary-calc-hidden">
+                            <h4><i class="fas fa-chart-line"></i> Total Compensation</h4>
+                            
+                            <div class="salary-calc-result-card" id="salary-calc-overtime-card">
+                                <h3><i class="fas fa-plus-circle"></i> Overtime Income</h3>
+                                <div class="salary-calc-result-value" id="salary-calc-overtime-result">$0.00</div>
+                                <div class="salary-calc-result-description">Annual overtime pay</div>
+                            </div>
+
+                            <div class="salary-calc-result-card" id="salary-calc-commission-card">
+                                <h3><i class="fas fa-star"></i> Commission Income</h3>
+                                <div class="salary-calc-result-value" id="salary-calc-commission-result">$0.00</div>
+                                <div class="salary-calc-result-description">Annual commission</div>
+                            </div>
+
+                            <div class="salary-calc-result-card" id="salary-calc-bonus-card">
+                                <h3><i class="fas fa-gift"></i> Bonus & Benefits</h3>
+                                <div class="salary-calc-result-value" id="salary-calc-bonus-result">$0.00</div>
+                                <div class="salary-calc-result-description">Annual extras</div>
+                            </div>
+
+                            <div class="salary-calc-result-card salary-calc-total-card">
+                                <h3><i class="fas fa-trophy"></i> Total Compensation</h3>
+                                <div class="salary-calc-result-value" id="salary-calc-total-result">$0.00</div>
+                                <div class="salary-calc-result-description">Complete annual package</div>
+                            </div>
+                        </div>
+
+                        <!-- Financial Planning Insights -->
+                        <div class="salary-calc-results-group">
+                            <h4><i class="fas fa-piggy-bank"></i> Financial Planning</h4>
+                            
+                            <div class="salary-calc-result-card">
+                                <h3><i class="fas fa-home"></i> Housing Budget</h3>
+                                <div class="salary-calc-result-value" id="salary-calc-housing-result">$0.00</div>
+                                <div class="salary-calc-result-description">30% rule - monthly max</div>
+                            </div>
+
+                            <div class="salary-calc-result-card">
+                                <h3><i class="fas fa-graduation-cap"></i> Student Loan Payment</h3>
+                                <div class="salary-calc-result-value" id="salary-calc-student-loan-result">$0.00</div>
+                                <div class="salary-calc-result-description">10% rule - monthly max</div>
+                            </div>
+
+                            <div class="salary-calc-result-card">
+                                <h3><i class="fas fa-wallet"></i> Emergency Fund Goal</h3>
+                                <div class="salary-calc-result-value" id="salary-calc-emergency-result">$0.00</div>
+                                <div class="salary-calc-result-description">6 months of expenses</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="salary-calc-placeholder-message">
+                        <div class="salary-calc-placeholder-content">
+                            <i class="fas fa-info-circle salary-calc-placeholder-icon"></i>
+                            <p>Enter your salary information and click "Calculate Salary" to see comprehensive breakdowns and financial planning insights.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Comparison Tools Section -->
+            <h2 class="salary-calc-section-title">Advanced Tools</h2>
+            
+            <!-- Job Comparison Tool -->
+            <div class="salary-calc-comparison-section">
+                <h3><i class="fas fa-balance-scale"></i> Job Offer Comparison Tool</h3>
+                <div class="salary-calc-comparison-grid">
+                    <div class="salary-calc-comparison-card">
+                        <h4>Job A</h4>
+                        <input type="text" id="salary-calc-job-a-title" class="salary-calc-form-input" placeholder="Job Title">
+                        <input type="number" id="salary-calc-job-a-salary" class="salary-calc-form-input" placeholder="Annual Salary">
+                        <input type="number" id="salary-calc-job-a-bonus" class="salary-calc-form-input" placeholder="Annual Bonus">
+                        <input type="number" id="salary-calc-job-a-benefits" class="salary-calc-form-input" placeholder="Benefits Value">
+                    </div>
+                    <div class="salary-calc-comparison-card">
+                        <h4>Job B</h4>
+                        <input type="text" id="salary-calc-job-b-title" class="salary-calc-form-input" placeholder="Job Title">
+                        <input type="number" id="salary-calc-job-b-salary" class="salary-calc-form-input" placeholder="Annual Salary">
+                        <input type="number" id="salary-calc-job-b-bonus" class="salary-calc-form-input" placeholder="Annual Bonus">
+                        <input type="number" id="salary-calc-job-b-benefits" class="salary-calc-form-input" placeholder="Benefits Value">
+                    </div>
+                </div>
+                <button class="salary-calc-btn-secondary" onclick="salaryCalcCompareJobs()">
+                    <i class="fas fa-chart-bar"></i> Compare Jobs
+                </button>
+                <div id="salary-calc-comparison-result" class="salary-calc-comparison-result salary-calc-hidden"></div>
+            </div>
+
+            <!-- Cost of Living Calculator -->
+            <div class="salary-calc-living-calculator">
+                <h3><i class="fas fa-map-marker-alt"></i> Cost of Living Adjustment</h3>
+                <div class="salary-calc-living-grid">
+                    <div class="salary-calc-form-group">
+                        <label class="salary-calc-form-label">Current City</label>
+                        <select id="salary-calc-current-city" class="salary-calc-form-select" title="Select your current city">
+                            <option value="100">National Average (100)</option>
+                            <option value="180">San Francisco, CA (180)</option>
+                            <option value="170">New York, NY (170)</option>
+                            <option value="140">Seattle, WA (140)</option>
+                            <option value="130">Boston, MA (130)</option>
+                            <option value="120">Washington, DC (120)</option>
+                            <option value="115">Los Angeles, CA (115)</option>
+                            <option value="110">Chicago, IL (110)</option>
+                            <option value="95">Dallas, TX (95)</option>
+                            <option value="90">Atlanta, GA (90)</option>
+                            <option value="85">Phoenix, AZ (85)</option>
+                        </select>
+                    </div>
+                    <div class="salary-calc-form-group">
+                        <label class="salary-calc-form-label">Target City</label>
+                        <select id="salary-calc-target-city" class="salary-calc-form-select" title="Select your target city">
+                            <option value="100">National Average (100)</option>
+                            <option value="180">San Francisco, CA (180)</option>
+                            <option value="170">New York, NY (170)</option>
+                            <option value="140">Seattle, WA (140)</option>
+                            <option value="130">Boston, MA (130)</option>
+                            <option value="120">Washington, DC (120)</option>
+                            <option value="115">Los Angeles, CA (115)</option>
+                            <option value="110">Chicago, IL (110)</option>
+                            <option value="95">Dallas, TX (95)</option>
+                            <option value="90">Atlanta, GA (90)</option>
+                            <option value="85">Phoenix, AZ (85)</option>
+                        </select>
+                    </div>
+                    <div class="salary-calc-form-group">
+                        <label class="salary-calc-form-label">Current Salary</label>
+                        <input type="number" id="salary-calc-col-salary" class="salary-calc-form-input" placeholder="Current annual salary">
+                    </div>
+                </div>
+                <button class="salary-calc-btn-secondary" onclick="salaryCalcCalculateCOL()">
+                    <i class="fas fa-calculator"></i> Calculate Equivalent Salary
+                </button>
+                <div id="salary-calc-col-result" class="salary-calc-col-result salary-calc-hidden"></div>
+            </div>
+
+            <!-- 25+ Use Cases Section -->
+            <h2 class="salary-calc-section-title">25+ Practical Use Cases</h2>
+            
+            <!-- Student & Early Career -->
+            <div class="salary-calc-usecase-category">
+                <h3><i class="fas fa-graduation-cap"></i> Student & Early Career (8 scenarios)</h3>
+                <div class="salary-calc-usecases-grid">
+                    <div class="salary-calc-usecase-card">
+                        <h4>1. Internship Evaluation</h4>
+                        <p><strong>Scenario:</strong> $18/hour internship vs $3,200/month position</p>
+                        <p><strong>Use:</strong> Compare offers to maximize summer earnings and career growth potential.</p>
+                    </div>
+                    <div class="salary-calc-usecase-card">
+                        <h4>2. Part-Time Job Planning</h4>
+                        <p><strong>Scenario:</strong> $15/hour, 20 hours/week while studying</p>
+                        <p><strong>Use:</strong> Budget for textbooks, food, and living expenses during college.</p>
+                    </div>
+                    <div class="salary-calc-usecase-card">
+                        <h4>3. Entry-Level Job Comparison</h4>
+                        <p><strong>Scenario:</strong> $45K salary vs $22/hour with benefits</p>
+                        <p><strong>Use:</strong> Choose the best first job after graduation.</p>
+                    </div>
+                    <div class="salary-calc-usecase-card">
+                        <h4>4. Graduate School Funding</h4>
+                        <p><strong>Scenario:</strong> Teaching assistant at $1,800/month</p>
+                        <p><strong>Use:</strong> Plan finances for graduate school and living expenses.</p>
+                    </div>
+                    <div class="salary-calc-usecase-card">
+                        <h4>5. Study Abroad Budget</h4>
+                        <p><strong>Scenario:</strong> Summer job savings for overseas semester</p>
+                        <p><strong>Use:</strong> Calculate how much to save for international education.</p>
+                    </div>
+                    <div class="salary-calc-usecase-card">
+                        <h4>6. Campus Job Evaluation</h4>
+                        <p><strong>Scenario:</strong> Library work vs dining hall position</p>
+                        <p><strong>Use:</strong> Compare on-campus employment opportunities.</p>
+                    </div>
+                    <div class="salary-calc-usecase-card">
+                        <h4>7. Co-op Program Planning</h4>
+                        <p><strong>Scenario:</strong> 6-month co-op at $4,500/month</p>
+                        <p><strong>Use:</strong> Budget for housing, food, and savings during work term.</p>
+                    </div>
+                    <div class="salary-calc-usecase-card">
+                        <h4>8. Student Loan Repayment</h4>
+                        <p><strong>Scenario:</strong> First job at $50K with $30K student debt</p>
+                        <p><strong>Use:</strong> Plan loan payments and living budget.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Professional Development -->
+            <div class="salary-calc-usecase-category">
+                <h3><i class="fas fa-briefcase"></i> Professional Development (6 scenarios)</h3>
+                <div class="salary-calc-usecases-grid">
+                    <div class="salary-calc-usecase-card">
+                        <h4>9. Career Change Planning</h4>
+                        <p><strong>Scenario:</strong> Teacher ($45K) to Software Developer ($75K)</p>
+                        <p><strong>Use:</strong> Plan financial transition and training investment.</p>
+                    </div>
+                    <div class="salary-calc-usecase-card">
+                        <h4>10. Promotion Negotiation</h4>
+                        <p><strong>Scenario:</strong> Current $65K, seeking 15% raise</p>
+                        <p><strong>Use:</strong> Calculate target salary and justify promotion.</p>
+                    </div>
+                    <div class="salary-calc-usecase-card">
+                        <h4>11. Skills Investment ROI</h4>
+                        <p><strong>Scenario:</strong> $5K certification for $10K salary increase</p>
+                        <p><strong>Use:</strong> Evaluate professional development investments.</p>
+                    </div>
+                    <div class="salary-calc-usecase-card">
+                        <h4>12. Contract vs Full-Time</h4>
+                        <p><strong>Scenario:</strong> $85/hour contract vs $120K salary + benefits</p>
+                        <p><strong>Use:</strong> Compare independent contractor with employee positions.</p>
+                    </div>
+                    <div class="salary-calc-usecase-card">
+                        <h4>13. Remote Work Salary</h4>
+                        <p><strong>Scenario:</strong> 10% pay cut for remote flexibility</p>
+                        <p><strong>Use:</strong> Factor in commute savings and quality of life.</p>
+                    </div>
+                    <div class="salary-calc-usecase-card">
+                        <h4>14. Industry Switch Analysis</h4>
+                        <p><strong>Scenario:</strong> Finance to Tech transition</p>
+                        <p><strong>Use:</strong> Compare compensation structures across industries.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Life Planning -->
+            <div class="salary-calc-usecase-category">
+                <h3><i class="fas fa-home"></i> Life & Financial Planning (7 scenarios)</h3>
+                <div class="salary-calc-usecases-grid">
+                    <div class="salary-calc-usecase-card">
+                        <h4>15. Home Buying Budget</h4>
+                        <p><strong>Scenario:</strong> $85K salary, mortgage planning</p>
+                        <p><strong>Use:</strong> Calculate affordable housing payments (30% rule).</p>
+                    </div>
+                    <div class="salary-calc-usecase-card">
+                        <h4>16. Family Planning</h4>
+                        <p><strong>Scenario:</strong> Dual income $120K combined</p>
+                        <p><strong>Use:</strong> Budget for childcare, education, and family expenses.</p>
+                    </div>
+                    <div class="salary-calc-usecase-card">
+                        <h4>17. Retirement Savings</h4>
+                        <p><strong>Scenario:</strong> 401k contribution planning</p>
+                        <p><strong>Use:</strong> Calculate 10-15% retirement savings from gross income.</p>
+                    </div>
+                    <div class="salary-calc-usecase-card">
+                        <h4>18. Emergency Fund Goal</h4>
+                        <p><strong>Scenario:</strong> Building 6-month expense buffer</p>
+                        <p><strong>Use:</strong> Determine emergency fund target amount.</p>
+                    </div>
+                    <div class="salary-calc-usecase-card">
+                        <h4>19. Debt Payoff Strategy</h4>
+                        <p><strong>Scenario:</strong> Credit card and loan payments</p>
+                        <p><strong>Use:</strong> Plan debt elimination timeline and budget.</p>
+                    </div>
+                    <div class="salary-calc-usecase-card">
+                        <h4>20. Lifestyle Upgrade</h4>
+                        <p><strong>Scenario:</strong> Salary increase lifestyle inflation</p>
+                        <p><strong>Use:</strong> Plan sustainable spending increases.</p>
+                    </div>
+                    <div class="salary-calc-usecase-card">
+                        <h4>21. Side Hustle Income</h4>
+                        <p><strong>Scenario:</strong> Freelance work + full-time job</p>
+                        <p><strong>Use:</strong> Calculate total income and tax planning.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Special Situations -->
+            <div class="salary-calc-usecase-category">
+                <h3><i class="fas fa-cog"></i> Special Situations (4+ scenarios)</h3>
+                <div class="salary-calc-usecases-grid">
+                    <div class="salary-calc-usecase-card">
+                        <h4>22. Overseas Job Offer</h4>
+                        <p><strong>Scenario:</strong> International position with housing allowance</p>
+                        <p><strong>Use:</strong> Compare total compensation packages globally.</p>
+                    </div>
+                    <div class="salary-calc-usecase-card">
+                        <h4>23. Startup Equity vs Salary</h4>
+                        <p><strong>Scenario:</strong> Lower salary + stock options</p>
+                        <p><strong>Use:</strong> Evaluate risk-reward of equity compensation.</p>
+                    </div>
+                    <div class="salary-calc-usecase-card">
+                        <h4>24. Seasonal Work Planning</h4>
+                        <p><strong>Scenario:</strong> Summer camp counselor or ski instructor</p>
+                        <p><strong>Use:</strong> Budget for seasonal employment gaps.</p>
+                    </div>
+                    <div class="salary-calc-usecase-card">
+                        <h4>25. Minimum Wage Analysis</h4>
+                        <p><strong>Scenario:</strong> State minimum wage differences</p>
+                        <p><strong>Use:</strong> Compare earning potential across locations.</p>
+                    </div>
+                    <div class="salary-calc-usecase-card">
+                        <h4>26. Commission-Based Role</h4>
+                        <p><strong>Scenario:</strong> Sales position with variable income</p>
+                        <p><strong>Use:</strong> Plan budget with income fluctuations.</p>
+                    </div>
+                    <div class="salary-calc-usecase-card">
+                        <h4>27. Union vs Non-Union</h4>
+                        <p><strong>Scenario:</strong> Comparing unionized positions</p>
+                        <p><strong>Use:</strong> Factor in union dues and benefits.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Section -->
+            <div class="salary-calc-faq-section">
+                <h3><i class="fas fa-question-circle"></i> Frequently Asked Questions</h3>
+                <div class="salary-calc-faq-item">
+                    <h4>How accurate are the salary calculations?</h4>
+                    <p>Our calculations are based on standard work schedules and provide accurate conversions between different pay periods. You can adjust hours and weeks to match your specific situation for precise results.</p>
+                </div>
+                <div class="salary-calc-faq-item">
+                    <h4>Can I use this for part-time jobs and internships?</h4>
+                    <p>Absolutely! Just adjust the "Hours per Week" field to match your part-time schedule. The calculator works for any number of hours from 1-168 per week, perfect for student schedules.</p>
+                </div>
+                <div class="salary-calc-faq-item">
+                    <h4>What about overtime pay and benefits?</h4>
+                    <p>This calculator shows base salary conversions. For overtime calculations, factor in your specific overtime rates (typically 1.5x regular pay). Remember that benefits and taxes will affect your take-home pay.</p>
+                </div>
+                <div class="salary-calc-faq-item">
+                    <h4>How can students use this for career planning?</h4>
+                    <p>Use this tool to set realistic salary expectations, compare different career paths, understand the value of education investments, and plan your financial future as you progress in your career.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function salaryCalcCalculate() {
+            console.log('Salary Calculate function called');
+            
+            const amount = parseFloat(document.getElementById('salary-calc-amount').value);
+            const period = document.getElementById('salary-calc-period').value;
+            const hoursPerWeek = parseFloat(document.getElementById('salary-calc-hours-per-week').value);
+            const weeksPerYear = parseFloat(document.getElementById('salary-calc-weeks-per-year').value);
+            
+            console.log('Salary Inputs:', { amount, period, hoursPerWeek, weeksPerYear });
+            
+            if (!amount || amount <= 0) {
+                alert('Please enter a valid salary amount.');
+                return;
+            }
+            
+            if (!hoursPerWeek || hoursPerWeek <= 0 || hoursPerWeek > 168) {
+                alert('Please enter valid hours per week (1-168).');
+                return;
+            }
+            
+            if (!weeksPerYear || weeksPerYear <= 0 || weeksPerYear > 52) {
+                alert('Please enter valid weeks per year (1-52).');
+                return;
+            }
+            
+            // Convert to hourly rate
+            let hourlyRate;
+            switch (period) {
+                case 'hourly':
+                    hourlyRate = amount;
+                    break;
+                case 'daily':
+                    hourlyRate = amount / (hoursPerWeek / 5);
+                    break;
+                case 'weekly':
+                    hourlyRate = amount / hoursPerWeek;
+                    break;
+                case 'monthly':
+                    hourlyRate = amount / (hoursPerWeek * (weeksPerYear / 12));
+                    break;
+                case 'annual':
+                    hourlyRate = amount / (hoursPerWeek * weeksPerYear);
+                    break;
+                default:
+                    hourlyRate = amount;
+            }
+            
+            // Calculate all periods
+            const daily = hourlyRate * (hoursPerWeek / 5);
+            const weekly = hourlyRate * hoursPerWeek;
+            const monthly = weekly * (weeksPerYear / 12);
+            const annual = hourlyRate * hoursPerWeek * weeksPerYear;
+            
+            console.log('Salary Results:', { hourlyRate, daily, weekly, monthly, annual });
+            
+            // Format and display results
+            document.getElementById('salary-calc-hourly-result').textContent = salaryCalcFormatCurrency(hourlyRate);
+            document.getElementById('salary-calc-daily-result').textContent = salaryCalcFormatCurrency(daily);
+            document.getElementById('salary-calc-weekly-result').textContent = salaryCalcFormatCurrency(weekly);
+            document.getElementById('salary-calc-monthly-result').textContent = salaryCalcFormatCurrency(monthly);
+            document.getElementById('salary-calc-annual-result').textContent = salaryCalcFormatCurrency(annual);
+            
+            // Show results
+            document.getElementById('salary-calc-placeholder-message').classList.add('salary-calc-hidden');
+            document.getElementById('salary-calc-results-container').classList.remove('salary-calc-hidden');
+            
+            console.log('Salary results displayed successfully');
+        }
+        
+        function salaryCalcFormatCurrency(amount) {
+            return new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD',
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            }).format(amount);
+        }
+        
+        function salaryCalcToggleAdvanced() {
+            const advancedSection = document.getElementById('salary-calc-advanced-options');
+            const toggleBtn = document.getElementById('salary-calc-advanced-btn');
+            
+            if (advancedSection.classList.contains('salary-calc-hidden')) {
+                advancedSection.classList.remove('salary-calc-hidden');
+                toggleBtn.innerHTML = '<i class="fas fa-minus"></i> Hide Advanced Options';
+            } else {
+                advancedSection.classList.add('salary-calc-hidden');
+                toggleBtn.innerHTML = '<i class="fas fa-cog"></i> Advanced Options';
+            }
+        }
+
+        function salaryCalcCompareJobs() {
+            const jobATitle = document.getElementById('salary-calc-job-a-title').value || 'Job A';
+            const jobASalary = parseFloat(document.getElementById('salary-calc-job-a-salary').value) || 0;
+            const jobABonus = parseFloat(document.getElementById('salary-calc-job-a-bonus').value) || 0;
+            const jobABenefits = parseFloat(document.getElementById('salary-calc-job-a-benefits').value) || 0;
+            
+            const jobBTitle = document.getElementById('salary-calc-job-b-title').value || 'Job B';
+            const jobBSalary = parseFloat(document.getElementById('salary-calc-job-b-salary').value) || 0;
+            const jobBBonus = parseFloat(document.getElementById('salary-calc-job-b-bonus').value) || 0;
+            const jobBBenefits = parseFloat(document.getElementById('salary-calc-job-b-benefits').value) || 0;
+            
+            if (!jobASalary && !jobBSalary) {
+                alert('Please enter salary information for at least one job.');
+                return;
+            }
+            
+            const jobATotal = jobASalary + jobABonus + jobABenefits;
+            const jobBTotal = jobBSalary + jobBBonus + jobBBenefits;
+            const difference = Math.abs(jobATotal - jobBTotal);
+            const percentage = jobATotal > 0 && jobBTotal > 0 ? ((difference / Math.min(jobATotal, jobBTotal)) * 100).toFixed(1) : 0;
+            
+            let comparison = '';
+            if (jobATotal > jobBTotal) {
+                comparison = `${jobATitle} offers ${salaryCalcFormatCurrency(difference)} (${percentage}%) more than ${jobBTitle}`;
+            } else if (jobBTotal > jobATotal) {
+                comparison = `${jobBTitle} offers ${salaryCalcFormatCurrency(difference)} (${percentage}%) more than ${jobATitle}`;
+            } else {
+                comparison = 'Both jobs offer equal total compensation';
+            }
+            
+            const resultDiv = document.getElementById('salary-calc-comparison-result');
+            resultDiv.innerHTML = `
+                <h4><i class="fas fa-chart-bar"></i> Job Comparison Results</h4>
+                <div style="margin: 1rem 0;">
+                    <strong>${jobATitle}:</strong><br>
+                    Base Salary: ${salaryCalcFormatCurrency(jobASalary)}<br>
+                    Bonus: ${salaryCalcFormatCurrency(jobABonus)}<br>
+                    Benefits: ${salaryCalcFormatCurrency(jobABenefits)}<br>
+                    <strong>Total: ${salaryCalcFormatCurrency(jobATotal)}</strong>
+                </div>
+                <div style="margin: 1rem 0;">
+                    <strong>${jobBTitle}:</strong><br>
+                    Base Salary: ${salaryCalcFormatCurrency(jobBSalary)}<br>
+                    Bonus: ${salaryCalcFormatCurrency(jobBBonus)}<br>
+                    Benefits: ${salaryCalcFormatCurrency(jobBBenefits)}<br>
+                    <strong>Total: ${salaryCalcFormatCurrency(jobBTotal)}</strong>
+                </div>
+                <div style="background: #f0f9ff; padding: 1rem; border-radius: 0.5rem; border-left: 4px solid #0ea5e9;">
+                    <strong>Comparison:</strong> ${comparison}
+                </div>
+            `;
+            resultDiv.classList.remove('salary-calc-hidden');
+        }
+
+        function salaryCalcCalculateCOL() {
+            const currentCity = parseFloat(document.getElementById('salary-calc-current-city').value);
+            const targetCity = parseFloat(document.getElementById('salary-calc-target-city').value);
+            const currentSalary = parseFloat(document.getElementById('salary-calc-col-salary').value);
+            
+            if (!currentSalary || currentSalary <= 0) {
+                alert('Please enter a valid current salary.');
+                return;
+            }
+            
+            const adjustmentFactor = targetCity / currentCity;
+            const equivalentSalary = currentSalary * adjustmentFactor;
+            const difference = equivalentSalary - currentSalary;
+            const percentChange = ((difference / currentSalary) * 100).toFixed(1);
+            
+            const currentCityText = document.querySelector(`#salary-calc-current-city option[value="${currentCity}"]`).textContent;
+            const targetCityText = document.querySelector(`#salary-calc-target-city option[value="${targetCity}"]`).textContent;
+            
+            let recommendation = '';
+            if (difference > 0) {
+                recommendation = `You would need a ${percentChange}% salary increase to maintain the same standard of living.`;
+            } else if (difference < 0) {
+                recommendation = `You could take a ${Math.abs(percentChange)}% salary decrease and maintain the same standard of living.`;
+            } else {
+                recommendation = 'No salary adjustment needed - similar cost of living.';
+            }
+            
+            const resultDiv = document.getElementById('salary-calc-col-result');
+            resultDiv.innerHTML = `
+                <h4><i class="fas fa-map-marker-alt"></i> Cost of Living Adjustment</h4>
+                <div style="margin: 1rem 0;">
+                    <strong>Current Location:</strong> ${currentCityText}<br>
+                    <strong>Current Salary:</strong> ${salaryCalcFormatCurrency(currentSalary)}
+                </div>
+                <div style="margin: 1rem 0;">
+                    <strong>Target Location:</strong> ${targetCityText}<br>
+                    <strong>Equivalent Salary:</strong> ${salaryCalcFormatCurrency(equivalentSalary)}<br>
+                    <strong>Difference:</strong> ${salaryCalcFormatCurrency(Math.abs(difference))} ${difference >= 0 ? 'increase' : 'decrease'}
+                </div>
+                <div style="background: #f0f9ff; padding: 1rem; border-radius: 0.5rem; border-left: 4px solid #0ea5e9;">
+                    <strong>Recommendation:</strong> ${recommendation}
+                </div>
+            `;
+            resultDiv.classList.remove('salary-calc-hidden');
+        }
+
+        // Add enter key support
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Salary calc DOM loaded, adding event listeners');
+            
+            const inputs = ['salary-calc-amount', 'salary-calc-hours-per-week', 'salary-calc-weeks-per-year'];
+            inputs.forEach(function(inputId) {
+                const input = document.getElementById(inputId);
+                if (input) {
+                    input.addEventListener('keypress', function(e) {
+                        if (e.key === 'Enter') {
+                            salaryCalcCalculate();
+                        }
+                    });
+                }
+            });
+            
+            console.log('Salary calc event listeners added successfully');
+        });
+    </script>
+</body>
+</html>

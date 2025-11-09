@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1200, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes">
+    <title>Cover Letter Templates - FREE Professional Cover Letter Samples</title>
+    <meta name="description" content="Free cover letter templates! Professional samples, job application letters, career templates. Cover letter examples for students. 100% free!">
+    <meta name="keywords" content="cover letter templates, cover letter samples, cover letter examples, job application letter, professional cover letter, cover letter format, cover letter generator, student cover letter, career letters, job search letters, employment letters, cover letter guide, application templates, job letters, career templates, free cover letter, cover letter maker, job application templates, interview letters, hiring letters">
+    <meta name="author" content="Scribble Tools">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://scribbletools.in/client/tools/student/career/cover-letter-samples.html">
+    <meta property="og:title" content="Cover Letter Templates - FREE Professional Cover Letter Samples">
+    <meta property="og:description" content="Free cover letter templates! Professional samples, job application letters, career templates. Cover letter examples for students. 100% free!">
+    <meta property="og:image" content="https://scribbletools.in/assets/og-image.svg">
+    <meta property="og:site_name" content="Scribble Tools">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://scribbletools.in/client/tools/student/career/cover-letter-samples.html">
+    <meta property="twitter:title" content="Cover Letter Templates - FREE Professional Cover Letter Samples">
+    <meta property="twitter:description" content="Free cover letter templates! Professional samples, job application letters, career templates. Cover letter examples for students. 100% free!">
+    <meta property="twitter:image" content="https://scribbletools.in/assets/og-image.svg">
+    
+    <!-- Additional SEO Meta Tags -->
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Scribble Tools">
+    <meta name="generator" content="Scribble Tools">
+    <meta name="application-name" content="Cover Letter Templates">
+    <meta name="apple-mobile-web-app-title" content="Cover Letters">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#D9534F">
+    <meta name="msapplication-navbutton-color" content="#D9534F">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#D9534F">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://scribbletools.in/client/tools/student/career/cover-letter-samples.html">
+    
+    <!-- Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Cover Letter Templates & Samples Tool",
+      "description": "Free collection of professional cover letter templates and samples for job applications. Perfect for students and job seekers.",
+      "url": "https://scribbletools.in/client/tools/student/career/cover-letter-samples.html",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "Any",
+      "permissions": "browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "featureList": [
+        "Professional cover letter templates",
+        "Job application examples",
+        "Industry-specific samples",
+        "Career letter formats",
+        "Student cover letters",
+        "Employment templates",
+        "No registration required",
+        "Free to use"
+      ],
+      "provider": {
+        "@type": "Organization",
+        "name": "Scribble Tools",
+        "url": "https://scribbletools.in"
+      }
+    }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Caveat:wght@400;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { 
+            font-family: 'Poppins', sans-serif; 
+            background: #F8F4E8; 
+            color: #333; 
+            margin: 0; 
+            padding: 20px; 
+            line-height: 1.6;
+        }
+        .main-container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            background: #fff; 
+            border-radius: 1.2em; 
+            box-shadow: 0 4px 24px #eae3d5; 
+            overflow: hidden;
+        }
+        .header-section {
+            background: linear-gradient(135deg, #D9534F 0%, #c9302c 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        .header-section h1 {
+            font-family: 'Caveat', cursive;
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+        .header-section p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 1rem;
+        }
+        .breadcrumb {
+            background: #EAE3D5;
+            padding: 1rem 2rem;
+            font-size: 0.9rem;
+        }
+        .breadcrumb a {
+            color: #D9534F;
+            text-decoration: none;
+        }
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+        .content-section {
+            padding: 2rem;
+        }
+        .section-title {
+            font-family: 'Caveat', cursive;
+            font-size: 2.5rem;
+            color: #D9534F;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+        .samples-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        .sample-card {
+            border: 2px solid #EAE3D5;
+            border-radius: 1rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            background: white;
+        }
+        .sample-card:hover {
+            border-color: #D9534F;
+            box-shadow: 0 8px 25px rgba(234, 227, 213, 0.4);
+            transform: translateY(-4px);
+        }
+        .sample-header {
+            background: linear-gradient(135deg, #D9534F 0%, #c9302c 100%);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        .sample-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        .sample-description {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        .sample-preview {
+            padding: 1.5rem;
+            max-height: 400px;
+            overflow-y: auto;
+            font-size: 0.85rem;
+            line-height: 1.6;
+            background: #fafafa;
+            font-family: 'Times New Roman', serif;
+        }
+        .sample-content {
+            background: white;
+            padding: 1rem;
+            margin: 0.5rem 0;
+            border-left: 4px solid #D9534F;
+            border-radius: 0 0.5rem 0.5rem 0;
+        }
+        .sample-actions {
+            padding: 1rem;
+            text-align: center;
+            border-top: 1px solid #EAE3D5;
+        }
+        .btn {
+            background: #D9534F;
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin: 0 0.5rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .btn:hover {
+            background: #c9302c;
+            transform: translateY(-2px);
+        }
+        .btn-secondary {
+            background: transparent;
+            color: #D9534F;
+            border: 2px solid #D9534F;
+        }
+        .btn-secondary:hover {
+            background: #D9534F;
+            color: white;
+        }
+        .cta-section {
+            background: #F8F4E8;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 3rem;
+            border-radius: 1rem;
+        }
+        .highlight {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            padding: 0.2rem 0.4rem;
+            border-radius: 0.3rem;
+            font-weight: 500;
+        }
+        .mobile-notice {
+            background: linear-gradient(135deg, #D9534F 0%, #c9302c 100%);
+            color: white;
+            padding: 0.75rem 1rem;
+            text-align: center;
+            font-size: 0.9rem;
+            display: none;
+            border-bottom: 2px solid #c9302c;
+        }
+        .mobile-notice i {
+            margin-right: 0.5rem;
+        }
+        .mobile-notice strong {
+            font-weight: 600;
+        }
+        
+        .intro-section {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .intro-description {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .cta-title {
+            color: #D9534F;
+            margin-bottom: 1rem;
+        }
+        .cta-description {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+        .btn-large {
+            font-size: 1.1rem;
+            padding: 1rem 2rem;
+        }
+        /* Show mobile notice on smaller screens */
+        @media (max-width: 1024px) {
+            .mobile-notice {
+                display: block;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="../force-desktop-layout.css">
+</head>
+<body>
+    <!-- Mobile notice -->
+    <div class="mobile-notice">
+        <i class="fas fa-desktop"></i>
+        <strong>Best Experience:</strong> For optimal viewing and formatting, please use a desktop or laptop computer
+    </div>
+
+    <div class="main-container">
+        <!-- Header -->
+        <div class="header-section">
+            <h1>Cover Letter Samples</h1>
+            <p>Professional examples and templates to inspire your perfect cover letter</p>
+        </div>
+
+        <!-- Breadcrumb -->
+        <div class="breadcrumb">
+            <a href="../../../index.html" onclick="navigateHome(event)">Home</a> > 
+            <a href="cover-letter-generator.html" onclick="navigateToGenerator(event)">Cover Letter Generator</a> > 
+            Samples & Templates
+        </div>
+
+        <div class="content-section">
+            <!-- Intro Section -->
+            <div class="intro-section">
+                <h2 class="section-title">Choose Your Perfect Template</h2>
+                <p class="intro-description">
+                    Browse our collection of professional cover letter samples. Each template is <span class="highlight">ATS-friendly</span> 
+                    and designed for different industries and experience levels. Click "Use This Template" to start customizing!
+                </p>
+            </div>
+
+            <!-- Samples Grid -->
+            <div class="samples-grid">
+                <!-- Software Engineer Cover Letter -->
+                <div class="sample-card">
+                    <div class="sample-header">
+                        <div class="sample-title">Software Engineer</div>
+                        <div class="sample-description">Perfect for tech roles and development positions</div>
+                    </div>
+                    <div class="sample-preview">
+                        <div class="sample-content">
+                            <strong>John Smith</strong><br>
+                            john.smith@email.com | (555) 123-4567<br>
+                            123 Main Street, City, State 12345<br><br>
+                            
+                            <em>September 14, 2025</em><br><br>
+                            
+                            Sarah Johnson<br>
+                            Hiring Manager<br>
+                            Tech Innovations Inc.<br>
+                            456 Tech Boulevard, San Francisco, CA 94105<br><br>
+                            
+                            Dear Ms. Johnson,<br><br>
+                            
+                            I am excited to apply for the <span class="highlight">Software Engineer</span> position at Tech Innovations Inc. I discovered this opportunity through LinkedIn and was immediately drawn to your company's commitment to cutting-edge technology and innovation in artificial intelligence.<br><br>
+                            
+                            With 3+ years of experience in full-stack development and a strong foundation in Python, JavaScript, and React, I am confident I can contribute to your development team. In my current role at StartupXYZ, I successfully <span class="highlight">reduced application load time by 40%</span> and led the development of a customer portal that increased user engagement by 60%.<br><br>
+                            
+                            I am particularly excited about Tech Innovations' recent work in machine learning applications. My experience with TensorFlow and data analysis, combined with my passion for AI ethics, aligns perfectly with your company's mission to create responsible technology solutions.<br><br>
+                            
+                            Thank you for considering my application. I would welcome the opportunity to discuss how my technical skills and innovative mindset can contribute to Tech Innovations' continued success. I look forward to hearing from you.<br><br>
+                            
+                            Sincerely,<br>
+                            John Smith
+                        </div>
+                    </div>
+                    <div class="sample-actions">
+                        <button onclick="useTemplate('software-engineer')" class="btn">Use This Template</button>
+                        <button onclick="previewTemplate('software-engineer')" class="btn btn-secondary">Preview Full</button>
+                    </div>
+                </div>
+
+                <!-- Marketing Manager Cover Letter -->
+                <div class="sample-card">
+                    <div class="sample-header">
+                        <div class="sample-title">Marketing Manager</div>
+                        <div class="sample-description">Ideal for marketing and business development roles</div>
+                    </div>
+                    <div class="sample-preview">
+                        <div class="sample-content">
+                            <strong>Emily Rodriguez</strong><br>
+                            emily.rodriguez@email.com | (555) 987-6543<br>
+                            789 Marketing Lane, New York, NY 10001<br><br>
+                            
+                            <em>September 14, 2025</em><br><br>
+                            
+                            Michael Chen<br>
+                            Head of Marketing<br>
+                            Global Brands Corporation<br>
+                            123 Business Center, New York, NY 10002<br><br>
+                            
+                            Dear Mr. Chen,<br><br>
+                            
+                            I am writing to express my strong interest in the <span class="highlight">Marketing Manager</span> position at Global Brands Corporation. Having followed your company's innovative campaigns on social media, I am impressed by your data-driven approach and creative storytelling.<br><br>
+                            
+                            With 5+ years of marketing experience and a proven track record of driving growth, I have successfully <span class="highlight">increased brand awareness by 150%</span> and managed campaigns with budgets exceeding $500K. My expertise in digital marketing, analytics, and team leadership has consistently delivered results above industry benchmarks.<br><br>
+                            
+                            I am particularly drawn to Global Brands' commitment to sustainable marketing practices. My recent certification in Green Marketing and experience launching eco-friendly campaigns align perfectly with your company's values and mission to create positive environmental impact.<br><br>
+                            
+                            I would love to discuss how my strategic thinking and creative problem-solving can help Global Brands continue to lead in innovative marketing. Thank you for your consideration, and I look forward to hearing from you soon.<br><br>
+                            
+                            Best regards,<br>
+                            Emily Rodriguez
+                        </div>
+                    </div>
+                    <div class="sample-actions">
+                        <button onclick="useTemplate('marketing-manager')" class="btn">Use This Template</button>
+                        <button onclick="previewTemplate('marketing-manager')" class="btn btn-secondary">Preview Full</button>
+                    </div>
+                </div>
+
+                <!-- Entry Level / Recent Graduate -->
+                <div class="sample-card">
+                    <div class="sample-header">
+                        <div class="sample-title">Recent Graduate</div>
+                        <div class="sample-description">Perfect for entry-level positions and new graduates</div>
+                    </div>
+                    <div class="sample-preview">
+                        <div class="sample-content">
+                            <strong>Alex Johnson</strong><br>
+                            alex.johnson@email.com | (555) 456-7890<br>
+                            456 University Drive, College Town, State 54321<br><br>
+                            
+                            <em>September 14, 2025</em><br><br>
+                            
+                            Lisa Thompson<br>
+                            Recruitment Manager<br>
+                            Innovation Solutions LLC<br>
+                            789 Corporate Plaza, Business City, State 98765<br><br>
+                            
+                            Dear Ms. Thompson,<br><br>
+                            
+                            As a recent graduate with a Bachelor's degree in Business Administration, I am excited to apply for the <span class="highlight">Junior Business Analyst</span> position at Innovation Solutions LLC. I learned about this opportunity through your company's career fair presentation at State University.<br><br>
+                            
+                            During my academic career, I maintained a <span class="highlight">3.8 GPA</span> while actively participating in case competitions and internships. My summer internship at DataCorp allowed me to apply analytical skills to real-world business problems, where I helped identify cost savings opportunities worth $50K annually.<br><br>
+                            
+                            I am particularly attracted to Innovation Solutions' reputation for mentoring young professionals and fostering innovation. My coursework in data analysis, combined with my enthusiasm for learning and strong work ethic, positions me well to contribute to your analytical team while growing my professional skills.<br><br>
+                            
+                            Thank you for considering my application. I am eager to bring my fresh perspective and analytical mindset to Innovation Solutions and would welcome the opportunity to discuss how I can contribute to your team's success.<br><br>
+                            
+                            Sincerely,<br>
+                            Alex Johnson
+                        </div>
+                    </div>
+                    <div class="sample-actions">
+                        <button onclick="useTemplate('recent-graduate')" class="btn">Use This Template</button>
+                        <button onclick="previewTemplate('recent-graduate')" class="btn btn-secondary">Preview Full</button>
+                    </div>
+                </div>
+
+                <!-- Healthcare Professional -->
+                <div class="sample-card">
+                    <div class="sample-header">
+                        <div class="sample-title">Healthcare Professional</div>
+                        <div class="sample-description">Tailored for medical and healthcare positions</div>
+                    </div>
+                    <div class="sample-preview">
+                        <div class="sample-content">
+                            <strong>Dr. Maria Gonzalez</strong><br>
+                            m.gonzalez@email.com | (555) 321-9876<br>
+                            321 Medical Center Drive, Health City, State 13579<br><br>
+                            
+                            <em>September 14, 2025</em><br><br>
+                            
+                            Dr. Robert Williams<br>
+                            Chief Medical Officer<br>
+                            Metropolitan General Hospital<br>
+                            654 Hospital Way, Medical District, State 24680<br><br>
+                            
+                            Dear Dr. Williams,<br><br>
+                            
+                            I am writing to apply for the <span class="highlight">Emergency Medicine Physician</span> position at Metropolitan General Hospital. With your hospital's outstanding reputation for patient care and medical excellence, I am excited about the opportunity to contribute to your emergency department team.<br><br>
+                            
+                            As a board-certified emergency physician with 7+ years of experience, I have successfully treated over <span class="highlight">10,000 patients</span> in high-pressure emergency settings. My expertise in trauma care, combined with my commitment to patient-centered medicine, has consistently resulted in positive outcomes and patient satisfaction scores above the 95th percentile.<br><br>
+                            
+                            I am particularly impressed by Metropolitan General's investment in cutting-edge medical technology and your commitment to continuing medical education. My recent certification in advanced cardiac life support and my research in emergency medicine protocols align well with your hospital's innovation-focused approach.<br><br>
+                            
+                            I would welcome the opportunity to discuss how my clinical expertise and dedication to excellent patient care can benefit your emergency department. Thank you for your consideration.<br><br>
+                            
+                            Respectfully,<br>
+                            Dr. Maria Gonzalez, MD
+                        </div>
+                    </div>
+                    <div class="sample-actions">
+                        <button onclick="useTemplate('healthcare')" class="btn">Use This Template</button>
+                        <button onclick="previewTemplate('healthcare')" class="btn btn-secondary">Preview Full</button>
+                    </div>
+                </div>
+
+                <!-- Sales Professional -->
+                <div class="sample-card">
+                    <div class="sample-header">
+                        <div class="sample-title">Sales Professional</div>
+                        <div class="sample-description">Great for sales, account management, and client relations</div>
+                    </div>
+                    <div class="sample-preview">
+                        <div class="sample-content">
+                            <strong>David Kim</strong><br>
+                            david.kim@email.com | (555) 678-1234<br>
+                            987 Sales Street, Commerce City, State 97531<br><br>
+                            
+                            <em>September 14, 2025</em><br><br>
+                            
+                            Jennifer Davis<br>
+                            Sales Director<br>
+                            Enterprise Solutions Group<br>
+                            147 Corporate Avenue, Business Hub, State 86420<br><br>
+                            
+                            Dear Ms. Davis,<br><br>
+                            
+                            I am excited to apply for the <span class="highlight">Senior Sales Representative</span> position at Enterprise Solutions Group. Your company's reputation for innovative B2B solutions and exceptional client relationships aligns perfectly with my passion for building lasting business partnerships.<br><br>
+                            
+                            With 6+ years in enterprise sales, I have consistently exceeded quotas, achieving <span class="highlight">125% of target</span> for three consecutive years. My approach combines consultative selling with deep product knowledge, resulting in a client retention rate of 95% and average deal sizes 40% above team average.<br><br>
+                            
+                            I am particularly drawn to Enterprise Solutions' expansion into emerging markets. My experience managing international accounts and my fluency in Spanish and Mandarin would be valuable assets as your company continues to grow its global presence.<br><br>
+                            
+                            I would welcome the opportunity to discuss how my proven sales track record and relationship-building skills can contribute to Enterprise Solutions' continued growth. Thank you for your consideration.<br><br>
+                            
+                            Best regards,<br>
+                            David Kim
+                        </div>
+                    </div>
+                    <div class="sample-actions">
+                        <button onclick="useTemplate('sales')" class="btn">Use This Template</button>
+                        <button onclick="previewTemplate('sales')" class="btn btn-secondary">Preview Full</button>
+                    </div>
+                </div>
+
+                <!-- Career Changer -->
+                <div class="sample-card">
+                    <div class="sample-header">
+                        <div class="sample-title">Career Changer</div>
+                        <div class="sample-description">For professionals transitioning to new industries</div>
+                    </div>
+                    <div class="sample-preview">
+                        <div class="sample-content">
+                            <strong>Rachel Brown</strong><br>
+                            rachel.brown@email.com | (555) 234-5678<br>
+                            258 Transition Lane, Change City, State 15973<br><br>
+                            
+                            <em>September 14, 2025</em><br><br>
+                            
+                            Mark Anderson<br>
+                            Human Resources Manager<br>
+                            Tech Forward Company<br>
+                            369 Innovation Drive, Future City, State 75319<br><br>
+                            
+                            Dear Mr. Anderson,<br><br>
+                            
+                            I am writing to express my strong interest in the <span class="highlight">Project Manager</span> position at Tech Forward Company. While my background is in education, I am passionate about transitioning into technology project management and believe my transferable skills make me an ideal candidate.<br><br>
+                            
+                            In my 8+ years as a high school principal, I successfully managed budgets exceeding <span class="highlight">$2M annually</span>, led teams of 50+ staff members, and implemented technology initiatives that improved student outcomes by 30%. These experiences have given me strong leadership, communication, and problem-solving skills directly applicable to project management.<br><br>
+                            
+                            To prepare for this career transition, I recently earned my PMP certification and completed Google's Project Management Certificate program. I am excited to apply my organizational skills and fresh perspective to help Tech Forward Company deliver successful technology projects.<br><br>
+                            
+                            I would appreciate the opportunity to discuss how my unique background and newly acquired project management skills can benefit your team. Thank you for considering my application.<br><br>
+                            
+                            Sincerely,<br>
+                            Rachel Brown
+                        </div>
+                    </div>
+                    <div class="sample-actions">
+                        <button onclick="useTemplate('career-changer')" class="btn">Use This Template</button>
+                        <button onclick="previewTemplate('career-changer')" class="btn btn-secondary">Preview Full</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div class="cta-section">
+                <h2 class="cta-title">Ready to Create Your Cover Letter?</h2>
+                <p class="cta-description">
+                    Use our professional cover letter generator to customize any of these templates with your information.
+                </p>
+                <button onclick="goToGenerator()" class="btn btn-large">
+                    <i class="fas fa-edit"></i> Start Building Your Cover Letter
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Handle breadcrumb navigation with path detection
+        function navigateHome(event) {
+            event.preventDefault();
+            console.log('Navigating to home page');
+            console.log('Current path:', window.location.pathname);
+            console.log('Current href:', window.location.href);
+            
+            const currentPath = window.location.pathname;
+            let homePath;
+            
+            if (currentPath.includes('/client/tools/student/career/')) {
+                // Direct access - use relative path
+                homePath = '../../../index.html';
+            } else if (window.location.href.includes('localhost:8080')) {
+                // Local server access
+                homePath = '/index.html';
+            } else {
+                // GitHub Pages or other - try relative path
+                homePath = '../../../index.html';
+            }
+            
+            console.log('Attempting to navigate to:', homePath);
+            
+            try {
+                window.location.href = homePath;
+            } catch (error) {
+                console.error('Navigation failed:', error);
+                // Fallback - try opening in new tab
+                window.open(homePath, '_self');
+            }
+        }
+        
+        function navigateToGenerator(event) {
+            event.preventDefault();
+            console.log('Navigating to cover letter generator');
+            console.log('Current path:', window.location.pathname);
+            
+            // Use relative path since both files are in same directory
+            const generatorPath = 'cover-letter-generator.html';
+            
+            try {
+                window.location.href = generatorPath;
+            } catch (error) {
+                console.error('Navigation failed:', error);
+                window.open(generatorPath, '_self');
+            }
+        }
+
+        // Use a specific template in the generator
+        function useTemplate(templateType) {
+            console.log('Using template:', templateType);
+            // Navigate to the generator with template parameter
+            window.location.href = `cover-letter-generator-app.html?template=${templateType}`;
+        }
+
+        // Preview template in a modal/popup
+        function previewTemplate(templateType) {
+            console.log('Previewing template:', templateType);
+            // For now, just use the template - could be enhanced with a modal later
+            useTemplate(templateType);
+        }
+
+        // Go to the main generator
+        function goToGenerator() {
+            console.log('Going to cover letter generator');
+            window.location.href = 'cover-letter-generator-app.html';
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Cover Letter Samples page loaded');
+            
+            // Add smooth scrolling to any anchor links
+            const links = document.querySelectorAll('a[href^="#"]');
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1200, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes">
+    
+    <!-- Primary SEO Meta Tags -->
+    <title>Free Job Application Tracker - Track Applications, Interviews & Career Progress | Student Tools</title>
+    <meta name="title" content="Free Job Application Tracker - Track Applications, Interviews & Career Progress">
+    <meta name="description" content="Free online job application tracker to organize your job search. Track applications, interviews, offers, and rejections. Perfect for students and job seekers. Export data, get insights, and land your dream job.">
+    <meta name="keywords" content="job tracker, application tracker, job search tool, interview tracker, career tracker, job hunting, employment tracker, student jobs, internship tracker, job application organizer, job search management, career planning tool">
+    <meta name="author" content="Scribble Tools">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://scribbletools.in/client/tools/student/career/job-tracker.html">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://scribbletools.in/client/tools/student/career/job-tracker.html">
+    <meta property="og:title" content="Free Job Application Tracker - Track Your Career Progress">
+    <meta property="og:description" content="Organize your job search with our free job application tracker. Monitor applications, interviews, and offers. Perfect for students and professionals seeking their next opportunity.">
+    <meta property="og:image" content="https://scribbletools.in/assets/job-tracker-preview.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Job Application Tracker Interface">
+    <meta property="og:site_name" content="Scribble Tools">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://scribbletools.in/client/tools/student/career/job-tracker.html">
+    <meta property="twitter:title" content="Free Job Application Tracker - Track Your Career Progress">
+    <meta property="twitter:description" content="Organize your job search with our free job application tracker. Monitor applications, interviews, and offers. Perfect for students and professionals.">
+    <meta property="twitter:image" content="https://scribbletools.in/assets/job-tracker-preview.png">
+    <meta property="twitter:image:alt" content="Job Application Tracker Tool">
+    <meta name="twitter:creator" content="@AllInOneTools">
+    <meta name="twitter:site" content="@AllInOneTools">
+    
+    <!-- Additional Meta Tags -->
+    <meta name="theme-color" content="#667eea">
+    <meta name="msapplication-TileColor" content="#667eea">
+    <meta name="application-name" content="Job Application Tracker">
+    <meta name="apple-mobile-web-app-title" content="Job Tracker">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="format-detection" content="telephone=no">
+    
+    <!-- Structured Data - JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Job Application Tracker",
+        "description": "Free online job application tracker to organize your job search. Track applications, interviews, offers, and rejections with detailed analytics and insights.",
+        "url": "https://scribbletools.in/client/tools/student/career/job-tracker.html",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Any",
+        "permissions": "browser",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "featureList": [
+            "Track job applications and status",
+            "Monitor interview schedules",
+            "Record salary expectations",
+            "Store company contact information",
+            "Application status filtering",
+            "Career progress analytics",
+            "Local data storage",
+            "Export application data",
+            "Mobile responsive design"
+        ],
+        "screenshot": "https://scribbletools.in/assets/job-tracker-screenshot.png",
+        "softwareVersion": "2.0",
+        "datePublished": "2024-01-15",
+        "dateModified": "2024-10-11",
+        "author": {
+            "@type": "Organization",
+            "name": "Scribble Tools",
+            "url": "https://scribbletools.in"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Scribble Tools",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://scribbletools.in/assets/logo.png"
+            }
+        },
+        "inLanguage": "en-US",
+        "isAccessibleForFree": true,
+        "usageInfo": "https://scribbletools.in/terms",
+        "browserRequirements": "Requires JavaScript. Supports all modern browsers including Chrome, Firefox, Safari, and Edge."
+    }
+    </script>
+    
+    <!-- Additional Structured Data for Educational Tool -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LearningResource",
+        "name": "Job Application Tracker Tool",
+        "description": "Educational tool to help students and job seekers organize and track their employment applications, interviews, and career progress.",
+        "learningResourceType": "Tool",
+        "educationalUse": "Career Planning",
+        "audience": {
+            "@type": "EducationalAudience",
+            "educationalRole": "student"
+        },
+        "typicalAgeRange": "18-65",
+        "interactivityType": "active",
+        "educationalLevel": "Higher Education",
+        "teaches": [
+            "Job Search Organization",
+            "Career Planning",
+            "Application Tracking",
+            "Interview Management",
+            "Professional Development"
+        ]
+    }
+    </script>
+    
+    <!-- Favicon and Icons -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+    <link rel="manifest" href="/assets/site.webmanifest">
+    
+    <!-- Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Caveat:wght@400;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* CSS Scoping - All styles prefixed with .job-tracker-root to prevent conflicts */
+        .job-tracker-root * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .job-tracker-root {
+            font-family: 'Poppins', sans-serif;
+            background: transparent; /* No background like sleep calculator */
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .job-tracker-root .main-container {
+            max-width: 1400px;
+            width: 95%;
+            margin: 2em auto;
+            background: #fff;
+            border-radius: 1.2em;
+            box-shadow: 0 4px 24px rgba(74, 144, 226, 0.1);
+            padding: 2em;
+            min-height: calc(100vh - 8em);
+        }
+
+        .job-tracker-root .header {
+            text-align: center;
+            margin-bottom: 2em;
+        }
+
+        .job-tracker-root .header h1 {
+            font-family: 'Caveat', cursive;
+            color: #4A90E2;
+            text-align: center;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .job-tracker-root .header p {
+            font-size: 1.1em;
+            color: #666;
+            margin-bottom: 1.5em;
+        }
+
+        .job-tracker-root .content {
+            padding: 0;
+        }
+
+        /* Dashboard Layout */
+        .job-tracker-root .dashboard-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2em;
+            margin-bottom: 2em;
+        }
+
+        .job-tracker-root .left-column,
+        .job-tracker-root .right-column {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .job-tracker-root .add-job-section {
+            background: #F5F9FF;
+            padding: 1.5em;
+            border-radius: 0.9em;
+            margin-bottom: 2em;
+            border: 2px solid #D6E4FF;
+        }
+
+        .job-tracker-root .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .job-tracker-root .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .job-tracker-root .form-group label {
+            font-weight: 600;
+            margin-bottom: 0.5em;
+            display: block;
+            color: #333;
+            font-size: 0.95em;
+        }
+
+        .job-tracker-root .form-group input,
+        .job-tracker-root .form-group select,
+        .job-tracker-root .form-group textarea {
+            width: 100%;
+            padding: 1em;
+            border: 2px solid #D6E4FF;
+            border-radius: 0.7em;
+            font-size: 1.2em;
+            margin-bottom: 1em;
+            background: #F5F9FF;
+            text-align: center;
+            font-family: 'Fira Code', monospace;
+            transition: all 0.3s ease;
+        }
+
+        .job-tracker-root .form-group input:focus,
+        .job-tracker-root .form-group select:focus,
+        .job-tracker-root .form-group textarea:focus {
+            outline: none;
+            border-color: #4A90E2;
+            box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+        }
+
+        .job-tracker-root .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+            text-align: left;
+        }
+
+        .job-tracker-root .add-btn {
+            background: linear-gradient(135deg, #4A90E2, #3A7BC8);
+            color: white;
+            border: none;
+            padding: 1.2em 2.5em;
+            border-radius: 2em;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(74, 144, 226, 0.3);
+            transition: all 0.3s ease;
+            text-align: center;
+            display: block;
+            width: fit-content;
+            margin: 2em auto;
+        }
+
+        .job-tracker-root .add-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(74, 144, 226, 0.4);
+        }
+
+        .job-tracker-root .jobs-list-section {
+            background: #F5F9FF;
+            border-radius: 0.9em;
+            padding: 1.5em;
+            margin-bottom: 2em;
+            border: 2px solid #D6E4FF;
+            height: fit-content;
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+
+        .job-tracker-root .section-title {
+            font-family: 'Caveat', cursive;
+            color: #4A90E2;
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .job-tracker-root .filter-section {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .job-tracker-root .filter-btn {
+            padding: 8px 16px;
+            border: 2px solid #4A90E2;
+            background: transparent;
+            color: #4A90E2;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .job-tracker-root .filter-btn.active,
+        .job-tracker-root .filter-btn:hover {
+            background: #4A90E2;
+            color: white;
+        }
+
+        .job-tracker-root .job-card {
+            background: white;
+            border-radius: 0.9em;
+            padding: 1.2em;
+            margin-bottom: 1em;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            border-left: 4px solid;
+            transition: all 0.3s ease;
+        }
+
+        .job-tracker-root .job-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .job-tracker-root .job-card.applied { border-left-color: #3498db; }
+        .job-tracker-root .job-card.interview { border-left-color: #f39c12; }
+        .job-tracker-root .job-card.offer { border-left-color: #27ae60; }
+        .job-tracker-root .job-card.rejected { border-left-color: #e74c3c; }
+
+        .job-tracker-root .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .job-tracker-root .job-title {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: #333;
+            margin: 0;
+        }
+
+        .job-tracker-root .job-company {
+            font-size: 1.1em;
+            color: #4A90E2;
+            font-weight: 600;
+            margin: 5px 0;
+        }
+
+        .job-tracker-root .job-status {
+            padding: 6px 12px;
+            border-radius: 12px;
+            font-size: 0.85em;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .job-tracker-root .status-applied { background: #e3f2fd; color: #1976d2; }
+        .job-tracker-root .status-interview { background: #fff3e0; color: #f57c00; }
+        .job-tracker-root .status-offer { background: #e8f5e8; color: #388e3c; }
+        .job-tracker-root .status-rejected { background: #ffebee; color: #d32f2f; }
+
+        .job-tracker-root .job-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .job-tracker-root .job-detail {
+            background: rgba(74, 144, 226, 0.05);
+            padding: 10px 15px;
+            border-radius: 0.7em;
+            border: 1px solid rgba(74, 144, 226, 0.1);
+        }
+
+        .job-tracker-root .job-detail strong {
+            color: #4A90E2;
+            font-weight: 600;
+        }
+
+        .job-tracker-root .job-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        .job-tracker-root .action-btn {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 0.9em;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .job-tracker-root .edit-btn {
+            background: #f39c12;
+            color: white;
+        }
+
+        .job-tracker-root .delete-btn {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .job-tracker-root .action-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .job-tracker-root .stats-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin-bottom: 3em;
+        }
+
+        .job-tracker-root .stat-card {
+            background: white;
+            padding: 1.2em;
+            border-radius: 0.9em;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            border-top: 4px solid;
+        }
+
+        .job-tracker-root .stat-card.total { border-top-color: #4A90E2; }
+        .job-tracker-root .stat-card.applied { border-top-color: #3498db; }
+        .job-tracker-root .stat-card.interviews { border-top-color: #f39c12; }
+        .job-tracker-root .stat-card.offers { border-top-color: #27ae60; }
+        .job-tracker-root .stat-card.rejected { border-top-color: #e74c3c; }
+
+        .job-tracker-root .stat-number {
+            font-size: 2.2em;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 5px;
+            font-family: 'Fira Code', monospace;
+        }
+
+        .job-tracker-root .stat-label {
+            color: #666;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.8em;
+        }
+
+        .job-tracker-root .no-jobs {
+            text-align: center;
+            padding: 2em;
+            color: #666;
+            font-size: 1.1em;
+            background: white;
+            border-radius: 0.9em;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        /* About Section Styling */
+        .job-tracker-root .about-section {
+            background: #F5F9FF;
+            border-radius: 0.9em;
+            padding: 1.5em;
+            margin-bottom: 2em;
+            border: 2px solid #D6E4FF;
+        }
+
+        .job-tracker-root .about-section h2 {
+            font-family: 'Caveat', cursive;
+            color: #4A90E2;
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .job-tracker-root .about-section h3 {
+            color: #4A90E2;
+            font-size: 1.3em;
+            margin: 1.5em 0 0.8em 0;
+        }
+
+        .job-tracker-root .about-section p {
+            line-height: 1.6;
+            margin-bottom: 1em;
+            color: #333;
+        }
+
+        .job-tracker-root .about-section ul {
+            margin-left: 1.5em;
+            margin-bottom: 1.5em;
+        }
+
+        .job-tracker-root .about-section li {
+            margin-bottom: 0.5em;
+            line-height: 1.5;
+            color: #333;
+        }
+
+        .job-tracker-root .about-section .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1em;
+            margin-bottom: 1.5em;
+        }
+
+        .job-tracker-root .about-section .feature-item {
+            background: white;
+            padding: 1em;
+            border-radius: 0.7em;
+            border: 1px solid #D6E4FF;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .job-tracker-root .about-section .feature-item i {
+            color: #4A90E2;
+            margin-right: 0.5em;
+        }
+
+        .job-tracker-root .about-section .audience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1em;
+            margin-bottom: 1.5em;
+        }
+
+        .job-tracker-root .about-section .audience-item {
+            background: white;
+            padding: 1em;
+            border-radius: 0.7em;
+            border: 1px solid #D6E4FF;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .job-tracker-root .about-section .audience-item i {
+            font-size: 1.5em;
+            color: #4A90E2;
+            margin-bottom: 0.5em;
+            display: block;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .job-tracker-root {
+                padding: 10px;
+            }
+
+            .job-tracker-root .main-container {
+                padding: 1em 0.2em;
+                margin: 1em auto;
+            }
+
+            .job-tracker-root .header h1 {
+                font-size: 2.2rem;
+            }
+
+            .job-tracker-root .section-title {
+                font-size: 2rem;
+            }
+
+            .job-tracker-root .about-section h2 {
+                font-size: 2rem;
+            }
+
+            .job-tracker-root .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .job-tracker-root .job-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .job-tracker-root .job-details {
+                grid-template-columns: 1fr;
+            }
+
+            .job-tracker-root .filter-section {
+                justify-content: center;
+            }
+
+            .job-tracker-root .stats-section {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .job-tracker-root .dashboard-layout {
+                grid-template-columns: 1fr;
+                gap: 1.5em;
+            }
+
+            .job-tracker-root .feature-grid,
+            .job-tracker-root .audience-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="../force-desktop-layout.css">
+</head>
+<body>
+    <div class="job-tracker-root">
+        <div class="main-container">
+            <div class="header">
+                <h1>Job Application Tracker</h1>
+                <p>Organize your job search • Track applications, interviews & career progress</p>
+            </div>
+
+            <div class="content">
+                <!-- Statistics Section - Full Width -->
+                <div class="stats-section">
+                    <div class="stat-card total">
+                        <div class="stat-number" id="totalJobs">0</div>
+                        <div class="stat-label">Total Applications</div>
+                    </div>
+                    <div class="stat-card applied">
+                        <div class="stat-number" id="appliedJobs">0</div>
+                        <div class="stat-label">Applied</div>
+                    </div>
+                    <div class="stat-card interviews">
+                        <div class="stat-number" id="interviewJobs">0</div>
+                        <div class="stat-label">Interviews</div>
+                    </div>
+                    <div class="stat-card offers">
+                        <div class="stat-number" id="offerJobs">0</div>
+                        <div class="stat-label">Offers</div>
+                    </div>
+                    <div class="stat-card rejected">
+                        <div class="stat-number" id="rejectedJobs">0</div>
+                        <div class="stat-label">Rejected</div>
+                    </div>
+                </div>
+
+                <!-- Main Dashboard Layout - Two Columns -->
+                <div class="dashboard-layout">
+                    <!-- Left Column: Add New Job Form -->
+                    <div class="left-column">
+                        <!-- Add New Job Section -->
+                <section class="add-job-section" aria-labelledby="add-job-heading">
+                    <h2 id="add-job-heading" class="section-title">Add New Job Application</h2>
+                    <form id="jobForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="jobTitle">Job Title *</label>
+                                <input type="text" id="jobTitle" name="jobTitle" required placeholder="e.g. Software Developer">
+                            </div>
+                            <div class="form-group">
+                                <label for="company">Company *</label>
+                                <input type="text" id="company" name="company" required placeholder="e.g. Google">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="location">Location</label>
+                                <input type="text" id="location" name="location" placeholder="e.g. San Francisco, CA">
+                            </div>
+                            <div class="form-group">
+                                <label for="status">Status *</label>
+                                <select id="status" name="status" required>
+                                    <option value="applied">Applied</option>
+                                    <option value="interview">Interview</option>
+                                    <option value="offer">Offer</option>
+                                    <option value="rejected">Rejected</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="applicationDate">Application Date</label>
+                                <input type="date" id="applicationDate" name="applicationDate">
+                            </div>
+                            <div class="form-group">
+                                <label for="salary">Expected Salary</label>
+                                <input type="text" id="salary" name="salary" placeholder="e.g. $80,000">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="jobUrl">Job URL</label>
+                                <input type="url" id="jobUrl" name="jobUrl" placeholder="https://...">
+                            </div>
+                            <div class="form-group">
+                                <label for="contactPerson">Contact Person</label>
+                                <input type="text" id="contactPerson" name="contactPerson" placeholder="e.g. John Smith">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="notes">Notes</label>
+                                <textarea id="notes" name="notes" placeholder="Additional notes about this application..."></textarea>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="add-btn">Add Application</button>
+                    </form>
+                    </section>
+                    </div>
+
+                    <!-- Right Column: Jobs List -->
+                    <div class="right-column">
+                        <!-- Jobs List Section -->
+                        <section class="jobs-list-section" aria-labelledby="jobs-list-heading">
+                    <h2 id="jobs-list-heading" class="section-title">Your Job Applications</h2>
+                    
+                    <!-- Filter Buttons -->
+                    <div class="filter-section">
+                        <button class="filter-btn active" data-status="all">All</button>
+                        <button class="filter-btn" data-status="applied">Applied</button>
+                        <button class="filter-btn" data-status="interview">Interview</button>
+                        <button class="filter-btn" data-status="offer">Offer</button>
+                        <button class="filter-btn" data-status="rejected">Rejected</button>
+                    </div>
+
+                    <!-- Jobs Container -->
+                    <div id="jobsContainer">
+                        <div class="no-jobs">
+                            <h3>Start Your Job Search Journey! 🚀</h3>
+                            <p>Track your first job application above and organize your career path to success.</p>
+                        </div>
+                    </div>
+                        </section>
+                    </div>
+                </div>
+
+                <!-- About Section - Full Width -->
+                <section class="about-section" aria-labelledby="about-heading">
+                    <h2 id="about-heading">About Job Application Tracker</h2>
+                    <p>Free online job application tracker designed for students and professionals. Organize job applications, track interview progress, manage offers, and analyze your job search performance with detailed statistics and insights.</p>
+                    
+                    <h3>Key Features</h3>
+                    <div class="feature-grid">
+                        <div class="feature-item"><i class="fas fa-infinity"></i> Track unlimited job applications for free</div>
+                        <div class="feature-item"><i class="fas fa-tasks"></i> Monitor application status from applied to hired</div>
+                        <div class="feature-item"><i class="fas fa-calendar-alt"></i> Record interview dates and follow-up tasks</div>
+                        <div class="feature-item"><i class="fas fa-dollar-sign"></i> Store salary expectations and negotiations</div>
+                        <div class="feature-item"><i class="fas fa-address-book"></i> Manage contact information and company details</div>
+                        <div class="feature-item"><i class="fas fa-filter"></i> Filter applications by status and date</div>
+                        <div class="feature-item"><i class="fas fa-chart-line"></i> View career progress with built-in analytics</div>
+                        <div class="feature-item"><i class="fas fa-download"></i> Export data for external analysis</div>
+                        <div class="feature-item"><i class="fas fa-mobile-alt"></i> Mobile-responsive design for on-the-go access</div>
+                        <div class="feature-item"><i class="fas fa-lock"></i> Secure local storage - your data stays private</div>
+                    </div>
+                    
+                    <h3>Perfect for</h3>
+                    <div class="audience-grid">
+                        <div class="audience-item">
+                            <i class="fas fa-graduation-cap"></i>
+                            College students seeking internships and entry-level positions
+                        </div>
+                        <div class="audience-item">
+                            <i class="fas fa-user-graduate"></i>
+                            Recent graduates navigating the job market
+                        </div>
+                        <div class="audience-item">
+                            <i class="fas fa-exchange-alt"></i>
+                            Career changers organizing their transition
+                        </div>
+                        <div class="audience-item">
+                            <i class="fas fa-briefcase"></i>
+                            Professionals seeking new opportunities
+                        </div>
+                        <div class="audience-item">
+                            <i class="fas fa-clipboard-list"></i>
+                            Anyone wanting to systematically track their job search
+                        </div>
+                    </div>
+                    
+                    <h3>How to Use</h3>
+                    <p>Simply enter your job application details including company name, position, application date, and current status. Use the filtering options to view specific types of applications, and track your progress with the built-in statistics dashboard.</p>
+                    
+                    <h3>Benefits</h3>
+                    <p>Stay organized during your job search, never lose track of applications or interviews, identify patterns in your job search success, and maintain momentum with visual progress tracking.</p>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        class JobTracker {
+            constructor() {
+                this.jobs = this.loadJobs();
+                this.currentFilter = 'all';
+                this.editingJobId = null;
+                this.init();
+            }
+
+            init() {
+                this.bindEvents();
+                this.renderJobs();
+                this.updateStats();
+                this.setTodayDate();
+            }
+
+            bindEvents() {
+                // Form submission
+                document.getElementById('jobForm').addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    this.handleFormSubmit();
+                });
+
+                // Filter buttons
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        this.setFilter(e.target.dataset.status);
+                    });
+                });
+            }
+
+            setTodayDate() {
+                const today = new Date().toISOString().split('T')[0];
+                document.getElementById('applicationDate').value = today;
+            }
+
+            handleFormSubmit() {
+                const formData = new FormData(document.getElementById('jobForm'));
+                const jobData = {
+                    id: this.editingJobId || this.generateId(),
+                    jobTitle: formData.get('jobTitle'),
+                    company: formData.get('company'),
+                    location: formData.get('location'),
+                    status: formData.get('status'),
+                    applicationDate: formData.get('applicationDate'),
+                    salary: formData.get('salary'),
+                    jobUrl: formData.get('jobUrl'),
+                    contactPerson: formData.get('contactPerson'),
+                    notes: formData.get('notes'),
+                    createdAt: this.editingJobId ? this.jobs.find(j => j.id === this.editingJobId).createdAt : new Date().toISOString()
+                };
+
+                if (this.editingJobId) {
+                    // Update existing job
+                    const index = this.jobs.findIndex(j => j.id === this.editingJobId);
+                    this.jobs[index] = jobData;
+                    this.editingJobId = null;
+                } else {
+                    // Add new job
+                    this.jobs.unshift(jobData);
+                }
+
+                this.saveJobs();
+                this.renderJobs();
+                this.updateStats();
+                this.resetForm();
+            }
+
+            editJob(jobId) {
+                const job = this.jobs.find(j => j.id === jobId);
+                if (!job) return;
+
+                this.editingJobId = jobId;
+
+                // Fill form with job data
+                document.getElementById('jobTitle').value = job.jobTitle;
+                document.getElementById('company').value = job.company;
+                document.getElementById('location').value = job.location || '';
+                document.getElementById('status').value = job.status;
+                document.getElementById('applicationDate').value = job.applicationDate || '';
+                document.getElementById('salary').value = job.salary || '';
+                document.getElementById('jobUrl').value = job.jobUrl || '';
+                document.getElementById('contactPerson').value = job.contactPerson || '';
+                document.getElementById('notes').value = job.notes || '';
+
+                // Scroll to form
+                document.querySelector('.add-job-section').scrollIntoView({ behavior: 'smooth' });
+
+                // Update button text
+                document.querySelector('.add-btn').textContent = 'Update Application';
+            }
+
+            deleteJob(jobId) {
+                if (confirm('Are you sure you want to delete this application?')) {
+                    this.jobs = this.jobs.filter(j => j.id !== jobId);
+                    this.saveJobs();
+                    this.renderJobs();
+                    this.updateStats();
+                }
+            }
+
+            setFilter(status) {
+                this.currentFilter = status;
+                
+                // Update active filter button
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                document.querySelector(`[data-status="${status}"]`).classList.add('active');
+
+                this.renderJobs();
+            }
+
+            renderJobs() {
+                const container = document.getElementById('jobsContainer');
+                const filteredJobs = this.currentFilter === 'all' 
+                    ? this.jobs 
+                    : this.jobs.filter(job => job.status === this.currentFilter);
+
+                if (filteredJobs.length === 0) {
+                    container.innerHTML = `
+                        <div class="no-jobs">
+                            ${this.currentFilter === 'all' 
+                                ? '<h3>Start Your Job Search Journey! 🚀</h3><p>Track your first job application above and organize your career path to success.</p>' 
+                                : `<h3>No ${this.currentFilter} applications found 📋</h3><p>Try changing your filter or add new applications to track your progress.</p>`}
+                        </div>
+                    `;
+                    return;
+                }
+
+                container.innerHTML = filteredJobs.map(job => this.createJobCard(job)).join('');
+
+                // Bind action buttons
+                container.querySelectorAll('.edit-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const jobId = e.target.dataset.jobId;
+                        this.editJob(jobId);
+                    });
+                });
+
+                container.querySelectorAll('.delete-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const jobId = e.target.dataset.jobId;
+                        this.deleteJob(jobId);
+                    });
+                });
+            }
+
+            createJobCard(job) {
+                const statusClass = `status-${job.status}`;
+                const applicationDate = job.applicationDate ? new Date(job.applicationDate).toLocaleDateString() : 'Not specified';
+                
+                return `
+                    <div class="job-card ${job.status}">
+                        <div class="job-header">
+                            <div>
+                                <h3 class="job-title">${job.jobTitle}</h3>
+                                <div class="job-company">${job.company}</div>
+                            </div>
+                            <span class="job-status ${statusClass}">${job.status.toUpperCase()}</span>
+                        </div>
+                        
+                        <div class="job-details">
+                            ${job.location ? `<div class="job-detail"><strong>Location:</strong> ${job.location}</div>` : ''}
+                            <div class="job-detail"><strong>Applied:</strong> ${applicationDate}</div>
+                            ${job.salary ? `<div class="job-detail"><strong>Salary:</strong> ${job.salary}</div>` : ''}
+                            ${job.contactPerson ? `<div class="job-detail"><strong>Contact:</strong> ${job.contactPerson}</div>` : ''}
+                        </div>
+
+                        ${job.notes ? `<div class="job-detail"><strong>Notes:</strong> ${job.notes}</div>` : ''}
+
+                        ${job.jobUrl ? `<div class="job-detail"><strong>Job URL:</strong> <a href="${job.jobUrl}" target="_blank" rel="noopener">View Job Posting</a></div>` : ''}
+
+                        <div class="job-actions">
+                            <button class="action-btn edit-btn" data-job-id="${job.id}">Edit</button>
+                            <button class="action-btn delete-btn" data-job-id="${job.id}">Delete</button>
+                        </div>
+                    </div>
+                `;
+            }
+
+            updateStats() {
+                const stats = {
+                    total: this.jobs.length,
+                    applied: this.jobs.filter(j => j.status === 'applied').length,
+                    interview: this.jobs.filter(j => j.status === 'interview').length,
+                    offer: this.jobs.filter(j => j.status === 'offer').length,
+                    rejected: this.jobs.filter(j => j.status === 'rejected').length
+                };
+
+                document.getElementById('totalJobs').textContent = stats.total;
+                document.getElementById('appliedJobs').textContent = stats.applied;
+                document.getElementById('interviewJobs').textContent = stats.interview;
+                document.getElementById('offerJobs').textContent = stats.offer;
+                document.getElementById('rejectedJobs').textContent = stats.rejected;
+            }
+
+            resetForm() {
+                document.getElementById('jobForm').reset();
+                this.editingJobId = null;
+                document.querySelector('.add-btn').textContent = 'Add Application';
+                this.setTodayDate();
+            }
+
+            generateId() {
+                return Date.now().toString(36) + Math.random().toString(36).substr(2);
+            }
+
+            loadJobs() {
+                try {
+                    const stored = localStorage.getItem('jobTracker_jobs');
+                    return stored ? JSON.parse(stored) : [];
+                } catch (error) {
+                    console.error('Error loading jobs:', error);
+                    return [];
+                }
+            }
+
+            saveJobs() {
+                try {
+                    localStorage.setItem('jobTracker_jobs', JSON.stringify(this.jobs));
+                } catch (error) {
+                    console.error('Error saving jobs:', error);
+                }
+            }
+        }
+
+        // Initialize the job tracker when the page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            new JobTracker();
+        });
+    </script>
+</body>
+</html>

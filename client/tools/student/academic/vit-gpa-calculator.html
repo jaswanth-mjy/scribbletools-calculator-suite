@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=1200, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="VIT GPA Calculator - Calculate your CGPA for Vellore Institute of Technology using the 10-point grading system. Free, accurate, and easy to use GPA calculator for VIT students.">
     <meta name="keywords" content="VIT GPA calculator, VIT CGPA calculator, Vellore Institute of Technology GPA, VIT grading system, 10 point GPA calculator, VIT semester GPA, VIT cumulative GPA">
     <meta name="author" content="Scribble Tools">
@@ -69,6 +69,17 @@
             min-height: 100vh;
             padding: 2rem 1rem;
             color: #1a1a2e;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        /* Better touch targets for mobile */
+        button,
+        select,
+        input[type="number"],
+        input[type="text"] {
+            min-height: 44px;
+            touch-action: manipulation;
         }
         
         .calc-container {
@@ -486,13 +497,16 @@
             margin: 2rem 0;
             width: 100%;
             border-radius: 1rem;
-            overflow: hidden;
+            overflow-x: auto;
+            overflow-y: hidden;
             box-shadow: 0 6px 25px rgba(0, 102, 255, 0.15);
             background: white;
+            -webkit-overflow-scrolling: touch;
         }
         
         .grade-table table {
             width: 100%;
+            min-width: 600px;
             border-collapse: collapse;
         }
         
@@ -504,14 +518,15 @@
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
         }
         
         .grade-table td {
-            padding: 1rem 1.2rem;
+            padding: 1.1rem 1.2rem;
             border-bottom: 1px solid #e6f0ff;
             color: #1a1a2e;
             font-weight: 500;
+            font-size: 0.95rem;
         }
         
         .grade-table tr:last-child td {
@@ -576,13 +591,22 @@
             border-radius: 0.8rem;
             overflow: hidden;
             box-shadow: 0 4px 15px rgba(0, 102, 255, 0.1);
+            display: block;
+            overflow-x: auto;
+        }
+        
+        .example-table table {
+            width: 100%;
+            min-width: 500px;
         }
         
         .example-table th,
         .example-table td {
-            padding: 0.8rem;
+            padding: 0.9rem 0.75rem;
             text-align: center;
             border: 1px solid #e6f0ff;
+            white-space: nowrap;
+            font-size: 0.9rem;
         }
         
         .example-table th {
@@ -620,9 +644,32 @@
         
         .info-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 1.5rem;
             margin-top: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .info-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+        }
+        
+        /* Table scroll indicator for mobile */
+        @media (max-width: 768px) {
+            .grade-table::after,
+            .example-table::after {
+                content: '← Scroll horizontally →';
+                display: block;
+                text-align: center;
+                font-size: 0.75rem;
+                color: #0066ff;
+                padding: 0.5rem;
+                background: #e6f0ff;
+                border-radius: 0 0 0.5rem 0.5rem;
+                font-weight: 600;
+            }
         }
         
         .info-card {
@@ -777,30 +824,160 @@
         }
         
         @media (max-width: 768px) {
-            .calc-container {
-                margin: 1rem;
-                padding: 2rem 1.5rem;
+            body {
+                padding: 1rem 0.5rem;
             }
             
-            .course-item {
-                grid-template-columns: 1fr;
-                gap: 1rem;
+            .calc-container {
+                margin: 0;
+                padding: 1.5rem 1rem;
+                border-radius: 1rem;
             }
             
             h1 {
-                font-size: 2.5rem;
+                font-size: 2rem;
+                line-height: 1.2;
             }
             
-            .gpa-display {
-                font-size: 3.5rem;
+            .calc-subtitle {
+                font-size: 0.9rem;
+            }
+            
+            .vit-badge {
+                font-size: 0.8rem;
+                padding: 0.5rem 1.2rem;
             }
             
             .calc-options {
                 grid-template-columns: 1fr;
+                padding: 1rem;
+                gap: 1rem;
+            }
+            
+            .option-group select {
+                font-size: 0.95rem;
+                padding: 0.75rem;
+            }
+            
+            .cumulative-section {
+                padding: 1rem;
+            }
+            
+            .cumulative-inputs {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .course-section h2 {
+                font-size: 1.2rem;
+            }
+            
+            .course-item {
+                grid-template-columns: 1fr;
+                gap: 0.75rem;
+                padding: 1rem;
+            }
+            
+            .input-group label {
+                font-size: 0.8rem;
+            }
+            
+            .input-group input,
+            .input-group select {
+                font-size: 0.95rem;
+                padding: 0.7rem;
+            }
+            
+            .delete-btn {
+                width: 100%;
+                padding: 0.75rem;
+                justify-content: center;
+            }
+            
+            .add-course-btn {
+                font-size: 0.95rem;
+                padding: 0.875rem;
+            }
+            
+            .gpa-display {
+                font-size: 3rem;
             }
             
             .gpa-details {
                 grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .gpa-card {
+                padding: 1rem;
+            }
+            
+            .gpa-value {
+                font-size: 1.75rem;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+            
+            .action-buttons button {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .info-card {
+                padding: 1rem;
+            }
+            
+            .example-table {
+                font-size: 0.9rem;
+                display: block;
+                overflow-x: auto;
+                width: 100%;
+            }
+            
+            .example-table table {
+                min-width: 600px;
+            }
+            
+            .example-table th,
+            .example-table td {
+                padding: 0.75rem 0.5rem;
+                font-size: 0.875rem;
+            }
+            
+            .grade-table {
+                display: block;
+                overflow-x: auto;
+                width: 100%;
+                margin: 1rem 0;
+            }
+            
+            .grade-table table {
+                min-width: 600px;
+            }
+            
+            .grade-table th,
+            .grade-table td {
+                padding: 1rem 0.75rem;
+                font-size: 0.9rem;
+            }
+            
+            .formula-box {
+                padding: 1rem;
+                overflow-x: auto;
+            }
+            
+            .formula {
+                font-size: 0.85rem;
+                overflow-x: auto;
+                white-space: nowrap;
             }
             
             .info-grid {
@@ -809,25 +986,136 @@
         }
         
         @media (max-width: 480px) {
+            body {
+                padding: 0.5rem 0.25rem;
+            }
+            
             .calc-container {
-                padding: 1.5rem 1rem;
+                padding: 1.25rem 0.75rem;
+                border-radius: 0.75rem;
             }
             
             h1 {
-                font-size: 2rem;
+                font-size: 1.75rem;
             }
             
-            .gpa-display {
-                font-size: 3rem;
+            .calc-subtitle {
+                font-size: 0.85rem;
             }
             
             .vit-badge {
-                font-size: 0.8rem;
+                font-size: 0.75rem;
                 padding: 0.4rem 1rem;
+            }
+            
+            .calc-options {
+                padding: 0.875rem;
+            }
+            
+            .course-item {
+                padding: 0.875rem;
+                gap: 0.625rem;
+            }
+            
+            /* Prevent iOS zoom on input focus */
+            .input-group input,
+            .input-group select,
+            .option-group select {
+                font-size: 16px;
+                padding: 0.625rem;
+            }
+            
+            .gpa-display {
+                font-size: 2.5rem;
+            }
+            
+            .gpa-value {
+                font-size: 1.5rem;
+            }
+            
+            .example-table {
+                font-size: 0.875rem;
+                display: block;
+                overflow-x: auto;
+            }
+            
+            .example-table table {
+                min-width: 550px;
+            }
+            
+            .example-table th,
+            .example-table td {
+                padding: 0.625rem 0.4rem;
+                font-size: 0.813rem;
+            }
+            
+            .grade-table table {
+                min-width: 550px;
+            }
+            
+            .grade-table th,
+            .grade-table td {
+                padding: 0.875rem 0.625rem;
+                font-size: 0.875rem;
+            }
+            
+            .formula {
+                font-size: 0.75rem;
+            }
+            
+            .info-card {
+                padding: 1rem;
+            }
+        }
+        
+        /* Extra small devices */
+        @media (max-width: 360px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+            
+            .calc-container {
+                padding: 1rem 0.5rem;
+            }
+            
+            .course-item {
+                padding: 0.75rem;
+            }
+            
+            .gpa-display {
+                font-size: 2rem;
+            }
+            
+            .input-group input,
+            .input-group select {
+                font-size: 0.875rem;
+            }
+            
+            .example-table table {
+                min-width: 500px;
+            }
+            
+            .example-table th,
+            .example-table td {
+                padding: 0.5rem 0.3rem;
+                font-size: 0.75rem;
+            }
+            
+            .grade-table table {
+                min-width: 500px;
+            }
+            
+            .grade-table th,
+            .grade-table td {
+                padding: 0.75rem 0.5rem;
+                font-size: 0.813rem;
+            }
+            
+            .formula {
+                font-size: 0.7rem;
             }
         }
     </style>
-    <link rel="stylesheet" href="../force-desktop-layout.css">
 </head>
 <body>
 <div class="calc-container">

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Keyword Density Tool - FREE SEO Keyword Analysis & Content Optimizer</title>
+  <meta name="description" content="Free keyword density analyzer! Check keyword frequency, analyze SEO content, optimize keyword usage. Content analysis tool for better rankings. 100% free!">
+  <meta name="keywords" content="keyword density tool, keyword density analyzer, SEO keyword tool, keyword frequency checker, content analysis, SEO analyzer, keyword optimization, content optimizer, keyword density calculator, SEO content tool, keyword usage analyzer, search optimization, content SEO, keyword research tool, SEO audit tool, keyword metrics, content marketing tool, SEO analysis, keyword performance, text analysis">
+  <meta name="author" content="Scribble Tools">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://scribbletools.in/client/tools/text/keyword-density.html">
+  <meta property="og:title" content="Keyword Density Tool - FREE SEO Keyword Analysis & Content Optimizer">
+  <meta property="og:description" content="Free keyword density analyzer! Check keyword frequency, analyze SEO content, optimize keyword usage. Content analysis tool for better rankings. 100% free!">
+  <meta property="og:image" content="https://scribbletools.in/assets/og-image.svg">
+  <meta property="og:site_name" content="Scribble Tools">
+  <meta property="og:locale" content="en_US">
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://scribbletools.in/client/tools/text/keyword-density.html">
+  <meta property="twitter:title" content="Keyword Density Tool - FREE SEO Keyword Analysis & Content Optimizer">
+  <meta property="twitter:description" content="Free keyword density analyzer! Check keyword frequency, analyze SEO content, optimize keyword usage. Content analysis tool for better rankings. 100% free!">
+  <meta property="twitter:image" content="https://scribbletools.in/assets/og-image.svg">
+  
+  <!-- Additional SEO Meta Tags -->
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Scribble Tools">
+  <meta name="generator" content="Scribble Tools">
+  <meta name="application-name" content="Keyword Density Analyzer">
+  <meta name="apple-mobile-web-app-title" content="SEO Keywords">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#D9534F">
+  <meta name="msapplication-navbutton-color" content="#D9534F">
+  <meta name="apple-mobile-web-app-status-bar-style" content="#D9534F">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://scribbletools.in/client/tools/text/keyword-density.html">
+  
+  <!-- Preconnect for Performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Keyword Density & SEO Analysis Tool",
+    "description": "Free online tool for analyzing keyword density and optimizing content for SEO. Check keyword frequency and improve search engine rankings.",
+    "url": "https://scribbletools.in/client/tools/text/keyword-density.html",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "Any",
+    "permissions": "browser",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "featureList": [
+      "Keyword density analysis",
+      "SEO content optimization",
+      "Keyword frequency checker",
+      "Content analysis tool",
+      "Search optimization",
+      "Keyword metrics calculator",
+      "No registration required",
+      "Free to use"
+    ],
+    "provider": {
+      "@type": "Organization",
+      "name": "Scribble Tools",
+      "url": "https://scribbletools.in"
+    }
+  }
+  </script>
+</head>
+<body>
+
+<!-- File: tools/text/keyword-density.html -->
+<style>
+    .rdl-textarea {
+        background-color: #FDFBF5;
+        border: 2px solid #EAE3D5;
+        border-radius: 0.5rem;
+        padding: 1rem;
+        width: 90%;
+        min-width: 320px;
+        max-width: 700px;
+        height: 100px;
+        color: #4A4A4A;
+        font-size: 1.1rem;
+        line-height: 1.6;
+        transition: all 0.2s;
+        resize: none;
+        overflow: auto;
+        box-sizing: border-box;
+        margin: 0 auto 1.2rem auto;
+        display: block;
+    }
+    .rdl-textarea:focus {
+        outline: none;
+        border-color: #D9534F;
+        box-shadow: 0 0 0 3px rgba(217, 83, 79, 0.2);
+    }
+    .rdl-utility-bar {
+        margin-top: 2.5rem;
+        display: flex;
+        gap: 1.2rem;
+        justify-content: center;
+    }
+    .rdl-utility-button {
+        background-color: #fff;
+        color: #D9534F;
+        font-weight: 600;
+        border: 2px solid #D9534F;
+        cursor: pointer;
+        padding: 0.7rem 2rem;
+        border-radius: 0.5rem;
+        transition: all 0.2s;
+        font-size: 1.1rem;
+    }
+    .rdl-utility-button:hover {
+        background-color: #D9534F;
+        color: #fff;
+    }
+    .rdl-output-box {
+        margin: 2rem auto 0 auto;
+        background: #fff;
+        border: 2px solid #D9534F;
+        border-radius: 0.7rem;
+        padding: 1.2rem 1rem;
+        min-height: 80px;
+        color: #333;
+        font-size: 1.15rem;
+        font-family: 'Fira Code', monospace;
+        letter-spacing: 1px;
+        word-break: break-word;
+        overflow: auto;
+        max-width: 700px;
+        width: 90%;
+        text-align: left;
+    }
+    .density-btn-bar {
+        display: flex;
+        justify-content: center;
+        gap: 1.2rem;
+        margin: 1.5rem 0 0.5rem 0;
+    }
+    .density-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 1rem;
+    }
+    .density-table th, .density-table td {
+        border: 1px solid #EAE3D5;
+        padding: 0.5rem 1rem;
+        text-align: left;
+    }
+    .density-table th {
+        background: #FDFBF5;
+        color: #D9534F;
+    }
+</style>
+<div>
+    <h2 class="handwritten text-5xl text-[#D9534F] mb-4">Keyword Density Analyzer</h2>
+    <div class="mb-6 p-6 bg-amber-50/70 rounded-lg border border-amber-200">
+        <p class="text-lg text-gray-800 font-bold mb-2">Analyze the frequency and density of keywords in your text. Useful for SEO, content optimization, and text analysis.</p>
+        <ul class="list-disc list-inside text-gray-700 text-base">
+            <li>Shows keyword frequency and density (%)</li>
+            <li>Applications: SEO, content writing, text analysis</li>
+        </ul>
+    </div>
+    <textarea id="density-input" class="rdl-textarea" placeholder="Paste or type your text here..."></textarea>
+    <div class="density-btn-bar">
+        <button id="density-analyze" class="rdl-utility-button">Analyze</button>
+    </div>
+    <div class="rdl-output-box" id="density-output"></div>
+    <div class="rdl-utility-bar">
+        <button id="density-copy" class="rdl-utility-button">Copy</button>
+        <button id="density-download" class="rdl-utility-button">Download</button>
+        <button id="density-clear" class="rdl-utility-button">Clear</button>
+    </div>
+</div>
+<script>
+function analyzeKeywordDensity(text) {
+    const words = text.toLowerCase().match(/\b\w+\b/g) || [];
+    const total = words.length;
+    const freq = {};
+    words.forEach(w => freq[w] = (freq[w] || 0) + 1);
+    const sorted = Object.entries(freq).sort((a, b) => b[1] - a[1]);
+    let table = `<table class='density-table'><tr><th>Keyword</th><th>Count</th><th>Density (%)</th></tr>`;
+    sorted.forEach(([word, count]) => {
+        table += `<tr><td>${word}</td><td>${count}</td><td>${((count/total)*100).toFixed(2)}</td></tr>`;
+    });
+    table += '</table>';
+    return table;
+}
+function initializeKeywordDensity() {
+    const input = document.getElementById('density-input');
+    const output = document.getElementById('density-output');
+    const btnAnalyze = document.getElementById('density-analyze');
+    const btnCopy = document.getElementById('density-copy');
+    const btnDownload = document.getElementById('density-download');
+    const btnClear = document.getElementById('density-clear');
+    btnAnalyze.addEventListener('click', () => {
+        output.innerHTML = analyzeKeywordDensity(input.value);
+    });
+    btnCopy.addEventListener('click', () => {
+        const temp = document.createElement('textarea');
+        temp.value = output.innerText;
+        document.body.appendChild(temp);
+        temp.select();
+        document.execCommand('copy');
+        document.body.removeChild(temp);
+        const orig = btnCopy.textContent;
+        btnCopy.textContent = 'Copied!';
+        setTimeout(() => { btnCopy.textContent = orig; }, 2000);
+    });
+    btnDownload.addEventListener('click', () => {
+        const blob = new Blob([output.innerText], { type: 'text/plain' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'keyword-density.txt';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    });
+    btnClear.addEventListener('click', () => {
+        input.value = '';
+        output.innerHTML = '';
+    });
+}
+initializeKeywordDensity();
+</script>

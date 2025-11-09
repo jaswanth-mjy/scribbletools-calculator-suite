@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Justifier - FREE Text Alignment & Justify Tool</title>
+    <meta name="description" content="Free text justifier! Align text left, right, center, justify paragraphs. Professional text formatting tool for documents, writing. Text alignment made easy!">
+    <meta name="keywords" content="text justifier, text alignment tool, justify text online, text formatter, paragraph justifier, text align tool, text formatting tool, document formatter, text layout tool, paragraph alignment, text justify tool, align text left right center, text spacing tool, document alignment, text organization tool, paragraph formatting, text structure tool, writing formatter, text editor alignment, document layout tool, text presentation tool, paragraph spacing tool, text arrangement tool, justify paragraph text, align text blocks, text column formatter, document text alignment, text positioning tool, paragraph organizer, text display formatter">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://scribbletools.in/client/tools/text/text-justifier.html">
+    <meta property="og:title" content="Text Justifier - FREE Text Alignment & Justify Tool">
+    <meta property="og:description" content="Free text justifier! Align text left, right, center, justify paragraphs. Professional text formatting tool for documents, writing. Text alignment made easy!">
+    <meta property="og:image" content="https://scribbletools.in/assets/og-image.svg">
+    <meta property="og:site_name" content="Scribble Tools">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://scribbletools.in/client/tools/text/text-justifier.html">
+    <meta property="twitter:title" content="Text Justifier - FREE Text Alignment & Justify Tool">
+    <meta property="twitter:description" content="Free text justifier! Align text left, right, center, justify paragraphs. Professional text formatting tool for documents, writing. Text alignment made easy!">
+    <meta property="twitter:image" content="https://scribbletools.in/assets/og-image.svg">
+    
+    <!-- Additional SEO Meta Tags -->
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Scribble Tools">
+    <meta name="generator" content="Scribble Tools">
+    <meta name="application-name" content="Text Justifier">
+    <meta name="apple-mobile-web-app-title" content="Text Justifier">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#D9534F">
+    <meta name="msapplication-navbutton-color" content="#D9534F">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#D9534F">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://scribbletools.in/client/tools/text/text-justifier.html">
+    
+    <!-- Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Text Justifier Tool",
+      "description": "Free online text justification and alignment tool for formatting paragraphs with left, right, center, and justified alignment options.",
+      "url": "https://scribbletools.in/client/tools/text/text-justifier.html",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "Any",
+      "permissions": "browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "featureList": [
+        "Justify text alignment",
+        "Left, right, center alignment",
+        "Paragraph formatting",
+        "Text spacing control",
+        "Document layout tool",
+        "Professional text formatting",
+        "No registration required",
+        "Free to use"
+      ],
+      "provider": {
+        "@type": "Organization",
+        "name": "Scribble Tools",
+        "url": "https://scribbletools.in"
+      }
+    }
+    </script>
+</head>
+<body>
+
+<!-- File: tools/text/text-justifier.html -->
+<style>
+    .rdl-textarea {
+        background-color: #FDFBF5;
+        border: 2px solid #EAE3D5;
+        border-radius: 0.5rem;
+        padding: 1rem;
+        width: 90%;
+        min-width: 320px;
+        max-width: 700px;
+        height: 100px;
+        color: #4A4A4A;
+        font-size: 1.1rem;
+        line-height: 1.6;
+        transition: all 0.2s;
+        resize: none;
+        overflow: auto;
+        box-sizing: border-box;
+        margin: 0 auto 1.2rem auto;
+        display: block;
+    }
+    .rdl-textarea:focus {
+        outline: none;
+        border-color: #D9534F;
+        box-shadow: 0 0 0 3px rgba(217, 83, 79, 0.2);
+    }
+    .rdl-utility-bar {
+        margin-top: 2.5rem;
+        display: flex;
+        gap: 1.2rem;
+        justify-content: center;
+    }
+    .rdl-utility-button {
+        background-color: #fff;
+        color: #D9534F;
+        font-weight: 600;
+        border: 2px solid #D9534F;
+        cursor: pointer;
+        padding: 0.7rem 2rem;
+        border-radius: 0.5rem;
+        transition: all 0.2s;
+        font-size: 1.1rem;
+    }
+    .rdl-utility-button:hover {
+        background-color: #D9534F;
+        color: #fff;
+    }
+    .rdl-output-box {
+        margin: 2rem auto 0 auto;
+        background: #fff;
+        border: 2px solid #D9534F;
+        border-radius: 0.7rem;
+        padding: 1.2rem 1rem;
+        min-height: 80px;
+        color: #333;
+        font-size: 1.15rem;
+        font-family: 'Fira Code', monospace;
+        letter-spacing: 1px;
+        word-break: break-word;
+        overflow: auto;
+        max-width: 700px;
+        width: 90%;
+        text-align: left;
+    }
+    .justify-btn-bar {
+        display: flex;
+        justify-content: center;
+        gap: 1.2rem;
+        margin: 1.5rem 0 0.5rem 0;
+    }
+</style>
+<div>
+    <h2 class="handwritten text-5xl text-[#D9534F] mb-4">Text Justifier (Full Justify)</h2>
+    <div class="mb-6 p-6 bg-amber-50/70 rounded-lg border border-amber-200">
+        <p class="text-lg text-gray-800 font-bold mb-2">The Text Justifier tool fully justifies your text to a specified width, stretching each line (except the last) so that words are evenly spaced and the text forms a neat rectangle. This is ideal for formatting prose, poetry, code comments, or preparing text for print and publication.</p>
+        <ul class="list-disc list-inside text-gray-700 text-base mb-2">
+            <li><b>Full Justification:</b> Distributes spaces so every line (except the last) fills the exact width you choose.</li>
+            <li><b>Custom Width:</b> Set your desired line width (in characters) for perfect alignment in any context.</li>
+            <li><b>Professional Look:</b> Great for print, publishing, poetry, code documentation, and more.</li>
+        </ul>
+        <p class="text-base text-gray-700 mb-2"><b>How to use:</b></p>
+        <ol class="list-decimal list-inside text-gray-700 text-base mb-2">
+            <li>Paste or type your text into the input box below.</li>
+            <li>Set your desired width (number of characters per line).</li>
+            <li>Click <b>Justify</b> to format your text.</li>
+            <li>View the fully justified result in the output area.</li>
+            <li>Use <b>Copy</b> to copy the result, <b>Download</b> to save as a file, or <b>Clear</b> to reset.</li>
+        </ol>
+        <p class="text-base text-gray-700"><b>Example uses:</b> Format poetry for publication, create justified code comments, prepare text for newsletters, or give prose a polished, professional look.</p>
+    </div>
+    <textarea id="justify-input" class="rdl-textarea" placeholder="Paste or type your text here..."></textarea>
+    <div class="justify-btn-bar">
+        <label for="justify-width" style="align-self:center;font-weight:600;">Width:</label>
+        <input id="justify-width" type="number" min="10" max="120" value="60" style="width:70px;padding:0.3rem 0.5rem;border:1.5px solid #D9534F;border-radius:0.4rem;margin-right:1.2rem;">
+        <button id="justify-btn" class="rdl-utility-button">Justify</button>
+    </div>
+    <div class="rdl-output-box" id="justify-output"></div>
+    <div class="rdl-utility-bar">
+        <button id="justify-copy" class="rdl-utility-button">Copy</button>
+        <button id="justify-download" class="rdl-utility-button">Download</button>
+        <button id="justify-clear" class="rdl-utility-button">Clear</button>
+    </div>
+</div>
+<script>
+function fullJustify(words, maxWidth) {
+    const lines = [];
+    let line = [], lineLen = 0;
+    for (let word of words) {
+        if (lineLen + word.length + line.length > maxWidth) {
+            // Distribute spaces
+            let spaces = maxWidth - lineLen;
+            if (line.length === 1) {
+                lines.push(line[0] + ' '.repeat(spaces));
+            } else {
+                let gaps = line.length - 1;
+                let even = Math.floor(spaces / gaps);
+                let extra = spaces % gaps;
+                let str = '';
+                for (let i = 0; i < line.length; i++) {
+                    str += line[i];
+                    if (i < gaps) {
+                        str += ' '.repeat(even + (i < extra ? 1 : 0));
+                    }
+                }
+                lines.push(str);
+            }
+            line = [];
+            lineLen = 0;
+        }
+        line.push(word);
+        lineLen += word.length;
+    }
+    // Last line: left-justified
+    lines.push(line.join(' ') + ' '.repeat(maxWidth - (line.join(' ').length)));
+    return lines.join('\n');
+}
+function initializeTextJustifier() {
+    const input = document.getElementById('justify-input');
+    const output = document.getElementById('justify-output');
+    const btnJustify = document.getElementById('justify-btn');
+    const widthInput = document.getElementById('justify-width');
+    const btnCopy = document.getElementById('justify-copy');
+    const btnDownload = document.getElementById('justify-download');
+    const btnClear = document.getElementById('justify-clear');
+    btnJustify.addEventListener('click', () => {
+        const text = input.value.replace(/\n/g, ' ');
+        const words = text.split(/\s+/).filter(Boolean);
+        const width = Math.max(10, Math.min(120, parseInt(widthInput.value) || 60));
+        output.textContent = fullJustify(words, width);
+    });
+    btnCopy.addEventListener('click', () => {
+        navigator.clipboard.writeText(output.textContent).then(() => {
+            const orig = btnCopy.textContent;
+            btnCopy.textContent = 'Copied!';
+            setTimeout(() => { btnCopy.textContent = orig; }, 2000);
+        });
+    });
+    btnDownload.addEventListener('click', () => {
+        const blob = new Blob([output.textContent], { type: 'text/plain' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'justified-text.txt';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    });
+    btnClear.addEventListener('click', () => {
+        input.value = '';
+        output.textContent = '';
+    });
+}
+initializeTextJustifier();
+</script>

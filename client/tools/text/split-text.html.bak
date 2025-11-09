@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Split Text Tool - FREE Text Splitter & String Separator</title>
+  <meta name="description" content="Free text splitter tool! Split text by delimiter, separate strings, divide content by lines, words. Text processing tool for data extraction. 100% free!">
+  <meta name="keywords" content="split text tool, text splitter, string separator, text divider, split by delimiter, text parser, string splitter, text segmentation, content splitter, text division tool, data extraction, text processing, split by lines, split by words, text analyzer, string parser, text formatter, content parser, text manipulation, data processing">
+  <meta name="author" content="Scribble Tools">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://scribbletools.in/client/tools/text/split-text.html">
+  <meta property="og:title" content="Split Text Tool - FREE Text Splitter & String Separator">
+  <meta property="og:description" content="Free text splitter tool! Split text by delimiter, separate strings, divide content by lines, words. Text processing tool for data extraction. 100% free!">
+  <meta property="og:image" content="https://scribbletools.in/assets/og-image.svg">
+  <meta property="og:site_name" content="Scribble Tools">
+  <meta property="og:locale" content="en_US">
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://scribbletools.in/client/tools/text/split-text.html">
+  <meta property="twitter:title" content="Split Text Tool - FREE Text Splitter & String Separator">
+  <meta property="twitter:description" content="Free text splitter tool! Split text by delimiter, separate strings, divide content by lines, words. Text processing tool for data extraction. 100% free!">
+  <meta property="twitter:image" content="https://scribbletools.in/assets/og-image.svg">
+  
+  <!-- Additional SEO Meta Tags -->
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Scribble Tools">
+  <meta name="generator" content="Scribble Tools">
+  <meta name="application-name" content="Text Splitter Tool">
+  <meta name="apple-mobile-web-app-title" content="Text Splitter">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#D9534F">
+  <meta name="msapplication-navbutton-color" content="#D9534F">
+  <meta name="apple-mobile-web-app-status-bar-style" content="#D9534F">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://scribbletools.in/client/tools/text/split-text.html">
+  
+  <!-- Preconnect for Performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Text Splitter & String Separator Tool",
+    "description": "Free online tool for splitting text and separating strings by delimiters. Perfect for data extraction, text processing, and content analysis.",
+    "url": "https://scribbletools.in/client/tools/text/split-text.html",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "Any",
+    "permissions": "browser",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "featureList": [
+      "Text splitting by delimiter",
+      "String separation tool",
+      "Content division utility",
+      "Data extraction helper",
+      "Text parsing functionality",
+      "Multi-format splitting",
+      "No registration required",
+      "Free to use"
+    ],
+    "provider": {
+      "@type": "Organization",
+      "name": "Scribble Tools",
+      "url": "https://scribbletools.in"
+    }
+  }
+  </script>
+</head>
+<body>
+
+<!-- File: tools/text/split-text.html -->
+<style>
+    .st-textarea {
+        background-color: #FDFBF5;
+        border: 2px solid #EAE3D5;
+        border-radius: 0.5rem;
+        padding: 1rem;
+        width: 100%;
+        min-height: 120px;
+        color: #4A4A4A;
+        transition: all 0.2s;
+        font-size: 1.1rem;
+        line-height: 1.6;
+    }
+    .st-textarea:focus {
+        outline: none;
+        border-color: #D9534F;
+        box-shadow: 0 0 0 3px rgba(217, 83, 79, 0.2);
+    }
+    .st-options-box {
+        margin-top: 1.5rem;
+        padding: 1.5rem;
+        background-color: #FDFBF5;
+        border-radius: 0.5rem;
+        border: 1px solid #EAE3D5;
+    }
+    .st-button-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 0.75rem;
+    }
+    .st-button {
+        background-color: #fff;
+        color: #4A4A4A;
+        padding: 0.75rem 1rem;
+        border-radius: 0.5rem;
+        font-weight: 600;
+        border: 1px solid #DCD5C3;
+        cursor: pointer;
+        transition: all 0.2s;
+        text-align: center;
+    }
+    .st-button:hover {
+        background-color: #EFEAE0;
+        border-color: #C8BFAC;
+    }
+    .st-button:active {
+        transform: scale(0.98);
+        background-color: #EAE3D5;
+    }
+    .st-utility-bar {
+        margin-top: 1.5rem;
+        padding-top: 1.5rem;
+        border-top: 2px dashed #DCD5C3;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .st-utility-button {
+        background-color: transparent;
+        color: #D9534F;
+        font-weight: 600;
+        border: none;
+        cursor: pointer;
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+    }
+    .st-utility-button:hover {
+        background-color: #FDFBF5;
+    }
+    .st-status-bar {
+        font-size: 0.9rem;
+        color: #888;
+    }
+    .st-result-area {
+        margin-top: 1.5rem;
+        background: #fff;
+        border: 1px solid #EAE3D5;
+        border-radius: 0.5rem;
+        padding: 1rem;
+        min-height: 80px;
+        font-size: 1.05rem;
+        color: #333;
+        white-space: pre-wrap;
+        word-break: break-word;
+    }
+    .st-input-group {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+    .st-input-group label {
+        font-size: 0.95rem;
+        color: #555;
+        font-weight: 500;
+    }
+    .st-input {
+        border: 1px solid #DCD5C3;
+        border-radius: 0.375rem;
+        padding: 0.4rem 0.7rem;
+        font-size: 1rem;
+        width: 120px;
+    }
+</style>
+
+<div>
+    <h2 class="handwritten text-5xl text-[#D9534F] mb-4">Split Text</h2>
+    <div class="mb-6 p-6 bg-amber-50/70 rounded-lg border border-amber-200">
+        <p class="text-lg text-gray-800 font-bold mb-2">The Split Text tool is designed to break up text into manageable pieces using a variety of methods. Whether you need to split by character, word, line, custom delimiter, sentence, paragraph, or even by camelCase or number/letter boundaries, this tool has you covered. It’s ideal for data processing, coding, content editing, and any scenario where you need to organize or analyze text. Advanced options like splitting every N characters or words, and splitting on custom patterns, make it a powerful utility for both technical and creative tasks.</p>
+        <ul class="list-disc list-inside text-gray-700 text-base">
+            <li>Split by character, word, line, or custom delimiter</li>
+            <li>Split into sentences, paragraphs, or by camelCase/PascalCase</li>
+            <li>Split every N characters or N words</li>
+            <li>Split on number/letter boundaries</li>
+            <li>Flexible options for data, code, or creative writing</li>
+        </ul>
+    </div>
+    <p class="text-gray-600 mb-6">
+        Split your text in a variety of ways! Choose from 10 powerful splitting options for words, lines, characters, and more.
+    </p>
+    <textarea id="st-input" class="st-textarea" placeholder="Type or paste your text here..."></textarea>
+    <div class="st-options-box">
+        <h3 class="font-bold text-lg text-gray-700 mb-4">Split Options</h3>
+        <div class="st-input-group">
+            <label for="st-delimiter">Custom Delimiter:</label>
+            <input id="st-delimiter" class="st-input" type="text" placeholder="," maxlength="10">
+            <label for="st-n-chars">N Chars:</label>
+            <input id="st-n-chars" class="st-input" type="number" min="1" max="1000" value="5">
+            <label for="st-n-words">N Words:</label>
+            <input id="st-n-words" class="st-input" type="number" min="1" max="1000" value="3">
+        </div>
+        <div class="st-button-grid">
+            <button id="st-split-char" class="st-button">Split by Character</button>
+            <button id="st-split-word" class="st-button">Split by Word</button>
+            <button id="st-split-line" class="st-button">Split by Line</button>
+            <button id="st-split-delimiter" class="st-button">Split by Custom Delimiter</button>
+            <button id="st-split-sentence" class="st-button">Split into Sentences</button>
+            <button id="st-split-paragraph" class="st-button">Split into Paragraphs</button>
+            <button id="st-split-n-chars" class="st-button">Split Every N Characters</button>
+            <button id="st-split-n-words" class="st-button">Split Every N Words</button>
+            <button id="st-split-camel" class="st-button">Split CamelCase/PascalCase</button>
+            <button id="st-split-num-letter" class="st-button">Split Number/Letter Boundary</button>
+        </div>
+    </div>
+    <div class="st-result-area" id="st-result"></div>
+    <div class="st-utility-bar">
+        <div class="st-status-bar">
+            <span>Chars: <strong id="st-char-count" class="text-gray-600">0</strong></span> |
+            <span>Words: <strong id="st-word-count" class="text-gray-600">0</strong></span>
+        </div>
+        <div>
+            <button id="st-copy" class="st-utility-button">Copy</button>
+            <button id="st-download" class="st-utility-button">Download</button>
+            <button id="st-clear" class="st-utility-button">Clear</button>
+        </div>
+    </div>
+</div>
+
+<script>
+function initializeSplitText() {
+    const stInput = document.getElementById('st-input');
+    const stResult = document.getElementById('st-result');
+    const stCharCount = document.getElementById('st-char-count');
+    const stWordCount = document.getElementById('st-word-count');
+    const stDelimiter = document.getElementById('st-delimiter');
+    const stNChars = document.getElementById('st-n-chars');
+    const stNWords = document.getElementById('st-n-words');
+
+    function updateStats() {
+        const text = stInput.value;
+        stCharCount.textContent = text.length;
+        stWordCount.textContent = text.trim().split(/\s+/).filter(Boolean).length;
+    }
+    function showResult(arr) {
+        stResult.textContent = arr.join('\n');
+    }
+    document.getElementById('st-split-char').addEventListener('click', function() {
+        showResult(stInput.value.split(''));
+    });
+    document.getElementById('st-split-word').addEventListener('click', function() {
+        showResult(stInput.value.trim().split(/\s+/));
+    });
+    document.getElementById('st-split-line').addEventListener('click', function() {
+        showResult(stInput.value.split(/\r?\n/));
+    });
+    document.getElementById('st-split-delimiter').addEventListener('click', function() {
+        const delim = stDelimiter.value || ',';
+        showResult(stInput.value.split(delim));
+    });
+    document.getElementById('st-split-sentence').addEventListener('click', function() {
+        showResult(stInput.value.match(/[^.!?\n]+[.!?]?/g) || []);
+    });
+    document.getElementById('st-split-paragraph').addEventListener('click', function() {
+        showResult(stInput.value.split(/\n{2,}/));
+    });
+    document.getElementById('st-split-n-chars').addEventListener('click', function() {
+        const n = Math.max(1, parseInt(stNChars.value, 10) || 1);
+        const arr = [];
+        let s = stInput.value;
+        while (s.length) {
+            arr.push(s.slice(0, n));
+            s = s.slice(n);
+        }
+        showResult(arr);
+    });
+    document.getElementById('st-split-n-words').addEventListener('click', function() {
+        const n = Math.max(1, parseInt(stNWords.value, 10) || 1);
+        const words = stInput.value.trim().split(/\s+/);
+        const arr = [];
+        for (let i = 0; i < words.length; i += n) {
+            arr.push(words.slice(i, i + n).join(' '));
+        }
+        showResult(arr);
+    });
+    document.getElementById('st-split-camel').addEventListener('click', function() {
+        showResult(stInput.value.split(/(?<=[a-z])(?=[A-Z])|(?<=[A-Z])(?=[A-Z][a-z])/g));
+    });
+    document.getElementById('st-split-num-letter').addEventListener('click', function() {
+        showResult(stInput.value.split(/(?<=\d)(?=\D)|(?<=\D)(?=\d)/g));
+    });
+    stInput.addEventListener('input', updateStats);
+    document.getElementById('st-copy').addEventListener('click', function() {
+        navigator.clipboard.writeText(stResult.textContent).then(() => {
+            const btn = document.getElementById('st-copy');
+            const orig = btn.textContent;
+            btn.textContent = 'Copied!';
+            setTimeout(() => { btn.textContent = orig; }, 2000);
+        });
+    });
+    document.getElementById('st-download').addEventListener('click', function() {
+        const blob = new Blob([stResult.textContent], { type: 'text/plain' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'split-text.txt';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    });
+    document.getElementById('st-clear').addEventListener('click', function() {
+        stInput.value = '';
+        stResult.textContent = '';
+        updateStats();
+    });
+    updateStats();
+}
+initializeSplitText();
+</script>

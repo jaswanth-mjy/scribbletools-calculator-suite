@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=1200, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- Primary Meta Tags -->
     <title>Study Planner - Organize Your Academic Life & Track Goals | Free Student Tool</title>
@@ -40,7 +40,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Structured Data / Schema.org -->
     <script type="application/ld+json">
@@ -149,9 +149,13 @@
     }
 
     .planner-redirect-title {
-        font-size: 2.5rem;
+        font-family: 'Caveat', cursive !important;
+        font-size: 3.5rem !important;
         font-weight: 700;
-        color: #1f2937;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+        -webkit-background-clip: text !important;
+        -webkit-text-fill-color: transparent !important;
+        background-clip: text !important;
         margin-bottom: 20px;
     }
 
@@ -217,7 +221,7 @@
         }
 
         .planner-redirect-title {
-            font-size: 1.8rem;
+            font-size: 2.5rem !important;
         }
 
         .planner-redirect-description {
@@ -237,6 +241,72 @@
             font-size: 0.85rem;
         }
     }
+
+    @media (max-width: 480px) {
+        .planner-redirect-card {
+            padding: 30px 20px;
+        }
+
+        .planner-redirect-icon {
+            width: 80px;
+            height: 80px;
+            font-size: 2rem;
+        }
+
+        .planner-redirect-title {
+            font-size: 2rem !important;
+        }
+
+        .planner-redirect-description {
+            font-size: 0.95rem;
+        }
+
+        .planner-redirect-btn {
+            padding: 12px 30px;
+            font-size: 0.95rem;
+        }
+
+        .planner-features {
+            gap: 12px;
+        }
+
+        .planner-feature-item {
+            font-size: 0.8rem;
+        }
+    }
+
+    @media (max-width: 360px) {
+        .planner-redirect-card {
+            padding: 25px 15px;
+        }
+
+        .planner-redirect-icon {
+            width: 70px;
+            height: 70px;
+            font-size: 1.8rem;
+        }
+
+        .planner-redirect-title {
+            font-size: 1.75rem !important;
+        }
+
+        .planner-redirect-description {
+            font-size: 0.9rem;
+        }
+
+        .planner-redirect-btn {
+            padding: 10px 25px;
+            font-size: 0.9rem;
+        }
+
+        .planner-features {
+            gap: 10px;
+        }
+
+        .planner-feature-item {
+            font-size: 0.75rem;
+        }
+    }
 </style>
 
 <div class="planner-redirect-container">
@@ -244,7 +314,10 @@
         <div class="planner-redirect-icon">
             <i class="fas fa-clipboard-list"></i>
         </div>
-        <h1 class="planner-redirect-title">Study Planner</h1>
+        <h1 class="planner-redirect-title">
+            <span style="display: inline-block; -webkit-text-fill-color: initial; background: none;">📚</span>
+            <span style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Study Planner</span>
+        </h1>
         <p class="planner-redirect-description">
             Organize your academic life with our comprehensive study planner. 
             Manage your weekly schedule, track subjects, set goals, organize tasks, and monitor your progress!

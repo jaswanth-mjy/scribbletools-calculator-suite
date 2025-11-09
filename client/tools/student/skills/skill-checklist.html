@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=1200, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- Enhanced SEO Meta Tags -->
     <title>Skill Checklist - FREE Student Skills Assessment & Professional Development Tracker</title>
@@ -149,13 +149,18 @@
         }
         
         .skill-header h1 {
-            font-size: 2.5rem !important;
+            font-family: 'Caveat', cursive !important;
+            font-size: 3.5rem !important;
             margin-bottom: 15px !important;
             font-weight: 700 !important;
-            color: var(--skill-color-text-on-primary) !important;
+            background: linear-gradient(135deg, #ffffff 0%, #f0f4ff 100%) !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            background-clip: text !important;
         }
         
         .skill-header p {
+            font-family: 'Poppins', sans-serif !important;
             font-size: 1.1rem !important;
             opacity: 0.9 !important;
             color: var(--skill-color-text-on-primary) !important;
@@ -795,7 +800,7 @@
         /* Responsive Design */
         @media (max-width: 768px) {
             .skill-header h1 {
-                font-size: 2.2rem;
+                font-size: 2.5rem !important;
             }
             
             .skill-content {
@@ -819,51 +824,45 @@
                 padding: 20px;
             }
         }
+        
+        @media (max-width: 480px) {
+            .skill-header h1 {
+                font-size: 2rem !important;
+            }
+            
+            .skill-header p {
+                font-size: 0.9rem !important;
+            }
+            
+            .skill-header {
+                padding: 1.5rem 1rem !important;
+            }
+        }
+        
+        @media (max-width: 360px) {
+            .skill-header h1 {
+                font-size: 1.75rem !important;
+            }
+            
+            .skill-header p {
+                font-size: 0.85rem !important;
+            }
+            
+            .skill-main-container {
+                border-radius: 10px !important;
+            }
+        }
     </style>
     <link rel="stylesheet" href="../force-desktop-layout.css">
 </head>
 <body class="skill-body">
     <div class="skill-main-container">
         <div class="skill-header">
-            <h1>🛠️ Skill Checklist</h1>
+            <h1><span style="display: inline-block; -webkit-text-fill-color: initial; background: none;">🛠️</span> <span style="background: linear-gradient(135deg, #ffffff 0%, #f0f4ff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Skill Checklist</span></h1>
             <p>Assess and track your professional skills to enhance career readiness</p>
         </div>
         
         <div class="skill-content">
-            <!-- SEO Content Section -->
-            <div class="skill-form-section seo-section">
-                <div class="seo-header">
-                    <h2>🛠️ How to Use the Skill Checklist</h2>
-                    <p>Create a comprehensive inventory of your professional skills. Assess your competency levels, track development progress, and identify areas for improvement to boost your career readiness.</p>
-                </div>
-                
-                <div class="seo-grid">
-                    <div class="seo-card primary">
-                        <h3>🎯 Assessment Benefits</h3>
-                        <ul>
-                            <li>Identify strengths and skill gaps</li>
-                            <li>Create targeted development plans</li>
-                            <li>Track professional growth over time</li>
-                            <li>Improve job application competitiveness</li>
-                        </ul>
-                    </div>
-                    <div class="seo-card secondary">
-                        <h3>📊 Skill Categories</h3>
-                        <ul>
-                            <li>Technical skills and programming</li>
-                            <li>Communication and leadership</li>
-                            <li>Project management and organization</li>
-                            <li>Industry-specific competencies</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="seo-tips">
-                    <h3>🚀 Career Development Tips</h3>
-                    <p><strong>Regular Assessment:</strong> Update your skill inventory quarterly to track growth. <strong>Goal-Oriented:</strong> Focus on developing skills aligned with your career objectives and industry requirements.</p>
-                </div>
-            </div>
-            
             <!-- Add Skill Form -->
             <div class="skill-form-section">
                 <h2 class="skill-form-title">Add New Skill</h2>
@@ -950,6 +949,49 @@
                 <div class="plan-grid" id="planGrid">
                     <!-- Development plan will be generated here -->
                 </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- SEO Content Section -->
+    <div style="background: white; border-radius: 20px; padding: 2rem; margin-top: 3rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+        <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 2rem; border-radius: 15px; margin-bottom: 2rem; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);">
+            <h2 style="color: white; margin: 0 0 0.5rem 0; font-size: 1.8rem; font-weight: 600;">🛠️ How to Use the Skill Checklist</h2>
+            <p style="margin: 0; color: rgba(255,255,255,0.95); font-size: 1.05rem; line-height: 1.6;">Create a comprehensive inventory of your professional skills. Assess your competency levels, track development progress, and identify areas for improvement to boost your career readiness.</p>
+        </div>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+            <div style="background: white; padding: 1.5rem; border-radius: 12px; border: 2px solid #667eea; box-shadow: 0 2px 8px rgba(102, 126, 234, 0.15); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                <h3 style="color: #667eea; margin: 0 0 1rem 0; font-size: 1.3rem; font-weight: 600; display: flex; align-items: center; gap: 0.5rem;">
+                    <span style="font-size: 1.5rem;">🎯</span> Assessment Benefits
+                </h3>
+                <ul style="margin: 0; padding-left: 1.2rem; color: #555; line-height: 1.8;">
+                    <li>Identify strengths and skill gaps</li>
+                    <li>Create targeted development plans</li>
+                    <li>Track professional growth over time</li>
+                    <li>Improve job application competitiveness</li>
+                </ul>
+            </div>
+            
+            <div style="background: white; padding: 1.5rem; border-radius: 12px; border: 2px solid #10b981; box-shadow: 0 2px 8px rgba(16, 185, 129, 0.15); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                <h3 style="color: #10b981; margin: 0 0 1rem 0; font-size: 1.3rem; font-weight: 600; display: flex; align-items: center; gap: 0.5rem;">
+                    <span style="font-size: 1.5rem;">📊</span> Skill Categories
+                </h3>
+                <ul style="margin: 0; padding-left: 1.2rem; color: #555; line-height: 1.8;">
+                    <li>Technical skills and programming</li>
+                    <li>Communication and leadership</li>
+                    <li>Project management and organization</li>
+                    <li>Industry-specific competencies</li>
+                </ul>
+            </div>
+            
+            <div style="background: white; padding: 1.5rem; border-radius: 12px; border: 2px solid #f59e0b; box-shadow: 0 2px 8px rgba(245, 158, 11, 0.15); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                <h3 style="color: #f59e0b; margin: 0 0 1rem 0; font-size: 1.3rem; font-weight: 600; display: flex; align-items: center; gap: 0.5rem;">
+                    <span style="font-size: 1.5rem;">🚀</span> Career Development Tips
+                </h3>
+                <p style="margin: 0; color: #555; line-height: 1.8;">
+                    <strong style="color: #333;">Regular Assessment:</strong> Update your skill inventory quarterly to track growth. <strong style="color: #333;">Goal-Oriented:</strong> Focus on developing skills aligned with your career objectives and industry requirements.
+                </p>
             </div>
         </div>
     </div>

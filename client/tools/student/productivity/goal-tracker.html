@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=1200, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Goal Tracker - FREE Student Goal Progress Tracker & Achievement Planner</title>
     <meta name="description" content="FREE Goal Tracker for students to set, monitor, and achieve academic goals. Track progress, set deadlines, prioritize goals, and celebrate achievements. Perfect for student success planning.">
     <meta name="keywords" content="goal tracker, student goals, goal setting, achievement tracker, progress tracker, student planner, goal progress, academic goals, personal goals, goal management, student success">
@@ -72,23 +72,23 @@
         .goal-body,
         body.goal-body,
         html {
-            --goal-primary-color: #2E7D32 !important;
-            --goal-secondary-color: #388E3C !important;
-            --goal-accent-color: #4CAF50 !important;
-            --goal-success-color: #1B5E20 !important;
-            --goal-warning-color: #FF8F00 !important;
-            --goal-error-color: #D32F2F !important;
+            --goal-primary-color: #667eea !important;
+            --goal-secondary-color: #764ba2 !important;
+            --goal-accent-color: #8b5cf6 !important;
+            --goal-success-color: #10b981 !important;
+            --goal-warning-color: #f59e0b !important;
+            --goal-error-color: #ef4444 !important;
             --goal-text-primary: #212121 !important;
             --goal-text-secondary: #757575 !important;
             --goal-text-light: #BDBDBD !important;
             --goal-surface: #FFFFFF !important;
-            --goal-surface-alt: #F1F8E9 !important;
+            --goal-surface-alt: #f5f3ff !important;
             --goal-border-color: #E0E0E0 !important;
             --goal-border-light: #F5F5F5 !important;
-            --goal-shadow-sm: 0 2px 4px rgba(46, 125, 50, 0.1) !important;
-            --goal-shadow-md: 0 4px 8px rgba(46, 125, 50, 0.15) !important;
-            --goal-shadow-lg: 0 8px 16px rgba(46, 125, 50, 0.2) !important;
-            --goal-shadow-hover: 0 12px 24px rgba(46, 125, 50, 0.25) !important;
+            --goal-shadow-sm: 0 2px 4px rgba(102, 126, 234, 0.1) !important;
+            --goal-shadow-md: 0 4px 8px rgba(102, 126, 234, 0.15) !important;
+            --goal-shadow-lg: 0 8px 16px rgba(102, 126, 234, 0.2) !important;
+            --goal-shadow-hover: 0 12px 24px rgba(102, 126, 234, 0.25) !important;
             --goal-border-radius: 0.75rem !important;
             --goal-transition-timing: cubic-bezier(0.4, 0, 0.2, 1) !important;
             --goal-font-family: 'Poppins', sans-serif !important;
@@ -207,8 +207,7 @@
 
         /* Header Section */
         .goal-root .goal-header-section {
-            background: linear-gradient(135deg, var(--goal-primary-color, #2E7D32) 0%, var(--goal-secondary-color, #388E3C) 100%) !important;
-            background: linear-gradient(135deg, #2E7D32 0%, #388E3C 100%) !important;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
             color: #ffffff !important;
             padding: var(--goal-spacing-2xl, 3rem) var(--goal-spacing-xl, 2rem) !important;
             padding: 3rem 2rem !important;
@@ -230,18 +229,21 @@
 
         .goal-root .goal-header-section h1 {
             font-family: 'Caveat', cursive !important;
-            font-size: var(--goal-font-size-3xl, 3rem) !important;
-            font-size: 3rem !important;
+            font-size: 3.5rem !important;
             font-weight: 700 !important;
             margin-bottom: var(--goal-spacing-md, 1rem) !important;
             margin-bottom: 1rem !important;
-            color: #ffffff !important;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2) !important;
+            background: linear-gradient(135deg, #ffffff 0%, #f0f4ff 100%) !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            background-clip: text !important;
+            text-shadow: none !important;
             position: relative !important;
             z-index: 2 !important;
         }
 
         .goal-root .goal-header-section p {
+            font-family: 'Poppins', sans-serif !important;
             font-size: var(--goal-font-size-lg, 1.125rem) !important;
             font-size: 1.125rem !important;
             opacity: 0.95 !important;
@@ -1071,6 +1073,31 @@
         
         /* Responsive Design */
         @media (max-width: 768px) {
+            .goal-root .goal-header-section h1 {
+                font-size: 2.5rem !important;
+            }
+            
+            .goal-root .goal-header-section {
+                padding: 2rem 1.5rem !important;
+            }
+            
+            .goal-root .goal-header-section p {
+                font-size: 1rem !important;
+            }
+            
+            .goal-root .goal-main-container {
+                border-radius: 15px !important;
+            }
+            
+            .goal-root .goal-input-section,
+            .goal-root .goal-results-section {
+                padding: 1.5rem !important;
+            }
+            
+            .goal-standalone-wrapper {
+                padding: 10px !important;
+            }
+            
             .header h1 {
                 font-size: 2.2rem;
             }
@@ -1090,6 +1117,7 @@
             
             .goal-grid {
                 grid-template-columns: 1fr;
+                min-width: 100% !important;
             }
             
             .categories-grid {
@@ -1100,6 +1128,51 @@
                 width: 95%;
                 padding: 20px;
             }
+            
+            .goal-scroll-container {
+                overflow-x: visible !important;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .goal-root .goal-header-section h1 {
+                font-size: 2rem !important;
+            }
+            
+            .goal-root .goal-header-section p {
+                font-size: 0.9rem !important;
+            }
+            
+            .goal-root .goal-header-section {
+                padding: 1.5rem 1rem !important;
+            }
+            
+            .goal-root .goal-input-section,
+            .goal-root .goal-results-section {
+                padding: 1rem !important;
+            }
+            
+            .categories-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .goal-card {
+                padding: 15px !important;
+            }
+        }
+        
+        @media (max-width: 360px) {
+            .goal-root .goal-header-section h1 {
+                font-size: 1.75rem !important;
+            }
+            
+            .goal-root .goal-header-section p {
+                font-size: 0.85rem !important;
+            }
+            
+            .goal-root .goal-main-container {
+                border-radius: 10px !important;
+            }
         }
     </style>
     <link rel="stylesheet" href="../force-desktop-layout.css">
@@ -1109,7 +1182,7 @@
         <div class="goal-main-container">
             <!-- Header Section -->
             <div class="goal-header-section">
-                <h1>🎯 Goal Tracker</h1>
+                <h1><span style="display: inline-block; -webkit-text-fill-color: initial; background: none;">🎯</span> <span style="background: linear-gradient(135deg, #ffffff 0%, #f0f4ff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Goal Tracker</span></h1>
                 <p>Set, track, and achieve your academic and personal goals with our comprehensive goal tracking system</p>
                 <div class="goal-desktop-notice">
                     <i class="fas fa-bullseye"></i>
@@ -1124,39 +1197,6 @@
                     <!-- Input Section -->
                     <div class="goal-input-section">
                         <h2><i class="fas fa-plus-circle"></i> Add New Goal</h2>
-            <!-- SEO Content Section -->
-            <div class="goal-form-section" style="margin-bottom: 25px;">
-                <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; border-radius: 10px; margin-bottom: 20px;">
-                    <h2 style="color: white; margin-top: 0;">📈 How to Use the Goal Tracker</h2>
-                    <p style="margin-bottom: 0; color: white;">Set SMART goals with deadlines, track progress, prioritize tasks, and celebrate achievements. Perfect for academic goals, personal development, and student success planning.</p>
-                </div>
-                
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 20px;">
-                    <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #667eea;">
-                        <h3 style="color: #2c3e50; margin-top: 0;">🎯 Goal Setting Benefits</h3>
-                        <ul style="margin-bottom: 0; color: #6c757d;">
-                            <li>Improved academic performance and focus</li>
-                            <li>Better time management and productivity</li>
-                            <li>Enhanced motivation and achievement</li>
-                            <li>Clear progress tracking and milestones</li>
-                        </ul>
-                    </div>
-                    <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #28a745;">
-                        <h3 style="color: #2c3e50; margin-top: 0;">📊 Tracking Features</h3>
-                        <ul style="margin-bottom: 0; color: #6c757d;">
-                            <li>Progress percentage calculations</li>
-                            <li>Deadline and priority management</li>
-                            <li>Goal categories and organization</li>
-                            <li>Export data for analysis</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div style="background: #e8f5e8; padding: 15px; border-radius: 8px; margin-bottom: 15px;">
-                    <h3 style="color: #2c3e50; margin-top: 0;">🏆 Student Success Tips</h3>
-                    <p style="margin-bottom: 0; color: #6c757d;"><strong>SMART Goals:</strong> Make goals Specific, Measurable, Achievable, Relevant, and Time-bound. Break large goals into smaller milestones. Regular review and updates ensure continuous progress toward academic and personal achievement.</p>
-                </div>
-            </div>
 
                         <form id="goalForm">
                             <div class="goal-form-group">
@@ -1287,6 +1327,55 @@
                             <h3>🏆 Celebrate Milestones</h3>
                             <p>Acknowledge small wins along the way to maintain motivation and momentum.</p>
                         </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- SEO Content Section -->
+            <div class="goal-content-section" style="background: #f8f9fa; padding: 40px 20px; margin-top: 40px;">
+                <div style="max-width: 1200px; margin: 0 auto;">
+                    <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 15px; margin-bottom: 30px; text-align: center;">
+                        <h2 style="color: white; margin-top: 0; font-size: 2rem; font-weight: 600;">📈 How to Use the Goal Tracker</h2>
+                        <p style="margin-bottom: 0; color: white; font-size: 1.1rem; opacity: 0.95;">Set SMART goals with deadlines, track progress, prioritize tasks, and celebrate achievements. Perfect for academic goals, personal development, and student success planning.</p>
+                    </div>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-bottom: 30px;">
+                        <div style="background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); border-left: 5px solid #667eea;">
+                            <h3 style="color: #2c3e50; margin-top: 0; font-size: 1.3rem; display: flex; align-items: center; gap: 10px;">🎯 Goal Setting Benefits</h3>
+                            <ul style="margin-bottom: 0; color: #6c757d; line-height: 1.8;">
+                                <li>Improved academic performance and focus</li>
+                                <li>Better time management and productivity</li>
+                                <li>Enhanced motivation and achievement</li>
+                                <li>Clear progress tracking and milestones</li>
+                                <li>Structured approach to success</li>
+                            </ul>
+                        </div>
+                        <div style="background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); border-left: 5px solid #10b981;">
+                            <h3 style="color: #2c3e50; margin-top: 0; font-size: 1.3rem; display: flex; align-items: center; gap: 10px;">📊 Tracking Features</h3>
+                            <ul style="margin-bottom: 0; color: #6c757d; line-height: 1.8;">
+                                <li>Progress percentage calculations</li>
+                                <li>Deadline and priority management</li>
+                                <li>Goal categories and organization</li>
+                                <li>Export data for analysis</li>
+                                <li>Visual progress indicators</li>
+                            </ul>
+                        </div>
+                        <div style="background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); border-left: 5px solid #f59e0b;">
+                            <h3 style="color: #2c3e50; margin-top: 0; font-size: 1.3rem; display: flex; align-items: center; gap: 10px;">🏆 Student Success Tips</h3>
+                            <ul style="margin-bottom: 0; color: #6c757d; line-height: 1.8;">
+                                <li><strong>SMART Goals:</strong> Specific, Measurable, Achievable, Relevant, Time-bound</li>
+                                <li>Break large goals into smaller milestones</li>
+                                <li>Regular review and progress updates</li>
+                                <li>Celebrate small wins along the way</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div style="background: white; padding: 30px; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+                        <h3 style="color: #2c3e50; margin-top: 0; font-size: 1.5rem; text-align: center; margin-bottom: 20px;">💡 Why Goal Tracking Works for Students</h3>
+                        <p style="color: #6c757d; line-height: 1.8; text-align: center; margin-bottom: 0; font-size: 1.05rem;">
+                            Goal tracking transforms abstract dreams into concrete action plans. By breaking down your ambitions into measurable targets with deadlines, you create accountability and momentum. Students who track their goals consistently achieve higher grades, better time management, and reduced stress. Our tracker helps you stay organized, motivated, and focused on what matters most for your academic and personal success.
+                        </p>
                     </div>
                 </div>
             </div>

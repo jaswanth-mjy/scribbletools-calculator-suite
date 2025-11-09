@@ -1,0 +1,564 @@
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+  }
+
+  .keymap-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+
+  .keymap-header {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 3rem 2rem;
+    margin-bottom: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    position: relative;
+  }
+
+  .keymap-title {
+    font-family: 'Caveat', cursive;
+    font-size: 3.5rem;
+    font-weight: bold;
+    color: #667eea;
+    margin-bottom: 0.5rem;
+  }
+
+  .keymap-subtitle {
+    color: #4a5568;
+    font-size: 1.1rem;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  .search-box-wrapper {
+    max-width: 700px;
+    margin: 0 auto 2rem;
+  }
+
+  .search-box {
+    position: relative;
+  }
+
+  .search-icon {
+    position: absolute;
+    left: 1.25rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.25rem;
+    color: #9ca3af;
+  }
+
+  #keymap-search {
+    width: 100%;
+    padding: 1rem 1rem 1rem 3rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    font-size: 1rem;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    color: #1f2937;
+    transition: all 0.2s ease;
+  }
+
+  #keymap-search::placeholder {
+    color: #9ca3af;
+  }
+
+  #keymap-search:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+  }
+
+  #keymap-summary {
+    text-align: center;
+    color: #4a5568;
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    padding: 0.75rem 1.5rem;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 24px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  #keymap-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .category-card {
+    background: white;
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    transition: all 0.2s ease;
+  }
+
+  .category-card:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    transform: translateY(-4px);
+  }
+
+  .category-title {
+    font-weight: 800;
+    font-size: 1.3rem;
+    color: #1f2937;
+    margin-bottom: 1.25rem;
+    padding-bottom: 1rem;
+    border-bottom: 3px solid transparent;
+    background: linear-gradient(white, white) padding-box,
+                linear-gradient(135deg, #D9534F, #667eea) border-box;
+    border-bottom: 3px solid transparent;
+    border-image: linear-gradient(135deg, #D9534F, #667eea) 1;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    position: relative;
+  }
+
+  .category-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.75rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+  }
+
+  .category-card:hover .category-icon {
+    transform: scale(1.05);
+  }
+
+  .text-tools-icon { 
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  }
+  .math-tools-icon { 
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  }
+  .financial-tools-icon { 
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  }
+  .health-tools-icon { 
+    background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+  }
+  .image-tools-icon { 
+    background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+  }
+  .utilities-icon { 
+    background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);
+  }
+  .other-icon { 
+    background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+  }
+
+  .student-tools-icon {
+    background: linear-gradient(135deg, #fc6c8f 0%, #f6685e 100%);
+  }
+
+  .tools-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .tool-link {
+    display: block;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    color: #374151;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+  }
+
+  .tool-link:hover {
+    background: rgba(102, 126, 234, 0.08);
+    color: #667eea;
+  }
+
+  .error-box {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    background: #fef2f2;
+    border: 2px solid #fca5a5;
+    border-radius: 12px;
+    color: #991b1b;
+    text-align: center;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(153, 27, 27, 0.1);
+  }
+
+  /* Smooth scroll behavior */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #D9534F 0%, #667eea 100%);
+    border-radius: 6px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #c9443f 0%, #5568da 100%);
+  }
+
+  .loading {
+    opacity: 0.6;
+  }
+
+  @media (max-width: 1024px) {
+    #keymap-container {
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .keymap-title {
+      font-size: 2.75rem;
+    }
+    
+    .keymap-subtitle {
+      font-size: 1rem;
+    }
+    
+    .keymap-header {
+      padding: 3rem 1rem 2rem;
+    }
+
+    #keymap-search {
+      font-size: 1rem;
+      padding: 1rem 1rem 1rem 3rem;
+    }
+
+    #keymap-container {
+      grid-template-columns: 1fr;
+      padding: 0 1rem 2rem;
+      gap: 1.25rem;
+    }
+
+    .category-card {
+      padding: 1.5rem;
+    }
+
+    .category-icon {
+      width: 40px;
+      height: 40px;
+      font-size: 1.5rem;
+    }
+
+    .tool-link {
+      font-size: 0.9rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .keymap-title {
+      font-size: 2.25rem;
+    }
+
+    .search-box-wrapper {
+      padding: 0 0.5rem;
+    }
+
+    #keymap-container {
+      padding: 0 0.5rem 2rem;
+    }
+  }
+
+  /* Back button */
+  .back-button {
+    position: fixed;
+    top: 1.5rem;
+    left: 1.5rem;
+    color: white;
+    text-decoration: none;
+    font-size: 1.5rem;
+    transition: all 0.2s ease;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .back-button:hover {
+    background: rgba(255, 255, 255, 0.3);
+  }  .back-button-text {
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  /* Print styles */
+  @media print {
+    .keymap-container {
+      background: white;
+    }
+
+    .keymap-header {
+      background: #667eea;
+      color: white;
+    }
+
+    .category-card {
+      break-inside: avoid;
+      box-shadow: none;
+      border: 1px solid #ddd;
+    }
+
+    .tool-link {
+      color: #000;
+    }
+
+    .back-button {
+      display: none;
+    }
+  }
+</style>
+
+<section class="keymap-container">
+  <div class="keymap-header">
+    <a href="index.html" class="back-button">
+      ← <span class="back-button-text">Back to Home</span>
+    </a>
+    <h1 class="keymap-title">🗺️ All Tools Keymap</h1>
+    <p class="keymap-subtitle">Browse all 200+ professional tools organized by category. Click any tool to open it instantly.</p>
+  </div>
+
+  <div class="search-box-wrapper">
+    <div class="search-box">
+      <span class="search-icon">🔍</span>
+      <input 
+        id="keymap-search" 
+        type="text" 
+        placeholder="Search tools... (e.g., image, mortgage, calculator)" 
+        autocomplete="off"
+        spellcheck="false"
+      />
+    </div>
+  </div>
+
+  <div id="keymap-summary"></div>
+  <div id="keymap-container"></div>
+</section>
+
+<script>
+(function() {
+  'use strict';
+
+  // Utility: Title Case for labels
+  function titleize(kebab) {
+    return kebab
+      .replace(/[-_]+/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim()
+      .replace(/\b\w/g, c => c.toUpperCase());
+  }
+
+  // Extract the routes object literal from index.html script content
+  function extractRoutesFromPage() {
+    const scripts = Array.from(document.scripts);
+    for (const s of scripts) {
+      const txt = s.textContent || '';
+      if (txt.includes('const routes') && txt.includes('#')) {
+        // Capture the object literal between the first '{' after '=' and the matching '}'
+        const match = txt.match(/const\s+routes\s*=\s*({[\s\S]*?});/);
+        if (!match) continue;
+        const objLiteral = match[1];
+        try {
+          // eslint-disable-next-line no-new-func
+          const parsed = Function('"use strict"; return (' + objLiteral + ');')();
+          if (parsed && typeof parsed === 'object') return parsed;
+        } catch (e) {
+          console.warn('Failed to parse routes from script:', e);
+        }
+      }
+    }
+    return null;
+  }
+
+  function categorize(hash, path) {
+    if (path === 'all-tools.html' || hash === '#all-tools') return null; // skip self
+    if (path.startsWith('client/tools/text/')) return 'Text Tools';
+    if (path.startsWith('client/tools/math/')) return 'Math Calculators';
+    if (path.startsWith('client/tools/financial/')) return 'Financial Calculators';
+    if (path.startsWith('client/tools/health/')) return 'Health & Fitness';
+    if (path.startsWith('client/tools/image/')) return 'Image & Media';
+    if (path.startsWith('client/tools/student/')) return 'Student Tools';
+    if (path.startsWith('client/tools/other/')) return 'General Utilities';
+    return 'Other';
+  }
+
+  function labelFor(hash, path) {
+    // Prefer filename from path for a cleaner label
+    try {
+      const file = path.split('/').pop().replace(/\.html$/i, '');
+      return titleize(file);
+    } catch {
+      return titleize(hash.replace(/^#/, ''));
+    }
+  }
+
+  function renderKeymap(routes) {
+    const container = document.getElementById('keymap-container');
+    const summary = document.getElementById('keymap-summary');
+    const searchInput = document.getElementById('keymap-search');
+
+    // Group by category
+    const groups = new Map();
+    let total = 0;
+    Object.entries(routes).forEach(([hash, path]) => {
+      const cat = categorize(hash, path);
+      if (!cat) return;
+      const item = { hash, path, label: labelFor(hash, path) };
+      if (!groups.has(cat)) groups.set(cat, []);
+      groups.get(cat).push(item);
+      total++;
+    });
+
+    // Sort categories and items
+    const order = ['Text Tools', 'Math Calculators', 'Financial Calculators', 'Health & Fitness', 'Image & Media', 'Student Tools', 'General Utilities', 'Other'];
+    const catEntries = Array.from(groups.entries()).sort((a, b) => order.indexOf(a[0]) - order.indexOf(b[0]));
+    catEntries.forEach(([cat, items]) => items.sort((a, b) => a.label.localeCompare(b.label)));
+
+    summary.textContent = `Found ${total} tools across ${catEntries.length} categories`;
+
+    function draw(filter = '') {
+      container.innerHTML = '';
+      const query = filter.trim().toLowerCase();
+      let shown = 0;
+
+      const categoryIcons = {
+        'Text Tools': '📝',
+        'Math Calculators': '🔢',
+        'Financial Calculators': '💰',
+        'Health & Fitness': '❤️',
+        'Image & Media': '🖼️',
+        'Student Tools': '🎓',
+        'General Utilities': '🔧',
+        'Other': '⚙️'
+      };
+
+      const categoryIconClasses = {
+        'Text Tools': 'text-tools-icon',
+        'Math Calculators': 'math-tools-icon',
+        'Financial Calculators': 'financial-tools-icon',
+        'Health & Fitness': 'health-tools-icon',
+        'Image & Media': 'image-tools-icon',
+        'Student Tools': 'student-tools-icon',
+        'General Utilities': 'utilities-icon',
+        'Other': 'other-icon'
+      };
+
+      catEntries.forEach(([cat, items], index) => {
+        const filtered = query
+          ? items.filter(it => it.label.toLowerCase().includes(query) || it.hash.toLowerCase().includes(query))
+          : items;
+        if (filtered.length === 0) return;
+
+        const card = document.createElement('div');
+        card.className = 'category-card';
+        card.style.animationDelay = `${index * 0.05}s`;
+
+        const h3 = document.createElement('h3');
+        h3.className = 'category-title';
+        
+        const iconSpan = document.createElement('span');
+        iconSpan.className = `category-icon ${categoryIconClasses[cat] || 'other-icon'}`;
+        iconSpan.textContent = categoryIcons[cat] || '⚙️';
+        
+        const textSpan = document.createElement('span');
+        textSpan.textContent = `${cat} (${filtered.length})`;
+        
+        h3.appendChild(iconSpan);
+        h3.appendChild(textSpan);
+        card.appendChild(h3);
+
+        const list = document.createElement('ul');
+        list.className = 'tools-list';
+
+        filtered.forEach(it => {
+          const li = document.createElement('li');
+          const a = document.createElement('a');
+          a.href = it.hash; // Let the main router handle navigation
+          a.textContent = it.label;
+          a.className = 'tool-link';
+          li.appendChild(a);
+          list.appendChild(li);
+          shown++;
+        });
+
+        card.appendChild(list);
+        container.appendChild(card);
+      });
+
+      if (query) {
+        summary.innerHTML = `🔍 Found <strong>${shown}</strong> tool${shown === 1 ? '' : 's'} matching "${query}"`;
+      } else {
+        summary.innerHTML = `✨ Showing <strong>${shown}</strong> professional tools across <strong>${catEntries.filter(([cat, items]) => {
+          const filtered = items.filter(it => it.label.toLowerCase().includes(query) || it.hash.toLowerCase().includes(query));
+          return filtered.length > 0;
+        }).length}</strong> categories`;
+      }
+    }
+
+    // Add smooth input debouncing for better performance
+    let searchTimeout;
+    searchInput.addEventListener('input', () => {
+      clearTimeout(searchTimeout);
+      searchTimeout = setTimeout(() => draw(searchInput.value), 150);
+    });
+    
+    draw('');
+  }
+
+  const routes = extractRoutesFromPage();
+  if (!routes) {
+    const container = document.getElementById('keymap-container');
+    container.innerHTML = '<div class="error-box">⚠️ Unable to load keymap. Routes not found in page script.</div>';
+    return;
+  }
+  renderKeymap(routes);
+})();
+</script>

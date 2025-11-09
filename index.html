@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>ScribbleTools: Free Online Calculators & Tools for Math, Text, Finance, Health</title>
     <meta name="description" content="ScribbleTools is the professional, ad-free toolbox for math, text, finance, health, and more. Fast, privacy-first, and always free. Trusted by students, teachers, and professionals.">
     <meta name="keywords" content="online calculator, math calculator, area calculator, volume calculator, perimeter calculator, surface area calculator, text tools, financial calculator, health calculator, free utilities, ad-free tools, privacy-first tools, professional calculators">
@@ -93,22 +93,51 @@
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
+        /* === CSS Variables for Consistent Theming === */
+        :root {
+            --primary-gradient: linear-gradient(135deg, #f0f9ff 0%, #fef3f2 25%, #f7fee7 50%, #fdf4ff 75%, #f0f9ff 100%);
+            --text-primary: #4A4A4A;
+            --text-secondary: #6B7280;
+            --bg-white: #ffffff;
+            --border-color: #e5e7eb;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+        }
+
+        /* Reduced Motion Support - Respects User Preference */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+
         body, html {
-    overflow-x: auto;
+    overflow-x: hidden;
     width: 100%;
     margin: 0;
     min-width: 100%;
 }
 body { 
     font-family: 'Poppins', sans-serif; 
-    background: linear-gradient(135deg, #f0f9ff 0%, #fef3f2 25%, #f7fee7 50%, #fdf4ff 75%, #f0f9ff 100%);
+    background: var(--primary-gradient);
     background-size: 400% 400%;
     animation: gradientShift 15s ease infinite;
-    color: #4A4A4A;
+    color: var(--text-primary);
     font-size: clamp(0.85rem, 2vw, 1.1rem);
     padding: clamp(0.125rem, 2vw, 1rem);
     line-height: 1.4;
     min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    /* Better touch interactions */
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+    touch-action: manipulation;
 }
 h1, h2, h3 {
     font-size: clamp(1.25rem, 4vw, 2rem);
@@ -125,12 +154,27 @@ h1, h2, h3 {
     box-sizing: border-box;
     padding: clamp(0.25rem, 3vw, 1.5rem);
     margin: 0 auto;
-    overflow-x: auto;
+    overflow-x: hidden;
+    /* Performance optimization */
+    will-change: scroll-position;
+    contain: layout style paint;
 }
 
 /* Smooth Horizontal Scroll for All Views */
 * {
     scroll-behavior: smooth;
+    box-sizing: border-box;
+}
+
+/* Better touch target sizes for mobile */
+button,
+a,
+input,
+select,
+textarea {
+    min-height: 44px;
+    min-width: 44px;
+    touch-action: manipulation;
 }
 
 /* Custom Scrollbar Styling for Horizontal Scroll */
@@ -443,7 +487,7 @@ header:hover .absolute { animation: shimmer 2s ease-in-out infinite; }
 #mobile-header-menu {
     transition: all 0.3s ease;
     border-top: 1px solid #e5e7eb;
-    width: 100vw;
+    width: 100%;
     position: absolute;
     left: 0;
     top: 60px;
@@ -471,36 +515,21 @@ img, video {
     display: block;
 }
 /* Utility classes for better space usage */
-.under-development {
-    color: #ff9800;
-    font-size: 0.8em;
-}
-/* --- Mobile Responsive --- */
-@media (max-width: 768px) {
-  body {
-    padding: 0.125rem;
-    font-size: 0.9rem;
-    line-height: 1.5;
-    overflow-x: auto !important;
-    -webkit-overflow-scrolling: touch;
+        // Removed blogArchiveContent definition (feature deprecated)
+    gap: 1rem;
   }
   
-  .container {
-    max-width: 100vw;
-    padding: 0.125rem;
-    margin: 0;
-    overflow-x: auto;
+  /* Grid improvements */
+  .grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
   }
   
-  #app-container {
-    padding: 0.25rem;
-    margin: 0;
-    border-radius: 0.375rem;
-    width: 100%;
+  /* Better image handling */
+  img {
     max-width: 100%;
-    box-shadow: none;
-    border: none;
-    overflow-x: auto;
+    height: auto;
+    object-fit: contain;
   }
   
   /* Enhanced Mobile Horizontal Scroll */
@@ -658,24 +687,100 @@ img, video {
   }
 }
 
+/* --- Tablet Breakpoint (Modern 2025) --- */
+@media (min-width: 481px) and (max-width: 1024px) {
+  body {
+    font-size: clamp(0.9rem, 2vw, 1rem);
+    padding: 0.5rem;
+  }
+  
+  .container {
+    max-width: 95%;
+    padding: 1rem;
+  }
+  
+  /* Two-column grid for tablets */
+  .grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1rem !important;
+  }
+  
+  /* Better button sizing */
+  button {
+    min-height: 46px;
+    padding: 0.875rem 1.25rem;
+  }
+  
+  /* Optimize navigation */
+  .nav-link {
+    font-size: 0.9rem;
+    padding: 0.75rem 1rem;
+  }
+}
+
+/* --- Portrait Tablet --- */
+@media (min-width: 481px) and (max-width: 768px) and (orientation: portrait) {
+  .grid {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .container {
+    max-width: 100%;
+  }
+}
+
+/* --- Landscape Tablet --- */
+@media (min-width: 769px) and (max-width: 1024px) and (orientation: landscape) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+  
+  .container {
+    max-width: 90%;
+  }
+}
+
 @media (max-width: 480px) {
     body {
-        padding: 0.0625rem;
-        font-size: 0.85rem;
-        line-height: 1.4;
+        padding: 0.25rem;
+        font-size: clamp(0.813rem, 2vw, 0.875rem);
+        line-height: 1.6;
     }
     
     .container, #app-container {
-        padding: 0.125rem;
+        padding: 0.5rem;
         margin: 0;
         width: 100%;
         max-width: 100%;
     }
     
+    /* Better touch targets for small screens */
+    button,
+    a.nav-link,
+    input,
+    select {
+        min-height: 48px;
+        font-size: 16px; /* Prevents iOS zoom */
+        padding: 0.75rem;
+    }
+    
+    /* Optimize typography */
+    h1 {
+        font-size: clamp(1.5rem, 4.5vw, 2rem);
+    }
+    
+    h2 {
+        font-size: clamp(1.25rem, 3.5vw, 1.75rem);
+    }
+    
+    h3 {
+        font-size: clamp(1.125rem, 3vw, 1.5rem);
+    }
+    
     /* Enhanced card design for smaller screens */
     .nav-category summary {
-        padding: 0.6rem;
-        font-size: 0.9rem;
+        padding: 0.75rem;
+        font-size: clamp(0.875rem, 2.2vw, 1rem);
         min-height: 44px;
         background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
         border-radius: 6px;
@@ -1382,7 +1487,7 @@ header input {
     
     /* Mobile search box adjustments */
     #search-box {
-        width: calc(100vw - 2rem);
+    width: calc(100% - 2rem);
         margin: 0 1rem;
     }
     
@@ -1716,7 +1821,7 @@ header input {
             <div id="hamburger-backdrop" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-[59] opacity-0 pointer-events-none transition-opacity duration-300"></div>
             
             <!-- Enhanced Hamburger Menu Window - Centered Compact Popup -->
-            <div id="hamburger-menu" class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1 h-1 max-w-[calc(100vw-2rem)] bg-gradient-to-br from-white via-blue-50 to-purple-50 shadow-2xl rounded-3xl border-2 border-purple-300 z-[60] transform opacity-0 scale-[0.01] transition-all duration-400 ease-out backdrop-blur-md overflow-hidden">
+            <div id="hamburger-menu" class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1 h-1 max-w-[calc(100% - 2rem)] bg-gradient-to-br from-white via-blue-50 to-purple-50 shadow-2xl rounded-3xl border-2 border-purple-300 z-[60] transform opacity-0 scale-[0.01] transition-all duration-400 ease-out backdrop-blur-md overflow-hidden">
                 <!-- Menu Header with Gradient -->
                 <div class="flex justify-between items-center px-4 py-2.5 bg-gradient-to-r from-purple-600 via-pink-500 to-red-500 rounded-t-3xl relative sticky top-0 z-10">
                     <h3 class="font-bold text-white text-sm flex items-center">
@@ -1854,19 +1959,7 @@ header input {
                                 </div>
                             </article>
                             
-                            <!-- Learning Resource 4 -->
-                            <article class="bg-white/80 rounded-xl p-4 shadow-md hover:shadow-lg transition-all duration-300 border border-orange-200 cursor-pointer" onclick="window.location.hash='#blog-archive'">
-                                <h3 class="font-bold text-lg text-gray-800 mb-2 hover:text-orange-600 transition-colors">
-                                    � Mobile-First Design: Tools on the Go
-                                </h3>
-                                <p class="text-gray-600 text-sm mb-3">
-                                    ScribbleTools now offers full mobile responsiveness. Calculate, convert, and solve problems anywhere, anytime...
-                                </p>
-                                <div class="flex items-center justify-between text-xs text-gray-500">
-                                    <span>📅 Oct 1, 2025</span>
-                                    <span class="bg-orange-100 text-orange-800 px-2 py-1 rounded-full">Tech</span>
-                                </div>
-                            </article>
+                            <!-- Removed Blog Archive teaser (was Learning Resource 4) -->
                         </div>
                         
                         <!-- View All Resources Link -->
@@ -1883,7 +1976,19 @@ header input {
                         </div>
                         
                         <!-- Enhanced Newsletter Signup -->
-                        <div class="mt-6 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-xl p-5 border-2 border-indigo-200 shadow-lg">
+                        <style>
+                        /* Hide all subscription UI on mobile/small screens */
+                        @media (max-width: 768px) {
+                            #site-newsletter,
+                            #subscription-modal,
+                            #subscription-bar,
+                            #footer-subscribe-section,
+                            .subscription-prompt { 
+                                display: none !important; 
+                            }
+                        }
+                        </style>
+                        <div id="site-newsletter" class="mt-6 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-xl p-5 border-2 border-indigo-200 shadow-lg">
                             <h3 class="font-bold text-gray-800 mb-2 flex items-center">
                                 <span class="mr-2 text-xl">📬</span>
                                 Join Our Learning Community
@@ -1971,7 +2076,7 @@ header input {
         </div>
 
         <!-- Mobile-Only Footer Subscription Banner -->
-        <div class="block md:hidden container mx-auto px-3 mb-6">
+        <div id="footer-subscribe-section" class="block md:hidden container mx-auto px-3 mb-6">
             <div class="bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-700 rounded-2xl shadow-2xl overflow-hidden relative">
                 <!-- Mobile Background Pattern -->
                 <div class="absolute inset-0 opacity-20">
@@ -2165,6 +2270,7 @@ header input {
                         Subscribe
                     </button>
                     <button id="bar-close-btn" 
+                            aria-label="Close subscription notification"
                             class="text-white hover:text-gray-200 transition-colors ml-2">
                         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
@@ -2889,8 +2995,8 @@ header input {
             // Student Tools - Skill Building & Learning
             '#skill-checklist': 'client/tools/student/skills/skill-checklist.html',
             
-            // Blog Archive
-            '#blog-archive': 'blog-archive',
+            // Removed Blog Archive route
+            // '#blog-archive': 'blog-archive',
         };
 
         const homeContent = `
@@ -5364,10 +5470,9 @@ header input {
 
             // Handle regular routes
             try {
-                if (hash === '#blog-archive') {
-                    console.log('Loading blog archive');
-                    toggleToolNavigation(true);
-                    appContainer.innerHTML = blogArchiveContent;
+                // Blog archive deprecated
+                if (false) {
+                    /* legacy blog-archive branch removed */
                 } else if (path && path !== 'blog-listing') {
                     console.log('Loading content from path:', path);
                     loadContent(path);

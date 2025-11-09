@@ -1,0 +1,1719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1200, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes">
+    <title>Resume Builder - FREE Professional Resume Maker & CV Creator</title>
+    <meta name="description" content="Free resume builder! Create professional resumes, CV templates, job applications. Student resume maker with templates. 100% free!">
+    <meta name="keywords" content="resume builder, CV creator, resume maker, professional resume, resume templates, CV templates, job resume, student resume, resume generator, curriculum vitae, job application, resume design, career builder, resume format, free resume, online resume builder, resume creator, job search, career tools, employment resume">
+    <meta name="author" content="Scribble Tools">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://scribbletools.in/client/tools/student/career/resume-builder-app.html">
+    <meta property="og:title" content="Resume Builder - FREE Professional Resume Maker & CV Creator">
+    <meta property="og:description" content="Free resume builder! Create professional resumes, CV templates, job applications. Student resume maker with templates. 100% free!">
+    <meta property="og:image" content="https://scribbletools.in/assets/og-image.svg">
+    <meta property="og:site_name" content="Scribble Tools">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://scribbletools.in/client/tools/student/career/resume-builder-app.html">
+    <meta property="twitter:title" content="Resume Builder - FREE Professional Resume Maker & CV Creator">
+    <meta property="twitter:description" content="Free resume builder! Create professional resumes, CV templates, job applications. Student resume maker with templates. 100% free!">
+    <meta property="twitter:image" content="https://scribbletools.in/assets/og-image.svg">
+    
+    <!-- Additional SEO Meta Tags -->
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Scribble Tools">
+    <meta name="generator" content="Scribble Tools">
+    <meta name="application-name" content="Resume Builder">
+    <meta name="apple-mobile-web-app-title" content="Resume Maker">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#D9534F">
+    <meta name="msapplication-navbutton-color" content="#D9534F">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#D9534F">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://scribbletools.in/client/tools/student/career/resume-builder-app.html">
+    
+    <!-- Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Professional Resume Builder & CV Creator",
+      "description": "Free online resume builder for creating professional resumes and CVs. Perfect for students, job seekers, and career professionals.",
+      "url": "https://scribbletools.in/client/tools/student/career/resume-builder-app.html",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "Any",
+      "permissions": "browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "featureList": [
+        "Professional resume templates",
+        "CV creator tool",
+        "Resume formatting",
+        "Job application builder",
+        "Career document maker",
+        "Student resume tool",
+        "No registration required",
+        "Free to use"
+      ],
+      "provider": {
+        "@type": "Organization",
+        "name": "Scribble Tools",
+        "url": "https://scribbletools.in"
+      }
+    }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Caveat:wght@400;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #F8F4E8;
+        }
+        
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #F8F4E8; }
+        ::-webkit-scrollbar-thumb { background: #D9534F; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #c9302c; }
+
+        .section-title-input {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #333;
+            background-color: transparent;
+            border: none;
+            width: 100%;
+            padding: 4px 0;
+            margin-bottom: 1rem;
+            transition: all 0.2s ease;
+            font-family: 'Caveat', cursive;
+        }
+        .section-title-input:focus {
+            outline: none;
+            box-shadow: 0 1px #D9534F;
+            color: #D9534F;
+        }
+
+        .form-section {
+            background: #fff;
+            border-right: 2px solid #EAE3D5;
+            flex: 0 0 600px; /* Fixed width for form */
+            padding: 1.5rem 2rem;
+        }
+        
+        #preview-column {
+            flex: 1;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            background: #F8F4E8; /* Match body background */
+        }
+
+        .section-container {
+            transition: all 0.2s ease;
+            margin-bottom: 2rem; /* More space between sections */
+            padding: 1.5rem; /* More padding inside sections */
+            background: #FDFBF5;
+            border: 1px solid #EAE3D5;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        .section-container:hover {
+            box-shadow: 0 4px 12px rgba(217, 83, 79, 0.1);
+            border-color: #D9534F;
+        }
+
+        /* ScribbleTools button styling */
+        .btn-primary {
+            background: #fff;
+            color: #D9534F;
+            border: 2px solid #D9534F;
+            transition: all 0.3s ease;
+            transform: translateY(0);
+            font-family: 'Poppins', sans-serif;
+            border-radius: 0.5rem;
+        }
+        .btn-primary:hover {
+            background: #D9534F;
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(217, 83, 79, 0.3);
+        }
+
+        .btn-secondary {
+            background: #FDFBF5;
+            color: #333;
+            border: 2px solid #EAE3D5;
+            transition: all 0.3s ease;
+            transform: translateY(0);
+            font-family: 'Poppins', sans-serif;
+            border-radius: 0.5rem;
+        }
+        .btn-secondary:hover {
+            background: #EAE3D5;
+            color: #333;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(234, 227, 213, 0.3);
+        }
+
+        .btn-accent {
+            background: #FDFBF5;
+            color: #333;
+            border: 2px solid #EAE3D5;
+            transition: all 0.3s ease;
+            transform: translateY(0);
+            font-family: 'Poppins', sans-serif;
+            border-radius: 0.5rem;
+        }
+        .btn-accent:hover {
+            background: #EAE3D5;
+            color: #333;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(234, 227, 213, 0.3);
+        }
+        
+        .btn-danger {
+            background: #fff;
+            color: #dc3545;
+            border: 2px solid #dc3545;
+            transition: all 0.3s ease;
+            transform: translateY(0);
+            font-family: 'Poppins', sans-serif;
+            border-radius: 0.5rem;
+        }
+        .btn-danger:hover {
+            background: #dc3545;
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(220, 53, 69, 0.3);
+        }
+        
+        /* Input focus enhancement */
+        .form-input:hover {
+            border-color: #D9534F;
+            box-shadow: 0 2px 8px rgba(217, 83, 79, 0.15);
+        }
+        
+        /* Enhanced Photo Upload Styling */
+        .photo-upload-container {
+            position: relative;
+            border: 2px dashed #D9534F;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            text-align: center;
+            background: #FDFBF5;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .photo-upload-container:hover {
+            border-color: #c9302c;
+            background: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(217, 83, 79, 0.15);
+        }
+        
+        .photo-upload-container.has-photo {
+            border-style: solid;
+            border-color: #D9534F;
+            background: #fff;
+        }
+        
+        .photo-upload-container.drag-over {
+            border-color: #c9302c;
+            background: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(217, 83, 79, 0.25);
+        }
+        
+        .photo-upload-input {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: pointer;
+        }
+        
+        .photo-upload-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .photo-upload-icon {
+            font-size: 2.5rem;
+            color: #D9534F;
+            margin-bottom: 0.5rem;
+        }
+        
+        .photo-upload-text {
+            font-weight: 600;
+            color: #333;
+            font-size: 1rem;
+        }
+        
+        .photo-upload-subtext {
+            font-size: 0.875rem;
+            color: #666;
+        }
+        
+        .photo-preview-container {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .photo-preview {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #D9534F;
+            box-shadow: 0 8px 25px rgba(217, 83, 79, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .photo-preview:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 35px rgba(217, 83, 79, 0.3);
+        }
+        
+        .photo-remove-btn {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 0.875rem;
+            box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
+            transition: all 0.2s ease;
+        }
+        
+        .photo-remove-btn:hover {
+            background: #c82333;
+            transform: scale(1.1);
+            box-shadow: 0 6px 18px rgba(220, 53, 69, 0.4);
+        }
+        
+        /* Resume preview photo styling */
+        .resume-photo-frame {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #D9534F;
+            box-shadow: 0 4px 15px rgba(217, 83, 79, 0.2);
+            margin: 0 auto 1rem auto;
+            display: block;
+        }
+
+        /* Enhanced input styling */
+        .form-input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #EAE3D5;
+            border-radius: 0.5rem;
+            background: #fff;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            color: #333;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 4px rgba(217, 83, 79, 0.1);
+        }
+        .form-input:focus {
+            border-color: #D9534F;
+            box-shadow: 0 0 0 3px rgba(217, 83, 79, 0.2);
+            outline: none;
+            background: #fff;
+        }
+        .form-input::placeholder {
+            color: #999;
+            font-weight: 400;
+        }
+
+        /* New Two-Column Layout Styles */
+        #resume-preview {
+            background: white;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            color: #1f2937;
+            line-height: 1.3;
+            font-size: 10pt; /* Default font size */
+            border-radius: 8px;
+            overflow: hidden;
+            width: 210mm;
+            min-height: 297mm;
+        }
+        
+        #resume-body {
+            display: flex;
+        }
+
+        #left-column {
+            width: 66.66%;
+            padding: 1.5rem;
+        }
+
+        #right-column {
+            width: 33.33%;
+            background-color: #F8F4E8;
+            padding: 1.5rem;
+        }
+        
+        #resume-header-new {
+            padding: 1.5rem;
+            border-bottom: 2px solid #EAE3D5;
+            background: #FDFBF5;
+        }
+
+        #resume-header-new h1 {
+            font-size: 2.2em;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 0.05em;
+            line-height: 1;
+        }
+        
+        #resume-header-new p {
+            font-size: 1.1em;
+            color: #D9534F;
+            font-weight: 500;
+            margin-bottom: 0;
+        }
+
+        .section-title-left {
+            font-size: 1.2em;
+            font-weight: 700;
+            color: #D9534F; /* Updated to ScribbleTools accent color */
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border-bottom: 2px solid #D9534F;
+            padding-bottom: 0.2rem;
+            margin-bottom: 0.6rem;
+        }
+        
+        .section-title-right {
+            font-size: 1.1em;
+            font-weight: 700;
+            color: #D9534F;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .entry {
+            margin-bottom: 0.8rem;
+        }
+        
+        .entry-header {
+            font-size: 1.05em;
+            font-weight: 600;
+            color: #111827;
+        }
+        
+        .entry-subheader {
+            font-size: 0.95em;
+            font-style: italic;
+            color: #6b7280;
+        }
+        
+        .entry-description {
+            font-size: 0.9em;
+            padding-left: 1em;
+            margin-top: 0.3em;
+            list-style-type: disc;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            font-size: 0.9em;
+            margin-bottom: 0.3rem;
+        }
+        .contact-item svg {
+            width: 1rem;
+            height: 1rem;
+            margin-right: 0.5rem;
+            fill: #D9534F;
+        }
+
+        .page-break-avoid {
+            break-inside: avoid;
+        }
+
+        /* Custom scrollbar for preview section */
+        #preview-column::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        #preview-column::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 6px;
+        }
+
+        #preview-column::-webkit-scrollbar-thumb {
+            background: rgba(217, 83, 79, 0.7);
+            border-radius: 6px;
+        }
+
+        #preview-column::-webkit-scrollbar-thumb:hover {
+            background: rgba(217, 83, 79, 1);
+        }
+
+        /* Custom slider styling */
+        .slider {
+            -webkit-appearance: none;
+            appearance: none;
+            background: linear-gradient(to right, #D9534F 0%, #c9302c 100%);
+            outline: none;
+            border-radius: 15px;
+            height: 8px;
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: white;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            border: 2px solid #D9534F;
+        }
+        
+        .slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: white;
+            cursor: pointer;
+            border: 2px solid #D9534F;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Form labels and sections - Enhanced visibility */
+        .form-label {
+            display: block;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.8rem;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Mobile notice banner */
+        .mobile-notice {
+            background: linear-gradient(135deg, #D9534F 0%, #c9302c 100%);
+            color: white;
+            padding: 0.75rem 1rem;
+            text-align: center;
+            font-size: 0.9rem;
+            display: none;
+            border-bottom: 2px solid #c9302c;
+        }
+        .mobile-notice i {
+            margin-right: 0.5rem;
+        }
+        .mobile-notice strong {
+            font-weight: 600;
+        }
+        
+        @media (max-width: 1024px) {
+            .mobile-notice {
+                display: block;
+            }
+        }
+        
+        /* --- Template Styles --- */
+
+        /* --- Template: Classic Traditional (Minimal) --- */
+        #resume-preview.template-classic-traditional {
+            font-family: 'Helvetica', 'Arial', sans-serif;
+            font-size: 11pt;
+        }
+        #resume-preview.template-classic-traditional #resume-body {
+            display: block; /* Single column */
+        }
+        #resume-preview.template-classic-traditional #left-column,
+        #resume-preview.template-classic-traditional #right-column {
+            width: 100%;
+            background-color: white;
+            padding: 0.5rem 1.5rem;
+        }
+        #resume-preview.template-classic-traditional #resume-header-new {
+            text-align: left;
+            border-bottom: 1px solid #333;
+            padding: 1.5rem;
+            background: white;
+        }
+        #resume-preview.template-classic-traditional #resume-header-new h1 {
+            font-size: 2em;
+            font-weight: 600;
+            color: #000;
+        }
+        #resume-preview.template-classic-traditional #resume-header-new p {
+            font-size: 1em;
+            color: #333;
+        }
+        #resume-preview.template-classic-traditional .section-title-left,
+        #resume-preview.template-classic-traditional .section-title-right {
+            font-family: 'Helvetica', 'Arial', sans-serif;
+            font-size: 1.1em;
+            color: #000;
+            border-bottom: 1px solid #333;
+            text-transform: none;
+            letter-spacing: 0;
+        }
+        #resume-preview.template-classic-traditional #photo-preview-container {
+            display: none; /* No photo for traditional */
+        }
+
+        /* --- Template: Classic Professional (Corporate) --- */
+        #resume-preview.template-classic-professional {
+            font-family: 'Calibri', 'Arial', sans-serif;
+        }
+        #resume-preview.template-classic-professional #resume-body {
+            display: block; /* Single column */
+        }
+        #resume-preview.template-classic-professional #left-column,
+        #resume-preview.template-classic-professional #right-column {
+            width: 100%;
+            background-color: white;
+            padding: 0.5rem 1.5rem;
+        }
+        #resume-preview.template-classic-professional #resume-header-new {
+            text-align: center;
+            border-bottom: 2px solid #4a5568;
+            padding: 1.5rem;
+            background: white;
+        }
+        #resume-preview.template-classic-professional #resume-header-new h1 {
+            color: #2d3748;
+        }
+        #resume-preview.template-classic-professional #resume-header-new p {
+            color: #4a5568;
+        }
+        #resume-preview.template-classic-professional .section-title-left,
+        #resume-preview.template-classic-professional .section-title-right {
+            font-family: 'Calibri', 'Arial', sans-serif;
+            color: #2d3748;
+            border-bottom-color: #718096;
+        }
+        #resume-preview.template-classic-professional #photo-preview-container {
+            display: none;
+        }
+
+        /* --- Template: Executive Professional (Luxury) --- */
+        #resume-preview.template-executive-professional {
+            font-family: 'Garamond', 'Times New Roman', serif;
+        }
+        #resume-preview.template-executive-professional #resume-header-new h1,
+        #resume-preview.template-executive-professional .section-title-left,
+        #resume-preview.template-executive-professional .section-title-right {
+            font-family: 'Garamond', serif;
+            color: #2c3e50; /* Dark Slate Blue */
+            border-bottom-color: #bdc3c7; /* Silver */
+        }
+        #resume-preview.template-executive-professional #resume-header-new p {
+            color: #34495e;
+        }
+        #resume-preview.template-executive-professional #right-column {
+            background-color: #ecf0f1; /* Light Grey */
+        }
+        #resume-preview.template-executive-professional .contact-item svg {
+            fill: #2c3e50;
+        }
+        #resume-preview.template-executive-professional .resume-photo-frame {
+            border-color: #2c3e50;
+        }
+
+        /* --- Template: Tech Specialist (Cyberpunk) --- */
+        /* --- Template: Tech Specialist (Hacker Terminal) --- */
+        #resume-preview.template-tech-specialist {
+            font-family: 'Inter', sans-serif;
+            background-color: #1a202c; /* Dark background */
+            color: #e2e8f0;
+            font-family: 'Fira Code', monospace; /* Monospace for terminal look */
+            background-color: #0D0D0D; /* Hacker Black */
+            color: #00C521; /* Hacker Green Medium */
+        }
+        #resume-preview.template-tech-specialist #left-column,
+        #resume-preview.template-tech-specialist #right-column,
+        #resume-preview.template-tech-specialist #resume-header-new {
+            background-color: #1a202c;
+            background-color: #0D0D0D;
+        }
+        #resume-preview.template-tech-specialist #right-column {
+            background-color: #2d3748; /* Slightly lighter sidebar */
+            background-color: #141414; /* Slightly lighter sidebar */
+        }
+        #resume-preview.template-tech-specialist #resume-header-new h1 {
+            color: #63b3ed; /* Bright Blue */
+            color: #39FF14; /* Hacker Green Bright */
+            text-shadow: 0 0 5px rgba(57, 255, 20, 0.5); /* Add a glow effect */
+        }
+        #resume-preview.template-tech-specialist #resume-header-new p {
+            color: #90cdf4;
+            color: #00C521; /* Hacker Green Medium */
+        }
+        #resume-preview.template-tech-specialist .section-title-left,
+        #resume-preview.template-tech-specialist .section-title-right {
+            font-family: 'Fira Code', monospace;
+            color: #63b3ed;
+            border-bottom-color: #4a5568;
+            color: #39FF14; /* Hacker Green Bright */
+            border-bottom-color: #00520E; /* Hacker Border */
+            text-shadow: 0 0 3px rgba(57, 255, 20, 0.4);
+        }
+        #resume-preview.template-tech-specialist .entry-header {
+            color: #bee3f8;
+            color: #00C521; /* Hacker Green Medium */
+        }
+        #resume-preview.template-tech-specialist .entry-subheader {
+            color: #a0aec0;
+            color: #008F18; /* Hacker Green Dim */
+        }
+        #resume-preview.template-tech-specialist .contact-item,
+        #resume-preview.template-tech-specialist .contact-item span {
+            color: #e2e8f0;
+            color: #00C521;
+        }
+        #resume-preview.template-tech-specialist .contact-item svg {
+            fill: #63b3ed;
+            fill: #39FF14;
+        }
+        #resume-preview.template-tech-specialist .resume-photo-frame {
+            border-color: #63b3ed;
+            filter: grayscale(50%) contrast(120%);
+            border-color: #39FF14;
+            filter: grayscale(100%) contrast(1.5) brightness(0.9) sepia(100%) hue-rotate(50deg); /* Green tint */
+            box-shadow: 0 0 10px rgba(57, 255, 20, 0.5);
+        }
+
+        /* --- Template: Academic Research (Scholarly) --- */
+        #resume-preview.template-academic-research {
+            font-family: 'Times New Roman', serif;
+        }
+        #resume-preview.template-academic-research #resume-body {
+            display: block; /* Single column */
+        }
+        #resume-preview.template-academic-research #left-column,
+        #resume-preview.template-academic-research #right-column {
+            width: 100%;
+            background-color: white;
+            padding: 0.5rem 1.5rem;
+        }
+        #resume-preview.template-academic-research #resume-header-new {
+            text-align: center;
+            border-bottom: 3px double #333;
+            padding-bottom: 1rem;
+            background: white;
+        }
+        #resume-preview.template-academic-research #resume-header-new h1 {
+            font-size: 2em;
+            font-weight: bold;
+            color: #000;
+        }
+        #resume-preview.template-academic-research #resume-header-new p {
+            font-size: 1.1em;
+            color: #333;
+        }
+        #resume-preview.template-academic-research .section-title-left,
+        #resume-preview.template-academic-research .section-title-right {
+            font-family: 'Times New Roman', serif;
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #000;
+            border-bottom: 1px solid #333;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        #resume-preview.template-academic-research #photo-preview-container {
+            display: none;
+        }
+        #resume-preview.template-academic-research #contact-preview {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        #resume-preview.template-academic-research .contact-item {
+            display: inline-flex;
+            margin: 0 0.5rem;
+        }
+        
+        /* --- 1. Professional Modern (Default) --- */
+        /* This is the base style, no special class needed unless overriding */
+
+        /* --- 2. Executive --- */
+        #resume-preview.template-executive {
+            font-family: 'Garamond', 'Times New Roman', serif;
+        }
+        #resume-preview.template-executive #resume-header-new {
+            text-align: left;
+            border-bottom: 2px solid #B8860B; /* Dark Gold */
+        }
+        #resume-preview.template-executive #resume-header-new h1 {
+            color: #000080; /* Navy */
+        }
+        #resume-preview.template-executive #resume-header-new p {
+            color: #B8860B;
+        }
+        #resume-preview.template-executive .section-title-left,
+        #resume-preview.template-executive .section-title-right {
+            color: #000080;
+            border-bottom-color: #B8860B;
+        }
+        #resume-preview.template-executive #right-column {
+            background-color: #F0F8FF; /* Alice Blue */
+        }
+
+        /* --- 3. Corporate --- */
+        #resume-preview.template-corporate {
+            font-family: 'Times New Roman', serif;
+            font-size: 12pt;
+        }
+        #resume-preview.template-corporate #resume-body { display: block; }
+        #resume-preview.template-corporate #left-column,
+        #resume-preview.template-corporate #right-column {
+            width: 100%;
+            background-color: white;
+            padding: 0.5rem 1.5rem;
+        }
+        #resume-preview.template-corporate #resume-header-new {
+            text-align: center;
+            border-bottom: 1px solid #000;
+            padding-bottom: 1rem;
+        }
+        #resume-preview.template-corporate #resume-header-new h1 { color: #000; }
+        #resume-preview.template-corporate #resume-header-new p { color: #333; }
+        #resume-preview.template-corporate .section-title-left,
+        #resume-preview.template-corporate .section-title-right {
+            font-family: 'Times New Roman', serif;
+            color: #000;
+            border-bottom: 1px solid #000;
+            text-transform: uppercase;
+        }
+        #resume-preview.template-corporate #photo-preview-container { display: none; }
+
+        /* --- 4. Creative Designer --- */
+        #resume-preview.template-creative-designer {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f4f4f4;
+        }
+        #resume-preview.template-creative-designer #resume-header-new {
+            background: #1abc9c; /* Teal */
+            color: white;
+            text-align: left;
+        }
+        #resume-preview.template-creative-designer #resume-header-new h1 { color: white; }
+        #resume-preview.template-creative-designer #resume-header-new p { color: white; opacity: 0.9; }
+        #resume-preview.template-creative-designer #right-column { background-color: #e8e8e8; }
+        #resume-preview.template-creative-designer .section-title-left,
+        #resume-preview.template-creative-designer .section-title-right {
+            color: #1abc9c;
+            border-bottom-color: #1abc9c;
+        }
+        #resume-preview.template-creative-designer .contact-item svg { fill: #1abc9c; }
+        #resume-preview.template-creative-designer .resume-photo-frame {
+            border-radius: 10px; /* Square photo */
+            border-color: #1abc9c;
+        }
+
+        /* --- 5. Minimalist --- */
+        #resume-preview.template-minimalist {
+            font-family: 'Lato', sans-serif;
+            font-size: 10pt;
+        }
+        #resume-preview.template-minimalist #resume-body { display: block; }
+        #resume-preview.template-minimalist #left-column,
+        #resume-preview.template-minimalist #right-column {
+            width: 100%;
+            padding: 0.5rem 1.5rem;
+        }
+        #resume-preview.template-minimalist #resume-header-new {
+            text-align: left;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #ccc;
+        }
+        #resume-preview.template-minimalist .section-title-left,
+        #resume-preview.template-minimalist .section-title-right {
+            font-size: 1em;
+            color: #555;
+            border: none;
+            text-transform: none;
+            font-weight: bold;
+        }
+        #resume-preview.template-minimalist #photo-preview-container { display: none; }
+
+        /* --- 6. Infographic Style --- */
+        #resume-preview.template-infographic {
+            font-family: 'Roboto', sans-serif;
+        }
+        #resume-preview.template-infographic #right-column {
+            background-color: #34495e; /* Dark Blue */
+            color: white;
+        }
+        #resume-preview.template-infographic #right-column .section-title-right,
+        #resume-preview.template-infographic #right-column .contact-item,
+        #resume-preview.template-infographic #right-column .contact-item span {
+            color: white;
+        }
+        #resume-preview.template-infographic #right-column .contact-item svg { fill: #1abc9c; }
+        #resume-preview.template-infographic .section-title-left { color: #3498db; border-bottom-color: #3498db; }
+        #resume-preview.template-infographic #resume-header-new h1 { color: #3498db; }
+        #resume-preview.template-infographic #resume-header-new p { color: #34495e; }
+
+        /* --- 7. Legal/Lawyer --- */
+        #resume-preview.template-legal {
+            font-family: 'Garamond', serif;
+            font-size: 12pt;
+        }
+        #resume-preview.template-legal #resume-body { display: block; }
+        #resume-preview.template-legal #left-column,
+        #resume-preview.template-legal #right-column { width: 100%; padding: 0.5rem 1.5rem; }
+        #resume-preview.template-legal #resume-header-new { text-align: center; border-bottom: 2px solid #000; padding-bottom: 1rem; }
+        #resume-preview.template-legal .section-title-left,
+        #resume-preview.template-legal .section-title-right {
+            font-family: 'Garamond', serif;
+            text-align: center;
+            border-bottom: 1px solid #333;
+            color: #000;
+        }
+        #resume-preview.template-legal #photo-preview-container { display: none; }
+
+        /* --- 8. Sales & Marketing --- */
+        #resume-preview.template-sales-marketing #resume-header-new h1 { color: #e74c3c; } /* Red */
+        #resume-preview.template-sales-marketing .section-title-left,
+        #resume-preview.template-sales-marketing .section-title-right {
+            color: #e74c3c;
+            border-bottom-color: #e74c3c;
+        }
+        #resume-preview.template-sales-marketing #right-column { background-color: #fef5f3; }
+
+        /* --- 9. Medical/Healthcare --- */
+        #resume-preview.template-medical {
+            font-family: 'Arial', sans-serif;
+        }
+        #resume-preview.template-medical #resume-header-new h1 { color: #27ae60; } /* Green */
+        #resume-preview.template-medical .section-title-left,
+        #resume-preview.template-medical .section-title-right {
+            color: #27ae60;
+            border-bottom-color: #27ae60;
+        }
+        #resume-preview.template-medical #right-column { background-color: #f2fcf6; }
+
+        /* --- 10. Timeline --- */
+        #resume-preview.template-timeline #left-column {
+            border-right: 2px solid #3498db;
+            position: relative;
+        }
+        #resume-preview.template-timeline .entry {
+            position: relative;
+            padding-left: 20px;
+        }
+        #resume-preview.template-timeline .entry::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 5px;
+            width: 14px;
+            height: 14px;
+            background-color: #3498db;
+            border-radius: 50%;
+            border: 2px solid white;
+        }
+
+        /* --- 11. Color Splash --- */
+        #resume-preview.template-color-splash {
+            font-family: 'Helvetica Neue', sans-serif;
+        }
+        #resume-preview.template-color-splash #resume-header-new h1 { color: #e91e63; } /* Magenta */
+        #resume-preview.template-color-splash .section-title-left,
+        #resume-preview.template-color-splash .section-title-right {
+            color: #e91e63;
+            border-bottom-color: #e91e63;
+        }
+        #resume-preview.template-color-splash #right-column { background-color: #fcf2f7; }
+
+        /* --- 12. Geometric --- */
+        #resume-preview.template-geometric {
+            font-family: 'Poppins', sans-serif;
+        }
+        #resume-preview.template-geometric #resume-header-new {
+            background: #4a4a4a;
+            color: white;
+        }
+        #resume-preview.template-geometric #resume-header-new h1,
+        #resume-preview.template-geometric #resume-header-new p {
+            color: white;
+        }
+        #resume-preview.template-geometric .section-title-left,
+        #resume-preview.template-geometric .section-title-right {
+            background: #4a4a4a;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+        #resume-preview.template-geometric .resume-photo-frame { border-radius: 10%; }
+
+        /* --- 13. Bold --- */
+        #resume-preview.template-bold {
+            font-family: 'Impact', 'Arial Black', sans-serif;
+            text-transform: uppercase;
+        }
+        #resume-preview.template-bold #resume-header-new h1 { font-size: 3em; }
+        #resume-preview.template-bold .section-title-left,
+        #resume-preview.template-bold .section-title-right {
+            font-size: 1.5em;
+            border-bottom-width: 4px;
+        }
+
+        /* --- 14. Elegant --- */
+        #resume-preview.template-elegant {
+            font-family: 'Cormorant Garamond', serif;
+        }
+        #resume-preview.template-elegant #resume-header-new {
+            text-align: center;
+        }
+        #resume-preview.template-elegant .section-title-left,
+        #resume-preview.template-elegant .section-title-right {
+            text-align: center;
+            border: none;
+            font-style: italic;
+        }
+
+        /* --- 15. Swiss --- */
+        #resume-preview.template-swiss {
+            font-family: 'Helvetica', 'Arial', sans-serif;
+        }
+        #resume-preview.template-swiss #resume-body {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+        }
+        #resume-preview.template-swiss #right-column {
+            grid-column: 1;
+            grid-row: 1;
+            background-color: #f0f0f0;
+        }
+        #resume-preview.template-swiss #left-column {
+            grid-column: 2;
+            grid-row: 1;
+        }
+
+    </style>
+    <link rel="stylesheet" href="../force-desktop-layout.css">
+</head>
+<body class="antialiased">
+    
+    <!-- Mobile Notice Banner -->
+    <div class="mobile-notice">
+        <i class="fas fa-desktop"></i>
+        <strong>Best Experience:</strong> For optimal editing and formatting, please use a desktop or laptop computer.
+    </div>
+
+    <div class="flex flex-row min-h-screen">
+        <!-- Form Section -->
+        <div class="form-section">
+            <div class="max-w-xl mx-auto p-6 lg:p-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-2">Resume Builder</h2>
+                <p class="text-gray-600 mb-6">Create a professional resume. Click section titles to edit them.</p>
+
+                <!-- Template Selector -->
+                <div class="section-container mb-6">
+                    <label for="template-selector" class="form-label">
+                        <i class="fas fa-palette"></i> Choose Template Style
+                    </label>
+                    <select id="template-selector" class="form-input" onchange="changeTemplate(this.value)">
+                        <option value="professional-modern">Professional Modern (Default)</option>
+                        <option value="executive">Executive</option>
+                        <option value="corporate">Corporate</option>
+                        <option value="creative-designer">Creative Designer</option>
+                        <option value="minimalist">Minimalist</option>
+                        <option value="infographic">Infographic Style</option>
+                        <option value="tech-specialist">Hacker Terminal</option>
+                        <option value="academic-research">Academic CV</option>
+                        <option value="legal">Legal/Lawyer</option>
+                        <option value="sales-marketing">Sales & Marketing</option>
+                        <option value="medical">Medical/Healthcare</option>
+                        <option value="timeline">Timeline</option>
+                        <option value="color-splash">Color Splash</option>
+                        <option value="geometric">Geometric</option>
+                        <option value="bold">Bold</option>
+                        <option value="elegant">Elegant</option>
+                        <option value="swiss">Swiss</option>
+                    </select>
+                </div>
+
+                <form id="resume-form" class="space-y-6">
+                    <!-- Personal Details -->
+                    <div class="section-container">
+                        <input type="text" value="Personal Details" class="section-title-input" aria-label="Personal Details section title" readonly>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div class="sm:col-span-2 form-group">
+                                <label for="name" class="form-label">Full Name *</label>
+                                <input type="text" id="name" class="form-input" placeholder="Enter your full name">
+                            </div>
+                            <div class="sm:col-span-2 form-group">
+                                <label for="title" class="form-label">Professional Title *</label>
+                                <input type="text" id="title" class="form-input" placeholder="e.g., Software Engineer, Marketing Manager">
+                            </div>
+                            <div class="sm:col-span-2 form-group">
+                                <label for="photo" class="form-label">Profile Photo (Optional)</label>
+                                <div class="photo-upload-container" id="photo-upload-container">
+                                    <input type="file" id="photo" accept="image/*" class="photo-upload-input">
+                                    <div class="photo-upload-content" id="photo-upload-content">
+                                        <i class="fas fa-camera photo-upload-icon"></i>
+                                        <div class="photo-upload-text">Click to upload or drag & drop</div>
+                                        <div class="photo-upload-subtext">Supported: JPG, PNG, GIF (Max 5MB)</div>
+                                    </div>
+                                    <div class="photo-preview-container hidden" id="photo-preview-container-form">
+                                        <img id="photo-preview-form" class="photo-preview" src="" alt="Profile Photo Preview">
+                                        <button type="button" class="photo-remove-btn" id="remove-photo-btn" title="Remove photo" aria-label="Remove uploaded photo">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="form-label">Email Address *</label>
+                                <input type="email" id="email" class="form-input" placeholder="your.email@example.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="phone" class="form-label">Phone Number</label>
+                                <input type="tel" id="phone" class="form-input" placeholder="+1 (555) 123-4567">
+                            </div>
+                            <div class="form-group">
+                                <label for="linkedin" class="form-label">LinkedIn Profile</label>
+                                <input type="text" id="linkedin" class="form-input" placeholder="https://linkedin.com/in/yourname">
+                            </div>
+                            <div class="form-group">
+                                <label for="github" class="form-label">GitHub Profile</label>
+                                <input type="text" id="github" class="form-input" placeholder="https://github.com/yourname">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Summary -->
+                    <div class="section-container">
+                        <input type="text" id="summary-title" value="Summary" class="section-title-input" aria-label="Summary section title">
+                        <div class="form-group">
+                            <label for="summary" class="form-label">Professional Summary</label>
+                            <textarea id="summary" rows="4" class="form-input" placeholder="Write a compelling professional summary..."></textarea>
+                        </div>
+                    </div>
+    
+                    <!-- Education -->
+                    <div class="section-container">
+                         <input type="text" id="education-title" value="Education" class="section-title-input" aria-label="Education section title">
+                         <div id="education-entries" class="space-y-4"></div>
+                         <button type="button" onclick="addEducation()" class="btn-secondary mt-4 px-4 py-2 transition-colors">
+                             <i class="fas fa-plus mr-2"></i>Add Education
+                         </button>
+                    </div>
+                    
+                    <!-- Work Experience -->
+                    <div class="section-container">
+                        <input type="text" id="work-experience-title" value="Work Experience" class="section-title-input" aria-label="Work Experience section title">
+                        <div id="work-experience-entries" class="space-y-4"></div>
+                        <button type="button" onclick="addWorkExperience()" class="btn-secondary mt-4 px-4 py-2 transition-colors">
+                            <i class="fas fa-plus mr-2"></i>Add Work Experience
+                        </button>
+                    </div>
+
+                    <!-- Projects -->
+                    <div class="section-container">
+                        <input type="text" id="projects-title" value="Projects" class="section-title-input" aria-label="Projects section title">
+                        <div id="project-entries" class="space-y-4"></div>
+                        <button type="button" onclick="addProject()" class="btn-secondary mt-4 px-4 py-2 transition-colors">
+                            <i class="fas fa-plus mr-2"></i>Add Project
+                        </button>
+                    </div>
+                    
+                    <!-- Achievements -->
+                    <div class="section-container">
+                        <input type="text" id="achievements-title" value="Achievements" class="section-title-input" aria-label="Achievements section title">
+                        <div class="form-group">
+                            <label for="achievements" class="form-label">Professional Achievements</label>
+                            <textarea id="achievements" rows="4" class="form-input" placeholder="• Dean's List for 4 consecutive semesters..."></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Areas of Expertise -->
+                    <div class="section-container">
+                        <input type="text" id="expertise-title" value="Areas of Expertise" class="section-title-input" aria-label="Areas of Expertise section title">
+                        <div class="form-group">
+                            <label for="expertise" class="form-label">Key Areas of Expertise</label>
+                            <textarea id="expertise" rows="4" class="form-input" placeholder="Leadership & Team Management..."></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Skills -->
+                    <div class="section-container">
+                        <input type="text" id="skills-title" value="Technical Skills" class="section-title-input" aria-label="Technical Skills section title">
+                        <div class="form-group">
+                            <label for="skills" class="form-label">Technical Skills</label>
+                            <textarea id="skills" rows="4" class="form-input" placeholder="Programming: Python, JavaScript..."></textarea>
+                        </div>
+                    </div>
+                    
+                    <!-- Languages -->
+                    <div class="section-container">
+                        <input type="text" id="languages-title" value="Languages" class="section-title-input" aria-label="Languages section title">
+                        <div class="form-group">
+                            <label for="languages" class="form-label">Language Proficiency</label>
+                            <textarea id="languages" rows="3" class="form-input" placeholder="English (Native)..."></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Certifications -->
+                    <div class="section-container">
+                        <input type="text" id="certifications-title" value="Certifications" class="section-title-input" aria-label="Certifications section title">
+                        <div class="form-group">
+                            <label for="certifications" class="form-label">Professional Certifications</label>
+                            <textarea id="certifications" rows="4" class="form-input" placeholder="AWS Certified Developer Associate..."></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Custom Sections -->
+                    <div id="custom-sections-container"></div>
+                </form>
+
+                <button type="button" onclick="addCustomSection()" class="mt-6 w-full text-center py-2 px-4 border border-dashed border-gray-400 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-100 hover:border-gray-500 transition-colors">
+                    + Add New Section
+                </button>
+                
+                <div class="mt-8 section-container">
+                    <label for="font-size-control" class="text-base font-medium text-gray-900">Font Size Control</label>
+                    <p class="text-sm leading-5 text-gray-500">Adjust the font size for your resume.</p>
+                    <div class="mt-3 flex items-center space-x-4">
+                        <div class="flex-1">
+                            <input type="range" id="fontSizeSlider" min="8" max="14" value="10" step="0.5" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider" aria-label="Font size slider control">
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <input type="number" id="fontSizeInput" min="8" max="14" value="10" step="0.5" class="w-16 p-1 text-sm form-input text-center" aria-label="Font size numeric input">
+                            <span id="fontSizeDisplay" class="text-sm text-gray-600">10pt</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 space-y-4">
+                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <button type="button" onclick="autofillFresherSample()" class="w-full text-white font-bold py-3 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 btn-accent focus:ring-gray-500">
+                            Load Fresher Sample
+                        </button>
+                        <button type="button" onclick="autofillExperiencedSample()" class="w-full text-white font-bold py-3 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 btn-secondary focus:ring-indigo-500">
+                            Load Experienced Sample
+                        </button>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <button onclick="generatePDF()" class="w-full font-bold py-3 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 btn-primary focus:ring-blue-500 flex items-center justify-center">
+                            Download PDF
+                        </button>
+                        <button type="button" onclick="clearForm()" class="w-full font-bold py-3 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 btn-danger focus:ring-red-500">
+                            Clear Form
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Resume Preview Section -->
+        <div id="preview-column" class="flex items-start justify-center preview-bg">
+             <div id="resume-preview-container" class="w-full max-w-[210mm] my-8">
+                <div id="resume-preview">
+                    <div id="resume-header-new" class="text-center page-break-avoid">
+                        <h1 id="name-preview">Your Name</h1>
+                        <p id="title-preview" class="text-xl">Professional Title</p>
+                    </div>
+                    <div id="resume-body">
+                        <div id="left-column">
+                            <div id="summary-preview" class="page-break-avoid"></div>
+                            <div id="education-preview"></div>
+                            <div id="work-experience-preview"></div>
+                            <div id="projects-preview"></div>
+                            <div id="achievements-preview"></div>
+                            <div id="custom-sections-preview"></div>
+                        </div>
+                        <div id="right-column">
+                            <div id="photo-preview-container" class="mb-4 text-center page-break-avoid hidden">
+                                <img id="photo-preview" class="resume-photo-frame" src="" alt="Profile Photo">
+                            </div>
+                            <div id="contact-preview" class="page-break-avoid"></div>
+                            <div id="expertise-preview" class="page-break-avoid"></div>
+                            <div id="skills-preview" class="page-break-avoid"></div>
+                            <div id="languages-preview" class="page-break-avoid"></div>
+                            <div id="certifications-preview" class="page-break-avoid"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const fresherSampleData = {
+            name: "Jane Doe",
+            title: "Software Engineer",
+            email: "jane.doe@email.com",
+            phone: "123-456-7890",
+            linkedin: "linkedin.com/in/janedoe",
+            github: "github.com/janedoe",
+            summary: "A highly motivated and results-oriented recent graduate with a B.S. in Computer Science. Proficient in JavaScript, React, and Node.js. Seeking to leverage strong problem-solving skills and a passion for web development to contribute to a dynamic engineering team.",
+            education: [
+                { school: "State University", location: "New York, NY", degree: "B.S. in Computer Science", date: "May 2024" },
+                { school: "Online Coding Platform", location: "Remote", degree: "Full-Stack Web Development Certificate", date: "Dec 2023" }
+            ],
+            work: [
+                { title: "Software Engineer Intern", company: "Web Innovators", location: "Boston, MA", dates: "Summer 2023", description: "- Developed and maintained front-end components for a large-scale e-commerce platform using React.\n- Wrote unit and integration tests with Jest to ensure application reliability." }
+            ],
+            projects: [
+                { name: "University Course Management System", tech: "Node.js, Express, MongoDB", dates: "Fall 2023", description: "- Developed a full-stack web application for students to register for courses and view grades.\n- Implemented user authentication and role-based access control." },
+                { name: "Personal Portfolio Website", tech: "React, Tailwind CSS, Netlify", dates: "Spring 2024", description: "- Designed and built a personal portfolio website to showcase projects and skills.\n- Implemented a responsive design for optimal viewing on all devices." }
+            ],
+            achievements: "- Dean's List for 4 consecutive semesters.\n- Winner, University Annual Hackathon 2023.\n- Maintained a 3.8/4.0 GPA.",
+            expertise: "JavaScript (ES6+)\nReact & Redux\nNode.js & Express\nRESTful APIs\nMongoDB\nHTML5 & CSS3\nAgile Methodologies",
+            skills: "TypeScript, Python, SQL, Docker, Git, Jest, Webpack",
+            languages: "English (Native), Spanish (Professional)",
+            certifications: "Responsive Web Design, freeCodeCamp (2023)",
+            custom: []
+        };
+        
+        const experiencedSampleData = {
+            name: "Dr. Alexander Sterling",
+            title: "Principal Research Scientist",
+            email: "alex.sterling@email.com",
+            phone: "555-123-4567",
+            linkedin: "linkedin.com/in/alexsterlingphd",
+            github: "github.com/alexsterling",
+            summary: "Accomplished Research Scientist with over 12 years of experience leading computational biology projects. Expertise in bioinformatics, machine learning, and large-scale data analysis. Proven track record of developing novel algorithms, publishing in high-impact journals, and securing research funding. Seeking to apply advanced analytical skills to tackle challenging problems in genomics and drug discovery.",
+            education: [
+                { school: "Stanford University", location: "Stanford, CA", degree: "Ph.D. in Computational Biology", date: "June 2012" },
+                { school: "MIT", location: "Cambridge, MA", degree: "B.S. in Computer Science and Molecular Biology", date: "June 2007" }
+            ],
+            work: [
+                { title: "Principal Scientist", company: "Genoma Corp", location: "San Diego, CA", dates: "Aug 2018 - Present", description: "- Led a team of 5 scientists in the development of a predictive machine learning model for identifying drug targets, leading to two new patents.\n- Managed a research budget of $1.5M, ensuring projects were delivered on time and within scope.\n- Published 5 papers in peer-reviewed journals, including Nature and Science." },
+                { title: "Senior Research Scientist", company: "Bio-Analytics Inc.", location: "Boston, MA", dates: "Jul 2014 - Aug 2018", description: "- Developed and implemented bioinformatics pipelines for analyzing next-generation sequencing (NGS) data.\n- Collaborated with experimental biologists to design experiments and interpret results.\n- Authored successful grant proposals, securing over $750,000 in funding." },
+                { title: "Postdoctoral Research Fellow", company: "Harvard University", location: "Cambridge, MA", dates: "Jul 2012 - Jun 2014", description: "- Conducted independent research on protein folding algorithms.\n- Mentored graduate and undergraduate students in the lab." }
+            ],
+            projects: [
+                { name: "Gene Expression Analysis Platform", tech: "Python, R, Django, AWS", dates: "2020 - 2021", description: "- Architected and developed a cloud-based platform for interactive analysis of gene expression data.\n- Utilized parallel processing on AWS to reduce analysis time from days to hours." },
+            ],
+            achievements: "",
+            expertise: "",
+            skills: "Python (Pandas, NumPy, Scikit-learn), R, C++, SQL, Bioinformatics, Machine Learning, Deep Learning, Next-Generation Sequencing (NGS) Data Analysis, Genomics, Drug Discovery, AWS, Docker, Git",
+            languages: "English (Native), German (Conversational)",
+            certifications: "Certified Bioinformatics Scientist (2019)\nDeep Learning Specialization (Coursera, 2018)",
+            custom: [
+                {
+                    title: "Publications & Awards",
+                    content: "- Sterling, A., et al. (2022). A novel algorithm for... Nature, 60(7929), 123-456.\n- NIH Research Grant (2020) - $500,000\n- Best Poster Award, ISMB Conference (2019)"
+                }
+            ]
+        };
+
+        // --- Template Management ---
+        function applyTemplate(templateId) {
+            const resumePreview = document.getElementById('resume-preview');
+            // Remove existing template classes
+            resumePreview.className = resumePreview.className.replace(/template-\S+/g, '').trim();
+            // Apply selected template class
+            resumePreview.classList.add(`template-${templateId}`);
+            const templateNames = {
+                'professional-modern': 'Professional Modern', 'classic-professional': 'Classic Professional', 
+                'classic-traditional': 'Classic Traditional', 'executive': 'Executive',
+                'corporate': 'Corporate', 'creative-designer': 'Creative Designer',
+                'minimalist': 'Minimalist', 'infographic': 'Infographic Style',
+                'tech-specialist': 'Hacker Terminal', 'academic-research': 'Academic CV',
+                'legal': 'Legal/Lawyer', 'sales-marketing': 'Sales & Marketing',
+                'medical': 'Medical/Healthcare', 'timeline': 'Timeline',
+                'color-splash': 'Color Splash', 'geometric': 'Geometric',
+                'bold': 'Bold', 'elegant': 'Elegant', 'swiss': 'Swiss'
+            };
+            document.title = `${templateNames[templateId] || 'Resume'} Builder - ScribbleTools`;
+        }
+
+        function changeTemplate(templateId) {
+            localStorage.setItem('selectedResumeTemplate', templateId);
+            applyTemplate(templateId);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const selectedTemplate = localStorage.getItem('selectedResumeTemplate') || 'professional-modern';
+            document.getElementById('template-selector').value = selectedTemplate;
+            applyTemplate(selectedTemplate);
+            
+            addWorkExperience();
+            addProject();
+            addEducation();
+            updateResumePreview();
+
+            const form = document.getElementById('resume-form');
+            form.addEventListener('keyup', updateResumePreview);
+            form.addEventListener('change', updateResumePreview);
+
+            const photoInput = document.getElementById('photo');
+            const removePhotoBtn = document.getElementById('remove-photo-btn');
+            const photoUploadContainer = document.getElementById('photo-upload-container');
+
+            photoInput.addEventListener('change', handlePhotoUpload);
+            removePhotoBtn.addEventListener('click', () => {
+                photoInput.value = '';
+                resetPhotoUploadUI();
+                updateResumePreview();
+            });
+
+            ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+                photoUploadContainer.addEventListener(eventName, e => { e.preventDefault(); e.stopPropagation(); }, false);
+            });
+            ['dragenter', 'dragover'].forEach(eventName => {
+                photoUploadContainer.addEventListener(eventName, () => photoUploadContainer.classList.add('drag-over'), false);
+            });
+            ['dragleave', 'drop'].forEach(eventName => {
+                photoUploadContainer.addEventListener(eventName, () => photoUploadContainer.classList.remove('drag-over'), false);
+            });
+            photoUploadContainer.addEventListener('drop', e => {
+                const files = e.dataTransfer.files;
+                if (files.length > 0) {
+                    photoInput.files = files;
+                    handlePhotoUpload();
+                }
+            }, false);
+
+            const fontSizeSlider = document.getElementById('fontSizeSlider');
+            const fontSizeInput = document.getElementById('fontSizeInput');
+            fontSizeSlider.addEventListener('input', updateFontSize);
+            fontSizeInput.addEventListener('input', updateFontSizeFromInput);
+            updateFontSize(); // Initial call
+        });
+        
+        const handlePhotoUpload = () => {
+            const photoInput = document.getElementById('photo');
+            if (photoInput.files && photoInput.files[0]) {
+                const reader = new FileReader();
+                reader.onload = e => {
+                    // Set the src for the form preview only
+                    document.getElementById('photo-preview-form').src = e.target.result;
+                    document.getElementById('photo-upload-container').classList.add('has-photo');
+                    document.getElementById('photo-upload-content').classList.add('hidden');
+                    document.getElementById('photo-preview-container-form').classList.remove('hidden');
+                    updateResumePreview();
+                };
+                reader.onerror = error => {
+                    console.error('Error reading file:', error);
+                    alert('Error reading the selected image file.');
+                };
+                const file = photoInput.files[0];
+                if (!file.type.startsWith('image/')) {
+                    alert('Please select a valid image file.');
+                    photoInput.value = '';
+                    return;
+                }
+                if (file.size > 5 * 1024 * 1024) {
+                    alert('File size must be less than 5MB.');
+                    photoInput.value = '';
+                    return;
+                }
+                reader.readAsDataURL(file);
+            }
+        };
+
+        const resetPhotoUploadUI = () => {
+            document.getElementById('photo-upload-container').classList.remove('has-photo');
+            document.getElementById('photo-upload-content').classList.remove('hidden');
+            document.getElementById('photo-preview-container-form').classList.add('hidden');
+            document.getElementById('photo-preview-form').src = '';
+            // The main updateResumePreview function will handle hiding the photo in the resume
+        };
+
+        const createEntryDiv = (className) => {
+            const div = document.createElement('div');
+            div.className = `${className} p-3 rounded-md relative bg-white space-y-2`;
+            div.style.border = '2px solid #EAE3D5';
+            return div;
+        }
+        
+        const createRemoveButton = (onclickAction = "removeEntry(this)") => `<button type="button" onclick="${onclickAction}" class="absolute top-2 right-2 text-red-500 hover:text-red-700 text-xs font-bold px-2 py-1 rounded-full bg-white/50 hover:bg-red-100 transition-colors">X</button>`;
+        const baseInputClasses = "w-full p-2 form-input";
+
+        function addWorkExperience() {
+            const container = document.getElementById('work-experience-entries');
+            const entryDiv = createEntryDiv('work-experience-entry');
+            entryDiv.innerHTML = `
+                <input type="text" class="${baseInputClasses}" placeholder="Job Title">
+                <input type="text" class="${baseInputClasses}" placeholder="Company">
+                <div class="flex gap-2">
+                    <input type="text" class="${baseInputClasses}" placeholder="Location">
+                    <input type="text" class="${baseInputClasses}" placeholder="Dates (e.g., Jan 2020 - Present)">
+                </div>
+                <label class="text-sm font-medium text-gray-700 mt-2 block">Description / Achievements</label>
+                <textarea class="${baseInputClasses}" placeholder="- Achievement or responsibility..."></textarea>
+                ${createRemoveButton()}`;
+            container.appendChild(entryDiv);
+        }
+
+        function addProject() {
+            const container = document.getElementById('project-entries');
+            const entryDiv = createEntryDiv('project-entry');
+            entryDiv.innerHTML = `<input type="text" class="${baseInputClasses}" placeholder="Project Name"><input type="text" class="${baseInputClasses}" placeholder="Technologies Used (e.g., React, Node.js)"><input type="text" class="${baseInputClasses}" placeholder="Dates (e.g., Fall 2023)"><textarea class="${baseInputClasses}" placeholder="- Feature or contribution..."></textarea>${createRemoveButton()}`;
+            container.appendChild(entryDiv);
+        }
+
+        function addEducation() {
+            const container = document.getElementById('education-entries');
+            const entryDiv = createEntryDiv('education-entry');
+            entryDiv.innerHTML = `<input type="text" class="${baseInputClasses}" placeholder="University/School Name"><input type="text" class="${baseInputClasses}" placeholder="Location"><div class="flex gap-2"><input type="text" class="${baseInputClasses}" placeholder="Degree (e.g., B.S. in Computer Science)"><input type="text" class="${baseInputClasses}" placeholder="Graduation Date"></div>${createRemoveButton()}`;
+            container.appendChild(entryDiv);
+        }
+
+        function addCustomSection() {
+            const container = document.getElementById('custom-sections-container');
+            const sectionDiv = document.createElement('div');
+            sectionDiv.className = 'custom-section-entry section-container mt-6 relative';
+            sectionDiv.innerHTML = `<input type="text" value="New Section" class="section-title-input" aria-label="Custom section title"><textarea rows="4" class="${baseInputClasses}" placeholder="Enter details for this section..."></textarea>${createRemoveButton("removeEntry(this, true)")}`;
+            container.appendChild(sectionDiv);
+        }
+
+        function removeEntry(button, isSection = false) {
+            button.parentElement.remove();
+            updateResumePreview();
+        }
+
+        const formatList = (text) => text.split('\n').filter(line => line.trim() !== '').map(line => `<li>${line.replace(/^- /, '')}</li>`).join('');
+
+        function updateResumePreview() {
+            updateFontSize();
+
+            // Header & Photo
+            document.getElementById('name-preview').textContent = document.getElementById('name').value || "Your Name";
+            document.getElementById('title-preview').textContent = document.getElementById('title').value || "Professional Title";
+            const photoInput = document.getElementById('photo');
+            const photoPreview = document.getElementById('photo-preview');
+            const photoPreviewContainer = document.getElementById('photo-preview-container');
+
+            if (photoInput.files && photoInput.files[0]) {
+                const reader = new FileReader();
+                reader.onload = e => { photoPreview.src = e.target.result; }
+                reader.readAsDataURL(photoInput.files[0]);
+                photoPreviewContainer.classList.remove('hidden');
+            } else {
+                photoPreview.src = ''; // Ensure src is cleared
+                photoPreviewContainer.classList.add('hidden');
+            }
+
+            // Contact
+            const contactItems = [
+                { id: 'email', svg: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>' },
+                { id: 'phone', svg: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M3 2a2 2 0 012-2h10a2 2 0 012 2v1a1 1 0 01-1 1H4a1 1 0 01-1-1V2zm2 2h10v12H5V4z"/></svg>' },
+                { id: 'linkedin', svg: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M15.5 0h-11A1.5 1.5 0 003 1.5v11A1.5 1.5 0 004.5 14h11a1.5 1.5 0 001.5-1.5v-11A1.5 1.5 0 0015.5 0zM8 12H6V6h2v6zm-1-7a1 1 0 11-2 0 1 1 0 012 0zm7 7h-2v-3a1 1 0 00-2 0v3h-2V6h2v1a2 2 0 012-2 2 2 0 012 2v5z"/></svg>' },
+                { id: 'github', svg: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 0a10 10 0 00-3.16 19.49c.5.1.68-.22.68-.48l-.01-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.36 1.09 2.94.83.09-.65.35-1.09.64-1.34-2.25-.26-4.6-1.12-4.6-5 0-1.1.39-2 1.03-2.7-.1-.25-.45-1.28.1-2.66 0 0 .85-.27 2.78 1.02a9.5 9.5 0 015.02 0c1.93-1.3 2.78-1.02 2.78-1.02.55 1.38.2 2.41.1 2.66.64.7 1.03 1.6 1.03 2.7 0 3.89-2.35 4.74-4.6 5 .36.31.68.92.68 1.85l-.01 2.78c0 .27.18.58.69.48A10 10 0 0010 0z"/></svg>' }
+            ];
+            let contactHTML = `<h3 class="section-title-right">Contact</h3>` + contactItems.map(item => {
+                const value = document.getElementById(item.id).value;
+                return value ? `<div class="contact-item">${item.svg}<span>${value}</span></div>` : '';
+            }).join('');
+            document.getElementById('contact-preview').innerHTML = contactHTML;
+
+            // Right Column simple text sections
+            ['expertise', 'skills', 'languages', 'certifications'].forEach(id => {
+                const title = document.getElementById(`${id}-title`).value;
+                const content = document.getElementById(id).value;
+                let html = '';
+                if (content.trim()) {
+                    html += `<h3 class="section-title-right mt-6">${title}</h3>`;
+                    const list = content.split('\n').map(item => item.trim()).filter(Boolean);
+                    if (list.length > 0) {
+                        html += id === 'skills' ? `<p class="text-sm">${content}</p>` : `<ul class="text-sm space-y-1">${list.map(item => `<li>${item}</li>`).join('')}</ul>`;
+                    }
+                }
+                document.getElementById(`${id}-preview`).innerHTML = html;
+            });
+            
+            // Left column sections
+            document.getElementById('summary-preview').innerHTML = document.getElementById('summary').value ? `<div class="page-break-avoid"><h3 class="section-title-left">${document.getElementById('summary-title').value}</h3><div class="entry text-sm">${document.getElementById('summary').value.replace(/\n/g, '<br>')}</div></div>` : '';
+
+            // Dynamic entry sections
+            ['education', 'work-experience', 'projects'].forEach(id => {
+                const title = document.getElementById(`${id}-title`).value;
+                const entries = document.querySelectorAll(`.${id}-entry`);
+                let html = '';
+                if (Array.from(entries).some(e => e.querySelector('input').value)) {
+                    html += `<div class="page-break-avoid"><h3 class="section-title-left">${title}</h3>`;
+                    entries.forEach(entry => {
+                        const inputs = Array.from(entry.querySelectorAll('input')).map(i => i.value);
+                        const desc = entry.querySelector('textarea') ? entry.querySelector('textarea').value : '';
+                        if (inputs[0]) {
+                            if (id === 'education') {
+                                html += `<div class="entry"><div class="entry-header">${inputs[2]}</div><div class="entry-subheader"><span>${inputs[0]}, ${inputs[1]}</span> <span>${inputs[3]}</span></div></div>`;
+                            } else if (id === 'work-experience') {
+                                html += `<div class="entry page-break-avoid"><div class="entry-header">${inputs[0]}</div><div class="entry-subheader"><span>${inputs[1]}, ${inputs[2]}</span><span>${inputs[3]}</span></div><ul class="entry-description">${formatList(desc)}</ul></div>`;
+                            } else if (id === 'projects') {
+                                html += `<div class="entry page-break-avoid"><div class="entry-header">${inputs[0]}</div><div class="entry-subheader"><span>${inputs[1]}</span><span>${inputs[2]}</span></div><ul class="entry-description">${formatList(desc)}</ul></div>`;
+                            }
+                        }
+                    });
+                    html += `</div>`;
+                }
+                document.getElementById(`${id}-preview`).innerHTML = html;
+            });
+            
+            // Achievements
+            const achievementsTitle = document.getElementById('achievements-title').value;
+            const achievements = document.getElementById('achievements').value;
+            document.getElementById('achievements-preview').innerHTML = achievements.trim() ? `<div class="page-break-avoid"><h3 class="section-title-left">${achievementsTitle}</h3><ul class="entry-description">${formatList(achievements)}</ul></div>` : '';
+
+            // Custom sections
+            const customSections = document.querySelectorAll('.custom-section-entry');
+            let customHTML = '';
+            customSections.forEach(section => {
+                const title = section.querySelector('input').value;
+                const content = section.querySelector('textarea').value;
+                if (title && content) customHTML += `<div class="page-break-avoid"><h3 class="section-title-left">${title}</h3><div class="entry text-sm">${content.replace(/\n/g, '<br>')}</div></div>`;
+            });
+            document.getElementById('custom-sections-preview').innerHTML = customHTML;
+        }
+
+        function populateForm(data) {
+            clearForm();
+            Object.keys(data).forEach(key => {
+                const element = document.getElementById(key);
+                if (element && typeof data[key] === 'string') {
+                    element.value = data[key];
+                }
+            });
+            data.education.forEach((edu, i) => {
+                if (i > 0) addEducation();
+                const entry = document.querySelectorAll('#education-entries .education-entry')[i];
+                const inputs = entry.querySelectorAll('input');
+                inputs[0].value = edu.school; inputs[1].value = edu.location; inputs[2].value = edu.degree; inputs[3].value = edu.date;
+            });
+            data.work.forEach((job, i) => {
+                if (i > 0) addWorkExperience();
+                const entry = document.querySelectorAll('#work-experience-entries .work-experience-entry')[i];
+                const inputs = entry.querySelectorAll('input');
+                inputs[0].value = job.title; inputs[1].value = job.company; inputs[2].value = job.location; inputs[3].value = job.dates;
+                entry.querySelector('textarea').value = job.description;
+            });
+            data.projects.forEach((proj, i) => {
+                if (i > 0) addProject();
+                const entry = document.querySelectorAll('#project-entries .project-entry')[i];
+                const inputs = entry.querySelectorAll('input');
+                inputs[0].value = proj.name; inputs[1].value = proj.tech; inputs[2].value = proj.dates;
+                entry.querySelector('textarea').value = proj.description;
+            });
+            if (data.custom) {
+                data.custom.forEach(section => {
+                    addCustomSection();
+                    const lastSection = document.querySelector('#custom-sections-container .custom-section-entry:last-child');
+                    lastSection.querySelector('input').value = section.title;
+                    lastSection.querySelector('textarea').value = section.content;
+                });
+            }
+            updateResumePreview();
+        }
+
+        function autofillFresherSample() { populateForm(fresherSampleData); }
+        function autofillExperiencedSample() { populateForm(experiencedSampleData); }
+
+        function clearForm() {
+            document.getElementById('resume-form').reset();
+            resetPhotoUploadUI();
+            ['work-experience-entries', 'project-entries', 'education-entries', 'custom-sections-container'].forEach(id => { document.getElementById(id).innerHTML = ''; });
+            addWorkExperience(); addProject(); addEducation();
+            updateResumePreview();
+        }
+
+        async function generatePDF() {
+            const btn = document.querySelector('button[onclick="generatePDF()"]');
+            btn.disabled = true;
+            btn.innerHTML = `<svg class="animate-spin -ml-1 mr-3 h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" style="display:inline;"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" class="opacity-25"></circle><path fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" class="opacity-75"></path></svg> Generating...`;
+
+            const { jsPDF } = window.jspdf;
+            const resume = document.getElementById('resume-preview');
+            
+            const canvas = await html2canvas(resume, { scale: 3, dpi: 300, useCORS: true });
+            
+            const imgData = canvas.toDataURL('image/png', 1.0);
+            const pdf = new jsPDF('p', 'mm', 'a4');
+            const pdfWidth = pdf.internal.pageSize.getWidth();
+            const pdfHeight = pdf.internal.pageSize.getHeight();
+            const imgWidth = canvas.width;
+            const imgHeight = canvas.height;
+            const ratio = imgWidth / pdfWidth;
+            const canvasImgHeight = imgHeight / ratio;
+            
+            let heightLeft = canvasImgHeight;
+            let position = 0;
+            
+            pdf.addImage(imgData, 'PNG', 0, position, pdfWidth, canvasImgHeight);
+            heightLeft -= pdfHeight;
+
+            while (heightLeft > 0) {
+                position -= pdfHeight;
+                pdf.addPage();
+                pdf.addImage(imgData, 'PNG', 0, position, pdfWidth, canvasImgHeight);
+                heightLeft -= pdfHeight;
+            }
+            
+            pdf.save(`${document.getElementById('name').value.trim() || 'resume'}.pdf`);
+            
+            btn.disabled = false;
+            btn.innerHTML = 'Download PDF';
+        }
+
+        function updateFontSize() {
+            const slider = document.getElementById('fontSizeSlider');
+            const input = document.getElementById('fontSizeInput');
+            const display = document.getElementById('fontSizeDisplay');
+            const preview = document.getElementById('resume-preview');
+            
+            const size = slider.value;
+            input.value = size;
+            display.textContent = size + 'pt';
+            preview.style.fontSize = size + 'pt';
+        }
+
+        function updateFontSizeFromInput() {
+            const slider = document.getElementById('fontSizeSlider');
+            const input = document.getElementById('fontSizeInput');
+            
+            let size = parseFloat(input.value);
+            if (size < 8) size = 8;
+            if (size > 14) size = 14;
+            
+            slider.value = size;
+            input.value = size;
+            updateFontSize();
+        }
+    </script>
+</body>
+</html>

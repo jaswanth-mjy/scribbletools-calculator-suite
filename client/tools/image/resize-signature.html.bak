@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resize Signature - FREE Digital Signature Resizer Tool</title>
+  <meta name="description" content="Free signature resizer! Resize digital signatures for online applications, documents, forms. Perfect for job applications, government forms. 100% free!">
+  <meta name="keywords" content="resize signature, signature resizer, digital signature tool, signature editor, signature size, online signature resize, document signature, signature dimensions, signature tool, electronic signature resize, signature image tool, signature photo editor, digital signature editor, signature converter, signature formatter, signature optimizer, signature preparation, document signature tool, online application signature, government form signature, job application signature, form signature tool, signature processing">
+  <meta name="author" content="Scribble Tools">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://scribbletools.in/client/tools/image/resize-signature.html">
+  <meta property="og:title" content="Resize Signature - FREE Digital Signature Resizer Tool">
+  <meta property="og:description" content="Free signature resizer! Resize digital signatures for online applications, documents, forms. Perfect for job applications, government forms. 100% free!">
+  <meta property="og:image" content="https://scribbletools.in/assets/og-image.svg">
+  <meta property="og:site_name" content="Scribble Tools">
+  <meta property="og:locale" content="en_US">
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://scribbletools.in/client/tools/image/resize-signature.html">
+  <meta property="twitter:title" content="Resize Signature - FREE Digital Signature Resizer Tool">
+  <meta property="twitter:description" content="Free signature resizer! Resize digital signatures for online applications, documents, forms. Perfect for job applications, government forms. 100% free!">
+  <meta property="twitter:image" content="https://scribbletools.in/assets/og-image.svg">
+  
+  <!-- Additional SEO Meta Tags -->
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Scribble Tools">
+  <meta name="generator" content="Scribble Tools">
+  <meta name="application-name" content="Signature Resizer Tool">
+  <meta name="apple-mobile-web-app-title" content="Signature Resizer">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#D9534F">
+  <meta name="msapplication-navbutton-color" content="#D9534F">
+  <meta name="apple-mobile-web-app-status-bar-style" content="#D9534F">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://scribbletools.in/client/tools/image/resize-signature.html">
+  
+  <!-- Preconnect for Performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Digital Signature Resizer Tool",
+    "description": "Free online tool for resizing digital signatures to specific dimensions. Perfect for online applications, documents, and government forms.",
+    "url": "https://scribbletools.in/client/tools/image/resize-signature.html",
+    "applicationCategory": "MultimediaApplication",
+    "operatingSystem": "Any",
+    "permissions": "browser",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "featureList": [
+      "Resize digital signatures",
+      "Custom signature dimensions",
+      "Document signature preparation",
+      "Online application signatures",
+      "Government form compliance",
+      "Job application signatures",
+      "No registration required",
+      "Free to use"
+    ],
+    "provider": {
+      "@type": "Organization",
+      "name": "Scribble Tools",
+      "url": "https://scribbletools.in"
+    }
+  }
+  </script>
+  
+  <style>
+    .resize-signature-tool body { font-family: 'Poppins', sans-serif; background: #F8F4E8; color: #333; }
+    .resize-signature-tool main { display: block; }
+    .resize-signature-tool .reduce-size-container { max-width: 800px; margin: 3em auto; background: #fff; border-radius: 1.2em; box-shadow: 0 4px 24px #eae3d5; padding: 2em 1.5em 2.5em 1.5em; }
+    .resize-signature-tool .handwritten { font-family: 'Caveat', cursive; }
+    .resize-signature-tool .upload-area { border: 3px dashed #D9534F; border-radius: 1em; padding: 3em 2em; text-align: center; margin: 2em 0; background: #FDFBF5; transition: all 0.3s; cursor: pointer; }
+    .resize-signature-tool .upload-area:hover { background: #F0F8FF; border-color: #4682B4; }
+    .resize-signature-tool .upload-icon { font-size: 3em; color: #D9534F; margin-bottom: 1em; text-align: center; }
+    .resize-signature-tool .file-input { display: none; }
+    .resize-signature-tool .upload-btn { background: #D9534F; color: #fff; border: none; border-radius: 0.5em; padding: 1em 2em; font-weight: 600; cursor: pointer; transition: all 0.2s; display: block; margin: 0 auto 1.5em auto; }
+    .resize-signature-tool .upload-btn:hover { background: #c9302c; }
+    .resize-signature-tool .choose-file-btn { background: #D9534F; color: #fff; border: none; border-radius: 0.5em; padding: 1em 2em; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+    .resize-signature-tool .choose-file-btn:hover { background: #c9302c; }
+    .resize-signature-tool .preview-section { margin-top: 2em; text-align: center; display: none; }
+    .resize-signature-tool .preview-section h3 { color: #4682B4; margin-bottom: 1em; }
+    .resize-signature-tool .uploaded-preview { max-width: 100%; max-height: 300px; border-radius: 0.5em; margin: 1em 0; border: 2px solid #EAE3D5; }
+    .resize-signature-tool .controls-section { display: none; margin: 2em 0; background: #FDFBF5; border-radius: 0.7em; padding: 1.2em; border: 1px solid #FFEAA7; }
+    .resize-signature-tool .controls-section h3 { color: #4682B4; margin-bottom: 1em; font-weight: 600; }
+    .resize-signature-tool .form-group { margin: 1.2em 0; }
+    .resize-signature-tool .form-label { font-weight: 600; margin-bottom: 0.5em; display: block; color: #4682B4; }
+    .resize-signature-tool .form-input { width: 100%; padding: 0.8em; border: 2px solid #EAE3D5; border-radius: 0.5em; font-size: 1em; margin-bottom: 1em; background: #fff; }
+    .resize-signature-tool .process-btn { background: #228B22; color: #fff; border: none; border-radius: 0.5em; padding: 1em 2em; font-weight: 600; cursor: pointer; transition: all 0.2s; width: 100%; font-size: 1.1em; }
+    .resize-signature-tool .process-btn:hover { background: #1e7e1e; }
+    .resize-signature-tool .clear-btn { background: #6c757d; color: #fff; border: none; border-radius: 0.5em; padding: 0.8em 1.5em; font-weight: 600; cursor: pointer; transition: all 0.2s; margin-left: 1em; }
+    .resize-signature-tool .clear-btn:hover { background: #5a6268; }
+    .resize-signature-tool .output-preview { background: #FDFBF5; border-radius: 0.7em; padding: 1.2em; text-align: center; margin: 2em 0; border: 1px solid #FFEAA7; display: none; }
+    .resize-signature-tool .output-preview h3 { color: #4682B4; margin-bottom: 1em; font-weight: 600; }
+    .resize-signature-tool .preview-image { max-width: 100%; max-height: 300px; border-radius: 0.5em; margin: 1em 0; border: 2px solid #EAE3D5; }
+    .resize-signature-tool .output-card { display: none; margin-top: 1.5em; }
+    .resize-signature-tool .btn-download { background: #228B22; color: #fff; border: none; border-radius: 0.5em; padding: 1em 2em; font-weight: 600; cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-block; margin-right: 1em; font-size: 1.1em; }
+    .resize-signature-tool .btn-download:hover { background: #1e7e1e; color: #fff; text-decoration: none; }
+    .resize-signature-tool .step-list { margin: 1.2em 0 1.2em 1.2em; padding: 0; }
+    .resize-signature-tool .step-list li { margin-bottom: 0.7em; color: #666; }
+    .resize-signature-tool .step-list li strong { color: #4682B4; }
+  </style>
+</head>
+<body>
+<main>
+  <div class="resize-signature-tool">
+    <div class="reduce-size-container">
+      <header>
+        <h1 style="font-family: 'Caveat', cursive; font-size: 3em; color: #FF6B6B; margin-bottom: 0.5em;">Resize Signature for Documents</h1>
+        <p style="font-size:1.2em; margin-bottom:1em;">Easily resize your signature for official documents, online forms, and applications. Specify dimensions in mm, cm, or pixels. Fast, privacy-first, and always free. Trusted by professionals.</p>
+      </header>
+
+      <div style="margin-bottom: 1.5em;">
+        <span style="color: #666;">Related:</span>
+        <a href="#resize-image-pixel" style="color: #FF6B6B; text-decoration: none; margin: 0 0.5em;">Resize Image Pixel</a>
+        <a href="#resize-image-cm" style="color: #FF6B6B; text-decoration: none; margin: 0 0.5em;">Resize Image CM</a>
+        <a href="#resize-image-mm" style="color: #FF6B6B; text-decoration: none; margin: 0 0.5em;">Resize Image MM</a>
+        <a href="#resize-image-inches" style="color: #FF6B6B; text-decoration: none; margin: 0 0.5em;">Resize Image Inches</a>
+      </div>
+
+      <div style="background:#FFF3CD; border:1px solid #FFD700; border-radius:0.7em; padding:1em; margin-bottom:1.2em; color:#B8860B; font-weight:bold; font-size:1.1em;">
+        ✒️ <b>Resize your signature to exact dimensions for official documents and forms.</b> Perfect for online applications, PDFs, and any document requiring specific signature sizes.
+      </div>
+
+      <section aria-labelledby="instructions-title" style="background: #F8FBFF; border-radius: 0.7em; padding: 1.5em; margin: 2em 0; border: 1px solid #4682B4;">
+        <h2 id="instructions-title" style="color:#4682B4; margin-bottom: 1em; font-size: 1.5em;">How to Use</h2>
+        <ol class="step-list" style="margin-left: 1.5em; line-height: 1.6;">
+          <li><strong style="color: #4682B4">Upload Your Signature:</strong>
+            <ul style="margin: 0.5em 0 0.5em 1.5em; color: #666;">
+              <li>Drag & drop your signature image into the upload area.</li>
+              <li>Or click "Choose File" to select it.</li>
+            </ul>
+          </li>
+          <li><strong style="color: #4682B4">Set Dimensions:</strong>
+            <ul style="margin: 0.5em 0 0.5em 1.5em; color: #666;">
+              <li>Enter the required width and height.</li>
+              <li>Select the unit (mm, cm, or pixels).</li>
+            </ul>
+          </li>
+          <li><strong style="color: #4682B4">Resize and Download:</strong>
+            <ul style="margin: 0.5em 0 0.5em 1.5em; color: #666;">
+              <li>Click "Resize Signature" to process.</li>
+              <li>Preview the result and click "Download".</li>
+            </ul>
+          </li>
+        </ol>
+      </section>
+    
+      <section class="example-section" style="background: #FDFBF5; border: 1px solid #FFEAA7; border-radius: 0.7em; padding: 1.5em; margin: 2em 0;">
+        <h3 style="color: #4682B4; margin-bottom: 1em;">Common Uses & Pro Tips</h3>
+        
+        <div style="margin-bottom: 1.5em;">
+          <h4 style="color: #FF6B6B; margin-bottom: 0.5em;">📄 Official Documents</h4>
+          <ul style="color: #666; margin-left: 1.2em;">
+            <li>Online form submissions - exact pixel requirements</li>
+            <li>PDF documents - professional appearance</li>
+            <li>Digital contracts - legal compliance</li>
+            <li>Government applications - specific size mandates</li>
+          </ul>
+        </div>
+        
+        <div style="margin-bottom: 1.5em;">
+          <h4 style="color: #FF6B6B; margin-bottom: 0.5em;">🎯 Size Guidelines</h4>
+          <ul style="color: #666; margin-left: 1.2em;">
+            <li>Standard forms: 50mm x 20mm</li>
+            <li>Digital contracts: 150px x 50px</li>
+            <li>ID documents: 40mm x 15mm</li>
+            <li>Banking forms: 60mm x 25mm</li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 style="color: #FF6B6B; margin-bottom: 0.5em;">💡 Pro Tips</h4>
+          <ul style="color: #666; margin-left: 1.2em;">
+            <li>Use high-contrast signatures for better visibility</li>
+            <li>Keep original proportions when possible</li>
+            <li>Add white background for transparent signatures</li>
+            <li>Test signature visibility at target size</li>
+          </ul>
+        </div>
+      </section>
+
+      <section style="margin-top: 2em;">
+        <h2 style="color:#FF6B6B; margin-bottom: 0.5em;">Privacy Notice</h2>
+        <div style="background: #FFF3CD; border: 1px solid #FFD700; border-radius: 0.7em; padding: 1em; margin-bottom: 1.2em; color: #B8860B;">
+            <strong style="font-size: 1.1em;">🔒 Your files are never uploaded or stored. All processing happens in your browser.</strong>
+        </div>
+      </section>
+
+      <div class="tool-interface">
+        <div class="upload-area" id="upload-area" tabindex="0" aria-label="Upload signature area. Drag and drop or click to select an image.">
+          <div class="upload-icon" aria-hidden="true">✒️</div>
+          <h3>Drag & Drop your signature here</h3>
+          <p>or click to browse files</p>
+          <input type="file" id="file-input" class="file-input" accept="image/*">
+          <button class="upload-btn" id="choose-file-btn">Choose File</button>
+          <div id="upload-progress-bar" style="display:none; width:100%; background:#F0F8FF; border-radius:0.5em; margin-top:1.2em; height:1.5em; overflow:hidden; border:1px solid #B0C4DE; position:relative;">
+            <div id="upload-progress-fill" style="height:100%; width:0; background:linear-gradient(90deg,#D9534F,#F0AD4E,#5BC0DE,#5CB85C,#A569BD); transition:width 0.2s;"></div>
+            <span id="upload-progress-text" style="position:absolute; left:50%; top:0; transform:translateX(-50%); color:#333; font-weight:600; line-height:1.5em; font-size:1em;">Uploading: 0%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="image-description" id="image-description" style="display: none; background: #E8F5E8; border: 2px solid #5CB85C; border-radius: 0.7em; padding: 1.2em; margin: 1.5em 0; text-align: center;">
+        <div style="font-size: 1.5em; color: #228B22; margin-bottom: 0.5em;">✒️</div>
+        <div style="font-size: 1.1em; color: #228B22; font-weight: 600; margin-bottom: 0.5em;">Signature Uploaded Successfully!</div>
+        <div style="color: #666; font-size: 0.95em;" id="image-info">Ready for resizing</div>
+      </div>
+
+      <div class="preview-section" id="preview-section">
+        <h3>Uploaded Signature <button class="clear-btn" id="clear-btn">Clear</button></h3>
+        <img id="preview-image" class="uploaded-preview">
+      </div>
+
+      <div class="controls-section" id="controls-section">
+        <h3>Resize Settings</h3>
+        <div class="form-group" style="display: flex; gap: 1rem;">
+            <div style="flex: 1;">
+                <label for="width-input" class="form-label">Width:</label>
+                <input type="number" id="width-input" class="form-input" placeholder="e.g., 50" />
+            </div>
+            <div style="flex: 1;">
+                <label for="height-input" class="form-label">Height:</label>
+                <input type="number" id="height-input" class="form-input" placeholder="e.g., 20" />
+            </div>
+            <div style="flex: 1;">
+                <label for="unit-select" class="form-label">Unit:</label>
+                <select id="unit-select" class="form-input">
+                    <option value="mm">mm</option>
+                    <option value="cm">cm</option>
+                    <option value="px">pixels</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+          <button class="process-btn" id="process-btn">Resize Signature</button>
+        </div>
+      </div>
+
+      <div class="output-preview" id="output-preview">
+        <h3>Resized Signature</h3>
+        <canvas id="result-canvas" class="preview-image"></canvas>
+        <div class="output-card" id="output-card">
+          <a href="#" class="btn-download" id="download-link" download="resized-signature.png">Download Signature</a>
+          <button class="clear-btn" id="download-clear-btn">Start Over</button>
+        </div>
+      </div>
+
+      <div class="feature-list" style="background: #F8F9FA; border-radius: 0.7em; padding: 1.2em; margin: 1.5em 0;">
+        <h2 style="color: #4682B4; margin-bottom: 1em;">Key Features</h2>
+        <ul>
+          <li>Precise dimension control (mm, cm, pixels)</li>
+          <li>High-quality signature resizing</li>
+          <li>Maintains signature clarity</li>
+          <li>White background for transparency</li>
+          <li>Privacy-first - no uploads stored</li>
+          <li>Works on all devices</li>
+          <li>No registration required</li>
+          <li>Perfect for official documents</li>
+        </ul>
+      </div>
+      
+      <nav class="recent-tools" aria-label="Recently used tools" style="background: #F8F9FA; border-radius: 0.7em; padding: 1.2em; margin: 1.5em 0;">
+        <strong>Recent Tools:</strong>
+        <div class="recent-tools-list" style="display: inline-block;">
+          <a href="#resize-image-pixel">Resize Image Pixel</a>
+          <a href="#resize-image-cm">Resize Image CM</a>
+          <a href="#resize-image-mm">Resize Image MM</a>
+          <span class="separator" style="margin: 0 0.5em; color: #999;">•</span>
+          <a href="#" id="clear-recent" style="color: #D9534F; font-size: 0.9em;">Clear History</a>
+        </div>
+      </nav>
+    </div>
+  </div>
+</main>
+
+<script>
+(function() {
+  'use strict';
+  
+  let uploadedImage = null;
+  let canvas = null;
+  let ctx = null;
+  let isInitialized = false;
+  let isProcessing = false;
+
+  // Global initialization function for the main app
+  window.initializeResizeSignatureTool = function() {
+    console.log('✒️ Initializing Resize Signature Tool...');
+    reset();
+    init();
+  };
+
+  function reset() {
+    console.log('Resetting tool state...');
+    uploadedImage = null;
+    canvas = null;
+    ctx = null;
+    isProcessing = false;
+    isInitialized = false;
+    
+    // Reset UI elements
+    const elements = {
+      uploadArea: document.getElementById('upload-area'),
+      previewSection: document.getElementById('preview-section'),
+      controlsSection: document.getElementById('controls-section'),
+      outputPreview: document.getElementById('output-preview'),
+      imageDescription: document.getElementById('image-description'),
+      widthInput: document.getElementById('width-input'),
+      heightInput: document.getElementById('height-input'),
+      fileInput: document.getElementById('file-input'),
+      outputCard: document.getElementById('output-card'),
+      resultCanvas: document.getElementById('result-canvas')
+    };
+    
+    if (elements.uploadArea) elements.uploadArea.style.display = 'block';
+    if (elements.previewSection) elements.previewSection.style.display = 'none';
+    if (elements.controlsSection) elements.controlsSection.style.display = 'none';
+    if (elements.outputPreview) elements.outputPreview.style.display = 'none';
+    if (elements.imageDescription) elements.imageDescription.style.display = 'none';
+    if (elements.outputCard) elements.outputCard.style.display = 'none';
+    
+    if (elements.widthInput) elements.widthInput.value = '';
+    if (elements.heightInput) elements.heightInput.value = '';
+    if (elements.fileInput) elements.fileInput.value = '';
+    if (elements.resultCanvas && elements.resultCanvas.getContext) {
+        const ctx = elements.resultCanvas.getContext('2d');
+        ctx.clearRect(0, 0, elements.resultCanvas.width, elements.resultCanvas.height);
+    }
+  }
+
+  function init() {
+    if (isInitialized) {
+      console.log('Already initialized');
+      return;
+    }
+
+    console.log('Setting up event listeners...');
+    
+    // Get elements
+    const uploadArea = document.getElementById('upload-area');
+    const fileInput = document.getElementById('file-input');
+    const chooseFileBtn = document.getElementById('choose-file-btn');
+    
+    if (!uploadArea || !fileInput || !chooseFileBtn) {
+      console.error('Critical elements missing:', {
+        uploadArea: !!uploadArea,
+        fileInput: !!fileInput,
+        chooseFileBtn: !!chooseFileBtn
+      });
+      setTimeout(init, 100); // Retry
+      return;
+    }
+
+    // Remove old listeners by cloning
+    [uploadArea, fileInput, chooseFileBtn].forEach(el => {
+      if (el && el.parentNode) {
+        const newEl = el.cloneNode(true);
+        el.parentNode.replaceChild(newEl, el);
+      }
+    });
+
+    // Re-get elements after cloning
+    const newUploadArea = document.getElementById('upload-area');
+    const newFileInput = document.getElementById('file-input');
+    const newChooseFileBtn = document.getElementById('choose-file-btn');
+
+    // Click handlers
+    if (newChooseFileBtn) {
+      newChooseFileBtn.onclick = function(e) {
+        e.preventDefault();
+        if (!isProcessing) {
+          console.log('🖱️ Choose file clicked');
+          newFileInput.click();
+        }
+      };
+    }
+
+    if (newUploadArea) {
+      newUploadArea.onclick = function(e) {
+        if (e.target !== newChooseFileBtn && !isProcessing) {
+          console.log('🖱️ Upload area clicked');
+          newFileInput.click();
+        }
+      };
+    }
+
+    // File input change
+    if (newFileInput) {
+      newFileInput.onchange = function(e) {
+        if (e.target.files.length > 0) {
+          const file = e.target.files[0];
+          console.log('📁 File selected:', file.name);
+          if (!isProcessing) {
+            startUploadProgress(file);
+          }
+          e.target.value = '';
+        }
+      };
+    }
+
+    // Drag and drop
+    if (newUploadArea) {
+      newUploadArea.ondragover = function(e) {
+        e.preventDefault();
+        if (!isProcessing) {
+          newUploadArea.style.backgroundColor = '#F0F8FF';
+          newUploadArea.style.borderColor = '#4682B4';
+        }
+      };
+
+      newUploadArea.ondragleave = function() {
+        newUploadArea.style.backgroundColor = '#FDFBF5';
+        newUploadArea.style.borderColor = '#D9534F';
+      };
+
+      newUploadArea.ondrop = function(e) {
+        e.preventDefault();
+        newUploadArea.style.backgroundColor = '#FDFBF5';
+        newUploadArea.style.borderColor = '#D9534F';
+        if (!isProcessing && e.dataTransfer.files.length > 0) {
+          startUploadProgress(e.dataTransfer.files[0]);
+        }
+      };
+    }
+
+    // Process button
+    const processBtn = document.getElementById('process-btn');
+    if (processBtn) {
+      processBtn.onclick = processImage;
+    }
+
+    // Clear buttons
+    ['clear-btn', 'download-clear-btn'].forEach(id => {
+      const btn = document.getElementById(id);
+      if (btn) btn.onclick = reset;
+    });
+
+    // Download button
+    const downloadLink = document.getElementById('download-link');
+    if (downloadLink) {
+      downloadLink.onclick = function(e) {
+        if (!canvas) {
+          e.preventDefault();
+          alert('Please process an image first');
+          return;
+        }
+      };
+    }
+
+    isInitialized = true;
+    console.log('✅ Resize Signature Tool initialized successfully');
+  }
+
+  function startUploadProgress(file) {
+    if (isProcessing) return;
+    const uploadProgressBar = document.getElementById('upload-progress-bar');
+    const uploadProgressFill = document.getElementById('upload-progress-fill');
+    const uploadProgressText = document.getElementById('upload-progress-text');
+
+    if (!uploadProgressBar || !uploadProgressFill || !uploadProgressText) {
+      // Fallback if elements are missing
+      handleFile(file);
+      return;
+    }
+
+    // Reset related UI while "uploading"
+    const previewSection = document.getElementById('preview-section');
+    const controlsSection = document.getElementById('controls-section');
+    const outputPreview = document.getElementById('output-preview');
+    if (previewSection) previewSection.style.display = 'none';
+    if (controlsSection) controlsSection.style.display = 'none';
+    if (outputPreview) outputPreview.style.display = 'none';
+
+    uploadProgressBar.style.display = 'block';
+    uploadProgressFill.style.width = '0%';
+    uploadProgressText.textContent = 'Uploading: 0%';
+
+    let percent = 0;
+    const duration = 800 + Math.random() * 400; // 0.8s - 1.2s
+    const start = Date.now();
+    function animate() {
+      percent = Math.min(100, Math.round(((Date.now() - start) / duration) * 100));
+      uploadProgressFill.style.width = percent + '%';
+      uploadProgressText.textContent = 'Uploading: ' + percent + '%';
+      if (percent < 100) {
+        requestAnimationFrame(animate);
+      } else {
+        setTimeout(() => {
+          uploadProgressBar.style.display = 'none';
+          handleFile(file);
+        }, 200);
+      }
+    }
+    animate();
+  }
+
+  function handleFile(file) {
+    if (isProcessing) {
+      console.log('⚠️ Already processing a file, skipping...');
+      return;
+    }
+    
+    isProcessing = true;
+    console.log('📤 Processing file:', file.name, 'Size:', file.size, 'Type:', file.type);
+    
+    if (!file.type.startsWith('image/')) {
+      alert('❌ Please select a valid image file (JPEG, PNG, etc.).');
+      isProcessing = false;
+      return;
+    }
+
+    if (file.size > 10 * 1024 * 1024) {
+      alert('❌ File size must be less than 10 MB.');
+      isProcessing = false;
+      return;
+    }
+
+    const reader = new FileReader();
+    
+    reader.onload = function(e) {
+      console.log('✅ File read successfully, loading image...');
+      uploadedImage = new Image();
+      
+      uploadedImage.onload = function() {
+        console.log('✅ Image loaded successfully:', uploadedImage.width, 'x', uploadedImage.height);
+        const previewImage = document.getElementById('preview-image');
+        const imageInfo = document.getElementById('image-info');
+        const imageDescription = document.getElementById('image-description');
+        
+        previewImage.src = e.target.result;
+        if (imageInfo) {
+          const fileSize = (file.size / 1024).toFixed(1);
+          imageInfo.textContent = `${file.name} (${fileSize} KB) - Ready for resizing`;
+        }
+        
+        // Show preview and description
+        document.getElementById('preview-section').style.display = 'block';
+        document.getElementById('controls-section').style.display = 'block';
+        document.getElementById('upload-area').style.display = 'none';
+        if (imageDescription) imageDescription.style.display = 'block';
+        
+        isProcessing = false;
+      };
+      
+      uploadedImage.onerror = function(err) {
+        console.error('❌ Error loading image:', err);
+        alert('Error loading image. Please try a different file.');
+        isProcessing = false;
+      };
+      
+      uploadedImage.src = e.target.result;
+    };
+    
+    reader.onerror = function(err) {
+      console.error('❌ Error reading file:', err);
+      alert('Error reading file. Please try again.');
+      isProcessing = false;
+    };
+    
+    reader.readAsDataURL(file);
+  }
+
+  function processImage() {
+    if (!uploadedImage) {
+      alert('❌ Please upload an image first');
+      return;
+    }
+
+    const width = parseFloat(document.getElementById('width-input').value);
+    const height = parseFloat(document.getElementById('height-input').value);
+    const unit = document.getElementById('unit-select').value;
+
+    if (isNaN(width) || isNaN(height) || width <= 0 || height <= 0) {
+      alert('❌ Please enter valid positive numbers for width and height.');
+      return;
+    }
+
+    if (isProcessing) {
+      console.log('⚠️ Already processing, please wait...');
+      return;
+    }
+    
+    isProcessing = true;
+    
+    try {
+      // Validate the image
+      if (!uploadedImage.complete || uploadedImage.naturalWidth === 0) {
+        throw new Error('Image not loaded properly. Please try uploading again.');
+      }
+
+      const dpi = 300;
+      let targetWidth, targetHeight;
+
+      if (unit === 'mm') {
+          targetWidth = Math.round((width / 25.4) * dpi);
+          targetHeight = Math.round((height / 25.4) * dpi);
+      } else if (unit === 'cm') {
+          targetWidth = Math.round((width / 2.54) * dpi);
+          targetHeight = Math.round((height / 2.54) * dpi);
+      } else { // px
+          targetWidth = width;
+          targetHeight = height;
+      }
+
+      // Create canvas with error checking
+      canvas = document.getElementById('result-canvas');
+      if (!canvas) {
+        throw new Error('Could not create canvas. Please refresh your browser.');
+      }
+
+      ctx = canvas.getContext('2d');
+      if (!ctx) {
+        throw new Error('Could not get canvas context. Please try a different browser.');
+      }
+      
+      canvas.width = targetWidth;
+      canvas.height = targetHeight;
+      
+      // Fill background with white, useful for transparent signatures
+      ctx.fillStyle = '#FFFFFF';
+      ctx.fillRect(0, 0, targetWidth, targetHeight);
+
+      // Draw image with error checking
+      try {
+        ctx.drawImage(uploadedImage, 0, 0, targetWidth, targetHeight);
+      } catch (drawError) {
+        throw new Error('Failed to draw image. The image might be corrupted.');
+      }
+
+      showResult();
+      
+      console.log('✅ Image processed successfully');
+    } catch (error) {
+      console.error('❌ Error processing image:', error);
+      alert('Error processing image: ' + (error.message || 'Unknown error'));
+    } finally {
+      isProcessing = false;
+    }
+  }
+
+  function showResult() {
+    try {
+      const downloadLink = document.getElementById('download-link');
+      const outputPreview = document.getElementById('output-preview');
+      const outputCard = document.getElementById('output-card');
+      
+      if (!downloadLink || !outputPreview || !outputCard || !canvas) {
+        throw new Error('Required UI elements not found. Please refresh the page.');
+      }
+      
+      // Create data URL with error handling
+      let dataURL;
+      try {
+        dataURL = canvas.toDataURL('image/png');
+      } catch (error) {
+        throw new Error('Failed to create image. The image might be too large.');
+      }
+      
+      // Set up download link
+      downloadLink.href = dataURL;
+      
+      // Show the result sections
+      outputPreview.style.display = 'block';
+      outputCard.style.display = 'block';
+    } catch (error) {
+      console.error('❌ Error showing result:', error);
+      alert('Error showing result: ' + error.message);
+    }
+  }
+
+  // Recent tools functionality
+  const RECENT_TOOLS_KEY = 'recentImageTools';
+  const MAX_RECENT_TOOLS = 4;
+
+  function initRecentTools() {
+    const clearRecentBtn = document.getElementById('clear-recent');
+    if (clearRecentBtn) {
+      clearRecentBtn.onclick = function(e) {
+        e.preventDefault();
+        localStorage.removeItem(RECENT_TOOLS_KEY);
+        updateRecentToolsList();
+      };
+    }
+
+    // Add current tool to recent
+    const currentToolData = {
+      name: 'Resize Signature',
+      url: window.location.pathname
+    };
+    addToRecentTools(currentToolData);
+    updateRecentToolsList();
+  }
+
+  function addToRecentTools(toolData) {
+    let recentTools = JSON.parse(localStorage.getItem(RECENT_TOOLS_KEY) || '[]');
+    
+    // Remove if already exists
+    recentTools = recentTools.filter(tool => tool.url !== toolData.url);
+    
+    // Add to front
+    recentTools.unshift(toolData);
+    
+    // Keep only MAX_RECENT_TOOLS items
+    recentTools = recentTools.slice(0, MAX_RECENT_TOOLS);
+    
+    localStorage.setItem(RECENT_TOOLS_KEY, JSON.stringify(recentTools));
+  }
+
+  function updateRecentToolsList() {
+    const recentToolsList = document.querySelector('.recent-tools-list');
+    if (!recentToolsList) return;
+
+    const recentTools = JSON.parse(localStorage.getItem(RECENT_TOOLS_KEY) || '[]');
+    
+    if (recentTools.length === 0) {
+      recentToolsList.innerHTML = '<span style="color: #666;">No recent tools</span>';
+      return;
+    }
+
+    const toolLinks = recentTools
+      .filter(tool => tool.url !== window.location.pathname) // Don't show current tool
+      .map(tool => `<a href="${tool.url}">${tool.name}</a>`)
+      .join('<span class="separator" style="margin: 0 0.5em; color: #999;">•</span>');
+
+    recentToolsList.innerHTML = toolLinks + 
+      '<span class="separator" style="margin: 0 0.5em; color: #999;">•</span>' +
+      '<a href="#" id="clear-recent" style="color: #D9534F; font-size: 0.9em;">Clear History</a>';
+    
+    // Reattach clear event listener
+    const clearRecentBtn = document.getElementById('clear-recent');
+    if (clearRecentBtn) {
+      clearRecentBtn.onclick = function(e) {
+        e.preventDefault();
+        localStorage.removeItem(RECENT_TOOLS_KEY);
+        updateRecentToolsList();
+      };
+    }
+  }
+
+  // Add recent tools initialization to main init
+  const originalInit = init;
+  init = function() {
+    originalInit();
+    initRecentTools();
+  };
+
+  // Auto-initialize if DOM is ready
+  if (document.readyState !== 'loading') {
+    setTimeout(init, 50);
+  } else {
+    document.addEventListener('DOMContentLoaded', function() {
+      setTimeout(init, 50);
+    });
+  }
+
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1200, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes">
+    
+    <!-- Primary Meta Tags -->
+    <title>Academic Performance Dashboard - Track Grades, GPA & Performance Analytics | Free Student Tool</title>
+    <meta name="title" content="Academic Performance Dashboard - Track Grades, GPA & Performance Analytics | Free Student Tool">
+    <meta name="description" content="Free academic performance dashboard for students. Track your grades, monitor GPA trends, analyze subject performance, and get predictive insights. Visualize your academic progress with charts and analytics.">
+    <meta name="keywords" content="academic performance dashboard, grade tracker, GPA calculator, student performance analytics, grade trends, academic progress, performance monitoring, student dashboard, grade analysis, GPA history">
+    <meta name="author" content="Scribble Tools">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://scribbletools.io/academic-performance-dashboard">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://scribbletools.io/academic-performance-dashboard">
+    <meta property="og:title" content="Academic Performance Dashboard - Track Grades & GPA Analytics">
+    <meta property="og:description" content="Free academic performance dashboard for students. Track grades, monitor GPA trends, analyze subject performance with comprehensive charts and analytics.">
+    <meta property="og:image" content="https://scribbletools.io/assets/dashboard-preview.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://scribbletools.io/academic-performance-dashboard">
+    <meta property="twitter:title" content="Academic Performance Dashboard - Track Grades & GPA Analytics">
+    <meta property="twitter:description" content="Free academic performance dashboard for students. Track grades, monitor GPA trends, analyze subject performance with comprehensive charts and analytics.">
+    <meta property="twitter:image" content="https://scribbletools.io/assets/dashboard-preview.jpg">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Academic Performance Dashboard",
+        "applicationCategory": "EducationalApplication",
+        "operatingSystem": "Any",
+        "description": "Free academic performance dashboard for students to track grades, monitor GPA trends, and analyze academic performance with comprehensive charts and analytics.",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "featureList": [
+            "Grade trend analysis with visual charts",
+            "Semester-by-semester GPA tracking",
+            "Subject performance comparison",
+            "Predictive analytics for future performance",
+            "Comprehensive performance metrics",
+            "Interactive data visualizations",
+            "Progress tracking over time",
+            "Performance insights and recommendations",
+            "Export and share reports",
+            "Mobile-responsive design"
+        ],
+        "screenshot": "https://scribbletools.io/assets/dashboard-preview.jpg",
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.8",
+            "ratingCount": "1250",
+            "bestRating": "5",
+            "worstRating": "1"
+        }
+    }
+    </script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #F8F4E8;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .apd-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header Section */
+        .apd-header {
+            background: white;
+            border-radius: 24px;
+            padding: 60px 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            text-align: center;
+        }
+        
+        .apd-header h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .apd-header p {
+            font-size: 1.25rem;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .apd-cta-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 18px 48px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+        
+        .apd-cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.5);
+        }
+        
+        /* Use Cases Section */
+        .apd-section {
+            background: white;
+            border-radius: 24px;
+            padding: 50px 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+        
+        .apd-section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 50px;
+            color: #1a202c;
+        }
+        
+        .apd-use-cases {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .apd-use-case {
+            background: linear-gradient(135deg, #f6f8fb 0%, #ffffff 100%);
+            padding: 35px;
+            border-radius: 20px;
+            border: 2px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+        
+        .apd-use-case:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.15);
+            border-color: #667eea;
+        }
+        
+        .apd-use-case-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .apd-use-case h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #1a202c;
+        }
+        
+        .apd-use-case p {
+            color: #4a5568;
+            line-height: 1.7;
+        }
+        
+        /* FAQ Section */
+        .apd-faq {
+            margin-top: 40px;
+        }
+        
+        .apd-faq-item {
+            background: #f8fafc;
+            border-radius: 16px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            border: 2px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+        
+        .apd-faq-item:hover {
+            border-color: #667eea;
+        }
+        
+        .apd-faq-question {
+            padding: 25px 30px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #1a202c;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+        }
+        
+        .apd-faq-question:hover {
+            background: #f1f5f9;
+        }
+        
+        .apd-faq-icon {
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+            color: #667eea;
+        }
+        
+        .apd-faq-item.active .apd-faq-icon {
+            transform: rotate(180deg);
+        }
+        
+        .apd-faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, opacity 0.4s ease, padding 0.4s ease;
+            opacity: 0;
+            padding: 0 30px;
+        }
+        
+        .apd-faq-item.active .apd-faq-answer {
+            max-height: 500px;
+            opacity: 1;
+            padding: 0 30px 25px 30px;
+        }
+        
+        .apd-faq-answer p {
+            color: #4a5568;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+        
+        /* Features Grid */
+        .apd-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+        
+        .apd-feature {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            border: 2px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+        
+        .apd-feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.15);
+            border-color: #667eea;
+        }
+        
+        .apd-feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .apd-feature h4 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #1a202c;
+        }
+        
+        .apd-feature p {
+            color: #4a5568;
+            line-height: 1.6;
+        }
+        
+        /* Footer CTA */
+        .apd-footer-cta {
+            text-align: center;
+            padding: 50px 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 24px;
+            color: white;
+            margin-top: 40px;
+        }
+        
+        .apd-footer-cta h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+        
+        .apd-footer-cta p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+        
+        .apd-footer-btn {
+            display: inline-block;
+            background: white;
+            color: #667eea;
+            padding: 18px 48px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .apd-footer-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .apd-header {
+                padding: 40px 25px;
+            }
+            
+            .apd-header h1 {
+                font-size: 2rem;
+            }
+            
+            .apd-header p {
+                font-size: 1.1rem;
+            }
+            
+            .apd-section {
+                padding: 35px 25px;
+            }
+            
+            .apd-section-title {
+                font-size: 2rem;
+            }
+            
+            .apd-use-cases,
+            .apd-features {
+                grid-template-columns: 1fr;
+            }
+            
+            .apd-footer-cta h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="../force-desktop-layout.css">
+</head>
+<body>
+    <div class="apd-container">
+        <!-- Header Section -->
+        <div class="apd-header">
+            <h1>📊 Academic Performance Dashboard</h1>
+            <p>Track your grades, monitor GPA trends, analyze subject performance, and get predictive insights to excel in your academic journey. Visualize your progress with comprehensive charts and analytics.</p>
+            <a href="client/tools/student/productivity/academic-performance-dashboard-redirect.html" target="_blank" rel="noopener noreferrer" class="apd-cta-btn">Open Dashboard →</a>
+        </div>
+        
+        <!-- Use Cases Section -->
+        <div class="apd-section">
+            <h2 class="apd-section-title">Who Benefits from This Dashboard?</h2>
+            
+            <div class="apd-use-cases">
+                <div class="apd-use-case">
+                    <div class="apd-use-case-icon">🎓</div>
+                    <h3>College Students</h3>
+                    <p>Monitor your GPA trends across semesters, track course performance, and make data-driven decisions about your academic path. Identify strengths and areas needing improvement.</p>
+                </div>
+                
+                <div class="apd-use-case">
+                    <div class="apd-use-case-icon">📚</div>
+                    <h3>High School Students</h3>
+                    <p>Track grades across all subjects, visualize your academic progress over time, and prepare for college applications with comprehensive performance analytics.</p>
+                </div>
+                
+                <div class="apd-use-case">
+                    <div class="apd-use-case-icon">🎯</div>
+                    <h3>Graduate Students</h3>
+                    <p>Maintain the high GPA requirements for graduate programs. Track research performance, course grades, and overall academic standing with detailed analytics.</p>
+                </div>
+                
+                <div class="apd-use-case">
+                    <div class="apd-use-case-icon">👨‍🏫</div>
+                    <h3>Parents & Guardians</h3>
+                    <p>Stay informed about your child's academic performance. Monitor grade trends, identify subjects needing attention, and support their educational success.</p>
+                </div>
+                
+                <div class="apd-use-case">
+                    <div class="apd-use-case-icon">🌟</div>
+                    <h3>Scholarship Recipients</h3>
+                    <p>Maintain scholarship GPA requirements by tracking your academic performance closely. Get early warnings about performance dips and take corrective action.</p>
+                </div>
+                
+                <div class="apd-use-case">
+                    <div class="apd-use-case-icon">🏆</div>
+                    <h3>Academic Achievers</h3>
+                    <p>Set high academic goals and track your progress toward excellence. Compare performance across subjects and maintain your competitive edge.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Features Section -->
+        <div class="apd-section">
+            <h2 class="apd-section-title">Powerful Features</h2>
+            
+            <div class="apd-features">
+                <div class="apd-feature">
+                    <div class="apd-feature-icon">📈</div>
+                    <h4>Grade Trend Analysis</h4>
+                    <p>Visual charts showing your grade progression over time across all subjects and semesters.</p>
+                </div>
+                
+                <div class="apd-feature">
+                    <div class="apd-feature-icon">🎯</div>
+                    <h4>GPA History Tracking</h4>
+                    <p>Semester-by-semester GPA trends with cumulative tracking and projection capabilities.</p>
+                </div>
+                
+                <div class="apd-feature">
+                    <div class="apd-feature-icon">📊</div>
+                    <h4>Subject Performance</h4>
+                    <p>Compare performance across different subjects and courses to identify patterns.</p>
+                </div>
+                
+                <div class="apd-feature">
+                    <div class="apd-feature-icon">🔮</div>
+                    <h4>Predictive Analytics</h4>
+                    <p>Forecast future performance based on current trends and historical data.</p>
+                </div>
+                
+                <div class="apd-feature">
+                    <div class="apd-feature-icon">📉</div>
+                    <h4>Performance Insights</h4>
+                    <p>Get actionable insights and recommendations to improve your academic performance.</p>
+                </div>
+                
+                <div class="apd-feature">
+                    <div class="apd-feature-icon">💾</div>
+                    <h4>Data Export</h4>
+                    <p>Export your performance data and reports for records or sharing purposes.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- FAQ Section -->
+        <div class="apd-section">
+            <h2 class="apd-section-title">Frequently Asked Questions</h2>
+            
+            <div class="apd-faq">
+                <div class="apd-faq-item">
+                    <div class="apd-faq-question">
+                        <span>How does the Academic Performance Dashboard work?</span>
+                        <span class="apd-faq-icon">▼</span>
+                    </div>
+                    <div class="apd-faq-answer">
+                        <p>The dashboard allows you to input your grades and courses, then automatically calculates your GPA, generates trend charts, and provides performance analytics. It stores your data locally in your browser, so your information remains private and accessible anytime.</p>
+                    </div>
+                </div>
+                
+                <div class="apd-faq-item">
+                    <div class="apd-faq-question">
+                        <span>Is my academic data secure and private?</span>
+                        <span class="apd-faq-icon">▼</span>
+                    </div>
+                    <div class="apd-faq-answer">
+                        <p>Yes, absolutely! All your data is stored locally in your browser using localStorage. Nothing is sent to any server. Your grades, GPA, and performance data remain completely private and under your control.</p>
+                    </div>
+                </div>
+                
+                <div class="apd-faq-item">
+                    <div class="apd-faq-question">
+                        <span>Can I track multiple semesters and academic years?</span>
+                        <span class="apd-faq-icon">▼</span>
+                    </div>
+                    <div class="apd-faq-answer">
+                        <p>Yes! The dashboard supports tracking unlimited semesters and academic years. You can view historical performance, compare different periods, and see your overall academic progression over time.</p>
+                    </div>
+                </div>
+                
+                <div class="apd-faq-item">
+                    <div class="apd-faq-question">
+                        <span>What grading systems does it support?</span>
+                        <span class="apd-faq-icon">▼</span>
+                    </div>
+                    <div class="apd-faq-answer">
+                        <p>The dashboard supports various grading systems including letter grades (A, B, C, etc.), percentage-based grading, and custom GPA scales (4.0, 5.0, etc.). You can configure it according to your institution's grading system.</p>
+                    </div>
+                </div>
+                
+                <div class="apd-faq-item">
+                    <div class="apd-faq-question">
+                        <span>Can I export my performance data?</span>
+                        <span class="apd-faq-icon">▼</span>
+                    </div>
+                    <div class="apd-faq-answer">
+                        <p>Yes, you can export your complete performance data including grades, GPA history, and analytics in JSON format. This allows you to keep backups, transfer data between devices, or share your academic records.</p>
+                    </div>
+                </div>
+                
+                <div class="apd-faq-item">
+                    <div class="apd-faq-question">
+                        <span>How are GPA predictions calculated?</span>
+                        <span class="apd-faq-icon">▼</span>
+                    </div>
+                    <div class="apd-faq-answer">
+                        <p>GPA predictions use your historical performance trends and current semester progress to forecast likely outcomes. The predictions become more accurate as you input more data and complete more semesters.</p>
+                    </div>
+                </div>
+                
+                <div class="apd-faq-item">
+                    <div class="apd-faq-question">
+                        <span>Can I track extracurricular activities and achievements?</span>
+                        <span class="apd-faq-icon">▼</span>
+                    </div>
+                    <div class="apd-faq-answer">
+                        <p>The dashboard primarily focuses on academic performance (grades and GPA), but you can add notes and comments to your courses to document achievements, projects, and other relevant information.</p>
+                    </div>
+                </div>
+                
+                <div class="apd-faq-item">
+                    <div class="apd-faq-question">
+                        <span>Does it work on mobile devices?</span>
+                        <span class="apd-faq-icon">▼</span>
+                    </div>
+                    <div class="apd-faq-answer">
+                        <p>Yes! The dashboard is fully responsive and works seamlessly on smartphones, tablets, and desktop computers. You can track and view your academic performance on any device with a modern web browser.</p>
+                    </div>
+                </div>
+                
+                <div class="apd-faq-item">
+                    <div class="apd-faq-question">
+                        <span>Can I share my dashboard with others?</span>
+                        <span class="apd-faq-icon">▼</span>
+                    </div>
+                    <div class="apd-faq-answer">
+                        <p>While your data is stored locally, you can export it and share the file with parents, advisors, or counselors. You can also take screenshots of your charts and analytics for easy sharing.</p>
+                    </div>
+                </div>
+                
+                <div class="apd-faq-item">
+                    <div class="apd-faq-question">
+                        <span>Is this tool completely free to use?</span>
+                        <span class="apd-faq-icon">▼</span>
+                    </div>
+                    <div class="apd-faq-answer">
+                        <p>Yes, the Academic Performance Dashboard is 100% free to use with no hidden fees, subscriptions, or premium features. All functionality is available to everyone at no cost.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer CTA -->
+        <div class="apd-footer-cta">
+            <h2>Ready to Track Your Academic Success?</h2>
+            <p>Start monitoring your grades and GPA today. Make informed decisions about your academic journey.</p>
+            <a href="client/tools/student/productivity/academic-performance-dashboard-redirect.html" target="_blank" rel="noopener noreferrer" class="apd-footer-btn">Launch Dashboard →</a>
+        </div>
+    </div>
+    
+    <script>
+        (function() {
+            'use strict';
+            
+            // FAQ Accordion functionality
+            function initFAQ() {
+                const faqItems = document.querySelectorAll('.apd-faq-item');
+                
+                faqItems.forEach(item => {
+                    const question = item.querySelector('.apd-faq-question');
+                    
+                    question.addEventListener('click', () => {
+                        const isActive = item.classList.contains('active');
+                        
+                        // Close all FAQ items
+                        faqItems.forEach(faq => faq.classList.remove('active'));
+                        
+                        // Open clicked item if it wasn't active
+                        if (!isActive) {
+                            item.classList.add('active');
+                        }
+                    });
+                });
+            }
+            
+            // Initialize when DOM is ready
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initFAQ);
+            } else {
+                initFAQ();
+            }
+        })();
+    </script>
+</body>
+</html>

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=1200, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Semester Cost Calculator - FREE Student Budget Planner | College Expenses</title>
     <meta name="description" content="Free semester cost calculator! Calculate total college semester expenses including tuition, books, housing, meals. Complete student budget planner for university costs. 100% free!">
     <meta name="keywords" content="semester cost calculator, college cost calculator, university semester expenses, student budget calculator, college budget planner, semester expenses tracker, tuition cost calculator, college financial planning, student expense planner, education cost calculator, semester budget tool, college affordability calculator, university budget planner, student financial aid calculator, education expenses">
@@ -43,6 +43,9 @@
     <!-- Preconnect for Performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
@@ -133,6 +136,9 @@
             line-height: 1.7;
             min-height: 100vh;
             scroll-behavior: smooth;
+            overflow-x: hidden;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .semester-calc-main-container {
@@ -144,6 +150,7 @@
             overflow: hidden !important;
             border: 1px solid var(--semester-color-border) !important;
             position: relative !important;
+            box-sizing: border-box !important;
         }
         
         .semester-calc-header {
@@ -154,13 +161,20 @@
         }
         
         .semester-calc-header h1 {
-            font-size: 2.5rem !important;
+            font-family: 'Caveat', cursive !important;
+            font-size: 3.5rem !important;
             margin-bottom: 15px !important;
             font-weight: 700 !important;
             color: var(--semester-color-text-on-primary) !important;
+            background: linear-gradient(135deg, #ffffff 0%, #f0f4ff 100%) !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            background-clip: text !important;
+            text-shadow: none !important;
         }
         
         .semester-calc-header p {
+            font-family: 'Poppins', sans-serif !important;
             font-size: 1.1rem !important;
             opacity: 0.9 !important;
             color: var(--semester-color-text-on-primary) !important;
@@ -197,7 +211,7 @@
         
         .semester-calc-form-grid {
             display: grid !important;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)) !important;
             gap: 20px !important;
             margin-bottom: 20px !important;
         }
@@ -334,7 +348,7 @@
         
         .expense-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
             gap: 20px;
         }
         
@@ -610,7 +624,7 @@
         
         .category-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(min(100%, 200px), 1fr));
             gap: 15px;
         }
         
@@ -640,45 +654,247 @@
             margin-top: 5px;
         }
         
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .header h1 {
-                font-size: 2.2rem;
+        /* Responsive Design - Enhanced for Mobile */
+        
+        /* Tablet and below */
+        @media (max-width: 1024px) {
+            .semester-calc-main-container {
+                max-width: 100% !important;
+                margin: 0 !important;
+                padding: 15px !important;
             }
             
-            .content {
-                padding: 20px;
-            }
-            
-            .form-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .summary-section {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .expense-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .category-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .modal-content {
-                width: 95%;
-                padding: 20px;
+            .semester-calc-form-grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 15px !important;
             }
         }
+        
+        /* Mobile landscape and below */
+        @media (max-width: 768px) {
+            .semester-calc-header h1 {
+                font-size: 2.5rem !important;
+                line-height: 1.3 !important;
+                padding: 0 10px !important;
+            }
+            
+            .semester-calc-header p {
+                font-size: 0.9rem !important;
+                padding: 0 10px !important;
+            }
+            
+            .semester-calc-content {
+                padding: 15px !important;
+            }
+            
+            .semester-calc-form-section {
+                padding: 20px !important;
+            }
+            
+            .semester-calc-form-grid {
+                grid-template-columns: 1fr !important;
+                gap: 12px !important;
+            }
+            
+            .semester-calc-summary-section {
+                padding: 20px !important;
+                flex-direction: column !important;
+                text-align: center !important;
+            }
+            
+            .semester-calc-summary-value {
+                font-size: 2rem !important;
+            }
+            
+            .semester-calc-summary-label {
+                font-size: 0.9rem !important;
+            }
+            
+            .semester-calc-expense-grid {
+                grid-template-columns: 1fr !important;
+            }
+            
+            .semester-calc-category-grid {
+                grid-template-columns: 1fr !important;
+                gap: 12px !important;
+            }
+            
+            .semester-calc-btn-container {
+                flex-direction: column !important;
+                gap: 10px !important;
+            }
+            
+            .semester-calc-btn {
+                width: 100% !important;
+                padding: 14px 20px !important;
+            }
+            
+            .semester-calc-modal-content {
+                width: 95% !important;
+                max-width: 95% !important;
+                padding: 20px !important;
+                margin: 10px !important;
+            }
+            
+            .semester-calc-expense-item {
+                padding: 15px !important;
+            }
+            
+            .semester-calc-category-card {
+                padding: 15px !important;
+            }
+        }
+        
+        /* Small mobile phones */
+        @media (max-width: 480px) {
+            .semester-calc-main-container {
+                padding: 10px !important;
+            }
+            
+            .semester-calc-header h1 {
+                font-size: 2rem !important;
+            }
+            
+            .semester-calc-header p {
+                font-size: 0.85rem !important;
+                line-height: 1.4 !important;
+            }
+            
+            .semester-calc-content {
+                padding: 10px !important;
+            }
+            
+            .semester-calc-form-section,
+            .semester-calc-expense-section {
+                padding: 15px !important;
+                border-radius: 10px !important;
+            }
+            
+            .semester-calc-form-title,
+            .semester-calc-section-title {
+                font-size: 1.3rem !important;
+            }
+            
+            .semester-calc-form-group label {
+                font-size: 0.9rem !important;
+            }
+            
+            .semester-calc-form-group input,
+            .semester-calc-form-group select {
+                padding: 10px 12px !important;
+                font-size: 0.95rem !important;
+            }
+            
+            .semester-calc-summary-value {
+                font-size: 1.75rem !important;
+            }
+            
+            .semester-calc-summary-label {
+                font-size: 0.85rem !important;
+            }
+            
+            .semester-calc-btn {
+                font-size: 0.95rem !important;
+                padding: 12px 18px !important;
+            }
+            
+            .semester-calc-expense-item {
+                padding: 12px !important;
+            }
+            
+            .semester-calc-expense-details h4 {
+                font-size: 1rem !important;
+            }
+            
+            .semester-calc-expense-amount {
+                font-size: 1.1rem !important;
+            }
+            
+            .semester-calc-category-card {
+                padding: 12px !important;
+            }
+            
+            .semester-calc-category-amount {
+                font-size: 1.3rem !important;
+            }
+        }
+        
+        /* Extra small devices */
+        @media (max-width: 360px) {
+            .semester-calc-main-container {
+                padding: 8px !important;
+            }
+            
+            .semester-calc-header h1 {
+                font-size: 1.75rem !important;
+            }
+            
+            .semester-calc-summary-value {
+                font-size: 1.5rem !important;
+            }
+            
+            .semester-calc-form-section,
+            .semester-calc-expense-section {
+                padding: 12px !important;
+            }
+        }
+        
+        /* Prevent horizontal overflow on all screen sizes */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box !important;
+        }
+        
+        html {
+            overflow-x: hidden !important;
+            width: 100% !important;
+        }
+        
+        body {
+            overflow-x: hidden !important;
+            width: 100% !important;
+        }
+        
+        .semester-calc-main-container,
+        .semester-calc-content,
+        .semester-calc-form-section,
+        .semester-calc-expense-section,
+        .semester-calc-header,
+        .semester-calc-summary-section {
+            overflow-x: hidden !important;
+            max-width: 100% !important;
+        }
+        
+        /* Ensure all grid containers don't overflow */
+        .semester-calc-form-grid,
+        .expense-grid,
+        .category-grid {
+            width: 100% !important;
+            overflow-x: hidden !important;
+        }
+        
+        /* Ensure inputs don't cause zoom on iOS */
+        .semester-calc-form-group input,
+        .semester-calc-form-group select {
+            font-size: 16px !important;
+        }
+        
+        /* Ensure long text wraps properly */
+        .semester-calc-header h1,
+        .semester-calc-header p,
+        .semester-calc-form-title,
+        .semester-calc-section-title {
+            word-wrap: break-word !important;
+            overflow-wrap: break-word !important;
+            hyphens: auto !important;
+        }
     </style>
-    <link rel="stylesheet" href="../force-desktop-layout.css">
 </head>
 <body class="semester-calc-body">
     <div class="semester-calc-main-container">
         <div class="semester-calc-header">
-            <h1>💰 Free Semester Cost Calculator - Complete College Budget Planner</h1>
+            <h1><span style="display: inline-block; -webkit-text-fill-color: initial; background: none;">💰</span> <span style="background: linear-gradient(135deg, #ffffff 0%, #f0f4ff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Free Semester Cost Calculator - Complete College Budget Planner</span></h1>
             <p>Calculate and track all your semester expenses including tuition, housing, meals, textbooks and more. Complete budget planning tool for college and university students.</p>
         </div>
         

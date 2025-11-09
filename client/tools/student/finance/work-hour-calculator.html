@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=1200, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Work Hour Calculator - FREE Student Job Time Tracker | Part-Time Hours</title>
     <meta name="description" content="Free work hour calculator! Track weekly work hours, calculate overtime, manage student job schedules. Perfect for part-time workers, students, internships. 100% free time tracker!">
     <meta name="keywords" content="work hour calculator, time clock calculator, student work hours, part time hour calculator, work schedule tracker, overtime calculator, student job tracker, weekly hours calculator, timesheet calculator, work time tracker, student employment, job hours calculator, shift calculator, labor time calculator, employee hours tracker">
@@ -43,6 +43,9 @@
     <!-- Preconnect for Performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
@@ -88,446 +91,399 @@
       "category": "Productivity, Time Management, Employment, Student Tools"
     }
     </script>
+    
     <style>
-        /* Work Hour Calculator Specific Styles - All prefixed with 'work-calc-' to avoid conflicts */
-        /* Define variables on all possible containers to ensure they work when embedded */
-        .work-calc-root,
-        .work-calc-main-container,
-        .work-calc-body,
-        body.work-calc-body,
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary-color: #667eea;
+            --primary-dark: #5a67d8;
+            --secondary-color: #764ba2;
+            --accent-blue: #0066ff;
+            --accent-cyan: #00d4ff;
+            --success-color: #10b981;
+            --danger-color: #ef4444;
+            --warning-color: #f59e0b;
+            --light-bg: #f5f7fa;
+            --white: #ffffff;
+            --text-primary: #1f2937;
+            --text-secondary: #6c757d;
+            --border-color: #e5e7eb;
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.15);
+            --shadow-lg: 0 8px 32px rgba(0,0,0,0.18);
+        }
+        
         html {
-            --work-font-primary: 'Poppins', sans-serif !important;
-            
-            /* Enhanced Color Palette - Using !important for embedded contexts */
-            --work-color-primary: #667eea !important;
-            --work-color-primary-dark: #5a6fd8 !important;
-            --work-color-secondary: #764ba2 !important;
-            --work-color-accent: #f39c12 !important;
-            --work-color-success: #28a745 !important;
-            --work-color-danger: #dc3545 !important;
-            
-            /* Background & Surface Colors */
-            --work-color-background: #f5f7fa !important;
-            --work-color-surface: #ffffff !important;
-            --work-color-surface-alt: #f8f9fa !important;
-            
-            /* Text Colors */
-            --work-color-text-primary: #2c3e50 !important;
-            --work-color-text-secondary: #6c757d !important;
-            --work-color-text-on-primary: #ffffff !important;
-            
-            /* Border & Shadow */
-            --work-color-border: #e9ecef !important;
-            --work-shadow-sm: 0 2px 4px rgba(0,0,0,0.08) !important;
-            --work-shadow-md: 0 4px 12px rgba(0,0,0,0.15) !important;
-            --work-shadow-lg: 0 8px 32px rgba(0,0,0,0.18) !important;
+            overflow-x: hidden;
+            width: 100%;
         }
-
-        .work-calc-body { 
-            font-family: var(--work-font-primary); 
-            background: var(--work-color-background); 
-            color: var(--work-color-text-primary); 
-            margin: 0; 
-            padding: 20px; 
-            line-height: 1.7;
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f0f4ff 0%, #e6f0ff 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
             min-height: 100vh;
-            scroll-behavior: smooth;
-        }
-
-        .work-calc-main-container {
-            max-width: 1200px !important;
-            margin: 0 auto !important;
-            background: var(--work-color-surface) !important;
-            border-radius: 15px !important;
-            box-shadow: var(--work-shadow-lg) !important;
-            overflow: hidden !important;
-            border: 1px solid var(--work-color-border) !important;
-            position: relative !important;
-        }
-        
-        .work-calc-header {
-            background: linear-gradient(135deg, var(--work-color-primary) 0%, var(--work-color-secondary) 100%) !important;
-            color: var(--work-color-text-on-primary) !important;
-            padding: 30px !important;
-            text-align: center !important;
-        }
-        
-        .work-calc-header h1 {
-            font-size: 2.5rem !important;
-            margin-bottom: 15px !important;
-            font-weight: 700 !important;
-            color: var(--work-color-text-on-primary) !important;
-        }
-        
-        .work-calc-header p {
-            font-size: 1.1rem !important;
-            opacity: 0.9 !important;
-            color: var(--work-color-text-on-primary) !important;
-        }
-
-        .work-calc-content {
-            padding: 30px 40px !important;
-            background: var(--work-color-surface) !important;
-        }
-
-        /* Form Section */
-        .work-calc-form-section {
-            border-radius: 10px !important;
-            padding: 25px !important;
-            margin-bottom: 30px !important;
-            border: 1px solid var(--work-color-border) !important;
-            background: var(--work-color-surface) !important;
-        }
-        
-        .work-calc-form-title {
-            font-size: 1.5rem !important;
-            color: var(--work-color-text-primary) !important;
-            margin-bottom: 20px !important;
-            font-weight: 600 !important;
-            display: flex !important;
-            align-items: center !important;
-        }
-        
-        .work-calc-form-title::before {
-            content: "⏱️" !important;
-            margin-right: 10px !important;
-            font-size: 1.8rem !important;
-        }
-        
-        .work-calc-form-grid {
-            display: grid !important;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important;
-            gap: 20px !important;
-            margin-bottom: 20px !important;
-        }
-        
-        .work-calc-form-group {
-            display: flex !important;
-            flex-direction: column !important;
-        }
-        
-        .work-calc-form-group label {
-            font-weight: 600 !important;
-            color: var(--work-color-text-secondary) !important;
-            margin-bottom: 8px !important;
-            font-size: 0.95rem !important;
-        }
-        
-        .work-calc-form-group input, 
-        .work-calc-form-group select {
-            padding: 12px 15px !important;
-            border: 2px solid var(--work-color-border) !important;
-            border-radius: 10px !important;
-            font-size: 1rem !important;
-            transition: all 0.3s ease !important;
-            background: var(--work-color-surface) !important;
-        }
-        
-        .work-calc-form-group input:focus, 
-        .work-calc-form-group select:focus {
-            outline: none !important;
-            border-color: var(--work-color-primary) !important;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1) !important;
-        }
-        
-        .work-calc-btn-container {
-            display: flex !important;
-            gap: 15px !important;
-            flex-wrap: wrap !important;
-        }
-        
-        .work-calc-btn {
-            padding: 12px 25px !important;
-            border: none !important;
-            border-radius: 10px !important;
-            font-size: 1rem !important;
-            font-weight: 600 !important;
-            cursor: pointer !important;
-            transition: all 0.3s ease !important;
-            display: flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            gap: 8px !important;
-        }
-        
-        .work-calc-btn-primary {
-            background: linear-gradient(135deg, var(--work-color-primary) 0%, var(--work-color-secondary) 100%) !important;
-            color: var(--work-color-text-on-primary) !important;
-            box-shadow: var(--work-shadow-md) !important;
-        }
-        
-        .work-calc-btn-primary:hover {
-            transform: translateY(-2px) !important;
-            box-shadow: var(--work-shadow-lg) !important;
-        }
-        
-        .work-calc-btn-secondary {
-            background: var(--work-color-surface) !important;
-            color: var(--work-color-primary) !important;
-            border: 2px solid var(--work-color-primary) !important;
-        }
-        
-        .work-calc-btn-secondary:hover {
-            background: var(--work-color-surface-alt) !important;
-        }
-
-        /* Summary Section */
-        .work-calc-summary-section {
-            background: linear-gradient(135deg, var(--work-color-primary) 0%, var(--work-color-secondary) 100%) !important;
-            color: var(--work-color-text-on-primary) !important;
-            border-radius: 15px !important;
-            padding: 25px !important;
-            margin-bottom: 30px !important;
-            box-shadow: var(--work-shadow-lg) !important;
-            display: flex !important;
-            justify-content: space-between !important;
-            align-items: center !important;
-            flex-wrap: wrap !important;
-            gap: 20px !important;
-        }
-        
-        .work-calc-summary-item {
-            text-align: center !important;
-        }
-        
-        .work-calc-summary-value {
-            font-size: 2.5rem !important;
-            font-weight: 700 !important;
-            color: var(--work-color-text-on-primary) !important;
-            margin-bottom: 5px !important;
-        }
-        
-        .work-calc-summary-label {
-            font-size: 0.9rem !important;
-            opacity: 0.9 !important;
-            color: var(--work-color-text-on-primary) !important;
-            text-transform: uppercase !important;
-            letter-spacing: 1px !important;
-        }
-
-        /* Time Entry List */
-        .time-entry-list {
-            margin-bottom: 30px;
-        }
-        
-        .list-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        
-        .list-title {
-            font-size: 1.5rem;
-            color: #333;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-        }
-        
-        .list-title::before {
-            content: "📋";
-            margin-right: 10px;
-            font-size: 1.8rem;
-        }
-        
-        .time-entry-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-        }
-        
-        .time-entry-card {
-            background: white;
-            border-radius: 15px;
+            overflow-x: hidden;
+            width: 100%;
             padding: 20px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-            border: 1px solid #e9ecef;
-            transition: all 0.3s ease;
-            position: relative;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: var(--white);
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
             overflow: hidden;
         }
         
-        .time-entry-card::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 5px;
-            height: 100%;
-            background: linear-gradient(to bottom, #667eea, #764ba2);
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--white);
+            padding: 40px 30px;
+            text-align: center;
         }
         
-        .time-entry-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-        }
-        
-        .time-entry-date {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: #333;
+        .header h1 {
+            font-family: 'Caveat', cursive;
+            font-size: 3.5rem;
+            font-weight: 700;
             margin-bottom: 10px;
-            padding-right: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            background: linear-gradient(135deg, #ffffff 0%, #f0f4ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         
-        .time-entry-info {
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        /* Main Content */
+        .content {
+            padding: 30px;
+        }
+        
+        /* Section Styling */
+        .section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            border: 2px solid var(--border-color);
+        }
+        
+        .section-title {
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        /* Form Styling */
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .form-group label {
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 12px 15px;
+            border: 2px solid var(--border-color);
+            border-radius: 10px;
+            font-size: 16px;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s ease;
+            background: var(--white);
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+        
+        /* Buttons */
+        .btn-group {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+        
+        .btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--white);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .btn-secondary {
+            background: var(--white);
+            color: var(--text-primary);
+            border: 2px solid var(--border-color);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--light-bg);
+        }
+        
+        .btn-danger {
+            background: var(--danger-color);
+            color: var(--white);
+        }
+        
+        .btn-danger:hover {
+            background: #dc2626;
+        }
+        
+        /* Summary Cards */
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .summary-card {
+            background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-cyan) 100%);
+            color: var(--white);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .summary-card.secondary {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+        }
+        
+        .summary-card.warning {
+            background: linear-gradient(135deg, #ff6b35 0%, var(--warning-color) 100%);
+        }
+        
+        .summary-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .summary-label {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+        
+        /* Time Entry Cards */
+        .entries-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+            gap: 20px;
+        }
+        
+        .entry-card {
+            background: var(--white);
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            position: relative;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .entry-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+        
+        .entry-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
             margin-bottom: 15px;
         }
         
-        .time-entry-info-item {
-            display: flex;
-            margin-bottom: 8px;
-            font-size: 0.95rem;
-            color: #666;
-        }
-        
-        .time-entry-info-label {
-            font-weight: 600;
-            width: 80px;
-            flex-shrink: 0;
-        }
-        
-        .time-entry-hours {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: #667eea;
-            margin-top: 10px;
-            text-align: right;
-        }
-        
-        .time-entry-earnings {
+        .entry-date {
             font-size: 1.1rem;
             font-weight: 600;
-            color: #28a745;
-            margin-top: 5px;
-            text-align: right;
+            color: var(--primary-color);
         }
         
-        .time-entry-actions {
-            position: absolute;
-            top: 15px;
-            right: 15px;
+        .entry-actions {
             display: flex;
             gap: 5px;
         }
         
         .action-btn {
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
+            background: transparent;
             border: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            font-size: 1.3rem;
             cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 1rem;
+            padding: 5px;
+            transition: transform 0.2s ease;
         }
         
-        .edit-btn {
-            background: rgba(102, 126, 234, 0.1);
-            color: #667eea;
+        .action-btn:hover {
+            transform: scale(1.2);
         }
         
-        .edit-btn:hover {
-            background: rgba(102, 126, 234, 0.2);
-            transform: scale(1.1);
+        .entry-info {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 15px;
         }
         
-        .delete-btn {
-            background: rgba(220, 53, 69, 0.1);
-            color: #dc3545;
+        .entry-info-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
         }
         
-        .delete-btn:hover {
-            background: rgba(220, 53, 69, 0.2);
-            transform: scale(1.1);
+        .entry-info-label {
+            color: var(--text-secondary);
+            font-weight: 500;
         }
         
+        .entry-info-value {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+        
+        .entry-footer {
+            border-top: 2px solid var(--border-color);
+            padding-top: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .entry-hours {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--success-color);
+        }
+        
+        .entry-earnings {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--accent-blue);
+        }
+        
+        /* Weekly Summary */
+        .weekly-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 120px), 1fr));
+            gap: 12px;
+        }
+        
+        .day-card {
+            background: var(--white);
+            border: 2px solid var(--border-color);
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+        }
+        
+        .day-name {
+            font-weight: 600;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin-bottom: 5px;
+        }
+        
+        .day-hours {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        /* Empty State */
         .empty-state {
             text-align: center;
-            padding: 60px 20px;
-            color: #666;
+            padding: 40px 20px;
+            color: var(--text-secondary);
         }
         
-        .empty-state-icon {
+        .empty-icon {
             font-size: 4rem;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             opacity: 0.5;
         }
         
         .empty-state h3 {
-            font-size: 1.5rem;
+            color: var(--text-primary);
             margin-bottom: 10px;
-            color: #555;
         }
         
-        .empty-state p {
-            font-size: 1rem;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-        
-        /* Notification */
-        .notification {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: white;
-            padding: 20px 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            z-index: 1000;
-            transform: translateX(400px);
-            transition: transform 0.5s ease;
-            border-left: 5px solid #667eea;
-            max-width: 350px;
-        }
-        
-        .notification.show {
-            transform: translateX(0);
-        }
-        
-        .notification h3 {
-            color: #333;
-            margin-bottom: 10px;
-            font-size: 1.3rem;
-        }
-        
-        .notification p {
-            color: #666;
-            margin-bottom: 15px;
-        }
-        
-        .notification button {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            padding: 8px 20px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-        
-        .notification button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
-        }
-        
-        /* Edit Modal */
+        /* Modal */
         .modal {
             display: none;
             position: fixed;
-            top: 0;
+            z-index: 1000;
             left: 0;
+            top: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.5);
-            z-index: 2000;
+            background: rgba(0, 0, 0, 0.5);
+            -webkit-backdrop-filter: blur(5px);
+            backdrop-filter: blur(5px);
             align-items: center;
             justify-content: center;
+            padding: 20px;
         }
         
         .modal.show {
@@ -535,24 +491,14 @@
         }
         
         .modal-content {
-            background: white;
-            border-radius: 20px;
+            background: var(--white);
+            border-radius: 15px;
             padding: 30px;
-            width: 90%;
             max-width: 500px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            animation: modalFadeIn 0.3s ease;
-        }
-        
-        @keyframes modalFadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: var(--shadow-lg);
         }
         
         .modal-header {
@@ -564,103 +510,133 @@
         
         .modal-title {
             font-size: 1.5rem;
-            color: #333;
             font-weight: 600;
+            color: var(--text-primary);
         }
         
-        .modal-close {
-            background: none;
+        .close-btn {
+            background: transparent;
             border: none;
-            font-size: 1.5rem;
+            font-size: 2rem;
             cursor: pointer;
-            color: #999;
-            transition: color 0.3s;
-        }
-        
-        .modal-close:hover {
-            color: #333;
-        }
-        
-        .modal-body {
-            margin-bottom: 20px;
-        }
-        
-        .modal-footer {
-            display: flex;
-            justify-content: flex-end;
-            gap: 10px;
-        }
-        
-        /* Weekly Summary */
-        .weekly-summary {
-            background: var(--work-color-surface);
-            border-radius: 15px;
-            padding: 25px;
-            margin-bottom: 30px;
-            border: 1px solid var(--work-color-border);
-        }
-        
-        .weekly-title {
-            font-size: 1.5rem;
-            color: var(--work-color-text-primary);
-            margin-bottom: 20px;
-            font-weight: 600;
+            color: var(--text-secondary);
+            line-height: 1;
+            padding: 0;
+            width: 30px;
+            height: 30px;
             display: flex;
             align-items: center;
+            justify-content: center;
         }
         
-        .weekly-title::before {
-            content: "📅";
-            margin-right: 10px;
-            font-size: 1.8rem;
+        .close-btn:hover {
+            color: var(--danger-color);
         }
         
-        .weekly-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        /* Notification */
+        .notification {
+            position: fixed;
+            top: -200px;
+            right: 20px;
+            background: var(--white);
+            padding: 18px 22px;
+            border-radius: 12px;
+            box-shadow: var(--shadow-lg);
+            z-index: 2000;
+            min-width: 320px;
+            max-width: 400px;
+            transition: top 0.3s ease;
+            border-left: 5px solid var(--success-color);
+        }
+        
+        .notification.show {
+            top: 100px;
+        }
+        
+        .notification-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             gap: 15px;
+            margin-bottom: 8px;
         }
         
-        .weekly-item {
-            background: var(--work-color-surface-alt);
-            border-radius: 10px;
-            padding: 15px;
-            text-align: center;
-            border: 1px solid var(--work-color-border);
-        }
-        
-        .weekly-day {
+        .notification-title {
             font-weight: 600;
-            color: var(--work-color-text-secondary);
-            margin-bottom: 5px;
+            color: var(--text-primary);
+            font-size: 1rem;
+            flex: 1;
         }
         
-        .weekly-hours {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--work-color-primary);
+        .notification-message {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        
+        .notification-close {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+            transition: transform 0.2s ease;
+        }
+        
+        .notification-close:hover {
+            transform: scale(1.1);
         }
         
         /* Responsive Design */
+        @media (max-width: 1024px) {
+            .container {
+                border-radius: 15px;
+            }
+            
+            .form-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
         @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .header {
+                padding: 30px 20px;
+            }
+            
             .header h1 {
-                font-size: 2.2rem;
+                font-size: 2.5rem;
+            }
+            
+            .header p {
+                font-size: 1rem;
             }
             
             .content {
                 padding: 20px;
             }
             
+            .section {
+                padding: 20px;
+            }
+            
+            .section-title {
+                font-size: 1.3rem;
+            }
+            
             .form-grid {
                 grid-template-columns: 1fr;
             }
             
-            .summary-section {
-                flex-direction: column;
-                text-align: center;
+            .summary-grid {
+                grid-template-columns: 1fr;
             }
             
-            .time-entry-grid {
+            .summary-value {
+                font-size: 2rem;
+            }
+            
+            .entries-grid {
                 grid-template-columns: 1fr;
             }
             
@@ -668,370 +644,552 @@
                 grid-template-columns: repeat(2, 1fr);
             }
             
+            .btn-group {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+            
             .modal-content {
-                width: 95%;
                 padding: 20px;
             }
+            
+            .notification {
+                right: 10px;
+                left: 10px;
+                min-width: auto;
+                max-width: none;
+                padding: 15px 18px;
+            }
+            
+            .notification-title {
+                font-size: 0.95rem;
+            }
+            
+            .notification-message {
+                font-size: 0.85rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .header p {
+                font-size: 0.9rem;
+            }
+            
+            .content {
+                padding: 15px;
+            }
+            
+            .section {
+                padding: 15px;
+            }
+            
+            .section-title {
+                font-size: 1.2rem;
+            }
+            
+            .summary-value {
+                font-size: 1.75rem;
+            }
+            
+            .entry-card {
+                padding: 15px;
+            }
+            
+            .weekly-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (orientation: portrait) and (max-width: 768px) {
+            .summary-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .weekly-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Prevent overflow */
+        .container,
+        .content,
+        .section,
+        .form-grid,
+        .summary-grid,
+        .entries-grid,
+        .weekly-grid {
+            overflow-x: hidden;
+            max-width: 100%;
         }
     </style>
-    <link rel="stylesheet" href="../force-desktop-layout.css">
 </head>
-<body class="work-calc-body">
-    <div class="work-calc-main-container">
-        <div class="work-calc-header">
-            <h1>⏱️ Free Work Hour Calculator - Student Job Time Tracker</h1>
-            <p>Track your work hours, calculate earnings, and manage your student job schedule. Perfect tool for part-time workers, interns, and student employees.</p>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1><span style="display: inline-block; -webkit-text-fill-color: initial; background: none;">⏱️</span> <span style="background: linear-gradient(135deg, #ffffff 0%, #f0f4ff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Work Hour Calculator</span></h1>
+            <p>Track your work hours, calculate earnings, and manage your student job schedule</p>
         </div>
         
-        <div class="work-calc-content">
-            <!-- Add Time Entry Form -->
-            <div class="work-calc-form-section">
-                <h2 class="work-calc-form-title">Add Work Entry</h2>
-                <form id="timeEntryForm">
-                    <div class="work-calc-form-grid">
-                        <div class="work-calc-form-group">
-                            <label for="date">Date</label>
+        <div class="content">
+            <!-- Summary Section -->
+            <div class="summary-grid">
+                <div class="summary-card">
+                    <div class="summary-value" id="totalHours">0.00</div>
+                    <div class="summary-label">Total Hours</div>
+                </div>
+                <div class="summary-card secondary">
+                    <div class="summary-value" id="totalEarnings">$0.00</div>
+                    <div class="summary-label">Total Earnings</div>
+                </div>
+                <div class="summary-card warning">
+                    <div class="summary-value" id="overtimeHours">0.00</div>
+                    <div class="summary-label">Overtime Hours</div>
+                </div>
+            </div>
+            
+            <!-- Add Entry Form -->
+            <div class="section">
+                <h2 class="section-title">⏰ Add Work Entry</h2>
+                <form id="workForm" onsubmit="handleSubmit(event)">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="date">Date *</label>
                             <input type="date" id="date" required>
                         </div>
-                        <div class="work-calc-form-group">
-                            <label for="startTime">Start Time</label>
+                        <div class="form-group">
+                            <label for="startTime">Start Time *</label>
                             <input type="time" id="startTime" required>
                         </div>
-                        <div class="work-calc-form-group">
-                            <label for="endTime">End Time</label>
+                        <div class="form-group">
+                            <label for="endTime">End Time *</label>
                             <input type="time" id="endTime" required>
                         </div>
-                        <div class="work-calc-form-group">
-                            <label for="breakTime">Break Time (minutes)</label>
-                            <input type="number" id="breakTime" min="0" value="0" required>
+                        <div class="form-group">
+                            <label for="breakMinutes">Break (minutes)</label>
+                            <input type="number" id="breakMinutes" min="0" value="0" step="1">
                         </div>
-                        <div class="work-calc-form-group">
-                            <label for="hourlyRate">Hourly Rate ($)</label>
-                            <input type="number" id="hourlyRate" step="0.01" min="0" required placeholder="0.00">
-                        </div>
-                        <div class="work-calc-form-group">
-                            <label for="description">Description</label>
-                            <input type="text" id="description" placeholder="Optional job description">
+                        <div class="form-group">
+                            <label for="hourlyRate">Hourly Rate ($) *</label>
+                            <input type="number" id="hourlyRate" min="0" step="0.01" required>
                         </div>
                     </div>
-                    <div class="work-calc-btn-container">
-                        <button type="submit" class="work-calc-btn work-calc-btn-primary">
-                            <span>➕</span> Add Entry
-                        </button>
-                        <button type="button" class="work-calc-btn work-calc-btn-secondary" onclick="clearForm()">
-                            <span>🗑️</span> Clear Form
-                        </button>
+                    <div class="form-group">
+                        <label for="description">Description (optional)</label>
+                        <textarea id="description" placeholder="e.g., Morning shift, Weekend overtime..."></textarea>
+                    </div>
+                    <div class="btn-group">
+                        <button type="submit" class="btn btn-primary">➕ Add Entry</button>
+                        <button type="button" class="btn btn-secondary" onclick="exportData()">📥 Export CSV</button>
+                        <button type="button" class="btn btn-danger" onclick="clearAllData()">🗑️ Clear All</button>
                     </div>
                 </form>
             </div>
             
-            <!-- Summary Section -->
-            <div class="work-calc-summary-section">
-                <div class="work-calc-summary-item">
-                    <div class="work-calc-summary-value" id="totalHours">0.0</div>
-                    <div class="work-calc-summary-label">Total Hours</div>
-                </div>
-                <div class="work-calc-summary-item">
-                    <div class="work-calc-summary-value" id="totalEarnings">$0.00</div>
-                    <div class="work-calc-summary-label">Total Earnings</div>
-                </div>
-                <div class="work-calc-summary-item">
-                    <div class="work-calc-summary-value" id="avgHourlyRate">$0.00</div>
-                    <div class="work-calc-summary-label">Avg. Hourly Rate</div>
-                </div>
-            </div>
-            
             <!-- Weekly Summary -->
-            <div class="weekly-summary">
-                <h2 class="weekly-title">Weekly Summary</h2>
-                <div id="weeklyContainer" class="weekly-grid">
-                    <div class="empty-state">
-                        <div class="empty-state-icon">📅</div>
-                        <h3>No Work Entries Yet</h3>
-                        <p>Add your first work entry to see the weekly summary.</p>
-                    </div>
+            <div class="section">
+                <h2 class="section-title">📅 Weekly Summary</h2>
+                <div id="weeklySummary" class="weekly-grid">
+                    <!-- Populated by JavaScript -->
                 </div>
             </div>
             
-            <!-- Time Entry List -->
-            <div class="time-entry-list">
-                <div class="list-header">
-                    <h2 class="list-title">Work Entries</h2>
-                    <div class="btn-container">
-                        <button class="work-calc-btn work-calc-btn-secondary" onclick="exportToCSV()">
-                            <span>📤</span> Export CSV
-                        </button>
-                        <button class="work-calc-btn work-calc-btn-secondary" onclick="clearAllEntries()">
-                            <span>🗑️</span> Clear All
-                        </button>
-                    </div>
-                </div>
-                
-                <div id="timeEntryContainer">
-                    <div class="empty-state">
-                        <div class="empty-state-icon">⏱️</div>
-                        <h3>No Work Entries Added Yet</h3>
-                        <p>Add your first work entry using the form above to start tracking your hours.</p>
-                    </div>
+            <!-- Time Entries -->
+            <div class="section">
+                <h2 class="section-title">📋 Work Entries</h2>
+                <div id="entriesContainer" class="entries-grid">
+                    <!-- Populated by JavaScript -->
                 </div>
             </div>
         </div>
     </div>
     
     <!-- Edit Modal -->
-    <div class="modal" id="editModal">
+    <div id="editModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
                 <h3 class="modal-title">Edit Work Entry</h3>
-                <button class="modal-close" onclick="closeEditModal()">✕</button>
+                <button class="close-btn" onclick="closeEditModal()">&times;</button>
             </div>
-            <div class="modal-body">
-                <form id="editForm">
-                    <div class="work-calc-form-grid">
-                        <div class="work-calc-form-group">
-                            <label for="editDate">Date</label>
-                            <input type="date" id="editDate" required>
-                        </div>
-                        <div class="work-calc-form-group">
-                            <label for="editStartTime">Start Time</label>
-                            <input type="time" id="editStartTime" required>
-                        </div>
-                        <div class="work-calc-form-group">
-                            <label for="editEndTime">End Time</label>
-                            <input type="time" id="editEndTime" required>
-                        </div>
-                        <div class="work-calc-form-group">
-                            <label for="editBreakTime">Break Time (minutes)</label>
-                            <input type="number" id="editBreakTime" min="0" required>
-                        </div>
-                        <div class="work-calc-form-group">
-                            <label for="editHourlyRate">Hourly Rate ($)</label>
-                            <input type="number" id="editHourlyRate" step="0.01" min="0" required>
-                        </div>
-                        <div class="work-calc-form-group">
-                            <label for="editDescription">Description</label>
-                            <input type="text" id="editDescription">
-                        </div>
+            <form id="editForm" onsubmit="handleEditSubmit(event)">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="editDate">Date *</label>
+                        <input type="date" id="editDate" required>
                     </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button class="work-calc-btn work-calc-btn-secondary" onclick="closeEditModal()">Cancel</button>
-                <button class="work-calc-btn work-calc-btn-primary" onclick="saveEdit()">Save Changes</button>
-            </div>
+                    <div class="form-group">
+                        <label for="editStartTime">Start Time *</label>
+                        <input type="time" id="editStartTime" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editEndTime">End Time *</label>
+                        <input type="time" id="editEndTime" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editBreakMinutes">Break (minutes)</label>
+                        <input type="number" id="editBreakMinutes" min="0" value="0" step="1">
+                    </div>
+                    <div class="form-group">
+                        <label for="editHourlyRate">Hourly Rate ($) *</label>
+                        <input type="number" id="editHourlyRate" min="0" step="0.01" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="editDescription">Description</label>
+                    <textarea id="editDescription"></textarea>
+                </div>
+                <div class="btn-group">
+                    <button type="submit" class="btn btn-primary">💾 Save Changes</button>
+                    <button type="button" class="btn btn-secondary" onclick="closeEditModal()">Cancel</button>
+                </div>
+            </form>
         </div>
     </div>
     
     <!-- Notification -->
-    <div class="notification" id="notification">
-        <h3 id="notificationTitle">Success!</h3>
-        <p id="notificationMessage">Work entry added successfully.</p>
-        <button onclick="closeNotification()">Got it!</button>
+    <div id="notification" class="notification">
+        <div class="notification-header">
+            <span class="notification-title" id="notifTitle">Success</span>
+            <button class="close-btn notification-close" onclick="closeNotification()">&times;</button>
+        </div>
+        <div class="notification-message" id="notifMessage">Action completed successfully</div>
     </div>
     
+    <!-- SEO Content Section -->
+    <section style="max-width: 1200px; margin: 40px auto; padding: 30px; background: #ffffff; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+        <div style="text-align: center; margin-bottom: 40px;">
+            <h2 style="color: #1f2937; font-size: 2rem; margin-bottom: 15px; font-weight: 700;">
+                📊 Complete Work Hour Calculator & Time Tracker
+            </h2>
+            <p style="color: #6c757d; font-size: 1.1rem; max-width: 800px; margin: 0 auto;">
+                The ultimate free tool for students and part-time workers to track work hours, calculate earnings, and manage job schedules with precision.
+            </p>
+        </div>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 25px; margin-bottom: 40px;">
+            <div style="background: linear-gradient(135deg, #e6f0ff 0%, #f0f9ff 100%); padding: 25px; border-radius: 12px; border-left: 4px solid #667eea;">
+                <h3 style="color: #667eea; font-size: 1.3rem; margin-bottom: 15px; font-weight: 600;">
+                    ⏱️ Why Use This Work Hour Calculator?
+                </h3>
+                <ul style="color: #1f2937; line-height: 1.8; padding-left: 20px;">
+                    <li><strong>Accurate Time Tracking:</strong> Calculate work hours with minute-level precision</li>
+                    <li><strong>Overnight Shifts:</strong> Handles shifts that cross midnight automatically</li>
+                    <li><strong>Break Management:</strong> Automatically subtracts break time from total hours</li>
+                    <li><strong>Earnings Calculator:</strong> Instantly see how much you've earned</li>
+                    <li><strong>Weekly Summary:</strong> Visual breakdown of hours by day of week</li>
+                    <li><strong>Data Persistence:</strong> Your entries are saved automatically</li>
+                </ul>
+            </div>
+            
+            <div style="background: linear-gradient(135deg, #f0fff7 0%, #e6fff2 100%); padding: 25px; border-radius: 12px; border-left: 4px solid #10b981;">
+                <h3 style="color: #10b981; font-size: 1.3rem; margin-bottom: 15px; font-weight: 600;">
+                    💼 Perfect For
+                </h3>
+                <ul style="color: #1f2937; line-height: 1.8; padding-left: 20px;">
+                    <li><strong>College Students:</strong> Track part-time job hours while studying</li>
+                    <li><strong>Interns:</strong> Monitor internship hours and stipend calculation</li>
+                    <li><strong>Freelancers:</strong> Log billable hours for client projects</li>
+                    <li><strong>Part-Time Workers:</strong> Manage multiple job schedules</li>
+                    <li><strong>Student Employees:</strong> Track campus job hours accurately</li>
+                    <li><strong>Remote Workers:</strong> Keep detailed work time records</li>
+                </ul>
+            </div>
+            
+            <div style="background: linear-gradient(135deg, #fff5e6 0%, #ffebcc 100%); padding: 25px; border-radius: 12px; border-left: 4px solid #f59e0b;">
+                <h3 style="color: #f59e0b; font-size: 1.3rem; margin-bottom: 15px; font-weight: 600;">
+                    ✨ Key Features
+                </h3>
+                <ul style="color: #1f2937; line-height: 1.8; padding-left: 20px;">
+                    <li><strong>CSV Export:</strong> Download your timesheet as spreadsheet</li>
+                    <li><strong>Edit & Delete:</strong> Modify any entry with one click</li>
+                    <li><strong>Overtime Tracking:</strong> Automatically calculates hours over 40/week</li>
+                    <li><strong>Mobile Responsive:</strong> Works perfectly on all devices</li>
+                    <li><strong>No Registration:</strong> Start tracking immediately, no signup needed</li>
+                    <li><strong>100% Free:</strong> All features available at no cost</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div style="background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%); padding: 30px; border-radius: 12px; margin-bottom: 30px; border: 2px solid #e5e7eb;">
+            <h3 style="color: #1f2937; font-size: 1.5rem; margin-bottom: 20px; font-weight: 600;">
+                📖 How to Use the Work Hour Calculator
+            </h3>
+            <div style="display: grid; gap: 20px;">
+                <div style="display: flex; gap: 15px; align-items: start;">
+                    <span style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0;">1</span>
+                    <div>
+                        <strong style="color: #1f2937; font-size: 1.1rem;">Enter Work Details</strong>
+                        <p style="color: #6c757d; margin: 5px 0 0 0;">Select the date, start time, end time, and break duration for your shift.</p>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 15px; align-items: start;">
+                    <span style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0;">2</span>
+                    <div>
+                        <strong style="color: #1f2937; font-size: 1.1rem;">Add Hourly Rate</strong>
+                        <p style="color: #6c757d; margin: 5px 0 0 0;">Input your hourly wage to automatically calculate your earnings for each shift.</p>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 15px; align-items: start;">
+                    <span style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0;">3</span>
+                    <div>
+                        <strong style="color: #1f2937; font-size: 1.1rem;">View Summary</strong>
+                        <p style="color: #6c757d; margin: 5px 0 0 0;">See total hours, earnings, overtime, and weekly breakdown in beautiful visual cards.</p>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 15px; align-items: start;">
+                    <span style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0;">4</span>
+                    <div>
+                        <strong style="color: #1f2937; font-size: 1.1rem;">Export & Manage</strong>
+                        <p style="color: #6c757d; margin: 5px 0 0 0;">Download as CSV, edit entries, or clear data as needed for your records.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 30px; border-radius: 12px; color: white; text-align: center;">
+            <h3 style="font-size: 1.5rem; margin-bottom: 15px; font-weight: 600;">
+                🚀 Start Tracking Your Work Hours Now!
+            </h3>
+            <p style="font-size: 1.1rem; opacity: 0.95; margin-bottom: 20px;">
+                Free forever • No registration required • Works on all devices
+            </p>
+            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-top: 20px;">
+                <div style="background: rgba(255,255,255,0.2); padding: 15px 25px; border-radius: 8px; backdrop-filter: blur(10px);">
+                    <div style="font-size: 2rem; font-weight: 700;">100%</div>
+                    <div style="font-size: 0.9rem; opacity: 0.9;">Free</div>
+                </div>
+                <div style="background: rgba(255,255,255,0.2); padding: 15px 25px; border-radius: 8px; backdrop-filter: blur(10px);">
+                    <div style="font-size: 2rem; font-weight: 700;">∞</div>
+                    <div style="font-size: 0.9rem; opacity: 0.9;">Entries</div>
+                </div>
+                <div style="background: rgba(255,255,255,0.2); padding: 15px 25px; border-radius: 8px; backdrop-filter: blur(10px);">
+                    <div style="font-size: 2rem; font-weight: 700;">24/7</div>
+                    <div style="font-size: 0.9rem; opacity: 0.9;">Available</div>
+                </div>
+            </div>
+        </div>
+        
+        <div style="margin-top: 40px; padding: 25px; background: #f8f9fa; border-radius: 12px;">
+            <h3 style="color: #1f2937; font-size: 1.3rem; margin-bottom: 15px; font-weight: 600; text-align: center;">
+                ❓ Frequently Asked Questions
+            </h3>
+            <div style="display: grid; gap: 20px;">
+                <details style="background: white; padding: 20px; border-radius: 8px; cursor: pointer;">
+                    <summary style="font-weight: 600; color: #667eea; font-size: 1.05rem;">How does the overnight shift calculator work?</summary>
+                    <p style="color: #6c757d; margin-top: 10px; line-height: 1.7;">Our calculator automatically detects when your end time is earlier than your start time (e.g., 11 PM to 3 AM) and adds 24 hours to calculate the correct duration. This ensures accurate hour tracking for night shifts and graveyard shifts.</p>
+                </details>
+                <details style="background: white; padding: 20px; border-radius: 8px; cursor: pointer;">
+                    <summary style="font-weight: 600; color: #667eea; font-size: 1.05rem;">Is my work hour data saved?</summary>
+                    <p style="color: #6c757d; margin-top: 10px; line-height: 1.7;">Yes! All your work entries are automatically saved in your browser's local storage. Your data persists even if you close the browser or refresh the page. However, clearing browser data will remove your entries.</p>
+                </details>
+                <details style="background: white; padding: 20px; border-radius: 8px; cursor: pointer;">
+                    <summary style="font-weight: 600; color: #667eea; font-size: 1.05rem;">Can I track multiple jobs?</summary>
+                    <p style="color: #6c757d; margin-top: 10px; line-height: 1.7;">Absolutely! You can add unlimited work entries with different hourly rates. Use the description field to label entries by job name, making it easy to track hours and earnings across multiple positions.</p>
+                </details>
+                <details style="background: white; padding: 20px; border-radius: 8px; cursor: pointer;">
+                    <summary style="font-weight: 600; color: #667eea; font-size: 1.05rem;">How is overtime calculated?</summary>
+                    <p style="color: #6c757d; margin-top: 10px; line-height: 1.7;">Overtime is automatically calculated as any hours worked beyond 40 hours per week. The overtime hours are displayed in the summary cards at the top of the calculator for easy reference.</p>
+                </details>
+                <details style="background: white; padding: 20px; border-radius: 8px; cursor: pointer;">
+                    <summary style="font-weight: 600; color: #667eea; font-size: 1.05rem;">What format is the CSV export?</summary>
+                    <p style="color: #6c757d; margin-top: 10px; line-height: 1.7;">The CSV export includes all your work entries with columns for Date, Start Time, End Time, Break Minutes, Hourly Rate, Hours Worked, Earnings, and Description. This format is compatible with Excel, Google Sheets, and other spreadsheet applications.</p>
+                </details>
+            </div>
+        </div>
+        
+        <div style="margin-top: 30px; text-align: center; padding: 20px; background: linear-gradient(135deg, #f0f4ff 0%, #e6f0ff 100%); border-radius: 12px;">
+            <p style="color: #667eea; font-weight: 600; font-size: 1.1rem; margin-bottom: 10px;">
+                Created with ❤️ by Scribble Tools Team
+            </p>
+            <p style="color: #6c757d; font-size: 0.95rem;">
+                Making student life easier, one tool at a time | 100% Free | No Ads | Privacy-Focused
+            </p>
+        </div>
+    </section>
+    
     <script>
-        let timeEntries = [];
+        let entries = [];
         let editingIndex = -1;
         
-        // Set today's date as default
-        document.getElementById('date').valueAsDate = new Date();
-        
-        // Load time entries from localStorage on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            loadTimeEntries();
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            loadData();
+            setDefaultDate();
+            renderAll();
         });
         
-        // Form submission
-        document.getElementById('timeEntryForm').addEventListener('submit', function(e) {
+        function setDefaultDate() {
+            document.getElementById('date').valueAsDate = new Date();
+        }
+        
+        function handleSubmit(e) {
             e.preventDefault();
-            addTimeEntry();
-        });
-        
-        function addTimeEntry() {
-            const date = document.getElementById('date').value;
-            const startTime = document.getElementById('startTime').value;
-            const endTime = document.getElementById('endTime').value;
-            const breakTime = parseInt(document.getElementById('breakTime').value);
-            const hourlyRate = parseFloat(document.getElementById('hourlyRate').value);
-            const description = document.getElementById('description').value;
             
-            // Calculate hours worked
-            const hoursWorked = calculateHours(startTime, endTime, breakTime);
-            const earnings = hoursWorked * hourlyRate;
-            
-            const timeEntry = {
+            const entry = {
                 id: Date.now(),
-                date,
-                startTime,
-                endTime,
-                breakTime,
-                hourlyRate,
-                description,
-                hoursWorked,
-                earnings
+                date: document.getElementById('date').value,
+                startTime: document.getElementById('startTime').value,
+                endTime: document.getElementById('endTime').value,
+                breakMinutes: parseInt(document.getElementById('breakMinutes').value) || 0,
+                hourlyRate: parseFloat(document.getElementById('hourlyRate').value),
+                description: document.getElementById('description').value.trim()
             };
             
-            timeEntries.push(timeEntry);
-            saveTimeEntries();
-            renderTimeEntries();
-            renderWeeklySummary();
-            updateSummary();
-            clearForm();
-            showNotification('Success!', 'Work entry added successfully.');
+            // Calculate hours and earnings
+            const calc = calculateWork(entry.startTime, entry.endTime, entry.breakMinutes, entry.hourlyRate);
+            entry.hoursWorked = calc.hours;
+            entry.earnings = calc.earnings;
+            
+            entries.push(entry);
+            saveData();
+            renderAll();
+            resetForm();
+            showNotification('Success!', 'Work entry added successfully');
         }
         
-        function calculateHours(startTime, endTime, breakTime) {
-            // Convert times to minutes since midnight
-            const start = timeToMinutes(startTime);
-            const end = timeToMinutes(endTime);
+        function calculateWork(start, end, breakMin, rate) {
+            // Convert time strings to minutes since midnight
+            const [startH, startM] = start.split(':').map(Number);
+            const [endH, endM] = end.split(':').map(Number);
             
-            // Handle overnight shifts
-            let totalMinutes = end >= start ? end - start : (24 * 60 - start) + end;
+            let startMinutes = startH * 60 + startM;
+            let endMinutes = endH * 60 + endM;
             
-            // Subtract break time
-            totalMinutes -= breakTime;
-            
-            // Convert back to hours
-            return totalMinutes / 60;
-        }
-        
-        function timeToMinutes(timeString) {
-            const [hours, minutes] = timeString.split(':').map(Number);
-            return hours * 60 + minutes;
-        }
-        
-        function clearForm() {
-            document.getElementById('timeEntryForm').reset();
-            document.getElementById('date').valueAsDate = new Date();
-            document.getElementById('breakTime').value = 0;
-        }
-        
-        function renderTimeEntries() {
-            const container = document.getElementById('timeEntryContainer');
-            
-            if (timeEntries.length === 0) {
-                container.innerHTML = `
-                    <div class="empty-state">
-                        <div class="empty-state-icon">⏱️</div>
-                        <h3>No Work Entries Added Yet</h3>
-                        <p>Add your first work entry using the form above to start tracking your hours.</p>
-                    </div>
-                `;
-                return;
+            // Handle overnight shifts (end time is next day)
+            if (endMinutes < startMinutes) {
+                endMinutes += 24 * 60; // Add 24 hours
             }
             
-            const grid = document.createElement('div');
-            grid.className = 'time-entry-grid';
+            // Calculate total minutes worked
+            let totalMinutes = endMinutes - startMinutes;
             
-            // Sort entries by date (newest first)
-            const sortedEntries = [...timeEntries].sort((a, b) => new Date(b.date) - new Date(a.date));
+            // Subtract break time
+            totalMinutes -= breakMin;
             
-            sortedEntries.forEach((entry, index) => {
-                const originalIndex = timeEntries.findIndex(e => e.id === entry.id);
-                const card = document.createElement('div');
-                card.className = 'time-entry-card';
-                card.innerHTML = `
-                    <div class="time-entry-actions">
-                        <button class="action-btn edit-btn" onclick="editTimeEntry(${originalIndex})" title="Edit">✏️</button>
-                        <button class="action-btn delete-btn" onclick="deleteTimeEntry(${originalIndex})" title="Delete">🗑️</button>
-                    </div>
-                    <h3 class="time-entry-date">${formatDate(entry.date)}</h3>
-                    <div class="time-entry-info">
-                        <div class="time-entry-info-item">
-                            <span class="time-entry-info-label">Hours:</span>
-                            <span>${entry.startTime} - ${entry.endTime}</span>
-                        </div>
-                        ${entry.description ? `
-                        <div class="time-entry-info-item">
-                            <span class="time-entry-info-label">Desc:</span>
-                            <span>${entry.description}</span>
-                        </div>
-                        ` : ''}
-                        <div class="time-entry-info-item">
-                            <span class="time-entry-info-label">Break:</span>
-                            <span>${entry.breakTime} min</span>
-                        </div>
-                        <div class="time-entry-info-item">
-                            <span class="time-entry-info-label">Rate:</span>
-                            <span>$${entry.hourlyRate.toFixed(2)}/hr</span>
-                        </div>
-                    </div>
-                    <div class="time-entry-hours">${entry.hoursWorked.toFixed(2)} hours</div>
-                    <div class="time-entry-earnings">$${entry.earnings.toFixed(2)}</div>
-                `;
-                grid.appendChild(card);
-            });
+            // Ensure non-negative
+            if (totalMinutes < 0) totalMinutes = 0;
             
-            container.innerHTML = '';
-            container.appendChild(grid);
+            // Convert to hours
+            const hours = totalMinutes / 60;
+            const earnings = hours * rate;
+            
+            return {
+                hours: parseFloat(hours.toFixed(2)),
+                earnings: parseFloat(earnings.toFixed(2))
+            };
+        }
+        
+        function renderAll() {
+            renderSummary();
+            renderWeeklySummary();
+            renderEntries();
+        }
+        
+        function renderSummary() {
+            const total = entries.reduce((sum, e) => sum + e.hoursWorked, 0);
+            const earnings = entries.reduce((sum, e) => sum + e.earnings, 0);
+            const overtime = Math.max(0, total - 40); // Overtime after 40 hours/week
+            
+            document.getElementById('totalHours').textContent = total.toFixed(2);
+            document.getElementById('totalEarnings').textContent = '$' + earnings.toFixed(2);
+            document.getElementById('overtimeHours').textContent = overtime.toFixed(2);
         }
         
         function renderWeeklySummary() {
-            const container = document.getElementById('weeklyContainer');
+            const container = document.getElementById('weeklySummary');
+            const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            const hoursByDay = {};
             
-            if (timeEntries.length === 0) {
+            // Initialize
+            days.forEach(day => hoursByDay[day] = 0);
+            
+            // Calculate hours per day
+            entries.forEach(entry => {
+                const date = new Date(entry.date + 'T00:00:00');
+                const dayName = days[date.getDay()];
+                hoursByDay[dayName] += entry.hoursWorked;
+            });
+            
+            // Render
+            container.innerHTML = days.map(day => `
+                <div class="day-card">
+                    <div class="day-name">${day.substring(0, 3)}</div>
+                    <div class="day-hours">${hoursByDay[day].toFixed(1)}h</div>
+                </div>
+            `).join('');
+        }
+        
+        function renderEntries() {
+            const container = document.getElementById('entriesContainer');
+            
+            if (entries.length === 0) {
                 container.innerHTML = `
                     <div class="empty-state">
-                        <div class="empty-state-icon">📅</div>
+                        <div class="empty-icon">⏱️</div>
                         <h3>No Work Entries Yet</h3>
-                        <p>Add your first work entry to see the weekly summary.</p>
+                        <p>Add your first work entry using the form above to start tracking your hours</p>
                     </div>
                 `;
                 return;
             }
             
-            // Calculate hours by day of week
-            const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-            const weeklyHours = {};
+            // Sort by date (newest first)
+            const sorted = [...entries].sort((a, b) => new Date(b.date) - new Date(a.date));
             
-            // Initialize with zeros
-            daysOfWeek.forEach(day => {
-                weeklyHours[day] = 0;
-            });
-            
-            // Sum hours by day
-            timeEntries.forEach(entry => {
-                const date = new Date(entry.date);
-                const dayName = daysOfWeek[date.getDay()];
-                weeklyHours[dayName] += entry.hoursWorked;
-            });
-            
-            const grid = document.createElement('div');
-            grid.className = 'weekly-grid';
-            
-            daysOfWeek.forEach(day => {
-                const hours = weeklyHours[day];
-                const item = document.createElement('div');
-                item.className = 'weekly-item';
-                item.innerHTML = `
-                    <div class="weekly-day">${day}</div>
-                    <div class="weekly-hours">${hours.toFixed(1)}h</div>
+            container.innerHTML = sorted.map((entry, i) => {
+                const originalIndex = entries.findIndex(e => e.id === entry.id);
+                return `
+                    <div class="entry-card">
+                        <div class="entry-header">
+                            <div class="entry-date">${formatDate(entry.date)}</div>
+                            <div class="entry-actions">
+                                <button class="action-btn" onclick="openEditModal(${originalIndex})" title="Edit">✏️</button>
+                                <button class="action-btn" onclick="deleteEntry(${originalIndex})" title="Delete">🗑️</button>
+                            </div>
+                        </div>
+                        <div class="entry-info">
+                            <div class="entry-info-row">
+                                <span class="entry-info-label">Time:</span>
+                                <span class="entry-info-value">${entry.startTime} - ${entry.endTime}</span>
+                            </div>
+                            <div class="entry-info-row">
+                                <span class="entry-info-label">Break:</span>
+                                <span class="entry-info-value">${entry.breakMinutes} min</span>
+                            </div>
+                            <div class="entry-info-row">
+                                <span class="entry-info-label">Rate:</span>
+                                <span class="entry-info-value">$${entry.hourlyRate.toFixed(2)}/hr</span>
+                            </div>
+                            ${entry.description ? `
+                            <div class="entry-info-row">
+                                <span class="entry-info-label">Note:</span>
+                                <span class="entry-info-value">${entry.description}</span>
+                            </div>
+                            ` : ''}
+                        </div>
+                        <div class="entry-footer">
+                            <div class="entry-hours">${entry.hoursWorked.toFixed(2)} hours</div>
+                            <div class="entry-earnings">$${entry.earnings.toFixed(2)}</div>
+                        </div>
+                    </div>
                 `;
-                grid.appendChild(item);
-            });
-            
-            container.innerHTML = '';
-            container.appendChild(grid);
+            }).join('');
         }
         
-        function updateSummary() {
-            const totalHours = timeEntries.reduce((sum, entry) => sum + entry.hoursWorked, 0);
-            const totalEarnings = timeEntries.reduce((sum, entry) => sum + entry.earnings, 0);
-            const avgHourlyRate = totalHours > 0 ? totalEarnings / totalHours : 0;
-            
-            document.getElementById('totalHours').textContent = totalHours.toFixed(1);
-            document.getElementById('totalEarnings').textContent = `$${totalEarnings.toFixed(2)}`;
-            document.getElementById('avgHourlyRate').textContent = `$${avgHourlyRate.toFixed(2)}`;
-        }
-        
-        function editTimeEntry(index) {
+        function openEditModal(index) {
             editingIndex = index;
-            const entry = timeEntries[index];
+            const entry = entries[index];
             
             document.getElementById('editDate').value = entry.date;
             document.getElementById('editStartTime').value = entry.startTime;
             document.getElementById('editEndTime').value = entry.endTime;
-            document.getElementById('editBreakTime').value = entry.breakTime;
+            document.getElementById('editBreakMinutes').value = entry.breakMinutes;
             document.getElementById('editHourlyRate').value = entry.hourlyRate;
             document.getElementById('editDescription').value = entry.description;
             
@@ -1043,180 +1201,118 @@
             editingIndex = -1;
         }
         
-        function saveEdit() {
+        function handleEditSubmit(e) {
+            e.preventDefault();
+            
             if (editingIndex === -1) return;
             
-            const date = document.getElementById('editDate').value;
-            const startTime = document.getElementById('editStartTime').value;
-            const endTime = document.getElementById('editEndTime').value;
-            const breakTime = parseInt(document.getElementById('editBreakTime').value);
-            const hourlyRate = parseFloat(document.getElementById('editHourlyRate').value);
-            const description = document.getElementById('editDescription').value;
+            const entry = entries[editingIndex];
+            entry.date = document.getElementById('editDate').value;
+            entry.startTime = document.getElementById('editStartTime').value;
+            entry.endTime = document.getElementById('editEndTime').value;
+            entry.breakMinutes = parseInt(document.getElementById('editBreakMinutes').value) || 0;
+            entry.hourlyRate = parseFloat(document.getElementById('editHourlyRate').value);
+            entry.description = document.getElementById('editDescription').value.trim();
             
-            // Recalculate hours worked
-            const hoursWorked = calculateHours(startTime, endTime, breakTime);
-            const earnings = hoursWorked * hourlyRate;
+            const calc = calculateWork(entry.startTime, entry.endTime, entry.breakMinutes, entry.hourlyRate);
+            entry.hoursWorked = calc.hours;
+            entry.earnings = calc.earnings;
             
-            timeEntries[editingIndex] = {
-                ...timeEntries[editingIndex],
-                date,
-                startTime,
-                endTime,
-                breakTime,
-                hourlyRate,
-                description,
-                hoursWorked,
-                earnings
-            };
-            
-            saveTimeEntries();
-            renderTimeEntries();
-            renderWeeklySummary();
-            updateSummary();
+            saveData();
+            renderAll();
             closeEditModal();
-            showNotification('Success!', 'Work entry updated successfully.');
+            showNotification('Updated!', 'Work entry updated successfully');
         }
         
-        function deleteTimeEntry(index) {
-            if (confirm('Are you sure you want to delete this work entry?')) {
-                timeEntries.splice(index, 1);
-                saveTimeEntries();
-                renderTimeEntries();
-                renderWeeklySummary();
-                updateSummary();
-                showNotification('Deleted', 'Work entry removed from your list.');
+        function deleteEntry(index) {
+            if (confirm('Are you sure you want to delete this entry?')) {
+                entries.splice(index, 1);
+                saveData();
+                renderAll();
+                showNotification('Deleted', 'Work entry removed');
             }
         }
         
-        function clearAllEntries() {
-            if (timeEntries.length === 0) {
-                showNotification('No Entries', 'There are no work entries to clear.');
+        function clearAllData() {
+            if (entries.length === 0) {
+                showNotification('No Data', 'There are no entries to clear');
                 return;
             }
             
-            if (confirm('Are you sure you want to clear all work entries? This action cannot be undone.')) {
-                timeEntries = [];
-                saveTimeEntries();
-                renderTimeEntries();
-                renderWeeklySummary();
-                updateSummary();
-                showNotification('Cleared', 'All work entries have been removed.');
+            if (confirm('Are you sure you want to delete all work entries? This cannot be undone.')) {
+                entries = [];
+                saveData();
+                renderAll();
+                showNotification('Cleared', 'All work entries have been removed');
             }
         }
         
-        function exportToCSV() {
-            if (timeEntries.length === 0) {
-                showNotification('No Data', 'There are no work entries to export.');
+        function exportData() {
+            if (entries.length === 0) {
+                showNotification('No Data', 'There are no entries to export');
                 return;
             }
             
-            let csv = 'Date,Start Time,End Time,Break Time (min),Hourly Rate ($),Hours Worked,Earnings ($),Description\n';
+            let csv = 'Date,Start Time,End Time,Break (min),Hourly Rate ($),Hours Worked,Earnings ($),Description\n';
             
-            timeEntries.forEach(entry => {
-                csv += `"${entry.date}","${entry.startTime}","${entry.endTime}",${entry.breakTime},${entry.hourlyRate},${entry.hoursWorked.toFixed(2)},${entry.earnings.toFixed(2)},"${entry.description}"\n`;
+            entries.forEach(e => {
+                csv += `"${e.date}","${e.startTime}","${e.endTime}",${e.breakMinutes},${e.hourlyRate},${e.hoursWorked.toFixed(2)},${e.earnings.toFixed(2)},"${e.description}"\n`;
             });
             
             const blob = new Blob([csv], { type: 'text/csv' });
-            const url = window.URL.createObjectURL(blob);
+            const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
-            a.setAttribute('hidden', '');
-            a.setAttribute('href', url);
-            a.setAttribute('download', `work_hours_${new Date().toISOString().slice(0, 10)}.csv`);
+            a.href = url;
+            a.download = `work_hours_${new Date().toISOString().slice(0, 10)}.csv`;
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
+            URL.revokeObjectURL(url);
             
-            showNotification('Exported', 'Your work hours have been exported as CSV.');
+            showNotification('Exported!', 'Work hours exported successfully');
         }
         
-        function saveTimeEntries() {
-            localStorage.setItem('workTimeEntries', JSON.stringify(timeEntries));
+        function resetForm() {
+            document.getElementById('workForm').reset();
+            setDefaultDate();
         }
         
-        function loadTimeEntries() {
-            const saved = localStorage.getItem('workTimeEntries');
+        function saveData() {
+            localStorage.setItem('workHourEntries', JSON.stringify(entries));
+        }
+        
+        function loadData() {
+            const saved = localStorage.getItem('workHourEntries');
             if (saved) {
-                timeEntries = JSON.parse(saved);
-                renderTimeEntries();
-                renderWeeklySummary();
-                updateSummary();
+                entries = JSON.parse(saved);
             }
         }
         
+        function formatDate(dateStr) {
+            const date = new Date(dateStr + 'T00:00:00');
+            const options = { year: 'numeric', month: 'short', day: 'numeric' };
+            return date.toLocaleDateString(undefined, options);
+        }
+        
         function showNotification(title, message) {
-            const notification = document.getElementById('notification');
-            document.getElementById('notificationTitle').textContent = title;
-            document.getElementById('notificationMessage').textContent = message;
-            notification.classList.add('show');
+            document.getElementById('notifTitle').textContent = title;
+            document.getElementById('notifMessage').textContent = message;
+            document.getElementById('notification').classList.add('show');
             
-            setTimeout(() => {
-                closeNotification();
-            }, 5000);
+            setTimeout(closeNotification, 4000);
         }
         
         function closeNotification() {
             document.getElementById('notification').classList.remove('show');
         }
         
-        function formatDate(dateString) {
-            const options = { year: 'numeric', month: 'short', day: 'numeric' };
-            return new Date(dateString).toLocaleDateString(undefined, options);
-        }
-        
         // Close modal when clicking outside
-        window.onclick = function(event) {
+        window.addEventListener('click', (e) => {
             const modal = document.getElementById('editModal');
-            if (event.target === modal) {
+            if (e.target === modal) {
                 closeEditModal();
             }
-        }
+        });
     </script>
-    
-    <!-- SEO Content Section -->
-    <div class="work-calc-content" style="margin-top: 0; border-top: 1px solid var(--work-color-border);">
-        <div class="work-calc-form-section">
-            <h2 class="work-calc-form-title" style="margin-bottom: 15px;">How to Use the Work Hour Calculator</h2>
-            <div style="color: var(--work-color-text-secondary); line-height: 1.6;">
-                <p><strong>1. Add Work Entries:</strong> Input your start time, end time, break duration, and hourly wage for each work shift.</p>
-                <p><strong>2. Track Daily Hours:</strong> Monitor daily work hours and calculate earnings automatically with break time deduction.</p>
-                <p><strong>3. Weekly Summary:</strong> View total weekly hours, overtime calculations, and total earnings summary.</p>
-                <p><strong>4. Manage Schedule:</strong> Edit or delete entries to maintain accurate work hour records.</p>
-            </div>
-        </div>
-        
-        <div class="work-calc-form-section">
-            <h3 style="color: var(--work-color-text-primary); margin-bottom: 10px;">💼 Student Work & Time Management Tips</h3>
-            <ul style="color: var(--work-color-text-secondary); line-height: 1.6; padding-left: 20px;">
-                <li><strong>Track Accurately:</strong> Record exact start/end times to ensure proper payment</li>
-                <li><strong>Know Your Rights:</strong> Understand overtime laws and minimum wage requirements</li>
-                <li><strong>Balance Work & Study:</strong> Limit work hours to maintain academic performance</li>
-                <li><strong>Plan Ahead:</strong> Schedule work around classes and study time</li>
-                <li><strong>Keep Records:</strong> Save timesheet data for tax purposes and disputes</li>
-                <li><strong>Communicate:</strong> Inform employers about class schedules and exam periods</li>
-            </ul>
-        </div>
-        
-        <div class="work-calc-form-section">
-            <h3 style="color: var(--work-color-text-primary); margin-bottom: 10px;">⏰ Understanding Work Hour Calculations</h3>
-            <div style="color: var(--work-color-text-secondary); line-height: 1.6;">
-                <p><strong>• Regular Hours:</strong> Standard work time up to 40 hours per week</p>
-                <p><strong>• Overtime:</strong> Hours worked beyond 40 hours/week, typically paid at 1.5x rate</p>
-                <p><strong>• Break Time:</strong> Unpaid break periods deducted from total work hours</p>
-                <p><strong>• Gross Pay:</strong> Total earnings before taxes and deductions</p>
-                <p><strong>• Time Tracking:</strong> Accurate record-keeping for payroll and legal compliance</p>
-            </div>
-        </div>
-        
-        <div class="work-calc-form-section">
-            <h3 style="color: var(--work-color-text-primary); margin-bottom: 10px;">🎓 Student Employment Benefits</h3>
-            <div style="color: var(--work-color-text-secondary); line-height: 1.6;">
-                <p><strong>Financial Independence:</strong> Earn money for tuition, books, and personal expenses</p>
-                <p><strong>Work Experience:</strong> Build resume and develop professional skills</p>
-                <p><strong>Time Management:</strong> Learn to balance work, study, and personal life</p>
-                <p><strong>Networking:</strong> Connect with professionals in your field of interest</p>
-                <p><strong>Career Preparation:</strong> Gain industry experience and workplace skills</p>
-            </div>
-        </div>
-    </div>
 </body>
 </html>

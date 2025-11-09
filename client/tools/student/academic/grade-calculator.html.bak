@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1200, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes">
+    
+    <!-- Enhanced SEO Meta Tags -->
+    <title>Grade Calculator - Calculate Final Grade & Grade Needed | Student Academic Tools</title>
+    <meta name="description" content="Free grade calculator for students. Calculate your current grade, final grade, and what you need on the final exam. Add assignments, tests, and quizzes with different weights. Perfect for tracking academic performance.">
+    <meta name="keywords" content="grade calculator, final grade calculator, grade needed calculator, weighted grade calculator, assignment calculator, test grade calculator, current grade, final exam calculator, academic calculator">
+    <meta name="author" content="Scribble Tools">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://scribbletools.in/grade-calculator">
+    <meta property="og:title" content="Grade Calculator - Calculate Final Grade & Grade Needed">
+    <meta property="og:description" content="Calculate your current grade and determine what you need on your final exam. Free tool with support for weighted assignments, tests, and quizzes.">
+    <meta property="og:image" content="https://scribbletools.in/assets/grade-calculator-preview.jpg">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Grade Calculator - Calculate Final Grade & Grade Needed">
+    <meta name="twitter:description" content="Calculate your current grade and what you need to achieve your target grade. Free tool for students.">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://scribbletools.in/grade-calculator">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Caveat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Grade Calculator",
+        "description": "Calculate your current grade, final grade, and determine what score you need on your final exam to achieve your target grade.",
+        "url": "https://scribbletools.in/grade-calculator",
+        "applicationCategory": "EducationalApplication",
+        "operatingSystem": "Web Browser",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "featureList": [
+            "Calculate current grade",
+            "Calculate final grade",
+            "Grade needed calculator",
+            "Weighted assignments",
+            "Multiple assignment types",
+            "Percentage and letter grades",
+            "Final exam calculator"
+        ]
+    }
+    </script>
+    
+    <style>
+        body { 
+            font-family: 'Poppins', sans-serif; 
+            background: #F8F4E8; 
+            color: #333; 
+        }
+        
+        .calc-container { 
+            max-width: 900px; 
+            margin: 3em auto; 
+            background: #fff; 
+            border-radius: 1.2em; 
+            box-shadow: 0 4px 24px rgba(41, 98, 255, 0.15); 
+            padding: 2em 1.5em 2.5em 1.5em; 
+        }
+        
+        h1 {
+            font-family: 'Caveat', cursive;
+            font-size: 3em;
+            color: #2962FF;
+            text-align: center;
+            margin-bottom: 0.3em;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 2em;
+            font-size: 1.1em;
+        }
+        
+        .tabs {
+            display: flex;
+            gap: 1em;
+            margin-bottom: 2em;
+            border-bottom: 2px solid #E3F2FD;
+        }
+        
+        .tab-btn {
+            background: none;
+            border: none;
+            padding: 1em 2em;
+            font-size: 1.1em;
+            font-weight: 600;
+            color: #666;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+        }
+        
+        .tab-btn.active {
+            color: #2962FF;
+            border-bottom-color: #2962FF;
+        }
+        
+        .tab-btn:hover {
+            color: #2962FF;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .category-section {
+            margin-bottom: 2em;
+        }
+        
+        .category-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1em;
+            background: #E3F2FD;
+            padding: 1em;
+            border-radius: 0.7em;
+        }
+        
+        .category-header h3 {
+            color: #2962FF;
+            font-size: 1.3em;
+            margin: 0;
+        }
+        
+        .add-item-btn {
+            background: #2962FF;
+            color: white;
+            border: none;
+            padding: 0.6em 1.5em;
+            border-radius: 0.5em;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .add-item-btn:hover {
+            background: #1E88E5;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(41, 98, 255, 0.3);
+        }
+        
+        .item-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8em;
+        }
+        
+        .grade-item {
+            background: #F5F9FF;
+            border: 2px solid #BBDEFB;
+            border-radius: 0.8em;
+            padding: 1em;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr auto;
+            gap: 1em;
+            align-items: center;
+            transition: all 0.3s;
+        }
+        
+        .grade-item:hover {
+            border-color: #2962FF;
+            box-shadow: 0 2px 8px rgba(41, 98, 255, 0.1);
+        }
+        
+        .input-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .input-group label {
+            font-size: 0.85em;
+            color: #666;
+            margin-bottom: 0.3em;
+            font-weight: 500;
+        }
+        
+        .input-group input {
+            padding: 0.7em;
+            border: 2px solid #BBDEFB;
+            border-radius: 0.5em;
+            font-size: 1em;
+            background: white;
+            transition: all 0.3s;
+        }
+        
+        .input-group input:focus {
+            outline: none;
+            border-color: #2962FF;
+            box-shadow: 0 0 0 3px rgba(41, 98, 255, 0.1);
+        }
+        
+        .delete-btn {
+            background: #DC3545;
+            color: white;
+            border: none;
+            padding: 0.7em;
+            border-radius: 0.5em;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .delete-btn:hover {
+            background: #C82333;
+            transform: scale(1.05);
+        }
+        
+        .weight-input {
+            background: #E3F2FD;
+            border: 2px solid #BBDEFB;
+            padding: 1em;
+            border-radius: 0.7em;
+            margin-bottom: 1.5em;
+        }
+        
+        .weight-input label {
+            display: block;
+            font-weight: 600;
+            color: #2962FF;
+            margin-bottom: 0.5em;
+        }
+        
+        .weight-input input {
+            width: 100%;
+            padding: 0.7em;
+            border: 2px solid #BBDEFB;
+            border-radius: 0.5em;
+            font-size: 1em;
+            background: white;
+        }
+        
+        .calc-btn {
+            background: #2962FF;
+            color: white;
+            border: none;
+            border-radius: 0.7em;
+            padding: 1em 3em;
+            font-weight: 600;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: block;
+            margin: 2em auto;
+            box-shadow: 0 4px 12px rgba(41, 98, 255, 0.2);
+        }
+        
+        .calc-btn:hover {
+            background: #1E88E5;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(41, 98, 255, 0.3);
+        }
+        
+        .calc-result {
+            background: linear-gradient(135deg, #2962FF 0%, #1E88E5 100%);
+            color: white;
+            border-radius: 1em;
+            padding: 2em;
+            text-align: center;
+            margin-top: 2em;
+            box-shadow: 0 8px 24px rgba(41, 98, 255, 0.2);
+        }
+        
+        .calc-result h2 {
+            font-family: 'Caveat', cursive;
+            font-size: 2.5em;
+            margin-bottom: 0.5em;
+        }
+        
+        .grade-display {
+            font-size: 4em;
+            font-weight: 700;
+            margin: 0.3em 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .grade-letter {
+            font-size: 2em;
+            margin-top: 0.3em;
+            opacity: 0.9;
+        }
+        
+        .grade-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1em;
+            margin-top: 1.5em;
+        }
+        
+        .grade-detail-item {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 1em;
+            border-radius: 0.8em;
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+        }
+        
+        .grade-detail-item strong {
+            display: block;
+            font-size: 0.9em;
+            margin-bottom: 0.3em;
+            opacity: 0.9;
+        }
+        
+        .grade-detail-item span {
+            font-size: 1.5em;
+            font-weight: 600;
+        }
+        
+        .calc-desc {
+            margin-top: 3em;
+            background: #F5F9FF;
+            border: 2px solid #BBDEFB;
+            border-radius: 0.9em;
+            padding: 1.5em;
+            line-height: 1.8;
+        }
+        
+        .calc-desc h3 {
+            color: #2962FF;
+            margin-bottom: 1em;
+            font-size: 1.5em;
+        }
+        
+        .calc-desc strong {
+            color: #2962FF;
+        }
+        
+        .grade-needed-section {
+            background: #FFF3CD;
+            border: 2px solid #FFE082;
+            border-radius: 0.9em;
+            padding: 1.5em;
+            margin-top: 2em;
+        }
+        
+        .grade-needed-section h3 {
+            color: #F57C00;
+            margin-bottom: 1em;
+        }
+        
+        .grade-needed-result {
+            font-size: 2em;
+            font-weight: 700;
+            color: #F57C00;
+            margin-top: 1em;
+        }
+        
+        @media (max-width: 768px) {
+            .calc-container {
+                margin: 1em;
+                padding: 1.5em 1em;
+            }
+            
+            .grade-item {
+                grid-template-columns: 1fr;
+                gap: 0.8em;
+            }
+            
+            .tabs {
+                flex-direction: column;
+                gap: 0.5em;
+            }
+            
+            .tab-btn {
+                padding: 0.8em;
+            }
+            
+            h1 {
+                font-size: 2.2em;
+            }
+            
+            .grade-display {
+                font-size: 3em;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="../force-desktop-layout.css">
+</head>
+<body>
+<div class="calc-container">
+    <h1><i class="fas fa-chart-line"></i> Grade Calculator</h1>
+    <p class="subtitle">Calculate your current grade and what you need to achieve your goals</p>
+    
+    <div class="tabs">
+        <button class="tab-btn active" onclick="switchTab('current')">Current Grade</button>
+        <button class="tab-btn" onclick="switchTab('needed')">Grade Needed</button>
+    </div>
+    
+    <!-- Current Grade Tab -->
+    <div id="currentTab" class="tab-content active">
+        <div class="category-section">
+            <div class="category-header">
+                <h3><i class="fas fa-pencil-alt"></i> Assignments</h3>
+                <button class="add-item-btn" onclick="addItem('assignments')">
+                    <i class="fas fa-plus"></i> Add Assignment
+                </button>
+            </div>
+            <div class="weight-input">
+                <label>Category Weight (%):</label>
+                <input type="number" id="assignmentsWeight" value="30" min="0" max="100">
+            </div>
+            <div class="item-list" id="assignmentsList"></div>
+        </div>
+        
+        <div class="category-section">
+            <div class="category-header">
+                <h3><i class="fas fa-file-alt"></i> Quizzes</h3>
+                <button class="add-item-btn" onclick="addItem('quizzes')">
+                    <i class="fas fa-plus"></i> Add Quiz
+                </button>
+            </div>
+            <div class="weight-input">
+                <label>Category Weight (%):</label>
+                <input type="number" id="quizzesWeight" value="20" min="0" max="100">
+            </div>
+            <div class="item-list" id="quizzesList"></div>
+        </div>
+        
+        <div class="category-section">
+            <div class="category-header">
+                <h3><i class="fas fa-clipboard-check"></i> Tests</h3>
+                <button class="add-item-btn" onclick="addItem('tests')">
+                    <i class="fas fa-plus"></i> Add Test
+                </button>
+            </div>
+            <div class="weight-input">
+                <label>Category Weight (%):</label>
+                <input type="number" id="testsWeight" value="30" min="0" max="100">
+            </div>
+            <div class="item-list" id="testsList"></div>
+        </div>
+        
+        <div class="category-section">
+            <div class="category-header">
+                <h3><i class="fas fa-graduation-cap"></i> Final Exam</h3>
+                <button class="add-item-btn" onclick="addItem('final')">
+                    <i class="fas fa-plus"></i> Add Final Exam
+                </button>
+            </div>
+            <div class="weight-input">
+                <label>Category Weight (%):</label>
+                <input type="number" id="finalWeight" value="20" min="0" max="100">
+            </div>
+            <div class="item-list" id="finalList"></div>
+        </div>
+        
+        <button class="calc-btn" onclick="calculateCurrentGrade()">
+            <i class="fas fa-calculator"></i> Calculate Current Grade
+        </button>
+    </div>
+    
+    <!-- Grade Needed Tab -->
+    <div id="neededTab" class="tab-content">
+        <div class="grade-needed-section">
+            <h3><i class="fas fa-bullseye"></i> Calculate Grade Needed on Final</h3>
+            <p>Enter your current grade and desired final grade to see what you need on your final exam.</p>
+            
+            <div class="input-group">
+                <label>Current Grade (%):</label>
+                <input type="number" id="currentGrade" min="0" max="100" step="0.1">
+            </div>
+            
+            <div class="input-group">
+                <label>Desired Final Grade (%):</label>
+                <input type="number" id="desiredGrade" min="0" max="100" step="0.1">
+            </div>
+            
+            <div class="input-group">
+                <label>Final Exam Weight (%):</label>
+                <input type="number" id="examWeight" value="20" min="0" max="100">
+            </div>
+            
+            <button class="calc-btn" onclick="calculateNeededGrade()">
+                <i class="fas fa-calculator"></i> Calculate Grade Needed
+            </button>
+            
+            <div id="neededResult"></div>
+        </div>
+    </div>
+    
+    <div class="calc-result" id="result"></div>
+    
+    <div class="calc-desc">
+        <h3><i class="fas fa-info-circle"></i> How to Use the Grade Calculator</h3>
+        <p>
+            <strong>Calculate Current Grade:</strong><br>
+            1. Add your assignments, quizzes, tests, and final exam scores<br>
+            2. Adjust the weight percentage for each category<br>
+            3. Click "Calculate Current Grade" to see your overall grade
+        </p>
+        <p>
+            <strong>Calculate Grade Needed:</strong><br>
+            1. Switch to the "Grade Needed" tab<br>
+            2. Enter your current grade in the class<br>
+            3. Enter your desired final grade<br>
+            4. Enter the final exam weight<br>
+            5. Click calculate to see what score you need on the final
+        </p>
+        <p>
+            <strong>Note:</strong> Make sure all category weights add up to 100% for accurate results. 
+            The calculator uses weighted averages to determine your final grade.
+        </p>
+    </div>
+</div>
+
+<script>
+    let itemCounters = {
+        assignments: 0,
+        quizzes: 0,
+        tests: 0,
+        final: 0
+    };
+    
+    function switchTab(tab) {
+        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+        document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+        
+        if (tab === 'current') {
+            document.getElementById('currentTab').classList.add('active');
+            event.target.classList.add('active');
+        } else {
+            document.getElementById('neededTab').classList.add('active');
+            event.target.classList.add('active');
+        }
+    }
+    
+    function addItem(category) {
+        itemCounters[category]++;
+        const list = document.getElementById(`${category}List`);
+        const itemId = `${category}-${itemCounters[category]}`;
+        
+        const item = document.createElement('div');
+        item.className = 'grade-item';
+        item.id = itemId;
+        
+        item.innerHTML = `
+            <div class="input-group">
+                <label>Name</label>
+                <input type="text" placeholder="Assignment name" class="item-name">
+            </div>
+            <div class="input-group">
+                <label>Score Earned</label>
+                <input type="number" min="0" step="0.1" class="item-score">
+            </div>
+            <div class="input-group">
+                <label>Total Points</label>
+                <input type="number" min="0" step="0.1" class="item-total">
+            </div>
+            <button class="delete-btn" onclick="removeItem('${itemId}')">
+                <i class="fas fa-trash"></i>
+            </button>
+        `;
+        
+        list.appendChild(item);
+    }
+    
+    function removeItem(id) {
+        const item = document.getElementById(id);
+        if (item) {
+            item.remove();
+        }
+    }
+    
+    function calculateCategoryAverage(category) {
+        const items = document.querySelectorAll(`#${category}List .grade-item`);
+        if (items.length === 0) return null;
+        
+        let totalEarned = 0;
+        let totalPoints = 0;
+        
+        items.forEach(item => {
+            const earned = parseFloat(item.querySelector('.item-score').value) || 0;
+            const total = parseFloat(item.querySelector('.item-total').value) || 0;
+            totalEarned += earned;
+            totalPoints += total;
+        });
+        
+        return totalPoints > 0 ? (totalEarned / totalPoints) * 100 : null;
+    }
+    
+    function getLetterGrade(percentage) {
+        if (percentage >= 93) return 'A';
+        if (percentage >= 90) return 'A-';
+        if (percentage >= 87) return 'B+';
+        if (percentage >= 83) return 'B';
+        if (percentage >= 80) return 'B-';
+        if (percentage >= 77) return 'C+';
+        if (percentage >= 73) return 'C';
+        if (percentage >= 70) return 'C-';
+        if (percentage >= 67) return 'D+';
+        if (percentage >= 63) return 'D';
+        if (percentage >= 60) return 'D-';
+        return 'F';
+    }
+    
+    function calculateCurrentGrade() {
+        const categories = ['assignments', 'quizzes', 'tests', 'final'];
+        const weights = {};
+        const averages = {};
+        let totalWeight = 0;
+        let weightedSum = 0;
+        
+        categories.forEach(cat => {
+            const weight = parseFloat(document.getElementById(`${cat}Weight`).value) || 0;
+            const average = calculateCategoryAverage(cat);
+            
+            if (average !== null) {
+                weights[cat] = weight;
+                averages[cat] = average;
+                totalWeight += weight;
+                weightedSum += (average * weight);
+            }
+        });
+        
+        if (totalWeight === 0) {
+            alert('Please add at least one grade and ensure weights are set.');
+            return;
+        }
+        
+        const finalGrade = (weightedSum / totalWeight).toFixed(2);
+        const letterGrade = getLetterGrade(parseFloat(finalGrade));
+        
+        const resultDiv = document.getElementById('result');
+        resultDiv.innerHTML = `
+            <h2>Your Current Grade</h2>
+            <div class="grade-display">${finalGrade}%</div>
+            <div class="grade-letter">Letter Grade: ${letterGrade}</div>
+            <div class="grade-details">
+                ${Object.keys(averages).map(cat => `
+                    <div class="grade-detail-item">
+                        <strong>${cat.charAt(0).toUpperCase() + cat.slice(1)}</strong>
+                        <span>${averages[cat].toFixed(1)}%</span>
+                    </div>
+                `).join('')}
+            </div>
+        `;
+        resultDiv.style.display = 'block';
+        resultDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+    
+    function calculateNeededGrade() {
+        const current = parseFloat(document.getElementById('currentGrade').value);
+        const desired = parseFloat(document.getElementById('desiredGrade').value);
+        const examWeight = parseFloat(document.getElementById('examWeight').value);
+        
+        if (isNaN(current) || isNaN(desired) || isNaN(examWeight)) {
+            alert('Please fill in all fields.');
+            return;
+        }
+        
+        if (examWeight <= 0 || examWeight > 100) {
+            alert('Final exam weight must be between 1 and 100.');
+            return;
+        }
+        
+        const currentWeight = 100 - examWeight;
+        const neededGrade = ((desired - (current * currentWeight / 100)) / (examWeight / 100)).toFixed(2);
+        
+        const resultDiv = document.getElementById('neededResult');
+        let message = '';
+        
+        if (neededGrade < 0) {
+            message = `<p>Great news! You already have ${current}%, which exceeds your desired grade of ${desired}%!</p>`;
+        } else if (neededGrade > 100) {
+            message = `<p>Unfortunately, even with 100% on the final exam, you cannot achieve ${desired}%. The maximum you can achieve is ${(current * currentWeight / 100 + examWeight).toFixed(2)}%.</p>`;
+        } else {
+            const letterGrade = getLetterGrade(parseFloat(neededGrade));
+            message = `
+                <p>To achieve a final grade of <strong>${desired}%</strong>, you need to score:</p>
+                <div class="grade-needed-result">${neededGrade}% (${letterGrade})</div>
+                <p>on your final exam (which is worth ${examWeight}% of your grade).</p>
+            `;
+        }
+        
+        resultDiv.innerHTML = message;
+    }
+    
+    // Add initial items
+    window.onload = function() {
+        addItem('assignments');
+        addItem('quizzes');
+        addItem('tests');
+    };
+</script>
+</body>
+</html>

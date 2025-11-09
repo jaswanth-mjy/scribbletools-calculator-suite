@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=1200, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Expense Splitter Calculator - FREE Bill Split Tool | Roommate Expenses</title>
     <meta name="description" content="Free expense splitter calculator! Split bills, rent, utilities, groceries among roommates and friends. Perfect for students sharing dorm costs, group trips. 100% free bill calculator!">
     <meta name="keywords" content="expense splitter, bill splitter calculator, roommate expense calculator, split bills calculator, group expense tracker, shared cost calculator, bill splitting tool, roommate bill splitter, student expense splitter, group bill calculator, rent splitter, utility bill splitter, grocery bill splitter, trip expense calculator, shared expenses tool">
@@ -43,6 +43,9 @@
     <!-- Preconnect for Performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
@@ -153,13 +156,18 @@
         }
         
         .splitter-header h1 {
-            font-size: 2.5rem !important;
+            font-family: 'Caveat', cursive !important;
+            font-size: 3.5rem !important;
             margin-bottom: 15px !important;
             font-weight: 700 !important;
-            color: var(--splitter-color-text-on-primary) !important;
+            background: linear-gradient(135deg, #ffffff 0%, #f0f4ff 100%) !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            background-clip: text !important;
         }
         
         .splitter-header p {
+            font-family: 'Poppins', sans-serif !important;
             font-size: 1.1rem !important;
             opacity: 0.9 !important;
             color: var(--splitter-color-text-on-primary) !important;
@@ -751,6 +759,10 @@
         
         /* Responsive Design */
         @media (max-width: 768px) {
+            .splitter-header h1 {
+                font-size: 2.5rem !important;
+            }
+            
             .header h1 {
                 font-size: 2.2rem;
             }
@@ -784,13 +796,25 @@
                 padding: 20px;
             }
         }
+        
+        @media (max-width: 480px) {
+            .splitter-header h1 {
+                font-size: 2rem !important;
+            }
+        }
+        
+        @media (max-width: 360px) {
+            .splitter-header h1 {
+                font-size: 1.75rem !important;
+            }
+        }
     </style>
     <link rel="stylesheet" href="../force-desktop-layout.css">
 </head>
 <body class="splitter-body">
     <div class="splitter-main-container">
         <div class="splitter-header">
-            <h1>💸 Free Expense Splitter - Bill Split Calculator for Roommates</h1>
+            <h1><span style="display: inline-block; -webkit-text-fill-color: initial; background: none;">💸</span> <span style="background: linear-gradient(135deg, #ffffff 0%, #f0f4ff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Free Expense Splitter - Bill Split Calculator for Roommates</span></h1>
             <p>Split expenses fairly among friends, roommates, and groups. Perfect tool for sharing rent, utilities, groceries, and group activities. Calculate who owes what instantly.</p>
         </div>
         

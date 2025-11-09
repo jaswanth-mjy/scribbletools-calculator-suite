@@ -1,0 +1,1763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1200, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes">
+    <title>3D Flashcard Maker - Interactive Study Cards | Student Tools</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Create interactive 3D flashcards for effective studying. Build, organize, and study with animated flashcards. Perfect for memorization and learning.">
+    <meta name="keywords" content="flashcards, study cards, 3D flashcards, memory cards, learning tools, study aids, academic tools, student tools">
+    <meta name="author" content="Student Academic Tools">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="3D Flashcard Maker - Interactive Study Cards">
+    <meta property="og:description" content="Create and study with interactive 3D flashcards. Perfect for memorization and effective learning.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yoursite.com/tools/flashcard-maker">
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="3D Flashcard Maker - Interactive Study Cards">
+    <meta name="twitter:description" content="Create and study with interactive 3D flashcards. Perfect for memorization and effective learning.">
+    
+    <!-- Custom SVG Icons - No external dependencies needed -->
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Caveat:wght@400;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CSS Scoping - All styles prefixed with .flashcard-maker-root to prevent conflicts */
+        .flashcard-maker-root * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* CSS Variables for consistent theming */
+        :root {
+            --primary-color: #667eea;
+            --primary-light: #8b9aff;
+            --primary-dark: #4c63d2;
+            --secondary-color: #764ba2;
+            --secondary-light: #9c6bc7;
+            --secondary-dark: #5a3d82;
+            --accent-color: #f093fb;
+            --accent-light: #f5b7ff;
+            --accent-dark: #e069f7;
+            --success-color: #4caf50;
+            --success-light: #66bb6a;
+            --warning-color: #ff9800;
+            --warning-light: #ffb74d;
+            --error-color: #f44336;
+            --error-light: #ef5350;
+            --info-color: #2196f3;
+            --info-light: #64b5f6;
+            --text-color: #333;
+            --text-light: #666;
+            --text-lighter: #999;
+            --bg-color: #f8f9fa;
+            --bg-light: #ffffff;
+            --bg-dark: #f1f3f5;
+            --border-color: #e0e6ed;
+            --border-light: #f0f3f7;
+            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.15);
+            --shadow-xl: 0 12px 24px rgba(0, 0, 0, 0.2);
+            --shadow-2xl: 0 20px 40px rgba(0, 0, 0, 0.25);
+            --border-radius: 12px;
+            --border-radius-sm: 8px;
+            --border-radius-lg: 16px;
+            --border-radius-xl: 20px;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --transition-fast: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --transition-slow: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        .flashcard-maker-root {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Background decoration */
+        .flashcard-maker-root::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(240, 147, 251, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 90% 80%, rgba(118, 75, 162, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(102, 126, 234, 0.05) 0%, transparent 70%);
+            z-index: -1;
+        }
+
+        /* Floating shapes animation */
+        .flashcard-maker-root .floating-shapes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .flashcard-maker-root .shape {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            animation: float 15s infinite ease-in-out;
+        }
+
+        .flashcard-maker-root .shape:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .flashcard-maker-root .shape:nth-child(2) {
+            width: 120px;
+            height: 120px;
+            top: 60%;
+            left: 80%;
+            animation-delay: 2s;
+        }
+
+        .flashcard-maker-root .shape:nth-child(3) {
+            width: 60px;
+            height: 60px;
+            top: 80%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        .flashcard-maker-root .shape:nth-child(4) {
+            width: 100px;
+            height: 100px;
+            top: 10%;
+            left: 70%;
+            animation-delay: 6s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) translateX(0) rotate(0deg);
+            }
+            25% {
+                transform: translateY(-20px) translateX(10px) rotate(5deg);
+            }
+            50% {
+                transform: translateY(0) translateX(20px) rotate(0deg);
+            }
+            75% {
+                transform: translateY(20px) translateX(10px) rotate(-5deg);
+            }
+        }
+
+        .flashcard-maker-root .fc-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .flashcard-maker-root .fc-header {
+            text-align: center;
+            margin-bottom: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 40px;
+            border-radius: 30px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        .flashcard-maker-root .fc-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 100%);
+            pointer-events: none;
+        }
+
+        .flashcard-maker-root .fc-header h1 {
+            font-family: 'Caveat', cursive;
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            text-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            position: relative;
+            display: inline-block;
+            animation: pulse 2s infinite;
+        }
+
+        .flashcard-maker-root .fc-header h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+            animation: expandWidth 2s ease-in-out infinite alternate;
+        }
+
+        .flashcard-maker-root .fc-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .flashcard-maker-root .fc-card-creator {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        .flashcard-maker-root .fc-card-creator::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 100%);
+            pointer-events: none;
+        }
+
+        .flashcard-maker-root .fc-creator-title {
+            font-family: 'Caveat', cursive;
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .flashcard-maker-root .fc-creator-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+        }
+
+        .flashcard-maker-root .fc-form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .flashcard-maker-root .fc-form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: var(--text-color);
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .flashcard-maker-root .fc-form-group label i {
+            color: var(--primary-color);
+            font-size: 1rem;
+        }
+
+        .flashcard-maker-root .fc-form-group input, 
+        .flashcard-maker-root .fc-form-group textarea {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid rgba(102, 126, 234, 0.2);
+            border-radius: 15px;
+            font-size: 16px;
+            transition: var(--transition);
+            background: rgba(255, 255, 255, 0.9);
+            font-family: 'Poppins', sans-serif;
+            position: relative;
+        }
+
+        .flashcard-maker-root .fc-form-group input:focus, 
+        .flashcard-maker-root .fc-form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .flashcard-maker-root .fc-form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .flashcard-maker-root .fc-btn-container {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .flashcard-maker-root .fc-btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .flashcard-maker-root .fc-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .flashcard-maker-root .fc-btn:hover::before {
+            left: 100%;
+        }
+
+        .flashcard-maker-root .fc-btn-primary {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .flashcard-maker-root .fc-btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .flashcard-maker-root .fc-btn-secondary {
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--primary-color);
+            border: 2px solid rgba(102, 126, 234, 0.3);
+        }
+
+        .flashcard-maker-root .fc-btn-secondary:hover {
+            background: rgba(102, 126, 234, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .flashcard-maker-root .fc-import-section {
+            background: rgba(102, 126, 234, 0.05);
+            border-radius: 20px;
+            padding: 30px;
+            margin-top: 30px;
+            border: 2px dashed rgba(102, 126, 234, 0.3);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .flashcard-maker-root .fc-import-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, transparent 100%);
+            pointer-events: none;
+        }
+
+        .flashcard-maker-root .fc-import-section h3 {
+            margin: 0 0 15px 0;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .flashcard-maker-root .fc-import-section p {
+            margin: 0 0 25px 0;
+            color: var(--text-light);
+            font-size: 1rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .flashcard-maker-root .fc-csv-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .flashcard-maker-root .fc-file-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, var(--info-color) 0%, var(--info-light) 100%);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(33, 150, 243, 0.3);
+        }
+
+        .flashcard-maker-root .fc-file-label:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(33, 150, 243, 0.4);
+        }
+
+        .flashcard-maker-root .fc-file-input {
+            display: none;
+        }
+
+        .flashcard-maker-root .fc-btn-import {
+            background: linear-gradient(135deg, var(--success-color) 0%, var(--success-light) 100%);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+        }
+
+        .flashcard-maker-root .fc-btn-import:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(76, 175, 80, 0.4);
+        }
+
+        .flashcard-maker-root .fc-btn-export {
+            background: linear-gradient(135deg, var(--warning-color) 0%, var(--warning-light) 100%);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(255, 152, 0, 0.3);
+        }
+
+        .flashcard-maker-root .fc-btn-export:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 152, 0, 0.4);
+        }
+
+        .flashcard-maker-root .fc-view-toggle {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            gap: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 15px;
+            border-radius: 50px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: fadeIn 0.8s ease-out 0.4s both;
+        }
+
+        .flashcard-maker-root .fc-toggle-btn {
+            padding: 12px 25px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .flashcard-maker-root .fc-toggle-btn.active {
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--primary-color);
+            border-color: rgba(255, 255, 255, 0.9);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+        }
+
+        .flashcard-maker-root .fc-toggle-btn:hover:not(.active) {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .flashcard-maker-root .fc-flashcards-container {
+            perspective: 1500px;
+            margin-bottom: 40px;
+            animation: fadeIn 0.8s ease-out 0.6s both;
+        }
+
+        .flashcard-maker-root .fc-flashcards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 20px 0;
+        }
+
+        .flashcard-maker-root .fc-carousel-container {
+            display: none;
+            text-align: center;
+            margin: 20px 0;
+            min-height: 400px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 40px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .flashcard-maker-root .fc-carousel-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 100%);
+            pointer-events: none;
+        }
+
+        .flashcard-maker-root .fc-carousel {
+            width: 100%;
+            min-height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .flashcard-maker-root .fc-carousel-nav {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .flashcard-maker-root .fc-nav-btn {
+            background: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-dark) 100%);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 8px 20px rgba(240, 147, 251, 0.3);
+            min-width: 100px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .flashcard-maker-root .fc-nav-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .flashcard-maker-root .fc-nav-btn:hover::before {
+            left: 100%;
+        }
+
+        .flashcard-maker-root .fc-nav-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(240, 147, 251, 0.5);
+        }
+
+        .flashcard-maker-root .fc-nav-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: 0 4px 10px rgba(240, 147, 251, 0.2);
+        }
+
+        .flashcard-maker-root .fc-carousel-counter {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            color: var(--primary-color);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            min-width: 100px;
+            font-size: 1rem;
+        }
+
+        .flashcard-maker-root .fc-carousel-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .flashcard-maker-root .fc-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .flashcard-maker-root .fc-indicator.active {
+            background: var(--accent-color);
+            transform: scale(1.3);
+            box-shadow: 0 0 10px rgba(240, 147, 251, 0.5);
+        }
+
+        .flashcard-maker-root .fc-indicator:hover {
+            background: rgba(255, 255, 255, 0.8);
+            transform: scale(1.2);
+        }
+
+        .flashcard-maker-root .fc-carousel-help {
+            text-align: center;
+            margin-top: 20px;
+            opacity: 0.8;
+        }
+
+        .flashcard-maker-root .fc-carousel-help small {
+            color: white;
+            font-size: 14px;
+        }
+
+        .flashcard-maker-root .fc-carousel-controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .flashcard-maker-root .fc-auto-play-btn {
+            background: linear-gradient(135deg, var(--success-color) 0%, var(--success-light) 100%);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .flashcard-maker-root .fc-auto-play-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(76, 175, 80, 0.4);
+        }
+
+        .flashcard-maker-root .fc-auto-play-btn.active {
+            background: linear-gradient(135deg, var(--error-color) 0%, var(--error-light) 100%);
+        }
+
+        .flashcard-maker-root .fc-empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: fadeIn 0.8s ease-out 0.8s both;
+        }
+
+        .flashcard-maker-root .fc-empty-state h3 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            opacity: 0.9;
+            font-family: 'Caveat', cursive;
+        }
+
+        .flashcard-maker-root .fc-empty-state p {
+            font-size: 1.2rem;
+            opacity: 0.8;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Flashcard styles */
+        .flashcard-maker-root .fc-flashcard {
+            width: 100%;
+            height: 250px;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            border-radius: 20px;
+            animation: cardEntrance 0.6s ease-out;
+        }
+
+        .flashcard-maker-root .fc-flashcard:hover {
+            transform: translateY(-10px) rotateY(5deg);
+        }
+
+        .flashcard-maker-root .fc-flashcard.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .flashcard-maker-root .fc-carousel-flashcard {
+            width: 400px;
+            height: 250px;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            display: none;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .flashcard-maker-root .fc-carousel-flashcard.active {
+            display: block;
+            transform: scale(1);
+            opacity: 1;
+            animation: cardEntrance 0.6s ease-out;
+        }
+
+        .flashcard-maker-root .fc-carousel-flashcard.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .flashcard-maker-root .fc-flashcard-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 20px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .flashcard-maker-root .fc-flashcard .fc-flashcard-front {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+        }
+
+        .flashcard-maker-root .fc-flashcard-back {
+            transform: rotateY(180deg);
+            background: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-dark) 100%);
+            color: white;
+        }
+
+        .flashcard-maker-root .fc-flashcard-content {
+            font-size: 1.3rem;
+            font-weight: 600;
+            line-height: 1.4;
+            z-index: 2;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .flashcard-maker-root .fc-flashcard-actions {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            display: flex;
+            gap: 10px;
+            z-index: 3;
+        }
+
+        .flashcard-maker-root .fc-action-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+            color: white;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 16px;
+        }
+
+        .flashcard-maker-root .fc-action-btn:hover {
+            background: rgba(255, 255, 255, 0.4);
+            transform: scale(1.1);
+        }
+
+        /* Enhanced Delete Button Styling */
+        .flashcard-maker-root .fc-delete-btn {
+            background: rgba(231, 76, 60, 0.8);
+            transition: all 0.3s ease;
+            border: 2px solid rgba(231, 76, 60, 0.3);
+        }
+
+        .flashcard-maker-root .fc-delete-btn:hover {
+            background: rgba(231, 76, 60, 1);
+            transform: scale(1.15);
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4);
+            border-color: rgba(231, 76, 60, 1);
+        }
+
+        .flashcard-maker-root .fc-delete-btn i {
+            font-size: 18px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        /* SVG Icon Styling */
+        .flashcard-maker-root svg {
+            vertical-align: middle;
+            margin-right: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .flashcard-maker-root .fc-nav-btn svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .flashcard-maker-root .fc-delete-btn svg {
+            width: 14px;
+            height: 14px;
+            margin-right: 4px;
+        }
+
+        .flashcard-maker-root .fc-btn svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .flashcard-maker-root .fc-toggle-btn svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .flashcard-maker-root .fc-auto-play-btn svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* Hover effects for navigation icons */
+        .flashcard-maker-root .fc-nav-btn:hover svg {
+            transform: translateX(2px);
+        }
+
+        .flashcard-maker-root .fc-nav-btn:first-child:hover svg {
+            transform: translateX(-2px);
+        }
+
+        /* Icon color inheritance */
+        .flashcard-maker-root svg {
+            fill: currentColor;
+        }
+
+        /* Notification system */
+        .flashcard-maker-root .fc-notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: white;
+            color: var(--text-color);
+            padding: 15px 25px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transform: translateX(400px);
+            transition: transform 0.4s ease;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            max-width: 300px;
+        }
+
+        .flashcard-maker-root .fc-notification.show {
+            transform: translateX(0);
+        }
+
+        .flashcard-maker-root .fc-notification.success {
+            border-left: 5px solid var(--success-color);
+        }
+
+        .flashcard-maker-root .fc-notification.error {
+            border-left: 5px solid var(--error-color);
+        }
+
+        .flashcard-maker-root .fc-notification.warning {
+            border-left: 5px solid var(--warning-color);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes cardEntrance {
+            from {
+                opacity: 0;
+                transform: scale(0.8) rotateY(10deg);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) rotateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes expandWidth {
+            from {
+                width: 80px;
+            }
+            to {
+                width: 150px;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .flashcard-maker-root .fc-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .flashcard-maker-root .fc-creator-title {
+                font-size: 2rem;
+            }
+            
+            .flashcard-maker-root .fc-flashcards-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .flashcard-maker-root .fc-carousel-flashcard {
+                width: 300px;
+                height: 200px;
+            }
+            
+            .flashcard-maker-root .fc-card-creator {
+                padding: 25px;
+            }
+            
+            .flashcard-maker-root .fc-btn-container {
+                flex-direction: column;
+            }
+            
+            .flashcard-maker-root .fc-csv-controls {
+                flex-direction: column;
+            }
+            
+            .flashcard-maker-root .fc-view-toggle {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .flashcard-maker-root .fc-toggle-btn {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            /* Mobile Navigation Buttons */
+            .flashcard-maker-root .fc-nav-btn {
+                min-width: 80px;
+                font-size: 12px;
+                padding: 10px 15px;
+            }
+            
+            .flashcard-maker-root .fc-nav-btn span {
+                display: none;
+            }
+            
+            .flashcard-maker-root .fc-nav-btn i {
+                font-size: 16px;
+            }
+        }
+    </style>
+    
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "3D Flashcard Maker",
+        "description": "Create interactive 3D flashcards for effective studying and memorization",
+        "url": "https://yoursite.com/tools/flashcard-maker",
+        "applicationCategory": "EducationalApplication",
+        "operatingSystem": "Web Browser",
+        "permissions": "browser",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "featureList": [
+            "3D animated flashcards",
+            "Interactive study modes", 
+            "Custom card creation",
+            "Grid and carousel views",
+            "Export functionality"
+        ]
+    }
+    </script>
+    <link rel="stylesheet" href="../force-desktop-layout.css">
+</head>
+<body>
+    <div class="flashcard-maker-root">
+        <div class="floating-shapes">
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+        </div>
+        
+        <div class="fc-notification" id="fcNotification"></div>
+
+        <div class="fc-container">
+            <div class="fc-header">
+                <h1>✨ 3D Flashcard Maker</h1>
+                <p>Create beautiful, interactive flashcards with stunning 3D effects</p>
+            </div>
+
+            <div class="fc-card-creator">
+                <h2 class="fc-creator-title">Create New Flashcard</h2>
+                <div class="fc-form-group">
+                    <label for="fcFrontText"><i class="fas fa-question-circle"></i> Front Text (Question/Term)</label>
+                    <textarea id="fcFrontText" placeholder="Enter the question or term..."></textarea>
+                </div>
+                <div class="fc-form-group">
+                    <label for="fcBackText"><i class="fas fa-lightbulb"></i> Back Text (Answer/Definition)</label>
+                    <textarea id="fcBackText" placeholder="Enter the answer or definition..."></textarea>
+                </div>
+                <div class="fc-btn-container">
+                    <button class="fc-btn fc-btn-primary" onclick="addFlashcard()">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                            <path d="M8 0a.5.5 0 0 1 .5.5V7.5H15a.5.5 0 0 1 0 1H8.5v7a.5.5 0 0 1-1 0V8.5H.5a.5.5 0 0 1 0-1H7.5V.5A.5.5 0 0 1 8 0z"/>
+                        </svg> Add Flashcard
+                    </button>
+                    <button class="fc-btn fc-btn-secondary" onclick="clearForm()">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                            <path d="M8.086 2.207a2 2 0 0 1 2.828 0l3.879 3.879a2 2 0 0 1 0 2.828l-5.5 5.5A2 2 0 0 1 7.879 15H5.12a2 2 0 0 1-1.414-.586l-2.5-2.5A2 2 0 0 1 .793 10.5L6.293 5.086a2 2 0 0 1 1.793-.207zM2 12.207a1 1 0 0 0-.293-.707L4.586 8.621a1 1 0 0 1 1.414 0l2.5 2.5a1 1 0 0 1 0 1.414L5.621 15.414a1 1 0 0 0-.707-.293H2z"/>
+                        </svg> Clear
+                    </button>
+                </div>
+                
+                <div class="fc-import-section">
+                    <h3><i class="fas fa-file-import"></i> Import/Export CSV</h3>
+                    <p>Upload a CSV file with columns: "front" and "back" (headers required)</p>
+                    <div class="fc-csv-controls">
+                        <label for="fcCsvFileInput" class="fc-file-label">
+                            <i class="fas fa-file-upload"></i> Choose CSV File
+                        </label>
+                        <input type="file" id="fcCsvFileInput" accept=".csv" class="fc-file-input" title="Select CSV file to import flashcards">
+                        <button class="fc-btn fc-btn-import" onclick="importFromCSV()">
+                            <i class="fas fa-file-import"></i> Import CSV
+                        </button>
+                        <button class="fc-btn fc-btn-export" onclick="exportToCSV()">
+                            <i class="fas fa-file-export"></i> Export CSV
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="fc-view-toggle">
+                <button class="fc-toggle-btn fc-active" onclick="setView('grid')">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                        <path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3zM2.5 2a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zM1 10.5A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3z"/>
+                    </svg> Grid View
+                </button>
+                <button class="fc-toggle-btn" onclick="setView('carousel')">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                        <path d="M4.502 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
+                        <path d="M14.002 13a2 2 0 0 1-2 2h-10a2 2 0 0 1-2-2V5A2 2 0 0 1 2.002 3h10a2 2 0 0 1 2 2v8zm-2-1a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1h-10a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h10zM8.002 13l-2.645-2.948a.5.5 0 1 1 .745-.696L8.002 11l1.9-1.644a.5.5 0 1 1 .745.696L8.002 13z"/>
+                    </svg> Carousel View
+                </button>
+            </div>
+
+            <div class="fc-flashcards-container">
+                <div class="fc-flashcards-grid" id="fcFlashcardsGrid">
+                    <!-- Flashcards will be added here dynamically -->
+                </div>
+                
+                <div class="fc-carousel-container" id="fcCarouselContainer">
+                    <div class="fc-carousel" id="fcCarousel">
+                        <!-- Carousel flashcards will be added here -->
+                    </div>
+                    <div class="fc-carousel-nav">
+                        <button class="fc-nav-btn" id="fcPrevBtn" onclick="previousCard()" title="Previous Flashcard">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                <path d="M10 2L4 8l6 6V2z"/>
+                            </svg>
+                            <span>Previous</span>
+                        </button>
+                        <div class="fc-carousel-counter" id="fcCarouselCounter">1 / 0</div>
+                        <button class="fc-nav-btn" id="fcNextBtn" onclick="nextCard()" title="Next Flashcard">
+                            <span>Next</span>
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                <path d="M6 2v12l6-6L6 2z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="fc-carousel-controls">
+                        <button class="fc-auto-play-btn" id="fcAutoPlayBtn" onclick="toggleAutoPlay()">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                <path d="M6.271 5.055a.5.5 0 0 1 .52.056L11 7.055a.5.5 0 0 1 0 .89L6.791 9.889a.5.5 0 0 1-.791-.389V5.5a.5.5 0 0 1 .271-.445z"/>
+                            </svg> Auto Play
+                        </button>
+                    </div>
+                    <div class="fc-carousel-indicators" id="fcCarouselIndicators">
+                        <!-- Indicators will be added dynamically -->
+                    </div>
+                    <div class="fc-carousel-help">
+                        <small><i class="fas fa-keyboard"></i> Keyboard: <i class="fas fa-arrow-left"></i> <i class="fas fa-arrow-right"></i> Navigate • <i class="fas fa-space-shuttle"></i> Space Bar • <i class="fas fa-level-down-alt"></i> Enter to flip</small>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="fc-empty-state" id="fcEmptyState">
+                <h3>No Flashcards Yet</h3>
+                <p>Create your first flashcard using the form above. Click on cards to flip them and reveal the answer!</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let flashcards = [];
+        let currentView = 'grid';
+        let currentCarouselIndex = 0;
+        let isAutoPlaying = false;
+        let autoPlayInterval = null;
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        // Initialize with some sample flashcards
+        function initializeSampleCards() {
+            const sampleCards = [
+                { front: "What is the capital of France?", back: "Paris" },
+                { front: "Largest planet in our solar system?", back: "Jupiter" },
+                { front: "What does HTML stand for?", back: "HyperText Markup Language" }
+            ];
+            
+            sampleCards.forEach(card => {
+                flashcards.push(card);
+            });
+            
+            renderFlashcards();
+        }
+
+        function addFlashcard() {
+            const front = document.getElementById('fcFrontText').value.trim();
+            const back = document.getElementById('fcBackText').value.trim();
+            
+            if (!front || !back) {
+                showNotification('Please fill in both front and back text', 'error');
+                return;
+            }
+            
+            flashcards.push({ front: front, back: back });
+            renderFlashcards();
+            clearForm();
+            showNotification('Flashcard added successfully!', 'success');
+        }
+
+        function clearForm() {
+            document.getElementById('fcFrontText').value = '';
+            document.getElementById('fcBackText').value = '';
+        }
+
+        function deleteFlashcard(index) {
+            // Simple confirmation for better UX
+            if (!confirm('Are you sure you want to delete this flashcard?')) {
+                return;
+            }
+            
+            flashcards.splice(index, 1);
+            
+            // Adjust carousel index if necessary
+            if (currentView === 'carousel') {
+                if (currentCarouselIndex >= flashcards.length && flashcards.length > 0) {
+                    currentCarouselIndex = flashcards.length - 1;
+                } else if (flashcards.length === 0) {
+                    currentCarouselIndex = 0;
+                }
+            }
+            
+            renderFlashcards();
+            showNotification('Flashcard deleted', 'success');
+        }
+
+        function renderFlashcards() {
+            const gridContainer = document.getElementById('fcFlashcardsGrid');
+            const carouselContainer = document.getElementById('fcCarousel');
+            const emptyState = document.getElementById('fcEmptyState');
+            
+            // Clear existing content
+            gridContainer.innerHTML = '';
+            carouselContainer.innerHTML = '';
+            
+            if (flashcards.length === 0) {
+                emptyState.style.display = 'block';
+                return;
+            }
+            
+            emptyState.style.display = 'none';
+            
+            // Render grid view
+            flashcards.forEach((card, index) => {
+                const flashcardElement = createFlashcardElement(card, index);
+                gridContainer.appendChild(flashcardElement);
+                
+                // Also create for carousel
+                const carouselCard = createFlashcardElement(card, index, true);
+                carouselContainer.appendChild(carouselCard);
+            });
+            
+            // Position carousel cards if in carousel view
+            if (currentView === 'carousel') {
+                positionCarouselCards();
+            }
+        }
+
+        function createFlashcardElement(card, index, isCarousel = false) {
+            const flashcardDiv = document.createElement('div');
+            flashcardDiv.className = isCarousel ? 'fc-carousel-flashcard' : 'fc-flashcard';
+            flashcardDiv.dataset.index = index;
+            
+            // Create the same structure for both grid and carousel cards
+            flashcardDiv.innerHTML = `
+                <div class="fc-flashcard-face fc-flashcard-front">
+                    <div class="fc-flashcard-content">${card.front}</div>
+                    <div class="fc-flashcard-actions">
+                        <button class="fc-action-btn fc-delete-btn" onclick="deleteFlashcard(${index})" title="Delete Flashcard">
+                            <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor">
+                                <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="fc-flashcard-face fc-flashcard-back">
+                    <div class="fc-flashcard-content">${card.back}</div>
+                    <div class="fc-flashcard-actions">
+                        <button class="fc-action-btn fc-delete-btn" onclick="deleteFlashcard(${index})" title="Delete Flashcard">
+                            <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor">
+                                <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            // Add click handler for flipping
+            flashcardDiv.addEventListener('click', function(e) {
+                if (!e.target.closest('.fc-action-btn')) {
+                    this.classList.toggle('flipped');
+                }
+            });
+            
+            return flashcardDiv;
+        }
+
+        function positionCarouselCards() {
+            const cards = document.querySelectorAll('.fc-carousel-flashcard');
+            const counter = document.getElementById('fcCarouselCounter');
+            const prevBtn = document.getElementById('fcPrevBtn');
+            const nextBtn = document.getElementById('fcNextBtn');
+            
+            // Update counter
+            if (counter) {
+                counter.textContent = `${currentCarouselIndex + 1} / ${flashcards.length}`;
+            }
+            
+            // Update navigation buttons
+            if (prevBtn) {
+                prevBtn.disabled = currentCarouselIndex === 0;
+            }
+            if (nextBtn) {
+                nextBtn.disabled = currentCarouselIndex === flashcards.length - 1;
+            }
+            
+            // Show only the current card
+            cards.forEach((card, index) => {
+                card.classList.remove('active');
+                if (index === currentCarouselIndex) {
+                    card.classList.add('active');
+                }
+            });
+            
+            // Update indicators
+            updateCarouselIndicators();
+        }
+
+        function updateCarouselIndicators() {
+            const indicatorsContainer = document.getElementById('fcCarouselIndicators');
+            if (!indicatorsContainer) return;
+            
+            indicatorsContainer.innerHTML = '';
+            
+            flashcards.forEach((_, index) => {
+                const indicator = document.createElement('div');
+                indicator.className = `fc-indicator ${index === currentCarouselIndex ? 'active' : ''}`;
+                indicator.onclick = () => goToSlide(index);
+                indicatorsContainer.appendChild(indicator);
+            });
+        }
+
+        function goToSlide(index) {
+            if (index >= 0 && index < flashcards.length) {
+                currentCarouselIndex = index;
+                positionCarouselCards();
+            }
+        }
+
+        function setView(view) {
+            currentView = view;
+            const gridContainer = document.getElementById('fcFlashcardsGrid');
+            const carouselContainer = document.getElementById('fcCarouselContainer');
+            const toggleBtns = document.querySelectorAll('.fc-toggle-btn');
+            
+            toggleBtns.forEach(btn => btn.classList.remove('fc-active'));
+            
+            if (view === 'grid') {
+                gridContainer.style.display = 'grid';
+                carouselContainer.style.display = 'none';
+                toggleBtns[0].classList.add('fc-active');
+            } else {
+                gridContainer.style.display = 'none';
+                carouselContainer.style.display = 'block';
+                toggleBtns[1].classList.add('fc-active');
+                
+                // Reset carousel to first card if no cards are active
+                if (document.querySelectorAll('.fc-carousel-flashcard.active').length === 0 && flashcards.length > 0) {
+                    currentCarouselIndex = 0;
+                }
+                
+                positionCarouselCards();
+            }
+        }
+
+        function showNotification(message, type) {
+            const notification = document.getElementById('fcNotification');
+            notification.innerHTML = `
+                <i class="fas ${type === 'success' ? 'fa-check-circle' : type === 'error' ? 'fa-exclamation-circle' : 'fa-info-circle'}"></i>
+                <span>${message}</span>
+            `;
+            notification.className = `fc-notification ${type}`;
+            notification.classList.add('show');
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+
+        function importFromCSV() {
+            const fileInput = document.getElementById('fcCsvFileInput');
+            const file = fileInput.files[0];
+            
+            if (!file) {
+                showNotification('Please select a CSV file', 'error');
+                return;
+            }
+
+            if (!file.name.toLowerCase().endsWith('.csv')) {
+                showNotification('Please select a valid CSV file', 'error');
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const csvText = e.target.result;
+                    const importedCards = parseCSV(csvText);
+                    
+                    if (importedCards.length === 0) {
+                        showNotification('No valid flashcards found in CSV', 'warning');
+                        return;
+                    }
+
+                    // Add imported cards to existing flashcards
+                    flashcards.push(...importedCards);
+                    renderFlashcards();
+                    
+                    showNotification(`Successfully imported ${importedCards.length} flashcard(s)`, 'success');
+                    
+                    // Clear the file input
+                    fileInput.value = '';
+                } catch (error) {
+                    console.error('Error parsing CSV:', error);
+                    showNotification('Error reading CSV file. Please check the format.', 'error');
+                }
+            };
+
+            reader.readAsText(file);
+        }
+
+        function parseCSV(csvText) {
+            const lines = csvText.split('\n').filter(line => line.trim());
+            
+            if (lines.length < 2) {
+                throw new Error('CSV must have at least a header row and one data row');
+            }
+
+            // Parse header to find front and back columns
+            const headers = lines[0].split(',').map(h => h.trim().toLowerCase().replace(/"/g, ''));
+            const frontIndex = headers.findIndex(h => h === 'front' || h === 'question');
+            const backIndex = headers.findIndex(h => h === 'back' || h === 'answer');
+
+            if (frontIndex === -1 || backIndex === -1) {
+                throw new Error('CSV must have "front" and "back" columns (or "question" and "answer")');
+            }
+
+            const importedCards = [];
+            
+            // Parse data rows
+            for (let i = 1; i < lines.length; i++) {
+                const values = parseCSVLine(lines[i]);
+                
+                if (values.length > Math.max(frontIndex, backIndex)) {
+                    const front = values[frontIndex]?.trim();
+                    const back = values[backIndex]?.trim();
+                    
+                    if (front && back) {
+                        importedCards.push({ front, back });
+                    }
+                }
+            }
+
+            return importedCards;
+        }
+
+        function parseCSVLine(line) {
+            const result = [];
+            let current = '';
+            let inQuotes = false;
+            
+            for (let i = 0; i < line.length; i++) {
+                const char = line[i];
+                
+                if (char === '"') {
+                    if (inQuotes && line[i + 1] === '"') {
+                        // Escaped quote
+                        current += '"';
+                        i++; // Skip next quote
+                    } else {
+                        // Toggle quotes
+                        inQuotes = !inQuotes;
+                    }
+                } else if (char === ',' && !inQuotes) {
+                    // End of field
+                    result.push(current.trim());
+                    current = '';
+                } else {
+                    current += char;
+                }
+            }
+            
+            // Add the last field
+            result.push(current.trim());
+            
+            // Remove surrounding quotes from fields
+            return result.map(field => field.replace(/^"(.*)"$/, '$1'));
+        }
+
+        function exportToCSV() {
+            if (flashcards.length === 0) {
+                showNotification('No flashcards to export', 'warning');
+                return;
+            }
+
+            // Create CSV content
+            const csvRows = ['front,back']; // Header row
+            
+            flashcards.forEach(card => {
+                // Escape quotes and wrap fields with commas in quotes
+                const front = escapeCSVField(card.front);
+                const back = escapeCSVField(card.back);
+                csvRows.push(`${front},${back}`);
+            });
+
+            const csvContent = csvRows.join('\n');
+            
+            // Create and trigger download
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            
+            if (link.download !== undefined) {
+                const url = URL.createObjectURL(blob);
+                link.setAttribute('href', url);
+                link.setAttribute('download', `flashcards_${new Date().toISOString().slice(0, 10)}.csv`);
+                link.style.visibility = 'hidden';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                
+                showNotification(`Exported ${flashcards.length} flashcards to CSV`, 'success');
+            } else {
+                showNotification('CSV export not supported in this browser', 'error');
+            }
+        }
+
+        function escapeCSVField(field) {
+            // If field contains comma, newline, or quote, wrap it in quotes
+            if (field.includes(',') || field.includes('\n') || field.includes('"')) {
+                // Escape existing quotes by doubling them
+                const escapedField = field.replace(/"/g, '""');
+                return `"${escapedField}"`;
+            }
+            return field;
+        }
+
+        // Touch support for carousel
+        function handleTouchStart(e) {
+            touchStartX = e.changedTouches[0].screenX;
+        }
+        
+        function handleTouchEnd(e) {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }
+        
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const diff = touchStartX - touchEndX;
+            
+            if (Math.abs(diff) > swipeThreshold && currentView === 'carousel') {
+                if (diff > 0) {
+                    nextCard(); // Swipe left - next card
+                } else {
+                    previousCard(); // Swipe right - previous card
+                }
+            }
+        }
+
+        function addCarouselTouchSupport() {
+            const carousel = document.getElementById('fcCarousel');
+            if (carousel) {
+                carousel.addEventListener('touchstart', handleTouchStart, { passive: true });
+                carousel.addEventListener('touchend', handleTouchEnd, { passive: true });
+            }
+        }
+
+        // Auto-play functionality
+        function startAutoPlay() {
+            if (flashcards.length <= 1) return;
+            
+            stopAutoPlay();
+            isAutoPlaying = true;
+            
+            // Update button text
+            const autoPlayBtn = document.getElementById('fcAutoPlayBtn');
+            if (autoPlayBtn) {
+                autoPlayBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M5.5 3.5A1.5 1.5 0 0 1 7 2h2a1.5 1.5 0 0 1 1.5 1.5v9A1.5 1.5 0 0 1 9 14H7a1.5 1.5 0 0 1-1.5-1.5v-9z"/></svg> Stop Auto';
+                autoPlayBtn.classList.add('active');
+            }
+            
+            autoPlayInterval = setInterval(() => {
+                if (currentView === 'carousel') {
+                    // Flip the current card if it's not already flipped
+                    const currentCard = document.querySelector('.fc-carousel-flashcard.active');
+                    if (currentCard && !currentCard.classList.contains('flipped')) {
+                        currentCard.classList.add('flipped');
+                        
+                        // After showing the back for 3 seconds, move to next card
+                        setTimeout(() => {
+                            if (currentCarouselIndex >= flashcards.length - 1) {
+                                currentCarouselIndex = 0;
+                            } else {
+                                currentCarouselIndex++;
+                            }
+                            positionCarouselCards();
+                        }, 3000);
+                    } else {
+                        // If card is already flipped, just move to next
+                        if (currentCarouselIndex >= flashcards.length - 1) {
+                            currentCarouselIndex = 0;
+                        } else {
+                            currentCarouselIndex++;
+                        }
+                        positionCarouselCards();
+                    }
+                }
+            }, 6000); // Total 6 seconds per card (3 front, 3 back)
+        }
+
+        function stopAutoPlay() {
+            if (autoPlayInterval) {
+                clearInterval(autoPlayInterval);
+                autoPlayInterval = null;
+                isAutoPlaying = false;
+                
+                // Update button text
+                const autoPlayBtn = document.getElementById('fcAutoPlayBtn');
+                if (autoPlayBtn) {
+                    autoPlayBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/><path d="M6.271 5.055a.5.5 0 0 1 .52.056L11 7.055a.5.5 0 0 1 0 .89L6.791 9.889a.5.5 0 0 1-.791-.389V5.5a.5.5 0 0 1 .271-.445z"/></svg> Auto Play';
+                    autoPlayBtn.classList.remove('active');
+                }
+            }
+        }
+
+        function toggleAutoPlay() {
+            if (isAutoPlaying) {
+                stopAutoPlay();
+            } else {
+                startAutoPlay();
+            }
+        }
+
+        // Navigation functions
+        function nextCard() {
+            if (currentCarouselIndex < flashcards.length - 1) {
+                currentCarouselIndex++;
+                positionCarouselCards();
+                stopAutoPlay();
+            }
+        }
+
+        function previousCard() {
+            if (currentCarouselIndex > 0) {
+                currentCarouselIndex--;
+                positionCarouselCards();
+                stopAutoPlay();
+            }
+        }
+
+        // Initialize the app
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeSampleCards();
+            addCarouselTouchSupport();
+        });
+
+        // Keyboard navigation for carousel
+        document.addEventListener('keydown', function(e) {
+            if (currentView === 'carousel' && flashcards.length > 0) {
+                if (e.key === 'ArrowRight' || e.key === ' ') {
+                    e.preventDefault();
+                    nextCard();
+                } else if (e.key === 'ArrowLeft') {
+                    e.preventDefault();
+                    previousCard();
+                } else if (e.key === 'Enter') {
+                    e.preventDefault();
+                    // Flip current card
+                    const currentCard = document.querySelector('.fc-carousel-flashcard.active');
+                    if (currentCard) {
+                        currentCard.classList.toggle('flipped');
+                    }
+                } else if (e.key === 'Home') {
+                    e.preventDefault();
+                    currentCarouselIndex = 0;
+                    positionCarouselCards();
+                } else if (e.key === 'End') {
+                    e.preventDefault();
+                    currentCarouselIndex = flashcards.length - 1;
+                    positionCarouselCards();
+                }
+            }
+        });
+    </script>
+</body>
+</html>

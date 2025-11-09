@@ -2,13 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=1200, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Habit Tracker - FREE Student Habit Builder & Daily Routine Planner</title>
     <meta name="description" content="FREE Habit Tracker for students to build positive habits, track daily routines, and improve productivity. Monitor streaks, set reminders, and achieve consistent personal growth.">
     <meta name="keywords" content="habit tracker, student habits, daily routine, habit builder, productivity habits, habit streaks, routine tracker, personal development, student wellness, habit formation">
     <meta name="robots" content="index, follow">
     <meta name="author" content="ScribbleTools">
     <link rel="canonical" href="https://scribbletools.in/client/tools/student/productivity/habit-tracker.html">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="Habit Tracker - FREE Student Habit Builder & Daily Routine Planner">
@@ -125,13 +130,18 @@
         }
         
         .habit-header h1 {
-            font-size: 2.5rem !important;
+            font-family: 'Caveat', cursive !important;
+            font-size: 3.5rem !important;
             margin-bottom: 15px !important;
             font-weight: 700 !important;
-            color: var(--habit-color-text-on-primary) !important;
+            background: linear-gradient(135deg, #ffffff 0%, #f0f4ff 100%) !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            background-clip: text !important;
         }
         
         .habit-header p {
+            font-family: 'Poppins', sans-serif !important;
             font-size: 1.1rem !important;
             opacity: 0.9 !important;
             color: var(--habit-color-text-on-primary) !important;
@@ -643,6 +653,10 @@
         
         /* Responsive Design */
         @media (max-width: 768px) {
+            .habit-header h1 {
+                font-size: 2.5rem !important;
+            }
+            
             .header h1 {
                 font-size: 2.2rem;
             }
@@ -673,13 +687,25 @@
                 padding: 20px;
             }
         }
+        
+        @media (max-width: 480px) {
+            .habit-header h1 {
+                font-size: 2rem !important;
+            }
+        }
+        
+        @media (max-width: 360px) {
+            .habit-header h1 {
+                font-size: 1.75rem !important;
+            }
+        }
     </style>
     <link rel="stylesheet" href="../force-desktop-layout.css">
 </head>
 <body class="habit-body">
     <div class="habit-main-container">
         <div class="habit-header">
-            <h1>✅ Free Habit Tracker - Student Habit Builder & Daily Routine Planner</h1>
+            <h1><span style="display: inline-block; -webkit-text-fill-color: initial; background: none;">✅</span> <span style="background: linear-gradient(135deg, #ffffff 0%, #f0f4ff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Free Habit Tracker - Student Habit Builder & Daily Routine Planner</span></h1>
             <p>Build and maintain positive habits for academic success with streak tracking and routine management</p>
         </div>
         

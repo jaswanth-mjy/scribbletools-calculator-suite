@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=1200, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- Enhanced SEO Meta Tags -->
     <title>Assignment Priority Matrix - FREE Student Task Prioritization & Time Management Tool</title>
@@ -149,13 +149,18 @@
         }
         
         .matrix-header h1 {
-            font-size: 2.5rem !important;
+            font-family: 'Caveat', cursive !important;
+            font-size: 3.5rem !important;
             margin-bottom: 15px !important;
             font-weight: 700 !important;
-            color: var(--matrix-color-text-on-primary) !important;
+            background: linear-gradient(135deg, #ffffff 0%, #f0f4ff 100%) !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            background-clip: text !important;
         }
         
         .matrix-header p {
+            font-family: 'Poppins', sans-serif !important;
             font-size: 1.1rem !important;
             opacity: 0.9 !important;
             color: var(--matrix-color-text-on-primary) !important;
@@ -301,6 +306,18 @@
             -webkit-overflow-scrolling: touch;
             margin: 0 -10px;
             padding: 0 10px;
+            position: relative;
+        }
+        
+        .matrix-scroll-hint {
+            display: none;
+            background: linear-gradient(135deg, var(--matrix-color-primary) 0%, var(--matrix-color-secondary) 100%);
+            color: white;
+            text-align: center;
+            padding: 8px;
+            font-size: 0.85rem;
+            border-radius: 8px;
+            margin-bottom: 10px;
         }
         
         .matrix-grid {
@@ -752,6 +769,10 @@
         
         /* Responsive Design */
         @media (max-width: 768px) {
+            .matrix-header h1 {
+                font-size: 2.5rem !important;
+            }
+            
             .header h1 {
                 font-size: 2.2rem;
             }
@@ -771,16 +792,28 @@
             
             .matrix-scroll-container {
                 overflow-x: auto;
-                margin: 0;
-                padding-bottom: 15px;
+                margin: 0 -20px;
+                padding: 0 20px 15px 20px;
+                -webkit-overflow-scrolling: touch;
+            }
+            
+            .matrix-scroll-hint {
+                display: block;
             }
             
             .matrix-grid {
                 min-width: 500px; /* Smaller on mobile but still scrollable */
+                grid-template-columns: 120px repeat(2, 1fr);
             }
             
             .matrix-cell {
-                min-height: 180px;
+                min-height: 160px;
+                padding: 10px;
+                font-size: 0.9rem;
+            }
+            
+            .matrix-label {
+                font-size: 0.85rem;
             }
             
             .assignment-grid {
@@ -792,51 +825,115 @@
                 padding: 20px;
             }
         }
+        
+        @media (max-width: 480px) {
+            .matrix-header h1 {
+                font-size: 2rem !important;
+            }
+            
+            .matrix-header p {
+                font-size: 0.9rem !important;
+            }
+            
+            .matrix-header {
+                padding: 1.5rem 1rem !important;
+            }
+            
+            .matrix-content {
+                padding: 20px 15px !important;
+            }
+            
+            .matrix-grid {
+                min-width: 450px;
+                grid-template-columns: 100px repeat(2, 1fr);
+            }
+            
+            .matrix-cell {
+                min-height: 140px;
+                padding: 8px;
+                font-size: 0.85rem;
+            }
+            
+            .matrix-label {
+                font-size: 0.8rem;
+                top: 8px;
+                left: 8px;
+            }
+            
+            .assignment-item {
+                padding: 8px;
+                margin-bottom: 6px;
+                font-size: 0.85rem;
+            }
+            
+            .assignment-title {
+                font-size: 0.9rem;
+            }
+            
+            .assignment-meta {
+                font-size: 0.75rem;
+            }
+        }
+        
+        @media (max-width: 360px) {
+            .matrix-header h1 {
+                font-size: 1.75rem !important;
+            }
+            
+            .matrix-header p {
+                font-size: 0.85rem !important;
+            }
+            
+            .matrix-main-container {
+                border-radius: 10px !important;
+            }
+            
+            .matrix-content {
+                padding: 15px 10px !important;
+            }
+            
+            .matrix-grid {
+                min-width: 400px;
+                grid-template-columns: 90px repeat(2, 1fr);
+            }
+            
+            .matrix-cell {
+                min-height: 120px;
+                padding: 6px;
+                font-size: 0.8rem;
+            }
+            
+            .matrix-label {
+                font-size: 0.75rem;
+                top: 6px;
+                left: 6px;
+            }
+            
+            .assignment-item {
+                padding: 6px;
+                margin-bottom: 5px;
+                font-size: 0.8rem;
+            }
+            
+            .assignment-title {
+                font-size: 0.85rem;
+            }
+            
+            .assignment-meta {
+                font-size: 0.7rem;
+            }
+        }
     </style>
     <link rel="stylesheet" href="../force-desktop-layout.css">
 </head>
 <body class="matrix-body">
     <div class="matrix-main-container">
         <div class="matrix-header">
-            <h1>📋 Assignment Priority Matrix</h1>
+            <h1><span style="display: inline-block; -webkit-text-fill-color: initial; background: none;">📋</span> <span style="background: linear-gradient(135deg, #ffffff 0%, #f0f4ff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Assignment Priority Matrix</span></h1>
             <p>Organize your assignments by urgency and importance to prioritize effectively</p>
         </div>
         
         <div class="matrix-content">
-            <!-- SEO Content Section -->
-            <div class="matrix-form-section" style="margin-bottom: 25px;">
-                <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; border-radius: 10px; margin-bottom: 20px;">
-                    <h2 style="color: white; margin-top: 0;">📋 How to Use the Assignment Priority Matrix</h2>
-                    <p style="margin-bottom: 0; color: white;">Organize your assignments using the proven Eisenhower Matrix method. Categorize tasks by urgency and importance to focus on what matters most and improve your academic productivity.</p>
-                </div>
-                
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 20px;">
-                    <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #667eea;">
-                        <h3 style="color: #2c3e50; margin-top: 0;">🎯 Prioritization Benefits</h3>
-                        <ul style="margin-bottom: 0; color: #6c757d;">
-                            <li>Better time management and focus</li>
-                            <li>Reduced academic stress and overwhelm</li>
-                            <li>Improved assignment completion rates</li>
-                            <li>Strategic approach to deadline management</li>
-                        </ul>
-                    </div>
-                    <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #28a745;">
-                        <h3 style="color: #2c3e50; margin-top: 0;">📊 Matrix Categories</h3>
-                        <ul style="margin-bottom: 0; color: #6c757d;">
-                            <li><strong>Do First:</strong> Urgent + Important</li>
-                            <li><strong>Schedule:</strong> Important + Not Urgent</li>
-                            <li><strong>Delegate:</strong> Urgent + Not Important</li>
-                            <li><strong>Eliminate:</strong> Neither Urgent nor Important</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div style="background: #e8f5e8; padding: 15px; border-radius: 8px; margin-bottom: 15px;">
-                    <h3 style="color: #2c3e50; margin-top: 0;">💡 Student Success Tips</h3>
-                    <p style="margin-bottom: 0; color: #6c757d;"><strong>Eisenhower Method:</strong> Focus on important tasks first. Urgent doesn't always mean important. <strong>Strategic Planning:</strong> Regularly review and adjust your matrix to stay on top of changing priorities and new assignments.</p>
-                </div>
-            </div>
-            
             <!-- Add Assignment Form -->
             <div class="matrix-form-section">
                 <h2 class="matrix-form-title">Add New Assignment</h2>
@@ -944,6 +1041,9 @@
                     <div class="matrix-header-cell"></div>
                     <div class="matrix-header-cell">Low Importance</div>
                     <div class="matrix-header-cell">High Importance</div>
+                </div>
+                <div class="matrix-scroll-hint">
+                    👉 Swipe left/right to view all quadrants 👈
                 </div>
                 <div class="matrix-scroll-container">
                     <div class="matrix-grid">
@@ -1076,6 +1176,49 @@
             <div class="modal-footer">
                 <button class="matrix-btn matrix-btn-secondary" onclick="closeEditModal()">Cancel</button>
                 <button class="matrix-btn matrix-btn-primary" onclick="saveEdit()">Save Changes</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- SEO Content Section -->
+    <div style="background: white; border-radius: 20px; padding: 2rem; margin-top: 3rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+        <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 2rem; border-radius: 15px; margin-bottom: 2rem; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);">
+            <h2 style="color: white; margin: 0 0 0.5rem 0; font-size: 1.8rem; font-weight: 600;">📋 How to Use the Assignment Priority Matrix</h2>
+            <p style="margin: 0; color: rgba(255,255,255,0.95); font-size: 1.05rem; line-height: 1.6;">Organize your assignments using the proven Eisenhower Matrix method. Categorize tasks by urgency and importance to focus on what matters most and improve your academic productivity.</p>
+        </div>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+            <div style="background: white; padding: 1.5rem; border-radius: 12px; border: 2px solid #667eea; box-shadow: 0 2px 8px rgba(102, 126, 234, 0.15); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                <h3 style="color: #667eea; margin: 0 0 1rem 0; font-size: 1.3rem; font-weight: 600; display: flex; align-items: center; gap: 0.5rem;">
+                    <span style="font-size: 1.5rem;">🎯</span> Prioritization Benefits
+                </h3>
+                <ul style="margin: 0; padding-left: 1.2rem; color: #555; line-height: 1.8;">
+                    <li>Better time management and focus</li>
+                    <li>Reduced academic stress and overwhelm</li>
+                    <li>Improved assignment completion rates</li>
+                    <li>Strategic approach to deadline management</li>
+                </ul>
+            </div>
+            
+            <div style="background: white; padding: 1.5rem; border-radius: 12px; border: 2px solid #10b981; box-shadow: 0 2px 8px rgba(16, 185, 129, 0.15); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                <h3 style="color: #10b981; margin: 0 0 1rem 0; font-size: 1.3rem; font-weight: 600; display: flex; align-items: center; gap: 0.5rem;">
+                    <span style="font-size: 1.5rem;">📊</span> Matrix Categories
+                </h3>
+                <ul style="margin: 0; padding-left: 1.2rem; color: #555; line-height: 1.8;">
+                    <li><strong>Do First:</strong> Urgent + Important</li>
+                    <li><strong>Schedule:</strong> Important + Not Urgent</li>
+                    <li><strong>Delegate:</strong> Urgent + Not Important</li>
+                    <li><strong>Eliminate:</strong> Neither Urgent nor Important</li>
+                </ul>
+            </div>
+            
+            <div style="background: white; padding: 1.5rem; border-radius: 12px; border: 2px solid #f59e0b; box-shadow: 0 2px 8px rgba(245, 158, 11, 0.15); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                <h3 style="color: #f59e0b; margin: 0 0 1rem 0; font-size: 1.3rem; font-weight: 600; display: flex; align-items: center; gap: 0.5rem;">
+                    <span style="font-size: 1.5rem;">💡</span> Student Success Tips
+                </h3>
+                <p style="margin: 0; color: #555; line-height: 1.8;">
+                    <strong style="color: #333;">Eisenhower Method:</strong> Focus on important tasks first. Urgent doesn't always mean important. <strong style="color: #333;">Strategic Planning:</strong> Regularly review and adjust your matrix to stay on top of changing priorities and new assignments.
+                </p>
             </div>
         </div>
     </div>

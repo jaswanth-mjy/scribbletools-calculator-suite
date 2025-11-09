@@ -2,13 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=1200, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reflection Journal - FREE Student Daily Journal & Self-Reflection Tool</title>
     <meta name="description" content="FREE Reflection Journal for students to track daily thoughts, mood, and personal growth. Digital journal with mood tracking, tags, and insights for student self-reflection and mindfulness.">
     <meta name="keywords" content="reflection journal, student journal, daily journal, mood tracker, self reflection, mindfulness journal, personal growth, student wellness, digital journal, thought tracker">
     <meta name="robots" content="index, follow">
     <meta name="author" content="ScribbleTools">
     <link rel="canonical" href="https://scribbletools.in/client/tools/student/productivity/reflection-journal.html">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="Reflection Journal - FREE Student Daily Journal & Self-Reflection Tool">
@@ -125,13 +130,18 @@
         }
         
         .journal-header h1 {
-            font-size: 2.5rem !important;
+            font-family: 'Caveat', cursive !important;
+            font-size: 3.5rem !important;
             margin-bottom: 15px !important;
             font-weight: 700 !important;
-            color: var(--journal-color-text-on-primary) !important;
+            background: linear-gradient(135deg, #ffffff 0%, #f0f4ff 100%) !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            background-clip: text !important;
         }
         
         .journal-header p {
+            font-family: 'Poppins', sans-serif !important;
             font-size: 1.1rem !important;
             opacity: 0.9 !important;
             color: var(--journal-color-text-on-primary) !important;
@@ -659,6 +669,22 @@
         
         /* Responsive Design */
         @media (max-width: 768px) {
+            .journal-header h1 {
+                font-size: 2.5rem !important;
+            }
+            
+            .journal-header {
+                padding: 2rem 1.5rem !important;
+            }
+            
+            .journal-header p {
+                font-size: 1rem !important;
+            }
+            
+            .journal-content {
+                padding: 20px !important;
+            }
+            
             .header h1 {
                 font-size: 2.2rem;
             }
@@ -689,51 +715,53 @@
                 padding: 20px;
             }
         }
+        
+        @media (max-width: 480px) {
+            .journal-header h1 {
+                font-size: 2rem !important;
+            }
+            
+            .journal-header p {
+                font-size: 0.9rem !important;
+            }
+            
+            .journal-header {
+                padding: 1.5rem 1rem !important;
+            }
+            
+            .journal-content {
+                padding: 15px !important;
+            }
+            
+            .journal-form-section {
+                padding: 15px !important;
+            }
+        }
+        
+        @media (max-width: 360px) {
+            .journal-header h1 {
+                font-size: 1.75rem !important;
+            }
+            
+            .journal-header p {
+                font-size: 0.85rem !important;
+            }
+            
+            .journal-main-container {
+                border-radius: 10px !important;
+            }
+        }
     </style>
     <link rel="stylesheet" href="../force-desktop-layout.css">
 </head>
 <body class="journal-body">
     <div class="journal-main-container">
         <div class="journal-header">
-            <h1>📝 Free Reflection Journal - Student Daily Journal & Mindfulness Tool</h1>
+            <h1><span style="display: inline-block; -webkit-text-fill-color: initial; background: none;">📝</span> <span style="background: linear-gradient(135deg, #ffffff 0%, #f0f4ff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Free Reflection Journal</span></h1>
             <p>Document your thoughts, experiences, and personal growth with mood tracking and self-reflection insights</p>
         </div>
         
         <div class="journal-content">
-            <!-- SEO Content Section -->
-            <div class="journal-form-section" style="margin-bottom: 25px;">
-                <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; border-radius: 10px; margin-bottom: 20px;">
-                    <h2 style="color: white; margin-top: 0;">✍️ How to Use the Reflection Journal</h2>
-                    <p style="margin-bottom: 0; color: white;">Create daily journal entries with mood tracking, organize thoughts with tags, and gain insights into your personal growth and student experience.</p>
-                </div>
-                
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 20px;">
-                    <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #667eea;">
-                        <h3 style="color: #2c3e50; margin-top: 0;">🧘 Reflection Benefits</h3>
-                        <ul style="margin-bottom: 0; color: #6c757d;">
-                            <li>Enhanced self-awareness and mindfulness</li>
-                            <li>Improved emotional regulation</li>
-                            <li>Better stress management</li>
-                            <li>Personal growth tracking</li>
-                        </ul>
-                    </div>
-                    <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #28a745;">
-                        <h3 style="color: #2c3e50; margin-top: 0;">📊 Journal Features</h3>
-                        <ul style="margin-bottom: 0; color: #6c757d;">
-                            <li>Daily mood tracking and analytics</li>
-                            <li>Tag-based entry organization</li>
-                            <li>Search and filter capabilities</li>
-                            <li>Privacy-first local storage</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div style="background: #e8f5e8; padding: 15px; border-radius: 8px; margin-bottom: 15px;">
-                    <h3 style="color: #2c3e50; margin-top: 0;">🌱 Student Wellness Tips</h3>
-                    <p style="margin-bottom: 0; color: #6c757d;"><strong>Daily Practice:</strong> Set aside 10-15 minutes daily for reflection. Focus on emotions, experiences, and lessons learned. Regular journaling improves mental clarity, reduces stress, and supports academic success.</p>
-                </div>
-            </div>
-
             <!-- Add Entry Form -->
             <div class="journal-form-section">
                 <h2 class="journal-form-title">New Journal Entry</h2>
@@ -907,6 +935,55 @@
             <div class="modal-footer">
                 <button class="journal-btn journal-btn-secondary" onclick="closeEditModal()">Cancel</button>
                 <button class="journal-btn journal-btn-primary" onclick="saveEdit()">Save Changes</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- SEO Content Section -->
+    <div style="background: #f8f9fa; padding: 40px 20px; margin-top: 40px;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 15px; margin-bottom: 30px; text-align: center;">
+                <h2 style="color: white; margin-top: 0; font-size: 2rem; font-weight: 600;">✍️ How to Use the Reflection Journal</h2>
+                <p style="margin-bottom: 0; color: white; font-size: 1.1rem; opacity: 0.95;">Create daily journal entries with mood tracking, organize thoughts with tags, and gain insights into your personal growth and student experience.</p>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-bottom: 30px;">
+                <div style="background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); border-left: 5px solid #667eea;">
+                    <h3 style="color: #2c3e50; margin-top: 0; font-size: 1.3rem; display: flex; align-items: center; gap: 10px;">🧘 Reflection Benefits</h3>
+                    <ul style="margin-bottom: 0; color: #6c757d; line-height: 1.8;">
+                        <li>Enhanced self-awareness and mindfulness</li>
+                        <li>Improved emotional regulation</li>
+                        <li>Better stress management</li>
+                        <li>Personal growth tracking</li>
+                        <li>Mental clarity and focus</li>
+                    </ul>
+                </div>
+                <div style="background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); border-left: 5px solid #10b981;">
+                    <h3 style="color: #2c3e50; margin-top: 0; font-size: 1.3rem; display: flex; align-items: center; gap: 10px;">📊 Journal Features</h3>
+                    <ul style="margin-bottom: 0; color: #6c757d; line-height: 1.8;">
+                        <li>Daily mood tracking and analytics</li>
+                        <li>Tag-based entry organization</li>
+                        <li>Search and filter capabilities</li>
+                        <li>Privacy-first local storage</li>
+                        <li>Export journal data</li>
+                    </ul>
+                </div>
+                <div style="background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); border-left: 5px solid #f59e0b;">
+                    <h3 style="color: #2c3e50; margin-top: 0; font-size: 1.3rem; display: flex; align-items: center; gap: 10px;">🌱 Student Wellness Tips</h3>
+                    <ul style="margin-bottom: 0; color: #6c757d; line-height: 1.8;">
+                        <li><strong>Daily Practice:</strong> Set aside 10-15 minutes for reflection</li>
+                        <li>Focus on emotions, experiences, and lessons learned</li>
+                        <li>Regular journaling improves mental clarity</li>
+                        <li>Track patterns in mood and behavior</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div style="background: white; padding: 30px; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+                <h3 style="color: #2c3e50; margin-top: 0; font-size: 1.5rem; text-align: center; margin-bottom: 20px;">💡 Why Reflection Journaling Works for Students</h3>
+                <p style="color: #6c757d; line-height: 1.8; text-align: center; margin-bottom: 0; font-size: 1.05rem;">
+                    Daily reflection transforms your student experience by creating space for self-awareness and emotional processing. Research shows that students who journal regularly experience reduced stress, improved academic performance, and better emotional well-being. By tracking your thoughts, moods, and experiences, you develop deeper insight into patterns that affect your success and happiness. Our digital journal makes it easy to maintain a consistent practice with mood tracking, tagging, and searchable entries that help you understand your personal growth journey.
+                </p>
             </div>
         </div>
     </div>
