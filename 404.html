@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found | ScribbleTools</title>
+    <meta name="description" content="Oops! The page you're looking for doesn't exist. Explore our free online calculators and tools for math, finance, health, text, and student productivity.">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #333;
+            padding: 1rem;
+        }
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            max-width: 600px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            animation: fadeIn 0.5s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .error-code {
+            font-size: 8rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+        h1 {
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+        p {
+            color: #666;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        .btn-home {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+        .btn-home:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+        .suggestions {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #eee;
+        }
+        .suggestions h2 {
+            font-size: 1.2rem;
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+        .suggestions ul {
+            list-style: none;
+            padding: 0;
+        }
+        .suggestions li {
+            margin: 0.5rem 0;
+        }
+        .suggestions a {
+            color: #667eea;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        .suggestions a:hover {
+            color: #764ba2;
+            text-decoration: underline;
+        }
+        @media (max-width: 768px) {
+            .error-code { font-size: 6rem; }
+            h1 { font-size: 1.5rem; }
+            p { font-size: 1rem; }
+            .container { padding: 2rem 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="error-code">404</div>
+        <h1>Oops! Page Not Found</h1>
+        <p>The page you're looking for seems to have wandered off. Don't worry, even the best calculators make mistakes sometimes!</p>
+        
+        <a href="/" class="btn-home">🏠 Back to Home</a>
+        
+        <div class="suggestions">
+            <h2>🔍 Popular Tools:</h2>
+            <ul>
+                <li><a href="/#basic-calculator">📱 Basic Calculator</a></li>
+                <li><a href="/#area-calculator">📐 Area Calculator</a></li>
+                <li><a href="/#percentage-calculator">📊 Percentage Calculator</a></li>
+                <li><a href="/#bmi-calculator">❤️ BMI Calculator</a></li>
+                <li><a href="/all-tools.html">🗂️ Browse All Tools</a></li>
+            </ul>
+        </div>
+    </div>
+    
+    <script>
+        // Auto-redirect after 10 seconds
+        let countdown = 10;
+        const timer = setInterval(() => {
+            countdown--;
+            if (countdown <= 0) {
+                clearInterval(timer);
+                window.location.href = '/';
+            }
+        }, 1000);
+        
+        // Cancel auto-redirect if user interacts with page
+        document.addEventListener('click', () => clearInterval(timer));
+        document.addEventListener('keydown', () => clearInterval(timer));
+    </script>
+</body>
+</html>

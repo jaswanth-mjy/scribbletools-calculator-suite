@@ -95,7 +95,25 @@
         .resize-image-tool .btn-download { background: #228B22; color: #fff; border: none; border-radius: 0.5em; padding: 1em 2em; font-weight: 600; cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-block; }
         .resize-image-tool .btn-download:hover { background: #1e7e1e; }
         .resize-image-tool #error-message { display: none; color: #dc3545; margin-top: 1em; padding: 0.5em; background: #f8d7da; border-radius: 0.5em; border: 1px solid #f5c6cb; }
-    </style>
+    
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+    body { padding: 0.5rem; font-size: 14px; }
+    .container, .main-container { padding: 1rem; max-width: 100%; }
+    input, select, button, textarea { font-size: 16px; min-height: 44px; }
+    h1 { font-size: 1.5rem; }
+    h2 { font-size: 1.25rem; }
+    table { font-size: 0.875rem; }
+    .grid, .row { grid-template-columns: 1fr !important; }
+}
+
+@media (max-width: 480px) {
+    body { padding: 0.25rem; font-size: 13px; }
+    .container, .main-container { padding: 0.75rem; }
+    h1 { font-size: 1.25rem; }
+    h2 { font-size: 1.1rem; }
+}
+</style>
 <link rel="stylesheet" href="/assets/css/responsive.css">
 </head>
 <body>

@@ -1297,10 +1297,22 @@
         break;
     }
     
-    // Trigger change events to update UI
+    // Trigger change events to update UI and show/hide relevant sections
     if (bgTypeSelect) bgTypeSelect.dispatchEvent(new Event('change'));
     if (borderToggle) borderToggle.dispatchEvent(new Event('change'));
     if (outputSize) outputSize.dispatchEvent(new Event('change'));
+    
+    // Trigger input events for color pickers to update their values
+    if (bgColorInput) bgColorInput.dispatchEvent(new Event('input'));
+    if (gradientColor1) gradientColor1.dispatchEvent(new Event('input'));
+    if (gradientColor2) gradientColor2.dispatchEvent(new Event('input'));
+    if (borderColor) borderColor.dispatchEvent(new Event('input'));
+    
+    // Update the live preview if it's visible
+    const livePreviewContainer = document.getElementById('live-preview-container');
+    if (livePreviewContainer && livePreviewContainer.style.display !== 'none') {
+      processImage(true);
+    }
   }
 
   function resetAllSettings() {

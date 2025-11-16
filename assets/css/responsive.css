@@ -1,0 +1,44 @@
+/* Shared responsive helpers for ScribbleTools */
+:root{
+  --site-max-width: 1100px;
+  --safe-padding: 1rem;
+}
+html,body{box-sizing:border-box;}
+*,*::before,*::after{box-sizing:inherit}
+.container, #app-container { max-width: var(--site-max-width); margin: 0 auto; padding: 0 1rem; }
+img,video,canvas,svg{max-width:100%;height:auto;display:block}
+button,input,textarea,select{font-family:inherit;font-size:100%}
+/* Ensure forms and calculators scale down on small viewports */
+.form-row{display:flex;gap:0.5rem;flex-wrap:wrap}
+.form-row > *{flex:1 1 120px;min-width:0}
+/* Utility for full-width buttons on mobile */
+.btn{display:inline-block;padding:0.6rem 1rem;border-radius:8px}
+/* Make tables scrollable on small screens */
+.table-responsive{width:100%;overflow-x:auto}
+/* Small-screen typography tweaks */
+@media (max-width: 768px){
+  :root{--safe-padding:0.5rem}
+  body{font-size:0.95rem}
+  .container,#app-container{padding:0 0.5rem}
+  .nav-link, .sub-nav-link{font-size:0.95rem}
+}
+/* Very small screens */
+@media (max-width: 480px){
+  body{font-size:0.9rem}
+  h1{font-size:1.25rem}
+  .form-row{gap:0.35rem}
+  .btn{width:100%}
+}
+/* Landscape small devices */
+@media (max-height:600px) and (orientation: landscape){
+  body{line-height:1.2}
+}
+/* Accessibility improvements for touchscreen only */
+@media (hover: none) and (pointer: coarse){
+  .nav-link, .sub-nav-link{min-height:48px}
+}
+/* Provide a simple responsive grid for calculators */
+.calc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}
+@media (max-width: 900px){.calc-grid{grid-template-columns:1fr}}
+/* Small fixes for components that sometimes overflow */
+.code-block, pre{white-space:pre-wrap;word-break:break-word}

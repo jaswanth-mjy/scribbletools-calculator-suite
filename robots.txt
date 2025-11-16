@@ -1,29 +1,22 @@
+# ScribbleTools - Robots.txt
+# Allow all search engines to index the site
+
 User-agent: *
 Allow: /
-
-# High-value calculator pages
-Allow: /client/tools/math/
-Allow: /client/tools/financial/
-Allow: /client/tools/health/
-Allow: /client/tools/text/
-Allow: /client/tools/image/
-Allow: /client/tools/other/
-Allow: /client/tools/student/
 
 # Sitemap location
 Sitemap: https://scribbletools.in/sitemap.xml
 
-# Crawl-delay for good citizenship
+# Disallow indexing of API endpoints
+Disallow: /api/
+
+# Disallow indexing of config files
+Disallow: /config.js
+
+# Crawl-delay for polite crawling (optional)
 Crawl-delay: 1
 
-# Block any admin or sensitive directories (if they exist)
-Disallow: /admin/
-Disallow: /config/
-Disallow: /logs/
-Disallow: /_private/
-Disallow: /backup/
-
-# Allow common beneficial bots
+# Allow specific search engines explicitly
 User-agent: Googlebot
 Allow: /
 
@@ -41,22 +34,3 @@ Allow: /
 
 User-agent: YandexBot
 Allow: /
-
-User-agent: facebookexternalhit
-Allow: /
-
-User-agent: Twitterbot
-Allow: /
-
-User-agent: LinkedInBot
-Allow: /
-
-# Block resource-heavy bots if needed
-User-agent: MJ12bot
-Crawl-delay: 10
-
-User-agent: AhrefsBot
-Crawl-delay: 10
-
-User-agent: SemrushBot
-Crawl-delay: 10
