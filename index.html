@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <meta http-equiv="Permissions-Policy" content="unload=()">
     <title>ScribbleTools: Free Online Calculators & Tools for Math, Text, Finance, Health</title>
     <meta name="description" content="ScribbleTools is the professional, ad-free toolbox for math, text, finance, health, and more. Fast, privacy-first, and always free. Trusted by students, teachers, and professionals.">
@@ -317,65 +317,11 @@
                 </div>
             </div>
         </header>
-        <!-- Split Layout Main Content Area - Mobile Responsive -->
-        <div class="container mx-auto px-1 sm:px-2 md:px-4 py-1 sm:py-2 md:py-4 flex-grow">
-            <div class="flex flex-col lg:flex-row gap-4">
-                <!-- Tools Area - Extreme Left (Mobile: Full Width, Desktop: 65% Width) -->
-                <main id="app-container" class="w-full lg:w-[65%] bg-gradient-to-br from-white via-blue-50 to-purple-50 p-2 md:p-6 rounded-2xl shadow-xl border-2 border-gradient-to-r from-blue-200 to-purple-200 backdrop-blur-sm">
-                    <!-- Tool content will be loaded here by JavaScript -->
-                </main>
-                
-                <!-- Learning Hub Section - Right Side (Hidden on Mobile, 35% on Desktop) -->
-                <aside class="hidden lg:block w-[35%] bg-gradient-to-br from-white via-green-50 to-yellow-50 p-4 md:p-6 rounded-2xl shadow-xl border-2 border-gradient-to-r from-green-200 to-yellow-200 backdrop-blur-sm">
-                    <div class="sticky top-4">
-                        <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
-                            <span class="mr-2 text-3xl">📚</span>
-                            Learning Hub
-                        </h2>
-                        
-                        <!-- Top Viewed Articles Section -->
-                        <div class="mb-6 bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl p-4 border-2 border-purple-200">
-                            <h3 class="text-lg font-bold text-gray-800 mb-3 flex items-center">
-                                <svg class="w-5 h-5 mr-2 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
-                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                                </svg>
-                                Top Viewed Articles
-                            </h3>
-                            <div id="top-viewed-articles" class="space-y-3">
-                                <!-- Top articles will be dynamically inserted here -->
-                                <div class="text-center py-4 text-gray-500">
-                                    <div class="animate-pulse">Loading top articles...</div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Popular Tools Widget -->
-                        <div class="mt-6 bg-gradient-to-r from-rose-50 to-pink-50 rounded-xl p-4 border-2 border-rose-200">
-                            <h3 class="font-bold text-gray-800 mb-3 flex items-center">
-                                <span class="mr-2">🔥</span>
-                                Popular Tools
-                            </h3>
-                            <div class="space-y-2">
-                                <a href="#" class="block text-sm text-gray-700 hover:text-rose-600 transition-colors py-1 border-b border-rose-100 last:border-b-0">
-                                    🧮 Basic Calculator
-                                </a>
-                                <a href="#" class="block text-sm text-gray-700 hover:text-rose-600 transition-colors py-1 border-b border-rose-100 last:border-b-0">
-                                    💰 Loan Calculator
-                                </a>
-                                <a href="#" class="block text-sm text-gray-700 hover:text-rose-600 transition-colors py-1 border-b border-rose-100 last:border-b-0">
-                                    📊 GPA Calculator
-                                </a>
-                                <a href="#" class="block text-sm text-gray-700 hover:text-rose-600 transition-colors py-1 border-b border-rose-100 last:border-b-0">
-                                    ⚖️ BMI Calculator
-                                </a>
-                                <a href="#" class="block text-sm text-gray-700 hover:text-rose-600 transition-colors py-1 border-b border-rose-100 last:border-b-0">
-                                    📝 Word Counter
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </aside>
-            </div>
+        <!-- Main Content Area - Full Width -->
+        <div class="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8 py-4 md:py-6 flex-grow">
+            <main id="app-container" class="w-full bg-gradient-to-br from-white via-blue-50 to-purple-50 p-4 md:p-6 lg:p-8 rounded-2xl shadow-xl border-2 border-gradient-to-r from-blue-200 to-purple-200 backdrop-blur-sm">
+                <!-- Tool content will be loaded here by JavaScript -->
+            </main>
         </div>
 
         <!-- Footer -->
