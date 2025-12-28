@@ -5,7 +5,7 @@ User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://scribbletools.in/sitemap.xml
+Sitemap: https://scribbletools.shramkavach.com/sitemap.xml
 
 # Disallow indexing of API endpoints
 Disallow: /api/

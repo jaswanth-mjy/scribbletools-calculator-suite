@@ -4,7 +4,7 @@
 window.CONFIG = {
     // Site Information
     siteName: 'ScribbleTools',
-    siteUrl: 'https://scribbletools.in',
+    siteUrl: 'https://scribbletools.shramkavach.com',
     version: '2.0.0',
     
     // Feature Flags

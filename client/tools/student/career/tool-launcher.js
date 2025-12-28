@@ -48,7 +48,7 @@ function launchTool(button, targetType, config) {
     let finalPath;
 
     const isGitHubPages = window.location.hostname.includes('github.io');
-    const repoName = 'scribbletools.in';
+    const repoName = 'scribbletools.shramkavach.com';
     const isStandalone = currentPath.includes('/client/tools/student/career/');
 
     if (isStandalone) {
@@ -122,7 +122,7 @@ function initializeToolPage(config) {
         // --- Accessibility Check ---
         const currentPath = window.location.pathname;
         const isGitHubPages = window.location.hostname.includes('github.io');
-        const repoName = 'scribbletools.in';
+        const repoName = 'scribbletools.shramkavach.com';
         const isStandalone = currentPath.includes('/client/tools/student/career/');
         let appPath;
 
