@@ -6,6 +6,7 @@ Allow: /
 
 # Sitemap location
 Sitemap: https://scribbletools.shramkavach.com/sitemap.xml
+Sitemap: https://scribbletools.shramkavach.com/sitemap-index.xml
 
 # Disallow indexing of API endpoints
 Disallow: /api/
