@@ -1,7 +1,7 @@
 // FREE Service Worker for Real-Time Push Notifications
 // No external dependencies - completely FREE
 
-const CACHE_NAME = 'scribble-tools-v1';
+const CACHE_NAME = 'scribble-tools-v2-2026-01-05';
 const urlsToCache = [
     '/',
     '/index.html',
@@ -14,6 +14,26 @@ self.addEventListener('install', event => {
         caches.open(CACHE_NAME)
             .then(cache => cache.addAll(urlsToCache))
     );
+    // Force the waiting service worker to become the active service worker
+    self.skipWaiting();
+});
+
+// Activate event - clean up old caches
+self.addEventListener('activate', event => {
+    event.waitUntil(
+        caches.keys().then(cacheNames => {
+            return Promise.all(
+                cacheNames.map(cacheName => {
+                    if (cacheName !== CACHE_NAME) {
+                        console.log('Deleting old cache:', cacheName);
+                        return caches.delete(cacheName);
+                    }
+                })
+            );
+        })
+    );
+    // Take control of all clients immediately
+    return self.clients.claim();
 });
 
 // Push notification event
