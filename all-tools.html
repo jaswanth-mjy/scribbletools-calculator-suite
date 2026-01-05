@@ -372,7 +372,7 @@
       ← <span class="back-button-text">Back to Home</span>
     </a>
     <h1 class="keymap-title">🗺️ All Tools Keymap</h1>
-    <p class="keymap-subtitle">Browse all 200+ professional tools organized by category. Click any tool to open it instantly.</p>
+    <p class="keymap-subtitle">We're building our collection of professional tools. New tools are being added daily—check back soon!</p>
   </div>
 
   <div class="search-box-wrapper">
@@ -405,26 +405,12 @@
       .replace(/\b\w/g, c => c.toUpperCase());
   }
 
-  // Extract the routes object literal from index.html script content
-  function extractRoutesFromPage() {
-    const scripts = Array.from(document.scripts);
-    for (const s of scripts) {
-      const txt = s.textContent || '';
-      if (txt.includes('const routes') && txt.includes('#')) {
-        // Capture the object literal between the first '{' after '=' and the matching '}'
-        const match = txt.match(/const\s+routes\s*=\s*({[\s\S]*?});/);
-        if (!match) continue;
-        const objLiteral = match[1];
-        try {
-          // eslint-disable-next-line no-new-func
-          const parsed = Function('"use strict"; return (' + objLiteral + ');')();
-          if (parsed && typeof parsed === 'object') return parsed;
-        } catch (e) {
-          console.warn('Failed to parse routes from script:', e);
-        }
-      }
-    }
-    return null;
+  // Complete routes mapping - all tools organized by category
+  function getAllRoutes() {
+    return {
+      // Tools will be added here as they're created
+      // Each tool will be added day by day
+    };
   }
 
   function categorize(hash, path) {
@@ -478,6 +464,26 @@
       const query = filter.trim().toLowerCase();
       let shown = 0;
 
+      // If no tools exist yet, show coming soon message
+      if (total === 0) {
+        const card = document.createElement('div');
+        card.className = 'category-card';
+        card.style.textAlign = 'center';
+        card.style.padding = '3rem';
+        card.innerHTML = `
+          <h3 style="font-size: 2rem; margin-bottom: 1rem;">🚧 Tools Coming Soon!</h3>
+          <p style="color: #6b7280; font-size: 1.1rem; margin-bottom: 1rem;">
+            We're actively building our collection of professional tools.
+          </p>
+          <p style="color: #9ca3af; font-size: 0.95rem;">
+            New tools will be added daily. Check back soon to see what's new!
+          </p>
+        `;
+        container.appendChild(card);
+        summary.innerHTML = '✨ Building our collection - <strong>0</strong> tools available, more coming soon!';
+        return;
+      }
+
       const categoryIcons = {
         'Text Tools': '📝',
         'Math Calculators': '🔢',
@@ -530,7 +536,7 @@
         filtered.forEach(it => {
           const li = document.createElement('li');
           const a = document.createElement('a');
-          a.href = it.hash; // Let the main router handle navigation
+          a.href = it.path; // Direct link to tool file
           a.textContent = it.label;
           a.className = 'tool-link';
           li.appendChild(a);
@@ -562,7 +568,7 @@
     draw('');
   }
 
-  const routes = extractRoutesFromPage();
+  const routes = getAllRoutes();
   if (!routes) {
     const container = document.getElementById('keymap-container');
     container.innerHTML = '<div class="error-box">⚠️ Unable to load keymap. Routes not found in page script.</div>';

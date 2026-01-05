@@ -1,0 +1,1559 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ScribbleTools - Free Online Calculators & Tools</title>
+    <meta name="description" content="ScribbleTools offers 250+ free online tools for math, text, finance, health, and more. Fast, privacy-first, and always free.">
+    <meta name="keywords" content="online calculator, free tools, math calculator, BMI calculator, compound interest calculator, word counter, text tools, financial calculator, health calculator, image resizer, student tools">
+    <link rel="canonical" href="https://scribbletools.shramkavach.com/">
+    
+    <!-- Schema Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "ScribbleTools",
+      "url": "https://scribbletools.shramkavach.com",
+      "description": "Professional online calculators and tools for math, finance, health, text processing, and more.",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://scribbletools.shramkavach.com/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ScribbleTools",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://scribbletools.shramkavach.com/logo.png"
+        }
+      }
+    }
+    </script>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        
+        /* Smooth dropdown animation */
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-10px);
+            background: white;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+            border-radius: 16px;
+            padding: 24px;
+            min-width: 900px;
+            z-index: 1000;
+            margin-top: 12px;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .dropdown-trigger:hover .dropdown-menu,
+        .dropdown-menu.show {
+            display: block;
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+            pointer-events: auto;
+        }
+        
+        .tool-category-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+        }
+        
+        .tool-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 14px;
+            border-radius: 10px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: #1f2937;
+            font-weight: 500;
+        }
+        
+        .tool-item:hover {
+            background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+            transform: translateX(2px);
+        }
+        
+        .tool-icon {
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+            flex-shrink: 0;
+        }
+        
+        /* Header hover effects */
+        .nav-link {
+            position: relative;
+            transition: all 0.2s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%) scaleX(0);
+            width: 80%;
+            height: 2px;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            border-radius: 2px;
+            transition: transform 0.2s ease;
+        }
+        
+        .nav-link:hover::after {
+            transform: translateX(-50%) scaleX(1);
+        }
+        
+        /* Logo animation */
+        .logo-container {
+            transition: transform 0.2s ease;
+        }
+        
+        .logo-container:hover {
+            transform: scale(1.02);
+        }
+        
+        /* Pro badge animation */
+        @keyframes pulse-glow {
+            0%, 100% {
+                box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4);
+            }
+            50% {
+                box-shadow: 0 0 0 4px rgba(59, 130, 246, 0);
+            }
+        }
+        
+        .pro-badge {
+            animation: pulse-glow 2s infinite;
+        }
+        
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+        
+        .modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            max-width: 800px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #6b7280;
+            transition: color 0.2s;
+        }
+        
+        .modal-close:hover {
+            color: #1f2937;
+        }
+        
+        /* Mobile menu styles */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            max-width: 400px;
+            height: 100%;
+            background: white;
+            box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
+            transition: right 0.3s ease;
+            z-index: 1001;
+        }
+        
+        .mobile-menu.show {
+            right: 0;
+        }
+        
+        /* Toast styles */
+        .toast-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 2000;
+        }
+        
+        .toast {
+            background: #3b82f6;
+            color: white;
+            padding: 16px 24px;
+            border-radius: 12px;
+            margin-bottom: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            min-width: 300px;
+            animation: slideIn 0.3s ease;
+        }
+        
+        .toast.success {
+            background: #10b981;
+        }
+        
+        .toast.error {
+            background: #ef4444;
+        }
+        
+        .toast.warning {
+            background: #f59e0b;
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes slideOut {
+            from {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+        }
+        
+        /* FAQ accordion styles */
+        .faq-item {
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            margin-bottom: 16px;
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            padding: 20px 24px;
+            background: white;
+            border: none;
+            width: 100%;
+            text-align: left;
+            font-weight: 600;
+            color: #1f2937;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.2s;
+        }
+        
+        .faq-question:hover {
+            background: #f9fafb;
+        }
+        
+        .faq-answer {
+            padding: 0 24px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item.open .faq-answer {
+            padding: 0 24px 20px;
+            max-height: 200px;
+        }
+        
+        .faq-item.open .faq-icon {
+            transform: rotate(180deg);
+        }
+        
+        .faq-icon {
+            transition: transform 0.3s ease;
+        }
+        
+        /* Cookie consent styles */
+        .cookie-consent {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            border-top: 2px solid #3b82f6;
+            box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.1);
+            z-index: 999;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .cookie-consent.show {
+            transform: translateY(0);
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .dropdown-menu {
+                min-width: 320px;
+                left: 0;
+                transform: translateX(0) translateY(-10px);
+            }
+            
+            .dropdown-trigger:hover .dropdown-menu,
+            .dropdown-menu.show {
+                transform: translateX(0) translateY(0);
+            }
+            
+            .tool-category-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white/95 backdrop-blur-md border-b border-gray-200 sticky top-0 z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <div class="flex items-center gap-3">
+                    <a href="/" class="flex items-center gap-2 logo-container" aria-label="ScribbleTools Homepage">
+                        <div class="relative w-10 h-10">
+                            <svg viewBox="0 0 100 100" class="w-full h-full drop-shadow-xl" xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                    <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#3b82f6"/>
+                                        <stop offset="50%" style="stop-color:#8b5cf6"/>
+                                        <stop offset="100%" style="stop-color:#ec4899"/>
+                                    </linearGradient>
+                                    <filter id="roughen">
+                                        <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" result="noise"/>
+                                        <feDisplacementMap in="SourceGraphic" in2="noise" scale="2" xChannelSelector="R" yChannelSelector="G"/>
+                                    </filter>
+                                </defs>
+                                
+                                <circle cx="50" cy="50" r="45" fill="url(#logoGradient)" opacity="0.15"/>
+                                <path d="M 28 20 Q 29 19 30 20 L 70 20 Q 71 19 72 20 L 72 80 Q 71 81 70 80 L 30 80 Q 29 81 28 80 Z" 
+                                      fill="url(#logoGradient)" filter="url(#roughen)" opacity="0.95"/>
+                                <rect x="33" y="26" width="34" height="12" rx="2" fill="white" opacity="0.95"/>
+                                
+                                <g fill="#3b82f6" font-family="monospace" font-size="7" font-weight="bold">
+                                    <text x="38" y="34">1+2</text>
+                                    <text x="56" y="34">=3</text>
+                                </g>
+                                
+                                <g fill="white" opacity="0.9">
+                                    <circle cx="38" cy="47" r="3.5"/>
+                                    <circle cx="50" cy="47" r="3.5"/>
+                                    <circle cx="62" cy="47" r="3.5"/>
+                                    <circle cx="38" cy="57" r="3.5"/>
+                                    <circle cx="50" cy="57" r="3.5"/>
+                                    <circle cx="62" cy="57" r="3.5"/>
+                                    <circle cx="38" cy="67" r="3.5"/>
+                                    <circle cx="50" cy="67" r="3.5"/>
+                                </g>
+                                
+                                <rect x="58" y="63" width="8" height="10" rx="2" fill="#fbbf24"/>
+                                
+                                <g fill="#3b82f6" font-family="Arial" font-size="5" font-weight="bold" text-anchor="middle">
+                                    <text x="38" y="49">7</text>
+                                    <text x="50" y="49">8</text>
+                                    <text x="62" y="49">9</text>
+                                    <text x="38" y="59">4</text>
+                                    <text x="50" y="59">5</text>
+                                    <text x="62" y="59">6</text>
+                                    <text x="38" y="69">1</text>
+                                    <text x="50" y="69">0</text>
+                                </g>
+                                
+                                <path d="M 20 30 Q 18 35 20 40 Q 22 38 20 35" 
+                                      stroke="#ec4899" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.6"/>
+                                <path d="M 80 60 Q 82 65 80 70 Q 78 68 80 65" 
+                                      stroke="#fbbf24" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.6"/>
+                                
+                                <g fill="#fbbf24" opacity="0.7">
+                                    <circle cx="24" cy="25" r="1.5"/>
+                                    <circle cx="76" cy="75" r="1.5"/>
+                                </g>
+                            </svg>
+                        </div>
+                        <span class="text-xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">ScribbleTools</span>
+                    </a>
+                    <span class="pro-badge text-xs bg-gradient-to-r from-blue-500 to-blue-600 text-white px-2.5 py-1 rounded-full font-bold shadow-sm">PRO</span>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex items-center space-x-2">
+                    <!-- Tools Dropdown -->
+                    <div class="dropdown-trigger relative">
+                        <button class="nav-link px-4 py-2.5 text-sm font-semibold text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-xl flex items-center gap-2 transition-all">
+                            <span class="grid grid-cols-2 gap-1 w-5 h-5">
+                                <span class="w-2 h-2 bg-gradient-to-br from-blue-400 to-blue-600 rounded"></span>
+                                <span class="w-2 h-2 bg-gradient-to-br from-green-400 to-green-600 rounded"></span>
+                                <span class="w-2 h-2 bg-gradient-to-br from-purple-400 to-purple-600 rounded"></span>
+                                <span class="w-2 h-2 bg-gradient-to-br from-orange-400 to-orange-600 rounded"></span>
+                            </span>
+                            Tools
+                            <svg class="w-4 h-4 transition-transform duration-200 dropdown-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </button>
+                        
+                        <!-- Dropdown Menu -->
+                        <div class="dropdown-menu">
+                            <div class="mb-4">
+                                <h3 class="text-xs font-bold text-gray-900 uppercase tracking-wider mb-3 flex items-center gap-2">
+                                    <span class="w-1 h-4 bg-gradient-to-b from-blue-500 to-purple-500 rounded-full"></span>
+                                    Popular Tools
+                                </h3>
+                                <div class="text-center py-8">
+                                    <p class="text-gray-500">Tools coming soon!</p>
+                                    <p class="text-sm text-gray-400 mt-2">We're adding new tools daily</p>
+                                </div>
+                            </div>
+                            
+                            <div class="border-t border-gray-100 pt-4">
+                                <h3 class="text-xs font-bold text-gray-900 uppercase tracking-wider mb-3 flex items-center gap-2">
+                                    <span class="w-1 h-4 bg-gradient-to-b from-orange-500 to-pink-500 rounded-full"></span>
+                                    All Categories
+                                </h3>
+                                <div class="grid grid-cols-4 gap-3">
+                                    <a href="#text-tools" class="flex items-center gap-2 text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors p-2 rounded-lg hover:bg-blue-50">
+                                        <span class="text-lg">📝</span>
+                                        Text Tools
+                                    </a>
+                                    <a href="#math-calculators" class="flex items-center gap-2 text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors p-2 rounded-lg hover:bg-blue-50">
+                                        <span class="text-lg">🧮</span>
+                                        Math Tools
+                                    </a>
+                                    <a href="#financial-calculators" class="flex items-center gap-2 text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors p-2 rounded-lg hover:bg-blue-50">
+                                        <span class="text-lg">💰</span>
+                                        Financial
+                                    </a>
+                                    <a href="#health-calculators" class="flex items-center gap-2 text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors p-2 rounded-lg hover:bg-blue-50">
+                                        <span class="text-lg">🏥</span>
+                                        Health
+                                    </a>
+                                    <a href="#image-tools" class="flex items-center gap-2 text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors p-2 rounded-lg hover:bg-blue-50">
+                                        <span class="text-lg">🖼️</span>
+                                        Image Tools
+                                    </a>
+                                    <a href="#student-tools" class="flex items-center gap-2 text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors p-2 rounded-lg hover:bg-blue-50">
+                                        <span class="text-lg">🎓</span>
+                                        Student
+                                    </a>
+                                    <a href="all-tools.html" class="flex items-center gap-2 text-sm font-bold text-blue-600 hover:text-blue-700 transition-colors p-2 rounded-lg bg-blue-50 hover:bg-blue-100 col-span-2">
+                                        <span class="text-lg">🔥</span>
+                                        View all 250+ tools →
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="#math-calculators" class="nav-link px-4 py-2.5 text-sm font-semibold text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-xl transition-all">Math</a>
+                    <a href="#financial-calculators" class="nav-link px-4 py-2.5 text-sm font-semibold text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-xl transition-all">Finance</a>
+                    <a href="#health-calculators" class="nav-link px-4 py-2.5 text-sm font-semibold text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-xl transition-all">Health</a>
+                    <a href="#text-tools" class="nav-link px-4 py-2.5 text-sm font-semibold text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-xl transition-all">Text</a>
+                </nav>
+                
+                <!-- Right side buttons -->
+                <div class="flex items-center gap-3">
+                    <!-- Search Button -->
+                    <button onclick="openSearch()" class="p-2 text-gray-700 hover:text-blue-600 transition-all rounded-lg hover:bg-white/50 hidden md:block" aria-label="Search tools">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                        </svg>
+                    </button>
+                    
+                    <button class="px-5 py-2.5 text-sm font-semibold text-gray-700 hover:bg-gray-50 rounded-xl transition-all border border-gray-200 hover:border-gray-300 hidden md:block">
+                        Log In
+                    </button>
+                    
+                    <!-- Mobile Menu Button -->
+                    <button onclick="toggleMobileMenu()" class="md:hidden p-2 text-gray-700 hover:text-blue-600 transition-all rounded-lg hover:bg-white/50" aria-label="Open menu">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <!-- Breadcrumb -->
+        <div class="flex items-center gap-2 text-sm text-gray-600 mb-6">
+            <a href="/" class="hover:text-gray-900 flex items-center gap-1">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                </svg>
+                Home
+            </a>
+        </div>
+        
+        <!-- Hero Section -->
+        <div class="text-center mb-16">
+            <h1 class="text-5xl font-bold text-gray-900 mb-4">
+                Free Online Tools for Everything
+            </h1>
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                Your professional toolbox for math, finance, health, text processing, and more. We're adding new tools daily—all free, fast, and privacy-first.
+            </p>
+        </div>
+        
+        <!-- Tool Categories Grid -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+            <!-- Text Tools Category -->
+            <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow border border-gray-200 group">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
+                        📝
+                    </div>
+                    <h2 class="text-xl font-bold text-gray-900">Text Tools</h2>
+                </div>
+                <p class="text-gray-600 text-sm mb-4">Process, format, and manipulate text with powerful utilities</p>
+                <div class="space-y-2">
+                    <p class="text-sm text-gray-500 italic">Coming soon...</p>
+                </div>
+            </div>
+            
+            <!-- Math Tools Category -->
+            <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow border border-gray-200 group">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
+                        🧮
+                    </div>
+                    <h2 class="text-xl font-bold text-gray-900">Math Calculators</h2>
+                </div>
+                <p class="text-gray-600 text-sm mb-4">Solve math problems from basic arithmetic to statistics</p>
+                <div class="space-y-2">
+                    <p class="text-sm text-gray-500 italic">Coming soon...</p>
+                </div>
+            </div>
+            
+            <!-- Financial Tools Category -->
+            <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow border border-gray-200 group">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-12 h-12 bg-yellow-100 rounded-xl flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
+                        💰
+                    </div>
+                    <h2 class="text-xl font-bold text-gray-900">Financial Tools</h2>
+                </div>
+                <p class="text-gray-600 text-sm mb-4">Plan your finances with professional calculators</p>
+                <div class="space-y-2">
+                    <p class="text-sm text-gray-500 italic">Coming soon...</p>
+                </div>
+            </div>
+            
+            <!-- Health Tools Category -->
+            <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow border border-gray-200 group">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
+                        🏥
+                    </div>
+                    <h2 class="text-xl font-bold text-gray-900">Health Calculators</h2>
+                </div>
+                <p class="text-gray-600 text-sm mb-4">Track your health metrics and fitness goals</p>
+                <div class="space-y-2">
+                    <p class="text-sm text-gray-500 italic">Coming soon...</p>
+                </div>
+            </div>
+            
+            <!-- Image Tools Category -->
+            <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow border border-gray-200 group">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
+                        🖼️
+                    </div>
+                    <h2 class="text-xl font-bold text-gray-900">Image Tools</h2>
+                </div>
+                <p class="text-gray-600 text-sm mb-4">Resize, compress, and convert images instantly</p>
+                <div class="space-y-2">
+                    <p class="text-sm text-gray-500 italic">Coming soon...</p>
+                </div>
+            </div>
+            
+            <!-- Student Tools Category -->
+            <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow border border-gray-200 group">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-12 h-12 bg-indigo-100 rounded-xl flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
+                        🎓
+                    </div>
+                    <h2 class="text-xl font-bold text-gray-900">Student Tools</h2>
+                </div>
+                <p class="text-gray-600 text-sm mb-4">Academic calculators and study utilities</p>
+                <div class="space-y-2">
+                    <p class="text-sm text-gray-500 italic">Coming soon...</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Features Section -->
+        <div class="bg-blue-50 rounded-3xl p-12 mb-16">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Why Choose ScribbleTools?</h2>
+                <p class="text-lg text-gray-600">Professional tools trusted by students, teachers, and professionals worldwide</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center group">
+                    <div class="w-16 h-16 bg-blue-500 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform shadow-lg">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Lightning Fast</h3>
+                    <p class="text-gray-600">All calculations happen instantly in your browser. No waiting, no uploads.</p>
+                </div>
+                
+                <div class="text-center group">
+                    <div class="w-16 h-16 bg-green-500 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform shadow-lg">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">100% Private</h3>
+                    <p class="text-gray-600">Your data never leaves your device. No tracking, no cookies, no data collection.</p>
+                </div>
+                
+                <div class="text-center group">
+                    <div class="w-16 h-16 bg-purple-500 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform shadow-lg">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Always Free</h3>
+                    <p class="text-gray-600">All 250+ tools are completely free. No subscriptions, no hidden fees, ever.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Testimonials Section -->
+        <div class="mb-16">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Loved by Thousands of Users</h2>
+                <p class="text-lg text-gray-600">See what our community has to say</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8 mb-12">
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-200 hover:shadow-lg transition-shadow">
+                    <div class="flex items-center gap-1 mb-4">
+                        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                        </svg>
+                        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                        </svg>
+                        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                        </svg>
+                        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                        </svg>
+                        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                        </svg>
+                    </div>
+                    <p class="text-gray-700 mb-4">"ScribbleTools has been a lifesaver for my math homework. The step-by-step solutions helped me understand concepts I was struggling with!"</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center text-white font-bold">
+                            S
+                        </div>
+                        <div>
+                            <p class="font-semibold text-gray-900">Sarah M.</p>
+                            <p class="text-sm text-gray-500">College Student</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-200 hover:shadow-lg transition-shadow">
+                    <div class="flex items-center gap-1 mb-4">
+                        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                        </svg>
+                        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                        </svg>
+                        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                        </svg>
+                        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                        </svg>
+                        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                        </svg>
+                    </div>
+                    <p class="text-gray-700 mb-4">"As a freelancer, I use ScribbleTools daily for mortgage calculations, tax estimates, and financial planning. It's incredibly accurate and saves me hours!"</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center text-white font-bold">
+                            J
+                        </div>
+                        <div>
+                            <p class="font-semibold text-gray-900">James T.</p>
+                            <p class="text-sm text-gray-500">Financial Advisor</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-200 hover:shadow-lg transition-shadow">
+                    <div class="flex items-center gap-1 mb-4">
+                        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                        </svg>
+                        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                        </svg>
+                        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                        </svg>
+                        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                        </svg>
+                        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                        </svg>
+                    </div>
+                    <p class="text-gray-700 mb-4">"The text tools are amazing! I use the word counter and case converter daily for my blog posts. Simple, fast, and free. What more could you ask for?"</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-gradient-to-br from-purple-400 to-purple-600 rounded-full flex items-center justify-center text-white font-bold">
+                            E
+                        </div>
+                        <div>
+                            <p class="font-semibold text-gray-900">Emily R.</p>
+                            <p class="text-sm text-gray-500">Content Writer</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Trust Badges -->
+            <div class="text-center">
+                <p class="text-gray-500 text-sm mb-6">Trusted by over 100,000+ users worldwide</p>
+                <div class="flex flex-wrap justify-center items-center gap-8">
+                    <div class="flex items-center gap-2">
+                        <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                        </svg>
+                        <span class="text-gray-700 font-medium">100% Free</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                        </svg>
+                        <span class="text-gray-700 font-medium">No Registration</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                        </svg>
+                        <span class="text-gray-700 font-medium">No Ads</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                        </svg>
+                        <span class="text-gray-700 font-medium">Privacy First</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- FAQ Section -->
+        <div class="mb-16">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
+                <p class="text-lg text-gray-600">Got questions? We've got answers</p>
+            </div>
+            
+            <div class="max-w-3xl mx-auto space-y-4">
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Are all tools really free?</span>
+                        <svg class="w-5 h-5 text-gray-400 faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p class="text-gray-600">Yes! All 250+ tools on ScribbleTools are completely free to use. No subscriptions, no hidden fees, no premium tiers. We believe everyone should have access to quality tools.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Do you store my data?</span>
+                        <svg class="w-5 h-5 text-gray-400 faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p class="text-gray-600">No. All calculations happen directly in your browser. Your data never leaves your device, and we don't use cookies or tracking. Your privacy is our top priority.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Do I need to create an account?</span>
+                        <svg class="w-5 h-5 text-gray-400 faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p class="text-gray-600">Nope! You can use all our tools without creating an account. Just visit the tool you need and start using it immediately.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span>How accurate are the calculations?</span>
+                        <svg class="w-5 h-5 text-gray-400 faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p class="text-gray-600">Our tools use industry-standard algorithms and formulas to ensure accuracy. However, for critical financial or medical decisions, we always recommend consulting with a professional.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Can I use these tools on mobile?</span>
+                        <svg class="w-5 h-5 text-gray-400 faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p class="text-gray-600">Absolutely! All our tools are fully responsive and work seamlessly on smartphones, tablets, and desktops. Use them anywhere, anytime.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span>How do you make money if everything is free?</span>
+                        <svg class="w-5 h-5 text-gray-400 faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p class="text-gray-600">We're supported by ethical, non-intrusive advertising and optional donations from users who find our tools valuable. We'll never charge for core functionality or compromise your privacy.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Newsletter Section -->
+        <div class="bg-gradient-to-br from-blue-500 to-purple-600 rounded-3xl p-12 text-white text-center mb-16">
+            <div class="max-w-2xl mx-auto">
+                <h2 class="text-4xl font-bold mb-4">Stay in the Loop</h2>
+                <p class="text-xl text-blue-100 mb-8">Get notified when we launch new tools and features. No spam, just useful updates.</p>
+                <div class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+                    <input type="email" id="newsletter-email" placeholder="Enter your email" class="flex-1 px-6 py-4 rounded-xl text-gray-900 outline-none focus:ring-2 focus:ring-white">
+                    <button onclick="subscribeNewsletter()" class="px-8 py-4 bg-white text-blue-600 font-bold rounded-xl hover:bg-gray-100 transition-all whitespace-nowrap">
+                        Subscribe Free
+                    </button>
+                </div>
+                <p class="text-sm text-blue-100 mt-4">Join 10,000+ subscribers • Unsubscribe anytime</p>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="bg-gradient-to-b from-white to-gray-50 border-t border-gray-200 mt-20" role="contentinfo">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <!-- Top Section with Logo and CTA -->
+            <div class="flex flex-col md:flex-row justify-between items-start mb-12 pb-12 border-b border-gray-200">
+                <div class="mb-6 md:mb-0">
+                    <div class="flex items-center gap-2 mb-3">
+                        <div class="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+                            <span class="text-white text-lg font-bold" aria-hidden="true">S</span>
+                        </div>
+                        <span class="text-lg font-bold text-gray-900">ScribbleTools</span>
+                    </div>
+                    <p class="text-sm text-gray-600 max-w-xs">
+                        Professional online calculators and tools for everyone. Fast, privacy-first, and always free. 250+ math, finance, health, and text utilities.
+                    </p>
+                    <!-- Social Media Links for SEO -->
+                    <div class="flex items-center gap-3 mt-4">
+                        <a href="#" class="text-gray-600 hover:text-blue-600" aria-label="Follow us on Twitter">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg>
+                        </a>
+                        <a href="#" class="text-gray-600 hover:text-blue-600" aria-label="Follow us on Facebook">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+                        </a>
+                        <a href="#" class="text-gray-600 hover:text-blue-600" aria-label="Follow us on LinkedIn">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="flex flex-col sm:flex-row gap-3">
+                    <button class="px-6 py-3 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-xl font-semibold text-sm hover:from-blue-600 hover:to-blue-700 transition-all shadow-lg hover:shadow-xl">
+                        Get Started Free
+                    </button>
+                    <button class="px-6 py-3 border-2 border-gray-300 text-gray-700 rounded-xl font-semibold text-sm hover:border-gray-400 hover:bg-gray-50 transition-all">
+                        View All Tools
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Links Grid -->
+            <div class="grid grid-cols-2 md:grid-cols-6 gap-8 mb-12">
+                <!-- Text Tools Column -->
+                <div>
+                    <h3 class="text-xs font-bold text-gray-900 uppercase tracking-wider mb-4">Text Tools</h3>
+                    <nav aria-label="Text processing tools">
+                        <ul class="space-y-3">
+                            <li><span class="text-sm text-gray-400 italic">Tools coming soon</span></li>
+                        </ul>
+                    </nav>
+                </div>
+                
+                <!-- Math Calculators Column -->
+                <div>
+                    <h3 class="text-xs font-bold text-gray-900 uppercase tracking-wider mb-4">Math Calculators</h3>
+                    <nav aria-label="Mathematical calculators">
+                        <ul class="space-y-3">
+                            <li><span class="text-sm text-gray-400 italic">Tools coming soon</span></li>
+                        </ul>
+                    </nav>
+                </div>
+                
+                <!-- Financial Calculators Column -->
+                <div>
+                    <h3 class="text-xs font-bold text-gray-900 uppercase tracking-wider mb-4">Financial Calculators</h3>
+                    <nav aria-label="Financial planning calculators">
+                        <ul class="space-y-3">
+                            <li><span class="text-sm text-gray-400 italic">Tools coming soon</span></li>
+                        </ul>
+                    </nav>
+                </div>
+                
+                <!-- Health & Fitness Column -->
+                <div>
+                    <h3 class="text-xs font-bold text-gray-900 uppercase tracking-wider mb-4">Health & Fitness</h3>
+                    <nav aria-label="Health and fitness calculators">
+                        <ul class="space-y-3">
+                            <li><span class="text-sm text-gray-400 italic">Tools coming soon</span></li>
+                        </ul>
+                    </nav>
+                </div>
+                
+                <!-- More Tools Column -->
+                <div>
+                    <h3 class="text-xs font-bold text-gray-900 uppercase tracking-wider mb-4">More Tools</h3>
+                    <nav aria-label="Additional tool categories">
+                        <ul class="space-y-3">
+                            <li><a href="#blog" class="text-sm text-gray-600 hover:text-blue-600 transition-colors">Blog & Guides</a></li>
+                            <li><a href="#how-to" class="text-sm text-gray-600 hover:text-blue-600 transition-colors">How-to Guides</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                
+                <!-- Company Column -->
+                <div>
+                    <h3 class="text-xs font-bold text-gray-900 uppercase tracking-wider mb-4">Company</h3>
+                    <nav aria-label="Company information">
+                        <ul class="space-y-3">
+                            <li><button onclick="openModal('about')" class="text-sm text-gray-600 hover:text-blue-600 transition-colors">About Us</button></li>
+                            <li><button onclick="openModal('contact')" class="text-sm text-gray-600 hover:text-blue-600 transition-colors">Contact Us</button></li>
+                            <li><button onclick="openModal('privacy')" class="text-sm text-gray-600 hover:text-blue-600 transition-colors">Privacy Policy</button></li>
+                            <li><button onclick="openModal('terms')" class="text-sm text-gray-600 hover:text-blue-600 transition-colors">Terms of Service</button></li>
+                            <li><a href="#sitemap" class="text-sm text-gray-600 hover:text-blue-600 transition-colors">Sitemap</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            
+            <!-- Bottom Bar -->
+            <div class="pt-8 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center gap-4">
+                <div class="flex flex-wrap items-center justify-center md:justify-start gap-2 text-sm text-gray-600">
+                    <span itemscope itemtype="http://schema.org/Organization">
+                        <meta itemprop="name" content="ScribbleTools">
+                        © 2025 <span itemprop="legalName">ScribbleTools</span>
+                    </span>
+                    <span class="hidden md:inline">—</span>
+                    <span>Free Online Calculators & Tools - Made with ❤️ for the internet.</span>
+                </div>
+                
+                <div class="flex items-center gap-6">
+                    <button onclick="openModal('privacy')" class="text-sm text-gray-600 hover:text-gray-900 transition-colors">Privacy Notice</button>
+                    <button onclick="openModal('terms')" class="text-sm text-gray-600 hover:text-gray-900 transition-colors">Terms & Conditions</button>
+                    <a href="#imprint" class="text-sm text-gray-600 hover:text-gray-900 transition-colors">Imprint</a>
+                    <div class="flex items-center gap-2">
+                        <button class="text-sm text-gray-600 hover:text-gray-900 flex items-center gap-1 px-3 py-1.5 border border-gray-300 rounded-lg hover:bg-gray-50 transition-all">
+                            <span>🌐</span>
+                            <span>English</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu">
+        <div class="flex items-center justify-between p-6 border-b border-gray-200">
+            <h2 class="text-xl font-bold text-gray-900">Menu</h2>
+            <button onclick="toggleMobileMenu()" class="text-gray-400 hover:text-gray-600">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                </svg>
+            </button>
+        </div>
+        
+        <nav class="p-6 space-y-4">
+            <a href="#text-tools" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-gray-50 transition-colors" onclick="toggleMobileMenu()">
+                <span class="text-2xl">📝</span>
+                <span class="font-semibold text-gray-900">Text Tools</span>
+            </a>
+            <a href="#math-calculators" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-gray-50 transition-colors" onclick="toggleMobileMenu()">
+                <span class="text-2xl">🧮</span>
+                <span class="font-semibold text-gray-900">Math Calculators</span>
+            </a>
+            <a href="#financial-calculators" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-gray-50 transition-colors" onclick="toggleMobileMenu()">
+                <span class="text-2xl">💰</span>
+                <span class="font-semibold text-gray-900">Financial Tools</span>
+            </a>
+            <a href="#health-calculators" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-gray-50 transition-colors" onclick="toggleMobileMenu()">
+                <span class="text-2xl">🏥</span>
+                <span class="font-semibold text-gray-900">Health Calculators</span>
+            </a>
+            <a href="#image-tools" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-gray-50 transition-colors" onclick="toggleMobileMenu()">
+                <span class="text-2xl">🖼️</span>
+                <span class="font-semibold text-gray-900">Image Tools</span>
+            </a>
+            <a href="#student-tools" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-gray-50 transition-colors" onclick="toggleMobileMenu()">
+                <span class="text-2xl">🎓</span>
+                <span class="font-semibold text-gray-900">Student Tools</span>
+            </a>
+            
+            <div class="pt-4 border-t border-gray-200">
+                <button onclick="openModal('about'); toggleMobileMenu();" class="block w-full text-left px-4 py-3 text-gray-700 hover:text-blue-600 font-medium">About Us</button>
+                <button onclick="openModal('contact'); toggleMobileMenu();" class="block w-full text-left px-4 py-3 text-gray-700 hover:text-blue-600 font-medium">Contact</button>
+                <button onclick="openModal('privacy'); toggleMobileMenu();" class="block w-full text-left px-4 py-3 text-gray-700 hover:text-blue-600 font-medium">Privacy Policy</button>
+            </div>
+        </nav>
+    </div>
+    
+    <!-- Search Modal -->
+    <div id="search-modal" class="modal">
+        <div class="modal-content max-w-3xl">
+            <div class="p-6 border-b border-gray-200">
+                <div class="flex items-center gap-4">
+                    <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                    </svg>
+                    <input type="text" id="search-input" placeholder="Search tools..." class="flex-1 text-lg outline-none" autofocus onkeyup="performSearch(this.value)">
+                    <button onclick="closeSearch()" class="text-gray-400 hover:text-gray-600">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            
+            <div id="search-results" class="p-6 max-h-96 overflow-y-auto">
+                <p class="text-gray-500 text-sm">Start typing to search...</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Site Modals -->
+    <div id="site-modal" class="modal">
+        <div class="modal-content max-w-4xl">
+            <button onclick="closeModal()" class="modal-close">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                </svg>
+            </button>
+            <div id="modal-content"></div>
+        </div>
+    </div>
+    
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-banner" class="cookie-consent">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-start gap-3">
+                    <span class="text-2xl">🍪</span>
+                    <div>
+                        <p class="text-gray-900 font-semibold">We respect your privacy</p>
+                        <p class="text-gray-600 text-sm">We don't use cookies or track you. All calculations happen in your browser. <button onclick="openModal('privacy')" class="text-blue-600 hover:underline">Learn more</button></p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2">
+                    <button onclick="acceptCookies()" class="px-6 py-2 bg-blue-600 text-white rounded-xl font-semibold hover:bg-blue-700 transition-all whitespace-nowrap">
+                        Got it!
+                    </button>
+                    <button onclick="document.getElementById('cookie-banner').classList.remove('show')" class="text-gray-400 hover:text-gray-600">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Toast Container -->
+    <div id="toast-container" class="toast-container"></div>
+    
+    <script>
+        // =======================
+        // Global Variables
+        // =======================
+        const allTools = {
+            text: ['Word Counter', 'Change Case', 'Find & Replace', 'JSON Formatter', 'Lorem Ipsum Generator', 'Text Reverser', 'URL Encoder'],
+            math: ['Area Calculator', 'Percentage Calculator', 'Basic Calculator', 'Volume Calculator', 'Statistics Calculator'],
+            financial: ['Compound Interest', 'Mortgage Calculator', 'Loan Calculator', 'Retirement Calculator', '401k Calculator'],
+            health: ['BMI Calculator', 'Calorie Calculator', 'Body Fat Calculator', 'BMR Calculator', 'Macro Calculator'],
+            image: ['Image Resizer', 'Image Compressor', 'Format Converter'],
+            student: ['GPA Calculator', 'Grade Calculator', 'Study Planner']
+        };
+        
+        // =======================
+        // Modal Management
+        // =======================
+        function openModal(type) {
+            const modal = document.getElementById('site-modal');
+            const content = document.getElementById('modal-content');
+            
+            switch(type) {
+                case 'privacy':
+                    content.innerHTML = `
+                        <h1 class="text-4xl font-bold text-gray-900 mb-4">Privacy Policy</h1>
+                        <p class="text-sm text-gray-600 mb-8">Last updated: January 2, 2026</p>
+                        
+                        <div class="space-y-6">
+                            <section>
+                                <h2 class="text-2xl font-bold text-gray-900 mb-4">Your Privacy Matters</h2>
+                                <p class="text-gray-700 leading-relaxed mb-4">
+                                    At ScribbleTools, we take your privacy seriously. This Privacy Policy explains how we collect, use, and protect your information when you use our online calculators and tools.
+                                </p>
+                                <div class="bg-green-50 border-l-4 border-green-500 p-4 rounded-r-lg">
+                                    <p class="text-green-800 font-semibold">✓ No data collection</p>
+                                    <p class="text-green-800 font-semibold">✓ No tracking cookies</p>
+                                    <p class="text-green-800 font-semibold">✓ All calculations happen in your browser</p>
+                                    <p class="text-green-800 font-semibold">✓ Your data never leaves your device</p>
+                                </div>
+                            </section>
+                            
+                            <section>
+                                <h2 class="text-2xl font-bold text-gray-900 mb-4">Information We Don't Collect</h2>
+                                <p class="text-gray-700 leading-relaxed mb-4">
+                                    Unlike many websites, ScribbleTools is designed with privacy-first principles:
+                                </p>
+                                <ul class="list-disc pl-6 space-y-2 text-gray-700">
+                                    <li>We do not collect personal information (name, email, phone number)</li>
+                                    <li>We do not use tracking cookies or third-party analytics</li>
+                                    <li>We do not store your calculation data or input values</li>
+                                    <li>We do not track your browsing behavior across other websites</li>
+                                    <li>We do not sell or share any user data with third parties</li>
+                                </ul>
+                            </section>
+                        </div>
+                    `;
+                    break;
+                    
+                case 'about':
+                    content.innerHTML = `
+                        <h1 class="text-4xl font-bold text-gray-900 mb-8">About ScribbleTools</h1>
+                        
+                        <div class="space-y-6">
+                            <section>
+                                <h2 class="text-2xl font-bold text-gray-900 mb-4">Our Mission</h2>
+                                <p class="text-gray-700 leading-relaxed text-lg mb-4">
+                                    ScribbleTools was created to provide free, professional-grade online calculators and utilities to everyone. We believe essential tools should be accessible, fast, and respect your privacy.
+                                </p>
+                            </section>
+                            
+                            <section>
+                                <h2 class="text-2xl font-bold text-gray-900 mb-4">What We Offer</h2>
+                                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                                    <div class="bg-blue-50 rounded-xl p-6">
+                                        <div class="text-3xl mb-3">📝</div>
+                                        <h3 class="text-xl font-bold text-gray-900 mb-2">40+ Text Tools</h3>
+                                        <p class="text-gray-700">Word counters, case converters, formatters, and text processors for all your needs.</p>
+                                    </div>
+                                    <div class="bg-green-50 rounded-xl p-6">
+                                        <div class="text-3xl mb-3">🧮</div>
+                                        <h3 class="text-xl font-bold text-gray-900 mb-2">50+ Math Calculators</h3>
+                                        <p class="text-gray-700">From basic arithmetic to advanced statistics and geometry calculations.</p>
+                                    </div>
+                                    <div class="bg-yellow-50 rounded-xl p-6">
+                                        <div class="text-3xl mb-3">💰</div>
+                                        <h3 class="text-xl font-bold text-gray-900 mb-2">30+ Financial Tools</h3>
+                                        <p class="text-gray-700">Compound interest, mortgages, loans, retirement, and investment calculators.</p>
+                                    </div>
+                                    <div class="bg-red-50 rounded-xl p-6">
+                                        <div class="text-3xl mb-3">🏥</div>
+                                        <h3 class="text-xl font-bold text-gray-900 mb-2">45+ Health Calculators</h3>
+                                        <p class="text-gray-700">BMI, calorie tracking, body metrics, and fitness goal calculators.</p>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    `;
+                    break;
+                    
+                case 'contact':
+                    content.innerHTML = `
+                        <h1 class="text-4xl font-bold text-gray-900 mb-4">Contact Us</h1>
+                        <p class="text-gray-600 mb-8">Have a question, feedback, or feature request? We'd love to hear from you!</p>
+                        
+                        <form class="space-y-6" onsubmit="handleContactForm(event)">
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-900 mb-2">Your Name</label>
+                                <input type="text" class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-4 focus:ring-blue-100 focus:border-blue-500 transition-all" placeholder="John Doe">
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-900 mb-2">Email Address</label>
+                                <input type="email" class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-4 focus:ring-blue-100 focus:border-blue-500 transition-all" placeholder="john@example.com">
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-900 mb-2">Subject</label>
+                                <select class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-4 focus:ring-blue-100 focus:border-blue-500 transition-all">
+                                    <option>General Inquiry</option>
+                                    <option>Feature Request</option>
+                                    <option>Bug Report</option>
+                                    <option>Partnership</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-900 mb-2">Message</label>
+                                <textarea rows="6" class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-4 focus:ring-blue-100 focus:border-blue-500 transition-all" placeholder="Tell us what's on your mind..."></textarea>
+                            </div>
+                            
+                            <button type="submit" class="w-full px-6 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-xl font-bold text-lg hover:from-blue-700 hover:to-blue-800 transition-all shadow-lg hover:shadow-xl">
+                                Send Message
+                            </button>
+                        </form>
+                    `;
+                    break;
+                    
+                case 'terms':
+                    content.innerHTML = `
+                        <h1 class="text-4xl font-bold text-gray-900 mb-4">Terms of Service</h1>
+                        <p class="text-sm text-gray-600 mb-8">Last updated: January 2, 2026</p>
+                        
+                        <div class="space-y-6">
+                            <section>
+                                <h2 class="text-2xl font-bold text-gray-900 mb-4">Acceptance of Terms</h2>
+                                <p class="text-gray-700 leading-relaxed">
+                                    By accessing and using ScribbleTools, you accept and agree to be bound by the terms and provision of this agreement.
+                                </p>
+                            </section>
+                            
+                            <section>
+                                <h2 class="text-2xl font-bold text-gray-900 mb-4">Use License</h2>
+                                <ul class="list-disc pl-6 space-y-2 text-gray-700">
+                                    <li>Permission is granted to use our tools for personal and commercial purposes</li>
+                                    <li>This license shall automatically terminate if you violate any of these restrictions</li>
+                                    <li>You may not modify, reverse engineer, or create derivative works from our tools</li>
+                                </ul>
+                            </section>
+                            
+                            <section>
+                                <h2 class="text-2xl font-bold text-gray-900 mb-4">Disclaimer</h2>
+                                <p class="text-gray-700 leading-relaxed">
+                                    The tools are provided "as is". ScribbleTools makes no warranties, expressed or implied, and hereby disclaims all warranties including implied warranties of merchantability or fitness for a particular purpose.
+                                </p>
+                            </section>
+                        </div>
+                    `;
+                    break;
+            }
+            
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeModal() {
+            document.getElementById('site-modal').classList.remove('show');
+            document.body.style.overflow = 'auto';
+        }
+        
+        // =======================
+        // Mobile Menu
+        // =======================
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('show');
+            document.body.style.overflow = menu.classList.contains('show') ? 'hidden' : 'auto';
+        }
+        
+        // =======================
+        // Search Functionality
+        // =======================
+        function openSearch() {
+            document.getElementById('search-modal').classList.add('show');
+            document.body.style.overflow = 'hidden';
+            setTimeout(() => {
+                document.getElementById('search-input').focus();
+            }, 100);
+        }
+        
+        function closeSearch() {
+            document.getElementById('search-modal').classList.remove('show');
+            document.body.style.overflow = 'auto';
+        }
+        
+        function performSearch(query) {
+            const resultsDiv = document.getElementById('search-results');
+            if (!query) {
+                resultsDiv.innerHTML = '<p class="text-gray-500 text-sm">Start typing to search...</p>';
+                return;
+            }
+            
+            const results = [];
+            Object.entries(allTools).forEach(([category, tools]) => {
+                tools.forEach(tool => {
+                    if (tool.toLowerCase().includes(query.toLowerCase())) {
+                        results.push({ tool, category });
+                    }
+                });
+            });
+            
+            if (results.length === 0) {
+                resultsDiv.innerHTML = `
+                    <div class="text-center py-8">
+                        <p class="text-gray-500">No tools found for "${query}"</p>
+                        <p class="text-gray-400 text-sm mt-2">Try a different search term</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            const html = results.map(({ tool, category }) => `
+                <a href="#${tool.toLowerCase().replace(/\s+/g, '-')}" class="block p-4 hover:bg-gray-50 rounded-xl transition-colors" onclick="closeSearch()">
+                    <p class="font-semibold text-gray-900">${tool}</p>
+                    <p class="text-sm text-gray-500">${category.charAt(0).toUpperCase() + category.slice(1)}</p>
+                </a>
+            `).join('');
+            
+            resultsDiv.innerHTML = html;
+        }
+        
+        // =======================
+        // FAQ Accordion
+        // =======================
+        function toggleFAQ(button) {
+            const faqItem = button.parentElement;
+            const isOpen = faqItem.classList.contains('open');
+            
+            // Close all other FAQ items
+            document.querySelectorAll('.faq-item').forEach(item => {
+                item.classList.remove('open');
+            });
+            
+            // Toggle current item
+            if (!isOpen) {
+                faqItem.classList.add('open');
+            }
+        }
+        
+        // =======================
+        // Newsletter
+        // =======================
+        function subscribeNewsletter() {
+            const email = document.getElementById('newsletter-email').value;
+            if (email) {
+                showToast('Thanks for subscribing! Check your email.', 'success');
+                document.getElementById('newsletter-email').value = '';
+            }
+        }
+        
+        // =======================
+        // Toast Notifications
+        // =======================
+        function showToast(message, type = 'info') {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            
+            toast.className = `toast ${type}`;
+            toast.innerHTML = `
+                <span>${message}</span>
+                <button onclick="this.parentElement.remove()" class="ml-auto text-white/80 hover:text-white">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            `;
+            
+            container.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.style.animation = 'slideOut 0.3s ease forwards';
+                setTimeout(() => toast.remove(), 300);
+            }, 5000);
+        }
+        
+        // =======================
+        // Cookie Consent
+        // =======================
+        function showCookieBanner() {
+            const accepted = localStorage.getItem('cookiesAccepted');
+            if (!accepted) {
+                setTimeout(() => {
+                    document.getElementById('cookie-banner').classList.add('show');
+                }, 2000);
+            }
+        }
+        
+        function acceptCookies() {
+            localStorage.setItem('cookiesAccepted', 'true');
+            document.getElementById('cookie-banner').classList.remove('show');
+        }
+        
+        // =======================
+        // Contact Form Handler
+        // =======================
+        function handleContactForm(event) {
+            event.preventDefault();
+            showToast('Message sent successfully! We\'ll get back to you soon.', 'success');
+            setTimeout(() => {
+                closeModal();
+            }, 2000);
+        }
+        
+        // =======================
+        // Dropdown Menu Management
+        // =======================
+        function setupDropdowns() {
+            const dropdownTriggers = document.querySelectorAll('.dropdown-trigger');
+            
+            dropdownTriggers.forEach(trigger => {
+                const dropdown = trigger.querySelector('.dropdown-menu');
+                const arrow = trigger.querySelector('.dropdown-arrow');
+                
+                trigger.addEventListener('mouseenter', () => {
+                    dropdown.classList.add('show');
+                    arrow.style.transform = 'rotate(180deg)';
+                });
+                
+                trigger.addEventListener('mouseleave', () => {
+                    dropdown.classList.remove('show');
+                    arrow.style.transform = 'rotate(0deg)';
+                });
+            });
+        }
+        
+        // =======================
+        // Keyboard Shortcuts
+        // =======================
+        function initKeyboardShortcuts() {
+            document.addEventListener('keydown', (e) => {
+                // Cmd/Ctrl + K for search
+                if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+                    e.preventDefault();
+                    openSearch();
+                }
+                
+                // Escape to close modals
+                if (e.key === 'Escape') {
+                    document.querySelectorAll('.modal.show').forEach(modal => {
+                        modal.classList.remove('show');
+                    });
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        }
+        
+        // =======================
+        // Smooth Scroll
+        // =======================
+        function initSmoothScroll() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const href = this.getAttribute('href');
+                    if (href !== '#' && document.querySelector(href)) {
+                        e.preventDefault();
+                        document.querySelector(href).scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        }
+        
+        // =======================
+        // Initialization
+        // =======================
+        document.addEventListener('DOMContentLoaded', function() {
+            setupDropdowns();
+            initKeyboardShortcuts();
+            initSmoothScroll();
+            showCookieBanner();
+            
+            console.log('ScribbleTools initialized successfully! 🚀');
+        });
+        
+        // Close modals when clicking outside
+        document.querySelectorAll('.modal').forEach(modal => {
+            modal.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.classList.remove('show');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
