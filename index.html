@@ -1712,6 +1712,94 @@
             font-size: 0.95rem;
         }
 
+        /* Who Can Use Section Styles */
+        .who-can-use-section {
+            padding: 4rem 0;
+            margin: 3rem 0;
+        }
+
+        .section-header-center {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header-center h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-header-center p {
+            font-size: 1.1rem;
+            color: #64748b;
+        }
+
+        .use-cases-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .use-case-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .use-case-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .use-case-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .use-case-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.2);
+            border-color: rgba(102, 126, 234, 0.3);
+        }
+
+        .use-case-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1;
+        }
+
+        .use-case-card h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .use-case-card p {
+            color: #475569;
+            line-height: 1.7;
+            font-size: 1rem;
+            margin: 0;
+        }
+
         /* Mobile Optimizations */
         @media (max-width: 768px) {
             body::before {
@@ -2022,6 +2110,42 @@
                 font-size: 0.9rem;
             }
 
+            /* Who Can Use Mobile */
+            .who-can-use-section {
+                padding: 3rem 0;
+                margin: 2rem 0;
+            }
+
+            .section-header-center h2 {
+                font-size: 2rem;
+            }
+
+            .section-header-center p {
+                font-size: 1rem;
+            }
+
+            .use-cases-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .use-case-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .use-case-icon {
+                font-size: 3rem;
+                margin-bottom: 1rem;
+            }
+
+            .use-case-card h3 {
+                font-size: 1.2rem;
+            }
+
+            .use-case-card p {
+                font-size: 0.95rem;
+            }
+
             /* Footer Mobile */
             footer {
                 margin-top: 3rem;
@@ -2322,6 +2446,39 @@
 
             .faq-item.active .faq-answer {
                 padding: 0 1.2rem 1rem;
+            }
+
+            /* Who Can Use Extra Small */
+            .who-can-use-section {
+                padding: 2rem 0;
+            }
+
+            .section-header-center h2 {
+                font-size: 1.6rem;
+            }
+
+            .section-header-center p {
+                font-size: 0.9rem;
+            }
+
+            .use-cases-grid {
+                gap: 1rem;
+            }
+
+            .use-case-card {
+                padding: 1.5rem 1.2rem;
+            }
+
+            .use-case-icon {
+                font-size: 2.5rem;
+            }
+
+            .use-case-card h3 {
+                font-size: 1.1rem;
+            }
+
+            .use-case-card p {
+                font-size: 0.9rem;
             }
         }
 
@@ -2867,6 +3024,48 @@
         </div>
         </div><!-- End sections-container -->
     </div>
+
+    <!-- Who Can Use Section -->
+    <section class="who-can-use-section">
+        <div class="container">
+            <div class="section-header-center">
+                <h2>Who Can Use Our Tools?</h2>
+                <p>Designed for everyone who needs quick, accurate calculations</p>
+            </div>
+            <div class="use-cases-grid">
+                <div class="use-case-card">
+                    <div class="use-case-icon">👨‍💼</div>
+                    <h3>Professionals</h3>
+                    <p>Financial advisors, accountants, and business analysts for quick calculations and client presentations.</p>
+                </div>
+                <div class="use-case-card">
+                    <div class="use-case-icon">🎓</div>
+                    <h3>Students</h3>
+                    <p>From high school to university, solve math problems, calculate grades, and manage academic planning.</p>
+                </div>
+                <div class="use-case-card">
+                    <div class="use-case-icon">🏠</div>
+                    <h3>Homeowners</h3>
+                    <p>Calculate mortgages, property taxes, home equity, and renovation budgets with ease.</p>
+                </div>
+                <div class="use-case-card">
+                    <div class="use-case-icon">💪</div>
+                    <h3>Fitness Enthusiasts</h3>
+                    <p>Track calories, calculate BMI, monitor body fat percentage, and plan nutrition goals.</p>
+                </div>
+                <div class="use-case-card">
+                    <div class="use-case-icon">💼</div>
+                    <h3>Small Business Owners</h3>
+                    <p>Manage finances, calculate taxes, analyze investments, and plan business growth.</p>
+                </div>
+                <div class="use-case-card">
+                    <div class="use-case-icon">✍️</div>
+                    <h3>Content Creators</h3>
+                    <p>Word count, character limits, text formatting, and image processing tools for your content.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- FAQ Section -->
     <section class="faq-section">
