@@ -523,6 +523,7 @@
             background: linear-gradient(135deg, #667eea, #764ba2);
             -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
             -webkit-mask-composite: xor;
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
             mask-composite: exclude;
             opacity: 0;
             transition: opacity 0.4s;
@@ -957,6 +958,7 @@
                 overflow-x: auto;
                 gap: 0.8rem;
                 padding-bottom: 0.5rem;
+                margin-bottom: 1rem;
             }
 
             .collapsed-sections::-webkit-scrollbar {
@@ -974,12 +976,32 @@
             }
 
             .section.collapsed-sidebar {
-                min-width: 200px;
+                min-width: 180px;
                 flex-shrink: 0;
             }
 
             .section-header {
                 min-height: 180px;
+            }
+
+            .section.expanded .section-header {
+                flex-wrap: wrap;
+                padding: 1.2rem 1.5rem;
+            }
+
+            .section.expanded .section-title-content {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+
+            .section.expanded .section-title-content > div {
+                font-size: 1.4rem;
+            }
+
+            .tools-grid {
+                grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+                gap: 1rem;
+                padding: 1.5rem;
             }
         }
 
@@ -989,26 +1011,66 @@
             }
 
             .section.collapsed-sidebar .section-header {
-                height: 100px;
-                min-height: 100px;
+                height: auto;
+                min-height: 110px;
             }
 
             .section.collapsed-sidebar .section-icon {
-                width: 40px;
-                height: 40px;
+                width: 36px;
+                height: 36px;
+            }
+
+            .section.collapsed-sidebar .section-title-content {
+                padding: 0.8rem 0.6rem;
+                gap: 0.5rem;
             }
 
             .section.collapsed-sidebar .section-title-content > div {
-                font-size: 0.95rem;
+                font-size: 0.85rem;
             }
 
             .section.collapsed-sidebar .tool-count {
-                padding: 6px 14px;
-                font-size: 0.8rem;
+                padding: 5px 12px;
+                font-size: 0.75rem;
             }
 
             .section.collapsed-sidebar {
-                min-width: 150px;
+                min-width: 130px;
+            }
+
+            .section.expanded .section-header {
+                padding: 1rem;
+                min-height: 80px;
+            }
+
+            .section.expanded .section-title-content > div {
+                font-size: 1.2rem;
+            }
+
+            .section.expanded .section-icon {
+                width: 48px;
+                height: 48px;
+            }
+
+            .section.expanded .tool-count {
+                font-size: 0.85rem;
+                padding: 8px 16px;
+            }
+
+            .section.expanded .toggle-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.5rem;
+            }
+
+            .tools-grid {
+                grid-template-columns: 1fr;
+                gap: 0.8rem;
+                padding: 1rem;
+            }
+
+            .tool-item {
+                padding: 1.2rem 1rem;
             }
         }
 
@@ -1537,6 +1599,116 @@
             animation: fadeIn 0.5s ease-out;
         }
 
+        /* FAQ Section Styles */
+        .faq-section {
+            padding: 4rem 0;
+            margin: 4rem 0 0;
+        }
+
+        .faq-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .faq-header h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .faq-header p {
+            font-size: 1.1rem;
+            color: #64748b;
+        }
+
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(102, 126, 234, 0.15);
+            border-color: rgba(102, 126, 234, 0.3);
+        }
+
+        .faq-question {
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: rgba(102, 126, 234, 0.05);
+        }
+
+        .faq-question h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin: 0;
+            flex: 1;
+            padding-right: 1rem;
+        }
+
+        .faq-icon {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            font-weight: 300;
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+            padding: 0 2rem;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+            padding: 0 2rem 1.5rem;
+        }
+
+        .faq-answer p {
+            margin: 0;
+            color: #475569;
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
         /* Mobile Optimizations */
         @media (max-width: 768px) {
             body::before {
@@ -1576,7 +1748,6 @@
             .logo-icon {
                 width: 40px;
                 height: 40px;
-                font-size: 1.3rem;
             }
 
             .logo-text h1 {
@@ -1584,7 +1755,7 @@
             }
 
             .logo-text p {
-                font-size: 0.7rem;
+                font-size: 0.65rem;
             }
 
             .hamburger {
@@ -1647,6 +1818,89 @@
                 border-bottom: none !important;
                 font-weight: 700 !important;
                 box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+            }
+
+            /* Hero Section Mobile */
+            .hero-banner {
+                padding: 3rem 1.5rem;
+                border-radius: 20px;
+                margin-bottom: 2rem;
+            }
+
+            .hero-banner h2 {
+                font-size: 2rem;
+                margin-bottom: 1rem;
+            }
+
+            .hero-banner p {
+                font-size: 1rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .hero-features {
+                gap: 1rem;
+                flex-direction: column;
+            }
+
+            .hero-feature {
+                font-size: 0.95rem;
+            }
+
+            .feature-icon {
+                width: 36px;
+                height: 36px;
+            }
+
+            /* Stats Bar Mobile */
+            .stats-bar {
+                padding: 2rem 1.5rem;
+                margin-bottom: 2rem;
+                border-radius: 16px;
+                gap: 1.5rem;
+            }
+
+            .stat-item {
+                padding: 0.5rem;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .stat-label {
+                font-size: 0.85rem;
+            }
+
+            /* Quick Nav Mobile */
+            .quick-nav {
+                padding: 1.5rem;
+                margin-bottom: 2rem;
+                border-radius: 16px;
+                gap: 0.8rem;
+            }
+
+            .quick-nav-btn {
+                padding: 0.7rem 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            /* Search Box Mobile */
+            .search-box {
+                padding: 2rem 1.5rem;
+                margin-bottom: 2rem;
+                border-radius: 16px;
+            }
+
+            .search-box input {
+                padding: 1rem 1rem 1rem 3rem;
+                font-size: 1rem;
+                border-radius: 12px;
+            }
+
+            .search-icon {
+                left: 2rem;
+                top: 2.8rem;
+                font-size: 1.2rem;
             }
 
             .cta-button:hover {
@@ -1834,6 +2088,43 @@
                 font-size: 0.85rem;
             }
 
+            /* FAQ Mobile */
+            .faq-section {
+                padding: 3rem 0;
+                margin: 2rem 0 0;
+            }
+
+            .faq-header h2 {
+                font-size: 2rem;
+            }
+
+            .faq-header p {
+                font-size: 1rem;
+            }
+
+            .faq-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .faq-question {
+                padding: 1.2rem 1.5rem;
+            }
+
+            .faq-question h3 {
+                font-size: 1rem;
+            }
+
+            .faq-icon {
+                width: 28px;
+                height: 28px;
+                font-size: 1.3rem;
+            }
+
+            .faq-item.active .faq-answer {
+                padding: 0 1.5rem 1.2rem;
+            }
+
             /* Back to Top Mobile */
             .back-to-top {
                 bottom: 20px;
@@ -1841,6 +2132,193 @@
                 width: 50px;
                 height: 50px;
                 font-size: 1.2rem;
+            }
+        }
+
+        /* Extra Small Devices (< 480px) */
+        @media (max-width: 480px) {
+            /* Header */
+            .logo-icon {
+                width: 36px;
+                height: 36px;
+            }
+
+            .logo-text h1 {
+                font-size: 1.2rem;
+            }
+
+            .logo-text p {
+                font-size: 0.6rem;
+            }
+
+            /* Hero */
+            .hero-banner {
+                padding: 2rem 1rem;
+            }
+
+            .hero-banner h2 {
+                font-size: 1.6rem;
+            }
+
+            .hero-banner p {
+                font-size: 0.9rem;
+            }
+
+            .hero-feature {
+                font-size: 0.85rem;
+            }
+
+            .feature-icon {
+                width: 32px;
+                height: 32px;
+                font-size: 1rem;
+            }
+
+            /* Stats */
+            .stats-bar {
+                padding: 1.5rem 1rem;
+                gap: 1rem;
+            }
+
+            .stat-number {
+                font-size: 1.8rem;
+            }
+
+            .stat-label {
+                font-size: 0.75rem;
+            }
+
+            /* Quick Nav */
+            .quick-nav {
+                padding: 1rem;
+            }
+
+            .quick-nav-btn {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.85rem;
+            }
+
+            /* Search */
+            .search-box {
+                padding: 1.5rem 1rem;
+            }
+
+            .search-box input {
+                padding: 0.9rem 0.9rem 0.9rem 2.8rem;
+                font-size: 0.95rem;
+            }
+
+            .search-icon {
+                left: 1.5rem;
+                top: 2.3rem;
+                font-size: 1.1rem;
+            }
+
+            /* Sections */
+            .section.collapsed-sidebar {
+                min-width: 110px;
+            }
+
+            .section.collapsed-sidebar .section-icon {
+                width: 32px;
+                height: 32px;
+            }
+
+            .section.collapsed-sidebar .section-title-content > div {
+                font-size: 0.75rem;
+            }
+
+            .section.collapsed-sidebar .tool-count {
+                padding: 4px 10px;
+                font-size: 0.7rem;
+            }
+
+            .section.expanded .section-header {
+                padding: 0.8rem;
+            }
+
+            .section.expanded .section-title-content > div {
+                font-size: 1.1rem;
+            }
+
+            .section.expanded .section-icon {
+                width: 44px;
+                height: 44px;
+            }
+
+            .section.expanded .tool-count {
+                font-size: 0.8rem;
+                padding: 6px 14px;
+            }
+
+            .section.expanded .toggle-icon {
+                width: 36px;
+                height: 36px;
+                font-size: 1.3rem;
+            }
+
+            /* Tool Items */
+            .tool-item {
+                padding: 1rem 0.8rem;
+                font-size: 0.85rem;
+            }
+
+            /* Footer */
+            .footer-content {
+                padding: 0 1rem;
+            }
+
+            .footer-logo-icon {
+                width: 32px;
+                height: 32px;
+            }
+
+            .footer-logo h3 {
+                font-size: 1.2rem;
+            }
+
+            .footer-section h3 {
+                font-size: 1rem;
+            }
+
+            .footer-bottom p,
+            .footer-links a {
+                font-size: 0.8rem;
+            }
+
+            /* FAQ Extra Small */
+            .faq-section {
+                padding: 2rem 0;
+            }
+
+            .faq-header h2 {
+                font-size: 1.6rem;
+            }
+
+            .faq-header p {
+                font-size: 0.9rem;
+            }
+
+            .faq-question {
+                padding: 1rem 1.2rem;
+            }
+
+            .faq-question h3 {
+                font-size: 0.95rem;
+            }
+
+            .faq-icon {
+                width: 26px;
+                height: 26px;
+                font-size: 1.2rem;
+            }
+
+            .faq-answer p {
+                font-size: 0.9rem;
+            }
+
+            .faq-item.active .faq-answer {
+                padding: 0 1.2rem 1rem;
             }
         }
 
@@ -2018,13 +2496,13 @@
 
         <!-- Quick Navigation -->
         <div class="quick-nav">
-            <a href="#financial" class="quick-nav-btn">💰 Financial</a>
-            <a href="#health" class="quick-nav-btn">🏥 Health</a>
-            <a href="#math" class="quick-nav-btn">🧮 Math</a>
-            <a href="#text" class="quick-nav-btn">📝 Text</a>
-            <a href="#image" class="quick-nav-btn">🖼️ Image</a>
-            <a href="#student" class="quick-nav-btn">🎓 Student</a>
-            <a href="#other" class="quick-nav-btn">🔧 Other</a>
+            <a href="#financial" class="quick-nav-btn">Financial</a>
+            <a href="#health" class="quick-nav-btn">Health</a>
+            <a href="#math" class="quick-nav-btn">Math</a>
+            <a href="#text" class="quick-nav-btn">Text</a>
+            <a href="#image" class="quick-nav-btn">Image</a>
+            <a href="#student" class="quick-nav-btn">Student</a>
+            <a href="#other" class="quick-nav-btn">Other</a>
         </div>
 
         <!-- Search Box -->
@@ -2041,7 +2519,7 @@
             <div class="section-header" onclick="toggleSection(this)">
                 <div class="section-title-content">
                     <img src="images/financial-tools-icon.webp" alt="Financial Tools" class="section-icon">
-                    <div>💰 Financial Tools</div>
+                    <div>Financial Tools</div>
                     <div class="tool-count">30 Tools</div>
                 </div>
                 <span class="toggle-icon">−</span>
@@ -2085,7 +2563,7 @@
             <div class="section-header" onclick="toggleSection(this)">
                 <div class="section-title-content">
                     <img src="images/health-tools-icon.webp" alt="Health Tools" class="section-icon">
-                    <div>🏥 Health & Fitness</div>
+                    <div>Health & Fitness</div>
                     <div class="tool-count">46 Tools</div>
                 </div>
                 <span class="toggle-icon">−</span>
@@ -2144,7 +2622,7 @@
             <div class="section-header" onclick="toggleSection(this)">
                 <div class="section-title-content">
                     <img src="images/math-tools-icon.webp" alt="Math Tools" class="section-icon">
-                    <div>🧮 Math Tools</div>
+                    <div>Math Tools</div>
                     <div class="tool-count">33 Tools</div>
                 </div>
                 <span class="toggle-icon">−</span>
@@ -2191,7 +2669,7 @@
             <div class="section-header" onclick="toggleSection(this)">
                 <div class="section-title-content">
                     <img src="images/text-tools-icon.webp" alt="Text Tools" class="section-icon">
-                    <div>📝 Text Tools</div>
+                    <div>Text Tools</div>
                     <div class="tool-count">45 Tools</div>
                 </div>
                 <span class="toggle-icon">−</span>
@@ -2251,7 +2729,7 @@
             <div class="section-header" onclick="toggleSection(this)">
                 <div class="section-title-content">
                     <img src="images/image-tools-icon.webp" alt="Image Tools" class="section-icon">
-                    <div>🖼️ Image Tools</div>
+                    <div>Image Tools</div>
                     <div class="tool-count">48 Tools</div>
                 </div>
                 <span class="toggle-icon">−</span>
@@ -2314,7 +2792,7 @@
             <div class="section-header" onclick="toggleSection(this)">
                 <div class="section-title-content">
                     <img src="images/student-tools-icon.webp" alt="Student Tools" class="section-icon">
-                    <div>🎓 Student Tools</div>
+                    <div>Student Tools</div>
                     <div class="tool-count">47 Tools</div>
                 </div>
                 <span class="toggle-icon">−</span>
@@ -2371,7 +2849,7 @@
             <div class="section-header" onclick="toggleSection(this)">
                 <div class="section-title-content">
                     <img src="images/other-tools-icon.webp" alt="Other Tools" class="section-icon">
-                    <div>🔧 Other Tools</div>
+                    <div>Other Tools</div>
                     <div class="tool-count">5 Tools</div>
                 </div>
                 <span class="toggle-icon">−</span>
@@ -2387,6 +2865,72 @@
         </div><!-- End sections-container -->
     </div>
 
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="faq-header">
+                <h2>Frequently Asked Questions</h2>
+                <p>Everything you need to know about our calculator suite</p>
+            </div>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>Are all tools completely free to use?</h3>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! All 250+ calculators and tools are 100% free to use with no hidden charges, subscriptions, or premium tiers. We believe in providing accessible tools for everyone.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>Do I need to create an account?</h3>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>No account is required. You can access and use all tools instantly without any registration or login. Your privacy is our priority.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>Is my data stored or tracked?</h3>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We don't store any of your calculations or personal data. All computations happen directly in your browser, ensuring complete privacy and security.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>Can I use these tools on mobile devices?</h3>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutely! All our tools are fully responsive and optimized for mobile, tablet, and desktop devices. Use them anywhere, anytime.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>How accurate are the calculations?</h3>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Our calculators use industry-standard formulas and are thoroughly tested for accuracy. However, for critical financial or health decisions, we recommend consulting with professionals.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>Can I suggest new tools or features?</h3>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We'd love to hear from you! Contact us through our feedback form or email us at support@shramkavach.com with your suggestions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Back to Top Button -->
     <div class="back-to-top" id="backToTop" onclick="scrollToTop()">
         ↑
@@ -2397,15 +2941,15 @@
             <div class="footer-section">
                 <div class="footer-brand">
                     <div class="footer-logo">
-                        <div class="footer-logo-icon">🛠️</div>
+                        <div class="footer-logo-icon">ST</div>
                         <h3>ShramTools</h3>
                     </div>
                     <p>A comprehensive suite of 250+ free online calculators and tools. Part of the ShramKavach ecosystem - empowering productivity and simplifying complex calculations.</p>
                 </div>
                 <!-- Social links will be added once handles are created
                 <div class="social-links">
-                    <a href="#" title="Twitter">𝕏</a>
-                    <a href="#" title="GitHub">⚡</a>
+                    <a href="#" title="Twitter">X</a>
+                    <a href="#" title="GitHub">GH</a>
                     <a href="#" title="LinkedIn">in</a>
                 </div>
                 -->
@@ -2413,18 +2957,18 @@
             <div class="footer-section">
                 <h3>Categories</h3>
                 <ul>
-                    <li><a href="#financial">💰 Financial Tools</a></li>
-                    <li><a href="#health">🏥 Health & Fitness</a></li>
-                    <li><a href="#math">🧮 Math Tools</a></li>
-                    <li><a href="#text">📝 Text Tools</a></li>
-                    <li><a href="#image">🖼️ Image Tools</a></li>
+                    <li><a href="#financial">Financial Tools</a></li>
+                    <li><a href="#health">Health & Fitness</a></li>
+                    <li><a href="#math">Math Tools</a></li>
+                    <li><a href="#text">Text Tools</a></li>
+                    <li><a href="#image">Image Tools</a></li>
                 </ul>
             </div>
             <div class="footer-section">
                 <h3>Resources</h3>
                 <ul>
-                    <li><a href="#student">🎓 Student Tools</a></li>
-                    <li><a href="#other">🔧 Other Tools</a></li>
+                    <li><a href="#student">Student Tools</a></li>
+                    <li><a href="#other">Other Tools</a></li>
                     <li><a href="https://shramkavach.com/updates">Updates</a></li>
                     <li><a href="https://shramkavach.com/tutorials">Tutorials</a></li>
                     <li><a href="https://shramkavach.com/support">Support</a></li>
@@ -2442,7 +2986,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 <a href="https://shramkavach.com">ShramKavach.com</a> - All rights reserved. Made with ❤️ for productivity.</p>
+            <p>&copy; 2025 <a href="https://shramkavach.com">ShramKavach.com</a> - All rights reserved. Made with love for productivity.</p>
             <div class="footer-links">
                 <a href="https://shramkavach.com/sitemap">Sitemap</a>
                 <a href="https://shramkavach.com/help">Help Center</a>
@@ -2607,6 +3151,22 @@
                 top: 0,
                 behavior: 'smooth'
             });
+        }
+
+        // FAQ Toggle functionality
+        function toggleFAQ(questionElement) {
+            const faqItem = questionElement.closest('.faq-item');
+            const wasActive = faqItem.classList.contains('active');
+            
+            // Close all other FAQ items
+            document.querySelectorAll('.faq-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Toggle current item
+            if (!wasActive) {
+                faqItem.classList.add('active');
+            }
         }
 
         // Tool item click handler (placeholder - you'll connect these later)
