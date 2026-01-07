@@ -493,8 +493,8 @@
                 <a href="https://linkedin.com/company/shramtools" class="social-link" target="_blank" rel="noopener noreferrer">
     
     <script>
-        // Replace this URL with your Google Apps Script Web App URL
-        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxl5f7-rD-bLhJhCdjkd6LfNkzJscr76N1t8MLliLEsRs9QBu9wmwRK2AEXXLPQk_IQrw/exec';
+        // Replace this URL with your NEW Google Apps Script Web App URL after deployment
+        const GOOGLE_SCRIPT_URL = 'YOUR_NEW_DEPLOYMENT_URL_HERE';
         
         function handleFormSubmit(event) {
             event.preventDefault();
@@ -503,75 +503,43 @@
             const submitBtn = event.target.querySelector('.submit-btn');
             const form = event.target;
             
-            // Get form data
-            const formData = new FormData(form);
-            const data = {
-                name: formData.get('name'),
-                email: formData.get('email'),
-                inquiryType: formData.get('inquiryType'),
-                subject: formData.get('subject'),
-                message: formData.get('message'),
-                toolName: formData.get('toolName') || '',
-                timestamp: new Date().toISOString()
-            };
-            
-            // Validate required fields
-            if (!data.name || !data.email || !data.inquiryType || !data.subject || !data.message) {
-                formMessage.className = 'form-message error';
-                formMessage.style.display = 'block';
-                formMessage.textContent = 'Please fill in all required fields.';
-                return;
-            }
-            
             // Disable submit button
             submitBtn.disabled = true;
             submitBtn.textContent = 'Sending...';
             
-            console.log('Submitting form data:', data);
+            // Get form data
+            const formData = new FormData(form);
             
-            // Send data to Google Apps Script using URLSearchParams for better compatibility
+            // Build URL with parameters
             const params = new URLSearchParams();
-            params.append('name', data.name);
-            params.append('email', data.email);
-            params.append('inquiryType', data.inquiryType);
-            params.append('subject', data.subject);
-            params.append('message', data.message);
-            params.append('toolName', data.toolName);
-            params.append('timestamp', data.timestamp);
+            params.append('name', formData.get('name'));
+            params.append('email', formData.get('email'));
+            params.append('inquiryType', formData.get('inquiryType'));
+            params.append('subject', formData.get('subject'));
+            params.append('message', formData.get('message'));
+            params.append('toolName', formData.get('toolName') || '');
             
-            // Use redirect method for better compatibility with Google Apps Script
             const url = GOOGLE_SCRIPT_URL + '?' + params.toString();
             
-            fetch(url, {
-                redirect: 'follow'
-            })
-            .then(response => {
-                console.log('Response received:', response);
-                // With no-cors, we can't read the response, but if we got here, it likely worked
-                // Show success message
+            // Send request
+            fetch(url, { redirect: 'follow' })
+            .then(response => response.text())
+            .then(data => {
+                console.log('Response:', data);
+                // Show success
                 formMessage.className = 'form-message success';
                 formMessage.style.display = 'block';
-                formMessage.textContent = 'Thank you! Your message has been sent successfully. We will get back to you soon.';
-                
-                // Reset form
+                formMessage.textContent = 'Thank you! Your message has been sent successfully.';
                 form.reset();
-                
-                // Scroll to message
-                formMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                
-                // Hide message after 8 seconds
-                setTimeout(() => {
-                    formMessage.style.display = 'none';
-                }, 8000);
+                setTimeout(() => { formMessage.style.display = 'none'; }, 8000);
             })
             .catch(error => {
                 console.error('Error:', error);
                 formMessage.className = 'form-message error';
                 formMessage.style.display = 'block';
-                formMessage.textContent = 'Sorry, there was an error sending your message. Please try again later.';
+                formMessage.textContent = 'Error sending message. Please try again.';
             })
             .finally(() => {
-                // Re-enable submit button
                 submitBtn.disabled = false;
                 submitBtn.textContent = 'Send Message';
             });
