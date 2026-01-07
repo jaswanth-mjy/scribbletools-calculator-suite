@@ -32,7 +32,7 @@
 const SHEET_NAME = 'Submissions';
 
 // Your email address for notifications (set to null to disable)
-const NOTIFICATION_EMAIL = 'your-email@example.com'; // Change this to your email
+const NOTIFICATION_EMAIL = 'shramkavach@gmail.com'; // Change this to your email
 
 // Enable/disable auto-reply to users
 const SEND_AUTO_REPLY = true; // Set to false to disable
