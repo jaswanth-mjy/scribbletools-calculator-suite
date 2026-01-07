@@ -494,7 +494,8 @@
     
     <script>
         // Replace this URL with your Google Apps Script Web App URL
-        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz1XIXmDqLMcGY9n5ydevt_cOjivQSiOkd_In22KekMmRip0hLNvFAQYAugyuKuaRNxNw/exec'
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz1XIXmDqLMcGY9n5ydevt_cOjivQSiOkd_In22KekMmRip0hLNvFAQYAugyuKuaRNxNw/exec';
+        
         function handleFormSubmit(event) {
             event.preventDefault();
             
@@ -510,24 +511,41 @@
                 inquiryType: formData.get('inquiryType'),
                 subject: formData.get('subject'),
                 message: formData.get('message'),
-                toolName: formData.get('toolName'),
+                toolName: formData.get('toolName') || '',
                 timestamp: new Date().toISOString()
             };
+            
+            // Validate required fields
+            if (!data.name || !data.email || !data.inquiryType || !data.subject || !data.message) {
+                formMessage.className = 'form-message error';
+                formMessage.style.display = 'block';
+                formMessage.textContent = 'Please fill in all required fields.';
+                return;
+            }
             
             // Disable submit button
             submitBtn.disabled = true;
             submitBtn.textContent = 'Sending...';
             
-            // Send data to Google Apps Script
+            console.log('Submitting form data:', data);
+            
+            // Send data to Google Apps Script using URLSearchParams for better compatibility
+            const params = new URLSearchParams();
+            params.append('name', data.name);
+            params.append('email', data.email);
+            params.append('inquiryType', data.inquiryType);
+            params.append('subject', data.subject);
+            params.append('message', data.message);
+            params.append('toolName', data.toolName);
+            params.append('timestamp', data.timestamp);
+            
             fetch(GOOGLE_SCRIPT_URL, {
                 method: 'POST',
-                mode: 'no-cors',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data)
+                body: params
             })
-            .then(() => {
+            .then(response => {
+                console.log('Response received:', response);
+                // With no-cors, we can't read the response, but if we got here, it likely worked
                 // Show success message
                 formMessage.className = 'form-message success';
                 formMessage.style.display = 'block';

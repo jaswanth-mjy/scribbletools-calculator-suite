@@ -67,52 +67,90 @@ https://shramtools.shramkavach.com
  */
 function doPost(e) {
   try {
-    // Check if request has data
-    if (!e || !e.postData || !e.postData.contents) {
-      throw new Error('No data received');
+    Logger.log('Received POST request');
+    
+    let data = {};
+    
+    // Try to get data from parameters (URL-encoded form data)
+    if (e.parameter) {
+      Logger.log('Parsing URL-encoded data');
+      data = {
+        name: e.parameter.name || '',
+        email: e.parameter.email || '',
+        inquiryType: e.parameter.inquiryType || '',
+        subject: e.parameter.subject || '',
+        message: e.parameter.message || '',
+        toolName: e.parameter.toolName || '',
+        timestamp: e.parameter.timestamp || new Date().toISOString()
+      };
+    }
+    // Fallback to JSON parsing
+    else if (e.postData && e.postData.contents) {
+      Logger.log('Parsing JSON data');
+      try {
+        data = JSON.parse(e.postData.contents);
+      } catch (parseError) {
+        Logger.log('JSON parse error: ' + parseError.toString());
+      }
     }
     
-    // Parse the incoming data
-    let data;
-    try {
-      data = JSON.parse(e.postData.contents);
-    } catch (parseError) {
-      // Try to parse as URL-encoded data
-      data = parseFormData(e);
-    }
+    Logger.log('Parsed data: ' + JSON.stringify(data));
     
     // Validate required fields
-    if (!data.name || !data.email || !data.subject) {
-      throw new Error('Missing required fields');
+    if (!data.name || !data.email || !data.subject || !data.message) {
+      throw new Error('Missing required fields: ' + JSON.stringify({
+        hasName: !!data.name,
+        hasEmail: !!data.email,
+        hasSubject: !!data.subject,
+        hasMessage: !!data.message
+      }));
     }
     
     // Get or create the spreadsheet sheet
     const sheet = getOrCreateSheet();
+    Logger.log('Got sheet: ' + sheet.getName());
     
     // Add data to sheet
     addDataToSheet(sheet, data);
+    Logger.log('Data added to sheet');
     
     // Send notification email to admin
     if (NOTIFICATION_EMAIL && NOTIFICATION_EMAIL !== 'your-email@example.com') {
-      sendNotificationEmail(data);
+      try {
+        sendNotificationEmail(data);
+        Logger.log('Notification email sent');
+      } catch (emailError) {
+        Logger.log('Email notification error: ' + emailError.toString());
+      }
     }
     
     // Send auto-reply to user
     if (SEND_AUTO_REPLY && data.email) {
-      sendAutoReply(data);
+      try {
+        sendAutoReply(data);
+        Logger.log('Auto-reply sent');
+      } catch (replyError) {
+        Logger.log('Auto-reply error: ' + replyError.toString());
+      }
     }
     
     // Return success response
     return ContentService.createTextOutput(JSON.stringify({
       status: 'success',
-      message: 'Form submitted successfully'
+      message: 'Form submitted successfully',
+      data: data
     })).setMimeType(ContentService.MimeType.JSON);
     
   } catch (error) {
     // Log error with details
-    Logger.log('Error processing form: ' + error.toString());
+    Logger.log('ERROR: ' + error.toString());
+    Logger.log('Stack: ' + error.stack);
+    
+    if (e && e.parameter) {
+      Logger.log('Parameters: ' + JSON.stringify(e.parameter));
+    }
     if (e && e.postData) {
-      Logger.log('Post data: ' + e.postData.contents);
+      Logger.log('Post data: ' + JSON.stringify(e.postData));
     }
     
     // Return error response
@@ -121,19 +159,6 @@ function doPost(e) {
       message: error.toString()
     })).setMimeType(ContentService.MimeType.JSON);
   }
-}
-
-/**
- * Parse form data from URL-encoded format
- */
-function parseFormData(e) {
-  const data = {};
-  if (e.parameter) {
-    Object.keys(e.parameter).forEach(key => {
-      data[key] = e.parameter[key];
-    });
-  }
-  return data;
 }
 
 /**
