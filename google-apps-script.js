@@ -66,8 +66,64 @@ https://shramtools.shramkavach.com
  * Handle POST requests from the contact form
  */
 function doPost(e) {
+  return handleRequest(e);
+}
+
+/**
+ * Handle GET requests (also processes form data via URL parameters)
+ */
+function doGet(e) {
+  // If there are parameters, treat as form submission
+  if (e && e.parameter && e.parameter.name) {
+    return handleRequest(e);
+  }
+  
+  // Otherwise show the test page
+  const html = `
+    <html>
+      <body>
+        <h1>ShramTools Contact Form API</h1>
+        <p>Status: ✅ Running</p>
+        <p>This Web App is ready to receive contact form submissions.</p>
+        <hr>
+        <h2>Test the API</h2>
+        <button onclick="testAPI()">Send Test Submission</button>
+        <div id="result"></div>
+        <script>
+          function testAPI() {
+            const params = new URLSearchParams({
+              name: 'Test User',
+              email: 'test@example.com',
+              inquiryType: 'General Question / Support',
+              subject: 'Test Submission',
+              message: 'This is a test message.',
+              toolName: 'Test Tool',
+              timestamp: new Date().toISOString()
+            });
+            
+            fetch(window.location.href + '?' + params.toString())
+            .then(response => response.text())
+            .then(data => {
+              document.getElementById('result').innerHTML = '<pre>' + data + '</pre>';
+            })
+            .catch(error => {
+              document.getElementById('result').innerHTML = '<p style="color:red;">Error: ' + error + '</p>';
+            });
+          }
+        </script>
+      </body>
+    </html>
+  `;
+  
+  return HtmlService.createHtmlOutput(html);
+}
+
+/**
+ * Main request handler for both GET and POST
+ */
+function handleRequest(e) {
   try {
-    Logger.log('Received POST request');
+    Logger.log('Received request');
     
     // Check if e exists
     if (!e) {
@@ -78,7 +134,8 @@ function doPost(e) {
       })).setMimeType(ContentService.MimeType.JSON);
     }
     
-    Logger.log('Event object keys: ' + Object.keys(e).join(', '));
+    Logger.log('Event object exists');
+    Logger.log('Event keys: ' + Object.keys(e).join(', '));
     
     let data = {};
     
@@ -193,51 +250,6 @@ function doPost(e) {
       message: error.toString()
     })).setMimeType(ContentService.MimeType.JSON);
   }
-}
-/**
- * Handle GET requests (for testing)
- */
-function doGet(e) {
-  const html = `
-    <html>
-      <body>
-        <h1>ShramTools Contact Form API</h1>
-        <p>Status: ✅ Running</p>
-        <p>This Web App is ready to receive contact form submissions.</p>
-        <hr>
-        <h2>Test the API</h2>
-        <button onclick="testAPI()">Send Test Submission</button>
-        <div id="result"></div>
-        <script>
-          function testAPI() {
-            const testData = {
-              name: 'Test User',
-              email: 'test@example.com',
-              inquiryType: 'General Question / Support',
-              subject: 'Test Submission',
-              message: 'This is a test message.',
-              toolName: 'Test Tool',
-              timestamp: new Date().toISOString()
-            };
-            
-            fetch(window.location.href, {
-              method: 'POST',
-              body: JSON.stringify(testData)
-            })
-            .then(response => response.text())
-            .then(data => {
-              document.getElementById('result').innerHTML = '<pre>' + data + '</pre>';
-            })
-            .catch(error => {
-              document.getElementById('result').innerHTML = '<p style="color:red;">Error: ' + error + '</p>';
-            });
-          }
-        </script>
-      </body>
-    </html>
-  `;
-  
-  return HtmlService.createHtmlOutput(html);
 }
 
 /**

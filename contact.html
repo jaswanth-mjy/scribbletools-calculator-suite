@@ -539,9 +539,11 @@
             params.append('toolName', data.toolName);
             params.append('timestamp', data.timestamp);
             
-            fetch(GOOGLE_SCRIPT_URL, {
-                method: 'POST',
-                body: params
+            // Use redirect method for better compatibility with Google Apps Script
+            const url = GOOGLE_SCRIPT_URL + '?' + params.toString();
+            
+            fetch(url, {
+                redirect: 'follow'
             })
             .then(response => {
                 console.log('Response received:', response);
