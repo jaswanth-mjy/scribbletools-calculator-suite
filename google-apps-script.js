@@ -16,13 +16,21 @@ function doPost(e) {
 function doGet(e) {
   // If accessed without params, show a simple test page
   if (!e || !e.parameter || Object.keys(e.parameter).length === 0) {
-    var html = '<html><body>' +
+    var html = '' +
+      '<html><body>' +
       '<h2>ShramTools Contact Form API</h2>' +
       '<p>Status: ✅ Running</p>' +
       '<hr/>' +
       '<p>Use the Web App URL with query parameters to submit:</p>' +
       '<pre>?name=Test&email=test%40example.com&inquiryType=General&subject=Hello&message=World&toolName=Demo</pre>' +
-      '<button onclick="(function(){var u=\'' + ScriptApp.getService().getUrl() + '\'+'?name=Test&email=test%40example.com&inquiryType=General&subject=Hello&message=World&toolName=Demo\'; fetch(u).then(r=>r.text()).then(t=>document.body.insertAdjacentHTML(\'beforeend\',\'<pre>\'+t+\'</pre>\'));})()">Send Test</button>' +
+      '<button id="sendTest">Send Test</button>' +
+      '<pre id="result"></pre>' +
+      '<script>' +
+      'document.getElementById("sendTest").onclick = function(){' +
+      '  var u = window.location.href + "?name=Test&email=test%40example.com&inquiryType=General&subject=Hello&message=World&toolName=Demo";' +
+      '  fetch(u).then(function(r){ return r.text(); }).then(function(t){ document.getElementById("result").textContent = t; });' +
+      '};' +
+      '</script>' +
       '</body></html>';
     return HtmlService.createHtmlOutput(html);
   }
