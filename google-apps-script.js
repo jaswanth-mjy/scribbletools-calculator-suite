@@ -73,49 +73,36 @@ function doPost(e) {
  * Handle GET requests (also processes form data via URL parameters)
  */
 function doGet(e) {
-  // If there are parameters, treat as form submission
-  if (e && e.parameter && e.parameter.name) {
-    return handleRequest(e);
+  try {
+    // Create a safe event object if undefined
+    const safeEvent = e || {};
+    
+    Logger.log('doGet called');
+    Logger.log('Event object type: ' + typeof e);
+    Logger.log('Event is null: ' + (e === null));
+    Logger.log('Event is undefined: ' + (e === undefined));
+    
+    // Always try to process as form submission first
+    // Apps Script sometimes doesn't pass the event object properly
+    return handleRequest(safeEvent);
+    
+  } catch (error) {
+    Logger.log('doGet error: ' + error.toString());
+    
+    // Show error page
+    const html = `
+      <html>
+        <body>
+          <h1>Error</h1>
+          <p style="color:red;">There was an error processing your request.</p>
+          <p>Error: ${error.toString()}</p>
+          <hr>
+          <p><a href="https://shramtools.shramkavach.com/contact.html">← Back to Contact Form</a></p>
+        </body>
+      </html>
+    `;
+    return HtmlService.createHtmlOutput(html);
   }
-  
-  // Otherwise show the test page
-  const html = `
-    <html>
-      <body>
-        <h1>ShramTools Contact Form API</h1>
-        <p>Status: ✅ Running</p>
-        <p>This Web App is ready to receive contact form submissions.</p>
-        <hr>
-        <h2>Test the API</h2>
-        <button onclick="testAPI()">Send Test Submission</button>
-        <div id="result"></div>
-        <script>
-          function testAPI() {
-            const params = new URLSearchParams({
-              name: 'Test User',
-              email: 'test@example.com',
-              inquiryType: 'General Question / Support',
-              subject: 'Test Submission',
-              message: 'This is a test message.',
-              toolName: 'Test Tool',
-              timestamp: new Date().toISOString()
-            });
-            
-            fetch(window.location.href + '?' + params.toString())
-            .then(response => response.text())
-            .then(data => {
-              document.getElementById('result').innerHTML = '<pre>' + data + '</pre>';
-            })
-            .catch(error => {
-              document.getElementById('result').innerHTML = '<p style="color:red;">Error: ' + error + '</p>';
-            });
-          }
-        </script>
-      </body>
-    </html>
-  `;
-  
-  return HtmlService.createHtmlOutput(html);
 }
 
 /**
@@ -123,63 +110,85 @@ function doGet(e) {
  */
 function handleRequest(e) {
   try {
-    Logger.log('Received request');
+    Logger.log('handleRequest called');
+    Logger.log('Event type: ' + typeof e);
+    Logger.log('Event is undefined: ' + (e === undefined));
+    Logger.log('Event is null: ' + (e === null));
     
-    // Check if e exists
-    if (!e) {
-      Logger.log('ERROR: Event object is undefined');
-      return ContentService.createTextOutput(JSON.stringify({
-        status: 'error',
-        message: 'No event data received'
-      })).setMimeType(ContentService.MimeType.JSON);
-    }
-    
-    Logger.log('Event object exists');
-    Logger.log('Event keys: ' + Object.keys(e).join(', '));
+    // Create safe event object
+    const safeEvent = e || {};
+    Logger.log('Safe event keys: ' + Object.keys(safeEvent).join(', '));
     
     let data = {};
     
+    // Try to parse URL query parameters directly (for undefined event objects)
+    // This is a workaround for Apps Script deployment issues
+    try {
+      const url = ScriptApp.getService().getUrl();
+      Logger.log('Script URL: ' + url);
+    } catch (urlError) {
+      Logger.log('Could not get script URL: ' + urlError.toString());
+    }
+    
     // Try to get data from parameters (URL-encoded form data)
-    if (e.parameter && Object.keys(e.parameter).length > 0) {
-      Logger.log('Parsing URL-encoded data from e.parameter');
-      Logger.log('Parameters: ' + JSON.stringify(e.parameter));
+    if (safeEvent.parameter && Object.keys(safeEvent.parameter).length > 0) {
+      Logger.log('Parsing URL-encoded data from safeEvent.parameter');
+      Logger.log('Parameters: ' + JSON.stringify(safeEvent.parameter));
       data = {
-        name: e.parameter.name || '',
-        email: e.parameter.email || '',
-        inquiryType: e.parameter.inquiryType || '',
-        subject: e.parameter.subject || '',
-        message: e.parameter.message || '',
-        toolName: e.parameter.toolName || '',
-        timestamp: e.parameter.timestamp || new Date().toISOString()
+        name: safeEvent.parameter.name || '',
+        email: safeEvent.parameter.email || '',
+        inquiryType: safeEvent.parameter.inquiryType || '',
+        subject: safeEvent.parameter.subject || '',
+        message: safeEvent.parameter.message || '',
+        toolName: safeEvent.parameter.toolName || '',
+        timestamp: safeEvent.parameter.timestamp || new Date().toISOString()
       };
     }
     // Try e.parameters (plural) - sometimes Apps Script uses this
-    else if (e.parameters && Object.keys(e.parameters).length > 0) {
-      Logger.log('Parsing URL-encoded data from e.parameters');
-      Logger.log('Parameters: ' + JSON.stringify(e.parameters));
+    else if (safeEvent.parameters && Object.keys(safeEvent.parameters).length > 0) {
+      Logger.log('Parsing URL-encoded data from safeEvent.parameters');
+      Logger.log('Parameters: ' + JSON.stringify(safeEvent.parameters));
       data = {
-        name: (e.parameters.name && e.parameters.name[0]) || '',
-        email: (e.parameters.email && e.parameters.email[0]) || '',
-        inquiryType: (e.parameters.inquiryType && e.parameters.inquiryType[0]) || '',
-        subject: (e.parameters.subject && e.parameters.subject[0]) || '',
-        message: (e.parameters.message && e.parameters.message[0]) || '',
-        toolName: (e.parameters.toolName && e.parameters.toolName[0]) || '',
-        timestamp: (e.parameters.timestamp && e.parameters.timestamp[0]) || new Date().toISOString()
+        name: (safeEvent.parameters.name && safeEvent.parameters.name[0]) || '',
+        email: (safeEvent.parameters.email && safeEvent.parameters.email[0]) || '',
+        inquiryType: (safeEvent.parameters.inquiryType && safeEvent.parameters.inquiryType[0]) || '',
+        subject: (safeEvent.parameters.subject && safeEvent.parameters.subject[0]) || '',
+        message: (safeEvent.parameters.message && safeEvent.parameters.message[0]) || '',
+        toolName: (safeEvent.parameters.toolName && safeEvent.parameters.toolName[0]) || '',
+        timestamp: (safeEvent.parameters.timestamp && safeEvent.parameters.timestamp[0]) || new Date().toISOString()
       };
     }
     // Fallback to JSON parsing
-    else if (e.postData && e.postData.contents) {
+    else if (safeEvent.postData && safeEvent.postData.contents) {
       Logger.log('Parsing JSON data from postData');
-      Logger.log('Post data contents: ' + e.postData.contents);
+      Logger.log('Post data contents: ' + safeEvent.postData.contents);
       try {
-        data = JSON.parse(e.postData.contents);
+        data = JSON.parse(safeEvent.postData.contents);
       } catch (parseError) {
         Logger.log('JSON parse error: ' + parseError.toString());
       }
     }
     else {
-      Logger.log('No data found in e.parameter, e.parameters, or e.postData');
-      Logger.log('Full event object: ' + JSON.stringify(e));
+      Logger.log('No data found in parameter, parameters, or postData');
+      Logger.log('Full event object: ' + JSON.stringify(safeEvent));
+      
+      // If we have no data at all, show the test/info page
+      const html = `
+        <html>
+          <body>
+            <h1>ShramTools Contact Form API</h1>
+            <p>Status: ✅ Running</p>
+            <p>This Web App is ready to receive contact form submissions.</p>
+            <hr>
+            <h2>Debug Info</h2>
+            <p>Event object was empty. This page is shown when accessing the script URL directly.</p>
+            <p>Form submissions should include URL parameters.</p>
+            <hr>
+            <p><a href="https://shramtools.shramkavach.com/contact.html">Go to Contact Form</a></p>
+          </body>
+        </html>
+      `;
+      return HtmlService.createHtmlOutput(html);
     }
     
     Logger.log('Parsed data: ' + JSON.stringify(data));
@@ -216,14 +225,15 @@ function handleRequest(e) {
     if (SEND_AUTO_REPLY && data.email) {
       try {
         sendAutoReply(data);
-        Logger.log('Auto-reply sent');
-      } catch (replyError) {
-        Logger.log('Auto-reply error: ' + replyError.toString());
-      }
+    const safeEvent = e || {};
+    if (safeEvent.parameter) {
+      Logger.log('Parameters: ' + JSON.stringify(safeEvent.parameter));
     }
-    
-    // Return success response
-    return ContentService.createTextOutput(JSON.stringify({
+    if (safeEvent.parameters) {
+      Logger.log('Parameters (plural): ' + JSON.stringify(safeEvent.parameters));
+    }
+    if (safeEvent.postData) {
+      Logger.log('Post data: ' + JSON.stringify(safeEventtringify({
       status: 'success',
       message: 'Form submitted successfully',
       data: data
