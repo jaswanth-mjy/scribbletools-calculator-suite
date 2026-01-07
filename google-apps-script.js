@@ -69,11 +69,23 @@ function doPost(e) {
   try {
     Logger.log('Received POST request');
     
+    // Check if e exists
+    if (!e) {
+      Logger.log('ERROR: Event object is undefined');
+      return ContentService.createTextOutput(JSON.stringify({
+        status: 'error',
+        message: 'No event data received'
+      })).setMimeType(ContentService.MimeType.JSON);
+    }
+    
+    Logger.log('Event object keys: ' + Object.keys(e).join(', '));
+    
     let data = {};
     
     // Try to get data from parameters (URL-encoded form data)
-    if (e.parameter) {
-      Logger.log('Parsing URL-encoded data');
+    if (e.parameter && Object.keys(e.parameter).length > 0) {
+      Logger.log('Parsing URL-encoded data from e.parameter');
+      Logger.log('Parameters: ' + JSON.stringify(e.parameter));
       data = {
         name: e.parameter.name || '',
         email: e.parameter.email || '',
@@ -84,14 +96,33 @@ function doPost(e) {
         timestamp: e.parameter.timestamp || new Date().toISOString()
       };
     }
+    // Try e.parameters (plural) - sometimes Apps Script uses this
+    else if (e.parameters && Object.keys(e.parameters).length > 0) {
+      Logger.log('Parsing URL-encoded data from e.parameters');
+      Logger.log('Parameters: ' + JSON.stringify(e.parameters));
+      data = {
+        name: (e.parameters.name && e.parameters.name[0]) || '',
+        email: (e.parameters.email && e.parameters.email[0]) || '',
+        inquiryType: (e.parameters.inquiryType && e.parameters.inquiryType[0]) || '',
+        subject: (e.parameters.subject && e.parameters.subject[0]) || '',
+        message: (e.parameters.message && e.parameters.message[0]) || '',
+        toolName: (e.parameters.toolName && e.parameters.toolName[0]) || '',
+        timestamp: (e.parameters.timestamp && e.parameters.timestamp[0]) || new Date().toISOString()
+      };
+    }
     // Fallback to JSON parsing
     else if (e.postData && e.postData.contents) {
-      Logger.log('Parsing JSON data');
+      Logger.log('Parsing JSON data from postData');
+      Logger.log('Post data contents: ' + e.postData.contents);
       try {
         data = JSON.parse(e.postData.contents);
       } catch (parseError) {
         Logger.log('JSON parse error: ' + parseError.toString());
       }
+    }
+    else {
+      Logger.log('No data found in e.parameter, e.parameters, or e.postData');
+      Logger.log('Full event object: ' + JSON.stringify(e));
     }
     
     Logger.log('Parsed data: ' + JSON.stringify(data));
@@ -149,6 +180,9 @@ function doPost(e) {
     if (e && e.parameter) {
       Logger.log('Parameters: ' + JSON.stringify(e.parameter));
     }
+    if (e && e.parameters) {
+      Logger.log('Parameters (plural): ' + JSON.stringify(e.parameters));
+    }
     if (e && e.postData) {
       Logger.log('Post data: ' + JSON.stringify(e.postData));
     }
@@ -160,7 +194,6 @@ function doPost(e) {
     })).setMimeType(ContentService.MimeType.JSON);
   }
 }
-
 /**
  * Handle GET requests (for testing)
  */
