@@ -1,7 +1,7 @@
 // FREE Service Worker for Real-Time Push Notifications
 // No external dependencies - completely FREE
 
-const CACHE_NAME = 'scribble-tools-v2-2026-01-05';
+const CACHE_NAME = 'scribble-tools-v3-2026-01-08';
 const urlsToCache = [
     '/',
     '/index.html',
