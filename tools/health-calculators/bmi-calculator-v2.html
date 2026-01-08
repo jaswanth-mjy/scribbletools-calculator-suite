@@ -87,6 +87,11 @@
             padding: 15px 25px;
             text-align: center;
             font-size: 0.95rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
         }
         
         .top-banner a {
@@ -98,6 +103,34 @@
         
         .top-banner a:hover {
             color: #63b3ed;
+        }
+        
+        /* Back Button */
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #4299e1 0%, #3182ce 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(66, 153, 225, 0.3);
+            margin-bottom: 20px;
+        }
+        
+        .back-btn:hover {
+            transform: translateX(-5px);
+            box-shadow: 0 6px 20px rgba(66, 153, 225, 0.4);
+            background: linear-gradient(135deg, #3182ce 0%, #2b6cb0 100%);
+        }
+        
+        .back-btn svg {
+            width: 18px;
+            height: 18px;
         }
         
         /* Header */
@@ -653,38 +686,98 @@
             max-width: 900px;
             margin: 30px auto;
             display: block;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2), 0 0 0 1px rgba(255,255,255,0.1);
+            border: 8px solid white;
+            background: white;
+            padding: 5px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .main-image:hover {
+            transform: scale(1.02);
+            box-shadow: 0 25px 70px rgba(0,0,0,0.25);
+        }
+        
+        /* Image Frame Container */
+        .image-frame {
+            position: relative;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            border-radius: 24px;
+            margin: 30px auto;
+            max-width: 940px;
+        }
+        
+        .image-frame::before {
+            content: '';
+            position: absolute;
+            inset: 8px;
+            border: 2px dashed rgba(255,255,255,0.3);
+            border-radius: 18px;
+            pointer-events: none;
+        }
+        
+        .image-frame img {
+            width: 100%;
             border-radius: 16px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-            border: 4px solid white;
+            display: block;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+        
+        .image-frame-caption {
+            text-align: center;
+            color: white;
+            font-size: 0.9rem;
+            margin-top: 15px;
+            font-weight: 500;
+            opacity: 0.9;
         }
         
         .image-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
             margin-top: 40px;
         }
         
         .image-card {
             background: white;
-            border-radius: 16px;
+            border-radius: 20px;
             overflow: hidden;
             transition: all 0.3s;
-            border: 2px solid #e2e8f0;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            border: 3px solid #e2e8f0;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .image-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #4299e1, #48bb78, #f59e0b);
         }
         
         .image-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
             border-color: #4299e1;
         }
         
         .image-card img {
             width: 100%;
-            height: 220px;
+            height: 200px;
             object-fit: cover;
             display: block;
+            border-bottom: 3px solid #e2e8f0;
+            transition: transform 0.3s;
+        }
+        
+        .image-card:hover img {
+            transform: scale(1.05);
         }
         
         .image-card-body {
@@ -695,7 +788,7 @@
         .image-card-body h3 {
             color: #2d3748;
             margin-bottom: 10px;
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             font-weight: 700;
         }
         
@@ -992,37 +1085,76 @@
         }
         
         /* Responsive */
+        @media (max-width: 992px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .info-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .tools-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
         @media (max-width: 768px) {
             .main-content {
                 grid-template-columns: 1fr;
             }
             
             .header {
-                padding: 35px 25px;
-            }
-            
-            .header h1 {
-                font-size: 2rem;
-            }
-            
-            .card, .edu-section, .image-section, .related-tools {
                 padding: 30px 20px;
             }
             
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .header p {
+                font-size: 1rem;
+            }
+            
+            .card, .edu-section, .image-section, .related-tools {
+                padding: 25px 18px;
+                border-radius: 16px;
+            }
+            
+            .card h2 {
+                font-size: 1.3rem;
+            }
+            
             .bmi-number {
-                font-size: 4rem;
+                font-size: 3.5rem;
+            }
+            
+            .bmi-category {
+                font-size: 1.2rem;
             }
             
             .formula {
-                font-size: 1.4rem;
-                padding: 12px 20px;
+                font-size: 1.2rem;
+                padding: 10px 15px;
             }
             
             .edu-section h2 {
-                font-size: 1.5rem;
+                font-size: 1.4rem;
+            }
+            
+            .edu-section h3 {
+                font-size: 1.15rem;
             }
             
             .use-cases-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .tools-grid {
                 grid-template-columns: 1fr;
             }
             
@@ -1042,6 +1174,139 @@
             .meal-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .main-image {
+                border-width: 5px;
+                border-radius: 14px;
+            }
+            
+            .image-frame {
+                padding: 12px;
+                border-radius: 18px;
+                margin: 20px auto;
+            }
+            
+            .image-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .image-card img {
+                height: 180px;
+            }
+            
+            .top-banner {
+                padding: 12px 15px;
+                font-size: 0.85rem;
+            }
+            
+            .back-btn {
+                padding: 8px 16px;
+                font-size: 0.9rem;
+            }
+            
+            .chart-segment {
+                font-size: 0.7rem;
+            }
+            
+            .step {
+                padding-left: 35px;
+            }
+            
+            .step::before {
+                width: 25px;
+                height: 25px;
+                font-size: 0.8rem;
+            }
+            
+            table {
+                font-size: 0.85rem;
+            }
+            
+            table th, table td {
+                padding: 10px 8px !important;
+            }
+            
+            .tool-link {
+                padding: 18px;
+            }
+            
+            .tool-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 1.5rem;
+            }
+            
+            .bmi-number {
+                font-size: 3rem;
+            }
+            
+            .formula {
+                font-size: 1rem;
+                padding: 8px 12px;
+                word-break: break-word;
+            }
+            
+            .formula-box {
+                padding: 20px 15px;
+            }
+            
+            .example-box {
+                padding: 20px 15px;
+            }
+            
+            .card, .edu-section, .image-section, .related-tools {
+                padding: 20px 15px;
+            }
+            
+            .unit-toggle {
+                flex-direction: column;
+                gap: 8px;
+            }
+            
+            .unit-btn {
+                padding: 12px;
+            }
+            
+            .calculate-btn {
+                padding: 14px;
+                font-size: 1rem;
+            }
+            
+            .chart-bar {
+                height: 50px;
+            }
+            
+            .chart-segment {
+                font-size: 0.6rem;
+            }
+            
+            .diet-content {
+                padding: 20px 15px;
+            }
+            
+            .meal-card {
+                padding: 15px;
+            }
+            
+            .health-box {
+                padding: 18px;
+            }
+            
+            .warning-box {
+                padding: 18px;
+            }
+            
+            .top-banner {
+                flex-direction: column;
+                gap: 10px;
+            }
         }
     </style>
 </head>
@@ -1049,10 +1314,19 @@
     <div class="page-wrapper">
         <!-- Top Banner -->
         <div class="top-banner">
-            🛠️ <strong>ShramTools</strong> by <a href="https://shramkavach.com" target="_blank">Shram Kavach</a> — Free tools for everyone!
+            <span>🛠️ <strong>ShramTools</strong> by <a href="https://shramkavach.com" target="_blank">Shram Kavach</a> — Free tools for everyone!</span>
+            <a href="../../index.html" style="background: rgba(255,255,255,0.15); padding: 6px 15px; border-radius: 20px; font-size: 0.85rem;">← Back to Home</a>
         </div>
         
         <div class="container">
+            <!-- Back Button -->
+            <a href="../../index.html" class="back-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+                Back to ShramTools
+            </a>
+            
             <!-- Header -->
             <header class="header">
                 <h1>⚖️ BMI Calculator</h1>
@@ -1318,7 +1592,11 @@
                 
                 <p>The World Health Organization (WHO) defines standard BMI categories for adults. Understanding where you fall on this scale helps you make informed decisions about your health.</p>
                 
-                <img src="../../images/bmi/bmi-scale-chart.jpg" alt="BMI Scale Chart showing all weight categories from underweight to obese" class="main-image">
+                <!-- Framed Image -->
+                <div class="image-frame">
+                    <img src="../../images/bmi/bmi-scale-chart.jpg" alt="BMI Scale Chart showing all weight categories from underweight to obese">
+                    <p class="image-frame-caption">📊 Official WHO BMI Classification Chart</p>
+                </div>
                 
                 <!-- BMI Range Visual Bar -->
                 <div style="margin: 40px 0;">
