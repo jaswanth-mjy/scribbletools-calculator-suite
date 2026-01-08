@@ -1101,29 +1101,152 @@
             </div>
             
             <!-- Understanding BMI Categories -->
-            <div class="image-section">
+            <div class="edu-section">
                 <h2>📊 Understanding BMI Categories</h2>
-                <p>The World Health Organization (WHO) defines these standard BMI categories for adults</p>
+                
+                <p>The World Health Organization (WHO) defines standard BMI categories for adults. Understanding where you fall on this scale helps you make informed decisions about your health.</p>
                 
                 <img src="../../images/bmi/bmi-scale-chart.jpg" alt="BMI Scale Chart showing all weight categories from underweight to obese" class="main-image">
                 
-                <div class="info-grid">
-                    <div class="info-card">
-                        <h3>💙 Underweight (&lt;18.5)</h3>
-                        <p>May indicate nutritional deficiency or other health issues. Consider consulting a healthcare provider about healthy weight gain strategies.</p>
+                <!-- BMI Range Visual Bar -->
+                <div style="margin: 40px 0;">
+                    <div style="display: flex; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); height: 70px;">
+                        <div style="flex: 18.5; background: linear-gradient(135deg, #3b82f6, #1d4ed8); display: flex; align-items: center; justify-content: center; color: white; font-weight: 700;">
+                            <div style="text-align: center;">
+                                <div style="font-size: 1.1rem;">Underweight</div>
+                                <div style="font-size: 0.85rem; opacity: 0.9;">&lt; 18.5</div>
+                            </div>
+                        </div>
+                        <div style="flex: 6.4; background: linear-gradient(135deg, #10b981, #059669); display: flex; align-items: center; justify-content: center; color: white; font-weight: 700;">
+                            <div style="text-align: center;">
+                                <div style="font-size: 1.1rem;">Normal</div>
+                                <div style="font-size: 0.85rem; opacity: 0.9;">18.5 - 24.9</div>
+                            </div>
+                        </div>
+                        <div style="flex: 5; background: linear-gradient(135deg, #f59e0b, #d97706); display: flex; align-items: center; justify-content: center; color: white; font-weight: 700;">
+                            <div style="text-align: center;">
+                                <div style="font-size: 1.1rem;">Overweight</div>
+                                <div style="font-size: 0.85rem; opacity: 0.9;">25 - 29.9</div>
+                            </div>
+                        </div>
+                        <div style="flex: 10; background: linear-gradient(135deg, #ef4444, #b91c1c); display: flex; align-items: center; justify-content: center; color: white; font-weight: 700;">
+                            <div style="text-align: center;">
+                                <div style="font-size: 1.1rem;">Obese</div>
+                                <div style="font-size: 0.85rem; opacity: 0.9;">≥ 30</div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="info-card">
-                        <h3>💚 Normal (18.5-24.9)</h3>
-                        <p>Healthy weight range. Maintain through balanced diet and regular physical activity for optimal health benefits.</p>
+                </div>
+                
+                <!-- Detailed Category Cards -->
+                <div class="use-cases-grid">
+                    <div class="use-case" style="border-top: 5px solid #3b82f6;">
+                        <h4 style="color: #3b82f6;">💙 Underweight (BMI &lt; 18.5)</h4>
+                        <p>
+                            <strong>What it means:</strong> Your weight is below the healthy range for your height.<br><br>
+                            <strong>Possible causes:</strong> High metabolism, inadequate nutrition, underlying health conditions, or eating disorders.<br><br>
+                            <strong>Health risks:</strong> Weakened immune system, bone loss, anemia, fertility issues.<br><br>
+                            <strong>Recommendations:</strong>
+                        </p>
+                        <ul style="color: #4a5568; padding-left: 20px; margin-top: 10px;">
+                            <li>Consult a healthcare provider</li>
+                            <li>Focus on nutrient-dense foods</li>
+                            <li>Eat more frequent, smaller meals</li>
+                            <li>Add strength training exercises</li>
+                        </ul>
                     </div>
-                    <div class="info-card">
-                        <h3>🧡 Overweight (25-29.9)</h3>
-                        <p>Slightly above healthy range. Consider lifestyle modifications including diet adjustments and increased physical activity.</p>
+                    
+                    <div class="use-case" style="border-top: 5px solid #10b981;">
+                        <h4 style="color: #10b981;">💚 Normal Weight (BMI 18.5 - 24.9)</h4>
+                        <p>
+                            <strong>What it means:</strong> Your weight is within the healthy range for your height. Congratulations!<br><br>
+                            <strong>Health benefits:</strong> Lower risk of heart disease, diabetes, certain cancers, and joint problems.<br><br>
+                            <strong>Life expectancy:</strong> Studies show people in this range tend to live longer, healthier lives.<br><br>
+                            <strong>Recommendations:</strong>
+                        </p>
+                        <ul style="color: #4a5568; padding-left: 20px; margin-top: 10px;">
+                            <li>Maintain current healthy habits</li>
+                            <li>Stay physically active (150+ min/week)</li>
+                            <li>Eat balanced, nutritious meals</li>
+                            <li>Get regular health check-ups</li>
+                        </ul>
                     </div>
-                    <div class="info-card">
-                        <h3>❤️ Obese (≥30)</h3>
-                        <p>Associated with increased health risks. Consult healthcare provider for personalized weight management guidance.</p>
+                    
+                    <div class="use-case" style="border-top: 5px solid #f59e0b;">
+                        <h4 style="color: #f59e0b;">🧡 Overweight (BMI 25 - 29.9)</h4>
+                        <p>
+                            <strong>What it means:</strong> Your weight is above the healthy range for your height.<br><br>
+                            <strong>Health risks:</strong> Increased risk of Type 2 diabetes, high blood pressure, sleep apnea, and heart disease.<br><br>
+                            <strong>Good news:</strong> Even losing 5-10% of body weight can significantly improve health markers.<br><br>
+                            <strong>Recommendations:</strong>
+                        </p>
+                        <ul style="color: #4a5568; padding-left: 20px; margin-top: 10px;">
+                            <li>Create a sustainable calorie deficit</li>
+                            <li>Increase daily physical activity</li>
+                            <li>Focus on portion control</li>
+                            <li>Reduce processed foods and sugars</li>
+                        </ul>
                     </div>
+                    
+                    <div class="use-case" style="border-top: 5px solid #ef4444;">
+                        <h4 style="color: #ef4444;">❤️ Obese (BMI ≥ 30)</h4>
+                        <p>
+                            <strong>What it means:</strong> Your weight significantly exceeds the healthy range.<br><br>
+                            <strong>Obesity classes:</strong><br>
+                            • Class I: BMI 30-34.9<br>
+                            • Class II: BMI 35-39.9<br>
+                            • Class III (Severe): BMI ≥ 40<br><br>
+                            <strong>Health risks:</strong> High risk of heart disease, stroke, Type 2 diabetes, certain cancers, and reduced quality of life.<br><br>
+                            <strong>Recommendations:</strong>
+                        </p>
+                        <ul style="color: #4a5568; padding-left: 20px; margin-top: 10px;">
+                            <li>Consult with healthcare provider</li>
+                            <li>Consider working with a dietitian</li>
+                            <li>Start with low-impact exercises</li>
+                            <li>Set realistic, gradual goals</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Quick Reference Table -->
+                <div style="margin-top: 40px; overflow-x: auto;">
+                    <h3 style="margin-bottom: 20px;">📋 Quick Reference Table</h3>
+                    <table style="width: 100%; border-collapse: collapse; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.08);">
+                        <thead>
+                            <tr style="background: linear-gradient(135deg, #4299e1, #3182ce); color: white;">
+                                <th style="padding: 15px; text-align: left; font-weight: 700;">Category</th>
+                                <th style="padding: 15px; text-align: center; font-weight: 700;">BMI Range</th>
+                                <th style="padding: 15px; text-align: center; font-weight: 700;">Health Risk</th>
+                                <th style="padding: 15px; text-align: left; font-weight: 700;">Action Needed</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="border-bottom: 1px solid #e2e8f0;">
+                                <td style="padding: 15px;"><span style="color: #3b82f6; font-weight: 600;">💙 Underweight</span></td>
+                                <td style="padding: 15px; text-align: center; font-weight: 600;">&lt; 18.5</td>
+                                <td style="padding: 15px; text-align: center;"><span style="background: #dbeafe; color: #1e40af; padding: 5px 12px; border-radius: 20px; font-size: 0.85rem;">Moderate</span></td>
+                                <td style="padding: 15px; color: #4a5568;">Consult doctor, increase nutrition</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #e2e8f0; background: #f0fdf4;">
+                                <td style="padding: 15px;"><span style="color: #10b981; font-weight: 600;">💚 Normal</span></td>
+                                <td style="padding: 15px; text-align: center; font-weight: 600;">18.5 - 24.9</td>
+                                <td style="padding: 15px; text-align: center;"><span style="background: #d1fae5; color: #065f46; padding: 5px 12px; border-radius: 20px; font-size: 0.85rem;">Low</span></td>
+                                <td style="padding: 15px; color: #4a5568;">Maintain healthy lifestyle</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #e2e8f0;">
+                                <td style="padding: 15px;"><span style="color: #f59e0b; font-weight: 600;">🧡 Overweight</span></td>
+                                <td style="padding: 15px; text-align: center; font-weight: 600;">25 - 29.9</td>
+                                <td style="padding: 15px; text-align: center;"><span style="background: #fef3c7; color: #92400e; padding: 5px 12px; border-radius: 20px; font-size: 0.85rem;">Increased</span></td>
+                                <td style="padding: 15px; color: #4a5568;">Lifestyle changes recommended</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 15px;"><span style="color: #ef4444; font-weight: 600;">❤️ Obese</span></td>
+                                <td style="padding: 15px; text-align: center; font-weight: 600;">≥ 30</td>
+                                <td style="padding: 15px; text-align: center;"><span style="background: #fee2e2; color: #991b1b; padding: 5px 12px; border-radius: 20px; font-size: 0.85rem;">High</span></td>
+                                <td style="padding: 15px; color: #4a5568;">Medical consultation advised</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
             
