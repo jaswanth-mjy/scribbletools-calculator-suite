@@ -1,12 +1,11 @@
-# ScribbleTools - Robots.txt
+# ShramTools - Robots.txt
 # Allow all search engines to index the site
 
 User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://scribbletools.shramkavach.com/sitemap.xml
-Sitemap: https://scribbletools.shramkavach.com/sitemap-index.xml
+Sitemap: https://shramtools.shramkavach.com/sitemap.xml
 
 # Disallow indexing of API endpoints
 Disallow: /api/
