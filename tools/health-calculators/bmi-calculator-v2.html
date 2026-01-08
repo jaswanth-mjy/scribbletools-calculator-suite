@@ -327,7 +327,10 @@
             margin: 25px auto;
             display: block;
             border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+            border: 3px solid #e2e8f0;
+            padding: 8px;
+            background: white;
         }
         
         .image-grid {
@@ -338,14 +341,17 @@
         }
         
         .image-card {
-            background: #f7fafc;
+            background: white;
             border-radius: 12px;
             overflow: hidden;
-            transition: transform 0.2s;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 2px solid #e2e8f0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
         }
         
         .image-card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
         }
         
         .image-card img {
@@ -353,6 +359,7 @@
             height: 220px;
             object-fit: cover;
             display: block;
+            border-bottom: 3px solid #4299e1;
         }
         
         .image-card-body {
@@ -375,10 +382,12 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
-            margin-top: 25px;
-        }
-        
-        .info-card {
+            margin-top: white;
+            padding: 25px;
+            border-radius: 8px;
+            border: 2px solid #e2e8f0;
+            border-top: 4px solid #4299e1;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05)
             background: #f7fafc;
             padding: 25px;
             border-radius: 8px;
@@ -475,6 +484,90 @@
         
         .footer a:hover {
             text-decoration: underline;
+        }Educational Sections */
+        .edu-section {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+        
+        .edu-section h2 {
+            color: #2d3748;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #4299e1;
+            padding-bottom: 15px;
+        }
+        
+        .edu-section h3 {
+            color: #2d3748;
+            font-size: 1.3rem;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+        
+        .formula-box {
+            background: #edf2f7;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            margin: 25px 0;
+            border: 2px solid #cbd5e0;
+        }
+        
+        .formula {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #2d3748;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+        }
+        
+        .example-box {
+            background: #f7fafc;
+            padding: 25px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid #48bb78;
+        }
+        
+        .step {
+            margin: 15px 0;
+            padding-left: 30px;
+            position: relative;
+        }
+        
+        .step:before {
+            content: attr(data-step);
+            position: absolute;
+            left: 0;
+            background: #4299e1;
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+        
+        .use-case {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border: 2px solid #e2e8f0;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        }
+        
+        .use-case h4 {
+            color: #4299e1;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
         }
         
         /* Responsive */
@@ -492,16 +585,144 @@
             }
             
             .image-section,
-            .related-tools {
+            .related-tools,
+            .edu-section {
                 padding: 25px;
             }
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <!-- Top Banner -->
-        <div class="top-banner">
+            
+            .formula {
+                font-size: 1.5rem
+            .related-tools {
+                padding: 25px;
+            }How to Calculate BMI -->
+        <div class="edu-section">
+            <h2>📐 How to Calculate BMI - Step by Step</h2>
+            
+            <p style="color: #4a5568; font-size: 1.05rem; line-height: 1.8;">
+                Body Mass Index (BMI) is a simple mathematical formula that helps assess whether your weight is healthy for your height. It's used worldwide by healthcare professionals as a quick screening tool.
+            </p>
+            
+            <div class="formula-box">
+                <h3 style="margin-top: 0; color: #2d3748;">The BMI Formula</h3>
+                <div class="formula">BMI = weight (kg) ÷ height² (m²)</div>
+                <p style="color: #718096; margin-top: 10px;">Or in Imperial units:</p>
+                <div class="formula" style="font-size: 1.5rem;">BMI = (weight (lbs) ÷ height² (in²)) × 703</div>
+            </div>
+            
+            <h3>🔢 Manual Calculation Example (Metric)</h3>
+            <div class="example-box">
+                <p style="color: #2d3748; font-weight: 600; margin-bottom: 15px;">Let's calculate BMI for a person who is 170 cm tall and weighs 70 kg:</p>
+                
+                <div class="step" data-step="1">
+                    <strong>Convert height to meters:</strong><br>
+                    170 cm ÷ 100 = 1.70 m
+                </div>
+                
+                <div class="step" data-step="2">
+                    <strong>Square the height:</strong><br>
+                    1.70 × 1.70 = 2.89 m²
+                </div>
+                
+                <div class="step" data-step="3">
+                    <strong>Divide weight by squared height:</strong><br>
+                    70 ÷ 2.89 = 24.2
+                </div>
+                
+                <div class="step" data-step="4">
+                    <strong>Result:</strong><br>
+                    BMI = <span style="color: #48bb78; font-size: 1.3rem; font-weight: 700;">24.2</span> (Normal Weight)
+                </div>
+            </div>
+            
+            <h3>🔢 Manual Calculation Example (Imperial)</h3>
+            <div class="example-box">
+                <p style="color: #2d3748; font-weight: 600; margin-bottom: 15px;">For a person who is 67 inches tall and weighs 154 lbs:</p>
+                
+                <div class="step" data-step="1">
+                    <strong>Square the height:</strong><br>
+                    67 × 67 = 4,489 in²
+                </div>
+                
+                <div class="step" data-step="2">
+                    <strong>Divide weight by squared height:</strong><br>
+                    154 ÷ 4,489 = 0.0343
+                </div>
+                
+                <div class="step" data-step="3">
+                    <strong>Multiply by 703:</strong><br>
+                    0.0343 × 703 = 24.1
+                </div>
+                
+                <div class="step" data-step="4">
+                    <strong>Result:</strong><br>
+                    BMI = <span style="color: #48bb78; font-size: 1.3rem; font-weight: 700;">24.1</span> (Normal Weight)
+                </div>
+            </div>
+        </div>
+        
+        <!-- How BMI is Used -->
+        <div class="edu-section">
+            <h2>🏥 How We Use BMI - Practical Applications</h2>
+            
+            <p style="color: #4a5568; font-size: 1.05rem; line-height: 1.8; margin-bottom: 25px;">
+                BMI is widely used in healthcare, fitness, and public health because it provides a quick, easy way to screen for weight categories that may lead to health problems. Here's how different sectors use BMI:
+            </p>
+            
+            <div class="use-case">
+                <h4>🏥 Healthcare Professionals</h4>
+                <p style="color: #4a5568;">
+                    <strong>Initial Screening:</strong> Doctors use BMI as a first-step screening tool to identify patients who may need further assessment.<br><br>
+                    <strong>Health Risk Assessment:</strong> Higher BMI ranges correlate with increased risk of heart disease, diabetes, and high blood pressure.<br><br>
+                    <strong>Treatment Planning:</strong> BMI helps determine if weight management should be part of a patient's care plan.
+                </p>
+            </div>
+            
+            <div class="use-case">
+                <h4>💪 Fitness & Nutrition</h4>
+                <p style="color: #4a5568;">
+                    <strong>Goal Setting:</strong> Personal trainers use BMI to help clients set realistic weight and fitness goals.<br><br>
+                    <strong>Progress Tracking:</strong> Regular BMI measurements help monitor the effectiveness of diet and exercise programs.<br><br>
+                    <strong>Baseline Measurement:</strong> Provides a starting point for fitness journeys and lifestyle changes.
+                </p>
+            </div>
+            
+            <div class="use-case">
+                <h4>📊 Public Health Research</h4>
+                <p style="color: #4a5568;">
+                    <strong>Population Studies:</strong> Researchers use BMI to track obesity trends across populations and demographics.<br><br>
+                    <strong>Policy Development:</strong> Government health agencies use BMI data to develop public health policies and interventions.<br><br>
+                    <strong>Resource Allocation:</strong> Helps identify communities that need health education and obesity prevention programs.
+                </p>
+            </div>
+            
+            <div class="use-case">
+                <h4>🎯 Personal Health Monitoring</h4>
+                <p style="color: #4a5568;">
+                    <strong>Self-Assessment:</strong> Individuals can quickly check if they're in a healthy weight range without expensive equipment.<br><br>
+                    <strong>Motivation Tool:</strong> Seeing BMI improve can motivate people to maintain healthy lifestyle changes.<br><br>
+                    <strong>Health Awareness:</strong> Helps people understand the relationship between weight, height, and health risks.
+                </p>
+            </div>
+            
+            <div style="background: #fff3cd; padding: 20px; border-radius: 8px; border-left: 4px solid #ffc107; margin-top: 25px;">
+                <h4 style="color: #856404; margin-bottom: 10px;">⚠️ Important Limitations to Consider:</h4>
+                <ul style="color: #856404; margin: 0; padding-left: 20px;">
+                    <li style="margin: 8px 0;">BMI doesn't distinguish between muscle and fat (athletes may have high BMI but low body fat)</li>
+                    <li style="margin: 8px 0;">Doesn't account for bone density, age, or sex differences</li>
+                    <li style="margin: 8px 0;">May not be accurate for pregnant women, children, or elderly individuals</li>
+                    <li style="margin: 8px 0;">Should be used alongside other measurements like waist circumference and body composition</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Understanding BMI Categories -->
+        <div class="image-section">
+            <h2>📊 Understanding BMI Categories</h2>
+            <p style="text-align: center; color: #718096; margin-bottom: 20px; font-size: 1.05rem;">
+                The World Health Organization (WHO) defines these standard BMI categories for adults
+            </p>
+            
+            <img src="../../images/bmi/bmi-scale-chart.jpg" alt="BMI Scale Chart showing all categories
             Part of <a href="https://shramtools.shramkavach.com">ShramTools</a> by <a href="https://shramkavach.com">Shram Kavach</a> - Your trusted source for free online calculators
         </div>
         
