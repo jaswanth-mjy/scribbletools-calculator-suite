@@ -3372,7 +3372,12 @@
             }
         }
 
-        // Tool item click handler (placeholder - you'll connect these later)
+        // Tool item click handler - Route to actual tools
+        const toolRoutes = {
+            'BMI Calculator': 'tools/health-calculators/bmi-calculator-v2.html',
+            // Add more tool routes as they are created
+        };
+        
         document.querySelectorAll('.tool-item').forEach(item => {
             item.addEventListener('click', function() {
                 const toolName = this.querySelector('.tool-name').textContent;
@@ -3382,7 +3387,12 @@
                     this.style.transform = '';
                 }, 100);
                 
-                alert('Tool selected: ' + toolName + '\n\nThis will be connected to the actual tool later.');
+                // Check if tool has a route
+                if (toolRoutes[toolName]) {
+                    window.location.href = toolRoutes[toolName];
+                } else {
+                    alert('Tool selected: ' + toolName + '\n\nThis tool is coming soon!');
+                }
             });
         });
 
