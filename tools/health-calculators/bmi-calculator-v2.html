@@ -855,6 +855,142 @@
             flex-wrap: wrap;
         }
         
+        /* Diet Section */
+        .diet-section {
+            display: none;
+            margin-top: 30px;
+        }
+        
+        .diet-section.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .diet-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+        
+        .diet-tab {
+            flex: 1;
+            min-width: 120px;
+            padding: 14px 20px;
+            border: 2px solid #e2e8f0;
+            background: white;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+        }
+        
+        .diet-tab:hover {
+            border-color: #4299e1;
+            background: #ebf8ff;
+        }
+        
+        .diet-tab.active {
+            background: linear-gradient(135deg, #48bb78, #38a169);
+            color: white;
+            border-color: #48bb78;
+            box-shadow: 0 4px 15px rgba(72, 187, 120, 0.4);
+        }
+        
+        .diet-content {
+            display: none;
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            border: 2px solid #e2e8f0;
+        }
+        
+        .diet-content.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .diet-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        
+        .diet-header h3 {
+            color: #2d3748;
+            font-size: 1.4rem;
+            margin: 0;
+        }
+        
+        .diet-icon {
+            font-size: 2.5rem;
+        }
+        
+        .meal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+        
+        .meal-card {
+            background: #f7fafc;
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid #4299e1;
+        }
+        
+        .meal-card h4 {
+            color: #2d3748;
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .meal-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .meal-card li {
+            padding: 8px 0;
+            color: #4a5568;
+            font-size: 0.95rem;
+            border-bottom: 1px dashed #e2e8f0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .meal-card li:last-child {
+            border-bottom: none;
+        }
+        
+        .meal-card li::before {
+            content: '•';
+            color: #48bb78;
+            font-weight: bold;
+        }
+        
+        .calorie-note {
+            background: linear-gradient(135deg, #ebf8ff, #e6fffa);
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            font-size: 0.95rem;
+            color: #2c5282;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
         /* Responsive */
         @media (max-width: 768px) {
             .main-content {
@@ -893,6 +1029,18 @@
             .footer-links {
                 flex-direction: column;
                 gap: 15px;
+            }
+            
+            .diet-tabs {
+                flex-direction: column;
+            }
+            
+            .diet-tab {
+                min-width: 100%;
+            }
+            
+            .meal-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -980,6 +1128,70 @@
                         <div class="health-box" id="healthTips">
                             <h3 id="tipsTitle">💡 Health Tips</h3>
                             <div id="tipsContent"></div>
+                        </div>
+                        
+                        <!-- Diet Recommendations Section -->
+                        <div class="diet-section" id="dietSection">
+                            <h3 style="color: #2d3748; margin-bottom: 20px; font-size: 1.3rem;">🍽️ Personalized Diet Plan</h3>
+                            
+                            <div class="diet-tabs">
+                                <button class="diet-tab active" data-diet="vegetarian">🥬 Vegetarian</button>
+                                <button class="diet-tab" data-diet="nonveg">🍗 Non-Vegetarian</button>
+                                <button class="diet-tab" data-diet="eggetarian">🥚 Eggetarian</button>
+                                <button class="diet-tab" data-diet="vegan">🌱 Vegan</button>
+                            </div>
+                            
+                            <!-- Vegetarian Diet -->
+                            <div class="diet-content active" id="diet-vegetarian">
+                                <div class="diet-header">
+                                    <span class="diet-icon">🥬</span>
+                                    <h3>Vegetarian Diet Plan</h3>
+                                </div>
+                                <div class="meal-grid" id="veg-meals"></div>
+                                <div class="calorie-note" id="veg-note">
+                                    <span>💡</span>
+                                    <span id="veg-calorie-text"></span>
+                                </div>
+                            </div>
+                            
+                            <!-- Non-Vegetarian Diet -->
+                            <div class="diet-content" id="diet-nonveg">
+                                <div class="diet-header">
+                                    <span class="diet-icon">🍗</span>
+                                    <h3>Non-Vegetarian Diet Plan</h3>
+                                </div>
+                                <div class="meal-grid" id="nonveg-meals"></div>
+                                <div class="calorie-note" id="nonveg-note">
+                                    <span>💡</span>
+                                    <span id="nonveg-calorie-text"></span>
+                                </div>
+                            </div>
+                            
+                            <!-- Eggetarian Diet -->
+                            <div class="diet-content" id="diet-eggetarian">
+                                <div class="diet-header">
+                                    <span class="diet-icon">🥚</span>
+                                    <h3>Eggetarian Diet Plan</h3>
+                                </div>
+                                <div class="meal-grid" id="egg-meals"></div>
+                                <div class="calorie-note" id="egg-note">
+                                    <span>💡</span>
+                                    <span id="egg-calorie-text"></span>
+                                </div>
+                            </div>
+                            
+                            <!-- Vegan Diet -->
+                            <div class="diet-content" id="diet-vegan">
+                                <div class="diet-header">
+                                    <span class="diet-icon">🌱</span>
+                                    <h3>Vegan Diet Plan</h3>
+                                </div>
+                                <div class="meal-grid" id="vegan-meals"></div>
+                                <div class="calorie-note" id="vegan-note">
+                                    <span>💡</span>
+                                    <span id="vegan-calorie-text"></span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1446,6 +1658,9 @@
             
             tipsContent.innerHTML = idealText + '<ul>' + tips.list.map(t => `<li>${t}</li>`).join('') + '</ul>';
             
+            // Show diet section and populate
+            showDietRecommendations(category);
+            
             results.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
         
@@ -1494,6 +1709,191 @@
             };
             
             return tips[category] || tips['Normal Weight'];
+        }
+        
+        // Diet Recommendations
+        const dietTabs = document.querySelectorAll('.diet-tab');
+        const dietContents = document.querySelectorAll('.diet-content');
+        
+        dietTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                dietTabs.forEach(t => t.classList.remove('active'));
+                dietContents.forEach(c => c.classList.remove('active'));
+                
+                tab.classList.add('active');
+                document.getElementById(`diet-${tab.dataset.diet}`).classList.add('active');
+            });
+        });
+        
+        function showDietRecommendations(category) {
+            const dietSection = document.getElementById('dietSection');
+            dietSection.classList.add('show');
+            
+            const diets = getDietPlans(category);
+            
+            // Populate Vegetarian
+            document.getElementById('veg-meals').innerHTML = generateMealCards(diets.vegetarian);
+            document.getElementById('veg-calorie-text').textContent = diets.vegetarian.note;
+            
+            // Populate Non-Vegetarian
+            document.getElementById('nonveg-meals').innerHTML = generateMealCards(diets.nonveg);
+            document.getElementById('nonveg-calorie-text').textContent = diets.nonveg.note;
+            
+            // Populate Eggetarian
+            document.getElementById('egg-meals').innerHTML = generateMealCards(diets.eggetarian);
+            document.getElementById('egg-calorie-text').textContent = diets.eggetarian.note;
+            
+            // Populate Vegan
+            document.getElementById('vegan-meals').innerHTML = generateMealCards(diets.vegan);
+            document.getElementById('vegan-calorie-text').textContent = diets.vegan.note;
+        }
+        
+        function generateMealCards(diet) {
+            return `
+                <div class="meal-card">
+                    <h4>🌅 Breakfast</h4>
+                    <ul>${diet.breakfast.map(item => `<li>${item}</li>`).join('')}</ul>
+                </div>
+                <div class="meal-card">
+                    <h4>☀️ Lunch</h4>
+                    <ul>${diet.lunch.map(item => `<li>${item}</li>`).join('')}</ul>
+                </div>
+                <div class="meal-card">
+                    <h4>🍵 Snacks</h4>
+                    <ul>${diet.snacks.map(item => `<li>${item}</li>`).join('')}</ul>
+                </div>
+                <div class="meal-card">
+                    <h4>🌙 Dinner</h4>
+                    <ul>${diet.dinner.map(item => `<li>${item}</li>`).join('')}</ul>
+                </div>
+            `;
+        }
+        
+        function getDietPlans(category) {
+            const plans = {
+                'Underweight': {
+                    vegetarian: {
+                        breakfast: ['Paneer paratha with curd', 'Banana milkshake', 'Dry fruits (almonds, cashews)', 'Upma with ghee'],
+                        lunch: ['Rice with dal & ghee', 'Paneer butter masala', 'Mixed vegetable curry', 'Buttermilk'],
+                        snacks: ['Cheese sandwich', 'Fruit smoothie', 'Peanut butter toast', 'Mixed nuts'],
+                        dinner: ['Roti with paneer curry', 'Vegetable pulao', 'Dal tadka', 'Sweet lassi'],
+                        note: 'Target: 2500-3000 calories/day. Focus on calorie-dense vegetarian foods rich in protein and healthy fats.'
+                    },
+                    nonveg: {
+                        breakfast: ['Egg bhurji with paratha', 'Chicken sandwich', 'Banana shake with nuts', 'Omelette with toast'],
+                        lunch: ['Chicken biryani', 'Fish curry with rice', 'Mutton kheema', 'Chicken soup'],
+                        snacks: ['Grilled chicken strips', 'Egg salad', 'Protein shake', 'Chicken momos'],
+                        dinner: ['Butter chicken with naan', 'Fish fry with rice', 'Egg curry with roti', 'Mutton korma'],
+                        note: 'Target: 2500-3000 calories/day. Include protein-rich meats, fish, and eggs for healthy weight gain.'
+                    },
+                    eggetarian: {
+                        breakfast: ['Egg paratha', 'Boiled eggs with toast', 'Egg bhurji', 'French toast with banana'],
+                        lunch: ['Egg fried rice', 'Egg curry with roti', 'Paneer & egg bhurji', 'Vegetable omelette'],
+                        snacks: ['Egg sandwich', 'Protein shake', 'Boiled eggs', 'Egg cutlet'],
+                        dinner: ['Egg masala curry', 'Scrambled eggs with chapati', 'Egg biryani', 'Paneer tikka'],
+                        note: 'Target: 2500-3000 calories/day. Eggs provide complete protein for muscle building and weight gain.'
+                    },
+                    vegan: {
+                        breakfast: ['Tofu scramble', 'Peanut butter banana smoothie', 'Oats with almond milk', 'Avocado toast'],
+                        lunch: ['Chickpea curry with rice', 'Soy chunk biryani', 'Lentil soup with bread', 'Quinoa salad'],
+                        snacks: ['Trail mix', 'Hummus with veggies', 'Soy milk shake', 'Energy balls'],
+                        dinner: ['Tofu stir-fry', 'Black bean tacos', 'Mushroom curry', 'Vegetable khichdi'],
+                        note: 'Target: 2500-3000 calories/day. Focus on legumes, nuts, seeds, and soy products for protein.'
+                    }
+                },
+                'Normal Weight': {
+                    vegetarian: {
+                        breakfast: ['Idli with sambar', 'Poha with peanuts', 'Dalia with vegetables', 'Sprouts salad'],
+                        lunch: ['Roti with dal & sabzi', 'Brown rice with rajma', 'Mixed vegetable curry', 'Curd'],
+                        snacks: ['Fresh fruits', 'Roasted chana', 'Green tea with biscuits', 'Coconut water'],
+                        dinner: ['Light khichdi', 'Roti with palak paneer', 'Vegetable soup', 'Salad'],
+                        note: 'Target: 1800-2200 calories/day. Maintain balanced nutrition with variety of vegetables and proteins.'
+                    },
+                    nonveg: {
+                        breakfast: ['Egg white omelette', 'Chicken soup', 'Boiled eggs with toast', 'Grilled fish'],
+                        lunch: ['Grilled chicken with rice', 'Fish curry with roti', 'Chicken salad', 'Egg fried rice'],
+                        snacks: ['Grilled chicken breast', 'Fish fingers', 'Egg whites', 'Protein bar'],
+                        dinner: ['Tandoori chicken', 'Steamed fish', 'Chicken stew', 'Egg curry'],
+                        note: 'Target: 1800-2200 calories/day. Choose lean proteins and avoid fried preparations.'
+                    },
+                    eggetarian: {
+                        breakfast: ['Boiled eggs with multigrain toast', 'Egg white omelette', 'Poached eggs', 'Vegetable upma'],
+                        lunch: ['Egg salad', 'Paneer tikka', 'Brown rice with dal', 'Egg curry with roti'],
+                        snacks: ['Boiled egg whites', 'Fruit bowl', 'Nuts', 'Green tea'],
+                        dinner: ['Scrambled eggs', 'Paneer bhurji', 'Vegetable soup', 'Multigrain roti'],
+                        note: 'Target: 1800-2200 calories/day. Balance eggs with vegetables for complete nutrition.'
+                    },
+                    vegan: {
+                        breakfast: ['Oatmeal with berries', 'Smoothie bowl', 'Whole wheat toast with avocado', 'Chia pudding'],
+                        lunch: ['Quinoa Buddha bowl', 'Lentil soup', 'Grilled vegetables', 'Brown rice with dal'],
+                        snacks: ['Fresh fruits', 'Hummus & carrots', 'Nuts & seeds', 'Green smoothie'],
+                        dinner: ['Stir-fried tofu', 'Vegetable curry', 'Mixed bean salad', 'Soup with bread'],
+                        note: 'Target: 1800-2200 calories/day. Ensure adequate protein from varied plant sources.'
+                    }
+                },
+                'Overweight': {
+                    vegetarian: {
+                        breakfast: ['Moong dal chilla', 'Vegetable oats', 'Fruit salad', 'Green smoothie'],
+                        lunch: ['Roti with dal (no ghee)', 'Salad with paneer', 'Vegetable soup', 'Brown rice (small portion)'],
+                        snacks: ['Cucumber & carrots', 'Roasted makhana', 'Green tea', 'Sprouts'],
+                        dinner: ['Grilled vegetables', 'Clear soup', 'Salad with lemon dressing', 'Steamed idli'],
+                        note: 'Target: 1400-1600 calories/day. Focus on high-fiber, low-calorie foods. Avoid fried items and sweets.'
+                    },
+                    nonveg: {
+                        breakfast: ['Egg white omelette (no oil)', 'Grilled fish', 'Chicken clear soup', 'Boiled eggs'],
+                        lunch: ['Grilled chicken breast', 'Fish tikka', 'Chicken salad (no dressing)', 'Steamed fish'],
+                        snacks: ['Grilled chicken strips', 'Fish fingers (baked)', 'Boiled egg whites', 'Chicken soup'],
+                        dinner: ['Tandoori fish', 'Chicken stew (no cream)', 'Grilled chicken', 'Egg white curry'],
+                        note: 'Target: 1400-1600 calories/day. Choose grilled/baked over fried. Remove skin from chicken.'
+                    },
+                    eggetarian: {
+                        breakfast: ['Egg white omelette', 'Boiled eggs (whites only)', 'Vegetable poha', 'Sprout salad'],
+                        lunch: ['Egg salad (no mayo)', 'Paneer tikka (grilled)', 'Brown rice with vegetables', 'Clear soup'],
+                        snacks: ['Boiled egg whites', 'Cucumber', 'Roasted chana', 'Buttermilk'],
+                        dinner: ['Scrambled egg whites', 'Grilled paneer', 'Vegetable soup', 'Salad'],
+                        note: 'Target: 1400-1600 calories/day. Prefer egg whites over whole eggs. Avoid oil and butter.'
+                    },
+                    vegan: {
+                        breakfast: ['Green smoothie', 'Oats with water', 'Fruit bowl', 'Chia seeds in water'],
+                        lunch: ['Large salad with chickpeas', 'Vegetable soup', 'Grilled tofu', 'Quinoa (small portion)'],
+                        snacks: ['Raw vegetables', 'Green tea', 'Small handful of nuts', 'Coconut water'],
+                        dinner: ['Stir-fried vegetables', 'Lentil soup', 'Mushroom salad', 'Steamed vegetables'],
+                        note: 'Target: 1400-1600 calories/day. Fill up on vegetables and legumes. Limit nuts and avocado.'
+                    }
+                },
+                'Obese': {
+                    vegetarian: {
+                        breakfast: ['Warm lemon water', 'Moong dal soup', 'Vegetable juice', 'Small portion of poha'],
+                        lunch: ['Large salad', 'Dal without tadka', 'Steamed vegetables', '1 small roti'],
+                        snacks: ['Cucumber', 'Buttermilk', 'Green tea', 'Tomato soup'],
+                        dinner: ['Vegetable clear soup', 'Salad', 'Steamed sprouts', 'No carbs after 6pm'],
+                        note: 'Target: 1200-1400 calories/day. Consult a doctor before starting. Focus on portion control and fiber.'
+                    },
+                    nonveg: {
+                        breakfast: ['2 egg whites only', 'Chicken clear soup', 'Grilled fish (small)', 'Green tea'],
+                        lunch: ['Grilled chicken (100g)', 'Fish soup', 'Large salad', 'Avoid rice/roti'],
+                        snacks: ['Boiled egg whites', 'Chicken broth', 'Raw vegetables', 'Green tea'],
+                        dinner: ['Steamed fish (small)', 'Chicken soup', 'Salad only', 'Early dinner before 7pm'],
+                        note: 'Target: 1200-1400 calories/day. Medical supervision recommended. Focus on lean protein only.'
+                    },
+                    eggetarian: {
+                        breakfast: ['2 egg whites', 'Vegetable juice', 'Green tea', 'Small fruit portion'],
+                        lunch: ['Egg white salad', 'Vegetable soup', 'Steamed vegetables', 'Avoid carbs'],
+                        snacks: ['Boiled egg whites', 'Cucumber', 'Buttermilk', 'Green tea'],
+                        dinner: ['Scrambled egg whites', 'Clear soup', 'Salad', 'Very early dinner'],
+                        note: 'Target: 1200-1400 calories/day. Medical guidance essential. Stick to egg whites and vegetables.'
+                    },
+                    vegan: {
+                        breakfast: ['Warm water with lemon', 'Green vegetable juice', 'Small fruit portion', 'Herbal tea'],
+                        lunch: ['Large vegetable salad', 'Lentil soup (small)', 'Steamed vegetables', 'No grains'],
+                        snacks: ['Raw vegetables only', 'Green tea', 'Coconut water', 'Cucumber'],
+                        dinner: ['Vegetable broth', 'Steamed greens', 'Salad', 'Finish eating by 6pm'],
+                        note: 'Target: 1200-1400 calories/day. Medical supervision required. Focus on vegetables and hydration.'
+                    }
+                }
+            };
+            
+            return plans[category] || plans['Normal Weight'];
         }
     </script>
 </body>
