@@ -139,9 +139,13 @@
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             box-shadow: 0 8px 24px rgba(102, 126, 234, 0.4);
             transition: all 0.4s;
-            color: white;
-            font-weight: 800;
-            font-size: 1rem;
+            overflow: hidden;
+        }
+        
+        .logo-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
         
         .logo:hover .logo-icon {
@@ -1060,6 +1064,87 @@
             color: white;
         }
         
+        /* FAQ Section Styles */
+        .faq-container {
+            margin-top: 30px;
+        }
+        
+        .faq-item {
+            background: white;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            border: 2px solid #e2e8f0;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+        
+        .faq-item:hover {
+            border-color: #4299e1;
+        }
+        
+        .faq-item.active {
+            border-color: #667eea;
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.15);
+        }
+        
+        .faq-question {
+            padding: 20px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .faq-question:hover {
+            background: #f7fafc;
+        }
+        
+        .faq-question h3 {
+            margin: 0;
+            font-size: 1.1rem;
+            color: #2d3748;
+            font-weight: 600;
+            flex: 1;
+            padding-right: 15px;
+        }
+        
+        .faq-toggle {
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 600;
+            transition: transform 0.3s;
+            flex-shrink: 0;
+        }
+        
+        .faq-item.active .faq-toggle {
+            transform: rotate(45deg);
+        }
+        
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.3s ease;
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding: 0 25px 20px;
+        }
+        
+        .faq-answer p {
+            color: #4a5568;
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+        
         /* Site Footer - Matching index.html */
         .site-footer {
             background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
@@ -1641,7 +1726,9 @@
         <header class="site-header">
             <div class="header-content">
                 <a href="../../index.html" class="logo">
-                    <div class="logo-icon">ST</div>
+                    <div class="logo-icon">
+                        <img src="../../images/logo.webp" alt="ShramTools Logo">
+                    </div>
                     <div class="logo-text">
                         <h1>ShramTools</h1>
                         <p>Free Online Tools</p>
@@ -1658,8 +1745,8 @@
                     <a href="../../index.html">Home</a>
                     <a href="../../index.html#health">Health Tools</a>
                     <a href="../../index.html#financial">Financial</a>
-                    <a href="https://shramkavach.com" target="_blank">Shram Kavach</a>
-                    <a href="../../index.html#financial" class="cta-button">Explore Tools</a>
+                    <a href="../../about-us.html">About</a>
+                    <a href="../../index.html" class="cta-button">Explore Tools</a>
                 </nav>
             </div>
         </header>
@@ -2085,7 +2172,7 @@
                 <h2>🛠️ Try Other Health Tools</h2>
                 
                 <div class="tools-grid">
-                    <a href="../../client/tools/health/calorie-calculator.html" class="tool-link">
+                    <a href="../../index.html#health" class="tool-link">
                         <div class="tool-icon">🔥</div>
                         <div class="tool-info">
                             <h3>Calorie Calculator</h3>
@@ -2093,7 +2180,7 @@
                         </div>
                     </a>
                     
-                    <a href="../../client/tools/health/ideal-weight-calculator.html" class="tool-link">
+                    <a href="../../index.html#health" class="tool-link">
                         <div class="tool-icon">⚖️</div>
                         <div class="tool-info">
                             <h3>Ideal Weight Calculator</h3>
@@ -2101,7 +2188,7 @@
                         </div>
                     </a>
                     
-                    <a href="../../client/tools/health/body-fat-calculator.html" class="tool-link">
+                    <a href="../../index.html#health" class="tool-link">
                         <div class="tool-icon">📊</div>
                         <div class="tool-info">
                             <h3>Body Fat Calculator</h3>
@@ -2109,7 +2196,7 @@
                         </div>
                     </a>
                     
-                    <a href="../../client/tools/health/bmr-calculator.html" class="tool-link">
+                    <a href="../../index.html#health" class="tool-link">
                         <div class="tool-icon">⚡</div>
                         <div class="tool-info">
                             <h3>BMR Calculator</h3>
@@ -2117,7 +2204,7 @@
                         </div>
                     </a>
                     
-                    <a href="../../client/tools/financial/loan-calculator.html" class="tool-link">
+                    <a href="../../index.html#financial" class="tool-link">
                         <div class="tool-icon">💰</div>
                         <div class="tool-info">
                             <h3>Loan Calculator</h3>
@@ -2125,7 +2212,7 @@
                         </div>
                     </a>
                     
-                    <a href="../../client/tools/financial/mortgage-calculator.html" class="tool-link">
+                    <a href="../../index.html#financial" class="tool-link">
                         <div class="tool-icon">🏠</div>
                         <div class="tool-info">
                             <h3>Mortgage Calculator</h3>
@@ -2133,13 +2220,80 @@
                         </div>
                     </a>
                     
-                    <a href="../../all-tools.html" class="tool-link highlight-tool">
+                    <a href="../../index.html" class="tool-link highlight-tool">
                         <div class="tool-icon">🧰</div>
                         <div class="tool-info">
                             <h3>All Tools</h3>
-                            <p>Browse 100+ free calculators</p>
+                            <p>Browse 250+ free calculators</p>
                         </div>
                     </a>
+                </div>
+            </div>
+            
+            <!-- FAQ Section -->
+            <div class="edu-section">
+                <h2>❓ Frequently Asked Questions</h2>
+                
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>What is BMI and why is it important?</h3>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>BMI (Body Mass Index) is a numerical value calculated from your weight and height. It's used as a screening tool to identify potential weight-related health issues. A healthy BMI typically falls between 18.5 and 24.9. It helps healthcare providers assess overall health risks and recommend appropriate lifestyle changes.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>How accurate is BMI as a health indicator?</h3>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>BMI is a useful screening tool but has limitations. It doesn't distinguish between muscle and fat mass, so athletes may have a high BMI despite being healthy. It also doesn't account for age, gender, ethnicity, or fat distribution. For a complete health assessment, BMI should be used alongside other measures like waist circumference, body fat percentage, and overall fitness level.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>What's the difference between BMI and body fat percentage?</h3>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>BMI calculates a ratio of weight to height, while body fat percentage measures the actual proportion of fat in your body. Body fat percentage is more accurate for assessing health because it directly measures fat content. However, BMI is simpler to calculate and provides a quick general assessment without specialized equipment.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>Can BMI be different for different age groups?</h3>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, BMI interpretation varies by age. For children and teens (ages 2-19), BMI is expressed as a percentile compared to other children of the same age and sex. For adults over 65, a slightly higher BMI (25-27) may actually be protective. This calculator is designed for adults 20 years and older using standard WHO categories.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>How often should I check my BMI?</h3>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>For most adults, checking BMI every few months is sufficient unless you're actively trying to lose or gain weight. If you're on a weight management program, monthly checks can help track progress. Remember that small daily fluctuations in weight are normal, so focus on long-term trends rather than daily changes.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>What should I do if my BMI is outside the normal range?</h3>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>If your BMI is below 18.5 or above 25, consider consulting a healthcare provider for personalized advice. They can assess other health factors and recommend appropriate changes. Generally, focusing on balanced nutrition, regular physical activity, adequate sleep, and stress management can help achieve and maintain a healthy weight.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -2221,6 +2375,22 @@
                 }
             });
         });
+        
+        // FAQ Toggle Function
+        function toggleFAQ(questionElement) {
+            const faqItem = questionElement.closest('.faq-item');
+            const wasActive = faqItem.classList.contains('active');
+            
+            // Close all other FAQ items
+            document.querySelectorAll('.faq-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Toggle current item
+            if (!wasActive) {
+                faqItem.classList.add('active');
+            }
+        }
         
         // DOM Elements
         const unitBtns = document.querySelectorAll('.unit-btn');
