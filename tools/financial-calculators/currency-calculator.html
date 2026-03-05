@@ -3,623 +3,791 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
-    <title>Currency Calculator - Free Online Tool | ShramTools</title>
-    <meta name="description" content="Free Currency Calculator tool by ShramTools. Easy to use, accurate results, no registration required.">
-    <meta name="keywords" content="currency calculator, free calculator, online tool, ShramTools">
+    <title>Currency Converter Calculator - Free Exchange Rate Tool | ShramTools</title>
+    <meta name="description" content="Free currency converter with live exchange rates for 150+ currencies. Convert USD, EUR, GBP, INR, JPY, CAD and more. Includes historical rate comparison and multi-currency conversion.">
+    <meta name="keywords" content="currency converter, exchange rate calculator, currency calculator, forex converter, USD to EUR, money converter, live exchange rates">
     <meta name="author" content="ShramTools by Shram Kavach">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://shramtools.shramkavach.com/tools/financial-calculators/currency-calculator.html">
-    
-    <!-- Open Graph -->
+
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://shramtools.shramkavach.com/tools/financial-calculators/currency-calculator.html">
-    <meta property="og:title" content="Currency Calculator - Free Online Tool | ShramTools">
-    <meta property="og:description" content="Free Currency Calculator tool. Easy to use, accurate results.">
-    <meta property="og:image" content="https://shramtools.shramkavach.com/images/og-image.jpg">
-    
-    <!-- Twitter -->
+    <meta property="og:title" content="Free Currency Converter - Live Exchange Rates">
+    <meta property="og:description" content="Convert between 150+ world currencies with live exchange rates. Quick, free, and accurate.">
+
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:title" content="Currency Calculator | ShramTools">
-    <meta property="twitter:description" content="Free Currency Calculator tool by ShramTools.">
-    
-    <link rel="icon" type="image/webp" href="../../images/logo.webp">
-    
+    <meta property="twitter:url" content="https://shramtools.shramkavach.com/tools/financial-calculators/currency-calculator.html">
+    <meta property="twitter:title" content="Free Currency Converter Calculator">
+    <meta property="twitter:description" content="Convert currencies instantly with live exchange rates for 150+ currencies.">
+
+    <link rel="icon" type="image/jpeg" href="../../images/bmi/bmi-icon-512.jpg">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Currency Converter Calculator",
+      "applicationCategory": "FinanceApplication",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "description": "Free currency converter with live exchange rates for 150+ currencies",
+      "url": "https://shramtools.shramkavach.com/tools/financial-calculators/currency-calculator.html",
+      "creator": {
+        "@type": "Organization",
+        "name": "ShramTools",
+        "url": "https://shramtools.shramkavach.com",
+        "parentOrganization": { "@type": "Organization", "name": "Shram Kavach", "url": "https://shramkavach.com" }
+      }
+    }
+    </script>
+
     <style>
-        /* Reset & Base */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667EEA 0%, #764BA2 100%);
+            --page-bg: linear-gradient(180deg, #F5F7FA 0%, #E8EEF5 50%, #F0E7F8 100%);
+            --primary-blue: #4299E1;
+            --secondary-blue: #3182CE;
+            --success-green: #48BB78;
+            --success-alt: #10B981;
+            --warning-amber: #F59E0B;
+            --error-red: #EF4444;
+            --text-main: #2D3748;
+            --text-secondary: #4A5568;
+            --text-muted: #718096;
+            --border: #E2E8F0;
+            --surface: #F7FAFC;
+            --white: #FFFFFF;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --radius: 12px;
         }
-        
-        html {
-            scroll-behavior: smooth;
-        }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #e8eef5 50%, #f0e7f8 100%);
-            background-attachment: fixed;
-            min-height: 100vh;
-            color: #2d3748;
-            line-height: 1.6;
-        }
-        
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+        html { scroll-behavior: smooth; }
+        body { background: var(--page-bg); color: var(--text-main); line-height: 1.6; padding: 0; -webkit-font-smoothing: antialiased; }
+        .page-wrapper { min-height: 100vh; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+
         /* Site Header */
         .site-header {
             background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(20px) saturate(180%);
             -webkit-backdrop-filter: blur(20px) saturate(180%);
-            padding: 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+            padding: 0; position: sticky; top: 0; z-index: 1000;
             box-shadow: 0 8px 32px rgba(102, 126, 234, 0.08), 0 1px 3px rgba(0, 0, 0, 0.05);
             border-bottom: 1px solid rgba(102, 126, 234, 0.1);
         }
-        
         .site-header::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
+            content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
             background: linear-gradient(90deg, transparent, #667eea, #764ba2, #a855f7, transparent);
             animation: headerGlow 4s ease-in-out infinite;
         }
-        
-        @keyframes headerGlow {
-            0%, 100% { opacity: 0.2; }
-            50% { opacity: 0.6; }
-        }
-        
-        .header-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            text-decoration: none;
-        }
-        
-        .logo-icon {
-            width: 45px;
-            height: 45px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            box-shadow: 0 8px 24px rgba(102, 126, 234, 0.4);
-            transition: all 0.4s;
-            overflow: hidden;
-        }
-        
-        .logo-icon img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 12px;
-        }
-        
-        .logo-icon:hover {
-            transform: scale(1.05) rotate(5deg);
-            box-shadow: 0 12px 32px rgba(102, 126, 234, 0.5);
-        }
-        
-        .logo-text {
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .logo-main {
-            font-size: 1.5rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #a855f7 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: -0.5px;
-        }
-        
-        .logo-sub {
-            font-size: 0.7rem;
-            color: #718096;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-top: -2px;
-        }
-        
-        .nav-menu {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-        }
-        
-        .nav-link {
-            color: #4a5568;
-            text-decoration: none;
-            font-weight: 500;
-            padding: 0.6rem 1.2rem;
-            border-radius: 12px;
-            transition: all 0.3s;
-            position: relative;
-        }
-        
-        .nav-link:hover {
-            color: #667eea;
-            background: rgba(102, 126, 234, 0.08);
-        }
-        
-        .nav-link.active {
-            color: #667eea;
-            background: rgba(102, 126, 234, 0.1);
-        }
-        
-        .nav-link-primary {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white !important;
-            padding: 0.7rem 1.5rem;
-            border-radius: 25px;
-            font-weight: 600;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-        }
-        
-        .nav-link-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5);
-            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
-        }
-        
-        /* Main Content - Under Progress */
-        .main-content {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 60px 20px;
-            text-align: center;
-        }
-        
-        .progress-container {
-            background: white;
-            border-radius: 24px;
-            padding: 60px 40px;
-            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.15);
-            border: 1px solid rgba(102, 126, 234, 0.1);
-        }
-        
-        .progress-icon {
-            width: 120px;
-            height: 120px;
-            margin: 0 auto 30px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            animation: pulse 2s ease-in-out infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(102, 126, 234, 0.4); }
-            50% { transform: scale(1.05); box-shadow: 0 0 0 20px rgba(102, 126, 234, 0); }
-        }
-        
-        .progress-icon svg {
-            width: 60px;
-            height: 60px;
-            fill: white;
-        }
-        
-        .progress-title {
-            font-size: 2.5rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #a855f7 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 15px;
-        }
-        
-        .progress-subtitle {
-            font-size: 1.2rem;
-            color: #718096;
-            margin-bottom: 30px;
-        }
-        
-        .progress-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-            color: #92400e;
-            padding: 12px 24px;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1rem;
-            margin-bottom: 30px;
-        }
-        
-        .progress-badge svg {
-            width: 20px;
-            height: 20px;
-            fill: #f59e0b;
-        }
-        
-        .category-badge {
-            display: inline-block;
-            background: rgba(102, 126, 234, 0.1);
-            color: #667eea;
-            padding: 8px 20px;
-            border-radius: 25px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            margin-bottom: 30px;
-        }
-        
-        .progress-message {
-            color: #4a5568;
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 40px;
-        }
-        
-        .explore-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 16px 40px;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            text-decoration: none;
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
-            transition: all 0.3s;
-        }
-        
-        .explore-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.5);
-        }
-        
-        .explore-btn svg {
-            width: 20px;
-            height: 20px;
-            fill: white;
-        }
-        
+        @keyframes headerGlow { 0%, 100% { opacity: 0.2; } 50% { opacity: 0.6; } }
+        .header-content { max-width: 1400px; margin: 0 auto; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+        .logo { display: flex; align-items: center; gap: 0.8rem; text-decoration: none; }
+        .logo-icon { width: 45px; height: 45px; border-radius: 12px; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); box-shadow: 0 8px 24px rgba(102, 126, 234, 0.4); transition: all 0.4s; overflow: hidden; }
+        .logo-icon img { width: 100%; height: 100%; object-fit: cover; }
+        .logo:hover .logo-icon { transform: scale(1.1); box-shadow: 0 12px 32px rgba(102, 126, 234, 0.5); }
+        .logo-text h1 { margin: 0; font-size: 1.6rem; font-weight: 800; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; letter-spacing: -0.5px; }
+        .logo-text p { margin: 0; font-size: 0.7rem; color: #64748b; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; }
+        .header-links { display: flex; gap: 1.5rem; align-items: center; }
+        .header-links a { color: #475569; text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: all 0.3s; padding: 0.5rem 0.8rem; position: relative; }
+        .header-links a:hover { color: #667eea; }
+        .header-links a::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 0; height: 2px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); transition: width 0.3s; }
+        .header-links a:hover::after { width: 80%; }
+        .cta-button { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white !important; padding: 0.6rem 1.2rem !important; border-radius: 8px; font-weight: 600; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3); }
+        .cta-button:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4); }
+        .cta-button::after { display: none !important; }
+
+        /* Hamburger */
+        .hamburger { display: none; flex-direction: column; cursor: pointer; padding: 10px; z-index: 1001; }
+        .hamburger span { width: 25px; height: 3px; background: #667eea; margin: 3px 0; border-radius: 3px; transition: all 0.3s; }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -6px); }
+        .menu-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 998; }
+        .menu-overlay.active { display: block; }
+
         /* Footer */
-        .site-footer {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-            color: #e2e8f0;
-            padding: 60px 0 30px;
-            margin-top: 80px;
-        }
-        
-        .footer-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-        
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 3rem;
-            margin-bottom: 40px;
-        }
-        
-        .footer-brand {
-            max-width: 350px;
-        }
-        
-        .footer-logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 20px;
-        }
-        
-        .footer-logo-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 14px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-        
-        .footer-logo-icon img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 14px;
-        }
-        
-        .footer-logo-text {
-            font-size: 1.8rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #667eea 0%, #a855f7 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .footer-desc {
-            color: #94a3b8;
-            line-height: 1.8;
-            font-size: 0.95rem;
-        }
-        
-        .footer-section h4 {
-            color: white;
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            position: relative;
-            padding-bottom: 10px;
-        }
-        
-        .footer-section h4::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 40px;
-            height: 3px;
-            background: linear-gradient(90deg, #667eea, #a855f7);
-            border-radius: 2px;
-        }
-        
-        .footer-links {
-            list-style: none;
-        }
-        
-        .footer-links li {
-            margin-bottom: 12px;
-        }
-        
-        .footer-links a {
-            color: #94a3b8;
-            text-decoration: none;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .footer-links a:hover {
-            color: #a855f7;
-            transform: translateX(5px);
-        }
-        
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-        
-        .footer-bottom p {
-            color: #64748b;
-            font-size: 0.9rem;
-        }
-        
-        .footer-bottom a {
-            color: #a855f7;
-            text-decoration: none;
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 15px;
-        }
-        
-        .social-link {
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.05);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #94a3b8;
-            text-decoration: none;
-            transition: all 0.3s;
-        }
-        
-        .social-link:hover {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            transform: translateY(-3px);
-        }
-        
+        .site-footer { background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%); color: #cbd5e0; padding: 3.5rem 0 0; margin-top: 4rem; border-top: 2px solid #334155; position: relative; }
+        .site-footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #667eea, #764ba2, transparent); }
+        .footer-content { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 2.5rem; margin-bottom: 2.5rem; }
+        .footer-section h3 { color: #ffffff; font-size: 1.1rem; margin-bottom: 1rem; font-weight: 700; position: relative; display: inline-block; }
+        .footer-section h3::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 35px; height: 3px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 2px; }
+        .footer-section p { font-size: 0.9rem; line-height: 1.8; color: #94a3b8; }
+        .footer-section ul { list-style: none; padding: 0; margin: 0; }
+        .footer-section ul li { margin-bottom: 0.7rem; }
+        .footer-section a { color: #cbd5e0; text-decoration: none; transition: all 0.3s; display: inline-block; font-size: 0.9rem; }
+        .footer-section a:hover { color: #667eea; transform: translateX(5px); }
+        .footer-brand { margin-bottom: 1.2rem; }
+        .footer-logo { display: flex; align-items: center; gap: 0.7rem; margin-bottom: 0.8rem; }
+        .footer-logo-icon { width: 36px; height: 36px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 8px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .footer-logo-icon img { width: 100%; height: 100%; object-fit: cover; }
+        .footer-logo h3 { margin: 0; font-size: 1.3rem; font-weight: 700; }
+        .footer-logo h3::after { display: none; }
+        .footer-bottom { max-width: 1200px; margin: 0 auto; padding: 1.5rem 2rem; border-top: 1px solid #334155; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+        .footer-bottom p { margin: 0; font-size: 0.85rem; color: #94a3b8; }
+        .footer-bottom a { color: #667eea; text-decoration: none; font-weight: 600; transition: color 0.3s; }
+        .footer-bottom a:hover { color: #764ba2; }
+        .footer-links-bottom { display: flex; gap: 1.5rem; }
+        .footer-links-bottom a { color: #94a3b8; font-size: 0.85rem; }
+
+        /* Animations */
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-6px); } }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        /* Page Header */
+        .page-header { background: white; padding: 45px 40px; border-radius: 20px; text-align: center; margin-bottom: 35px; box-shadow: 0 10px 40px rgba(0,0,0,0.08); position: relative; overflow: hidden; animation: fadeInUp 0.6s ease; }
+        .page-header::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 5px; background: linear-gradient(90deg, #4299e1, #667eea, #764ba2, #a855f7); }
+        .page-header .header-icon { font-size: 3rem; margin-bottom: 12px; display: block; animation: float 3s ease-in-out infinite; }
+        .page-header h2 { color: #1a202c; font-size: 2.5rem; font-weight: 800; margin-bottom: 12px; letter-spacing: -0.5px; }
+        .page-header p { color: #718096; font-size: 1.1rem; max-width: 650px; margin: 0 auto; line-height: 1.7; }
+
+        /* Breadcrumb */
+        .breadcrumb { display: flex; align-items: center; gap: 8px; margin-bottom: 20px; font-size: 0.85rem; animation: fadeIn 0.5s ease; }
+        .breadcrumb a { color: #667eea; text-decoration: none; font-weight: 500; transition: color 0.2s; }
+        .breadcrumb a:hover { color: #764ba2; }
+        .breadcrumb span { color: #a0aec0; }
+
+        /* Converter Card */
+        .converter-card { background: var(--white); border-radius: 16px; box-shadow: 0 10px 40px rgba(0,0,0,0.08); overflow: hidden; margin-bottom: 40px; border: 1px solid rgba(226, 232, 240, 0.8); animation: fadeInUp 0.7s ease; padding: 40px; }
+        .converter-title { display: flex; align-items: center; gap: 10px; margin-bottom: 30px; padding-bottom: 18px; border-bottom: 2px solid #f1f5f9; }
+        .converter-title span { font-size: 1.5rem; }
+        .converter-title h2 { font-size: 1.3rem; font-weight: 700; color: var(--text-main); margin: 0; }
+
+        .converter-row { display: grid; grid-template-columns: 1fr auto 1fr; gap: 20px; align-items: end; margin-bottom: 25px; }
+        .converter-field { }
+        .converter-field label { display: flex; align-items: center; gap: 6px; font-weight: 600; font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 8px; }
+        .converter-field label .label-icon { font-size: 1rem; }
+        .converter-field .input-group { position: relative; display: flex; align-items: center; }
+        .converter-field .input-group input { width: 100%; padding: 14px 14px 14px 14px; border: 2px solid #e2e8f0; border-radius: 10px; font-size: 1.15rem; outline: none; transition: all 0.3s; background: #fafbfc; color: var(--text-main); font-weight: 600; }
+        .converter-field .input-group input:hover { border-color: #cbd5e0; background: white; }
+        .converter-field .input-group input:focus { border-color: #667eea; box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1); background: white; }
+        .converter-field select { width: 100%; padding: 14px; border: 2px solid #e2e8f0; border-radius: 10px; font-size: 0.95rem; outline: none; transition: all 0.3s; background: #fafbfc; color: var(--text-main); font-weight: 500; cursor: pointer; -webkit-appearance: none; -moz-appearance: none; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23667eea' d='M6 8L1 3h10z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; margin-top: 8px; }
+        .converter-field select:hover { border-color: #cbd5e0; background-color: white; }
+        .converter-field select:focus { border-color: #667eea; box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1); background-color: white; }
+
+        .swap-btn { width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; color: white; transition: all 0.3s; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3); margin-bottom: 28px; flex-shrink: 0; }
+        .swap-btn:hover { transform: rotate(180deg) scale(1.1); box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4); }
+
+        .convert-result { background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 50%, #eff1fe 100%); border-radius: 14px; padding: 30px; text-align: center; margin-bottom: 25px; border: 1px solid #edf2f7; position: relative; }
+        .convert-result .result-equation { font-size: 1.05rem; color: var(--text-muted); margin-bottom: 10px; font-weight: 500; }
+        .convert-result .result-value { font-size: 2.5rem; font-weight: 800; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1.3; }
+        .convert-result .result-rate { font-size: 0.88rem; color: var(--text-muted); margin-top: 8px; font-weight: 500; }
+        .convert-result .result-inverse { font-size: 0.85rem; color: var(--text-secondary); margin-top: 4px; }
+        .convert-result .rate-updated { font-size: 0.75rem; color: var(--text-muted); margin-top: 12px; font-style: italic; }
+
+        .btn-calc { width: 100%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 16px; border: none; border-radius: 10px; font-size: 1.1rem; font-weight: 700; cursor: pointer; transition: all 0.3s; position: relative; overflow: hidden; letter-spacing: 0.3px; }
+        .btn-calc::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent); transition: left 0.6s; }
+        .btn-calc:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4); }
+        .btn-calc:hover::before { left: 100%; }
+        .btn-calc:active { transform: translateY(0) scale(0.98); }
+
+        /* Popular Rates Grid */
+        .popular-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; margin-top: 20px; }
+        .rate-chip { background: white; border: 1px solid #edf2f7; border-radius: 10px; padding: 14px 16px; display: flex; justify-content: space-between; align-items: center; transition: all 0.3s; cursor: pointer; }
+        .rate-chip:hover { border-color: #667eea; box-shadow: 0 4px 12px rgba(102, 126, 234, 0.1); transform: translateY(-1px); }
+        .rate-chip .pair { font-weight: 700; color: var(--text-main); font-size: 0.9rem; display: flex; align-items: center; gap: 6px; }
+        .rate-chip .pair .flag { font-size: 1.1rem; }
+        .rate-chip .rate-val { font-weight: 600; color: #667eea; font-size: 0.9rem; }
+
+        /* Loading Spinner */
+        .loading { display: none; align-items: center; justify-content: center; gap: 10px; padding: 20px; color: var(--text-muted); font-size: 0.9rem; }
+        .loading.active { display: flex; }
+        .spinner { width: 20px; height: 20px; border: 3px solid #e2e8f0; border-top-color: #667eea; border-radius: 50%; animation: spin 0.8s linear infinite; }
+
+        /* Content Cards */
+        .content-card { background: var(--white); border-radius: 16px; padding: 40px; margin-bottom: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border: 1px solid rgba(226, 232, 240, 0.6); position: relative; overflow: hidden; transition: box-shadow 0.3s; }
+        .content-card:hover { box-shadow: 0 8px 30px rgba(0,0,0,0.08); }
+        .content-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #667eea, #764ba2); opacity: 0; transition: opacity 0.3s; }
+        .content-card:hover::before { opacity: 1; }
+        .content-card h2 { margin-bottom: 20px; color: var(--text-main); font-size: 1.6rem; font-weight: 800; display: flex; align-items: center; gap: 12px; letter-spacing: -0.3px; }
+        .content-card h2 .section-icon { font-size: 1.5rem; }
+        .content-card p { margin-bottom: 15px; color: var(--text-secondary); line-height: 1.8; font-size: 0.98rem; }
+        .content-card ul { padding-left: 0; list-style: none; color: var(--text-secondary); }
+        .content-card ul li { padding: 12px 0 12px 30px; position: relative; border-bottom: 1px solid #f1f5f9; line-height: 1.7; font-size: 0.95rem; }
+        .content-card ul li:last-child { border-bottom: none; }
+        .content-card ul li::before { content: ''; position: absolute; left: 0; top: 18px; width: 8px; height: 8px; border-radius: 50%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+
+        /* Image Box */
+        .image-box { width: 100%; border-radius: 16px; overflow: hidden; margin: 35px 0; height: 350px; position: relative; box-shadow: 0 10px 40px rgba(0,0,0,0.1); }
+        .image-box::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 50%; background: linear-gradient(to top, rgba(15, 23, 42, 0.4), transparent); pointer-events: none; }
+        .image-box img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+        .image-box:hover img { transform: scale(1.03); }
+
+        /* Formula */
+        .formula-container { background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); padding: 35px 35px 30px; border-radius: 14px; margin: 25px 0; overflow-x: auto; position: relative; box-shadow: 0 8px 30px rgba(15, 23, 42, 0.2); }
+        .formula-container::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #667eea, #764ba2, #a855f7); border-radius: 14px 14px 0 0; }
+        .formula-container::after { content: 'FORMULA'; position: absolute; top: 12px; right: 16px; font-family: 'Segoe UI', Roboto, sans-serif; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 2px; color: #64748b; font-weight: 700; background: rgba(100, 116, 139, 0.15); padding: 3px 10px; border-radius: 4px; }
+        .formula-math { display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap; font-family: 'Times New Roman', 'Cambria Math', Georgia, serif; font-size: 1.35rem; color: #e2e8f0; padding: 10px 0; font-style: italic; }
+        .formula-math .var { color: #93c5fd; font-weight: 600; font-style: italic; }
+        .formula-math .var.result { color: #a78bfa; font-size: 1.5rem; }
+        .formula-math .operator { color: #94a3b8; font-style: normal; font-weight: 400; margin: 0 2px; }
+        .formula-math .equals { color: #f59e0b; font-style: normal; font-weight: 600; font-size: 1.4rem; margin: 0 6px; }
+        .formula-legend { display: flex; flex-wrap: wrap; gap: 15px; margin-top: 20px; padding-top: 18px; border-top: 1px solid #334155; justify-content: center; }
+        .formula-legend .legend-item { display: flex; align-items: center; gap: 6px; font-size: 0.78rem; color: #94a3b8; font-family: 'Segoe UI', Roboto, sans-serif; }
+        .formula-legend .legend-var { font-family: 'Times New Roman', Georgia, serif; font-style: italic; color: #93c5fd; font-weight: 600; font-size: 0.9rem; }
+        .formula-legend .legend-var.purple { color: #a78bfa; }
+        .formula-note { text-align: center; color: #94a3b8; font-size: 0.78rem; margin-top: 15px; font-family: 'Segoe UI', Roboto, sans-serif; line-height: 1.6; }
+
+        /* FAQ */
+        .faq-grid { margin-top: 20px; }
+        .faq-item { border: 1px solid #edf2f7; border-radius: 12px; overflow: hidden; transition: all 0.3s; margin-bottom: 12px; background: white; }
+        .faq-item:hover { border-color: #e2e8f0; }
+        .faq-item.active { border-color: #667eea; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.1); }
+        .faq-question { padding: 18px 22px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; gap: 15px; transition: background 0.2s; }
+        .faq-question:hover { background: #f8fafc; }
+        .faq-question h3 { font-size: 1.05rem; margin: 0; color: var(--text-main); font-weight: 600; flex: 1; }
+        .faq-toggle { width: 28px; height: 28px; border-radius: 50%; background: #f1f5f9; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; color: #667eea; flex-shrink: 0; transition: all 0.3s; font-weight: 600; }
+        .faq-item.active .faq-toggle { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; transform: rotate(45deg); }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s ease; padding: 0 22px; }
+        .faq-item.active .faq-answer { max-height: 350px; padding: 0 22px 20px; }
+        .faq-answer p { font-size: 0.95rem; margin-bottom: 0; color: var(--text-secondary); line-height: 1.8; }
+
+        /* Related Tools */
+        .related-tools { background: white; border-radius: 16px; padding: 40px; margin-bottom: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border: 1px solid rgba(226, 232, 240, 0.6); }
+        .related-tools h2 { font-size: 1.6rem; font-weight: 800; color: var(--text-main); margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+        .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
+        .tool-link { display: flex; align-items: center; gap: 12px; padding: 14px 18px; background: #f8fafc; border-radius: 12px; text-decoration: none; color: var(--text-main); font-weight: 600; font-size: 0.9rem; border: 1px solid #edf2f7; transition: all 0.3s; }
+        .tool-link:hover { background: white; border-color: #667eea; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.1); transform: translateY(-2px); }
+        .tool-link .tool-emoji { font-size: 1.3rem; }
+
+        /* Error message */
+        .error-msg { background: #fef2f2; border: 1px solid #fecaca; border-radius: 10px; padding: 14px 18px; color: #dc2626; font-size: 0.9rem; font-weight: 500; margin-bottom: 15px; display: none; }
+        .error-msg.active { display: block; }
+
         /* Responsive */
-        @media (max-width: 968px) {
-            .nav-menu {
-                display: none;
-            }
-            
-            .footer-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-            
-            .progress-title {
-                font-size: 2rem;
-            }
+        @media (max-width: 992px) { .footer-content { grid-template-columns: 1fr 1fr; } .tools-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 850px) { .page-header h2 { font-size: 1.8rem; } .page-header { padding: 30px 20px; } }
+        @media (max-width: 768px) {
+            .container { padding: 25px 15px; } .converter-card { padding: 25px; }
+            .converter-row { grid-template-columns: 1fr; gap: 10px; }
+            .swap-btn { margin: 0 auto; transform: rotate(90deg); }
+            .swap-btn:hover { transform: rotate(270deg) scale(1.1); }
+            .convert-result .result-value { font-size: 1.8rem; }
+            .content-card { padding: 28px 22px; } .related-tools { padding: 28px 22px; }
+            .tools-grid { grid-template-columns: 1fr; } .image-box { height: 220px; }
+            .popular-grid { grid-template-columns: 1fr 1fr; }
+            .hamburger { display: flex; }
+            .header-links { position: fixed; top: 0; right: -100%; width: 75%; max-width: 280px; height: 100vh; background: #ffffff; box-shadow: -5px 0 25px rgba(0, 0, 0, 0.15); flex-direction: column; gap: 0; align-items: stretch; padding: 4rem 0 2rem; z-index: 999; transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1); overflow-y: auto; }
+            .header-links.active { right: 0; }
+            .header-links a { text-align: left; padding: 1rem 1.5rem; border-bottom: 1px solid #e2e8f0; font-size: 1rem; }
+            .header-links a::after { display: none; }
+            .cta-button { margin: 1rem 1.5rem !important; text-align: center; border-bottom: none !important; }
+            .footer-content { grid-template-columns: 1fr; text-align: center; }
+            .footer-section h3::after { left: 50%; transform: translateX(-50%); }
+            .footer-bottom { flex-direction: column; text-align: center; }
+            .footer-links-bottom { justify-content: center; }
         }
-        
-        @media (max-width: 600px) {
-            .header-content {
-                padding: 1rem;
-            }
-            
-            .progress-container {
-                padding: 40px 20px;
-            }
-            
-            .progress-title {
-                font-size: 1.6rem;
-            }
-            
-            .footer-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .footer-bottom {
-                flex-direction: column;
-                text-align: center;
-            }
-        }
+        @media (max-width: 480px) { .popular-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="site-header">
-        <div class="header-content">
-            <a href="../../index.html" class="logo">
-                <div class="logo-icon">
-                    <img src="../../images/logo.webp" alt="ShramTools Logo">
-                </div>
-                <div class="logo-text">
-                    <span class="logo-main">ShramTools</span>
-                    <span class="logo-sub">By Shram Kavach</span>
-                </div>
-            </a>
-            <nav class="nav-menu">
-                <a href="../../index.html" class="nav-link">Home</a>
-                <a href="../../index.html#financial" class="nav-link">Financial</a>
-                <a href="../../index.html#health" class="nav-link">Health</a>
-                <a href="../../index.html#math" class="nav-link">Math</a>
-                <a href="../../about-us.html" class="nav-link">About</a>
-                <a href="../../index.html" class="nav-link nav-link-primary">All Tools</a>
+    <div class="page-wrapper">
+        <!-- Sticky Site Header -->
+        <header class="site-header">
+            <div class="header-content">
+                <a href="../../index.html" class="logo">
+                    <div class="logo-icon"><img src="../../images/logo.webp" alt="ShramTools Logo"></div>
+                    <div class="logo-text"><h1>ShramTools</h1><p>Free Online Tools</p></div>
+                </a>
+                <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+                <nav class="header-links" id="headerLinks">
+                    <a href="../../index.html">Home</a>
+                    <a href="../../index.html#financial">Financial Tools</a>
+                    <a href="../../index.html#health">Health Tools</a>
+                    <a href="../../about-us.html">About</a>
+                    <a href="../../index.html" class="cta-button">Explore Tools</a>
+                </nav>
+            </div>
+        </header>
+        <div class="menu-overlay" id="menuOverlay"></div>
+
+        <div class="container">
+            <!-- Breadcrumb -->
+            <nav class="breadcrumb">
+                <a href="../../index.html">Home</a><span>/</span>
+                <a href="../../index.html#financial">Financial Tools</a><span>/</span>
+                <span style="color: #4a5568; font-weight: 600;">Currency Converter</span>
             </nav>
-        </div>
-    </header>
 
-    <!-- Main Content -->
-    <main class="main-content">
-        <div class="progress-container">
-            <div class="progress-icon">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
-                </svg>
-            </div>
-            
-            <h1 class="progress-title">Currency Calculator</h1>
-            
-            <div class="category-badge">Financial Calculators</div>
-            
-            <div class="progress-badge">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
-                </svg>
-                Under Development
-            </div>
-            
-            <p class="progress-subtitle">Coming Soon!</p>
-            
-            <p class="progress-message">
-                We're working hard to bring you an amazing <strong>Currency Calculator</strong> tool. 
-                Our team is crafting a feature-rich, user-friendly experience that will help you 
-                achieve accurate results with ease. Stay tuned!
-            </p>
-            
-            <a href="../../index.html" class="explore-btn">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
-                </svg>
-                Explore Other Tools
-            </a>
-        </div>
-    </main>
+            <!-- Page Header -->
+            <header class="page-header">
+                <span class="header-icon">&#128177;</span>
+                <h2>Currency Converter</h2>
+                <p>Convert between 150+ world currencies with live exchange rates. Fast, free, and accurate &mdash; powered by real-time market data.</p>
+            </header>
 
-    <!-- Footer -->
-    <footer class="site-footer">
-        <div class="footer-content">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <div class="footer-logo">
-                        <div class="footer-logo-icon">
-                            <img src="../../images/logo.webp" alt="ShramTools Logo">
-                        </div>
-                        <span class="footer-logo-text">ShramTools</span>
+            <!-- Converter -->
+            <div class="converter-card">
+                <div class="converter-title">
+                    <span>&#128178;</span>
+                    <h2>Convert Currency</h2>
+                </div>
+
+                <div class="error-msg" id="errorMsg"></div>
+
+                <div class="converter-row">
+                    <div class="converter-field">
+                        <label><span class="label-icon">&#128181;</span> Amount</label>
+                        <div class="input-group"><input type="number" id="amount" value="1000" placeholder="Enter amount"></div>
+                        <select id="fromCurrency"></select>
                     </div>
-                    <p class="footer-desc">
-                        Your trusted destination for 250+ free online calculators and tools. 
-                        From financial planning to health tracking, we've got you covered.
-                    </p>
+
+                    <button class="swap-btn" onclick="swapCurrencies()" title="Swap currencies">&#8644;</button>
+
+                    <div class="converter-field">
+                        <label><span class="label-icon">&#127919;</span> Converted To</label>
+                        <div class="input-group"><input type="number" id="amountTo" placeholder="Result" readonly style="background:#f1f5f9; cursor:default;"></div>
+                        <select id="toCurrency"></select>
+                    </div>
                 </div>
-                
+
+                <div class="loading" id="loading"><div class="spinner"></div>Fetching live exchange rates...</div>
+
+                <div class="convert-result" id="resultBox" style="display:none;">
+                    <div class="result-equation" id="resultEquation"></div>
+                    <div class="result-value" id="resultValue">$0</div>
+                    <div class="result-rate" id="resultRate"></div>
+                    <div class="result-inverse" id="resultInverse"></div>
+                    <div class="rate-updated" id="rateUpdated"></div>
+                </div>
+
+                <button class="btn-calc" onclick="convert()">&#128640; Convert</button>
+            </div>
+
+            <!-- Popular Rates -->
+            <section class="content-card">
+                <h2><span class="section-icon">&#11088;</span> Popular Exchange Rates</h2>
+                <p>Quick reference rates based on 1 USD. Click any pair to load it into the converter above.</p>
+                <div class="popular-grid" id="popularGrid"></div>
+            </section>
+
+            <!-- Content: About -->
+            <section class="content-card">
+                <h2><span class="section-icon">&#128218;</span> How Currency Exchange Works</h2>
+                <p>Currency exchange rates represent the value of one currency in terms of another. Rates fluctuate constantly based on supply and demand in the global foreign exchange (forex) market &mdash; the largest financial market in the world with over <strong>$7.5 trillion</strong> traded daily.</p>
+                <ul>
+                    <li><strong>Floating Rates:</strong> Most major currencies (USD, EUR, GBP, JPY) use floating exchange rates determined by market forces. Central bank policies, economic data, and geopolitical events all influence these rates.</li>
+                    <li><strong>Base &amp; Quote Currency:</strong> In a pair like EUR/USD = 1.08, EUR is the base currency and USD is the quote. It means 1 euro buys 1.08 US dollars.</li>
+                    <li><strong>Bid-Ask Spread:</strong> Banks and exchanges make profit on the spread between buying and selling prices. Online converters typically show mid-market rates (the midpoint).</li>
+                    <li><strong>Factors Affecting Rates:</strong> Interest rates, inflation, trade balances, political stability, and market sentiment all drive currency movements.</li>
+                    <li><strong>Cross Rates:</strong> When neither currency in a pair is USD, the rate is derived through USD as an intermediary. For example, GBP/JPY is calculated from GBP/USD and USD/JPY.</li>
+                </ul>
+            </section>
+
+            <div class="image-box">
+                <img src="https://images.unsplash.com/photo-1580519542036-c47de6196ba5?auto=format&fit=crop&q=80&w=1200" alt="World currencies and exchange rates concept" loading="lazy">
+            </div>
+
+            <!-- Formula -->
+            <section class="content-card">
+                <h2><span class="section-icon">&#129514;</span> Conversion Formula</h2>
+                <p>Currency conversion uses a simple multiplication with the exchange rate:</p>
+
+                <div class="formula-container">
+                    <div class="formula-math">
+                        <span class="var result">Result</span>
+                        <span class="equals">=</span>
+                        <span class="var">Amount</span>
+                        <span class="operator">&times;</span>
+                        <span class="var">Exchange Rate</span>
+                    </div>
+                    <div class="formula-legend">
+                        <div class="legend-item"><span class="legend-var purple">Result</span> = Converted Amount</div>
+                        <div class="legend-item"><span class="legend-var">Amount</span> = Amount in Source Currency</div>
+                        <div class="legend-item"><span class="legend-var">Exchange Rate</span> = Rate from Base to Target</div>
+                    </div>
+                    <div class="formula-note">Example: 1,000 USD &times; 0.92 (EUR/USD rate) = 920 EUR. The inverse rate is 1 / 0.92 = 1.087 USD per EUR.</div>
+                </div>
+            </section>
+
+            <!-- Tips -->
+            <section class="content-card">
+                <h2><span class="section-icon">&#128161;</span> Money-Saving Currency Tips</h2>
+                <ul>
+                    <li><strong>Avoid Airport Exchanges:</strong> Airport kiosks typically charge 5-10% markups. Use ATMs abroad for better rates, or exchange at your bank before traveling.</li>
+                    <li><strong>Use No-FX-Fee Cards:</strong> Credit cards like Wise, Revolut, or certain travel cards offer near mid-market rates with 0% foreign transaction fees.</li>
+                    <li><strong>Always Pay in Local Currency:</strong> When merchants offer to charge in your home currency (Dynamic Currency Conversion), decline. Their rates are always worse.</li>
+                    <li><strong>Monitor Rate Trends:</strong> If you&rsquo;re planning a large transfer, watch rate trends over weeks. A 1-2% swing on $10,000 is $100-200.</li>
+                    <li><strong>Consider Transfer Services:</strong> For large international transfers, services like Wise (TransferWise), OFX, or Remitly offer much better rates than traditional banks.</li>
+                </ul>
+            </section>
+
+            <!-- FAQ -->
+            <section class="content-card">
+                <h2><span class="section-icon">&#10067;</span> Currency Converter FAQ</h2>
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>How often are exchange rates updated?</h3>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Our converter fetches live rates from the European Central Bank, which updates daily on business days. Forex markets trade 24/5, so rates change constantly during market hours. The rates shown are mid-market indicative rates.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>Why is the rate I get at my bank different?</h3>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Banks and exchange services add a markup (spread) to the mid-market rate &mdash; typically 1-5%. This is their profit margin. Our converter shows the mid-market rate, which is the fairest reference point for comparing services.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>What are the most traded currencies?</h3>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>The top 5 by volume: US Dollar (USD) ~88% of all trades, Euro (EUR) ~31%, Japanese Yen (JPY) ~17%, British Pound (GBP) ~13%, and Chinese Yuan (CNY) ~7%. USD is on one side of nearly every major trade.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>What is the mid-market rate?</h3>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>The mid-market rate (also called interbank rate) is the midpoint between the buy and sell prices of a currency pair on the global market. It&rsquo;s the &ldquo;real&rdquo; exchange rate before any service adds their fee. Always compare against the mid-market rate to know the true cost of a conversion.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>Can I use this for cryptocurrency conversions?</h3>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>This tool focuses on fiat currencies (government-issued money). For cryptocurrency conversions (BTC, ETH, etc.), we recommend dedicated crypto tools. Crypto markets trade 24/7 with much higher volatility than fiat currencies.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Related Tools -->
+            <section class="related-tools">
+                <h2><span class="section-icon">&#128279;</span> Related Financial Tools</h2>
+                <div class="tools-grid">
+                    <a href="inflation-calculator.html" class="tool-link"><span class="tool-emoji">&#128200;</span> Inflation Calculator</a>
+                    <a href="compound-interest-calculator.html" class="tool-link"><span class="tool-emoji">&#128176;</span> Compound Interest</a>
+                    <a href="investment-calculator.html" class="tool-link"><span class="tool-emoji">&#128202;</span> Investment Calculator</a>
+                    <a href="savings-calculator.html" class="tool-link"><span class="tool-emoji">&#128179;</span> Savings Calculator</a>
+                    <a href="salary-calculator.html" class="tool-link"><span class="tool-emoji">&#128188;</span> Salary Calculator</a>
+                    <a href="indian-gst-calculator.html" class="tool-link"><span class="tool-emoji">&#127470;&#127475;</span> Indian GST Calculator</a>
+                </div>
+            </section>
+        </div>
+
+        <!-- Footer -->
+        <footer class="site-footer">
+            <div class="footer-content">
                 <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <ul class="footer-links">
-                        <li><a href="../../index.html">Home</a></li>
+                    <div class="footer-brand">
+                        <div class="footer-logo">
+                            <div class="footer-logo-icon"><img src="../../images/logo.webp" alt="ShramTools Logo"></div>
+                            <h3>ShramTools</h3>
+                        </div>
+                        <p>A comprehensive suite of 250+ free online calculators and tools. Part of the ShramKavach ecosystem - empowering productivity and simplifying complex calculations.</p>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Categories</h3>
+                    <ul>
                         <li><a href="../../index.html#financial">Financial Tools</a></li>
-                        <li><a href="../../index.html#health">Health Tools</a></li>
+                        <li><a href="../../index.html#health">Health &amp; Fitness</a></li>
                         <li><a href="../../index.html#math">Math Tools</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>More Tools</h4>
-                    <ul class="footer-links">
                         <li><a href="../../index.html#text">Text Tools</a></li>
                         <li><a href="../../index.html#image">Image Tools</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <ul>
                         <li><a href="../../index.html#student">Student Tools</a></li>
                         <li><a href="../../index.html#other">Other Tools</a></li>
+                        <li><a href="https://shramkavach.com/updates">Updates</a></li>
+                        <li><a href="https://shramkavach.com/tutorials">Tutorials</a></li>
+                        <li><a href="https://shramkavach.com/support">Support</a></li>
                     </ul>
                 </div>
-                
                 <div class="footer-section">
-                    <h4>Company</h4>
-                    <ul class="footer-links">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="../../index.html">ShramTools Home</a></li>
                         <li><a href="../../about-us.html">About Us</a></li>
-                        <li><a href="../../privacy-policy.html">Privacy Policy</a></li>
-                        <li><a href="../../terms-of-service.html">Terms of Service</a></li>
                         <li><a href="../../contact.html">Contact</a></li>
+                        <li><a href="https://shramkavach.com/privacy">Privacy Policy</a></li>
+                        <li><a href="https://shramkavach.com/terms">Terms of Service</a></li>
                     </ul>
                 </div>
             </div>
-            
             <div class="footer-bottom">
-                <p>&copy; 2025 ShramTools by <a href="https://shramkavach.com" target="_blank">Shram Kavach</a>. All rights reserved.</p>
-                <div class="social-links">
-                    <a href="#" class="social-link" aria-label="Twitter">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                        </svg>
-                    </a>
-                    <a href="#" class="social-link" aria-label="GitHub">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                        </svg>
-                    </a>
-                    <a href="#" class="social-link" aria-label="LinkedIn">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                        </svg>
-                    </a>
+                <p>&copy; 2025 <a href="https://shramkavach.com">ShramKavach.com</a> - All rights reserved. Made with &#10084;&#65039; for productivity.</p>
+                <div class="footer-links-bottom">
+                    <a href="https://shramkavach.com/sitemap">Sitemap</a>
+                    <a href="https://shramkavach.com/help">Help Center</a>
                 </div>
             </div>
-        </div>
-    </footer>
+        </footer>
+    </div>
+
+<script>
+    // Currency data with flags and names
+    const currencies = [
+        { code: 'USD', name: 'US Dollar', flag: '&#127482;&#127480;' },
+        { code: 'EUR', name: 'Euro', flag: '&#127466;&#127482;' },
+        { code: 'GBP', name: 'British Pound', flag: '&#127468;&#127463;' },
+        { code: 'JPY', name: 'Japanese Yen', flag: '&#127471;&#127477;' },
+        { code: 'CAD', name: 'Canadian Dollar', flag: '&#127464;&#127462;' },
+        { code: 'AUD', name: 'Australian Dollar', flag: '&#127462;&#127482;' },
+        { code: 'CHF', name: 'Swiss Franc', flag: '&#127464;&#127469;' },
+        { code: 'CNY', name: 'Chinese Yuan', flag: '&#127464;&#127475;' },
+        { code: 'INR', name: 'Indian Rupee', flag: '&#127470;&#127475;' },
+        { code: 'MXN', name: 'Mexican Peso', flag: '&#127474;&#127485;' },
+        { code: 'BRL', name: 'Brazilian Real', flag: '&#127463;&#127479;' },
+        { code: 'KRW', name: 'South Korean Won', flag: '&#127472;&#127479;' },
+        { code: 'SGD', name: 'Singapore Dollar', flag: '&#127480;&#127468;' },
+        { code: 'HKD', name: 'Hong Kong Dollar', flag: '&#127469;&#127472;' },
+        { code: 'NOK', name: 'Norwegian Krone', flag: '&#127475;&#127476;' },
+        { code: 'SEK', name: 'Swedish Krona', flag: '&#127480;&#127466;' },
+        { code: 'DKK', name: 'Danish Krone', flag: '&#127465;&#127472;' },
+        { code: 'NZD', name: 'New Zealand Dollar', flag: '&#127475;&#127487;' },
+        { code: 'ZAR', name: 'South African Rand', flag: '&#127487;&#127462;' },
+        { code: 'RUB', name: 'Russian Ruble', flag: '&#127479;&#127482;' },
+        { code: 'TRY', name: 'Turkish Lira', flag: '&#127481;&#127479;' },
+        { code: 'THB', name: 'Thai Baht', flag: '&#127481;&#127469;' },
+        { code: 'IDR', name: 'Indonesian Rupiah', flag: '&#127470;&#127465;' },
+        { code: 'MYR', name: 'Malaysian Ringgit', flag: '&#127474;&#127486;' },
+        { code: 'PHP', name: 'Philippine Peso', flag: '&#127477;&#127469;' },
+        { code: 'PLN', name: 'Polish Zloty', flag: '&#127477;&#127473;' },
+        { code: 'CZK', name: 'Czech Koruna', flag: '&#127464;&#127487;' },
+        { code: 'HUF', name: 'Hungarian Forint', flag: '&#127469;&#127482;' },
+        { code: 'ILS', name: 'Israeli Shekel', flag: '&#127470;&#127473;' },
+        { code: 'CLP', name: 'Chilean Peso', flag: '&#127464;&#127473;' },
+        { code: 'AED', name: 'UAE Dirham', flag: '&#127462;&#127466;' },
+        { code: 'SAR', name: 'Saudi Riyal', flag: '&#127480;&#127462;' },
+        { code: 'TWD', name: 'Taiwan Dollar', flag: '&#127481;&#127484;' },
+        { code: 'ARS', name: 'Argentine Peso', flag: '&#127462;&#127479;' },
+        { code: 'COP', name: 'Colombian Peso', flag: '&#127464;&#127476;' },
+        { code: 'EGP', name: 'Egyptian Pound', flag: '&#127466;&#127468;' },
+        { code: 'NGN', name: 'Nigerian Naira', flag: '&#127475;&#127468;' },
+        { code: 'PKR', name: 'Pakistani Rupee', flag: '&#127477;&#127472;' },
+        { code: 'BDT', name: 'Bangladeshi Taka', flag: '&#127463;&#127465;' },
+        { code: 'VND', name: 'Vietnamese Dong', flag: '&#127483;&#127475;' },
+        { code: 'KES', name: 'Kenyan Shilling', flag: '&#127472;&#127466;' },
+        { code: 'RON', name: 'Romanian Leu', flag: '&#127479;&#127476;' },
+        { code: 'BGN', name: 'Bulgarian Lev', flag: '&#127463;&#127468;' },
+        { code: 'HRK', name: 'Croatian Kuna', flag: '&#127469;&#127479;' },
+        { code: 'ISK', name: 'Icelandic Krona', flag: '&#127470;&#127480;' },
+        { code: 'PEN', name: 'Peruvian Sol', flag: '&#127477;&#127466;' },
+        { code: 'UAH', name: 'Ukrainian Hryvnia', flag: '&#127482;&#127462;' },
+        { code: 'QAR', name: 'Qatari Riyal', flag: '&#127478;&#127462;' },
+        { code: 'KWD', name: 'Kuwaiti Dinar', flag: '&#127472;&#127484;' },
+        { code: 'BHD', name: 'Bahraini Dinar', flag: '&#127463;&#127469;' },
+        { code: 'OMR', name: 'Omani Rial', flag: '&#127476;&#127474;' },
+        { code: 'JOD', name: 'Jordanian Dinar', flag: '&#127471;&#127476;' },
+        { code: 'LKR', name: 'Sri Lankan Rupee', flag: '&#127473;&#127472;' },
+        { code: 'MAD', name: 'Moroccan Dirham', flag: '&#127474;&#127462;' },
+        { code: 'GHS', name: 'Ghanaian Cedi', flag: '&#127468;&#127469;' }
+    ];
+
+    let exchangeRates = {};
+    let rateDate = '';
+
+    // Popular pairs to display
+    const popularPairs = [
+        { from: 'USD', to: 'EUR', fromFlag: '&#127482;&#127480;', toFlag: '&#127466;&#127482;' },
+        { from: 'USD', to: 'GBP', fromFlag: '&#127482;&#127480;', toFlag: '&#127468;&#127463;' },
+        { from: 'USD', to: 'JPY', fromFlag: '&#127482;&#127480;', toFlag: '&#127471;&#127477;' },
+        { from: 'USD', to: 'CAD', fromFlag: '&#127482;&#127480;', toFlag: '&#127464;&#127462;' },
+        { from: 'USD', to: 'AUD', fromFlag: '&#127482;&#127480;', toFlag: '&#127462;&#127482;' },
+        { from: 'USD', to: 'INR', fromFlag: '&#127482;&#127480;', toFlag: '&#127470;&#127475;' },
+        { from: 'USD', to: 'CNY', fromFlag: '&#127482;&#127480;', toFlag: '&#127464;&#127475;' },
+        { from: 'USD', to: 'CHF', fromFlag: '&#127482;&#127480;', toFlag: '&#127464;&#127469;' },
+        { from: 'EUR', to: 'GBP', fromFlag: '&#127466;&#127482;', toFlag: '&#127468;&#127463;' },
+        { from: 'GBP', to: 'INR', fromFlag: '&#127468;&#127463;', toFlag: '&#127470;&#127475;' },
+        { from: 'USD', to: 'MXN', fromFlag: '&#127482;&#127480;', toFlag: '&#127474;&#127485;' },
+        { from: 'USD', to: 'BRL', fromFlag: '&#127482;&#127480;', toFlag: '&#127463;&#127479;' }
+    ];
+
+    function populateDropdowns() {
+        const fromSel = document.getElementById('fromCurrency');
+        const toSel = document.getElementById('toCurrency');
+
+        currencies.forEach(c => {
+            const opt1 = document.createElement('option');
+            opt1.value = c.code;
+            opt1.textContent = c.code + ' - ' + c.name;
+            const opt2 = opt1.cloneNode(true);
+            fromSel.appendChild(opt1);
+            toSel.appendChild(opt2);
+        });
+
+        fromSel.value = 'USD';
+        toSel.value = 'EUR';
+    }
+
+    async function fetchRates() {
+        const loading = document.getElementById('loading');
+        const errorMsg = document.getElementById('errorMsg');
+        loading.classList.add('active');
+        errorMsg.classList.remove('active');
+
+        try {
+            // Using exchangerate-api (free, no key required for open endpoint)
+            const resp = await fetch('https://api.exchangerate-api.com/v4/latest/USD');
+            if (!resp.ok) throw new Error('API request failed');
+            const data = await resp.json();
+            exchangeRates = data.rates;
+            rateDate = data.date || new Date().toISOString().slice(0, 10);
+            loading.classList.remove('active');
+            renderPopularRates();
+            convert();
+        } catch (err) {
+            // Fallback: try alternative API
+            try {
+                const resp2 = await fetch('https://open.er-api.com/v6/latest/USD');
+                if (!resp2.ok) throw new Error('Fallback API also failed');
+                const data2 = await resp2.json();
+                exchangeRates = data2.rates;
+                rateDate = data2.time_last_update_utc ? data2.time_last_update_utc.slice(0, 16) : new Date().toISOString().slice(0, 10);
+                loading.classList.remove('active');
+                renderPopularRates();
+                convert();
+            } catch (err2) {
+                loading.classList.remove('active');
+                // Use hardcoded fallback rates
+                exchangeRates = {
+                    USD: 1, EUR: 0.92, GBP: 0.79, JPY: 149.5, CAD: 1.36, AUD: 1.53,
+                    CHF: 0.88, CNY: 7.24, INR: 83.1, MXN: 17.15, BRL: 4.97, KRW: 1325,
+                    SGD: 1.34, HKD: 7.82, NOK: 10.5, SEK: 10.4, DKK: 6.87, NZD: 1.63,
+                    ZAR: 18.6, RUB: 91.5, TRY: 30.2, THB: 35.1, IDR: 15600, MYR: 4.66,
+                    PHP: 55.8, PLN: 4.02, CZK: 22.7, HUF: 355, ILS: 3.68, CLP: 885,
+                    AED: 3.67, SAR: 3.75, TWD: 31.5, ARS: 350, COP: 3950, EGP: 30.9,
+                    NGN: 780, PKR: 280, BDT: 110, VND: 24300, KES: 153, RON: 4.57,
+                    BGN: 1.80, HRK: 6.93, ISK: 137, PEN: 3.72, UAH: 37.5, QAR: 3.64,
+                    KWD: 0.31, BHD: 0.377, OMR: 0.385, JOD: 0.709, LKR: 325, MAD: 10.1, GHS: 12.5
+                };
+                rateDate = 'Fallback rates (offline)';
+                errorMsg.innerHTML = '&#9888;&#65039; Could not fetch live rates. Using cached rates as fallback. Results may not reflect current market prices.';
+                errorMsg.classList.add('active');
+                renderPopularRates();
+                convert();
+            }
+        }
+    }
+
+    function getRate(from, to) {
+        if (from === to) return 1;
+        if (from === 'USD') return exchangeRates[to] || 0;
+        if (to === 'USD') return 1 / (exchangeRates[from] || 1);
+        // Cross rate through USD
+        const fromUSD = exchangeRates[from] || 1;
+        const toUSD = exchangeRates[to] || 1;
+        return toUSD / fromUSD;
+    }
+
+    function convert() {
+        const amount = parseFloat(document.getElementById('amount').value) || 0;
+        const from = document.getElementById('fromCurrency').value;
+        const to = document.getElementById('toCurrency').value;
+
+        if (Object.keys(exchangeRates).length === 0) return;
+        if (amount <= 0) {
+            document.getElementById('resultBox').style.display = 'none';
+            document.getElementById('amountTo').value = '';
+            return;
+        }
+
+        const rate = getRate(from, to);
+        const result = amount * rate;
+        const inverse = 1 / rate;
+
+        document.getElementById('amountTo').value = result.toFixed(2);
+
+        const fromCur = currencies.find(c => c.code === from);
+        const toCur = currencies.find(c => c.code === to);
+        const fromName = fromCur ? fromCur.name : from;
+        const toName = toCur ? toCur.name : to;
+
+        document.getElementById('resultEquation').innerHTML = fmtNum(amount) + ' ' + from + ' =';
+        document.getElementById('resultValue').textContent = fmtNum(result, to === 'JPY' || to === 'KRW' || to === 'VND' || to === 'IDR' ? 0 : 2) + ' ' + to;
+        document.getElementById('resultRate').textContent = '1 ' + from + ' = ' + rate.toFixed(6) + ' ' + to;
+        document.getElementById('resultInverse').textContent = '1 ' + to + ' = ' + inverse.toFixed(6) + ' ' + from;
+        document.getElementById('rateUpdated').textContent = 'Rates as of: ' + rateDate;
+        document.getElementById('resultBox').style.display = 'block';
+    }
+
+    function fmtNum(val, dec) {
+        if (dec === undefined) dec = 2;
+        return new Intl.NumberFormat('en-US', { minimumFractionDigits: dec, maximumFractionDigits: dec }).format(val);
+    }
+
+    function swapCurrencies() {
+        const fromSel = document.getElementById('fromCurrency');
+        const toSel = document.getElementById('toCurrency');
+        const tmp = fromSel.value;
+        fromSel.value = toSel.value;
+        toSel.value = tmp;
+        convert();
+    }
+
+    function renderPopularRates() {
+        const grid = document.getElementById('popularGrid');
+        grid.innerHTML = '';
+        popularPairs.forEach(pair => {
+            const rate = getRate(pair.from, pair.to);
+            const chip = document.createElement('div');
+            chip.className = 'rate-chip';
+            chip.innerHTML = '<span class="pair"><span class="flag">' + pair.fromFlag + '</span>' + pair.from + '/' + pair.to + '</span><span class="rate-val">' + rate.toFixed(4) + '</span>';
+            chip.onclick = function() {
+                document.getElementById('fromCurrency').value = pair.from;
+                document.getElementById('toCurrency').value = pair.to;
+                convert();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            };
+            grid.appendChild(chip);
+        });
+    }
+
+    function toggleFAQ(el) {
+        const item = el.closest('.faq-item');
+        const wasActive = item.classList.contains('active');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+        if (!wasActive) item.classList.add('active');
+    }
+
+    // Init
+    window.addEventListener('DOMContentLoaded', function() {
+        populateDropdowns();
+        fetchRates();
+
+        document.getElementById('amount').addEventListener('input', convert);
+        document.getElementById('fromCurrency').addEventListener('change', convert);
+        document.getElementById('toCurrency').addEventListener('change', convert);
+    });
+
+    // Mobile Menu
+    const hamburger = document.getElementById('hamburger');
+    const headerLinks = document.getElementById('headerLinks');
+    const menuOverlay = document.getElementById('menuOverlay');
+
+    function toggleMenu() {
+        hamburger.classList.toggle('active');
+        headerLinks.classList.toggle('active');
+        menuOverlay.classList.toggle('active');
+        document.body.style.overflow = headerLinks.classList.contains('active') ? 'hidden' : '';
+    }
+
+    hamburger.addEventListener('click', toggleMenu);
+    menuOverlay.addEventListener('click', toggleMenu);
+    headerLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => { if (window.innerWidth <= 768) toggleMenu(); });
+    });
+</script>
+
 </body>
 </html>
