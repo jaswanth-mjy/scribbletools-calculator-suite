@@ -3,623 +3,871 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
-    <title>Estate Tax Calculator - Free Online Tool | ShramTools</title>
-    <meta name="description" content="Free Estate Tax Calculator tool by ShramTools. Easy to use, accurate results, no registration required.">
-    <meta name="keywords" content="estate tax calculator, free calculator, online tool, ShramTools">
-    <meta name="author" content="ShramTools by Shram Kavach">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://shramtools.shramkavach.com/tools/financial-calculators/estate-tax-calculator.html">
-    
-    <!-- Open Graph -->
+    <title>Estate Tax Calculator - Federal Estate Tax Estimator 2026 | ScribbleTools</title>
+    <meta name="description" content="Free Estate Tax Calculator. Estimate federal estate tax liability based on 2026 exemption ($13.61M), deductions, and progressive tax brackets. Plan your estate efficiently.">
+    <meta name="keywords" content="estate tax calculator, federal estate tax, death tax, estate planning, inheritance tax, estate exemption 2026, tax brackets">
+    <link rel="canonical" href="https://scribbletools.com/tools/financial-calculators/estate-tax-calculator.html">
+
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://shramtools.shramkavach.com/tools/financial-calculators/estate-tax-calculator.html">
-    <meta property="og:title" content="Estate Tax Calculator - Free Online Tool | ShramTools">
-    <meta property="og:description" content="Free Estate Tax Calculator tool. Easy to use, accurate results.">
-    <meta property="og:image" content="https://shramtools.shramkavach.com/images/og-image.jpg">
-    
-    <!-- Twitter -->
+    <meta property="og:url" content="https://scribbletools.com/tools/financial-calculators/estate-tax-calculator.html">
+    <meta property="og:title" content="Estate Tax Calculator - Federal Estate Tax Estimator | ScribbleTools">
+    <meta property="og:description" content="Estimate your federal estate tax liability. Includes 2026 exemption amounts, marital deductions, and progressive tax brackets.">
+    <meta property="og:image" content="../../images/og-image.jpg">
+
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:title" content="Estate Tax Calculator | ShramTools">
-    <meta property="twitter:description" content="Free Estate Tax Calculator tool by ShramTools.">
-    
+    <meta property="twitter:title" content="Estate Tax Calculator | ScribbleTools">
+    <meta property="twitter:description" content="Free federal estate tax estimator with 2026 exemption and bracket calculations.">
+
     <link rel="icon" type="image/webp" href="../../images/logo.webp">
-    
+
     <style>
-        /* Reset & Base */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667EEA 0%, #764BA2 100%);
+            --page-bg: linear-gradient(180deg, #F5F7FA 0%, #E8EEF5 50%, #F0E7F8 100%);
+            --text-main: #2D3748;
+            --text-secondary: #4A5568;
+            --text-muted: #718096;
+            --border: #E2E8F0;
         }
-        
-        html {
-            scroll-behavior: smooth;
-        }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #e8eef5 50%, #f0e7f8 100%);
-            background-attachment: fixed;
-            min-height: 100vh;
-            color: #2d3748;
-            line-height: 1.6;
-        }
-        
-        /* Site Header */
-        .site-header {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(20px) saturate(180%);
-            -webkit-backdrop-filter: blur(20px) saturate(180%);
-            padding: 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 8px 32px rgba(102, 126, 234, 0.08), 0 1px 3px rgba(0, 0, 0, 0.05);
-            border-bottom: 1px solid rgba(102, 126, 234, 0.1);
-        }
-        
-        .site-header::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #667eea, #764ba2, #a855f7, transparent);
-            animation: headerGlow 4s ease-in-out infinite;
-        }
-        
-        @keyframes headerGlow {
-            0%, 100% { opacity: 0.2; }
-            50% { opacity: 0.6; }
-        }
-        
-        .header-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            text-decoration: none;
-        }
-        
-        .logo-icon {
-            width: 45px;
-            height: 45px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            box-shadow: 0 8px 24px rgba(102, 126, 234, 0.4);
-            transition: all 0.4s;
-            overflow: hidden;
-        }
-        
-        .logo-icon img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 12px;
-        }
-        
-        .logo-icon:hover {
-            transform: scale(1.05) rotate(5deg);
-            box-shadow: 0 12px 32px rgba(102, 126, 234, 0.5);
-        }
-        
-        .logo-text {
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .logo-main {
-            font-size: 1.5rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #a855f7 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: -0.5px;
-        }
-        
-        .logo-sub {
-            font-size: 0.7rem;
-            color: #718096;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-top: -2px;
-        }
-        
-        .nav-menu {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-        }
-        
-        .nav-link {
-            color: #4a5568;
-            text-decoration: none;
-            font-weight: 500;
-            padding: 0.6rem 1.2rem;
-            border-radius: 12px;
-            transition: all 0.3s;
-            position: relative;
-        }
-        
-        .nav-link:hover {
-            color: #667eea;
-            background: rgba(102, 126, 234, 0.08);
-        }
-        
-        .nav-link.active {
-            color: #667eea;
-            background: rgba(102, 126, 234, 0.1);
-        }
-        
-        .nav-link-primary {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white !important;
-            padding: 0.7rem 1.5rem;
-            border-radius: 25px;
-            font-weight: 600;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-        }
-        
-        .nav-link-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5);
-            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
-        }
-        
-        /* Main Content - Under Progress */
-        .main-content {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 60px 20px;
-            text-align: center;
-        }
-        
-        .progress-container {
-            background: white;
-            border-radius: 24px;
-            padding: 60px 40px;
-            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.15);
-            border: 1px solid rgba(102, 126, 234, 0.1);
-        }
-        
-        .progress-icon {
-            width: 120px;
-            height: 120px;
-            margin: 0 auto 30px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            animation: pulse 2s ease-in-out infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(102, 126, 234, 0.4); }
-            50% { transform: scale(1.05); box-shadow: 0 0 0 20px rgba(102, 126, 234, 0); }
-        }
-        
-        .progress-icon svg {
-            width: 60px;
-            height: 60px;
-            fill: white;
-        }
-        
-        .progress-title {
-            font-size: 2.5rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #a855f7 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 15px;
-        }
-        
-        .progress-subtitle {
-            font-size: 1.2rem;
-            color: #718096;
-            margin-bottom: 30px;
-        }
-        
-        .progress-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-            color: #92400e;
-            padding: 12px 24px;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1rem;
-            margin-bottom: 30px;
-        }
-        
-        .progress-badge svg {
-            width: 20px;
-            height: 20px;
-            fill: #f59e0b;
-        }
-        
-        .category-badge {
-            display: inline-block;
-            background: rgba(102, 126, 234, 0.1);
-            color: #667eea;
-            padding: 8px 20px;
-            border-radius: 25px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            margin-bottom: 30px;
-        }
-        
-        .progress-message {
-            color: #4a5568;
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 40px;
-        }
-        
-        .explore-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 16px 40px;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            text-decoration: none;
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
-            transition: all 0.3s;
-        }
-        
-        .explore-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.5);
-        }
-        
-        .explore-btn svg {
-            width: 20px;
-            height: 20px;
-            fill: white;
-        }
-        
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+        html { scroll-behavior: smooth; }
+        body { background: var(--page-bg); color: var(--text-main); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+        .page-wrapper { min-height: 100vh; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+
+        /* Header */
+        .site-header { background: rgba(255,255,255,0.85); backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%); position: sticky; top: 0; z-index: 1000; box-shadow: 0 8px 32px rgba(102,126,234,0.08), 0 1px 3px rgba(0,0,0,0.05); border-bottom: 1px solid rgba(102,126,234,0.1); }
+        .site-header::before { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, #667eea, #764ba2, #a855f7, transparent); animation: headerGlow 4s ease-in-out infinite; }
+        @keyframes headerGlow { 0%, 100% { opacity: 0.2; } 50% { opacity: 0.6; } }
+        .header-content { max-width: 1400px; margin: 0 auto; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+        .logo { display: flex; align-items: center; gap: 0.8rem; text-decoration: none; }
+        .logo-icon { width: 45px; height: 45px; border-radius: 12px; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); box-shadow: 0 8px 24px rgba(102,126,234,0.4); transition: all 0.4s; overflow: hidden; }
+        .logo-icon img { width: 100%; height: 100%; object-fit: cover; }
+        .logo:hover .logo-icon { transform: scale(1.1); }
+        .logo-text h1 { margin: 0; font-size: 1.6rem; font-weight: 800; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .logo-text p { margin: 0; font-size: 0.7rem; color: #64748b; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; }
+        .header-links { display: flex; gap: 1.5rem; align-items: center; }
+        .header-links a { color: #475569; text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: all 0.3s; padding: 0.5rem 0.8rem; position: relative; }
+        .header-links a:hover { color: #667eea; }
+        .header-links a::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 0; height: 2px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); transition: width 0.3s; }
+        .header-links a:hover::after { width: 80%; }
+        .cta-button { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white !important; padding: 0.6rem 1.2rem !important; border-radius: 8px; font-weight: 600; box-shadow: 0 4px 15px rgba(102,126,234,0.3); }
+        .cta-button:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(102,126,234,0.4); }
+        .cta-button::after { display: none !important; }
+        .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; z-index: 1001; padding: 5px; }
+        .hamburger span { width: 25px; height: 2.5px; background: #475569; border-radius: 2px; transition: all 0.3s; }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+        .menu-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 998; }
+        .menu-overlay.active { display: block; }
+
+        /* Breadcrumb */
+        .breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 0.88rem; margin-bottom: 25px; flex-wrap: wrap; }
+        .breadcrumb a { color: #667eea; text-decoration: none; font-weight: 500; transition: color 0.3s; }
+        .breadcrumb a:hover { color: #764ba2; }
+        .breadcrumb span { color: #94a3b8; }
+
+        /* Page Header */
+        .page-header { text-align: center; margin-bottom: 35px; padding: 40px 20px; background: white; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border: 1px solid rgba(226,232,240,0.6); }
+        .page-header .header-icon { font-size: 3rem; display: block; margin-bottom: 15px; }
+        .page-header h2 { font-size: 2.2rem; font-weight: 800; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 10px; }
+        .page-header p { color: var(--text-secondary); font-size: 1.05rem; max-width: 650px; margin: 0 auto; line-height: 1.7; }
+
+        /* Calc Card */
+        .calc-card { background: white; border-radius: 20px; padding: 40px; margin-bottom: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border: 1px solid rgba(226,232,240,0.6); }
+        .calc-title { display: flex; align-items: center; gap: 12px; margin-bottom: 28px; padding-bottom: 18px; border-bottom: 2px solid #f1f5f9; }
+        .calc-title span { font-size: 1.8rem; }
+        .calc-title h2 { font-size: 1.4rem; font-weight: 700; color: var(--text-main); }
+
+        /* Form Grid */
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-bottom: 25px; }
+        .form-group { display: flex; flex-direction: column; gap: 6px; }
+        .form-group.full-width { grid-column: 1 / -1; }
+        .form-group label { font-size: 0.88rem; font-weight: 600; color: var(--text-secondary); display: flex; align-items: center; gap: 6px; }
+        .label-icon { font-size: 1rem; }
+        .form-group input, .form-group select { width: 100%; padding: 12px 16px; border: 2px solid #e2e8f0; border-radius: 10px; font-size: 1rem; color: var(--text-main); background: #f8fafc; transition: all 0.3s; outline: none; }
+        .form-group input:focus, .form-group select:focus { border-color: #667eea; background: white; box-shadow: 0 0 0 4px rgba(102,126,234,0.1); }
+        .form-group small { font-size: 0.78rem; color: var(--text-muted); }
+        .form-group .input-prefix { position: relative; }
+        .form-group .input-prefix input { padding-left: 30px; }
+        .form-group .input-prefix::before { content: '$'; position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: #94a3b8; font-weight: 600; font-size: 1rem; }
+
+        /* Section Divider */
+        .section-divider { grid-column: 1 / -1; text-align: center; padding: 8px 0; }
+        .section-divider h3 { font-size: 1rem; font-weight: 700; color: #667eea; display: inline-flex; align-items: center; gap: 8px; background: #f0f4ff; padding: 6px 18px; border-radius: 20px; }
+
+        /* Buttons */
+        .btn-row { display: flex; gap: 12px; margin-top: 5px; }
+        .btn-calc { flex: 1; padding: 14px 28px; border: none; border-radius: 12px; font-size: 1.05rem; font-weight: 700; cursor: pointer; transition: all 0.3s; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; box-shadow: 0 4px 15px rgba(102,126,234,0.3); }
+        .btn-calc:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(102,126,234,0.4); }
+        .btn-reset { padding: 14px 24px; border: 2px solid #e2e8f0; border-radius: 12px; font-size: 1rem; font-weight: 600; cursor: pointer; background: white; color: var(--text-secondary); transition: all 0.3s; }
+        .btn-reset:hover { border-color: #ef4444; color: #ef4444; }
+
+        /* Results */
+        .results-panel { display: none; margin-top: 30px; animation: fadeIn 0.5s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+        .results-header { text-align: center; margin-bottom: 25px; }
+        .results-header h3 { font-size: 1.3rem; font-weight: 700; color: var(--text-main); display: flex; align-items: center; justify-content: center; gap: 10px; }
+
+        .result-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 25px; }
+        .result-card { background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); border-radius: 14px; padding: 20px; text-align: center; border: 1px solid #e2e8f0; transition: all 0.3s; }
+        .result-card:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(0,0,0,0.08); }
+        .result-card.highlight { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border: none; }
+        .result-card.highlight .result-label, .result-card.highlight .result-val { color: white; }
+        .result-card .result-label { font-size: 0.82rem; font-weight: 600; color: var(--text-muted); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .result-card .result-val { font-size: 1.5rem; font-weight: 800; color: var(--text-main); }
+        .result-card.highlight .result-val { font-size: 1.8rem; }
+
+        /* Breakdown Table */
+        .breakdown-section { margin-top: 25px; }
+        .breakdown-section h4 { font-size: 1.1rem; font-weight: 700; color: var(--text-main); margin-bottom: 15px; display: flex; align-items: center; gap: 8px; }
+        .breakdown-table { width: 100%; border-collapse: collapse; border-radius: 12px; overflow: hidden; }
+        .breakdown-table thead { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .breakdown-table th { padding: 14px 18px; text-align: left; color: white; font-weight: 600; font-size: 0.88rem; }
+        .breakdown-table td { padding: 12px 18px; border-bottom: 1px solid #f1f5f9; font-size: 0.92rem; color: var(--text-secondary); }
+        .breakdown-table tbody tr:hover { background: #f8fafc; }
+        .breakdown-table .row-total { font-weight: 700; background: #f0f4ff; }
+        .breakdown-table .row-total td { color: var(--text-main); border-bottom: 2px solid #667eea; }
+
+        /* Waterfall bar */
+        .waterfall { margin-top: 25px; }
+        .waterfall-bar { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+        .waterfall-label { width: 160px; font-size: 0.85rem; font-weight: 600; color: var(--text-secondary); text-align: right; flex-shrink: 0; }
+        .waterfall-track { flex: 1; height: 28px; background: #f1f5f9; border-radius: 8px; overflow: hidden; position: relative; }
+        .waterfall-fill { height: 100%; border-radius: 8px; transition: width 0.8s ease; display: flex; align-items: center; justify-content: flex-end; padding-right: 10px; font-size: 0.78rem; font-weight: 700; color: white; min-width: 60px; }
+        .waterfall-fill.green { background: linear-gradient(90deg, #22c55e, #16a34a); }
+        .waterfall-fill.blue { background: linear-gradient(90deg, #3b82f6, #2563eb); }
+        .waterfall-fill.purple { background: linear-gradient(90deg, #667eea, #764ba2); }
+        .waterfall-fill.red { background: linear-gradient(90deg, #ef4444, #dc2626); }
+        .waterfall-fill.amber { background: linear-gradient(90deg, #f59e0b, #d97706); }
+
+        /* Content Card */
+        .content-card { background: white; border-radius: 16px; padding: 35px; margin-bottom: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border: 1px solid rgba(226,232,240,0.6); }
+        .content-card h2 { font-size: 1.5rem; font-weight: 800; color: var(--text-main); margin-bottom: 18px; display: flex; align-items: center; gap: 10px; }
+        .content-card p { color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin-bottom: 15px; }
+        .content-card ul { padding-left: 20px; margin-bottom: 15px; }
+        .content-card li { color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin-bottom: 8px; }
+        .section-icon { font-size: 1.4rem; }
+
+        /* Image */
+        .image-box { width: 100%; height: 300px; border-radius: 16px; overflow: hidden; margin-bottom: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+        .image-box img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* Tax Brackets Table */
+        .brackets-table { width: 100%; border-collapse: collapse; margin: 15px 0; border-radius: 10px; overflow: hidden; }
+        .brackets-table th { background: #f0f4ff; padding: 12px 16px; text-align: left; font-size: 0.88rem; color: #667eea; font-weight: 700; }
+        .brackets-table td { padding: 10px 16px; border-bottom: 1px solid #f1f5f9; font-size: 0.9rem; color: var(--text-secondary); }
+        .brackets-table tbody tr:hover { background: #fafbff; }
+
+        /* Formula */
+        .formula-container { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); border-radius: 14px; padding: 28px; margin: 20px 0; text-align: center; }
+        .formula-math { display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; padding: 12px; }
+        .formula-math .var { font-family: 'Times New Roman', Georgia, serif; font-style: italic; color: #93c5fd; font-size: 1.15rem; font-weight: 600; }
+        .formula-math .var.result { color: #a78bfa; font-size: 1.25rem; }
+        .formula-math .equals { color: #f59e0b; font-size: 1.3rem; font-weight: 700; }
+        .formula-math .operator { color: #f59e0b; font-size: 1.2rem; }
+        .formula-legend { display: flex; flex-direction: column; gap: 8px; margin-top: 18px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,0.1); }
+        .formula-legend .legend-item { font-size: 0.85rem; color: #94a3b8; line-height: 1.6; }
+        .formula-legend .legend-var { font-family: 'Times New Roman', Georgia, serif; font-style: italic; color: #93c5fd; font-weight: 600; }
+        .formula-legend .legend-var.purple { color: #a78bfa; }
+
+        /* FAQ */
+        .faq-grid { margin-top: 20px; }
+        .faq-item { border: 1px solid #edf2f7; border-radius: 12px; overflow: hidden; transition: all 0.3s; margin-bottom: 12px; background: white; }
+        .faq-item:hover { border-color: #e2e8f0; }
+        .faq-item.active { border-color: #667eea; box-shadow: 0 4px 15px rgba(102,126,234,0.1); }
+        .faq-question { padding: 18px 22px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; gap: 15px; transition: background 0.2s; }
+        .faq-question:hover { background: #f8fafc; }
+        .faq-question h3 { font-size: 1.05rem; margin: 0; color: var(--text-main); font-weight: 600; flex: 1; }
+        .faq-toggle { width: 28px; height: 28px; border-radius: 50%; background: #f1f5f9; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; color: #667eea; flex-shrink: 0; transition: all 0.3s; font-weight: 600; }
+        .faq-item.active .faq-toggle { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; transform: rotate(45deg); }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s ease; padding: 0 22px; }
+        .faq-item.active .faq-answer { max-height: 400px; padding: 0 22px 20px; }
+        .faq-answer p { font-size: 0.95rem; margin-bottom: 0; color: var(--text-secondary); line-height: 1.8; }
+
+        /* Related Tools */
+        .related-tools { background: white; border-radius: 16px; padding: 40px; margin-bottom: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border: 1px solid rgba(226,232,240,0.6); }
+        .related-tools h2 { font-size: 1.6rem; font-weight: 800; color: var(--text-main); margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+        .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
+        .tool-link { display: flex; align-items: center; gap: 12px; padding: 14px 18px; background: #f8fafc; border-radius: 12px; text-decoration: none; color: var(--text-main); font-weight: 600; font-size: 0.9rem; border: 1px solid #edf2f7; transition: all 0.3s; }
+        .tool-link:hover { background: white; border-color: #667eea; box-shadow: 0 4px 15px rgba(102,126,234,0.1); transform: translateY(-2px); }
+        .tool-link .tool-emoji { font-size: 1.3rem; }
+
         /* Footer */
-        .site-footer {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-            color: #e2e8f0;
-            padding: 60px 0 30px;
-            margin-top: 80px;
-        }
-        
-        .footer-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-        
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 3rem;
-            margin-bottom: 40px;
-        }
-        
-        .footer-brand {
-            max-width: 350px;
-        }
-        
-        .footer-logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 20px;
-        }
-        
-        .footer-logo-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 14px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-        
-        .footer-logo-icon img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 14px;
-        }
-        
-        .footer-logo-text {
-            font-size: 1.8rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #667eea 0%, #a855f7 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .footer-desc {
-            color: #94a3b8;
-            line-height: 1.8;
-            font-size: 0.95rem;
-        }
-        
-        .footer-section h4 {
-            color: white;
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            position: relative;
-            padding-bottom: 10px;
-        }
-        
-        .footer-section h4::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 40px;
-            height: 3px;
-            background: linear-gradient(90deg, #667eea, #a855f7);
-            border-radius: 2px;
-        }
-        
-        .footer-links {
-            list-style: none;
-        }
-        
-        .footer-links li {
-            margin-bottom: 12px;
-        }
-        
-        .footer-links a {
-            color: #94a3b8;
-            text-decoration: none;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .footer-links a:hover {
-            color: #a855f7;
-            transform: translateX(5px);
-        }
-        
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-        
-        .footer-bottom p {
-            color: #64748b;
-            font-size: 0.9rem;
-        }
-        
-        .footer-bottom a {
-            color: #a855f7;
-            text-decoration: none;
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 15px;
-        }
-        
-        .social-link {
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.05);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #94a3b8;
-            text-decoration: none;
-            transition: all 0.3s;
-        }
-        
-        .social-link:hover {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            transform: translateY(-3px);
-        }
-        
+        footer { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #1a1a2e 100%); color: #e2e8f0; padding: 60px 0 0; margin-top: 40px; }
+        .footer-content { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+        .footer-section h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 20px; color: white; position: relative; padding-bottom: 10px; }
+        .footer-section h3::after { content: ''; position: absolute; bottom: 0; left: 0; width: 30px; height: 2px; background: linear-gradient(135deg, #667eea, #764ba2); }
+        .footer-section p { font-size: 0.9rem; color: #94a3b8; line-height: 1.8; }
+        .footer-section a { color: #94a3b8; text-decoration: none; font-size: 0.9rem; display: block; margin-bottom: 10px; transition: all 0.3s; }
+        .footer-section a:hover { color: #667eea; padding-left: 5px; }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding: 20px 2rem; display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; }
+        .footer-bottom p { color: #64748b; font-size: 0.85rem; }
+        .footer-links-bottom { display: flex; gap: 20px; }
+        .footer-links-bottom a { color: #64748b; text-decoration: none; font-size: 0.85rem; transition: color 0.3s; }
+        .footer-links-bottom a:hover { color: #667eea; }
+
         /* Responsive */
-        @media (max-width: 968px) {
-            .nav-menu {
-                display: none;
-            }
-            
-            .footer-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-            
-            .progress-title {
-                font-size: 2rem;
-            }
+        @media (max-width: 992px) { .footer-content { grid-template-columns: 1fr 1fr; } .tools-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 850px) { .page-header h2 { font-size: 1.8rem; } .page-header { padding: 30px 20px; } }
+        @media (max-width: 768px) {
+            .container { padding: 25px 15px; } .calc-card { padding: 25px; }
+            .form-grid { grid-template-columns: 1fr; }
+            .result-cards { grid-template-columns: 1fr; }
+            .content-card { padding: 28px 22px; } .related-tools { padding: 28px 22px; }
+            .tools-grid { grid-template-columns: 1fr; } .image-box { height: 220px; }
+            .waterfall-label { width: 110px; font-size: 0.78rem; }
+            .hamburger { display: flex; }
+            .header-links { position: fixed; top: 0; right: -100%; width: 75%; max-width: 280px; height: 100vh; background: #ffffff; box-shadow: -5px 0 25px rgba(0,0,0,0.15); flex-direction: column; gap: 0; align-items: stretch; padding: 4rem 0 2rem; z-index: 999; transition: right 0.4s cubic-bezier(0.4,0,0.2,1); overflow-y: auto; }
+            .header-links.active { right: 0; }
+            .header-links a { text-align: left; padding: 1rem 1.5rem; border-bottom: 1px solid #e2e8f0; font-size: 1rem; }
+            .header-links a::after { display: none; }
+            .cta-button { margin: 1rem 1.5rem !important; text-align: center; border-bottom: none !important; }
+            .footer-content { grid-template-columns: 1fr; text-align: center; }
+            .footer-section h3::after { left: 50%; transform: translateX(-50%); }
+            .footer-bottom { flex-direction: column; text-align: center; }
+            .footer-links-bottom { justify-content: center; }
         }
-        
-        @media (max-width: 600px) {
-            .header-content {
-                padding: 1rem;
-            }
-            
-            .progress-container {
-                padding: 40px 20px;
-            }
-            
-            .progress-title {
-                font-size: 1.6rem;
-            }
-            
-            .footer-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .footer-bottom {
-                flex-direction: column;
-                text-align: center;
-            }
-        }
+        @media (max-width: 480px) { .btn-row { flex-direction: column; } .result-card .result-val { font-size: 1.2rem; } }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="site-header">
-        <div class="header-content">
-            <a href="../../index.html" class="logo">
-                <div class="logo-icon">
-                    <img src="../../images/logo.webp" alt="ShramTools Logo">
-                </div>
-                <div class="logo-text">
-                    <span class="logo-main">ShramTools</span>
-                    <span class="logo-sub">By Shram Kavach</span>
-                </div>
-            </a>
-            <nav class="nav-menu">
-                <a href="../../index.html" class="nav-link">Home</a>
-                <a href="../../index.html#financial" class="nav-link">Financial</a>
-                <a href="../../index.html#health" class="nav-link">Health</a>
-                <a href="../../index.html#math" class="nav-link">Math</a>
-                <a href="../../about-us.html" class="nav-link">About</a>
-                <a href="../../index.html" class="nav-link nav-link-primary">All Tools</a>
+    <div class="page-wrapper">
+        <!-- Sticky Header -->
+        <header class="site-header">
+            <div class="header-content">
+                <a href="../../index.html" class="logo">
+                    <div class="logo-icon"><img src="../../images/logo.webp" alt="ScribbleTools Logo"></div>
+                    <div class="logo-text"><h1>ScribbleTools</h1><p>Smart Digital Solutions</p></div>
+                </a>
+                <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+                <nav class="header-links" id="headerLinks">
+                    <a href="../../index.html">Home</a>
+                    <a href="../../index.html#financial">Financial Tools</a>
+                    <a href="../../index.html#health">Health Tools</a>
+                    <a href="../../about-us.html">About</a>
+                    <a href="../../index.html" class="cta-button">Explore Tools</a>
+                </nav>
+            </div>
+        </header>
+        <div class="menu-overlay" id="menuOverlay"></div>
+
+        <div class="container">
+            <!-- Breadcrumb -->
+            <nav class="breadcrumb">
+                <a href="../../index.html">Home</a><span>/</span>
+                <a href="../../index.html#financial">Financial Tools</a><span>/</span>
+                <span style="color: #4a5568; font-weight: 600;">Estate Tax Calculator</span>
             </nav>
-        </div>
-    </header>
 
-    <!-- Main Content -->
-    <main class="main-content">
-        <div class="progress-container">
-            <div class="progress-icon">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
-                </svg>
-            </div>
-            
-            <h1 class="progress-title">Estate Tax Calculator</h1>
-            
-            <div class="category-badge">Financial Calculators</div>
-            
-            <div class="progress-badge">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
-                </svg>
-                Under Development
-            </div>
-            
-            <p class="progress-subtitle">Coming Soon!</p>
-            
-            <p class="progress-message">
-                We're working hard to bring you an amazing <strong>Estate Tax Calculator</strong> tool. 
-                Our team is crafting a feature-rich, user-friendly experience that will help you 
-                achieve accurate results with ease. Stay tuned!
-            </p>
-            
-            <a href="../../index.html" class="explore-btn">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
-                </svg>
-                Explore Other Tools
-            </a>
-        </div>
-    </main>
+            <!-- Page Header -->
+            <header class="page-header">
+                <span class="header-icon">&#127970;</span>
+                <h2>Estate Tax Calculator</h2>
+                <p>Estimate your federal estate tax liability using 2026 exemption amounts, marital &amp; charitable deductions, and progressive tax brackets from 18% to 40%.</p>
+            </header>
 
-    <!-- Footer -->
-    <footer class="site-footer">
-        <div class="footer-content">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <div class="footer-logo">
-                        <div class="footer-logo-icon">
-                            <img src="../../images/logo.webp" alt="ShramTools Logo">
-                        </div>
-                        <span class="footer-logo-text">ShramTools</span>
+            <!-- Calculator -->
+            <div class="calc-card">
+                <div class="calc-title">
+                    <span>&#128176;</span>
+                    <h2>Federal Estate Tax Estimator</h2>
+                </div>
+
+                <div class="form-grid">
+                    <!-- Estate Assets -->
+                    <div class="section-divider"><h3>&#127968; Gross Estate Assets</h3></div>
+
+                    <div class="form-group">
+                        <label><span class="label-icon">&#127968;</span> Real Estate Value</label>
+                        <div class="input-prefix"><input type="number" id="realEstate" value="850000" placeholder="0"></div>
+                        <small>Primary home, vacation properties, rental properties</small>
                     </div>
-                    <p class="footer-desc">
-                        Your trusted destination for 250+ free online calculators and tools. 
-                        From financial planning to health tracking, we've got you covered.
-                    </p>
+
+                    <div class="form-group">
+                        <label><span class="label-icon">&#128200;</span> Investments &amp; Securities</label>
+                        <div class="input-prefix"><input type="number" id="investments" value="1200000" placeholder="0"></div>
+                        <small>Stocks, bonds, mutual funds, brokerage accounts</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label><span class="label-icon">&#128179;</span> Retirement Accounts</label>
+                        <div class="input-prefix"><input type="number" id="retirement" value="650000" placeholder="0"></div>
+                        <small>401(k), IRA, Roth IRA, pension values</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label><span class="label-icon">&#128737;</span> Life Insurance Proceeds</label>
+                        <div class="input-prefix"><input type="number" id="lifeInsurance" value="500000" placeholder="0"></div>
+                        <small>Death benefit if you own the policy</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label><span class="label-icon">&#128663;</span> Personal Property</label>
+                        <div class="input-prefix"><input type="number" id="personalProperty" value="100000" placeholder="0"></div>
+                        <small>Vehicles, jewelry, art, collectibles</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label><span class="label-icon">&#128188;</span> Business Interests</label>
+                        <div class="input-prefix"><input type="number" id="businessInterests" value="0" placeholder="0"></div>
+                        <small>Ownership stake in private businesses</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label><span class="label-icon">&#128181;</span> Cash &amp; Bank Accounts</label>
+                        <div class="input-prefix"><input type="number" id="cashAccounts" value="250000" placeholder="0"></div>
+                        <small>Checking, savings, CDs, money market</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label><span class="label-icon">&#128230;</span> Other Assets</label>
+                        <div class="input-prefix"><input type="number" id="otherAssets" value="0" placeholder="0"></div>
+                        <small>Trusts, annuities, royalties, other property</small>
+                    </div>
+
+                    <!-- Deductions -->
+                    <div class="section-divider"><h3>&#128196; Deductions &amp; Debts</h3></div>
+
+                    <div class="form-group">
+                        <label><span class="label-icon">&#128143;</span> Marital Deduction</label>
+                        <div class="input-prefix"><input type="number" id="maritalDeduction" value="0" placeholder="0"></div>
+                        <small>Assets passing to surviving U.S. citizen spouse (unlimited)</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label><span class="label-icon">&#128156;</span> Charitable Bequests</label>
+                        <div class="input-prefix"><input type="number" id="charitableDeduction" value="50000" placeholder="0"></div>
+                        <small>Gifts to qualified charities (unlimited deduction)</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label><span class="label-icon">&#128179;</span> Mortgages &amp; Debts</label>
+                        <div class="input-prefix"><input type="number" id="debts" value="180000" placeholder="0"></div>
+                        <small>Mortgage balance, credit cards, loans, medical bills</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label><span class="label-icon">&#9874;&#65039;</span> Funeral &amp; Admin Expenses</label>
+                        <div class="input-prefix"><input type="number" id="adminExpenses" value="25000" placeholder="0"></div>
+                        <small>Funeral costs, attorney fees, executor fees, appraisals</small>
+                    </div>
+
+                    <!-- Exemption Settings -->
+                    <div class="section-divider"><h3>&#128737;&#65039; Exemption &amp; Filing</h3></div>
+
+                    <div class="form-group">
+                        <label><span class="label-icon">&#128197;</span> Tax Year</label>
+                        <select id="taxYear">
+                            <option value="2026" selected>2026 ($13.61 Million Exemption)</option>
+                            <option value="2025">2025 ($13.99 Million Exemption)</option>
+                            <option value="2024">2024 ($13.61 Million Exemption)</option>
+                            <option value="2023">2023 ($12.92 Million Exemption)</option>
+                            <option value="2026sunset">2026+ Sunset ($7 Million Est.)</option>
+                        </select>
+                        <small>Exemption may sunset to ~$7M after 2025 if TCJA expires</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label><span class="label-icon">&#128106;</span> Filing Status</label>
+                        <select id="filingStatus">
+                            <option value="single" selected>Single / Unmarried</option>
+                            <option value="married">Married (Portability Elected)</option>
+                        </select>
+                        <small>Married couples can use deceased spouse's unused exemption</small>
+                    </div>
+
+                    <div class="form-group" id="priorGiftsGroup">
+                        <label><span class="label-icon">&#127873;</span> Lifetime Taxable Gifts</label>
+                        <div class="input-prefix"><input type="number" id="priorGifts" value="0" placeholder="0"></div>
+                        <small>Cumulative taxable gifts above annual exclusion already made</small>
+                    </div>
+
+                    <div class="form-group" id="deceasedExemptionGroup" style="display:none;">
+                        <label><span class="label-icon">&#128221;</span> Deceased Spouse Unused Exemption</label>
+                        <div class="input-prefix"><input type="number" id="deceasedExemption" value="0" placeholder="0"></div>
+                        <small>DSUE amount from deceased spouse (portability)</small>
+                    </div>
                 </div>
-                
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <ul class="footer-links">
-                        <li><a href="../../index.html">Home</a></li>
-                        <li><a href="../../index.html#financial">Financial Tools</a></li>
-                        <li><a href="../../index.html#health">Health Tools</a></li>
-                        <li><a href="../../index.html#math">Math Tools</a></li>
-                    </ul>
+
+                <div class="btn-row">
+                    <button class="btn-calc" onclick="calculate()">&#128202; Calculate Estate Tax</button>
+                    <button class="btn-reset" onclick="resetForm()">&#128260; Reset</button>
                 </div>
-                
-                <div class="footer-section">
-                    <h4>More Tools</h4>
-                    <ul class="footer-links">
-                        <li><a href="../../index.html#text">Text Tools</a></li>
-                        <li><a href="../../index.html#image">Image Tools</a></li>
-                        <li><a href="../../index.html#student">Student Tools</a></li>
-                        <li><a href="../../index.html#other">Other Tools</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Company</h4>
-                    <ul class="footer-links">
-                        <li><a href="../../about-us.html">About Us</a></li>
-                        <li><a href="../../privacy-policy.html">Privacy Policy</a></li>
-                        <li><a href="../../terms-of-service.html">Terms of Service</a></li>
-                        <li><a href="../../contact.html">Contact</a></li>
-                    </ul>
+
+                <!-- Results -->
+                <div class="results-panel" id="results">
+                    <div class="results-header">
+                        <h3>&#128202; Estate Tax Analysis</h3>
+                    </div>
+
+                    <div class="result-cards">
+                        <div class="result-card">
+                            <div class="result-label">Gross Estate</div>
+                            <div class="result-val" id="resGrossEstate">$0</div>
+                        </div>
+                        <div class="result-card">
+                            <div class="result-label">Taxable Estate</div>
+                            <div class="result-val" id="resTaxableEstate">$0</div>
+                        </div>
+                        <div class="result-card highlight">
+                            <div class="result-label">Federal Estate Tax</div>
+                            <div class="result-val" id="resEstateTax">$0</div>
+                        </div>
+                        <div class="result-card">
+                            <div class="result-label">Effective Tax Rate</div>
+                            <div class="result-val" id="resEffRate">0%</div>
+                        </div>
+                        <div class="result-card">
+                            <div class="result-label">Total Deductions</div>
+                            <div class="result-val" id="resTotalDeductions">$0</div>
+                        </div>
+                        <div class="result-card">
+                            <div class="result-label">Net to Heirs</div>
+                            <div class="result-val" id="resNetHeirs">$0</div>
+                        </div>
+                    </div>
+
+                    <!-- Waterfall Chart -->
+                    <div class="breakdown-section">
+                        <h4>&#128202; Estate Breakdown</h4>
+                        <div class="waterfall" id="waterfallChart"></div>
+                    </div>
+
+                    <!-- Tax Bracket Breakdown -->
+                    <div class="breakdown-section" id="bracketBreakdown">
+                        <h4>&#128200; Tax Bracket Breakdown</h4>
+                        <div style="overflow-x: auto;">
+                            <table class="breakdown-table" id="bracketTable">
+                                <thead>
+                                    <tr>
+                                        <th>Bracket Range</th>
+                                        <th>Rate</th>
+                                        <th>Taxable in Bracket</th>
+                                        <th>Tax from Bracket</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="bracketBody"></tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2025 ShramTools by <a href="https://shramkavach.com" target="_blank">Shram Kavach</a>. All rights reserved.</p>
-                <div class="social-links">
-                    <a href="#" class="social-link" aria-label="Twitter">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                        </svg>
-                    </a>
-                    <a href="#" class="social-link" aria-label="GitHub">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                        </svg>
-                    </a>
-                    <a href="#" class="social-link" aria-label="LinkedIn">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                        </svg>
-                    </a>
-                </div>
+
+            <!-- About Estate Tax -->
+            <section class="content-card">
+                <h2><span class="section-icon">&#128218;</span> Understanding Federal Estate Tax</h2>
+                <p>The federal estate tax is a tax on the transfer of property at death. It applies to estates whose value exceeds the lifetime exemption amount. Only about <strong>0.1% of estates</strong> owe federal estate tax, but for those that do, proper planning can save millions.</p>
+                <ul>
+                    <li><strong>Gross Estate:</strong> The total fair market value of everything you own at the time of death &mdash; real estate, investments, retirement accounts, life insurance, personal property, and business interests.</li>
+                    <li><strong>Deductions:</strong> Debts, mortgages, funeral expenses, administration costs, marital deductions (unlimited for U.S. citizen spouses), and charitable bequests reduce the gross estate.</li>
+                    <li><strong>Taxable Estate:</strong> Gross estate minus deductions. The unified credit (lifetime exemption) is then applied before calculating the tax owed.</li>
+                    <li><strong>Portability:</strong> A surviving spouse can elect to use their deceased spouse's unused exemption (DSUE), effectively doubling the exemption for married couples.</li>
+                    <li><strong>Unified Credit:</strong> The estate and gift tax share a single lifetime exemption. Taxable gifts made during life reduce the exemption available at death.</li>
+                </ul>
+            </section>
+
+            <div class="image-box">
+                <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=80&w=1200" alt="Estate planning documents and calculator" loading="lazy">
             </div>
+
+            <!-- Tax Brackets Reference -->
+            <section class="content-card">
+                <h2><span class="section-icon">&#128202;</span> 2026 Federal Estate Tax Brackets</h2>
+                <p>The federal estate tax uses a progressive rate structure ranging from 18% to 40%. The tax is computed on the full taxable estate, then the unified credit is subtracted:</p>
+                <table class="brackets-table">
+                    <thead>
+                        <tr><th>Taxable Amount Over</th><th>But Not Over</th><th>Base Tax</th><th>Rate on Excess</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>$0</td><td>$10,000</td><td>$0</td><td>18%</td></tr>
+                        <tr><td>$10,000</td><td>$20,000</td><td>$1,800</td><td>20%</td></tr>
+                        <tr><td>$20,000</td><td>$40,000</td><td>$3,800</td><td>22%</td></tr>
+                        <tr><td>$40,000</td><td>$60,000</td><td>$8,200</td><td>24%</td></tr>
+                        <tr><td>$60,000</td><td>$80,000</td><td>$13,000</td><td>26%</td></tr>
+                        <tr><td>$80,000</td><td>$100,000</td><td>$18,200</td><td>28%</td></tr>
+                        <tr><td>$100,000</td><td>$150,000</td><td>$23,800</td><td>30%</td></tr>
+                        <tr><td>$150,000</td><td>$250,000</td><td>$38,800</td><td>32%</td></tr>
+                        <tr><td>$250,000</td><td>$500,000</td><td>$70,800</td><td>34%</td></tr>
+                        <tr><td>$500,000</td><td>$750,000</td><td>$155,800</td><td>37%</td></tr>
+                        <tr><td>$750,000</td><td>$1,000,000</td><td>$248,300</td><td>39%</td></tr>
+                        <tr><td>$1,000,000</td><td>&mdash;</td><td>$345,800</td><td>40%</td></tr>
+                    </tbody>
+                </table>
+                <p style="font-size:0.88rem; color:#64748b; margin-top:10px;">Note: The unified credit offsets tax on the first $13.61M (2026). Only estates exceeding the exemption actually owe tax. The effective rate is typically well below the top 40% marginal rate.</p>
+            </section>
+
+            <!-- Formula -->
+            <section class="content-card">
+                <h2><span class="section-icon">&#129514;</span> Estate Tax Calculation Formula</h2>
+                <p>The estate tax is computed in several steps:</p>
+
+                <div class="formula-container">
+                    <div class="formula-math">
+                        <span class="var result">Estate Tax</span>
+                        <span class="equals">=</span>
+                        <span class="var">Tentative Tax</span>
+                        <span class="operator">&minus;</span>
+                        <span class="var">Unified Credit</span>
+                    </div>
+                    <div class="formula-legend">
+                        <div class="legend-item"><span class="legend-var purple">Estate Tax</span> = Net federal estate tax owed (cannot be negative)</div>
+                        <div class="legend-item"><span class="legend-var">Tentative Tax</span> = Progressive tax on (Taxable Estate + Lifetime Gifts)</div>
+                        <div class="legend-item"><span class="legend-var">Unified Credit</span> = Tax on exemption amount ($5,389,800 for $13.61M in 2026)</div>
+                    </div>
+                </div>
+
+                <p>Where <strong>Taxable Estate</strong> = Gross Estate &minus; Deductions (marital, charitable, debts, expenses)</p>
+            </section>
+
+            <!-- FAQ -->
+            <section class="content-card">
+                <h2><span class="section-icon">&#10067;</span> Estate Tax FAQ</h2>
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>What is the 2026 estate tax exemption?</h3>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>For 2026, the federal estate tax exemption is $13.61 million per individual (indexed for inflation). Married couples using portability can shield up to $27.22 million. However, if the TCJA sunsets, this could drop to approximately $7 million per person.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>Is estate tax the same as inheritance tax?</h3>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>No. Estate tax is paid by the estate before distribution. Inheritance tax (levied by some states but not the federal government) is paid by the recipients. Six states currently have inheritance taxes: Iowa, Kentucky, Maryland, Nebraska, New Jersey, and Pennsylvania.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>What is portability?</h3>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Portability allows a surviving spouse to use their deceased spouse&rsquo;s unused estate tax exemption (called DSUE). This effectively doubles the exemption for married couples. To elect portability, the executor must file an estate tax return (Form 706) for the first spouse to die, even if no tax is owed.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>How do lifetime gifts affect the estate tax?</h3>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>The estate and gift taxes share one unified exemption. Taxable gifts (those above the annual exclusion of $18,000/person in 2024) reduce your available estate tax exemption at death. The tax is calculated on the combined total of lifetime taxable gifts plus the taxable estate.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>What happens when the TCJA sunsets?</h3>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>The Tax Cuts and Jobs Act (TCJA) roughly doubled the estate tax exemption. If it sunsets after 2025 without extension, the exemption could revert to approximately $7 million (inflation-adjusted from the pre-TCJA $5.49M). This would expose millions more estates to the tax. Use the &ldquo;2026+ Sunset&rdquo; option in this calculator to model that scenario.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>How can I reduce my estate tax?</h3>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Common strategies include: charitable giving, irrevocable life insurance trusts (ILITs), annual gift exclusions ($18K/person), spousal lifetime access trusts (SLATs), grantor retained annuity trusts (GRATs), family limited partnerships, and simply leaving everything to your spouse (unlimited marital deduction). Consult an estate planning attorney for strategies specific to your situation.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Related Tools -->
+            <section class="related-tools">
+                <h2><span class="section-icon">&#128736;</span> Related Financial Tools</h2>
+                <div class="tools-grid">
+                    <a href="retirement-calculator.html" class="tool-link"><span class="tool-emoji">&#128181;</span> Retirement Calculator</a>
+                    <a href="investment-calculator.html" class="tool-link"><span class="tool-emoji">&#128200;</span> Investment Calculator</a>
+                    <a href="income-tax-calculator.html" class="tool-link"><span class="tool-emoji">&#128176;</span> Income Tax Calculator</a>
+                    <a href="savings-calculator.html" class="tool-link"><span class="tool-emoji">&#128178;</span> Savings Calculator</a>
+                    <a href="compound-interest-calculator.html" class="tool-link"><span class="tool-emoji">&#128202;</span> Compound Interest</a>
+                    <a href="401k-calculator.html" class="tool-link"><span class="tool-emoji">&#127793;</span> 401(k) Calculator</a>
+                </div>
+            </section>
         </div>
-    </footer>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>ScribbleTools</h3>
+                    <p>Free, powerful online calculators for financial planning, health tracking, and everyday math. No sign-up, no ads, just results.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="../../index.html">Home</a>
+                    <a href="../../about-us.html">About Us</a>
+                    <a href="../../all-tools.html">All Tools</a>
+                    <a href="../../blog.html">Blog</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Popular Tools</h3>
+                    <a href="compound-interest-calculator.html">Compound Interest</a>
+                    <a href="mortgage-calculator.html">Mortgage Calculator</a>
+                    <a href="loan-calculator.html">Loan Calculator</a>
+                    <a href="retirement-calculator.html">Retirement Planner</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Legal</h3>
+                    <a href="../../contact.html">Contact</a>
+                    <p style="font-size: 0.8rem; margin-top: 10px;">&#9888;&#65039; This tool is for educational purposes only. Not tax or legal advice. Consult a qualified estate planning attorney and CPA.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 ScribbleTools. All rights reserved.</p>
+                <div class="footer-links-bottom">
+                    <a href="../../contact.html">Contact</a>
+                    <a href="../../about-us.html">About</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+<script>
+    // ========== Estate Tax Brackets (IRC §2001) ==========
+    const BRACKETS = [
+        { min: 0,        max: 10000,     rate: 0.18, baseTax: 0 },
+        { min: 10000,    max: 20000,     rate: 0.20, baseTax: 1800 },
+        { min: 20000,    max: 40000,     rate: 0.22, baseTax: 3800 },
+        { min: 40000,    max: 60000,     rate: 0.24, baseTax: 8200 },
+        { min: 60000,    max: 80000,     rate: 0.26, baseTax: 13000 },
+        { min: 80000,    max: 100000,    rate: 0.28, baseTax: 18200 },
+        { min: 100000,   max: 150000,    rate: 0.30, baseTax: 23800 },
+        { min: 150000,   max: 250000,    rate: 0.32, baseTax: 38800 },
+        { min: 250000,   max: 500000,    rate: 0.34, baseTax: 70800 },
+        { min: 500000,   max: 750000,    rate: 0.37, baseTax: 155800 },
+        { min: 750000,   max: 1000000,   rate: 0.39, baseTax: 248300 },
+        { min: 1000000,  max: Infinity,  rate: 0.40, baseTax: 345800 }
+    ];
+
+    // Exemption amounts by year
+    const EXEMPTIONS = {
+        '2026':       13610000,
+        '2025':       13990000,
+        '2024':       13610000,
+        '2023':       12920000,
+        '2026sunset': 7000000
+    };
+
+    // Show/hide deceased spouse exemption field
+    document.getElementById('filingStatus').addEventListener('change', function() {
+        document.getElementById('deceasedExemptionGroup').style.display =
+            this.value === 'married' ? '' : 'none';
+    });
+
+    function getVal(id) { return Math.max(0, parseFloat(document.getElementById(id).value) || 0); }
+
+    function fmt(n) { return '$' + n.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 }); }
+
+    function fmtPct(n) { return n.toFixed(2) + '%'; }
+
+    // Compute tentative tax using progressive brackets
+    function computeTentativeTax(taxableAmount) {
+        if (taxableAmount <= 0) return { total: 0, breakdown: [] };
+        let remaining = taxableAmount;
+        let total = 0;
+        const breakdown = [];
+
+        for (const b of BRACKETS) {
+            if (remaining <= 0) break;
+            const bracketWidth = b.max === Infinity ? Infinity : (b.max - b.min);
+            const inBracket = Math.min(remaining, bracketWidth);
+            const taxInBracket = inBracket * b.rate;
+            total += taxInBracket;
+            remaining -= inBracket;
+            breakdown.push({
+                range: fmt(b.min) + ' – ' + (b.max === Infinity ? 'Above' : fmt(b.max)),
+                rate: (b.rate * 100).toFixed(0) + '%',
+                taxable: inBracket,
+                tax: taxInBracket
+            });
+        }
+        return { total, breakdown };
+    }
+
+    // Compute unified credit = tentative tax on exemption amount
+    function computeUnifiedCredit(exemption) {
+        return computeTentativeTax(exemption).total;
+    }
+
+    function calculate() {
+        // Gather assets
+        const realEstate = getVal('realEstate');
+        const investments = getVal('investments');
+        const retirementAccts = getVal('retirement');
+        const lifeInsurance = getVal('lifeInsurance');
+        const personalProp = getVal('personalProperty');
+        const business = getVal('businessInterests');
+        const cash = getVal('cashAccounts');
+        const other = getVal('otherAssets');
+
+        const grossEstate = realEstate + investments + retirementAccts + lifeInsurance + personalProp + business + cash + other;
+
+        // Deductions
+        const marital = getVal('maritalDeduction');
+        const charitable = getVal('charitableDeduction');
+        const debts = getVal('debts');
+        const admin = getVal('adminExpenses');
+        const totalDeductions = marital + charitable + debts + admin;
+
+        // Taxable estate (cannot be negative)
+        const taxableEstate = Math.max(0, grossEstate - totalDeductions);
+
+        // Lifetime gifts
+        const priorGifts = getVal('priorGifts');
+
+        // Combined amount for tentative tax
+        const combinedAmount = taxableEstate + priorGifts;
+
+        // Compute tentative tax on combined amount
+        const tentative = computeTentativeTax(combinedAmount);
+
+        // Subtract tax on gifts (so we only tax the estate portion)
+        const giftTax = computeTentativeTax(priorGifts).total;
+
+        // Exemption
+        const year = document.getElementById('taxYear').value;
+        let exemption = EXEMPTIONS[year] || 13610000;
+
+        // Portability: add deceased spouse's unused exemption
+        if (document.getElementById('filingStatus').value === 'married') {
+            exemption += getVal('deceasedExemption');
+        }
+
+        // Subtract prior gifts from available exemption
+        const availableExemption = Math.max(0, exemption - priorGifts);
+
+        // Unified credit
+        const unifiedCredit = computeUnifiedCredit(exemption);
+
+        // Estate tax = tentative tax - unified credit - gift tax already paid
+        // More precisely: tentativeTax(estate + gifts) - unifiedCredit - tentativeTax(gifts)
+        let estateTax = tentative.total - unifiedCredit;
+        // If there were gifts, we need to ensure proper credit
+        if (priorGifts > 0) {
+            // Tentative tax on combined - unified credit (which covers exemption for both)
+            estateTax = Math.max(0, tentative.total - unifiedCredit);
+        }
+        estateTax = Math.max(0, estateTax);
+
+        const effectiveRate = grossEstate > 0 ? (estateTax / grossEstate * 100) : 0;
+        const netToHeirs = grossEstate - totalDeductions - estateTax;
+
+        // Build bracket breakdown for display (just on taxable estate for clarity)
+        const bracketInfo = computeTentativeTax(combinedAmount);
+
+        // Update result cards
+        document.getElementById('resGrossEstate').textContent = fmt(grossEstate);
+        document.getElementById('resTaxableEstate').textContent = fmt(taxableEstate);
+        document.getElementById('resEstateTax').textContent = fmt(estateTax);
+        document.getElementById('resEffRate').textContent = fmtPct(effectiveRate);
+        document.getElementById('resTotalDeductions').textContent = fmt(totalDeductions);
+        document.getElementById('resNetHeirs').textContent = fmt(Math.max(0, netToHeirs));
+
+        // Waterfall chart
+        const waterfallData = [
+            { label: 'Gross Estate', value: grossEstate, color: 'blue' },
+            { label: 'Deductions', value: totalDeductions, color: 'green' },
+            { label: 'Taxable Estate', value: taxableEstate, color: 'purple' },
+            { label: 'Exemption Used', value: Math.min(availableExemption, taxableEstate), color: 'amber' },
+            { label: 'Estate Tax', value: estateTax, color: 'red' },
+            { label: 'Net to Heirs', value: Math.max(0, netToHeirs), color: 'green' }
+        ];
+        const maxVal = Math.max(...waterfallData.map(d => d.value), 1);
+        const wf = document.getElementById('waterfallChart');
+        wf.innerHTML = '';
+        waterfallData.forEach(d => {
+            const pct = Math.max((d.value / maxVal) * 100, 2);
+            wf.innerHTML += '<div class="waterfall-bar">' +
+                '<div class="waterfall-label">' + d.label + '</div>' +
+                '<div class="waterfall-track"><div class="waterfall-fill ' + d.color + '" style="width:' + pct + '%">' + fmt(d.value) + '</div></div>' +
+                '</div>';
+        });
+
+        // Bracket table
+        const tbody = document.getElementById('bracketBody');
+        tbody.innerHTML = '';
+        let totalBracketTax = 0;
+        bracketInfo.breakdown.forEach(b => {
+            if (b.taxable <= 0) return;
+            totalBracketTax += b.tax;
+            const row = document.createElement('tr');
+            row.innerHTML = '<td>' + b.range + '</td><td>' + b.rate + '</td><td>' + fmt(b.taxable) + '</td><td>' + fmt(Math.round(b.tax)) + '</td>';
+            tbody.appendChild(row);
+        });
+        // Total row
+        const totalRow = document.createElement('tr');
+        totalRow.className = 'row-total';
+        totalRow.innerHTML = '<td colspan="2">Tentative Tax Total</td><td>' + fmt(combinedAmount) + '</td><td>' + fmt(Math.round(totalBracketTax)) + '</td>';
+        tbody.appendChild(totalRow);
+        // Unified Credit row
+        const creditRow = document.createElement('tr');
+        creditRow.className = 'row-total';
+        creditRow.innerHTML = '<td colspan="2">Less: Unified Credit (' + fmt(exemption) + ' exemption)</td><td></td><td style="color:#22c55e;">−' + fmt(Math.round(unifiedCredit)) + '</td>';
+        tbody.appendChild(creditRow);
+        // Net Tax row
+        const netRow = document.createElement('tr');
+        netRow.className = 'row-total';
+        netRow.innerHTML = '<td colspan="2" style="font-size:1.05rem;">Federal Estate Tax Due</td><td></td><td style="font-size:1.1rem; color:#ef4444;">' + fmt(Math.round(estateTax)) + '</td>';
+        tbody.appendChild(netRow);
+
+        // Show results
+        document.getElementById('results').style.display = 'block';
+        document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function resetForm() {
+        document.querySelectorAll('.form-grid input[type="number"]').forEach(el => el.value = '0');
+        document.getElementById('realEstate').value = '850000';
+        document.getElementById('investments').value = '1200000';
+        document.getElementById('retirement').value = '650000';
+        document.getElementById('lifeInsurance').value = '500000';
+        document.getElementById('personalProperty').value = '100000';
+        document.getElementById('cashAccounts').value = '250000';
+        document.getElementById('charitableDeduction').value = '50000';
+        document.getElementById('debts').value = '180000';
+        document.getElementById('adminExpenses').value = '25000';
+        document.getElementById('taxYear').value = '2026';
+        document.getElementById('filingStatus').value = 'single';
+        document.getElementById('deceasedExemptionGroup').style.display = 'none';
+        document.getElementById('results').style.display = 'none';
+    }
+
+    function toggleFAQ(el) {
+        const item = el.closest('.faq-item');
+        const wasActive = item.classList.contains('active');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+        if (!wasActive) item.classList.add('active');
+    }
+
+    // Mobile Menu
+    const hamburger = document.getElementById('hamburger');
+    const headerLinks = document.getElementById('headerLinks');
+    const menuOverlay = document.getElementById('menuOverlay');
+
+    function toggleMenu() {
+        hamburger.classList.toggle('active');
+        headerLinks.classList.toggle('active');
+        menuOverlay.classList.toggle('active');
+        document.body.style.overflow = headerLinks.classList.contains('active') ? 'hidden' : '';
+    }
+
+    hamburger.addEventListener('click', toggleMenu);
+    menuOverlay.addEventListener('click', toggleMenu);
+    headerLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => { if (window.innerWidth <= 768) toggleMenu(); });
+    });
+</script>
+
 </body>
 </html>
