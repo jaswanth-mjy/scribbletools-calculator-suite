@@ -3,623 +3,995 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
-    <title>House Affordability Calculator - Free Online Tool | ShramTools</title>
-    <meta name="description" content="Free House Affordability Calculator tool by ShramTools. Easy to use, accurate results, no registration required.">
-    <meta name="keywords" content="house affordability calculator, free calculator, online tool, ShramTools">
-    <meta name="author" content="ShramTools by Shram Kavach">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://shramtools.shramkavach.com/tools/financial-calculators/house-affordability-calculator.html">
-    
-    <!-- Open Graph -->
+    <title>House Affordability Calculator - How Much House Can You Afford? | ScribbleTools</title>
+    <meta name="description" content="Free House Affordability Calculator — find out how much home you can afford based on income, debts, down payment, interest rate, taxes, and insurance using the 28/36 DTI rule.">
+    <meta name="keywords" content="house affordability calculator, how much house can I afford, mortgage affordability, home buying calculator, DTI ratio, 28/36 rule, home budget, mortgage qualification">
+    <link rel="canonical" href="https://scribbletools.com/tools/financial-calculators/house-affordability-calculator.html">
+
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://shramtools.shramkavach.com/tools/financial-calculators/house-affordability-calculator.html">
-    <meta property="og:title" content="House Affordability Calculator - Free Online Tool | ShramTools">
-    <meta property="og:description" content="Free House Affordability Calculator tool. Easy to use, accurate results.">
-    <meta property="og:image" content="https://shramtools.shramkavach.com/images/og-image.jpg">
-    
-    <!-- Twitter -->
+    <meta property="og:url" content="https://scribbletools.com/tools/financial-calculators/house-affordability-calculator.html">
+    <meta property="og:title" content="House Affordability Calculator | ScribbleTools">
+    <meta property="og:description" content="Determine how much house you can afford based on your income, debts, and the 28/36 DTI rule.">
+    <meta property="og:image" content="../../images/og-image.jpg">
+
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:title" content="House Affordability Calculator | ShramTools">
-    <meta property="twitter:description" content="Free House Affordability Calculator tool by ShramTools.">
-    
+    <meta property="twitter:title" content="House Affordability Calculator | ScribbleTools">
+    <meta property="twitter:description" content="Find your maximum affordable home price using real DTI guidelines.">
+
     <link rel="icon" type="image/webp" href="../../images/logo.webp">
-    
+
     <style>
-        /* Reset & Base */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667EEA 0%, #764BA2 100%);
+            --page-bg: linear-gradient(180deg, #F5F7FA 0%, #E8EEF5 50%, #F0E7F8 100%);
+            --text-main: #2D3748; --text-secondary: #4A5568; --text-muted: #718096; --border: #E2E8F0;
         }
-        
-        html {
-            scroll-behavior: smooth;
-        }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #e8eef5 50%, #f0e7f8 100%);
-            background-attachment: fixed;
-            min-height: 100vh;
-            color: #2d3748;
-            line-height: 1.6;
-        }
-        
-        /* Site Header */
-        .site-header {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(20px) saturate(180%);
-            -webkit-backdrop-filter: blur(20px) saturate(180%);
-            padding: 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 8px 32px rgba(102, 126, 234, 0.08), 0 1px 3px rgba(0, 0, 0, 0.05);
-            border-bottom: 1px solid rgba(102, 126, 234, 0.1);
-        }
-        
-        .site-header::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #667eea, #764ba2, #a855f7, transparent);
-            animation: headerGlow 4s ease-in-out infinite;
-        }
-        
-        @keyframes headerGlow {
-            0%, 100% { opacity: 0.2; }
-            50% { opacity: 0.6; }
-        }
-        
-        .header-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            text-decoration: none;
-        }
-        
-        .logo-icon {
-            width: 45px;
-            height: 45px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            box-shadow: 0 8px 24px rgba(102, 126, 234, 0.4);
-            transition: all 0.4s;
-            overflow: hidden;
-        }
-        
-        .logo-icon img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 12px;
-        }
-        
-        .logo-icon:hover {
-            transform: scale(1.05) rotate(5deg);
-            box-shadow: 0 12px 32px rgba(102, 126, 234, 0.5);
-        }
-        
-        .logo-text {
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .logo-main {
-            font-size: 1.5rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #a855f7 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: -0.5px;
-        }
-        
-        .logo-sub {
-            font-size: 0.7rem;
-            color: #718096;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-top: -2px;
-        }
-        
-        .nav-menu {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-        }
-        
-        .nav-link {
-            color: #4a5568;
-            text-decoration: none;
-            font-weight: 500;
-            padding: 0.6rem 1.2rem;
-            border-radius: 12px;
-            transition: all 0.3s;
-            position: relative;
-        }
-        
-        .nav-link:hover {
-            color: #667eea;
-            background: rgba(102, 126, 234, 0.08);
-        }
-        
-        .nav-link.active {
-            color: #667eea;
-            background: rgba(102, 126, 234, 0.1);
-        }
-        
-        .nav-link-primary {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white !important;
-            padding: 0.7rem 1.5rem;
-            border-radius: 25px;
-            font-weight: 600;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-        }
-        
-        .nav-link-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5);
-            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
-        }
-        
-        /* Main Content - Under Progress */
-        .main-content {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 60px 20px;
-            text-align: center;
-        }
-        
-        .progress-container {
-            background: white;
-            border-radius: 24px;
-            padding: 60px 40px;
-            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.15);
-            border: 1px solid rgba(102, 126, 234, 0.1);
-        }
-        
-        .progress-icon {
-            width: 120px;
-            height: 120px;
-            margin: 0 auto 30px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            animation: pulse 2s ease-in-out infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(102, 126, 234, 0.4); }
-            50% { transform: scale(1.05); box-shadow: 0 0 0 20px rgba(102, 126, 234, 0); }
-        }
-        
-        .progress-icon svg {
-            width: 60px;
-            height: 60px;
-            fill: white;
-        }
-        
-        .progress-title {
-            font-size: 2.5rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #a855f7 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 15px;
-        }
-        
-        .progress-subtitle {
-            font-size: 1.2rem;
-            color: #718096;
-            margin-bottom: 30px;
-        }
-        
-        .progress-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-            color: #92400e;
-            padding: 12px 24px;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1rem;
-            margin-bottom: 30px;
-        }
-        
-        .progress-badge svg {
-            width: 20px;
-            height: 20px;
-            fill: #f59e0b;
-        }
-        
-        .category-badge {
-            display: inline-block;
-            background: rgba(102, 126, 234, 0.1);
-            color: #667eea;
-            padding: 8px 20px;
-            border-radius: 25px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            margin-bottom: 30px;
-        }
-        
-        .progress-message {
-            color: #4a5568;
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 40px;
-        }
-        
-        .explore-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 16px 40px;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            text-decoration: none;
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
-            transition: all 0.3s;
-        }
-        
-        .explore-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.5);
-        }
-        
-        .explore-btn svg {
-            width: 20px;
-            height: 20px;
-            fill: white;
-        }
-        
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+        html { scroll-behavior: smooth; }
+        body { background: var(--page-bg); color: var(--text-main); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+        .page-wrapper { min-height: 100vh; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+
+        /* Header */
+        .site-header { background: rgba(255,255,255,0.85); backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%); position: sticky; top: 0; z-index: 1000; box-shadow: 0 8px 32px rgba(102,126,234,0.08), 0 1px 3px rgba(0,0,0,0.05); border-bottom: 1px solid rgba(102,126,234,0.1); }
+        .site-header::before { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, #667eea, #764ba2, #a855f7, transparent); animation: headerGlow 4s ease-in-out infinite; }
+        @keyframes headerGlow { 0%, 100% { opacity: 0.2; } 50% { opacity: 0.6; } }
+        .header-content { max-width: 1400px; margin: 0 auto; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+        .logo { display: flex; align-items: center; gap: 0.8rem; text-decoration: none; }
+        .logo-icon { width: 45px; height: 45px; border-radius: 12px; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); box-shadow: 0 8px 24px rgba(102,126,234,0.4); transition: all 0.4s; overflow: hidden; }
+        .logo-icon img { width: 100%; height: 100%; object-fit: cover; }
+        .logo:hover .logo-icon { transform: scale(1.1); }
+        .logo-text h1 { margin: 0; font-size: 1.6rem; font-weight: 800; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .logo-text p { margin: 0; font-size: 0.7rem; color: #64748b; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; }
+        .header-links { display: flex; gap: 1.5rem; align-items: center; }
+        .header-links a { color: #475569; text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: all 0.3s; padding: 0.5rem 0.8rem; position: relative; }
+        .header-links a:hover { color: #667eea; }
+        .header-links a::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 0; height: 2px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); transition: width 0.3s; }
+        .header-links a:hover::after { width: 80%; }
+        .cta-button { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white !important; padding: 0.6rem 1.2rem !important; border-radius: 8px; font-weight: 600; box-shadow: 0 4px 15px rgba(102,126,234,0.3); }
+        .cta-button:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(102,126,234,0.4); }
+        .cta-button::after { display: none !important; }
+        .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; z-index: 1001; padding: 5px; }
+        .hamburger span { width: 25px; height: 2.5px; background: #475569; border-radius: 2px; transition: all 0.3s; }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+        .menu-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 998; }
+        .menu-overlay.active { display: block; }
+
+        /* Breadcrumb */
+        .breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 0.88rem; margin-bottom: 25px; flex-wrap: wrap; }
+        .breadcrumb a { color: #667eea; text-decoration: none; font-weight: 500; }
+        .breadcrumb a:hover { color: #764ba2; }
+        .breadcrumb span { color: #94a3b8; }
+
+        /* Page Header */
+        .page-header { text-align: center; margin-bottom: 35px; padding: 40px 20px; background: white; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border: 1px solid rgba(226,232,240,0.6); }
+        .page-header .header-icon { font-size: 3rem; display: block; margin-bottom: 15px; }
+        .page-header h2 { font-size: 2.2rem; font-weight: 800; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 10px; }
+        .page-header p { color: var(--text-secondary); font-size: 1.05rem; max-width: 650px; margin: 0 auto; line-height: 1.7; }
+
+        /* Calc Card */
+        .calc-card { background: white; border-radius: 20px; padding: 40px; margin-bottom: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border: 1px solid rgba(226,232,240,0.6); }
+        .calc-title { display: flex; align-items: center; gap: 12px; margin-bottom: 28px; padding-bottom: 18px; border-bottom: 2px solid #f1f5f9; }
+        .calc-title span { font-size: 1.8rem; }
+        .calc-title h2 { font-size: 1.4rem; font-weight: 700; color: var(--text-main); }
+
+        /* Section Dividers */
+        .section-divider { font-size: 1.05rem; font-weight: 700; color: #667eea; margin: 25px 0 15px; padding: 10px 16px; background: linear-gradient(135deg, #f0f4ff 0%, #faf5ff 100%); border-radius: 10px; border-left: 4px solid #667eea; display: flex; align-items: center; gap: 8px; }
+
+        /* Form Grid */
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-bottom: 25px; }
+        .form-group { display: flex; flex-direction: column; gap: 6px; }
+        .form-group.full-width { grid-column: 1 / -1; }
+        .form-group label { font-size: 0.88rem; font-weight: 600; color: var(--text-secondary); display: flex; align-items: center; gap: 6px; }
+        .label-icon { font-size: 1rem; }
+        .form-group input, .form-group select { width: 100%; padding: 12px 16px; border: 2px solid #e2e8f0; border-radius: 10px; font-size: 1rem; color: var(--text-main); background: #f8fafc; transition: all 0.3s; outline: none; }
+        .form-group input:focus, .form-group select:focus { border-color: #667eea; background: white; box-shadow: 0 0 0 4px rgba(102,126,234,0.1); }
+        .form-group small { font-size: 0.78rem; color: var(--text-muted); }
+
+        /* range slider */
+        .range-row { display: flex; align-items: center; gap: 12px; }
+        .range-row input[type="range"] { flex: 1; -webkit-appearance: none; height: 6px; border-radius: 3px; background: linear-gradient(90deg, #667eea, #764ba2); outline: none; }
+        .range-row input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; width: 22px; height: 22px; border-radius: 50%; background: white; box-shadow: 0 2px 8px rgba(102,126,234,0.4); border: 3px solid #667eea; cursor: pointer; }
+        .range-val { min-width: 60px; text-align: right; font-weight: 700; color: #667eea; font-size: 1rem; }
+
+        /* Buttons */
+        .btn-row { display: flex; gap: 12px; margin-top: 5px; }
+        .btn-calc { flex: 1; padding: 14px 28px; border: none; border-radius: 12px; font-size: 1.05rem; font-weight: 700; cursor: pointer; transition: all 0.3s; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; box-shadow: 0 4px 15px rgba(102,126,234,0.3); }
+        .btn-calc:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(102,126,234,0.4); }
+        .btn-reset { padding: 14px 24px; border: 2px solid #e2e8f0; border-radius: 12px; font-size: 1rem; font-weight: 600; cursor: pointer; background: white; color: var(--text-secondary); transition: all 0.3s; }
+        .btn-reset:hover { border-color: #ef4444; color: #ef4444; }
+
+        /* Results */
+        .results-panel { display: none; margin-top: 30px; animation: fadeIn 0.5s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+        .results-header { text-align: center; margin-bottom: 25px; }
+        .results-header h3 { font-size: 1.3rem; font-weight: 700; color: var(--text-main); display: flex; align-items: center; justify-content: center; gap: 10px; }
+
+        /* Big Price */
+        .big-price { text-align: center; margin-bottom: 30px; padding: 30px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 16px; color: white; box-shadow: 0 8px 30px rgba(102,126,234,0.3); }
+        .big-price .price-label { font-size: 0.95rem; font-weight: 600; opacity: 0.9; margin-bottom: 5px; }
+        .big-price .price-val { font-size: 2.8rem; font-weight: 900; letter-spacing: -1px; }
+        .big-price .price-sub { font-size: 0.88rem; opacity: 0.8; margin-top: 5px; }
+
+        .result-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 25px; }
+        .result-card { background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); border-radius: 14px; padding: 20px; text-align: center; border: 1px solid #e2e8f0; transition: all 0.3s; }
+        .result-card:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(0,0,0,0.08); }
+        .result-card.green { background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color: #86efac; }
+        .result-card.amber { background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%); border-color: #fcd34d; }
+        .result-card.red { background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%); border-color: #fca5a5; }
+        .result-card .result-label { font-size: 0.82rem; font-weight: 600; color: var(--text-muted); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .result-card .result-val { font-size: 1.4rem; font-weight: 800; color: var(--text-main); }
+
+        /* Payment Breakdown */
+        .breakdown-section { margin-top: 25px; }
+        .breakdown-section h4 { font-size: 1.1rem; font-weight: 700; color: var(--text-main); margin-bottom: 15px; display: flex; align-items: center; gap: 8px; }
+        .breakdown-bar { display: flex; height: 40px; border-radius: 10px; overflow: hidden; margin-bottom: 15px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
+        .breakdown-bar .seg { display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 700; color: white; min-width: 30px; transition: all 0.5s; }
+        .breakdown-bar .seg-pi { background: #667eea; }
+        .breakdown-bar .seg-tax { background: #f59e0b; }
+        .breakdown-bar .seg-ins { background: #10b981; }
+        .breakdown-bar .seg-pmi { background: #ef4444; }
+        .breakdown-bar .seg-hoa { background: #8b5cf6; }
+
+        .breakdown-legend { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .legend-item { display: flex; align-items: center; gap: 10px; padding: 10px 14px; background: #f8fafc; border-radius: 10px; border: 1px solid #edf2f7; }
+        .legend-dot { width: 12px; height: 12px; border-radius: 4px; flex-shrink: 0; }
+        .legend-label { font-size: 0.85rem; color: var(--text-secondary); font-weight: 500; }
+        .legend-val { margin-left: auto; font-size: 0.95rem; font-weight: 700; color: var(--text-main); }
+
+        /* DTI Meter */
+        .dti-section { margin-top: 25px; padding: 24px; background: linear-gradient(135deg, #f0f4ff 0%, #faf5ff 100%); border-radius: 14px; border: 1px solid #e0e7ff; }
+        .dti-section h4 { font-size: 1.05rem; font-weight: 700; margin-bottom: 15px; display: flex; align-items: center; gap: 8px; }
+        .dti-meters { display: flex; gap: 30px; flex-wrap: wrap; }
+        .dti-meter { flex: 1; min-width: 200px; }
+        .dti-meter-label { font-size: 0.85rem; font-weight: 600; color: var(--text-secondary); margin-bottom: 8px; }
+        .dti-meter-track { height: 14px; background: #e2e8f0; border-radius: 7px; overflow: hidden; position: relative; }
+        .dti-meter-fill { height: 100%; border-radius: 7px; transition: width 0.8s ease; }
+        .dti-meter-fill.safe { background: linear-gradient(90deg, #10b981, #34d399); }
+        .dti-meter-fill.caution { background: linear-gradient(90deg, #f59e0b, #fbbf24); }
+        .dti-meter-fill.danger { background: linear-gradient(90deg, #ef4444, #f87171); }
+        .dti-meter-val { font-size: 1.1rem; font-weight: 800; margin-top: 5px; }
+        .dti-meter-limit { font-size: 0.78rem; color: var(--text-muted); }
+
+        /* Chart */
+        .chart-container { margin-top: 25px; background: #fafbff; border-radius: 14px; padding: 20px; border: 1px solid #e2e8f0; }
+        .chart-container canvas { width: 100% !important; height: 280px !important; }
+
+        /* Stress Test */
+        .stress-section { margin-top: 25px; }
+        .stress-section h4 { font-size: 1.05rem; font-weight: 700; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+        .stress-table { width: 100%; border-collapse: collapse; border-radius: 12px; overflow: hidden; }
+        .stress-table thead { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .stress-table th { padding: 12px 14px; text-align: left; color: white; font-weight: 600; font-size: 0.85rem; }
+        .stress-table td { padding: 10px 14px; border-bottom: 1px solid #f1f5f9; font-size: 0.88rem; color: var(--text-secondary); }
+        .stress-table tbody tr:hover { background: #f8fafc; }
+        .stress-table .current-row { background: #f0f4ff; font-weight: 700; }
+        .stress-table .current-row td { color: #667eea; }
+
+        /* Content Card */
+        .content-card { background: white; border-radius: 16px; padding: 35px; margin-bottom: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border: 1px solid rgba(226,232,240,0.6); }
+        .content-card h2 { font-size: 1.5rem; font-weight: 800; color: var(--text-main); margin-bottom: 18px; display: flex; align-items: center; gap: 10px; }
+        .content-card p { color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin-bottom: 15px; }
+        .content-card ul, .content-card ol { padding-left: 20px; margin-bottom: 15px; }
+        .content-card li { color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin-bottom: 8px; }
+        .section-icon { font-size: 1.4rem; }
+
+        /* Image */
+        .image-box { width: 100%; height: 300px; border-radius: 16px; overflow: hidden; margin-bottom: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+        .image-box img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* Formula */
+        .formula-container { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); border-radius: 14px; padding: 28px; margin: 20px 0; text-align: center; }
+        .formula-math { display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; padding: 12px; }
+        .formula-math .var { font-family: 'Times New Roman', Georgia, serif; font-style: italic; color: #93c5fd; font-size: 1.1rem; font-weight: 600; }
+        .formula-math .var.result { color: #a78bfa; font-size: 1.2rem; }
+        .formula-math .equals { color: #f59e0b; font-size: 1.3rem; font-weight: 700; }
+        .formula-math .operator { color: #f59e0b; font-size: 1.2rem; }
+        .formula-math .frac { display: inline-flex; flex-direction: column; align-items: center; gap: 2px; }
+        .formula-math .frac-num, .formula-math .frac-den { font-family: 'Times New Roman', Georgia, serif; font-style: italic; color: #93c5fd; font-size: 0.95rem; }
+        .formula-math .frac-line { width: 100%; height: 1px; background: #64748b; }
+        .formula-legend { display: flex; flex-direction: column; gap: 8px; margin-top: 18px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,0.1); }
+        .formula-legend .legend-item { font-size: 0.85rem; color: #94a3b8; line-height: 1.6; }
+        .formula-legend .legend-var { font-family: 'Times New Roman', Georgia, serif; font-style: italic; color: #93c5fd; font-weight: 600; }
+        .formula-legend .legend-var.purple { color: #a78bfa; }
+
+        /* FAQ */
+        .faq-grid { margin-top: 20px; }
+        .faq-item { border: 1px solid #edf2f7; border-radius: 12px; overflow: hidden; transition: all 0.3s; margin-bottom: 12px; background: white; }
+        .faq-item:hover { border-color: #e2e8f0; }
+        .faq-item.active { border-color: #667eea; box-shadow: 0 4px 15px rgba(102,126,234,0.1); }
+        .faq-question { padding: 18px 22px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; gap: 15px; }
+        .faq-question:hover { background: #f8fafc; }
+        .faq-question h3 { font-size: 1.05rem; margin: 0; color: var(--text-main); font-weight: 600; flex: 1; }
+        .faq-toggle { width: 28px; height: 28px; border-radius: 50%; background: #f1f5f9; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; color: #667eea; flex-shrink: 0; transition: all 0.3s; font-weight: 600; }
+        .faq-item.active .faq-toggle { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; transform: rotate(45deg); }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s ease; padding: 0 22px; }
+        .faq-item.active .faq-answer { max-height: 500px; padding: 0 22px 20px; }
+        .faq-answer p { font-size: 0.95rem; margin-bottom: 0; color: var(--text-secondary); line-height: 1.8; }
+
+        /* Related Tools */
+        .related-tools { background: white; border-radius: 16px; padding: 40px; margin-bottom: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border: 1px solid rgba(226,232,240,0.6); }
+        .related-tools h2 { font-size: 1.6rem; font-weight: 800; color: var(--text-main); margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+        .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
+        .tool-link { display: flex; align-items: center; gap: 12px; padding: 14px 18px; background: #f8fafc; border-radius: 12px; text-decoration: none; color: var(--text-main); font-weight: 600; font-size: 0.9rem; border: 1px solid #edf2f7; transition: all 0.3s; }
+        .tool-link:hover { background: white; border-color: #667eea; box-shadow: 0 4px 15px rgba(102,126,234,0.1); transform: translateY(-2px); }
+        .tool-link .tool-emoji { font-size: 1.3rem; }
+
         /* Footer */
-        .site-footer {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-            color: #e2e8f0;
-            padding: 60px 0 30px;
-            margin-top: 80px;
-        }
-        
-        .footer-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-        
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 3rem;
-            margin-bottom: 40px;
-        }
-        
-        .footer-brand {
-            max-width: 350px;
-        }
-        
-        .footer-logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 20px;
-        }
-        
-        .footer-logo-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 14px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-        
-        .footer-logo-icon img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 14px;
-        }
-        
-        .footer-logo-text {
-            font-size: 1.8rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #667eea 0%, #a855f7 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .footer-desc {
-            color: #94a3b8;
-            line-height: 1.8;
-            font-size: 0.95rem;
-        }
-        
-        .footer-section h4 {
-            color: white;
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            position: relative;
-            padding-bottom: 10px;
-        }
-        
-        .footer-section h4::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 40px;
-            height: 3px;
-            background: linear-gradient(90deg, #667eea, #a855f7);
-            border-radius: 2px;
-        }
-        
-        .footer-links {
-            list-style: none;
-        }
-        
-        .footer-links li {
-            margin-bottom: 12px;
-        }
-        
-        .footer-links a {
-            color: #94a3b8;
-            text-decoration: none;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .footer-links a:hover {
-            color: #a855f7;
-            transform: translateX(5px);
-        }
-        
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-        
-        .footer-bottom p {
-            color: #64748b;
-            font-size: 0.9rem;
-        }
-        
-        .footer-bottom a {
-            color: #a855f7;
-            text-decoration: none;
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 15px;
-        }
-        
-        .social-link {
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.05);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #94a3b8;
-            text-decoration: none;
-            transition: all 0.3s;
-        }
-        
-        .social-link:hover {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            transform: translateY(-3px);
-        }
-        
+        footer { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #1a1a2e 100%); color: #e2e8f0; padding: 60px 0 0; margin-top: 40px; }
+        .footer-content { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+        .footer-section h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 20px; color: white; position: relative; padding-bottom: 10px; }
+        .footer-section h3::after { content: ''; position: absolute; bottom: 0; left: 0; width: 30px; height: 2px; background: linear-gradient(135deg, #667eea, #764ba2); }
+        .footer-section p { font-size: 0.9rem; color: #94a3b8; line-height: 1.8; }
+        .footer-section a { color: #94a3b8; text-decoration: none; font-size: 0.9rem; display: block; margin-bottom: 10px; transition: all 0.3s; }
+        .footer-section a:hover { color: #667eea; padding-left: 5px; }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding: 20px 2rem; display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; }
+        .footer-bottom p { color: #64748b; font-size: 0.85rem; }
+        .footer-links-bottom { display: flex; gap: 20px; }
+        .footer-links-bottom a { color: #64748b; text-decoration: none; font-size: 0.85rem; }
+        .footer-links-bottom a:hover { color: #667eea; }
+
         /* Responsive */
-        @media (max-width: 968px) {
-            .nav-menu {
-                display: none;
-            }
-            
-            .footer-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-            
-            .progress-title {
-                font-size: 2rem;
-            }
+        @media (max-width: 992px) { .footer-content { grid-template-columns: 1fr 1fr; } .tools-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 768px) {
+            .container { padding: 25px 15px; } .calc-card { padding: 25px; }
+            .form-grid { grid-template-columns: 1fr; }
+            .result-cards { grid-template-columns: 1fr; }
+            .breakdown-legend { grid-template-columns: 1fr; }
+            .dti-meters { flex-direction: column; gap: 18px; }
+            .content-card { padding: 28px 22px; } .related-tools { padding: 28px 22px; }
+            .tools-grid { grid-template-columns: 1fr; } .image-box { height: 220px; }
+            .big-price .price-val { font-size: 2rem; }
+            .hamburger { display: flex; }
+            .header-links { position: fixed; top: 0; right: -100%; width: 75%; max-width: 280px; height: 100vh; background: #ffffff; box-shadow: -5px 0 25px rgba(0,0,0,0.15); flex-direction: column; gap: 0; align-items: stretch; padding: 4rem 0 2rem; z-index: 999; transition: right 0.4s cubic-bezier(0.4,0,0.2,1); overflow-y: auto; }
+            .header-links.active { right: 0; }
+            .header-links a { text-align: left; padding: 1rem 1.5rem; border-bottom: 1px solid #e2e8f0; font-size: 1rem; }
+            .header-links a::after { display: none; }
+            .cta-button { margin: 1rem 1.5rem !important; text-align: center; border-bottom: none !important; }
+            .footer-content { grid-template-columns: 1fr; text-align: center; }
+            .footer-section h3::after { left: 50%; transform: translateX(-50%); }
+            .footer-bottom { flex-direction: column; text-align: center; }
+            .footer-links-bottom { justify-content: center; }
         }
-        
-        @media (max-width: 600px) {
-            .header-content {
-                padding: 1rem;
-            }
-            
-            .progress-container {
-                padding: 40px 20px;
-            }
-            
-            .progress-title {
-                font-size: 1.6rem;
-            }
-            
-            .footer-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .footer-bottom {
-                flex-direction: column;
-                text-align: center;
-            }
-        }
+        @media (max-width: 480px) { .btn-row { flex-direction: column; } }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="site-header">
-        <div class="header-content">
-            <a href="../../index.html" class="logo">
-                <div class="logo-icon">
-                    <img src="../../images/logo.webp" alt="ShramTools Logo">
-                </div>
-                <div class="logo-text">
-                    <span class="logo-main">ShramTools</span>
-                    <span class="logo-sub">By Shram Kavach</span>
-                </div>
-            </a>
-            <nav class="nav-menu">
-                <a href="../../index.html" class="nav-link">Home</a>
-                <a href="../../index.html#financial" class="nav-link">Financial</a>
-                <a href="../../index.html#health" class="nav-link">Health</a>
-                <a href="../../index.html#math" class="nav-link">Math</a>
-                <a href="../../about-us.html" class="nav-link">About</a>
-                <a href="../../index.html" class="nav-link nav-link-primary">All Tools</a>
+    <div class="page-wrapper">
+        <!-- Header -->
+        <header class="site-header">
+            <div class="header-content">
+                <a href="../../index.html" class="logo">
+                    <div class="logo-icon"><img src="../../images/logo.webp" alt="ScribbleTools Logo"></div>
+                    <div class="logo-text"><h1>ScribbleTools</h1><p>Smart Digital Solutions</p></div>
+                </a>
+                <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+                <nav class="header-links" id="headerLinks">
+                    <a href="../../index.html">Home</a>
+                    <a href="../../index.html#financial">Financial Tools</a>
+                    <a href="../../index.html#health">Health Tools</a>
+                    <a href="../../about-us.html">About</a>
+                    <a href="../../index.html" class="cta-button">Explore Tools</a>
+                </nav>
+            </div>
+        </header>
+        <div class="menu-overlay" id="menuOverlay"></div>
+
+        <div class="container">
+            <!-- Breadcrumb -->
+            <nav class="breadcrumb">
+                <a href="../../index.html">Home</a><span>/</span>
+                <a href="../../index.html#financial">Financial Tools</a><span>/</span>
+                <span style="color: #4a5568; font-weight: 600;">House Affordability Calculator</span>
             </nav>
-        </div>
-    </header>
 
-    <!-- Main Content -->
-    <main class="main-content">
-        <div class="progress-container">
-            <div class="progress-icon">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
-                </svg>
-            </div>
-            
-            <h1 class="progress-title">House Affordability Calculator</h1>
-            
-            <div class="category-badge">Financial Calculators</div>
-            
-            <div class="progress-badge">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
-                </svg>
-                Under Development
-            </div>
-            
-            <p class="progress-subtitle">Coming Soon!</p>
-            
-            <p class="progress-message">
-                We're working hard to bring you an amazing <strong>House Affordability Calculator</strong> tool. 
-                Our team is crafting a feature-rich, user-friendly experience that will help you 
-                achieve accurate results with ease. Stay tuned!
-            </p>
-            
-            <a href="../../index.html" class="explore-btn">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
-                </svg>
-                Explore Other Tools
-            </a>
-        </div>
-    </main>
+            <!-- Page Header -->
+            <header class="page-header">
+                <span class="header-icon">&#127968;</span>
+                <h2>House Affordability Calculator</h2>
+                <p>Find out the maximum home price you can comfortably afford based on your income, debts, down payment, and the standard 28/36 DTI lending guidelines.</p>
+            </header>
 
-    <!-- Footer -->
-    <footer class="site-footer">
-        <div class="footer-content">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <div class="footer-logo">
-                        <div class="footer-logo-icon">
-                            <img src="../../images/logo.webp" alt="ShramTools Logo">
-                        </div>
-                        <span class="footer-logo-text">ShramTools</span>
+            <!-- Calculator -->
+            <div class="calc-card">
+                <div class="calc-title">
+                    <span>&#128200;</span>
+                    <h2>How Much House Can You Afford?</h2>
+                </div>
+
+                <!-- Income & Debts -->
+                <div class="section-divider">&#128176; Income &amp; Debts</div>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label><span class="label-icon">&#128181;</span> Annual Gross Income</label>
+                        <input type="number" id="annualIncome" value="85000" step="1000">
+                        <small>Pre-tax household income (all earners combined)</small>
                     </div>
-                    <p class="footer-desc">
-                        Your trusted destination for 250+ free online calculators and tools. 
-                        From financial planning to health tracking, we've got you covered.
-                    </p>
+                    <div class="form-group">
+                        <label><span class="label-icon">&#128179;</span> Monthly Debts</label>
+                        <input type="number" id="monthlyDebts" value="500" step="50">
+                        <small>Car loans, student loans, credit cards, child support, etc.</small>
+                    </div>
                 </div>
-                
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <ul class="footer-links">
-                        <li><a href="../../index.html">Home</a></li>
-                        <li><a href="../../index.html#financial">Financial Tools</a></li>
-                        <li><a href="../../index.html#health">Health Tools</a></li>
-                        <li><a href="../../index.html#math">Math Tools</a></li>
-                    </ul>
+
+                <!-- Loan Details -->
+                <div class="section-divider">&#127974; Loan Details</div>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label><span class="label-icon">&#128178;</span> Down Payment ($)</label>
+                        <input type="number" id="downPayment" value="60000" step="1000">
+                        <small>Cash you plan to put down on the home</small>
+                    </div>
+                    <div class="form-group">
+                        <label><span class="label-icon">&#128200;</span> Mortgage Rate (%)</label>
+                        <input type="number" id="mortgageRate" value="6.75" step="0.05">
+                        <small>Current 30-year fixed rates are roughly 6.5%&ndash;7.0% (March 2026)</small>
+                    </div>
+                    <div class="form-group">
+                        <label><span class="label-icon">&#128197;</span> Loan Term (years)</label>
+                        <select id="loanTerm">
+                            <option value="30" selected>30 Years</option>
+                            <option value="25">25 Years</option>
+                            <option value="20">20 Years</option>
+                            <option value="15">15 Years</option>
+                            <option value="10">10 Years</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label><span class="label-icon">&#128202;</span> Location / State</label>
+                        <select id="locationState">
+                            <option value="custom">Custom (enter below)</option>
+                            <option value="low">Low-Cost Area (avg 0.8% tax)</option>
+                            <option value="medium" selected>Average US (avg 1.1% tax)</option>
+                            <option value="high">High-Cost Area (avg 1.6% tax)</option>
+                            <option value="very-high">Very High (NJ/IL/TX ~2.0%+)</option>
+                        </select>
+                    </div>
                 </div>
-                
-                <div class="footer-section">
-                    <h4>More Tools</h4>
-                    <ul class="footer-links">
-                        <li><a href="../../index.html#text">Text Tools</a></li>
-                        <li><a href="../../index.html#image">Image Tools</a></li>
-                        <li><a href="../../index.html#student">Student Tools</a></li>
-                        <li><a href="../../index.html#other">Other Tools</a></li>
-                    </ul>
+
+                <!-- Costs -->
+                <div class="section-divider">&#128176; Taxes, Insurance &amp; Fees</div>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label><span class="label-icon">&#127970;</span> Property Tax Rate (% / year)</label>
+                        <input type="number" id="propertyTaxRate" value="1.1" step="0.1">
+                        <small>US average is ~1.1%. NJ is ~2.2%, Hawaii ~0.3%</small>
+                    </div>
+                    <div class="form-group">
+                        <label><span class="label-icon">&#128737;</span> Homeowner&rsquo;s Insurance ($/yr)</label>
+                        <input type="number" id="annualInsurance" value="1800" step="100">
+                        <small>US average ~$1,800/year. Varies widely by state/coverage.</small>
+                    </div>
+                    <div class="form-group">
+                        <label><span class="label-icon">&#127963;</span> HOA Fees ($/month)</label>
+                        <input type="number" id="hoaFees" value="0" step="25">
+                        <small>Monthly homeowners association dues (0 if none)</small>
+                    </div>
+                    <div class="form-group">
+                        <label><span class="label-icon">&#128202;</span> PMI Rate (% / year)</label>
+                        <input type="number" id="pmiRate" value="0.55" step="0.05">
+                        <small>Required if down payment &lt; 20%. Typical range: 0.3%&ndash;1.5%</small>
+                    </div>
                 </div>
-                
-                <div class="footer-section">
-                    <h4>Company</h4>
-                    <ul class="footer-links">
-                        <li><a href="../../about-us.html">About Us</a></li>
-                        <li><a href="../../privacy-policy.html">Privacy Policy</a></li>
-                        <li><a href="../../terms-of-service.html">Terms of Service</a></li>
-                        <li><a href="../../contact.html">Contact</a></li>
-                    </ul>
+
+                <!-- DTI Targets -->
+                <div class="section-divider">&#128200; DTI Limits</div>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label><span class="label-icon">&#128202;</span> Max Front-End DTI (%)</label>
+                        <div class="range-row">
+                            <input type="range" id="frontDTI" min="20" max="40" value="28" step="1" oninput="document.getElementById('frontDTIVal').textContent=this.value+'%'">
+                            <span class="range-val" id="frontDTIVal">28%</span>
+                        </div>
+                        <small>Housing costs only. Standard guideline: 28%</small>
+                    </div>
+                    <div class="form-group">
+                        <label><span class="label-icon">&#128202;</span> Max Back-End DTI (%)</label>
+                        <div class="range-row">
+                            <input type="range" id="backDTI" min="25" max="55" value="36" step="1" oninput="document.getElementById('backDTIVal').textContent=this.value+'%'">
+                            <span class="range-val" id="backDTIVal">36%</span>
+                        </div>
+                        <small>All debts + housing. Standard guideline: 36%</small>
+                    </div>
+                </div>
+
+                <div class="btn-row">
+                    <button class="btn-calc" onclick="calculate()">&#127968; Calculate Affordability</button>
+                    <button class="btn-reset" onclick="resetForm()">&#128260; Reset</button>
+                </div>
+
+                <!-- Results -->
+                <div class="results-panel" id="results">
+                    <div class="results-header">
+                        <h3>&#127968; Your Home Affordability</h3>
+                    </div>
+
+                    <div class="big-price">
+                        <div class="price-label">Maximum Affordable Home Price</div>
+                        <div class="price-val" id="maxPrice">$0</div>
+                        <div class="price-sub" id="priceNote">Based on the 28/36 DTI rule</div>
+                    </div>
+
+                    <div class="result-cards" id="resultCards">
+                        <div class="result-card">
+                            <div class="result-label">Loan Amount</div>
+                            <div class="result-val" id="resLoan">$0</div>
+                        </div>
+                        <div class="result-card">
+                            <div class="result-label">Down Payment</div>
+                            <div class="result-val" id="resDown">$0</div>
+                        </div>
+                        <div class="result-card">
+                            <div class="result-label">Down Payment %</div>
+                            <div class="result-val" id="resDownPct">0%</div>
+                        </div>
+                        <div class="result-card">
+                            <div class="result-label">Monthly Payment (PITI)</div>
+                            <div class="result-val" id="resPITI">$0</div>
+                        </div>
+                        <div class="result-card">
+                            <div class="result-label">Total Interest (Life of Loan)</div>
+                            <div class="result-val" id="resTotalInterest">$0</div>
+                        </div>
+                        <div class="result-card" id="pmiCard">
+                            <div class="result-label">PMI Status</div>
+                            <div class="result-val" id="resPMI">None</div>
+                        </div>
+                    </div>
+
+                    <!-- Payment Breakdown -->
+                    <div class="breakdown-section">
+                        <h4>&#128202; Monthly Payment Breakdown</h4>
+                        <div class="breakdown-bar" id="breakdownBar"></div>
+                        <div class="breakdown-legend" id="breakdownLegend"></div>
+                    </div>
+
+                    <!-- DTI Meters -->
+                    <div class="dti-section">
+                        <h4>&#128200; Debt-to-Income Ratios</h4>
+                        <div class="dti-meters">
+                            <div class="dti-meter">
+                                <div class="dti-meter-label">Front-End DTI (Housing Only)</div>
+                                <div class="dti-meter-track"><div class="dti-meter-fill" id="frontDTIFill"></div></div>
+                                <div class="dti-meter-val" id="frontDTIResult">0%</div>
+                                <div class="dti-meter-limit" id="frontDTILimit">Limit: 28%</div>
+                            </div>
+                            <div class="dti-meter">
+                                <div class="dti-meter-label">Back-End DTI (All Debts)</div>
+                                <div class="dti-meter-track"><div class="dti-meter-fill" id="backDTIFill"></div></div>
+                                <div class="dti-meter-val" id="backDTIResult">0%</div>
+                                <div class="dti-meter-limit" id="backDTILimit">Limit: 36%</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chart -->
+                    <div class="chart-container">
+                        <canvas id="pieChart"></canvas>
+                    </div>
+
+                    <!-- Stress Test -->
+                    <div class="stress-section">
+                        <h4>&#9888;&#65039; Rate Stress Test &mdash; What If Rates Change?</h4>
+                        <div style="overflow-x:auto;">
+                            <table class="stress-table">
+                                <thead>
+                                    <tr>
+                                        <th>Rate</th>
+                                        <th>Max Home Price</th>
+                                        <th>Monthly P&amp;I</th>
+                                        <th>Total PITI</th>
+                                        <th>&Delta; from Current</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="stressBody"></tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2025 ShramTools by <a href="https://shramkavach.com" target="_blank">Shram Kavach</a>. All rights reserved.</p>
-                <div class="social-links">
-                    <a href="#" class="social-link" aria-label="Twitter">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                        </svg>
-                    </a>
-                    <a href="#" class="social-link" aria-label="GitHub">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                        </svg>
-                    </a>
-                    <a href="#" class="social-link" aria-label="LinkedIn">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                        </svg>
-                    </a>
-                </div>
+
+            <!-- Educational content -->
+            <section class="content-card">
+                <h2><span class="section-icon">&#128218;</span> Understanding Home Affordability</h2>
+                <p>Lenders use <strong>Debt-to-Income (DTI) ratios</strong> to determine how much mortgage you qualify for. The widely-used <strong>28/36 rule</strong> sets two thresholds:</p>
+                <ul>
+                    <li><strong>Front-End Ratio (28%):</strong> Your total monthly housing costs &mdash; principal, interest, taxes, insurance (PITI), PMI, and HOA &mdash; should not exceed 28% of gross monthly income.</li>
+                    <li><strong>Back-End Ratio (36%):</strong> Your total monthly debts (housing + car loans + student loans + credit cards + etc.) should not exceed 36% of gross monthly income.</li>
+                </ul>
+                <p>This calculator finds the <em>lower</em> of the two limits &mdash; the binding constraint &mdash; to determine your maximum affordable home price. Some lenders allow higher DTIs (up to 43%&ndash;50% for FHA/VA loans), but the 28/36 rule is the conservative, widely-recommended standard.</p>
+            </section>
+
+            <div class="image-box">
+                <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=1200" alt="Beautiful home with landscaped front yard" loading="lazy">
             </div>
+
+            <!-- The 28/36 Rule Explained -->
+            <section class="content-card">
+                <h2><span class="section-icon">&#129518;</span> The 28/36 Rule Explained</h2>
+                <div class="formula-container">
+                    <div class="formula-math">
+                        <span class="var result">Front-End DTI</span>
+                        <span class="equals">=</span>
+                        <span class="frac">
+                            <span class="frac-num">Monthly Housing Costs (PITI + PMI + HOA)</span>
+                            <span class="frac-line"></span>
+                            <span class="frac-den">Gross Monthly Income</span>
+                        </span>
+                        <span class="operator">&le;</span>
+                        <span class="var">28%</span>
+                    </div>
+                    <div style="height: 15px;"></div>
+                    <div class="formula-math">
+                        <span class="var result">Back-End DTI</span>
+                        <span class="equals">=</span>
+                        <span class="frac">
+                            <span class="frac-num">Housing Costs + All Other Monthly Debts</span>
+                            <span class="frac-line"></span>
+                            <span class="frac-den">Gross Monthly Income</span>
+                        </span>
+                        <span class="operator">&le;</span>
+                        <span class="var">36%</span>
+                    </div>
+                    <div class="formula-legend">
+                        <div class="legend-item"><span class="legend-var purple">PITI</span> = Principal + Interest + Property Taxes + Insurance</div>
+                        <div class="legend-item"><span class="legend-var">PMI</span> = Private Mortgage Insurance (if down payment &lt; 20%)</div>
+                        <div class="legend-item"><span class="legend-var">HOA</span> = Homeowners Association monthly dues</div>
+                    </div>
+                </div>
+                <p>The calculator works backwards from these constraints &mdash; given your income, debts, rates, taxes, and insurance, it computes the maximum loan (and therefore home price) that keeps both DTIs under their limits.</p>
+            </section>
+
+            <!-- Tips -->
+            <section class="content-card">
+                <h2><span class="section-icon">&#128161;</span> Tips to Maximize What You Can Afford</h2>
+                <ol>
+                    <li><strong>Pay down existing debts first.</strong> Lower monthly debts directly increase the back-end headroom, often raising your max home price by tens of thousands.</li>
+                    <li><strong>Boost your down payment.</strong> A larger down payment means a smaller loan &mdash; and eliminating PMI at 20% saves hundreds per month.</li>
+                    <li><strong>Shop for lower rates.</strong> Even a 0.25% rate reduction can add $10,000+ to your buying power. Compare multiple lenders.</li>
+                    <li><strong>Consider a 15-year mortgage.</strong> The monthly payment is higher, but you&rsquo;ll save enormously on total interest and build equity faster.</li>
+                    <li><strong>Look at total cost, not just price.</strong> High-tax areas (NJ, IL, TX) have much higher monthly costs than low-tax areas at the same price point.</li>
+                    <li><strong>Build an emergency fund separate from your down payment.</strong> Lenders like to see 3&ndash;6 months of reserves.</li>
+                </ol>
+            </section>
+
+            <!-- FAQ -->
+            <section class="content-card">
+                <h2><span class="section-icon">&#10067;</span> House Affordability FAQ</h2>
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>What is PITI?</h3>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>PITI stands for Principal, Interest, Taxes, and Insurance &mdash; the four components of a typical monthly mortgage payment. Lenders evaluate your PITI (plus PMI and HOA) as a percentage of your gross income to determine affordability.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>What if my DTI is above 36%?</h3>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>You may still qualify for certain loan programs. FHA loans allow back-end DTIs up to 43% (or even 50% with compensating factors). VA loans have no official front-end limit. However, higher DTI means tighter finances and less room for emergencies. Financial advisors generally recommend staying at or below 36%.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>When does PMI go away?</h3>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>For conventional loans, you can request PMI removal once you reach 20% equity (80% LTV). Your lender must automatically cancel PMI when you reach 22% equity. FHA loans with less than 10% down require mortgage insurance for the life of the loan &mdash; you&rsquo;d need to refinance into a conventional loan to remove it.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>Should I put down 20%?</h3>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Putting 20% down avoids PMI and gives you instant equity, but it&rsquo;s not required. Many buyers put down 3%&ndash;10%. The trade-off is higher monthly payments (PMI + larger loan). Use this calculator to compare scenarios &mdash; try different down payment amounts and see how PMI affects your monthly budget.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>Does this include closing costs?</h3>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>No. Closing costs (typically 2%&ndash;5% of the home price) are separate one-time expenses. Budget for these on top of your down payment. They include appraisal fees, title insurance, origination fees, attorney costs, and prepaid taxes/insurance. Ask lenders for a Loan Estimate to see specific costs.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>What debts count toward DTI?</h3>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Lenders count all recurring monthly obligations that appear on your credit report: auto loans, student loans, credit card minimum payments, personal loans, child support, and alimony. They do <em>not</em> count utilities, groceries, cell phone bills, subscriptions, or insurance premiums (other than homeowner&rsquo;s insurance).</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Related Tools -->
+            <section class="related-tools">
+                <h2><span class="section-icon">&#128736;</span> Related Financial Tools</h2>
+                <div class="tools-grid">
+                    <a href="mortgage-calculator.html" class="tool-link"><span class="tool-emoji">&#127968;</span> Mortgage Calculator</a>
+                    <a href="mortgage-payoff-calculator.html" class="tool-link"><span class="tool-emoji">&#128197;</span> Mortgage Payoff</a>
+                    <a href="loan-calculator.html" class="tool-link"><span class="tool-emoji">&#128179;</span> Loan Calculator</a>
+                    <a href="interest-rate-calculator.html" class="tool-link"><span class="tool-emoji">&#128200;</span> Interest Rate</a>
+                    <a href="savings-calculator.html" class="tool-link"><span class="tool-emoji">&#128178;</span> Savings Calculator</a>
+                    <a href="income-tax-calculator.html" class="tool-link"><span class="tool-emoji">&#128176;</span> Income Tax</a>
+                </div>
+            </section>
         </div>
-    </footer>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>ScribbleTools</h3>
+                    <p>Free, powerful online calculators for financial planning, health tracking, and everyday math. No sign-up, no ads, just results.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="../../index.html">Home</a>
+                    <a href="../../about-us.html">About Us</a>
+                    <a href="../../all-tools.html">All Tools</a>
+                    <a href="../../blog.html">Blog</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Popular Tools</h3>
+                    <a href="compound-interest-calculator.html">Compound Interest</a>
+                    <a href="mortgage-calculator.html">Mortgage Calculator</a>
+                    <a href="loan-calculator.html">Loan Calculator</a>
+                    <a href="retirement-calculator.html">Retirement Planner</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Legal</h3>
+                    <a href="../../contact.html">Contact</a>
+                    <p style="font-size: 0.8rem; margin-top: 10px;">&#9888;&#65039; For educational purposes. Not financial advice.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 ScribbleTools. All rights reserved.</p>
+                <div class="footer-links-bottom">
+                    <a href="../../contact.html">Contact</a>
+                    <a href="../../about-us.html">About</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+<script>
+    // ===== HOUSE AFFORDABILITY CALCULATOR =====
+    const fmt = n => {
+        const a = Math.abs(n);
+        if (a >= 1e6) return '$' + (a / 1e6).toFixed(2) + 'M';
+        return '$' + a.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+    };
+    const fmtD = n => '$' + Math.abs(n).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+    // Location presets
+    document.getElementById('locationState').addEventListener('change', function() {
+        const presets = { 'low': 0.8, 'medium': 1.1, 'high': 1.6, 'very-high': 2.0 };
+        if (presets[this.value] !== undefined) {
+            document.getElementById('propertyTaxRate').value = presets[this.value];
+        }
+    });
+
+    function monthlyPI(loan, monthlyRate, months) {
+        if (monthlyRate === 0) return loan / months;
+        return loan * monthlyRate * Math.pow(1 + monthlyRate, months) / (Math.pow(1 + monthlyRate, months) - 1);
+    }
+
+    function calculate() {
+        const income = parseFloat(document.getElementById('annualIncome').value) || 0;
+        const debts = parseFloat(document.getElementById('monthlyDebts').value) || 0;
+        const downPay = parseFloat(document.getElementById('downPayment').value) || 0;
+        const rate = parseFloat(document.getElementById('mortgageRate').value) || 0;
+        const termYrs = parseInt(document.getElementById('loanTerm').value);
+        const taxRate = parseFloat(document.getElementById('propertyTaxRate').value) || 0;
+        const annIns = parseFloat(document.getElementById('annualInsurance').value) || 0;
+        const hoa = parseFloat(document.getElementById('hoaFees').value) || 0;
+        const pmiRateInput = parseFloat(document.getElementById('pmiRate').value) || 0;
+        const maxFrontDTI = parseInt(document.getElementById('frontDTI').value) / 100;
+        const maxBackDTI = parseInt(document.getElementById('backDTI').value) / 100;
+
+        const monthlyIncome = income / 12;
+        const monthlyRate = rate / 100 / 12;
+        const totalMonths = termYrs * 12;
+
+        if (monthlyIncome <= 0) { alert('Please enter a valid annual income.'); return; }
+
+        // Max monthly housing budget from front-end DTI
+        const maxHousingFront = monthlyIncome * maxFrontDTI;
+
+        // Max monthly housing budget from back-end DTI
+        const maxHousingBack = monthlyIncome * maxBackDTI - debts;
+
+        // Binding constraint
+        const maxHousing = Math.min(maxHousingFront, maxHousingBack);
+        const bindingRule = maxHousingFront <= maxHousingBack ? 'front-end (28%)' : 'back-end (36%)';
+
+        if (maxHousing <= 0) {
+            alert('Your existing debts exceed the DTI limit. Consider paying down debts first.');
+            return;
+        }
+
+        // Iteratively find max home price
+        // maxHousing = P&I + tax + insurance + PMI + HOA
+        // We need to find the home price where this holds
+        // Tax = homePrice * taxRate / 12
+        // Insurance = annIns / 12 (fixed)
+        // PMI = if LTV > 80%, loanAmount * pmiRate / 12
+        // HOA = fixed
+        // P&I = monthlyPI(loanAmount, monthlyRate, months)
+
+        // Iterative solver: binary search on home price
+        let lo = 0, hi = 5000000, bestPrice = 0;
+        for (let iter = 0; iter < 100; iter++) {
+            const mid = (lo + hi) / 2;
+            const loan = mid - downPay;
+            if (loan <= 0) { lo = mid; continue; }
+
+            const pi = monthlyPI(loan, monthlyRate, totalMonths);
+            const tax = mid * (taxRate / 100) / 12;
+            const ins = annIns / 12;
+            const ltv = loan / mid;
+            const pmi = ltv > 0.80 ? (loan * (pmiRateInput / 100)) / 12 : 0;
+            const total = pi + tax + ins + pmi + hoa;
+
+            if (total <= maxHousing) {
+                bestPrice = mid;
+                lo = mid;
+            } else {
+                hi = mid;
+            }
+        }
+
+        const homePrice = Math.floor(bestPrice / 100) * 100; // round down to nearest $100
+        const loanAmount = homePrice - downPay;
+        const pi = monthlyPI(loanAmount, monthlyRate, totalMonths);
+        const monthlyTax = homePrice * (taxRate / 100) / 12;
+        const monthlyIns = annIns / 12;
+        const ltv = loanAmount / homePrice;
+        const monthlyPMI = ltv > 0.80 ? (loanAmount * (pmiRateInput / 100)) / 12 : 0;
+        const totalPITI = pi + monthlyTax + monthlyIns + monthlyPMI + hoa;
+
+        const totalInterest = (pi * totalMonths) - loanAmount;
+
+        const actualFrontDTI = (totalPITI / monthlyIncome) * 100;
+        const actualBackDTI = ((totalPITI + debts) / monthlyIncome) * 100;
+
+        // Display
+        document.getElementById('maxPrice').textContent = fmt(homePrice);
+        document.getElementById('priceNote').textContent = 'Based on ' + bindingRule + ' rule | ' + fmt(loanAmount) + ' loan + ' + fmt(downPay) + ' down';
+
+        document.getElementById('resLoan').textContent = fmt(loanAmount);
+        document.getElementById('resDown').textContent = fmt(downPay);
+        document.getElementById('resDownPct').textContent = homePrice > 0 ? ((downPay / homePrice) * 100).toFixed(1) + '%' : '0%';
+        document.getElementById('resPITI').textContent = fmtD(totalPITI);
+        document.getElementById('resTotalInterest').textContent = fmt(totalInterest);
+
+        const pmiCard = document.getElementById('pmiCard');
+        if (monthlyPMI > 0) {
+            document.getElementById('resPMI').textContent = fmtD(monthlyPMI) + '/mo';
+            pmiCard.className = 'result-card amber';
+        } else {
+            document.getElementById('resPMI').textContent = 'Not Required ✓';
+            pmiCard.className = 'result-card green';
+        }
+
+        // Breakdown bar
+        const segments = [
+            { cls: 'seg-pi', val: pi, label: 'Principal & Interest', color: '#667eea' },
+            { cls: 'seg-tax', val: monthlyTax, label: 'Property Tax', color: '#f59e0b' },
+            { cls: 'seg-ins', val: monthlyIns, label: 'Insurance', color: '#10b981' }
+        ];
+        if (monthlyPMI > 0) segments.push({ cls: 'seg-pmi', val: monthlyPMI, label: 'PMI', color: '#ef4444' });
+        if (hoa > 0) segments.push({ cls: 'seg-hoa', val: hoa, label: 'HOA', color: '#8b5cf6' });
+
+        const barEl = document.getElementById('breakdownBar');
+        barEl.innerHTML = '';
+        const legendEl = document.getElementById('breakdownLegend');
+        legendEl.innerHTML = '';
+
+        segments.forEach(s => {
+            const pct = (s.val / totalPITI) * 100;
+            const seg = document.createElement('div');
+            seg.className = 'seg ' + s.cls;
+            seg.style.width = pct + '%';
+            seg.textContent = pct >= 8 ? Math.round(pct) + '%' : '';
+            barEl.appendChild(seg);
+
+            legendEl.innerHTML += '<div class="legend-item"><div class="legend-dot" style="background:' + s.color + '"></div><span class="legend-label">' + s.label + '</span><span class="legend-val">' + fmtD(s.val) + '</span></div>';
+        });
+
+        // DTI meters
+        const frontFill = document.getElementById('frontDTIFill');
+        const frontPct = Math.min(actualFrontDTI, 100);
+        frontFill.style.width = (frontPct / 50 * 100) + '%'; // scale to 50% max for visual
+        frontFill.className = 'dti-meter-fill ' + (actualFrontDTI <= maxFrontDTI * 100 ? 'safe' : actualFrontDTI <= 35 ? 'caution' : 'danger');
+        document.getElementById('frontDTIResult').textContent = actualFrontDTI.toFixed(1) + '%';
+        document.getElementById('frontDTIResult').style.color = actualFrontDTI <= maxFrontDTI * 100 ? '#10b981' : '#ef4444';
+        document.getElementById('frontDTILimit').textContent = 'Limit: ' + (maxFrontDTI * 100) + '% | Housing: ' + fmtD(totalPITI);
+
+        const backFill = document.getElementById('backDTIFill');
+        const backPct = Math.min(actualBackDTI, 100);
+        backFill.style.width = (backPct / 60 * 100) + '%';
+        backFill.className = 'dti-meter-fill ' + (actualBackDTI <= maxBackDTI * 100 ? 'safe' : actualBackDTI <= 43 ? 'caution' : 'danger');
+        document.getElementById('backDTIResult').textContent = actualBackDTI.toFixed(1) + '%';
+        document.getElementById('backDTIResult').style.color = actualBackDTI <= maxBackDTI * 100 ? '#10b981' : '#ef4444';
+        document.getElementById('backDTILimit').textContent = 'Limit: ' + (maxBackDTI * 100) + '% | All debts: ' + fmtD(totalPITI + debts);
+
+        // Pie chart (donut)
+        drawDonut(segments, totalPITI);
+
+        // Stress test
+        buildStressTest(rate, downPay, monthlyIncome, debts, maxFrontDTI, maxBackDTI, taxRate, annIns, hoa, pmiRateInput, totalMonths, monthlyRate);
+
+        document.getElementById('results').style.display = 'block';
+        document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function drawDonut(segments, total) {
+        const canvas = document.getElementById('pieChart');
+        const ctx = canvas.getContext('2d');
+        const dpr = window.devicePixelRatio || 1;
+        canvas.width = canvas.offsetWidth * dpr;
+        canvas.height = 280 * dpr;
+        ctx.scale(dpr, dpr);
+        const W = canvas.offsetWidth;
+        const H = 280;
+        ctx.clearRect(0, 0, W, H);
+
+        const cx = W / 2;
+        const cy = H / 2;
+        const outerR = Math.min(cx, cy) - 30;
+        const innerR = outerR * 0.55;
+
+        let startAngle = -Math.PI / 2;
+        const colors = segments.map(s => s.color);
+
+        segments.forEach((s, i) => {
+            const sliceAngle = (s.val / total) * Math.PI * 2;
+            ctx.beginPath();
+            ctx.arc(cx, cy, outerR, startAngle, startAngle + sliceAngle);
+            ctx.arc(cx, cy, innerR, startAngle + sliceAngle, startAngle, true);
+            ctx.closePath();
+            ctx.fillStyle = colors[i];
+            ctx.fill();
+
+            // Label
+            if (s.val / total > 0.06) {
+                const midAngle = startAngle + sliceAngle / 2;
+                const labelR = (outerR + innerR) / 2;
+                const lx = cx + Math.cos(midAngle) * labelR;
+                const ly = cy + Math.sin(midAngle) * labelR;
+                ctx.fillStyle = '#fff';
+                ctx.font = 'bold 11px Segoe UI';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText(Math.round((s.val / total) * 100) + '%', lx, ly);
+            }
+
+            startAngle += sliceAngle;
+        });
+
+        // Center text
+        ctx.fillStyle = '#1e293b';
+        ctx.font = 'bold 18px Segoe UI';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(fmtD(total), cx, cy - 8);
+        ctx.fillStyle = '#64748b';
+        ctx.font = '11px Segoe UI';
+        ctx.fillText('per month', cx, cy + 12);
+    }
+
+    function buildStressTest(currentRate, downPay, monthlyIncome, debts, maxFrontDTI, maxBackDTI, taxRate, annIns, hoa, pmiRateInput, totalMonths) {
+        const tbody = document.getElementById('stressBody');
+        tbody.innerHTML = '';
+
+        const rates = [];
+        for (let r = Math.max(currentRate - 2, 3); r <= currentRate + 3; r += 0.5) {
+            rates.push(parseFloat(r.toFixed(2)));
+        }
+        if (!rates.includes(currentRate)) {
+            rates.push(currentRate);
+            rates.sort((a, b) => a - b);
+        }
+
+        // Find max price for each rate
+        let currentMaxPrice = 0;
+        rates.forEach(testRate => {
+            const mr = testRate / 100 / 12;
+            const maxHousingF = monthlyIncome * maxFrontDTI;
+            const maxHousingB = monthlyIncome * maxBackDTI - debts;
+            const maxH = Math.min(maxHousingF, maxHousingB);
+
+            let lo = 0, hi = 5000000, best = 0;
+            for (let i = 0; i < 80; i++) {
+                const mid = (lo + hi) / 2;
+                const loan = mid - downPay;
+                if (loan <= 0) { lo = mid; continue; }
+                const pi = monthlyPI(loan, mr, totalMonths);
+                const tax = mid * (taxRate / 100) / 12;
+                const ins = annIns / 12;
+                const ltv = loan / mid;
+                const pmi = ltv > 0.80 ? (loan * (pmiRateInput / 100)) / 12 : 0;
+                const tot = pi + tax + ins + pmi + hoa;
+                if (tot <= maxH) { best = mid; lo = mid; } else { hi = mid; }
+            }
+
+            const hp = Math.floor(best / 100) * 100;
+            const loan = hp - downPay;
+            const pi = monthlyPI(loan, mr, totalMonths);
+            const tax = hp * (taxRate / 100) / 12;
+            const ins = annIns / 12;
+            const ltv = loan / hp;
+            const pmi = ltv > 0.80 ? (loan * (pmiRateInput / 100)) / 12 : 0;
+            const piti = pi + tax + ins + pmi + hoa;
+
+            const isCurrent = Math.abs(testRate - currentRate) < 0.01;
+            if (isCurrent) currentMaxPrice = hp;
+
+            const diff = hp - currentMaxPrice;
+            const row = document.createElement('tr');
+            if (isCurrent) row.className = 'current-row';
+            row.innerHTML = '<td>' + testRate.toFixed(2) + '%' + (isCurrent ? ' ★' : '') + '</td><td>' + fmt(hp) + '</td><td>' + fmtD(pi) + '</td><td>' + fmtD(piti) + '</td><td style="color:' + (diff >= 0 ? '#10b981' : '#ef4444') + '">' + (diff >= 0 ? '+' : '') + fmt(diff) + '</td>';
+            tbody.appendChild(row);
+        });
+    }
+
+    function resetForm() {
+        document.getElementById('annualIncome').value = '85000';
+        document.getElementById('monthlyDebts').value = '500';
+        document.getElementById('downPayment').value = '60000';
+        document.getElementById('mortgageRate').value = '6.75';
+        document.getElementById('loanTerm').value = '30';
+        document.getElementById('locationState').value = 'medium';
+        document.getElementById('propertyTaxRate').value = '1.1';
+        document.getElementById('annualInsurance').value = '1800';
+        document.getElementById('hoaFees').value = '0';
+        document.getElementById('pmiRate').value = '0.55';
+        document.getElementById('frontDTI').value = '28';
+        document.getElementById('backDTI').value = '36';
+        document.getElementById('frontDTIVal').textContent = '28%';
+        document.getElementById('backDTIVal').textContent = '36%';
+        document.getElementById('results').style.display = 'none';
+    }
+
+    function toggleFAQ(el) {
+        const item = el.closest('.faq-item');
+        const wasActive = item.classList.contains('active');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+        if (!wasActive) item.classList.add('active');
+    }
+
+    // Mobile Menu
+    const hamburger = document.getElementById('hamburger');
+    const headerLinks = document.getElementById('headerLinks');
+    const menuOverlay = document.getElementById('menuOverlay');
+    function toggleMenu() {
+        hamburger.classList.toggle('active');
+        headerLinks.classList.toggle('active');
+        menuOverlay.classList.toggle('active');
+        document.body.style.overflow = headerLinks.classList.contains('active') ? 'hidden' : '';
+    }
+    hamburger.addEventListener('click', toggleMenu);
+    menuOverlay.addEventListener('click', toggleMenu);
+    headerLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => { if (window.innerWidth <= 768) toggleMenu(); });
+    });
+</script>
+
 </body>
 </html>
