@@ -334,7 +334,7 @@
             <header class="page-header">
                 <span class="header-icon">&#128177;</span>
                 <h2>Currency Converter</h2>
-                <p>Convert between 150+ world currencies with live exchange rates. Fast, free, and accurate &mdash; powered by real-time market data.</p>
+                <p>Convert between 55+ world currencies using daily mid-market exchange rates. Fast, free, and reliable &mdash; powered by trusted financial data sources.</p>
             </header>
 
             <!-- Converter -->
@@ -383,12 +383,13 @@
                 </div>
 
                 <button class="btn-calc" onclick="convert()">&#128640; Convert</button>
+                <p style="text-align:center; font-size:0.78rem; color:#94a3b8; margin:12px 0 0; line-height:1.6;">&#9432; Rates shown are daily mid-market rates from trusted financial data providers. They may differ slightly (1&ndash;3%) from real-time trading rates on Google, XE, or your bank. Banks and money transfer services typically add a markup on top of mid-market rates.</p>
             </div>
 
             <!-- Popular Rates -->
             <section class="content-card">
                 <h2><span class="section-icon">&#11088;</span> Popular Exchange Rates</h2>
-                <p>Quick reference rates based on 1 USD. Click any pair to load it into the converter above.</p>
+                <p>Quick reference mid-market rates based on 1 USD (updated daily). Click any pair to load it into the converter above.</p>
                 <div class="popular-grid" id="popularGrid"></div>
             </section>
 
@@ -481,6 +482,15 @@
                         </div>
                         <div class="faq-answer">
                             <p>The mid-market rate (also called interbank rate) is the midpoint between the buy and sell prices of a currency pair on the global market. It&rsquo;s the &ldquo;real&rdquo; exchange rate before any service adds their fee. Always compare against the mid-market rate to know the true cost of a conversion.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>Why do rates differ slightly from Google or XE?</h3>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Google and XE show near-real-time rates that update every few seconds from live forex feeds. Our converter uses daily mid-market rates from the European Central Bank and other trusted sources, updated once per day. This means a 1&ndash;3% variance is normal, especially during volatile market hours. For quick reference and comparisons, daily mid-market rates are more than sufficient.</p>
                         </div>
                     </div>
                     <div class="faq-item">
@@ -719,15 +729,15 @@
 
         // All APIs failed — use hardcoded fallback
         exchangeRates = {
-            USD: 1, EUR: 0.92, GBP: 0.79, JPY: 149.5, CAD: 1.36, AUD: 1.53,
-            CHF: 0.88, CNY: 7.24, INR: 83.1, MXN: 17.15, BRL: 4.97, KRW: 1325,
-            SGD: 1.34, HKD: 7.82, NOK: 10.5, SEK: 10.4, DKK: 6.87, NZD: 1.63,
-            ZAR: 18.6, RUB: 91.5, TRY: 30.2, THB: 35.1, IDR: 15600, MYR: 4.66,
-            PHP: 55.8, PLN: 4.02, CZK: 22.7, HUF: 355, ILS: 3.68, CLP: 885,
-            AED: 3.67, SAR: 3.75, TWD: 31.5, ARS: 350, COP: 3950, EGP: 30.9,
-            NGN: 780, PKR: 280, BDT: 110, VND: 24300, KES: 153, RON: 4.57,
-            BGN: 1.80, HRK: 6.93, ISK: 137, PEN: 3.72, UAH: 37.5, QAR: 3.64,
-            KWD: 0.31, BHD: 0.377, OMR: 0.385, JOD: 0.709, LKR: 325, MAD: 10.1, GHS: 12.5
+            USD: 1, EUR: 0.859, GBP: 0.748, JPY: 157.12, CAD: 1.37, AUD: 1.42,
+            CHF: 0.78, CNY: 6.90, INR: 92.2, MXN: 17.55, BRL: 5.22, KRW: 1465,
+            SGD: 1.28, HKD: 7.82, NOK: 9.65, SEK: 9.17, DKK: 6.41, NZD: 1.69,
+            ZAR: 17.3, RUB: 86.0, TRY: 38.5, THB: 32.8, IDR: 16855, MYR: 3.94,
+            PHP: 58.5, PLN: 3.66, CZK: 20.9, HUF: 330, ILS: 3.08, CLP: 920,
+            AED: 3.67, SAR: 3.75, TWD: 30.5, ARS: 1415, COP: 3800, EGP: 49.5,
+            NGN: 1550, PKR: 278, BDT: 121, VND: 25800, KES: 129, RON: 4.37,
+            BGN: 1.68, HRK: 6.48, ISK: 124, PEN: 3.58, UAH: 41.5, QAR: 3.64,
+            KWD: 0.307, BHD: 0.377, OMR: 0.385, JOD: 0.709, LKR: 298, MAD: 9.2, GHS: 15.8
         };
         rateDate = 'Offline fallback rates';
         rateSource = 'offline';
