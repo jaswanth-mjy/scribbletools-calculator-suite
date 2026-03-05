@@ -3,623 +3,914 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
-    <title>Compound Interest Calculator - Free Online Tool | ShramTools</title>
-    <meta name="description" content="Free Compound Interest Calculator tool by ShramTools. Easy to use, accurate results, no registration required.">
-    <meta name="keywords" content="compound interest calculator, free calculator, online tool, ShramTools">
+    <title>Compound Interest Calculator - Free Savings & Investment Growth Tool | ShramTools</title>
+    <meta name="description" content="Free compound interest calculator. See how your money grows with daily, monthly, quarterly, or annual compounding. Includes growth chart, breakdown table, and contribution support.">
+    <meta name="keywords" content="compound interest calculator, compound interest, savings calculator, investment growth, interest calculator, compounding frequency, future value calculator">
     <meta name="author" content="ShramTools by Shram Kavach">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://shramtools.shramkavach.com/tools/financial-calculators/compound-interest-calculator.html">
-    
-    <!-- Open Graph -->
+
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://shramtools.shramkavach.com/tools/financial-calculators/compound-interest-calculator.html">
-    <meta property="og:title" content="Compound Interest Calculator - Free Online Tool | ShramTools">
-    <meta property="og:description" content="Free Compound Interest Calculator tool. Easy to use, accurate results.">
-    <meta property="og:image" content="https://shramtools.shramkavach.com/images/og-image.jpg">
-    
-    <!-- Twitter -->
+    <meta property="og:title" content="Free Compound Interest Calculator - Investment Growth Tool">
+    <meta property="og:description" content="Calculate compound interest with flexible compounding frequencies, regular contributions, and detailed growth tables.">
+
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:title" content="Compound Interest Calculator | ShramTools">
-    <meta property="twitter:description" content="Free Compound Interest Calculator tool by ShramTools.">
-    
-    <link rel="icon" type="image/webp" href="../../images/logo.webp">
-    
+    <meta property="twitter:url" content="https://shramtools.shramkavach.com/tools/financial-calculators/compound-interest-calculator.html">
+    <meta property="twitter:title" content="Free Compound Interest Calculator">
+    <meta property="twitter:description" content="See how your money grows with compound interest. Supports daily, monthly, quarterly, and yearly compounding.">
+
+    <link rel="icon" type="image/jpeg" href="../../images/bmi/bmi-icon-512.jpg">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Compound Interest Calculator",
+      "applicationCategory": "FinanceApplication",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "description": "Free compound interest calculator with flexible compounding, regular contributions, and year-by-year growth table",
+      "url": "https://shramtools.shramkavach.com/tools/financial-calculators/compound-interest-calculator.html",
+      "creator": {
+        "@type": "Organization",
+        "name": "ShramTools",
+        "url": "https://shramtools.shramkavach.com",
+        "parentOrganization": { "@type": "Organization", "name": "Shram Kavach", "url": "https://shramkavach.com" }
+      }
+    }
+    </script>
+
     <style>
-        /* Reset & Base */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667EEA 0%, #764BA2 100%);
+            --page-bg: linear-gradient(180deg, #F5F7FA 0%, #E8EEF5 50%, #F0E7F8 100%);
+            --primary-blue: #4299E1;
+            --secondary-blue: #3182CE;
+            --success-green: #48BB78;
+            --success-alt: #10B981;
+            --warning-amber: #F59E0B;
+            --error-red: #EF4444;
+            --text-main: #2D3748;
+            --text-secondary: #4A5568;
+            --text-muted: #718096;
+            --border: #E2E8F0;
+            --surface: #F7FAFC;
+            --white: #FFFFFF;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --radius: 12px;
         }
-        
-        html {
-            scroll-behavior: smooth;
-        }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #e8eef5 50%, #f0e7f8 100%);
-            background-attachment: fixed;
-            min-height: 100vh;
-            color: #2d3748;
-            line-height: 1.6;
-        }
-        
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+        html { scroll-behavior: smooth; }
+        body { background: var(--page-bg); color: var(--text-main); line-height: 1.6; padding: 0; -webkit-font-smoothing: antialiased; }
+        .page-wrapper { min-height: 100vh; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+
         /* Site Header */
         .site-header {
             background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(20px) saturate(180%);
             -webkit-backdrop-filter: blur(20px) saturate(180%);
-            padding: 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+            padding: 0; position: sticky; top: 0; z-index: 1000;
             box-shadow: 0 8px 32px rgba(102, 126, 234, 0.08), 0 1px 3px rgba(0, 0, 0, 0.05);
             border-bottom: 1px solid rgba(102, 126, 234, 0.1);
         }
-        
         .site-header::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
+            content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
             background: linear-gradient(90deg, transparent, #667eea, #764ba2, #a855f7, transparent);
             animation: headerGlow 4s ease-in-out infinite;
         }
-        
-        @keyframes headerGlow {
-            0%, 100% { opacity: 0.2; }
-            50% { opacity: 0.6; }
-        }
-        
-        .header-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            text-decoration: none;
-        }
-        
-        .logo-icon {
-            width: 45px;
-            height: 45px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            box-shadow: 0 8px 24px rgba(102, 126, 234, 0.4);
-            transition: all 0.4s;
-            overflow: hidden;
-        }
-        
-        .logo-icon img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 12px;
-        }
-        
-        .logo-icon:hover {
-            transform: scale(1.05) rotate(5deg);
-            box-shadow: 0 12px 32px rgba(102, 126, 234, 0.5);
-        }
-        
-        .logo-text {
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .logo-main {
-            font-size: 1.5rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #a855f7 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: -0.5px;
-        }
-        
-        .logo-sub {
-            font-size: 0.7rem;
-            color: #718096;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-top: -2px;
-        }
-        
-        .nav-menu {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-        }
-        
-        .nav-link {
-            color: #4a5568;
-            text-decoration: none;
-            font-weight: 500;
-            padding: 0.6rem 1.2rem;
-            border-radius: 12px;
-            transition: all 0.3s;
-            position: relative;
-        }
-        
-        .nav-link:hover {
-            color: #667eea;
-            background: rgba(102, 126, 234, 0.08);
-        }
-        
-        .nav-link.active {
-            color: #667eea;
-            background: rgba(102, 126, 234, 0.1);
-        }
-        
-        .nav-link-primary {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white !important;
-            padding: 0.7rem 1.5rem;
-            border-radius: 25px;
-            font-weight: 600;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-        }
-        
-        .nav-link-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5);
-            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
-        }
-        
-        /* Main Content - Under Progress */
-        .main-content {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 60px 20px;
-            text-align: center;
-        }
-        
-        .progress-container {
-            background: white;
-            border-radius: 24px;
-            padding: 60px 40px;
-            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.15);
-            border: 1px solid rgba(102, 126, 234, 0.1);
-        }
-        
-        .progress-icon {
-            width: 120px;
-            height: 120px;
-            margin: 0 auto 30px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            animation: pulse 2s ease-in-out infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(102, 126, 234, 0.4); }
-            50% { transform: scale(1.05); box-shadow: 0 0 0 20px rgba(102, 126, 234, 0); }
-        }
-        
-        .progress-icon svg {
-            width: 60px;
-            height: 60px;
-            fill: white;
-        }
-        
-        .progress-title {
-            font-size: 2.5rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #a855f7 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 15px;
-        }
-        
-        .progress-subtitle {
-            font-size: 1.2rem;
-            color: #718096;
-            margin-bottom: 30px;
-        }
-        
-        .progress-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-            color: #92400e;
-            padding: 12px 24px;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1rem;
-            margin-bottom: 30px;
-        }
-        
-        .progress-badge svg {
-            width: 20px;
-            height: 20px;
-            fill: #f59e0b;
-        }
-        
-        .category-badge {
-            display: inline-block;
-            background: rgba(102, 126, 234, 0.1);
-            color: #667eea;
-            padding: 8px 20px;
-            border-radius: 25px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            margin-bottom: 30px;
-        }
-        
-        .progress-message {
-            color: #4a5568;
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 40px;
-        }
-        
-        .explore-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 16px 40px;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            text-decoration: none;
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
-            transition: all 0.3s;
-        }
-        
-        .explore-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.5);
-        }
-        
-        .explore-btn svg {
-            width: 20px;
-            height: 20px;
-            fill: white;
-        }
-        
+        @keyframes headerGlow { 0%, 100% { opacity: 0.2; } 50% { opacity: 0.6; } }
+        .header-content { max-width: 1400px; margin: 0 auto; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+        .logo { display: flex; align-items: center; gap: 0.8rem; text-decoration: none; }
+        .logo-icon { width: 45px; height: 45px; border-radius: 12px; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); box-shadow: 0 8px 24px rgba(102, 126, 234, 0.4); transition: all 0.4s; overflow: hidden; }
+        .logo-icon img { width: 100%; height: 100%; object-fit: cover; }
+        .logo:hover .logo-icon { transform: scale(1.1); box-shadow: 0 12px 32px rgba(102, 126, 234, 0.5); }
+        .logo-text h1 { margin: 0; font-size: 1.6rem; font-weight: 800; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; letter-spacing: -0.5px; }
+        .logo-text p { margin: 0; font-size: 0.7rem; color: #64748b; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; }
+        .header-links { display: flex; gap: 1.5rem; align-items: center; }
+        .header-links a { color: #475569; text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: all 0.3s; padding: 0.5rem 0.8rem; position: relative; }
+        .header-links a:hover { color: #667eea; }
+        .header-links a::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 0; height: 2px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); transition: width 0.3s; }
+        .header-links a:hover::after { width: 80%; }
+        .cta-button { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white !important; padding: 0.6rem 1.2rem !important; border-radius: 8px; font-weight: 600; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3); }
+        .cta-button:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4); }
+        .cta-button::after { display: none !important; }
+
+        /* Hamburger */
+        .hamburger { display: none; flex-direction: column; cursor: pointer; padding: 10px; z-index: 1001; }
+        .hamburger span { width: 25px; height: 3px; background: #667eea; margin: 3px 0; border-radius: 3px; transition: all 0.3s; }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -6px); }
+        .menu-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 998; }
+        .menu-overlay.active { display: block; }
+
         /* Footer */
-        .site-footer {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-            color: #e2e8f0;
-            padding: 60px 0 30px;
-            margin-top: 80px;
-        }
-        
-        .footer-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-        
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 3rem;
-            margin-bottom: 40px;
-        }
-        
-        .footer-brand {
-            max-width: 350px;
-        }
-        
-        .footer-logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 20px;
-        }
-        
-        .footer-logo-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 14px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-        
-        .footer-logo-icon img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 14px;
-        }
-        
-        .footer-logo-text {
-            font-size: 1.8rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #667eea 0%, #a855f7 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .footer-desc {
-            color: #94a3b8;
-            line-height: 1.8;
-            font-size: 0.95rem;
-        }
-        
-        .footer-section h4 {
-            color: white;
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            position: relative;
-            padding-bottom: 10px;
-        }
-        
-        .footer-section h4::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 40px;
-            height: 3px;
-            background: linear-gradient(90deg, #667eea, #a855f7);
-            border-radius: 2px;
-        }
-        
-        .footer-links {
-            list-style: none;
-        }
-        
-        .footer-links li {
-            margin-bottom: 12px;
-        }
-        
-        .footer-links a {
-            color: #94a3b8;
-            text-decoration: none;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .footer-links a:hover {
-            color: #a855f7;
-            transform: translateX(5px);
-        }
-        
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-        
-        .footer-bottom p {
-            color: #64748b;
-            font-size: 0.9rem;
-        }
-        
-        .footer-bottom a {
-            color: #a855f7;
-            text-decoration: none;
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 15px;
-        }
-        
-        .social-link {
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.05);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #94a3b8;
-            text-decoration: none;
-            transition: all 0.3s;
-        }
-        
-        .social-link:hover {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            transform: translateY(-3px);
-        }
-        
+        .site-footer { background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%); color: #cbd5e0; padding: 3.5rem 0 0; margin-top: 4rem; border-top: 2px solid #334155; position: relative; }
+        .site-footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #667eea, #764ba2, transparent); }
+        .footer-content { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 2.5rem; margin-bottom: 2.5rem; }
+        .footer-section h3 { color: #ffffff; font-size: 1.1rem; margin-bottom: 1rem; font-weight: 700; position: relative; display: inline-block; }
+        .footer-section h3::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 35px; height: 3px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 2px; }
+        .footer-section p { font-size: 0.9rem; line-height: 1.8; color: #94a3b8; }
+        .footer-section ul { list-style: none; padding: 0; margin: 0; }
+        .footer-section ul li { margin-bottom: 0.7rem; }
+        .footer-section a { color: #cbd5e0; text-decoration: none; transition: all 0.3s; display: inline-block; font-size: 0.9rem; }
+        .footer-section a:hover { color: #667eea; transform: translateX(5px); }
+        .footer-brand { margin-bottom: 1.2rem; }
+        .footer-logo { display: flex; align-items: center; gap: 0.7rem; margin-bottom: 0.8rem; }
+        .footer-logo-icon { width: 36px; height: 36px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 8px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .footer-logo-icon img { width: 100%; height: 100%; object-fit: cover; }
+        .footer-logo h3 { margin: 0; font-size: 1.3rem; font-weight: 700; }
+        .footer-logo h3::after { display: none; }
+        .footer-bottom { max-width: 1200px; margin: 0 auto; padding: 1.5rem 2rem; border-top: 1px solid #334155; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+        .footer-bottom p { margin: 0; font-size: 0.85rem; color: #94a3b8; }
+        .footer-bottom a { color: #667eea; text-decoration: none; font-weight: 600; transition: color 0.3s; }
+        .footer-bottom a:hover { color: #764ba2; }
+        .footer-links-bottom { display: flex; gap: 1.5rem; }
+        .footer-links-bottom a { color: #94a3b8; font-size: 0.85rem; }
+
+        /* Animations */
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-6px); } }
+
+        /* Page Header */
+        .page-header { background: white; padding: 45px 40px; border-radius: 20px; text-align: center; margin-bottom: 35px; box-shadow: 0 10px 40px rgba(0,0,0,0.08); position: relative; overflow: hidden; animation: fadeInUp 0.6s ease; }
+        .page-header::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 5px; background: linear-gradient(90deg, #4299e1, #667eea, #764ba2, #a855f7); }
+        .page-header .header-icon { font-size: 3rem; margin-bottom: 12px; display: block; animation: float 3s ease-in-out infinite; }
+        .page-header h2 { color: #1a202c; font-size: 2.5rem; font-weight: 800; margin-bottom: 12px; letter-spacing: -0.5px; }
+        .page-header p { color: #718096; font-size: 1.1rem; max-width: 650px; margin: 0 auto; line-height: 1.7; }
+
+        /* Breadcrumb */
+        .breadcrumb { display: flex; align-items: center; gap: 8px; margin-bottom: 20px; font-size: 0.85rem; animation: fadeIn 0.5s ease; }
+        .breadcrumb a { color: #667eea; text-decoration: none; font-weight: 500; transition: color 0.2s; }
+        .breadcrumb a:hover { color: #764ba2; }
+        .breadcrumb span { color: #a0aec0; }
+
+        /* Calculator Card */
+        .calc-wrapper { background: var(--white); border-radius: 16px; box-shadow: 0 10px 40px rgba(0,0,0,0.08); overflow: hidden; display: grid; grid-template-columns: 1.2fr 1fr; margin-bottom: 40px; border: 1px solid rgba(226, 232, 240, 0.8); animation: fadeInUp 0.7s ease; }
+        .calc-inputs { padding: 40px; border-right: 1px solid var(--border); }
+        .calc-inputs-title { display: flex; align-items: center; gap: 10px; margin-bottom: 25px; padding-bottom: 18px; border-bottom: 2px solid #f1f5f9; }
+        .calc-inputs-title span { font-size: 1.5rem; }
+        .calc-inputs-title h2 { font-size: 1.3rem; font-weight: 700; color: var(--text-main); margin: 0; }
+        .calc-results { padding: 40px; background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 50%, #eff1fe 100%); display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden; }
+        .calc-results::before { content: ''; position: absolute; top: -50%; right: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(102, 126, 234, 0.04) 0%, transparent 70%); pointer-events: none; }
+        .input-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .field { margin-bottom: 10px; }
+        .field label { display: flex; align-items: center; gap: 6px; font-weight: 600; font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 8px; }
+        .field label .label-icon { font-size: 1rem; }
+        .input-group { position: relative; display: flex; align-items: center; }
+        .input-group .unit { position: absolute; left: 14px; color: #667eea; font-weight: 700; font-size: 0.95rem; z-index: 1; }
+        .input-group input, .input-group select { width: 100%; padding: 14px 14px 14px 32px; border: 2px solid #e2e8f0; border-radius: 10px; font-size: 1rem; outline: none; transition: all 0.3s; background: #fafbfc; color: var(--text-main); font-weight: 500; }
+        .input-group select { padding-left: 14px; cursor: pointer; -webkit-appearance: none; -moz-appearance: none; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23667eea' d='M6 8L1 3h10z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; }
+        .input-group input:hover, .input-group select:hover { border-color: #cbd5e0; background: white; }
+        .input-group input:focus, .input-group select:focus { border-color: #667eea; box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1); background: white; }
+        .field-full { grid-column: 1 / -1; }
+
+        .btn-calc { width: 100%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 16px; border: none; border-radius: 10px; font-size: 1.1rem; font-weight: 700; cursor: pointer; margin-top: 15px; transition: all 0.3s; position: relative; overflow: hidden; letter-spacing: 0.3px; }
+        .btn-calc::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent); transition: left 0.6s; }
+        .btn-calc:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4); }
+        .btn-calc:hover::before { left: 100%; }
+        .btn-calc:active { transform: translateY(0) scale(0.98); }
+        .btn-reset { background: transparent; color: var(--text-muted); border: none; font-size: 0.9rem; margin-top: 12px; cursor: pointer; width: 100%; padding: 8px; border-radius: 8px; transition: all 0.2s; font-weight: 500; }
+        .btn-reset:hover { background: #fef2f2; color: #ef4444; }
+
+        /* Results */
+        .result-main { text-align: center; margin-bottom: 30px; position: relative; z-index: 1; }
+        .result-main .result-icon { font-size: 2.5rem; margin-bottom: 8px; display: block; }
+        .result-main .label { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 2px; font-weight: 700; margin-bottom: 8px; }
+        .result-main .value { font-size: 2.8rem; font-weight: 800; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1.2; transition: all 0.4s; }
+        .result-stats { display: grid; gap: 12px; position: relative; z-index: 1; }
+        .stat-card { background: white; padding: 16px 18px; border-radius: 12px; border: 1px solid #edf2f7; display: flex; justify-content: space-between; align-items: center; transition: all 0.3s; box-shadow: 0 2px 8px rgba(0,0,0,0.03); }
+        .stat-card:hover { transform: translateX(4px); box-shadow: 0 4px 15px rgba(0,0,0,0.06); border-color: #e2e8f0; }
+        .stat-card .stat-label { display: flex; align-items: center; gap: 10px; color: var(--text-secondary); font-size: 0.88rem; font-weight: 500; }
+        .stat-card .stat-icon { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 0.95rem; flex-shrink: 0; }
+        .stat-card .stat-icon.blue { background: #ebf5ff; }
+        .stat-card .stat-icon.green { background: #f0fdf4; }
+        .stat-card .stat-icon.purple { background: #faf5ff; }
+        .stat-card .stat-icon.amber { background: #fffbeb; }
+        .stat-card .stat-icon.red { background: #fef2f2; }
+        .stat-card .stat-value { font-weight: 700; color: var(--text-main); font-size: 0.95rem; }
+
+        /* Growth Chart */
+        .chart-wrapper { background: var(--white); border-radius: 16px; padding: 40px; margin-bottom: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border: 1px solid rgba(226, 232, 240, 0.6); overflow: hidden; animation: fadeInUp 0.8s ease; }
+        .chart-wrapper h2 { margin-bottom: 8px; color: var(--text-main); font-size: 1.6rem; font-weight: 800; display: flex; align-items: center; gap: 12px; }
+        .chart-wrapper .chart-sub { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 25px; }
+        .chart-container { width: 100%; height: 320px; position: relative; }
+        .chart-canvas { width: 100%; height: 100%; }
+        .chart-legend { display: flex; gap: 25px; margin-top: 18px; justify-content: center; flex-wrap: wrap; }
+        .legend-item { display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: var(--text-secondary); font-weight: 500; }
+        .legend-dot { width: 12px; height: 12px; border-radius: 3px; }
+        .legend-dot.principal { background: #667eea; }
+        .legend-dot.contributions { background: #48bb78; }
+        .legend-dot.interest { background: #f59e0b; }
+
+        /* Schedule Table */
+        .schedule-wrapper { background: var(--white); border-radius: 16px; padding: 40px; margin-bottom: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border: 1px solid rgba(226, 232, 240, 0.6); overflow: hidden; animation: fadeInUp 0.8s ease; }
+        .schedule-wrapper h2 { margin-bottom: 8px; color: var(--text-main); font-size: 1.6rem; font-weight: 800; display: flex; align-items: center; gap: 12px; }
+        .schedule-wrapper .schedule-sub { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px; }
+        .table-container { overflow-x: auto; border-radius: 12px; border: 1px solid #edf2f7; max-height: 500px; overflow-y: auto; }
+        .amort-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+        .amort-table thead { position: sticky; top: 0; z-index: 5; }
+        .amort-table th { background: linear-gradient(135deg, #1e293b 0%, #334155 100%); color: white; padding: 14px 18px; text-align: right; font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap; }
+        .amort-table th:first-child { text-align: center; }
+        .amort-table td { padding: 12px 18px; text-align: right; border-bottom: 1px solid #f1f5f9; font-weight: 500; color: var(--text-secondary); white-space: nowrap; }
+        .amort-table td:first-child { text-align: center; font-weight: 700; color: var(--text-main); }
+        .amort-table tbody tr:hover { background: #f8fafc; }
+        .amort-table tbody tr:nth-child(even) { background: #fafbfd; }
+        .amort-table tbody tr:nth-child(even):hover { background: #f1f5f9; }
+        .amort-table .interest-val { color: #10b981; }
+        .amort-table .balance-val { font-weight: 700; color: var(--text-main); }
+
+        /* Content Cards */
+        .content-card { background: var(--white); border-radius: 16px; padding: 40px; margin-bottom: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border: 1px solid rgba(226, 232, 240, 0.6); position: relative; overflow: hidden; transition: box-shadow 0.3s; }
+        .content-card:hover { box-shadow: 0 8px 30px rgba(0,0,0,0.08); }
+        .content-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #667eea, #764ba2); opacity: 0; transition: opacity 0.3s; }
+        .content-card:hover::before { opacity: 1; }
+        .content-card h2 { margin-bottom: 20px; color: var(--text-main); font-size: 1.6rem; font-weight: 800; display: flex; align-items: center; gap: 12px; letter-spacing: -0.3px; }
+        .content-card h2 .section-icon { font-size: 1.5rem; }
+        .content-card p { margin-bottom: 15px; color: var(--text-secondary); line-height: 1.8; font-size: 0.98rem; }
+        .content-card ul { padding-left: 0; list-style: none; color: var(--text-secondary); }
+        .content-card ul li { padding: 12px 0 12px 30px; position: relative; border-bottom: 1px solid #f1f5f9; line-height: 1.7; font-size: 0.95rem; }
+        .content-card ul li:last-child { border-bottom: none; }
+        .content-card ul li::before { content: ''; position: absolute; left: 0; top: 18px; width: 8px; height: 8px; border-radius: 50%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+
+        /* Image Box */
+        .image-box { width: 100%; border-radius: 16px; overflow: hidden; margin: 35px 0; height: 350px; position: relative; box-shadow: 0 10px 40px rgba(0,0,0,0.1); }
+        .image-box::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 50%; background: linear-gradient(to top, rgba(15, 23, 42, 0.4), transparent); pointer-events: none; }
+        .image-box img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+        .image-box:hover img { transform: scale(1.03); }
+
+        /* Formula */
+        .formula-container { background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); padding: 35px 35px 30px; border-radius: 14px; margin: 25px 0; overflow-x: auto; position: relative; box-shadow: 0 8px 30px rgba(15, 23, 42, 0.2); }
+        .formula-container::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #667eea, #764ba2, #a855f7); border-radius: 14px 14px 0 0; }
+        .formula-container::after { content: 'FORMULA'; position: absolute; top: 12px; right: 16px; font-family: 'Segoe UI', Roboto, sans-serif; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 2px; color: #64748b; font-weight: 700; background: rgba(100, 116, 139, 0.15); padding: 3px 10px; border-radius: 4px; }
+        .formula-math { display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap; font-family: 'Times New Roman', 'Cambria Math', Georgia, serif; font-size: 1.35rem; color: #e2e8f0; padding: 10px 0; font-style: italic; }
+        .formula-math .var { color: #93c5fd; font-weight: 600; font-style: italic; }
+        .formula-math .var.result { color: #a78bfa; font-size: 1.5rem; }
+        .formula-math .operator { color: #94a3b8; font-style: normal; font-weight: 400; margin: 0 2px; }
+        .formula-math .equals { color: #f59e0b; font-style: normal; font-weight: 600; font-size: 1.4rem; margin: 0 6px; }
+        .formula-math sup { font-size: 0.7em; vertical-align: super; line-height: 0; color: #fbbf24; font-style: italic; }
+        .formula-math .paren { color: #64748b; font-style: normal; font-weight: 300; font-size: 1.5rem; }
+        .formula-math .big-paren { font-size: 2.2rem; line-height: 1; color: #475569; font-style: normal; font-weight: 200; vertical-align: middle; }
+        .formula-math .fraction { display: inline-flex; flex-direction: column; align-items: center; vertical-align: middle; margin: 0 4px; }
+        .formula-math .fraction .num { border-bottom: 2px solid #64748b; padding: 0 8px 4px; font-size: 0.95em; }
+        .formula-math .fraction .den { padding: 4px 8px 0; font-size: 0.95em; }
+        .formula-legend { display: flex; flex-wrap: wrap; gap: 15px; margin-top: 20px; padding-top: 18px; border-top: 1px solid #334155; justify-content: center; }
+        .formula-legend .legend-item { display: flex; align-items: center; gap: 6px; font-size: 0.78rem; color: #94a3b8; font-family: 'Segoe UI', Roboto, sans-serif; }
+        .formula-legend .legend-var { font-family: 'Times New Roman', Georgia, serif; font-style: italic; color: #93c5fd; font-weight: 600; font-size: 0.9rem; }
+        .formula-legend .legend-var.purple { color: #a78bfa; }
+        .formula-legend .legend-var.yellow { color: #fbbf24; }
+        .formula-label { text-align: center; color: #94a3b8; font-size: 0.8rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px; font-family: 'Segoe UI', Roboto, sans-serif; }
+        .formula-divider { text-align: center; color: #475569; font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase; margin: 20px 0 10px; font-family: 'Segoe UI', Roboto, sans-serif; }
+        .formula-note { text-align: center; color: #94a3b8; font-size: 0.78rem; margin-top: 15px; font-family: 'Segoe UI', Roboto, sans-serif; line-height: 1.6; }
+
+        /* FAQ */
+        .faq-grid { margin-top: 20px; }
+        .faq-item { border: 1px solid #edf2f7; border-radius: 12px; overflow: hidden; transition: all 0.3s; margin-bottom: 12px; background: white; }
+        .faq-item:hover { border-color: #e2e8f0; }
+        .faq-item.active { border-color: #667eea; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.1); }
+        .faq-question { padding: 18px 22px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; gap: 15px; transition: background 0.2s; }
+        .faq-question:hover { background: #f8fafc; }
+        .faq-question h3 { font-size: 1.05rem; margin: 0; color: var(--text-main); font-weight: 600; flex: 1; }
+        .faq-toggle { width: 28px; height: 28px; border-radius: 50%; background: #f1f5f9; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; color: #667eea; flex-shrink: 0; transition: all 0.3s; font-weight: 600; }
+        .faq-item.active .faq-toggle { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; transform: rotate(45deg); }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s ease; padding: 0 22px; }
+        .faq-item.active .faq-answer { max-height: 350px; padding: 0 22px 20px; }
+        .faq-answer p { font-size: 0.95rem; margin-bottom: 0; color: var(--text-secondary); line-height: 1.8; }
+
+        /* Related Tools */
+        .related-tools { background: white; border-radius: 16px; padding: 40px; margin-bottom: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border: 1px solid rgba(226, 232, 240, 0.6); }
+        .related-tools h2 { font-size: 1.6rem; font-weight: 800; color: var(--text-main); margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+        .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
+        .tool-link { display: flex; align-items: center; gap: 12px; padding: 14px 18px; background: #f8fafc; border-radius: 12px; text-decoration: none; color: var(--text-main); font-weight: 600; font-size: 0.9rem; border: 1px solid #edf2f7; transition: all 0.3s; }
+        .tool-link:hover { background: white; border-color: #667eea; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.1); transform: translateY(-2px); }
+        .tool-link .tool-emoji { font-size: 1.3rem; }
+
         /* Responsive */
-        @media (max-width: 968px) {
-            .nav-menu {
-                display: none;
-            }
-            
-            .footer-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-            
-            .progress-title {
-                font-size: 2rem;
-            }
+        @media (max-width: 992px) { .footer-content { grid-template-columns: 1fr 1fr; } .tools-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 850px) { .calc-wrapper { grid-template-columns: 1fr; } .calc-inputs { border-right: none; border-bottom: 1px solid var(--border); } .page-header h2 { font-size: 1.8rem; } .page-header { padding: 30px 20px; } }
+        @media (max-width: 768px) {
+            .container { padding: 25px 15px; } .calc-inputs { padding: 25px; } .calc-results { padding: 30px 25px; }
+            .content-card, .schedule-wrapper, .chart-wrapper { padding: 28px 22px; } .result-main .value { font-size: 2.2rem; }
+            .related-tools { padding: 28px 22px; } .tools-grid { grid-template-columns: 1fr; } .image-box { height: 220px; }
+            .chart-container { height: 240px; }
+            .hamburger { display: flex; }
+            .header-links { position: fixed; top: 0; right: -100%; width: 75%; max-width: 280px; height: 100vh; background: #ffffff; box-shadow: -5px 0 25px rgba(0, 0, 0, 0.15); flex-direction: column; gap: 0; align-items: stretch; padding: 4rem 0 2rem; z-index: 999; transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1); overflow-y: auto; }
+            .header-links.active { right: 0; }
+            .header-links a { text-align: left; padding: 1rem 1.5rem; border-bottom: 1px solid #e2e8f0; font-size: 1rem; }
+            .header-links a::after { display: none; }
+            .cta-button { margin: 1rem 1.5rem !important; text-align: center; border-bottom: none !important; }
+            .footer-content { grid-template-columns: 1fr; text-align: center; }
+            .footer-section h3::after { left: 50%; transform: translateX(-50%); }
+            .footer-bottom { flex-direction: column; text-align: center; }
+            .footer-links-bottom { justify-content: center; }
         }
-        
-        @media (max-width: 600px) {
-            .header-content {
-                padding: 1rem;
-            }
-            
-            .progress-container {
-                padding: 40px 20px;
-            }
-            
-            .progress-title {
-                font-size: 1.6rem;
-            }
-            
-            .footer-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .footer-bottom {
-                flex-direction: column;
-                text-align: center;
-            }
-        }
+        @media (max-width: 480px) { .input-grid { grid-template-columns: 1fr; } .field-full { grid-column: auto; } }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="site-header">
-        <div class="header-content">
-            <a href="../../index.html" class="logo">
-                <div class="logo-icon">
-                    <img src="../../images/logo.webp" alt="ShramTools Logo">
-                </div>
-                <div class="logo-text">
-                    <span class="logo-main">ShramTools</span>
-                    <span class="logo-sub">By Shram Kavach</span>
-                </div>
-            </a>
-            <nav class="nav-menu">
-                <a href="../../index.html" class="nav-link">Home</a>
-                <a href="../../index.html#financial" class="nav-link">Financial</a>
-                <a href="../../index.html#health" class="nav-link">Health</a>
-                <a href="../../index.html#math" class="nav-link">Math</a>
-                <a href="../../about-us.html" class="nav-link">About</a>
-                <a href="../../index.html" class="nav-link nav-link-primary">All Tools</a>
+    <div class="page-wrapper">
+        <!-- Sticky Site Header -->
+        <header class="site-header">
+            <div class="header-content">
+                <a href="../../index.html" class="logo">
+                    <div class="logo-icon"><img src="../../images/logo.webp" alt="ShramTools Logo"></div>
+                    <div class="logo-text"><h1>ShramTools</h1><p>Free Online Tools</p></div>
+                </a>
+                <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+                <nav class="header-links" id="headerLinks">
+                    <a href="../../index.html">Home</a>
+                    <a href="../../index.html#financial">Financial Tools</a>
+                    <a href="../../index.html#health">Health Tools</a>
+                    <a href="../../about-us.html">About</a>
+                    <a href="../../index.html" class="cta-button">Explore Tools</a>
+                </nav>
+            </div>
+        </header>
+        <div class="menu-overlay" id="menuOverlay"></div>
+
+        <div class="container">
+            <!-- Breadcrumb -->
+            <nav class="breadcrumb">
+                <a href="../../index.html">Home</a><span>/</span>
+                <a href="../../index.html#financial">Financial Tools</a><span>/</span>
+                <span style="color: #4a5568; font-weight: 600;">Compound Interest Calculator</span>
             </nav>
-        </div>
-    </header>
 
-    <!-- Main Content -->
-    <main class="main-content">
-        <div class="progress-container">
-            <div class="progress-icon">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
-                </svg>
-            </div>
-            
-            <h1 class="progress-title">Compound Interest Calculator</h1>
-            
-            <div class="category-badge">Financial Calculators</div>
-            
-            <div class="progress-badge">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
-                </svg>
-                Under Development
-            </div>
-            
-            <p class="progress-subtitle">Coming Soon!</p>
-            
-            <p class="progress-message">
-                We're working hard to bring you an amazing <strong>Compound Interest Calculator</strong> tool. 
-                Our team is crafting a feature-rich, user-friendly experience that will help you 
-                achieve accurate results with ease. Stay tuned!
-            </p>
-            
-            <a href="../../index.html" class="explore-btn">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
-                </svg>
-                Explore Other Tools
-            </a>
-        </div>
-    </main>
+            <!-- Page Header -->
+            <header class="page-header">
+                <span class="header-icon">&#128200;</span>
+                <h2>Compound Interest Calculator</h2>
+                <p>See how your money grows over time with the power of compound interest. Enter your initial investment, contributions, interest rate, and compounding frequency to visualize your wealth growth.</p>
+            </header>
 
-    <!-- Footer -->
-    <footer class="site-footer">
-        <div class="footer-content">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <div class="footer-logo">
-                        <div class="footer-logo-icon">
-                            <img src="../../images/logo.webp" alt="ShramTools Logo">
-                        </div>
-                        <span class="footer-logo-text">ShramTools</span>
+            <!-- Calculator -->
+            <div class="calc-wrapper">
+                <section class="calc-inputs">
+                    <div class="calc-inputs-title">
+                        <span>&#9881;&#65039;</span>
+                        <h2>Investment Details</h2>
                     </div>
-                    <p class="footer-desc">
-                        Your trusted destination for 250+ free online calculators and tools. 
-                        From financial planning to health tracking, we've got you covered.
-                    </p>
+                    <div class="input-grid">
+                        <div class="field">
+                            <label for="principal"><span class="label-icon">&#128176;</span> Initial Investment</label>
+                            <div class="input-group"><span class="unit">$</span><input type="number" id="principal" value="10000" placeholder="e.g. 10000"></div>
+                        </div>
+                        <div class="field">
+                            <label for="contribution"><span class="label-icon">&#128181;</span> Monthly Contribution</label>
+                            <div class="input-group"><span class="unit">$</span><input type="number" id="contribution" value="500" placeholder="e.g. 500"></div>
+                        </div>
+                        <div class="field">
+                            <label for="rate"><span class="label-icon">&#128200;</span> Annual Interest Rate (%)</label>
+                            <div class="input-group"><input type="number" id="rate" value="7" step="0.01" style="padding-left:14px" placeholder="e.g. 7"></div>
+                        </div>
+                        <div class="field">
+                            <label for="years"><span class="label-icon">&#128197;</span> Investment Period (Years)</label>
+                            <div class="input-group"><input type="number" id="years" value="20" min="1" max="50" style="padding-left:14px" placeholder="e.g. 20"></div>
+                        </div>
+                        <div class="field field-full">
+                            <label for="compounding"><span class="label-icon">&#128259;</span> Compounding Frequency</label>
+                            <div class="input-group">
+                                <select id="compounding">
+                                    <option value="365">Daily (365/yr)</option>
+                                    <option value="12" selected>Monthly (12/yr)</option>
+                                    <option value="4">Quarterly (4/yr)</option>
+                                    <option value="2">Semi-Annually (2/yr)</option>
+                                    <option value="1">Annually (1/yr)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn-calc" onclick="calculate()">&#128640; Calculate Growth</button>
+                    <button class="btn-reset" onclick="resetForm()">&#8635; Reset all fields</button>
+                </section>
+
+                <section class="calc-results" id="resultsArea" aria-live="polite">
+                    <div class="result-main">
+                        <span class="result-icon">&#128176;</span>
+                        <div class="label">Future Value</div>
+                        <div class="value" id="futureValue">$0</div>
+                    </div>
+                    <div class="result-stats">
+                        <div class="stat-card">
+                            <div class="stat-label"><div class="stat-icon blue">&#128178;</div>Initial Investment</div>
+                            <span class="stat-value" id="statPrincipal">$0</span>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label"><div class="stat-icon green">&#128181;</div>Total Contributions</div>
+                            <span class="stat-value" id="statContributions" style="color: #10b981;">$0</span>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label"><div class="stat-icon amber">&#128200;</div>Total Interest Earned</div>
+                            <span class="stat-value" id="statInterest" style="color: #f59e0b;">$0</span>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label"><div class="stat-icon purple">&#128202;</div>Total Amount Invested</div>
+                            <span class="stat-value" id="statInvested">$0</span>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label"><div class="stat-icon red">&#128293;</div>Interest as % of Total</div>
+                            <span class="stat-value" id="statPct">0%</span>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Growth Chart -->
+            <section class="chart-wrapper" id="chartSection" style="display:none;">
+                <h2><span class="section-icon">&#128202;</span> Growth Over Time</h2>
+                <p class="chart-sub">Visual breakdown of your investment growth showing principal, contributions, and compound interest earned each year.</p>
+                <div class="chart-container">
+                    <canvas id="growthChart" class="chart-canvas"></canvas>
                 </div>
-                
+                <div class="chart-legend">
+                    <div class="legend-item"><div class="legend-dot principal"></div>Initial Investment</div>
+                    <div class="legend-item"><div class="legend-dot contributions"></div>Contributions</div>
+                    <div class="legend-item"><div class="legend-dot interest"></div>Interest Earned</div>
+                </div>
+            </section>
+
+            <!-- Growth Table -->
+            <section class="schedule-wrapper" id="tableSection" style="display:none;">
+                <h2><span class="section-icon">&#128203;</span> Year-by-Year Growth Table</h2>
+                <p class="schedule-sub">Detailed breakdown of how your investment balance grows every year with contributions and compounding interest.</p>
+                <div class="table-container" id="growthTable"></div>
+            </section>
+
+            <!-- Content: What is Compound Interest -->
+            <section class="content-card">
+                <h2><span class="section-icon">&#128218;</span> What Is Compound Interest?</h2>
+                <p>Compound interest is the interest calculated on both the initial principal and the accumulated interest from previous periods. It is &ldquo;interest on interest&rdquo; &mdash; the single most powerful concept in personal finance and investing.</p>
+                <p>Unlike <strong>simple interest</strong> (which is calculated only on the original principal), compound interest accelerates your money&rsquo;s growth exponentially over time. This is why Albert Einstein reportedly called it &ldquo;the eighth wonder of the world.&rdquo;</p>
+                <ul>
+                    <li><strong>Simple Interest Example:</strong> $10,000 at 7% for 20 years earns $14,000 in interest &rarr; <strong>$24,000 total</strong>.</li>
+                    <li><strong>Compound Interest Example:</strong> $10,000 at 7% compounded monthly for 20 years earns ~$30,310 in interest &rarr; <strong>$40,387 total</strong>.</li>
+                    <li><strong>With $500/mo contributions:</strong> The same investment with $500/month added grows to approximately <strong>$270,000+</strong>. Contributions + compounding = wealth.</li>
+                    <li><strong>The Time Factor:</strong> Starting 10 years earlier can more than double your final balance. Time is the most important variable in compounding.</li>
+                </ul>
+            </section>
+
+            <div class="image-box">
+                <img src="https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?auto=format&fit=crop&q=80&w=1200" alt="Money growth and compound interest concept" loading="lazy">
+            </div>
+
+            <!-- Content: How to Use -->
+            <section class="content-card">
+                <h2><span class="section-icon">&#128203;</span> How to Use This Calculator</h2>
+                <ul>
+                    <li><strong>Initial Investment:</strong> The lump sum you start with (e.g., savings, inheritance, bonus). Even $0 works &mdash; you can rely solely on monthly contributions.</li>
+                    <li><strong>Monthly Contribution:</strong> The amount you add each month. Consistent contributions are key to wealth building. Set to $0 if you just want to see growth of a lump sum.</li>
+                    <li><strong>Annual Interest Rate:</strong> The expected annual return. Stock market averages ~7-10% historically (after inflation ~5-7%). Savings accounts currently offer 4-5%. Bonds ~3-5%.</li>
+                    <li><strong>Investment Period:</strong> How many years you plan to invest. Longer periods amplify the compounding effect dramatically.</li>
+                    <li><strong>Compounding Frequency:</strong> How often interest is calculated and added to the balance. Daily compounding earns slightly more than monthly or yearly. Most savings accounts compound daily; investments often use monthly.</li>
+                </ul>
+            </section>
+
+            <!-- Formula -->
+            <section class="content-card">
+                <h2><span class="section-icon">&#129514;</span> Compound Interest Formulas</h2>
+                <p>The future value with compound interest uses two components: growth of the initial principal, and growth of regular contributions (future value of annuity).</p>
+
+                <div class="formula-container">
+                    <div class="formula-label">Compound Interest (Lump Sum)</div>
+                    <div class="formula-math">
+                        <span class="var result">A</span>
+                        <span class="equals">=</span>
+                        <span class="var">P</span>
+                        <span class="operator">&times;</span>
+                        <span class="big-paren">(</span>
+                        1 <span class="operator">+</span>
+                        <span class="fraction">
+                            <span class="num"><span class="var">r</span></span>
+                            <span class="den"><span class="var">n</span></span>
+                        </span>
+                        <span class="big-paren">)</span><sup>n &times; t</sup>
+                    </div>
+
+                    <div class="formula-divider">&mdash;&mdash;&mdash; with contributions &mdash;&mdash;&mdash;</div>
+
+                    <div class="formula-label">Future Value of Series (Contributions)</div>
+                    <div class="formula-math">
+                        <span class="var result">FV</span>
+                        <span class="equals">=</span>
+                        <span class="var">PMT</span>
+                        <span class="operator">&times;</span>
+                        <span class="big-paren">[</span>
+                        <span class="fraction">
+                            <span class="num"><span class="paren">(</span>1 <span class="operator">+</span> <span class="fraction"><span class="num"><span class="var">r</span></span><span class="den"><span class="var">n</span></span></span><span class="paren">)</span><sup>n &times; t</sup> <span class="operator">&minus;</span> 1</span>
+                            <span class="den"><span class="fraction"><span class="num"><span class="var">r</span></span><span class="den"><span class="var">n</span></span></span></span>
+                        </span>
+                        <span class="big-paren">]</span>
+                    </div>
+
+                    <div class="formula-legend">
+                        <div class="legend-item"><span class="legend-var purple">A / FV</span> = Future Value</div>
+                        <div class="legend-item"><span class="legend-var">P</span> = Principal</div>
+                        <div class="legend-item"><span class="legend-var">PMT</span> = Contribution per Period</div>
+                        <div class="legend-item"><span class="legend-var">r</span> = Annual Rate</div>
+                        <div class="legend-item"><span class="legend-var">n</span> = Compounds/Year</div>
+                        <div class="legend-item"><span class="legend-var yellow">t</span> = Years</div>
+                    </div>
+                    <div class="formula-note">Total Future Value = A + FV. Contributions are assumed at the end of each compounding period.</div>
+                </div>
+            </section>
+
+            <!-- Practical Example -->
+            <section class="content-card">
+                <h2><span class="section-icon">&#128161;</span> Real-World Example: The Power of Starting Early</h2>
+                <p>Consider two investors, both earning <strong>7% annually</strong> compounded monthly:</p>
+                <p><strong>Alex</strong> starts at age 25, invests <strong>$300/month</strong> for 35 years until age 60. Total invested: <strong>$126,000</strong>. Final value: <strong>~$530,000</strong>.</p>
+                <p><strong>Jordan</strong> starts at age 35, invests <strong>$600/month</strong> for 25 years until age 60. Total invested: <strong>$180,000</strong>. Final value: <strong>~$456,000</strong>.</p>
+                <p>Alex invested <strong>$54,000 less</strong> but ended with <strong>$74,000 more</strong> &mdash; purely because of 10 extra years of compounding. The lesson: <strong>start early, stay consistent</strong>. Time in the market beats timing the market.</p>
+            </section>
+
+            <!-- Compounding Comparison -->
+            <section class="content-card">
+                <h2><span class="section-icon">&#128259;</span> Compounding Frequency Comparison</h2>
+                <p>How much does compounding frequency matter? Here&rsquo;s <strong>$10,000 at 8%</strong> for 20 years with no contributions:</p>
+                <ul>
+                    <li><strong>Annually (1x/yr):</strong> $46,610 &mdash; interest compounds once at year-end.</li>
+                    <li><strong>Semi-Annually (2x/yr):</strong> $47,754 &mdash; $1,144 more than annual.</li>
+                    <li><strong>Quarterly (4x/yr):</strong> $48,354 &mdash; $1,744 more than annual.</li>
+                    <li><strong>Monthly (12x/yr):</strong> $48,754 &mdash; $2,144 more than annual.</li>
+                    <li><strong>Daily (365x/yr):</strong> $49,021 &mdash; $2,411 more than annual.</li>
+                </ul>
+                <p>The difference between daily and annual is meaningful (~5%), but the biggest jump is from annual to quarterly. Beyond monthly, improvements are marginal.</p>
+            </section>
+
+            <!-- FAQ -->
+            <section class="content-card">
+                <h2><span class="section-icon">&#10067;</span> Compound Interest FAQ</h2>
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>What&rsquo;s the difference between compound and simple interest?</h3>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Simple interest is calculated only on the original principal amount. Compound interest is calculated on the principal plus all previously accumulated interest. Over time, compound interest grows exponentially while simple interest grows linearly.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>What is a realistic annual return to use?</h3>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>The S&P 500 has averaged about 10% annually before inflation (7% after inflation) over the last century. High-yield savings accounts offer 4-5% currently. Bonds return 3-5%. Use conservative estimates (6-7%) for long-term planning.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>Does compounding frequency really make a big difference?</h3>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>It makes a moderate difference. Moving from annual to monthly compounding has a noticeable impact (~2-5% more over 20 years). But the difference between monthly and daily compounding is typically less than 1%. The interest rate, contributions, and time period matter far more.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>How does the Rule of 72 work?</h3>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Divide 72 by your annual interest rate to estimate how many years it takes to double your money. At 6% &rarr; 12 years; at 8% &rarr; 9 years; at 10% &rarr; 7.2 years. It's a quick mental math shortcut for compound growth.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>Should I invest a lump sum or dollar-cost average?</h3>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Mathematically, lump sum investing outperforms dollar-cost averaging about 2/3 of the time because markets tend to go up. However, dollar-cost averaging (regular contributions) reduces psychological stress and volatility risk. Both are valid strategies; the key is to start investing consistently.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Related Tools -->
+            <section class="related-tools">
+                <h2><span class="section-icon">&#128279;</span> Related Financial Tools</h2>
+                <div class="tools-grid">
+                    <a href="savings-calculator.html" class="tool-link"><span class="tool-emoji">&#128179;</span> Savings Calculator</a>
+                    <a href="investment-calculator.html" class="tool-link"><span class="tool-emoji">&#128200;</span> Investment Calculator</a>
+                    <a href="interest-calculator.html" class="tool-link"><span class="tool-emoji">&#128178;</span> Interest Calculator</a>
+                    <a href="interest-rate-calculator.html" class="tool-link"><span class="tool-emoji">&#128201;</span> Interest Rate Calculator</a>
+                    <a href="retirement-calculator.html" class="tool-link"><span class="tool-emoji">&#127958;&#65039;</span> Retirement Calculator</a>
+                    <a href="401k-calculator.html" class="tool-link"><span class="tool-emoji">&#128188;</span> 401(k) Calculator</a>
+                </div>
+            </section>
+        </div>
+
+        <!-- Footer -->
+        <footer class="site-footer">
+            <div class="footer-content">
                 <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <ul class="footer-links">
-                        <li><a href="../../index.html">Home</a></li>
+                    <div class="footer-brand">
+                        <div class="footer-logo">
+                            <div class="footer-logo-icon"><img src="../../images/logo.webp" alt="ShramTools Logo"></div>
+                            <h3>ShramTools</h3>
+                        </div>
+                        <p>A comprehensive suite of 250+ free online calculators and tools. Part of the ShramKavach ecosystem - empowering productivity and simplifying complex calculations.</p>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Categories</h3>
+                    <ul>
                         <li><a href="../../index.html#financial">Financial Tools</a></li>
-                        <li><a href="../../index.html#health">Health Tools</a></li>
+                        <li><a href="../../index.html#health">Health &amp; Fitness</a></li>
                         <li><a href="../../index.html#math">Math Tools</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>More Tools</h4>
-                    <ul class="footer-links">
                         <li><a href="../../index.html#text">Text Tools</a></li>
                         <li><a href="../../index.html#image">Image Tools</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <ul>
                         <li><a href="../../index.html#student">Student Tools</a></li>
                         <li><a href="../../index.html#other">Other Tools</a></li>
+                        <li><a href="https://shramkavach.com/updates">Updates</a></li>
+                        <li><a href="https://shramkavach.com/tutorials">Tutorials</a></li>
+                        <li><a href="https://shramkavach.com/support">Support</a></li>
                     </ul>
                 </div>
-                
                 <div class="footer-section">
-                    <h4>Company</h4>
-                    <ul class="footer-links">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="../../index.html">ShramTools Home</a></li>
                         <li><a href="../../about-us.html">About Us</a></li>
-                        <li><a href="../../privacy-policy.html">Privacy Policy</a></li>
-                        <li><a href="../../terms-of-service.html">Terms of Service</a></li>
                         <li><a href="../../contact.html">Contact</a></li>
+                        <li><a href="https://shramkavach.com/privacy">Privacy Policy</a></li>
+                        <li><a href="https://shramkavach.com/terms">Terms of Service</a></li>
                     </ul>
                 </div>
             </div>
-            
             <div class="footer-bottom">
-                <p>&copy; 2025 ShramTools by <a href="https://shramkavach.com" target="_blank">Shram Kavach</a>. All rights reserved.</p>
-                <div class="social-links">
-                    <a href="#" class="social-link" aria-label="Twitter">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                        </svg>
-                    </a>
-                    <a href="#" class="social-link" aria-label="GitHub">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                        </svg>
-                    </a>
-                    <a href="#" class="social-link" aria-label="LinkedIn">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                        </svg>
-                    </a>
+                <p>&copy; 2025 <a href="https://shramkavach.com">ShramKavach.com</a> - All rights reserved. Made with &#10084;&#65039; for productivity.</p>
+                <div class="footer-links-bottom">
+                    <a href="https://shramkavach.com/sitemap">Sitemap</a>
+                    <a href="https://shramkavach.com/help">Help Center</a>
                 </div>
             </div>
-        </div>
-    </footer>
+        </footer>
+    </div>
+
+<script>
+    let growthData = [];
+
+    function fmt(val) {
+        return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(val);
+    }
+
+    function fmtExact(val) {
+        return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(val);
+    }
+
+    function calculate() {
+        const P = parseFloat(document.getElementById('principal').value) || 0;
+        const monthly = parseFloat(document.getElementById('contribution').value) || 0;
+        const annualRate = parseFloat(document.getElementById('rate').value) || 0;
+        const years = parseInt(document.getElementById('years').value) || 0;
+        const n = parseInt(document.getElementById('compounding').value) || 12;
+
+        if (annualRate < 0) { alert('Interest rate cannot be negative.'); return; }
+        if (years <= 0 || years > 100) { alert('Please enter a valid number of years (1-100).'); return; }
+        if (P <= 0 && monthly <= 0) { alert('Please enter an initial investment or monthly contribution.'); return; }
+
+        const r = annualRate / 100;
+        const ratePerPeriod = r / n;
+
+        // Determine contribution per compounding period
+        // Convert monthly contribution to per-compounding-period
+        const periodsPerYear = n;
+        const contributionPerPeriod = monthly * 12 / periodsPerYear;
+
+        growthData = [];
+        let balance = P;
+        let totalContributions = 0;
+        let totalInterestAccum = 0;
+
+        // Year 0
+        growthData.push({
+            year: 0,
+            deposit: P,
+            interest: 0,
+            totalContributions: 0,
+            totalInterest: 0,
+            balance: P
+        });
+
+        for (let yr = 1; yr <= years; yr++) {
+            let yearInterest = 0;
+            let yearContribution = 0;
+
+            for (let p = 0; p < periodsPerYear; p++) {
+                const interestThisPeriod = balance * ratePerPeriod;
+                yearInterest += interestThisPeriod;
+                balance += interestThisPeriod + contributionPerPeriod;
+                yearContribution += contributionPerPeriod;
+            }
+
+            totalContributions += yearContribution;
+            totalInterestAccum += yearInterest;
+
+            growthData.push({
+                year: yr,
+                deposit: yearContribution,
+                interest: yearInterest,
+                totalContributions: totalContributions,
+                totalInterest: totalInterestAccum,
+                balance: balance
+            });
+        }
+
+        const futureValue = balance;
+        const totalInvested = P + totalContributions;
+        const totalInterest = totalInterestAccum;
+        const interestPct = futureValue > 0 ? ((totalInterest / futureValue) * 100).toFixed(1) : 0;
+
+        document.getElementById('futureValue').innerText = fmt(futureValue);
+        document.getElementById('statPrincipal').innerText = fmt(P);
+        document.getElementById('statContributions').innerText = fmt(totalContributions);
+        document.getElementById('statInterest').innerText = fmt(totalInterest);
+        document.getElementById('statInvested').innerText = fmt(totalInvested);
+        document.getElementById('statPct').innerText = interestPct + '%';
+
+        renderChart();
+        renderTable();
+        document.getElementById('chartSection').style.display = 'block';
+        document.getElementById('tableSection').style.display = 'block';
+    }
+
+    function renderChart() {
+        const canvas = document.getElementById('growthChart');
+        const ctx = canvas.getContext('2d');
+        const dpr = window.devicePixelRatio || 1;
+        const rect = canvas.parentElement.getBoundingClientRect();
+
+        canvas.width = rect.width * dpr;
+        canvas.height = rect.height * dpr;
+        canvas.style.width = rect.width + 'px';
+        canvas.style.height = rect.height + 'px';
+        ctx.scale(dpr, dpr);
+
+        const W = rect.width;
+        const H = rect.height;
+        const padL = 80, padR = 30, padT = 20, padB = 45;
+        const chartW = W - padL - padR;
+        const chartH = H - padT - padB;
+
+        ctx.clearRect(0, 0, W, H);
+
+        const data = growthData.filter(d => d.year > 0);
+        if (data.length === 0) return;
+
+        const P = parseFloat(document.getElementById('principal').value) || 0;
+        const maxVal = data[data.length - 1].balance;
+        const barW = Math.max(4, (chartW / data.length) - 4);
+
+        // Y-axis scale
+        const yTicks = 5;
+        const yStep = Math.ceil(maxVal / yTicks / 1000) * 1000 || 1000;
+        const yMax = yStep * yTicks;
+
+        // Grid lines
+        ctx.strokeStyle = '#edf2f7';
+        ctx.lineWidth = 1;
+        ctx.font = '11px Segoe UI, Roboto, sans-serif';
+        ctx.fillStyle = '#94a3b8';
+        ctx.textAlign = 'right';
+        for (let i = 0; i <= yTicks; i++) {
+            const yVal = yStep * i;
+            const y = padT + chartH - (yVal / yMax) * chartH;
+            ctx.beginPath();
+            ctx.moveTo(padL, y);
+            ctx.lineTo(padL + chartW, y);
+            ctx.stroke();
+            ctx.fillText(yVal >= 1000 ? '$' + (yVal / 1000).toFixed(0) + 'K' : '$' + yVal, padL - 8, y + 4);
+        }
+
+        // Bars
+        data.forEach((d, i) => {
+            const x = padL + (i / data.length) * chartW + 2;
+
+            // 3 segments: principal, contributions, interest
+            const principalH = (P / yMax) * chartH;
+            const contribH = (d.totalContributions / yMax) * chartH;
+            const interestH = (d.totalInterest / yMax) * chartH;
+
+            const base = padT + chartH;
+
+            // Principal (blue)
+            ctx.fillStyle = '#667eea';
+            ctx.beginPath();
+            ctx.roundRect ? ctx.roundRect(x, base - principalH, barW, principalH, [0, 0, 2, 2]) : ctx.fillRect(x, base - principalH, barW, principalH);
+            ctx.fill();
+
+            // Contributions (green)
+            ctx.fillStyle = '#48bb78';
+            ctx.fillRect(x, base - principalH - contribH, barW, contribH);
+
+            // Interest (amber)
+            ctx.fillStyle = '#f59e0b';
+            const rTop = i === data.length - 1 ? 4 : 2;
+            if (ctx.roundRect) {
+                ctx.beginPath();
+                ctx.roundRect(x, base - principalH - contribH - interestH, barW, interestH, [rTop, rTop, 0, 0]);
+                ctx.fill();
+            } else {
+                ctx.fillRect(x, base - principalH - contribH - interestH, barW, interestH);
+            }
+
+            // X labels (show some)
+            if (data.length <= 15 || i % Math.ceil(data.length / 10) === 0 || i === data.length - 1) {
+                ctx.fillStyle = '#94a3b8';
+                ctx.textAlign = 'center';
+                ctx.font = '10px Segoe UI, Roboto, sans-serif';
+                ctx.fillText('Yr ' + d.year, x + barW / 2, base + 18);
+            }
+        });
+    }
+
+    function renderTable() {
+        const container = document.getElementById('growthTable');
+        const P = parseFloat(document.getElementById('principal').value) || 0;
+
+        let html = '<table class="amort-table"><thead><tr>';
+        html += '<th>Year</th><th>Deposits</th><th>Interest</th><th>Total Deposits</th><th>Total Interest</th><th>Balance</th>';
+        html += '</tr></thead><tbody>';
+
+        growthData.forEach(d => {
+            if (d.year === 0) return;
+            html += '<tr>';
+            html += '<td>' + d.year + '</td>';
+            html += '<td>' + fmtExact(d.deposit) + '</td>';
+            html += '<td class="interest-val">' + fmtExact(d.interest) + '</td>';
+            html += '<td>' + fmtExact(P + d.totalContributions) + '</td>';
+            html += '<td class="interest-val">' + fmtExact(d.totalInterest) + '</td>';
+            html += '<td class="balance-val">' + fmtExact(d.balance) + '</td>';
+            html += '</tr>';
+        });
+
+        html += '</tbody></table>';
+        container.innerHTML = html;
+    }
+
+    function resetForm() {
+        document.getElementById('principal').value = '';
+        document.getElementById('contribution').value = '';
+        document.getElementById('rate').value = '';
+        document.getElementById('years').value = '';
+        document.getElementById('compounding').value = '12';
+        document.getElementById('futureValue').innerText = '$0';
+        document.getElementById('statPrincipal').innerText = '$0';
+        document.getElementById('statContributions').innerText = '$0';
+        document.getElementById('statInterest').innerText = '$0';
+        document.getElementById('statInvested').innerText = '$0';
+        document.getElementById('statPct').innerText = '0%';
+        document.getElementById('chartSection').style.display = 'none';
+        document.getElementById('tableSection').style.display = 'none';
+        growthData = [];
+    }
+
+    function toggleFAQ(el) {
+        const item = el.closest('.faq-item');
+        const wasActive = item.classList.contains('active');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+        if (!wasActive) item.classList.add('active');
+    }
+
+    window.addEventListener('DOMContentLoaded', function() {
+        calculate();
+    });
+
+    window.addEventListener('resize', function() {
+        if (growthData.length > 0) renderChart();
+    });
+
+    // Mobile Menu
+    const hamburger = document.getElementById('hamburger');
+    const headerLinks = document.getElementById('headerLinks');
+    const menuOverlay = document.getElementById('menuOverlay');
+
+    function toggleMenu() {
+        hamburger.classList.toggle('active');
+        headerLinks.classList.toggle('active');
+        menuOverlay.classList.toggle('active');
+        document.body.style.overflow = headerLinks.classList.contains('active') ? 'hidden' : '';
+    }
+
+    hamburger.addEventListener('click', toggleMenu);
+    menuOverlay.addEventListener('click', toggleMenu);
+    headerLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => { if (window.innerWidth <= 768) toggleMenu(); });
+    });
+</script>
+
 </body>
 </html>
