@@ -271,6 +271,12 @@
         @keyframes spin-refresh { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
         .refresh-icon { display: inline-block; font-size: 0.9rem; }
 
+        /* Rate Notice Banner */
+        .rate-notice { background: linear-gradient(135deg, #eff6ff 0%, #f0f4ff 100%); border: 1px solid #bfdbfe; border-left: 4px solid #3b82f6; border-radius: 10px; padding: 16px 20px; margin-bottom: 20px; display: flex; align-items: flex-start; gap: 12px; }
+        .rate-notice-icon { font-size: 1.4rem; flex-shrink: 0; margin-top: 1px; }
+        .rate-notice-text { font-size: 0.88rem; color: #1e40af; line-height: 1.7; }
+        .rate-notice-text strong { color: #1e3a8a; }
+
         /* Error message */
         .error-msg { background: #fef2f2; border: 1px solid #fecaca; border-radius: 10px; padding: 14px 18px; color: #dc2626; font-size: 0.9rem; font-weight: 500; margin-bottom: 15px; display: none; }
         .error-msg.active { display: block; }
@@ -344,6 +350,12 @@
                     <h2>Convert Currency</h2>
                 </div>
 
+                <div class="rate-notice">
+                    <span class="rate-notice-icon">&#128161;</span>
+                    <div class="rate-notice-text">
+                        <strong>Daily Mid-Market Rates:</strong> This converter uses rates updated once daily from the European Central Bank and other trusted sources. They may differ by <strong>1&ndash;3%</strong> from real-time rates on Google or XE, which update every second. For exact trading rates, check with your bank or broker.
+                    </div>
+                </div>
                 <div class="rate-status-bar" id="rateStatusBar" style="display:none;">
                     <div class="rate-status-badge">
                         <span class="dot"></span>
@@ -383,7 +395,6 @@
                 </div>
 
                 <button class="btn-calc" onclick="convert()">&#128640; Convert</button>
-                <p style="text-align:center; font-size:0.78rem; color:#94a3b8; margin:12px 0 0; line-height:1.6;">&#9432; Rates shown are daily mid-market rates from trusted financial data providers. They may differ slightly (1&ndash;3%) from real-time trading rates on Google, XE, or your bank. Banks and money transfer services typically add a markup on top of mid-market rates.</p>
             </div>
 
             <!-- Popular Rates -->
