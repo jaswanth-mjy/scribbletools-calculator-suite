@@ -253,6 +253,24 @@
         .tool-link:hover { background: white; border-color: #667eea; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.1); transform: translateY(-2px); }
         .tool-link .tool-emoji { font-size: 1.3rem; }
 
+        /* Rate Status */
+        .rate-status-bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 18px; padding: 10px 16px; background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 10px; flex-wrap: wrap; }
+        .rate-status-bar.offline { background: #fefce8; border-color: #fde68a; }
+        .rate-status-bar.error { background: #fef2f2; border-color: #fecaca; }
+        .rate-status-badge { display: flex; align-items: center; gap: 6px; font-size: 0.82rem; font-weight: 600; }
+        .rate-status-badge .dot { width: 8px; height: 8px; border-radius: 50%; background: #22c55e; animation: pulse-dot 2s infinite; }
+        .rate-status-bar.offline .dot { background: #eab308; animation: none; }
+        .rate-status-bar.error .dot { background: #ef4444; animation: none; }
+        @keyframes pulse-dot { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+        .rate-status-text { color: #16a34a; font-size: 0.82rem; }
+        .rate-status-bar.offline .rate-status-text { color: #a16207; }
+        .rate-status-bar.error .rate-status-text { color: #dc2626; }
+        .refresh-btn { display: flex; align-items: center; gap: 5px; padding: 6px 14px; border: 1px solid #d1d5db; border-radius: 8px; background: white; color: #374151; font-size: 0.8rem; font-weight: 600; cursor: pointer; transition: all 0.3s; white-space: nowrap; }
+        .refresh-btn:hover { border-color: #667eea; color: #667eea; background: #f0f4ff; }
+        .refresh-btn.spinning .refresh-icon { animation: spin-refresh 1s linear infinite; }
+        @keyframes spin-refresh { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        .refresh-icon { display: inline-block; font-size: 0.9rem; }
+
         /* Error message */
         .error-msg { background: #fef2f2; border: 1px solid #fecaca; border-radius: 10px; padding: 14px 18px; color: #dc2626; font-size: 0.9rem; font-weight: 500; margin-bottom: 15px; display: none; }
         .error-msg.active { display: block; }
@@ -326,6 +344,16 @@
                     <h2>Convert Currency</h2>
                 </div>
 
+                <div class="rate-status-bar" id="rateStatusBar" style="display:none;">
+                    <div class="rate-status-badge">
+                        <span class="dot"></span>
+                        <span id="rateStatusLabel">Live Rates</span>
+                    </div>
+                    <span class="rate-status-text" id="rateStatusDetail"></span>
+                    <button class="refresh-btn" onclick="refreshRates()" title="Refresh exchange rates">
+                        <span class="refresh-icon">&#8635;</span> Refresh
+                    </button>
+                </div>
                 <div class="error-msg" id="errorMsg"></div>
 
                 <div class="converter-row">
@@ -630,54 +658,120 @@
         toSel.value = 'EUR';
     }
 
+    let rateSource = '';
+    let autoRefreshTimer = null;
+
     async function fetchRates() {
         const loading = document.getElementById('loading');
         const errorMsg = document.getElementById('errorMsg');
+        const statusBar = document.getElementById('rateStatusBar');
+        const statusLabel = document.getElementById('rateStatusLabel');
+        const statusDetail = document.getElementById('rateStatusDetail');
+        const refreshBtn = document.querySelector('.refresh-btn');
+
         loading.classList.add('active');
         errorMsg.classList.remove('active');
+        if (refreshBtn) refreshBtn.classList.add('spinning');
 
+        // API 1: open.er-api.com (free, CORS enabled, reliable)
         try {
-            // Using exchangerate-api (free, no key required for open endpoint)
-            const resp = await fetch('https://api.exchangerate-api.com/v4/latest/USD');
-            if (!resp.ok) throw new Error('API request failed');
+            const resp = await fetch('https://open.er-api.com/v6/latest/USD', { signal: AbortSignal.timeout(8000) });
+            if (!resp.ok) throw new Error('API 1 failed: ' + resp.status);
             const data = await resp.json();
+            if (!data.rates || Object.keys(data.rates).length < 10) throw new Error('API 1: insufficient data');
+            exchangeRates = data.rates;
+            rateDate = data.time_last_update_utc ? data.time_last_update_utc.slice(0, 16) : new Date().toISOString().slice(0, 10);
+            rateSource = 'open.er-api.com';
+            onRatesLoaded('live');
+            return;
+        } catch (e) { console.warn('API 1 (open.er-api) failed:', e.message); }
+
+        // API 2: exchangerate-api.com (free, CORS enabled)
+        try {
+            const resp = await fetch('https://api.exchangerate-api.com/v4/latest/USD', { signal: AbortSignal.timeout(8000) });
+            if (!resp.ok) throw new Error('API 2 failed: ' + resp.status);
+            const data = await resp.json();
+            if (!data.rates || Object.keys(data.rates).length < 10) throw new Error('API 2: insufficient data');
             exchangeRates = data.rates;
             rateDate = data.date || new Date().toISOString().slice(0, 10);
-            loading.classList.remove('active');
-            renderPopularRates();
-            convert();
-        } catch (err) {
-            // Fallback: try alternative API
-            try {
-                const resp2 = await fetch('https://open.er-api.com/v6/latest/USD');
-                if (!resp2.ok) throw new Error('Fallback API also failed');
-                const data2 = await resp2.json();
-                exchangeRates = data2.rates;
-                rateDate = data2.time_last_update_utc ? data2.time_last_update_utc.slice(0, 16) : new Date().toISOString().slice(0, 10);
-                loading.classList.remove('active');
-                renderPopularRates();
-                convert();
-            } catch (err2) {
-                loading.classList.remove('active');
-                // Use hardcoded fallback rates
-                exchangeRates = {
-                    USD: 1, EUR: 0.92, GBP: 0.79, JPY: 149.5, CAD: 1.36, AUD: 1.53,
-                    CHF: 0.88, CNY: 7.24, INR: 83.1, MXN: 17.15, BRL: 4.97, KRW: 1325,
-                    SGD: 1.34, HKD: 7.82, NOK: 10.5, SEK: 10.4, DKK: 6.87, NZD: 1.63,
-                    ZAR: 18.6, RUB: 91.5, TRY: 30.2, THB: 35.1, IDR: 15600, MYR: 4.66,
-                    PHP: 55.8, PLN: 4.02, CZK: 22.7, HUF: 355, ILS: 3.68, CLP: 885,
-                    AED: 3.67, SAR: 3.75, TWD: 31.5, ARS: 350, COP: 3950, EGP: 30.9,
-                    NGN: 780, PKR: 280, BDT: 110, VND: 24300, KES: 153, RON: 4.57,
-                    BGN: 1.80, HRK: 6.93, ISK: 137, PEN: 3.72, UAH: 37.5, QAR: 3.64,
-                    KWD: 0.31, BHD: 0.377, OMR: 0.385, JOD: 0.709, LKR: 325, MAD: 10.1, GHS: 12.5
-                };
-                rateDate = 'Fallback rates (offline)';
-                errorMsg.innerHTML = '&#9888;&#65039; Could not fetch live rates. Using cached rates as fallback. Results may not reflect current market prices.';
-                errorMsg.classList.add('active');
-                renderPopularRates();
-                convert();
+            rateSource = 'exchangerate-api.com';
+            onRatesLoaded('live');
+            return;
+        } catch (e) { console.warn('API 2 (exchangerate-api) failed:', e.message); }
+
+        // API 3: fawazahmed0/currency-api on jsDelivr CDN (free, CORS, CDN-backed)
+        try {
+            const resp = await fetch('https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/usd.json', { signal: AbortSignal.timeout(8000) });
+            if (!resp.ok) throw new Error('API 3 failed: ' + resp.status);
+            const data = await resp.json();
+            if (!data.usd || Object.keys(data.usd).length < 10) throw new Error('API 3: insufficient data');
+            // This API uses lowercase keys — convert to uppercase for our currency codes
+            exchangeRates = {};
+            for (const [key, val] of Object.entries(data.usd)) {
+                exchangeRates[key.toUpperCase()] = val;
             }
+            exchangeRates['USD'] = 1;
+            rateDate = data.date || new Date().toISOString().slice(0, 10);
+            rateSource = 'cdn.jsdelivr.net';
+            onRatesLoaded('live');
+            return;
+        } catch (e) { console.warn('API 3 (jsdelivr CDN) failed:', e.message); }
+
+        // All APIs failed — use hardcoded fallback
+        exchangeRates = {
+            USD: 1, EUR: 0.92, GBP: 0.79, JPY: 149.5, CAD: 1.36, AUD: 1.53,
+            CHF: 0.88, CNY: 7.24, INR: 83.1, MXN: 17.15, BRL: 4.97, KRW: 1325,
+            SGD: 1.34, HKD: 7.82, NOK: 10.5, SEK: 10.4, DKK: 6.87, NZD: 1.63,
+            ZAR: 18.6, RUB: 91.5, TRY: 30.2, THB: 35.1, IDR: 15600, MYR: 4.66,
+            PHP: 55.8, PLN: 4.02, CZK: 22.7, HUF: 355, ILS: 3.68, CLP: 885,
+            AED: 3.67, SAR: 3.75, TWD: 31.5, ARS: 350, COP: 3950, EGP: 30.9,
+            NGN: 780, PKR: 280, BDT: 110, VND: 24300, KES: 153, RON: 4.57,
+            BGN: 1.80, HRK: 6.93, ISK: 137, PEN: 3.72, UAH: 37.5, QAR: 3.64,
+            KWD: 0.31, BHD: 0.377, OMR: 0.385, JOD: 0.709, LKR: 325, MAD: 10.1, GHS: 12.5
+        };
+        rateDate = 'Offline fallback rates';
+        rateSource = 'offline';
+        onRatesLoaded('offline');
+    }
+
+    function onRatesLoaded(status) {
+        const loading = document.getElementById('loading');
+        const errorMsg = document.getElementById('errorMsg');
+        const statusBar = document.getElementById('rateStatusBar');
+        const statusLabel = document.getElementById('rateStatusLabel');
+        const statusDetail = document.getElementById('rateStatusDetail');
+        const refreshBtn = document.querySelector('.refresh-btn');
+
+        loading.classList.remove('active');
+        if (refreshBtn) refreshBtn.classList.remove('spinning');
+        statusBar.style.display = 'flex';
+        statusBar.classList.remove('offline', 'error');
+
+        if (status === 'live') {
+            statusLabel.textContent = 'Live Rates';
+            statusDetail.textContent = 'Updated: ' + rateDate + ' \u2022 Source: ' + rateSource;
+            errorMsg.classList.remove('active');
+        } else {
+            statusBar.classList.add('offline');
+            statusLabel.textContent = 'Offline Rates';
+            statusDetail.textContent = 'Could not reach any API. Using cached rates.';
+            errorMsg.innerHTML = '&#9888;&#65039; All exchange rate APIs are unreachable. Using cached fallback rates. Results may not reflect current market prices. Try refreshing.';
+            errorMsg.classList.add('active');
         }
+
+        renderPopularRates();
+        convert();
+        scheduleAutoRefresh();
+    }
+
+    function refreshRates() {
+        fetchRates();
+    }
+
+    function scheduleAutoRefresh() {
+        if (autoRefreshTimer) clearInterval(autoRefreshTimer);
+        // Auto-refresh every 30 minutes
+        autoRefreshTimer = setInterval(fetchRates, 30 * 60 * 1000);
     }
 
     function getRate(from, to) {
