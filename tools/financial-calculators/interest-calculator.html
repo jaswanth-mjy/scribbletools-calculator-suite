@@ -3,623 +3,647 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
-    <title>Interest Calculator - Free Online Tool | ShramTools</title>
-    <meta name="description" content="Free Interest Calculator tool by ShramTools. Easy to use, accurate results, no registration required.">
-    <meta name="keywords" content="interest calculator, free calculator, online tool, ShramTools">
-    <meta name="author" content="ShramTools by Shram Kavach">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://shramtools.shramkavach.com/tools/financial-calculators/interest-calculator.html">
-    
-    <!-- Open Graph -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://shramtools.shramkavach.com/tools/financial-calculators/interest-calculator.html">
-    <meta property="og:title" content="Interest Calculator - Free Online Tool | ShramTools">
-    <meta property="og:description" content="Free Interest Calculator tool. Easy to use, accurate results.">
-    <meta property="og:image" content="https://shramtools.shramkavach.com/images/og-image.jpg">
-    
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:title" content="Interest Calculator | ShramTools">
-    <meta property="twitter:description" content="Free Interest Calculator tool by ShramTools.">
-    
+    <title>Interest Calculator - Simple &amp; Compound Interest | ScribbleTools</title>
+    <meta name="description" content="Free Interest Calculator — compute simple and compound interest with flexible compounding periods. See growth tables, charts, and total earnings for any principal, rate, and term.">
+    <meta name="keywords" content="interest calculator, simple interest, compound interest, savings interest, investment growth, APR, APY, interest earned">
+    <link rel="canonical" href="https://scribbletools.com/tools/financial-calculators/interest-calculator.html">
     <link rel="icon" type="image/webp" href="../../images/logo.webp">
-    
     <style>
-        /* Reset & Base */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root{--primary-gradient:linear-gradient(135deg,#667EEA 0%,#764BA2 100%);--page-bg:linear-gradient(180deg,#F5F7FA 0%,#E8EEF5 50%,#F0E7F8 100%);--text-main:#2D3748;--text-secondary:#4A5568;--text-muted:#718096;--border:#E2E8F0}
+        *{box-sizing:border-box;margin:0;padding:0;font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+        html{scroll-behavior:smooth}body{background:var(--page-bg);color:var(--text-main);line-height:1.6;-webkit-font-smoothing:antialiased}
+        .page-wrapper{min-height:100vh}.container{max-width:1100px;margin:0 auto;padding:40px 20px}
+        .site-header{background:rgba(255,255,255,.85);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);position:sticky;top:0;z-index:1000;box-shadow:0 8px 32px rgba(102,126,234,.08),0 1px 3px rgba(0,0,0,.05);border-bottom:1px solid rgba(102,126,234,.1)}
+        .site-header::before{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#667eea,#764ba2,#a855f7,transparent);animation:headerGlow 4s ease-in-out infinite}
+        @keyframes headerGlow{0%,100%{opacity:.2}50%{opacity:.6}}
+        .header-content{max-width:1400px;margin:0 auto;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center}
+        .logo{display:flex;align-items:center;gap:.8rem;text-decoration:none}
+        .logo-icon{width:45px;height:45px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);box-shadow:0 8px 24px rgba(102,126,234,.4);transition:all .4s;overflow:hidden}
+        .logo-icon img{width:100%;height:100%;object-fit:cover}.logo:hover .logo-icon{transform:scale(1.1)}
+        .logo-text h1{margin:0;font-size:1.6rem;font-weight:800;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+        .logo-text p{margin:0;font-size:.7rem;color:#64748b;font-weight:600;letter-spacing:.5px;text-transform:uppercase}
+        .header-links{display:flex;gap:1.5rem;align-items:center}
+        .header-links a{color:#475569;text-decoration:none;font-weight:600;font-size:.9rem;transition:all .3s;padding:.5rem .8rem;position:relative}
+        .header-links a:hover{color:#667eea}.header-links a::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:0;height:2px;background:var(--primary-gradient);transition:width .3s}.header-links a:hover::after{width:80%}
+        .cta-button{background:var(--primary-gradient);color:white!important;padding:.6rem 1.2rem!important;border-radius:8px;font-weight:600;box-shadow:0 4px 15px rgba(102,126,234,.3)}.cta-button:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(102,126,234,.4)}.cta-button::after{display:none!important}
+        .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;z-index:1001;padding:5px}.hamburger span{width:25px;height:2.5px;background:#475569;border-radius:2px;transition:all .3s}
+        .hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}.hamburger.active span:nth-child(2){opacity:0}.hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+        .menu-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.5);z-index:998}.menu-overlay.active{display:block}
+        .breadcrumb{display:flex;align-items:center;gap:8px;font-size:.88rem;margin-bottom:25px;flex-wrap:wrap}.breadcrumb a{color:#667eea;text-decoration:none;font-weight:500}.breadcrumb a:hover{color:#764ba2}.breadcrumb span{color:#94a3b8}
+        .page-header{text-align:center;margin-bottom:35px;padding:40px 20px;background:white;border-radius:20px;box-shadow:0 4px 20px rgba(0,0,0,.05);border:1px solid rgba(226,232,240,.6)}
+        .page-header .header-icon{font-size:3rem;display:block;margin-bottom:15px}.page-header h2{font-size:2.2rem;font-weight:800;background:var(--primary-gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:10px}
+        .page-header p{color:var(--text-secondary);font-size:1.05rem;max-width:650px;margin:0 auto;line-height:1.7}
+        .calc-card{background:white;border-radius:20px;padding:40px;margin-bottom:30px;box-shadow:0 4px 20px rgba(0,0,0,.05);border:1px solid rgba(226,232,240,.6)}
+        .calc-title{display:flex;align-items:center;gap:12px;margin-bottom:28px;padding-bottom:18px;border-bottom:2px solid #f1f5f9}.calc-title span{font-size:1.8rem}.calc-title h2{font-size:1.4rem;font-weight:700;color:var(--text-main)}
+        .mode-toggle{display:flex;background:#f1f5f9;border-radius:12px;padding:4px;margin-bottom:25px}
+        .mode-btn{flex:1;padding:12px 20px;border:none;border-radius:10px;font-size:.92rem;font-weight:700;cursor:pointer;background:transparent;color:var(--text-muted);transition:all .3s;text-align:center}
+        .mode-btn.active{background:var(--primary-gradient);color:white;box-shadow:0 4px 15px rgba(102,126,234,.3)}
+        .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-bottom:25px}
+        .form-group{display:flex;flex-direction:column;gap:6px}.form-group.full-width{grid-column:1/-1}
+        .form-group label{font-size:.88rem;font-weight:600;color:var(--text-secondary);display:flex;align-items:center;gap:6px}.label-icon{font-size:1rem}
+        .form-group input,.form-group select{width:100%;padding:12px 16px;border:2px solid #e2e8f0;border-radius:10px;font-size:1rem;color:var(--text-main);background:#f8fafc;transition:all .3s;outline:none}
+        .form-group input:focus,.form-group select:focus{border-color:#667eea;background:white;box-shadow:0 0 0 4px rgba(102,126,234,.1)}
+        .form-group small{font-size:.78rem;color:var(--text-muted)}
+        .btn-row{display:flex;gap:12px;margin-top:5px}
+        .btn-calc{flex:1;padding:14px 28px;border:none;border-radius:12px;font-size:1.05rem;font-weight:700;cursor:pointer;transition:all .3s;background:var(--primary-gradient);color:white;box-shadow:0 4px 15px rgba(102,126,234,.3)}.btn-calc:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(102,126,234,.4)}
+        .btn-reset{padding:14px 24px;border:2px solid #e2e8f0;border-radius:12px;font-size:1rem;font-weight:600;cursor:pointer;background:white;color:var(--text-secondary);transition:all .3s}.btn-reset:hover{border-color:#ef4444;color:#ef4444}
+        .results-panel{display:none;margin-top:30px;animation:fadeIn .5s ease}
+        @keyframes fadeIn{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
+        .results-header h3{font-size:1.3rem;font-weight:700;color:var(--text-main);display:flex;align-items:center;justify-content:center;gap:10px;text-align:center;margin-bottom:25px}
+        .big-result{text-align:center;margin-bottom:28px;padding:30px;background:var(--primary-gradient);border-radius:16px;color:white;box-shadow:0 8px 30px rgba(102,126,234,.3)}
+        .big-result .r-label{font-size:.95rem;font-weight:600;opacity:.9;margin-bottom:5px}.big-result .r-val{font-size:2.6rem;font-weight:900;letter-spacing:-1px}.big-result .r-sub{font-size:.88rem;opacity:.8;margin-top:5px}
+        .result-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:25px}
+        .result-card{background:linear-gradient(135deg,#f8fafc 0%,#f1f5f9 100%);border-radius:14px;padding:20px;text-align:center;border:1px solid #e2e8f0;transition:all .3s}
+        .result-card:hover{transform:translateY(-3px);box-shadow:0 8px 25px rgba(0,0,0,.08)}
+        .result-card .result-label{font-size:.82rem;font-weight:600;color:var(--text-muted);margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px}
+        .result-card .result-val{font-size:1.4rem;font-weight:800;color:var(--text-main)}
+        .summary-box{background:linear-gradient(135deg,#f0f4ff 0%,#faf5ff 100%);border:1px solid #e0e7ff;border-radius:14px;padding:24px;margin-top:20px}
+        .summary-box h4{font-size:1.05rem;font-weight:700;color:var(--text-main);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+        .summary-box p{font-size:.95rem;color:var(--text-secondary);line-height:1.8}
+        .hl{font-weight:800;color:#667eea}
+        .chart-container{margin-top:25px;background:#fafbff;border-radius:14px;padding:20px;border:1px solid #e2e8f0}
+        .chart-container canvas{width:100%!important;height:280px!important}
+        .year-table{width:100%;border-collapse:collapse;border-radius:12px;overflow:hidden;margin-top:25px}
+        .year-table thead{background:var(--primary-gradient)}.year-table th{padding:12px 16px;text-align:left;color:white;font-weight:600;font-size:.85rem}
+        .year-table td{padding:10px 16px;border-bottom:1px solid #f1f5f9;font-size:.88rem;color:var(--text-secondary)}.year-table tbody tr:hover{background:#f8fafc}
+        .content-card{background:white;border-radius:16px;padding:35px;margin-bottom:30px;box-shadow:0 4px 20px rgba(0,0,0,.05);border:1px solid rgba(226,232,240,.6)}
+        .content-card h2{font-size:1.5rem;font-weight:800;color:var(--text-main);margin-bottom:18px;display:flex;align-items:center;gap:10px}
+        .content-card p{color:var(--text-secondary);font-size:.95rem;line-height:1.8;margin-bottom:15px}
+        .content-card ul{padding-left:20px;margin-bottom:15px}.content-card li{color:var(--text-secondary);font-size:.95rem;line-height:1.8;margin-bottom:8px}
+        .section-icon{font-size:1.4rem}
+        .image-box{width:100%;height:300px;border-radius:16px;overflow:hidden;margin-bottom:30px;box-shadow:0 4px 20px rgba(0,0,0,.08)}.image-box img{width:100%;height:100%;object-fit:cover}
+        .formula-container{background:linear-gradient(135deg,#1a1a2e 0%,#16213e 100%);border-radius:14px;padding:28px;margin:20px 0;text-align:center}
+        .formula-math{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;padding:12px}
+        .formula-math .var{font-family:'Times New Roman',Georgia,serif;font-style:italic;color:#93c5fd;font-size:1.1rem;font-weight:600}.formula-math .var.result{color:#a78bfa;font-size:1.2rem}
+        .formula-math .equals{color:#f59e0b;font-size:1.3rem;font-weight:700}.formula-math .operator{color:#f59e0b;font-size:1.2rem}
+        .formula-legend{display:flex;flex-direction:column;gap:8px;margin-top:18px;padding-top:18px;border-top:1px solid rgba(255,255,255,.1)}
+        .formula-legend .legend-item{font-size:.85rem;color:#94a3b8;line-height:1.6}.formula-legend .legend-var{font-family:'Times New Roman',Georgia,serif;font-style:italic;color:#93c5fd;font-weight:600}.formula-legend .legend-var.purple{color:#a78bfa}
+        .faq-grid{margin-top:20px}.faq-item{border:1px solid #edf2f7;border-radius:12px;overflow:hidden;transition:all .3s;margin-bottom:12px;background:white}
+        .faq-item.active{border-color:#667eea;box-shadow:0 4px 15px rgba(102,126,234,.1)}
+        .faq-question{padding:18px 22px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;gap:15px}.faq-question:hover{background:#f8fafc}
+        .faq-question h3{font-size:1.05rem;margin:0;color:var(--text-main);font-weight:600;flex:1}
+        .faq-toggle{width:28px;height:28px;border-radius:50%;background:#f1f5f9;display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:#667eea;flex-shrink:0;transition:all .3s;font-weight:600}
+        .faq-item.active .faq-toggle{background:var(--primary-gradient);color:white;transform:rotate(45deg)}
+        .faq-answer{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s ease;padding:0 22px}
+        .faq-item.active .faq-answer{max-height:500px;padding:0 22px 20px}.faq-answer p{font-size:.95rem;margin-bottom:0;color:var(--text-secondary);line-height:1.8}
+        .related-tools{background:white;border-radius:16px;padding:40px;margin-bottom:30px;box-shadow:0 4px 20px rgba(0,0,0,.05);border:1px solid rgba(226,232,240,.6)}
+        .related-tools h2{font-size:1.6rem;font-weight:800;color:var(--text-main);margin-bottom:25px;display:flex;align-items:center;gap:12px}
+        .tools-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:15px}
+        .tool-link{display:flex;align-items:center;gap:12px;padding:14px 18px;background:#f8fafc;border-radius:12px;text-decoration:none;color:var(--text-main);font-weight:600;font-size:.9rem;border:1px solid #edf2f7;transition:all .3s}
+        .tool-link:hover{background:white;border-color:#667eea;box-shadow:0 4px 15px rgba(102,126,234,.1);transform:translateY(-2px)}.tool-link .tool-emoji{font-size:1.3rem}
+        footer{background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#1a1a2e 100%);color:#e2e8f0;padding:60px 0 0;margin-top:40px}
+        .footer-content{max-width:1200px;margin:0 auto;padding:0 2rem;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px}
+        .footer-section h3{font-size:1.1rem;font-weight:700;margin-bottom:20px;color:white;position:relative;padding-bottom:10px}
+        .footer-section h3::after{content:'';position:absolute;bottom:0;left:0;width:30px;height:2px;background:linear-gradient(135deg,#667eea,#764ba2)}
+        .footer-section p{font-size:.9rem;color:#94a3b8;line-height:1.8}.footer-section a{color:#94a3b8;text-decoration:none;font-size:.9rem;display:block;margin-bottom:10px;transition:all .3s}.footer-section a:hover{color:#667eea;padding-left:5px}
+        .footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding:20px 2rem;display:flex;justify-content:space-between;align-items:center;max-width:1200px;margin:0 auto}
+        .footer-bottom p{color:#64748b;font-size:.85rem}.footer-links-bottom{display:flex;gap:20px}.footer-links-bottom a{color:#64748b;text-decoration:none;font-size:.85rem}.footer-links-bottom a:hover{color:#667eea}
+        @media(max-width:992px){.footer-content{grid-template-columns:1fr 1fr}.tools-grid{grid-template-columns:repeat(2,1fr)}}
+        @media(max-width:768px){
+            .container{padding:25px 15px}.calc-card{padding:25px}.form-grid{grid-template-columns:1fr}.result-cards{grid-template-columns:1fr}
+            .content-card{padding:28px 22px}.related-tools{padding:28px 22px}.tools-grid{grid-template-columns:1fr}.image-box{height:220px}
+            .hamburger{display:flex}
+            .header-links{position:fixed;top:0;right:-100%;width:75%;max-width:280px;height:100vh;background:#fff;box-shadow:-5px 0 25px rgba(0,0,0,.15);flex-direction:column;gap:0;align-items:stretch;padding:4rem 0 2rem;z-index:999;transition:right .4s cubic-bezier(.4,0,.2,1);overflow-y:auto}
+            .header-links.active{right:0}.header-links a{text-align:left;padding:1rem 1.5rem;border-bottom:1px solid #e2e8f0;font-size:1rem}.header-links a::after{display:none}
+            .cta-button{margin:1rem 1.5rem!important;text-align:center;border-bottom:none!important}
+            .footer-content{grid-template-columns:1fr;text-align:center}.footer-section h3::after{left:50%;transform:translateX(-50%)}
+            .footer-bottom{flex-direction:column;text-align:center}.footer-links-bottom{justify-content:center}
+            .big-result .r-val{font-size:2rem}
         }
-        
-        html {
-            scroll-behavior: smooth;
-        }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #e8eef5 50%, #f0e7f8 100%);
-            background-attachment: fixed;
-            min-height: 100vh;
-            color: #2d3748;
-            line-height: 1.6;
-        }
-        
-        /* Site Header */
-        .site-header {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(20px) saturate(180%);
-            -webkit-backdrop-filter: blur(20px) saturate(180%);
-            padding: 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 8px 32px rgba(102, 126, 234, 0.08), 0 1px 3px rgba(0, 0, 0, 0.05);
-            border-bottom: 1px solid rgba(102, 126, 234, 0.1);
-        }
-        
-        .site-header::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #667eea, #764ba2, #a855f7, transparent);
-            animation: headerGlow 4s ease-in-out infinite;
-        }
-        
-        @keyframes headerGlow {
-            0%, 100% { opacity: 0.2; }
-            50% { opacity: 0.6; }
-        }
-        
-        .header-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            text-decoration: none;
-        }
-        
-        .logo-icon {
-            width: 45px;
-            height: 45px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            box-shadow: 0 8px 24px rgba(102, 126, 234, 0.4);
-            transition: all 0.4s;
-            overflow: hidden;
-        }
-        
-        .logo-icon img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 12px;
-        }
-        
-        .logo-icon:hover {
-            transform: scale(1.05) rotate(5deg);
-            box-shadow: 0 12px 32px rgba(102, 126, 234, 0.5);
-        }
-        
-        .logo-text {
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .logo-main {
-            font-size: 1.5rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #a855f7 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: -0.5px;
-        }
-        
-        .logo-sub {
-            font-size: 0.7rem;
-            color: #718096;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-top: -2px;
-        }
-        
-        .nav-menu {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-        }
-        
-        .nav-link {
-            color: #4a5568;
-            text-decoration: none;
-            font-weight: 500;
-            padding: 0.6rem 1.2rem;
-            border-radius: 12px;
-            transition: all 0.3s;
-            position: relative;
-        }
-        
-        .nav-link:hover {
-            color: #667eea;
-            background: rgba(102, 126, 234, 0.08);
-        }
-        
-        .nav-link.active {
-            color: #667eea;
-            background: rgba(102, 126, 234, 0.1);
-        }
-        
-        .nav-link-primary {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white !important;
-            padding: 0.7rem 1.5rem;
-            border-radius: 25px;
-            font-weight: 600;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-        }
-        
-        .nav-link-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5);
-            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
-        }
-        
-        /* Main Content - Under Progress */
-        .main-content {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 60px 20px;
-            text-align: center;
-        }
-        
-        .progress-container {
-            background: white;
-            border-radius: 24px;
-            padding: 60px 40px;
-            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.15);
-            border: 1px solid rgba(102, 126, 234, 0.1);
-        }
-        
-        .progress-icon {
-            width: 120px;
-            height: 120px;
-            margin: 0 auto 30px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            animation: pulse 2s ease-in-out infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(102, 126, 234, 0.4); }
-            50% { transform: scale(1.05); box-shadow: 0 0 0 20px rgba(102, 126, 234, 0); }
-        }
-        
-        .progress-icon svg {
-            width: 60px;
-            height: 60px;
-            fill: white;
-        }
-        
-        .progress-title {
-            font-size: 2.5rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #a855f7 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 15px;
-        }
-        
-        .progress-subtitle {
-            font-size: 1.2rem;
-            color: #718096;
-            margin-bottom: 30px;
-        }
-        
-        .progress-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-            color: #92400e;
-            padding: 12px 24px;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1rem;
-            margin-bottom: 30px;
-        }
-        
-        .progress-badge svg {
-            width: 20px;
-            height: 20px;
-            fill: #f59e0b;
-        }
-        
-        .category-badge {
-            display: inline-block;
-            background: rgba(102, 126, 234, 0.1);
-            color: #667eea;
-            padding: 8px 20px;
-            border-radius: 25px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            margin-bottom: 30px;
-        }
-        
-        .progress-message {
-            color: #4a5568;
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 40px;
-        }
-        
-        .explore-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 16px 40px;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            text-decoration: none;
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
-            transition: all 0.3s;
-        }
-        
-        .explore-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.5);
-        }
-        
-        .explore-btn svg {
-            width: 20px;
-            height: 20px;
-            fill: white;
-        }
-        
-        /* Footer */
-        .site-footer {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-            color: #e2e8f0;
-            padding: 60px 0 30px;
-            margin-top: 80px;
-        }
-        
-        .footer-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-        
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 3rem;
-            margin-bottom: 40px;
-        }
-        
-        .footer-brand {
-            max-width: 350px;
-        }
-        
-        .footer-logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 20px;
-        }
-        
-        .footer-logo-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 14px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-        
-        .footer-logo-icon img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 14px;
-        }
-        
-        .footer-logo-text {
-            font-size: 1.8rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #667eea 0%, #a855f7 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .footer-desc {
-            color: #94a3b8;
-            line-height: 1.8;
-            font-size: 0.95rem;
-        }
-        
-        .footer-section h4 {
-            color: white;
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            position: relative;
-            padding-bottom: 10px;
-        }
-        
-        .footer-section h4::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 40px;
-            height: 3px;
-            background: linear-gradient(90deg, #667eea, #a855f7);
-            border-radius: 2px;
-        }
-        
-        .footer-links {
-            list-style: none;
-        }
-        
-        .footer-links li {
-            margin-bottom: 12px;
-        }
-        
-        .footer-links a {
-            color: #94a3b8;
-            text-decoration: none;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .footer-links a:hover {
-            color: #a855f7;
-            transform: translateX(5px);
-        }
-        
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-        
-        .footer-bottom p {
-            color: #64748b;
-            font-size: 0.9rem;
-        }
-        
-        .footer-bottom a {
-            color: #a855f7;
-            text-decoration: none;
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 15px;
-        }
-        
-        .social-link {
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.05);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #94a3b8;
-            text-decoration: none;
-            transition: all 0.3s;
-        }
-        
-        .social-link:hover {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            transform: translateY(-3px);
-        }
-        
-        /* Responsive */
-        @media (max-width: 968px) {
-            .nav-menu {
-                display: none;
-            }
-            
-            .footer-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-            
-            .progress-title {
-                font-size: 2rem;
-            }
-        }
-        
-        @media (max-width: 600px) {
-            .header-content {
-                padding: 1rem;
-            }
-            
-            .progress-container {
-                padding: 40px 20px;
-            }
-            
-            .progress-title {
-                font-size: 1.6rem;
-            }
-            
-            .footer-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .footer-bottom {
-                flex-direction: column;
-                text-align: center;
-            }
-        }
+        @media(max-width:480px){.btn-row{flex-direction:column}.mode-toggle{flex-direction:column}}
+        .contrib-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:25px}
+        .contrib-row .form-group input{width:100%}
+        .apy-box{background:#fef3c7;border:1px solid #fbbf24;border-radius:10px;padding:14px 18px;margin-top:18px;display:none}
+        .apy-box .apy-val{font-size:1.3rem;font-weight:800;color:#b45309}
+        .apy-box .apy-label{font-size:.85rem;color:#92400e;font-weight:600}
     </style>
 </head>
 <body>
-    <!-- Header -->
+<div class="page-wrapper">
     <header class="site-header">
         <div class="header-content">
             <a href="../../index.html" class="logo">
-                <div class="logo-icon">
-                    <img src="../../images/logo.webp" alt="ShramTools Logo">
-                </div>
-                <div class="logo-text">
-                    <span class="logo-main">ShramTools</span>
-                    <span class="logo-sub">By Shram Kavach</span>
-                </div>
+                <div class="logo-icon"><img src="../../images/logo.webp" alt="ScribbleTools Logo"></div>
+                <div class="logo-text"><h1>ScribbleTools</h1><p>Smart Digital Solutions</p></div>
             </a>
-            <nav class="nav-menu">
-                <a href="../../index.html" class="nav-link">Home</a>
-                <a href="../../index.html#financial" class="nav-link">Financial</a>
-                <a href="../../index.html#health" class="nav-link">Health</a>
-                <a href="../../index.html#math" class="nav-link">Math</a>
-                <a href="../../about-us.html" class="nav-link">About</a>
-                <a href="../../index.html" class="nav-link nav-link-primary">All Tools</a>
+            <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+            <nav class="header-links" id="headerLinks">
+                <a href="../../index.html">Home</a>
+                <a href="../../index.html#financial">Financial Tools</a>
+                <a href="../../index.html#health">Health Tools</a>
+                <a href="../../about-us.html">About</a>
+                <a href="../../index.html" class="cta-button">Explore Tools</a>
             </nav>
         </div>
     </header>
+    <div class="menu-overlay" id="menuOverlay"></div>
 
-    <!-- Main Content -->
-    <main class="main-content">
-        <div class="progress-container">
-            <div class="progress-icon">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
-                </svg>
-            </div>
-            
-            <h1 class="progress-title">Interest Calculator</h1>
-            
-            <div class="category-badge">Financial Calculators</div>
-            
-            <div class="progress-badge">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
-                </svg>
-                Under Development
-            </div>
-            
-            <p class="progress-subtitle">Coming Soon!</p>
-            
-            <p class="progress-message">
-                We're working hard to bring you an amazing <strong>Interest Calculator</strong> tool. 
-                Our team is crafting a feature-rich, user-friendly experience that will help you 
-                achieve accurate results with ease. Stay tuned!
-            </p>
-            
-            <a href="../../index.html" class="explore-btn">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
-                </svg>
-                Explore Other Tools
-            </a>
-        </div>
-    </main>
+    <div class="container">
+        <nav class="breadcrumb">
+            <a href="../../index.html">Home</a><span>/</span>
+            <a href="../../index.html#financial">Financial Tools</a><span>/</span>
+            <span style="color:#4a5568;font-weight:600;">Interest Calculator</span>
+        </nav>
 
-    <!-- Footer -->
-    <footer class="site-footer">
-        <div class="footer-content">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <div class="footer-logo">
-                        <div class="footer-logo-icon">
-                            <img src="../../images/logo.webp" alt="ShramTools Logo">
-                        </div>
-                        <span class="footer-logo-text">ShramTools</span>
+        <header class="page-header">
+            <span class="header-icon">&#128176;</span>
+            <h2>Interest Calculator</h2>
+            <p>Calculate simple or compound interest on savings, investments, and loans. Add regular contributions, choose compounding frequency, and see a detailed year-by-year growth breakdown.</p>
+        </header>
+
+        <div class="calc-card">
+            <div class="calc-title">
+                <span>&#128178;</span>
+                <h2>Simple &amp; Compound Interest Calculator</h2>
+            </div>
+
+            <div class="mode-toggle">
+                <button class="mode-btn active" id="modeCompound" onclick="setMode('compound')">Compound Interest</button>
+                <button class="mode-btn" id="modeSimple" onclick="setMode('simple')">Simple Interest</button>
+            </div>
+
+            <div class="form-grid">
+                <div class="form-group">
+                    <label><span class="label-icon">&#128181;</span> Principal Amount ($)</label>
+                    <input type="number" id="principal" value="10000" step="100" min="0">
+                    <small>Initial deposit or investment amount</small>
+                </div>
+                <div class="form-group">
+                    <label><span class="label-icon">&#128200;</span> Annual Interest Rate (%)</label>
+                    <input type="number" id="rate" value="6" step="0.1" min="0">
+                    <small>Nominal / stated annual rate</small>
+                </div>
+                <div class="form-group">
+                    <label><span class="label-icon">&#128197;</span> Time Period</label>
+                    <input type="number" id="time" value="10" step="1" min="1">
+                </div>
+                <div class="form-group">
+                    <label><span class="label-icon">&#128338;</span> Period Unit</label>
+                    <select id="timeUnit">
+                        <option value="years" selected>Years</option>
+                        <option value="months">Months</option>
+                    </select>
+                </div>
+                <div class="form-group" id="grpCompFreq">
+                    <label><span class="label-icon">&#128257;</span> Compounding Frequency</label>
+                    <select id="compFreq">
+                        <option value="1">Annually (1x/year)</option>
+                        <option value="2">Semi-Annually (2x/year)</option>
+                        <option value="4">Quarterly (4x/year)</option>
+                        <option value="12" selected>Monthly (12x/year)</option>
+                        <option value="52">Weekly (52x/year)</option>
+                        <option value="365">Daily (365x/year)</option>
+                        <option value="0">Continuously</option>
+                    </select>
+                </div>
+                <div class="form-group" id="grpContrib">
+                    <label><span class="label-icon">&#128181;</span> Regular Contribution ($)</label>
+                    <input type="number" id="contrib" value="100" step="50" min="0">
+                    <small>Additional amount added per period</small>
+                </div>
+                <div class="form-group" id="grpContribFreq">
+                    <label><span class="label-icon">&#128338;</span> Contribution Frequency</label>
+                    <select id="contribFreq">
+                        <option value="12" selected>Monthly</option>
+                        <option value="4">Quarterly</option>
+                        <option value="1">Annually</option>
+                    </select>
+                </div>
+                <div class="form-group" id="grpContribTiming">
+                    <label><span class="label-icon">&#128197;</span> Contribution Timing</label>
+                    <select id="contribTiming">
+                        <option value="end" selected>End of Period</option>
+                        <option value="begin">Beginning of Period</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="btn-row">
+                <button class="btn-calc" onclick="calculate()">&#128202; Calculate Interest</button>
+                <button class="btn-reset" onclick="resetForm()">&#128260; Reset</button>
+            </div>
+
+            <div class="results-panel" id="results">
+                <div class="results-header"><h3>&#128202; Interest Results</h3></div>
+
+                <div class="big-result">
+                    <div class="r-label">Total Balance</div>
+                    <div class="r-val" id="bigVal">$0</div>
+                    <div class="r-sub" id="bigSub"></div>
+                </div>
+
+                <div class="result-cards">
+                    <div class="result-card">
+                        <div class="result-label">Total Interest Earned</div>
+                        <div class="result-val" id="resTotalInt">$0</div>
                     </div>
-                    <p class="footer-desc">
-                        Your trusted destination for 250+ free online calculators and tools. 
-                        From financial planning to health tracking, we've got you covered.
-                    </p>
+                    <div class="result-card">
+                        <div class="result-label">Total Contributions</div>
+                        <div class="result-val" id="resTotalContrib">$0</div>
+                    </div>
+                    <div class="result-card">
+                        <div class="result-label">Principal</div>
+                        <div class="result-val" id="resPrincipal">$0</div>
+                    </div>
                 </div>
-                
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <ul class="footer-links">
-                        <li><a href="../../index.html">Home</a></li>
-                        <li><a href="../../index.html#financial">Financial Tools</a></li>
-                        <li><a href="../../index.html#health">Health Tools</a></li>
-                        <li><a href="../../index.html#math">Math Tools</a></li>
-                    </ul>
+
+                <div class="apy-box" id="apyBox">
+                    <div class="apy-label">Annual Percentage Yield (APY)</div>
+                    <div class="apy-val" id="apyVal">0%</div>
                 </div>
-                
-                <div class="footer-section">
-                    <h4>More Tools</h4>
-                    <ul class="footer-links">
-                        <li><a href="../../index.html#text">Text Tools</a></li>
-                        <li><a href="../../index.html#image">Image Tools</a></li>
-                        <li><a href="../../index.html#student">Student Tools</a></li>
-                        <li><a href="../../index.html#other">Other Tools</a></li>
-                    </ul>
+
+                <div class="summary-box">
+                    <h4>&#128161; Summary</h4>
+                    <p id="summaryText"></p>
                 </div>
-                
-                <div class="footer-section">
-                    <h4>Company</h4>
-                    <ul class="footer-links">
-                        <li><a href="../../about-us.html">About Us</a></li>
-                        <li><a href="../../privacy-policy.html">Privacy Policy</a></li>
-                        <li><a href="../../terms-of-service.html">Terms of Service</a></li>
-                        <li><a href="../../contact.html">Contact</a></li>
-                    </ul>
+
+                <div class="chart-container">
+                    <canvas id="intChart"></canvas>
                 </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2025 ShramTools by <a href="https://shramkavach.com" target="_blank">Shram Kavach</a>. All rights reserved.</p>
-                <div class="social-links">
-                    <a href="#" class="social-link" aria-label="Twitter">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                        </svg>
-                    </a>
-                    <a href="#" class="social-link" aria-label="GitHub">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                        </svg>
-                    </a>
-                    <a href="#" class="social-link" aria-label="LinkedIn">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                        </svg>
-                    </a>
+
+                <div style="margin-top:25px;">
+                    <h4 style="font-size:1.1rem;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:8px;">&#128203; Year-by-Year Breakdown</h4>
+                    <div style="overflow-x:auto;max-height:450px;overflow-y:auto;">
+                        <table class="year-table">
+                            <thead><tr><th>Year</th><th>Starting Balance</th><th>Contributions</th><th>Interest</th><th>Ending Balance</th></tr></thead>
+                            <tbody id="tableBody"></tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
+
+        <section class="content-card">
+            <h2><span class="section-icon">&#128218;</span> Simple vs. Compound Interest</h2>
+            <p><strong>Simple interest</strong> is calculated only on the original principal. It grows linearly over time. For a $10,000 deposit at 6% for 10 years, simple interest yields $6,000 (total $16,000).</p>
+            <p><strong>Compound interest</strong> is calculated on the principal <em>plus</em> accumulated interest, creating exponential growth. The same deposit compounded monthly yields ~$8,167 in interest (total ~$18,167). The more frequently interest compounds, the faster the balance grows.</p>
+            <ul>
+                <li><strong>Annually:</strong> Interest added once per year.</li>
+                <li><strong>Monthly:</strong> Interest added 12 times per year &mdash; most common for savings accounts.</li>
+                <li><strong>Daily:</strong> Interest added every day &mdash; used by many banks.</li>
+                <li><strong>Continuously:</strong> Theoretical maximum, using the mathematical constant <em>e</em>.</li>
+            </ul>
+        </section>
+
+        <div class="image-box">
+            <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=80&w=1200" alt="Investment growth concept" loading="lazy">
+        </div>
+
+        <section class="content-card">
+            <h2><span class="section-icon">&#129514;</span> Interest Formulas</h2>
+            <p><strong>Simple Interest:</strong></p>
+            <div class="formula-container">
+                <div class="formula-math">
+                    <span class="var result">A</span>
+                    <span class="equals">=</span>
+                    <span class="var">P</span>
+                    <span class="operator">&times;</span>
+                    <span class="var">(1 + r &times; t)</span>
+                </div>
+                <div class="formula-legend">
+                    <div class="legend-item"><span class="legend-var purple">A</span> = final amount</div>
+                    <div class="legend-item"><span class="legend-var">P</span> = principal</div>
+                    <div class="legend-item"><span class="legend-var">r</span> = annual interest rate (decimal)</div>
+                    <div class="legend-item"><span class="legend-var">t</span> = time in years</div>
+                </div>
+            </div>
+            <p><strong>Compound Interest:</strong></p>
+            <div class="formula-container">
+                <div class="formula-math">
+                    <span class="var result">A</span>
+                    <span class="equals">=</span>
+                    <span class="var">P</span>
+                    <span class="operator">&times;</span>
+                    <span class="var">(1 + r/n)</span><sup style="color:#93c5fd;font-size:.85rem;"><em>nt</em></sup>
+                </div>
+                <div class="formula-legend">
+                    <div class="legend-item"><span class="legend-var">n</span> = compounding periods per year</div>
+                </div>
+            </div>
+            <p><strong>Continuous Compounding:</strong></p>
+            <div class="formula-container">
+                <div class="formula-math">
+                    <span class="var result">A</span>
+                    <span class="equals">=</span>
+                    <span class="var">P</span>
+                    <span class="operator">&times;</span>
+                    <span class="var">e</span><sup style="color:#93c5fd;font-size:.85rem;"><em>rt</em></sup>
+                </div>
+            </div>
+            <p><strong>APY (Annual Percentage Yield):</strong></p>
+            <div class="formula-container">
+                <div class="formula-math">
+                    <span class="var result">APY</span>
+                    <span class="equals">=</span>
+                    <span class="var">(1 + r/n)</span><sup style="color:#93c5fd;font-size:.85rem;"><em>n</em></sup>
+                    <span class="operator">&minus;</span>
+                    <span class="var">1</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-card">
+            <h2><span class="section-icon">&#10067;</span> Interest Calculator FAQ</h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>What is the difference between APR and APY?</h3><span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer"><p><strong>APR (Annual Percentage Rate)</strong> is the stated nominal rate without accounting for compounding. <strong>APY (Annual Percentage Yield)</strong> reflects the actual return after compounding. For example, a 6% APR compounded monthly yields an APY of 6.17%. APY is always &#8805; APR. Banks advertise APY on savings (looks higher) and APR on loans (looks lower).</p></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>How much difference does compounding frequency make?</h3><span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer"><p>On $10,000 at 6% for 10 years: Annual compounding = $17,908, Monthly = $18,194, Daily = $18,221, Continuous = $18,221. The jump from annual to monthly is most significant; after that, returns diminish rapidly. For most practical purposes, monthly and daily produce nearly identical results.</p></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>What is the Rule of 72?</h3><span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer"><p>Divide 72 by the interest rate to estimate how many years it takes to double your money. At 6%: 72 &divide; 6 = 12 years. At 8%: 72 &divide; 8 = 9 years. This quick approximation works well for rates between 2% and 15%.</p></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>How do regular contributions affect growth?</h3><span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer"><p>Regular contributions dramatically accelerate wealth building. $10,000 at 6% for 20 years grows to ~$32,071 alone. Add $200/month and the total becomes ~$124,699 &mdash; with $58,000 in contributions and ~$56,628 in interest. The earlier and more consistently you contribute, the greater the compounding benefit.</p></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>Is interest earned on savings taxable?</h3><span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer"><p>Yes. In the US, interest earned on savings accounts, CDs, and bonds is generally taxable as ordinary income. Banks issue Form 1099-INT for interest over $10. Tax-advantaged accounts (IRAs, 401(k)s) can defer or eliminate interest taxation. Municipal bond interest is typically exempt from federal tax.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="related-tools">
+            <h2><span class="section-icon">&#128736;</span> Related Financial Tools</h2>
+            <div class="tools-grid">
+                <a href="compound-interest-calculator.html" class="tool-link"><span class="tool-emoji">&#128202;</span> Compound Interest</a>
+                <a href="savings-calculator.html" class="tool-link"><span class="tool-emoji">&#128178;</span> Savings Calculator</a>
+                <a href="investment-calculator.html" class="tool-link"><span class="tool-emoji">&#128200;</span> Investment Calculator</a>
+                <a href="interest-rate-calculator.html" class="tool-link"><span class="tool-emoji">&#128176;</span> Interest Rate Finder</a>
+                <a href="inflation-calculator.html" class="tool-link"><span class="tool-emoji">&#128200;</span> Inflation Calculator</a>
+                <a href="finance-calculator.html" class="tool-link"><span class="tool-emoji">&#129518;</span> Finance Calculator</a>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section"><h3>ScribbleTools</h3><p>Free, powerful online calculators for financial planning, health tracking, and everyday math. No sign-up, no ads, just results.</p></div>
+            <div class="footer-section"><h3>Quick Links</h3><a href="../../index.html">Home</a><a href="../../about-us.html">About Us</a><a href="../../all-tools.html">All Tools</a><a href="../../blog.html">Blog</a></div>
+            <div class="footer-section"><h3>Popular Tools</h3><a href="compound-interest-calculator.html">Compound Interest</a><a href="mortgage-calculator.html">Mortgage Calculator</a><a href="loan-calculator.html">Loan Calculator</a><a href="retirement-calculator.html">Retirement Planner</a></div>
+            <div class="footer-section"><h3>Legal</h3><a href="../../contact.html">Contact</a><p style="font-size:.8rem;margin-top:10px;">&#9888;&#65039; For educational purposes. Not financial advice.</p></div>
+        </div>
+        <div class="footer-bottom"><p>&copy; 2025 ScribbleTools. All rights reserved.</p><div class="footer-links-bottom"><a href="../../contact.html">Contact</a><a href="../../about-us.html">About</a></div></div>
     </footer>
+</div>
+
+<script>
+const fmt = n => '$' + Math.abs(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+let calcMode = 'compound';
+
+function setMode(m) {
+    calcMode = m;
+    document.getElementById('modeCompound').classList.toggle('active', m === 'compound');
+    document.getElementById('modeSimple').classList.toggle('active', m === 'simple');
+    const show = m === 'compound';
+    ['grpCompFreq','grpContribFreq','grpContribTiming'].forEach(id => {
+        document.getElementById(id).style.display = show ? 'flex' : 'none';
+    });
+    document.getElementById('results').style.display = 'none';
+}
+
+function calculate() {
+    const P = parseFloat(document.getElementById('principal').value) || 0;
+    const r = (parseFloat(document.getElementById('rate').value) || 0) / 100;
+    let t = parseFloat(document.getElementById('time').value) || 0;
+    const unit = document.getElementById('timeUnit').value;
+    if (unit === 'months') t = t / 12;
+    if (P <= 0 || t <= 0) { alert('Please enter valid positive values.'); return; }
+
+    const n = parseInt(document.getElementById('compFreq').value);
+    const contrib = parseFloat(document.getElementById('contrib').value) || 0;
+    const contribFreq = parseInt(document.getElementById('contribFreq').value);
+    const contribBegin = document.getElementById('contribTiming').value === 'begin';
+
+    let totalBalance, totalInterest, totalContributions;
+    const totalYears = Math.ceil(t);
+    const yearData = [];
+
+    if (calcMode === 'simple') {
+        totalBalance = P * (1 + r * t);
+        totalContributions = contrib * contribFreq * t;
+        totalBalance += totalContributions;
+        totalInterest = totalBalance - P - totalContributions;
+
+        let bal = P;
+        for (let y = 1; y <= totalYears; y++) {
+            const yf = Math.min(y, t) - (y - 1);
+            const startBal = bal;
+            const yearContrib = contrib * contribFreq * yf;
+            const yearInt = P * r * yf;
+            bal = startBal + yearContrib + yearInt;
+            yearData.push({ year: y, start: startBal, contrib: yearContrib, interest: yearInt, end: bal });
+        }
+    } else {
+        // Compound interest with contributions
+        let bal = P;
+        let cumContrib = 0;
+
+        for (let y = 1; y <= totalYears; y++) {
+            const yFraction = Math.min(y, t) - (y - 1);
+            const startBal = bal;
+            let yearInt = 0;
+            let yearContrib = 0;
+
+            if (n === 0) {
+                // Continuous compounding
+                const periodsInYear = Math.round(contribFreq * yFraction);
+                for (let p = 0; p < periodsInYear; p++) {
+                    const dt = yFraction / periodsInYear;
+                    if (contribBegin && contrib > 0) { bal += contrib; yearContrib += contrib; }
+                    const newBal = bal * Math.exp(r * dt);
+                    yearInt += newBal - bal;
+                    bal = newBal;
+                    if (!contribBegin && contrib > 0) { bal += contrib; yearContrib += contrib; }
+                }
+                if (periodsInYear === 0) {
+                    const newBal = bal * Math.exp(r * yFraction);
+                    yearInt += newBal - bal;
+                    bal = newBal;
+                }
+            } else {
+                // Discrete compounding
+                const compPeriodsInYear = Math.round(n * yFraction);
+                const contribInterval = n / contribFreq;
+                for (let cp = 1; cp <= compPeriodsInYear; cp++) {
+                    // Add contribution if it falls on this compounding period
+                    if (contrib > 0 && contribBegin && (cp - 1) % contribInterval === 0) {
+                        bal += contrib; yearContrib += contrib;
+                    }
+                    const periodInt = bal * (r / n);
+                    yearInt += periodInt;
+                    bal += periodInt;
+                    if (contrib > 0 && !contribBegin && cp % contribInterval === 0) {
+                        bal += contrib; yearContrib += contrib;
+                    }
+                }
+            }
+            cumContrib += yearContrib;
+            yearData.push({ year: y, start: startBal, contrib: yearContrib, interest: yearInt, end: bal });
+        }
+        totalBalance = bal;
+        totalContributions = cumContrib;
+        totalInterest = totalBalance - P - totalContributions;
+    }
+
+    // APY
+    let apy = 0;
+    if (calcMode === 'compound' && n > 0) {
+        apy = (Math.pow(1 + r / n, n) - 1) * 100;
+    } else if (calcMode === 'compound' && n === 0) {
+        apy = (Math.exp(r) - 1) * 100;
+    }
+
+    document.getElementById('bigVal').textContent = fmt(totalBalance);
+    document.getElementById('bigSub').textContent = 'After ' + (unit === 'months' ? (t * 12).toFixed(0) + ' months' : t.toFixed(t % 1 ? 1 : 0) + ' years') + ' at ' + (r * 100).toFixed(2) + '% ' + (calcMode === 'simple' ? 'simple' : 'compound') + ' interest';
+    document.getElementById('resTotalInt').textContent = fmt(totalInterest);
+    document.getElementById('resTotalContrib').textContent = fmt(totalContributions);
+    document.getElementById('resPrincipal').textContent = fmt(P);
+
+    const apyBox = document.getElementById('apyBox');
+    if (calcMode === 'compound') {
+        apyBox.style.display = 'block';
+        document.getElementById('apyVal').textContent = apy.toFixed(3) + '%';
+    } else {
+        apyBox.style.display = 'none';
+    }
+
+    // Summary
+    const rule72 = r > 0 ? (72 / (r * 100)).toFixed(1) : '\u221e';
+    const intPct = P > 0 ? ((totalInterest / P) * 100).toFixed(1) : '0';
+    document.getElementById('summaryText').innerHTML =
+        'Starting with <span class="hl">' + fmt(P) + '</span>' +
+        (totalContributions > 0 ? ' and contributing <span class="hl">' + fmt(totalContributions) + '</span> over time' : '') +
+        ', you will earn <span class="hl">' + fmt(totalInterest) + '</span> in ' + calcMode + ' interest over <span class="hl">' +
+        (unit === 'months' ? (t * 12).toFixed(0) + ' months' : t.toFixed(t % 1 ? 1 : 0) + ' years') +
+        '</span>, for a final balance of <span class="hl">' + fmt(totalBalance) + '</span>. ' +
+        (calcMode === 'compound' ? 'At this rate, your money doubles every <span class="hl">' + rule72 + ' years</span> (Rule of 72).' : 'Interest return on principal: <span class="hl">' + intPct + '%</span>.');
+
+    // Table
+    const tbody = document.getElementById('tableBody');
+    tbody.innerHTML = '';
+    yearData.forEach(d => {
+        const row = document.createElement('tr');
+        row.innerHTML = '<td>' + d.year + '</td><td>' + fmt(d.start) + '</td><td>' + fmt(d.contrib) + '</td><td>' + fmt(d.interest) + '</td><td>' + fmt(d.end) + '</td>';
+        tbody.appendChild(row);
+    });
+
+    // Chart
+    drawChart(yearData, P);
+
+    document.getElementById('results').style.display = 'block';
+    document.getElementById('results').scrollIntoView({ behavior:'smooth', block:'start' });
+}
+
+function drawChart(yearData, principal) {
+    const canvas = document.getElementById('intChart');
+    const ctx = canvas.getContext('2d');
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width = canvas.offsetWidth * dpr;
+    canvas.height = 280 * dpr;
+    ctx.scale(dpr, dpr);
+    const W = canvas.offsetWidth, H = 280;
+    const pad = { top: 35, right: 30, bottom: 45, left: 85 };
+    const cW = W - pad.left - pad.right, cH = H - pad.top - pad.bottom;
+    ctx.clearRect(0, 0, W, H);
+
+    const labels = ['Start', ...yearData.map(d => 'Y' + d.year)];
+    const balData = [principal, ...yearData.map(d => d.end)];
+    let cumContrib = [principal];
+    let cc = principal;
+    yearData.forEach(d => { cc += d.contrib; cumContrib.push(cc); });
+
+    const maxV = Math.max(...balData);
+    const barW = Math.min(cW / labels.length - 4, 35);
+
+    // Grid
+    ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 0.5;
+    for (let i = 0; i <= 5; i++) {
+        const y = pad.top + cH - (i / 5) * cH;
+        ctx.beginPath(); ctx.moveTo(pad.left, y); ctx.lineTo(pad.left + cW, y); ctx.stroke();
+        ctx.fillStyle = '#94a3b8'; ctx.font = '11px Segoe UI'; ctx.textAlign = 'right';
+        const v = (maxV * i / 5);
+        ctx.fillText(v >= 1e6 ? '$' + (v/1e6).toFixed(1) + 'M' : v >= 1e3 ? '$' + (v/1e3).toFixed(0) + 'k' : '$' + v.toFixed(0), pad.left - 8, y + 4);
+    }
+
+    // Bars
+    labels.forEach((l, i) => {
+        const x = pad.left + (i / labels.length) * cW + (cW / labels.length - barW) / 2;
+        const bh = (balData[i] / maxV) * cH;
+        const ch = (cumContrib[i] / maxV) * cH;
+
+        // Interest portion (top)
+        const grd = ctx.createLinearGradient(x, pad.top + cH - bh, x, pad.top + cH);
+        grd.addColorStop(0, '#667eea'); grd.addColorStop(1, '#764ba2');
+        ctx.fillStyle = grd;
+        ctx.beginPath(); ctx.roundRect(x, pad.top + cH - bh, barW, bh - ch, [4, 4, 0, 0]); ctx.fill();
+
+        // Principal + contributions (bottom)
+        ctx.fillStyle = '#e0e7ff';
+        ctx.beginPath(); ctx.roundRect(x, pad.top + cH - ch, barW, ch, [0, 0, 4, 4]); ctx.fill();
+
+        // X label
+        if (labels.length <= 20 || i % Math.ceil(labels.length / 15) === 0) {
+            ctx.fillStyle = '#64748b'; ctx.font = '10px Segoe UI'; ctx.textAlign = 'center';
+            ctx.fillText(l, x + barW / 2, pad.top + cH + 15);
+        }
+    });
+
+    // Legend
+    ctx.fillStyle = '#1e293b'; ctx.font = 'bold 13px Segoe UI'; ctx.textAlign = 'left';
+    ctx.fillText('Interest Growth Over Time', pad.left, 16);
+    const lx = pad.left;
+    ctx.fillStyle = '#667eea'; ctx.fillRect(lx, 22, 12, 8);
+    ctx.fillStyle = '#64748b'; ctx.font = '10px Segoe UI'; ctx.fillText('Interest', lx + 16, 30);
+    ctx.fillStyle = '#e0e7ff'; ctx.fillRect(lx + 75, 22, 12, 8);
+    ctx.fillStyle = '#64748b'; ctx.fillText('Principal + Contributions', lx + 91, 30);
+}
+
+function resetForm() {
+    document.getElementById('principal').value = '10000';
+    document.getElementById('rate').value = '6';
+    document.getElementById('time').value = '10';
+    document.getElementById('timeUnit').value = 'years';
+    document.getElementById('compFreq').value = '12';
+    document.getElementById('contrib').value = '100';
+    document.getElementById('contribFreq').value = '12';
+    document.getElementById('contribTiming').value = 'end';
+    setMode('compound');
+    document.getElementById('results').style.display = 'none';
+}
+
+function toggleFAQ(el) {
+    const item = el.closest('.faq-item');
+    const was = item.classList.contains('active');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+    if (!was) item.classList.add('active');
+}
+
+const hamburger = document.getElementById('hamburger');
+const headerLinks = document.getElementById('headerLinks');
+const menuOverlay = document.getElementById('menuOverlay');
+function toggleMenu() {
+    hamburger.classList.toggle('active'); headerLinks.classList.toggle('active'); menuOverlay.classList.toggle('active');
+    document.body.style.overflow = headerLinks.classList.contains('active') ? 'hidden' : '';
+}
+hamburger.addEventListener('click', toggleMenu);
+menuOverlay.addEventListener('click', toggleMenu);
+headerLinks.querySelectorAll('a').forEach(l => { l.addEventListener('click', () => { if (window.innerWidth <= 768) toggleMenu(); }); });
+</script>
 </body>
 </html>
