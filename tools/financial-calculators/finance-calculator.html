@@ -3,623 +3,981 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
-    <title>Finance Calculator - Free Online Tool | ShramTools</title>
-    <meta name="description" content="Free Finance Calculator tool by ShramTools. Easy to use, accurate results, no registration required.">
-    <meta name="keywords" content="finance calculator, free calculator, online tool, ShramTools">
-    <meta name="author" content="ShramTools by Shram Kavach">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://shramtools.shramkavach.com/tools/financial-calculators/finance-calculator.html">
-    
-    <!-- Open Graph -->
+    <title>Finance Calculator - TVM Solver (PV, FV, PMT, Rate, Periods) | ScribbleTools</title>
+    <meta name="description" content="Free Finance Calculator — solve for any Time Value of Money variable: Present Value, Future Value, Payment, Interest Rate, or Number of Periods. The ultimate financial Swiss Army knife.">
+    <meta name="keywords" content="finance calculator, TVM calculator, time value of money, present value, future value, annuity, PMT, interest rate solver, financial math">
+    <link rel="canonical" href="https://scribbletools.com/tools/financial-calculators/finance-calculator.html">
+
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://shramtools.shramkavach.com/tools/financial-calculators/finance-calculator.html">
-    <meta property="og:title" content="Finance Calculator - Free Online Tool | ShramTools">
-    <meta property="og:description" content="Free Finance Calculator tool. Easy to use, accurate results.">
-    <meta property="og:image" content="https://shramtools.shramkavach.com/images/og-image.jpg">
-    
-    <!-- Twitter -->
+    <meta property="og:url" content="https://scribbletools.com/tools/financial-calculators/finance-calculator.html">
+    <meta property="og:title" content="Finance Calculator - TVM Solver | ScribbleTools">
+    <meta property="og:description" content="Solve for any Time Value of Money variable: PV, FV, PMT, Rate, or N. Free, fast, and accurate.">
+    <meta property="og:image" content="../../images/og-image.jpg">
+
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:title" content="Finance Calculator | ShramTools">
-    <meta property="twitter:description" content="Free Finance Calculator tool by ShramTools.">
-    
+    <meta property="twitter:title" content="Finance Calculator | ScribbleTools">
+    <meta property="twitter:description" content="Universal TVM solver — compute present value, future value, payments, rates, or periods.">
+
     <link rel="icon" type="image/webp" href="../../images/logo.webp">
-    
+
     <style>
-        /* Reset & Base */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667EEA 0%, #764BA2 100%);
+            --page-bg: linear-gradient(180deg, #F5F7FA 0%, #E8EEF5 50%, #F0E7F8 100%);
+            --text-main: #2D3748; --text-secondary: #4A5568; --text-muted: #718096; --border: #E2E8F0;
         }
-        
-        html {
-            scroll-behavior: smooth;
-        }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #e8eef5 50%, #f0e7f8 100%);
-            background-attachment: fixed;
-            min-height: 100vh;
-            color: #2d3748;
-            line-height: 1.6;
-        }
-        
-        /* Site Header */
-        .site-header {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(20px) saturate(180%);
-            -webkit-backdrop-filter: blur(20px) saturate(180%);
-            padding: 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 8px 32px rgba(102, 126, 234, 0.08), 0 1px 3px rgba(0, 0, 0, 0.05);
-            border-bottom: 1px solid rgba(102, 126, 234, 0.1);
-        }
-        
-        .site-header::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #667eea, #764ba2, #a855f7, transparent);
-            animation: headerGlow 4s ease-in-out infinite;
-        }
-        
-        @keyframes headerGlow {
-            0%, 100% { opacity: 0.2; }
-            50% { opacity: 0.6; }
-        }
-        
-        .header-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            text-decoration: none;
-        }
-        
-        .logo-icon {
-            width: 45px;
-            height: 45px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            box-shadow: 0 8px 24px rgba(102, 126, 234, 0.4);
-            transition: all 0.4s;
-            overflow: hidden;
-        }
-        
-        .logo-icon img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 12px;
-        }
-        
-        .logo-icon:hover {
-            transform: scale(1.05) rotate(5deg);
-            box-shadow: 0 12px 32px rgba(102, 126, 234, 0.5);
-        }
-        
-        .logo-text {
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .logo-main {
-            font-size: 1.5rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #a855f7 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: -0.5px;
-        }
-        
-        .logo-sub {
-            font-size: 0.7rem;
-            color: #718096;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-top: -2px;
-        }
-        
-        .nav-menu {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-        }
-        
-        .nav-link {
-            color: #4a5568;
-            text-decoration: none;
-            font-weight: 500;
-            padding: 0.6rem 1.2rem;
-            border-radius: 12px;
-            transition: all 0.3s;
-            position: relative;
-        }
-        
-        .nav-link:hover {
-            color: #667eea;
-            background: rgba(102, 126, 234, 0.08);
-        }
-        
-        .nav-link.active {
-            color: #667eea;
-            background: rgba(102, 126, 234, 0.1);
-        }
-        
-        .nav-link-primary {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white !important;
-            padding: 0.7rem 1.5rem;
-            border-radius: 25px;
-            font-weight: 600;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-        }
-        
-        .nav-link-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5);
-            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
-        }
-        
-        /* Main Content - Under Progress */
-        .main-content {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 60px 20px;
-            text-align: center;
-        }
-        
-        .progress-container {
-            background: white;
-            border-radius: 24px;
-            padding: 60px 40px;
-            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.15);
-            border: 1px solid rgba(102, 126, 234, 0.1);
-        }
-        
-        .progress-icon {
-            width: 120px;
-            height: 120px;
-            margin: 0 auto 30px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            animation: pulse 2s ease-in-out infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(102, 126, 234, 0.4); }
-            50% { transform: scale(1.05); box-shadow: 0 0 0 20px rgba(102, 126, 234, 0); }
-        }
-        
-        .progress-icon svg {
-            width: 60px;
-            height: 60px;
-            fill: white;
-        }
-        
-        .progress-title {
-            font-size: 2.5rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #a855f7 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 15px;
-        }
-        
-        .progress-subtitle {
-            font-size: 1.2rem;
-            color: #718096;
-            margin-bottom: 30px;
-        }
-        
-        .progress-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-            color: #92400e;
-            padding: 12px 24px;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1rem;
-            margin-bottom: 30px;
-        }
-        
-        .progress-badge svg {
-            width: 20px;
-            height: 20px;
-            fill: #f59e0b;
-        }
-        
-        .category-badge {
-            display: inline-block;
-            background: rgba(102, 126, 234, 0.1);
-            color: #667eea;
-            padding: 8px 20px;
-            border-radius: 25px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            margin-bottom: 30px;
-        }
-        
-        .progress-message {
-            color: #4a5568;
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 40px;
-        }
-        
-        .explore-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 16px 40px;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            text-decoration: none;
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
-            transition: all 0.3s;
-        }
-        
-        .explore-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.5);
-        }
-        
-        .explore-btn svg {
-            width: 20px;
-            height: 20px;
-            fill: white;
-        }
-        
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+        html { scroll-behavior: smooth; }
+        body { background: var(--page-bg); color: var(--text-main); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+        .page-wrapper { min-height: 100vh; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+
+        /* Header */
+        .site-header { background: rgba(255,255,255,0.85); backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%); position: sticky; top: 0; z-index: 1000; box-shadow: 0 8px 32px rgba(102,126,234,0.08), 0 1px 3px rgba(0,0,0,0.05); border-bottom: 1px solid rgba(102,126,234,0.1); }
+        .site-header::before { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, #667eea, #764ba2, #a855f7, transparent); animation: headerGlow 4s ease-in-out infinite; }
+        @keyframes headerGlow { 0%, 100% { opacity: 0.2; } 50% { opacity: 0.6; } }
+        .header-content { max-width: 1400px; margin: 0 auto; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+        .logo { display: flex; align-items: center; gap: 0.8rem; text-decoration: none; }
+        .logo-icon { width: 45px; height: 45px; border-radius: 12px; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); box-shadow: 0 8px 24px rgba(102,126,234,0.4); transition: all 0.4s; overflow: hidden; }
+        .logo-icon img { width: 100%; height: 100%; object-fit: cover; }
+        .logo:hover .logo-icon { transform: scale(1.1); }
+        .logo-text h1 { margin: 0; font-size: 1.6rem; font-weight: 800; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .logo-text p { margin: 0; font-size: 0.7rem; color: #64748b; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; }
+        .header-links { display: flex; gap: 1.5rem; align-items: center; }
+        .header-links a { color: #475569; text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: all 0.3s; padding: 0.5rem 0.8rem; position: relative; }
+        .header-links a:hover { color: #667eea; }
+        .header-links a::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 0; height: 2px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); transition: width 0.3s; }
+        .header-links a:hover::after { width: 80%; }
+        .cta-button { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white !important; padding: 0.6rem 1.2rem !important; border-radius: 8px; font-weight: 600; box-shadow: 0 4px 15px rgba(102,126,234,0.3); }
+        .cta-button:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(102,126,234,0.4); }
+        .cta-button::after { display: none !important; }
+        .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; z-index: 1001; padding: 5px; }
+        .hamburger span { width: 25px; height: 2.5px; background: #475569; border-radius: 2px; transition: all 0.3s; }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+        .menu-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 998; }
+        .menu-overlay.active { display: block; }
+
+        /* Breadcrumb */
+        .breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 0.88rem; margin-bottom: 25px; flex-wrap: wrap; }
+        .breadcrumb a { color: #667eea; text-decoration: none; font-weight: 500; }
+        .breadcrumb a:hover { color: #764ba2; }
+        .breadcrumb span { color: #94a3b8; }
+
+        /* Page Header */
+        .page-header { text-align: center; margin-bottom: 35px; padding: 40px 20px; background: white; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border: 1px solid rgba(226,232,240,0.6); }
+        .page-header .header-icon { font-size: 3rem; display: block; margin-bottom: 15px; }
+        .page-header h2 { font-size: 2.2rem; font-weight: 800; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 10px; }
+        .page-header p { color: var(--text-secondary); font-size: 1.05rem; max-width: 650px; margin: 0 auto; line-height: 1.7; }
+
+        /* Calc Card */
+        .calc-card { background: white; border-radius: 20px; padding: 40px; margin-bottom: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border: 1px solid rgba(226,232,240,0.6); }
+        .calc-title { display: flex; align-items: center; gap: 12px; margin-bottom: 28px; padding-bottom: 18px; border-bottom: 2px solid #f1f5f9; }
+        .calc-title span { font-size: 1.8rem; }
+        .calc-title h2 { font-size: 1.4rem; font-weight: 700; color: var(--text-main); }
+
+        /* Solve-For Tabs */
+        .solve-tabs { display: flex; gap: 8px; margin-bottom: 25px; flex-wrap: wrap; }
+        .solve-tab { padding: 10px 20px; border: 2px solid #e2e8f0; border-radius: 10px; background: #f8fafc; font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: all 0.3s; color: var(--text-secondary); display: flex; align-items: center; gap: 6px; }
+        .solve-tab:hover { border-color: #667eea; color: #667eea; background: #f0f4ff; }
+        .solve-tab.active { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-color: transparent; box-shadow: 0 4px 15px rgba(102,126,234,0.3); }
+        .solve-tab .tab-icon { font-size: 1rem; }
+
+        /* Form Grid */
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-bottom: 25px; }
+        .form-group { display: flex; flex-direction: column; gap: 6px; }
+        .form-group.full-width { grid-column: 1 / -1; }
+        .form-group label { font-size: 0.88rem; font-weight: 600; color: var(--text-secondary); display: flex; align-items: center; gap: 6px; }
+        .label-icon { font-size: 1rem; }
+        .form-group input, .form-group select { width: 100%; padding: 12px 16px; border: 2px solid #e2e8f0; border-radius: 10px; font-size: 1rem; color: var(--text-main); background: #f8fafc; transition: all 0.3s; outline: none; }
+        .form-group input:focus, .form-group select:focus { border-color: #667eea; background: white; box-shadow: 0 0 0 4px rgba(102,126,234,0.1); }
+        .form-group input:disabled { background: #e2e8f0; color: #94a3b8; cursor: not-allowed; border-style: dashed; }
+        .form-group small { font-size: 0.78rem; color: var(--text-muted); }
+        .solving-badge { display: inline-flex; align-items: center; gap: 4px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; font-size: 0.7rem; padding: 2px 8px; border-radius: 6px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+
+        /* Buttons */
+        .btn-row { display: flex; gap: 12px; margin-top: 5px; }
+        .btn-calc { flex: 1; padding: 14px 28px; border: none; border-radius: 12px; font-size: 1.05rem; font-weight: 700; cursor: pointer; transition: all 0.3s; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; box-shadow: 0 4px 15px rgba(102,126,234,0.3); }
+        .btn-calc:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(102,126,234,0.4); }
+        .btn-reset { padding: 14px 24px; border: 2px solid #e2e8f0; border-radius: 12px; font-size: 1rem; font-weight: 600; cursor: pointer; background: white; color: var(--text-secondary); transition: all 0.3s; }
+        .btn-reset:hover { border-color: #ef4444; color: #ef4444; }
+
+        /* Results */
+        .results-panel { display: none; margin-top: 30px; animation: fadeIn 0.5s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+        .results-header { text-align: center; margin-bottom: 25px; }
+        .results-header h3 { font-size: 1.3rem; font-weight: 700; color: var(--text-main); display: flex; align-items: center; justify-content: center; gap: 10px; }
+
+        .result-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 25px; }
+        .result-card { background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); border-radius: 14px; padding: 20px; text-align: center; border: 1px solid #e2e8f0; transition: all 0.3s; }
+        .result-card:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(0,0,0,0.08); }
+        .result-card.highlight { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border: none; }
+        .result-card.highlight .result-label, .result-card.highlight .result-val { color: white; }
+        .result-card .result-label { font-size: 0.82rem; font-weight: 600; color: var(--text-muted); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .result-card .result-val { font-size: 1.5rem; font-weight: 800; color: var(--text-main); }
+        .result-card.highlight .result-val { font-size: 1.8rem; }
+
+        /* Summary Box */
+        .summary-box { background: linear-gradient(135deg, #f0f4ff 0%, #faf5ff 100%); border: 1px solid #e0e7ff; border-radius: 14px; padding: 24px; margin-top: 20px; }
+        .summary-box h4 { font-size: 1.05rem; font-weight: 700; color: var(--text-main); margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+        .summary-box p { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.8; }
+        .summary-box .highlight-num { font-weight: 800; color: #667eea; }
+
+        /* Amortization Schedule (for loan/annuity) */
+        .schedule-section { margin-top: 25px; }
+        .schedule-section h4 { font-size: 1.1rem; font-weight: 700; color: var(--text-main); margin-bottom: 15px; display: flex; align-items: center; gap: 8px; }
+        .schedule-table { width: 100%; border-collapse: collapse; border-radius: 12px; overflow: hidden; }
+        .schedule-table thead { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .schedule-table th { padding: 14px 16px; text-align: left; color: white; font-weight: 600; font-size: 0.85rem; }
+        .schedule-table td { padding: 11px 16px; border-bottom: 1px solid #f1f5f9; font-size: 0.88rem; color: var(--text-secondary); }
+        .schedule-table tbody tr:hover { background: #f8fafc; }
+        .schedule-table .row-total td { font-weight: 700; color: var(--text-main); background: #f0f4ff; border-bottom: 2px solid #667eea; }
+
+        /* Canvas Chart */
+        .chart-container { margin-top: 25px; background: #fafbff; border-radius: 14px; padding: 20px; border: 1px solid #e2e8f0; }
+        .chart-container canvas { width: 100% !important; height: 280px !important; }
+
+        /* Content Card */
+        .content-card { background: white; border-radius: 16px; padding: 35px; margin-bottom: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border: 1px solid rgba(226,232,240,0.6); }
+        .content-card h2 { font-size: 1.5rem; font-weight: 800; color: var(--text-main); margin-bottom: 18px; display: flex; align-items: center; gap: 10px; }
+        .content-card p { color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin-bottom: 15px; }
+        .content-card ul { padding-left: 20px; margin-bottom: 15px; }
+        .content-card li { color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin-bottom: 8px; }
+        .section-icon { font-size: 1.4rem; }
+
+        /* Image */
+        .image-box { width: 100%; height: 300px; border-radius: 16px; overflow: hidden; margin-bottom: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+        .image-box img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* Formula */
+        .formula-container { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); border-radius: 14px; padding: 28px; margin: 20px 0; text-align: center; }
+        .formula-math { display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; padding: 12px; }
+        .formula-math .var { font-family: 'Times New Roman', Georgia, serif; font-style: italic; color: #93c5fd; font-size: 1.15rem; font-weight: 600; }
+        .formula-math .var.result { color: #a78bfa; font-size: 1.25rem; }
+        .formula-math .equals { color: #f59e0b; font-size: 1.3rem; font-weight: 700; }
+        .formula-math .operator { color: #f59e0b; font-size: 1.2rem; }
+        .formula-math .frac { display: inline-flex; flex-direction: column; align-items: center; gap: 2px; }
+        .formula-math .frac-num, .formula-math .frac-den { font-family: 'Times New Roman', Georgia, serif; font-style: italic; color: #93c5fd; font-size: 0.95rem; }
+        .formula-math .frac-line { width: 100%; height: 1px; background: #64748b; }
+        .formula-legend { display: flex; flex-direction: column; gap: 8px; margin-top: 18px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,0.1); }
+        .formula-legend .legend-item { font-size: 0.85rem; color: #94a3b8; line-height: 1.6; }
+        .formula-legend .legend-var { font-family: 'Times New Roman', Georgia, serif; font-style: italic; color: #93c5fd; font-weight: 600; }
+        .formula-legend .legend-var.purple { color: #a78bfa; }
+
+        /* FAQ */
+        .faq-grid { margin-top: 20px; }
+        .faq-item { border: 1px solid #edf2f7; border-radius: 12px; overflow: hidden; transition: all 0.3s; margin-bottom: 12px; background: white; }
+        .faq-item:hover { border-color: #e2e8f0; }
+        .faq-item.active { border-color: #667eea; box-shadow: 0 4px 15px rgba(102,126,234,0.1); }
+        .faq-question { padding: 18px 22px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; gap: 15px; }
+        .faq-question:hover { background: #f8fafc; }
+        .faq-question h3 { font-size: 1.05rem; margin: 0; color: var(--text-main); font-weight: 600; flex: 1; }
+        .faq-toggle { width: 28px; height: 28px; border-radius: 50%; background: #f1f5f9; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; color: #667eea; flex-shrink: 0; transition: all 0.3s; font-weight: 600; }
+        .faq-item.active .faq-toggle { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; transform: rotate(45deg); }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s ease; padding: 0 22px; }
+        .faq-item.active .faq-answer { max-height: 400px; padding: 0 22px 20px; }
+        .faq-answer p { font-size: 0.95rem; margin-bottom: 0; color: var(--text-secondary); line-height: 1.8; }
+
+        /* Related Tools */
+        .related-tools { background: white; border-radius: 16px; padding: 40px; margin-bottom: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border: 1px solid rgba(226,232,240,0.6); }
+        .related-tools h2 { font-size: 1.6rem; font-weight: 800; color: var(--text-main); margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+        .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
+        .tool-link { display: flex; align-items: center; gap: 12px; padding: 14px 18px; background: #f8fafc; border-radius: 12px; text-decoration: none; color: var(--text-main); font-weight: 600; font-size: 0.9rem; border: 1px solid #edf2f7; transition: all 0.3s; }
+        .tool-link:hover { background: white; border-color: #667eea; box-shadow: 0 4px 15px rgba(102,126,234,0.1); transform: translateY(-2px); }
+        .tool-link .tool-emoji { font-size: 1.3rem; }
+
         /* Footer */
-        .site-footer {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-            color: #e2e8f0;
-            padding: 60px 0 30px;
-            margin-top: 80px;
-        }
-        
-        .footer-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-        
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 3rem;
-            margin-bottom: 40px;
-        }
-        
-        .footer-brand {
-            max-width: 350px;
-        }
-        
-        .footer-logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 20px;
-        }
-        
-        .footer-logo-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 14px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-        
-        .footer-logo-icon img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 14px;
-        }
-        
-        .footer-logo-text {
-            font-size: 1.8rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #667eea 0%, #a855f7 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .footer-desc {
-            color: #94a3b8;
-            line-height: 1.8;
-            font-size: 0.95rem;
-        }
-        
-        .footer-section h4 {
-            color: white;
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            position: relative;
-            padding-bottom: 10px;
-        }
-        
-        .footer-section h4::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 40px;
-            height: 3px;
-            background: linear-gradient(90deg, #667eea, #a855f7);
-            border-radius: 2px;
-        }
-        
-        .footer-links {
-            list-style: none;
-        }
-        
-        .footer-links li {
-            margin-bottom: 12px;
-        }
-        
-        .footer-links a {
-            color: #94a3b8;
-            text-decoration: none;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .footer-links a:hover {
-            color: #a855f7;
-            transform: translateX(5px);
-        }
-        
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-        
-        .footer-bottom p {
-            color: #64748b;
-            font-size: 0.9rem;
-        }
-        
-        .footer-bottom a {
-            color: #a855f7;
-            text-decoration: none;
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 15px;
-        }
-        
-        .social-link {
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.05);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #94a3b8;
-            text-decoration: none;
-            transition: all 0.3s;
-        }
-        
-        .social-link:hover {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            transform: translateY(-3px);
-        }
-        
+        footer { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #1a1a2e 100%); color: #e2e8f0; padding: 60px 0 0; margin-top: 40px; }
+        .footer-content { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+        .footer-section h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 20px; color: white; position: relative; padding-bottom: 10px; }
+        .footer-section h3::after { content: ''; position: absolute; bottom: 0; left: 0; width: 30px; height: 2px; background: linear-gradient(135deg, #667eea, #764ba2); }
+        .footer-section p { font-size: 0.9rem; color: #94a3b8; line-height: 1.8; }
+        .footer-section a { color: #94a3b8; text-decoration: none; font-size: 0.9rem; display: block; margin-bottom: 10px; transition: all 0.3s; }
+        .footer-section a:hover { color: #667eea; padding-left: 5px; }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding: 20px 2rem; display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; }
+        .footer-bottom p { color: #64748b; font-size: 0.85rem; }
+        .footer-links-bottom { display: flex; gap: 20px; }
+        .footer-links-bottom a { color: #64748b; text-decoration: none; font-size: 0.85rem; }
+        .footer-links-bottom a:hover { color: #667eea; }
+
         /* Responsive */
-        @media (max-width: 968px) {
-            .nav-menu {
-                display: none;
-            }
-            
-            .footer-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-            
-            .progress-title {
-                font-size: 2rem;
-            }
+        @media (max-width: 992px) { .footer-content { grid-template-columns: 1fr 1fr; } .tools-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 850px) { .page-header h2 { font-size: 1.8rem; } .page-header { padding: 30px 20px; } }
+        @media (max-width: 768px) {
+            .container { padding: 25px 15px; } .calc-card { padding: 25px; }
+            .form-grid { grid-template-columns: 1fr; }
+            .result-cards { grid-template-columns: 1fr; }
+            .solve-tabs { gap: 6px; }
+            .solve-tab { padding: 8px 14px; font-size: 0.82rem; }
+            .content-card { padding: 28px 22px; } .related-tools { padding: 28px 22px; }
+            .tools-grid { grid-template-columns: 1fr; } .image-box { height: 220px; }
+            .hamburger { display: flex; }
+            .header-links { position: fixed; top: 0; right: -100%; width: 75%; max-width: 280px; height: 100vh; background: #ffffff; box-shadow: -5px 0 25px rgba(0,0,0,0.15); flex-direction: column; gap: 0; align-items: stretch; padding: 4rem 0 2rem; z-index: 999; transition: right 0.4s cubic-bezier(0.4,0,0.2,1); overflow-y: auto; }
+            .header-links.active { right: 0; }
+            .header-links a { text-align: left; padding: 1rem 1.5rem; border-bottom: 1px solid #e2e8f0; font-size: 1rem; }
+            .header-links a::after { display: none; }
+            .cta-button { margin: 1rem 1.5rem !important; text-align: center; border-bottom: none !important; }
+            .footer-content { grid-template-columns: 1fr; text-align: center; }
+            .footer-section h3::after { left: 50%; transform: translateX(-50%); }
+            .footer-bottom { flex-direction: column; text-align: center; }
+            .footer-links-bottom { justify-content: center; }
         }
-        
-        @media (max-width: 600px) {
-            .header-content {
-                padding: 1rem;
-            }
-            
-            .progress-container {
-                padding: 40px 20px;
-            }
-            
-            .progress-title {
-                font-size: 1.6rem;
-            }
-            
-            .footer-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .footer-bottom {
-                flex-direction: column;
-                text-align: center;
-            }
-        }
+        @media (max-width: 480px) { .btn-row { flex-direction: column; } .solve-tab { flex: 1; justify-content: center; } }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="site-header">
-        <div class="header-content">
-            <a href="../../index.html" class="logo">
-                <div class="logo-icon">
-                    <img src="../../images/logo.webp" alt="ShramTools Logo">
-                </div>
-                <div class="logo-text">
-                    <span class="logo-main">ShramTools</span>
-                    <span class="logo-sub">By Shram Kavach</span>
-                </div>
-            </a>
-            <nav class="nav-menu">
-                <a href="../../index.html" class="nav-link">Home</a>
-                <a href="../../index.html#financial" class="nav-link">Financial</a>
-                <a href="../../index.html#health" class="nav-link">Health</a>
-                <a href="../../index.html#math" class="nav-link">Math</a>
-                <a href="../../about-us.html" class="nav-link">About</a>
-                <a href="../../index.html" class="nav-link nav-link-primary">All Tools</a>
+    <div class="page-wrapper">
+        <!-- Header -->
+        <header class="site-header">
+            <div class="header-content">
+                <a href="../../index.html" class="logo">
+                    <div class="logo-icon"><img src="../../images/logo.webp" alt="ScribbleTools Logo"></div>
+                    <div class="logo-text"><h1>ScribbleTools</h1><p>Smart Digital Solutions</p></div>
+                </a>
+                <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+                <nav class="header-links" id="headerLinks">
+                    <a href="../../index.html">Home</a>
+                    <a href="../../index.html#financial">Financial Tools</a>
+                    <a href="../../index.html#health">Health Tools</a>
+                    <a href="../../about-us.html">About</a>
+                    <a href="../../index.html" class="cta-button">Explore Tools</a>
+                </nav>
+            </div>
+        </header>
+        <div class="menu-overlay" id="menuOverlay"></div>
+
+        <div class="container">
+            <!-- Breadcrumb -->
+            <nav class="breadcrumb">
+                <a href="../../index.html">Home</a><span>/</span>
+                <a href="../../index.html#financial">Financial Tools</a><span>/</span>
+                <span style="color: #4a5568; font-weight: 600;">Finance Calculator</span>
             </nav>
-        </div>
-    </header>
 
-    <!-- Main Content -->
-    <main class="main-content">
-        <div class="progress-container">
-            <div class="progress-icon">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
-                </svg>
-            </div>
-            
-            <h1 class="progress-title">Finance Calculator</h1>
-            
-            <div class="category-badge">Financial Calculators</div>
-            
-            <div class="progress-badge">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
-                </svg>
-                Under Development
-            </div>
-            
-            <p class="progress-subtitle">Coming Soon!</p>
-            
-            <p class="progress-message">
-                We're working hard to bring you an amazing <strong>Finance Calculator</strong> tool. 
-                Our team is crafting a feature-rich, user-friendly experience that will help you 
-                achieve accurate results with ease. Stay tuned!
-            </p>
-            
-            <a href="../../index.html" class="explore-btn">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
-                </svg>
-                Explore Other Tools
-            </a>
-        </div>
-    </main>
+            <!-- Page Header -->
+            <header class="page-header">
+                <span class="header-icon">&#128178;</span>
+                <h2>Finance Calculator</h2>
+                <p>A universal Time Value of Money (TVM) solver. Pick any variable to solve for &mdash; Present Value, Future Value, Payment, Interest Rate, or Number of Periods &mdash; and enter the rest.</p>
+            </header>
 
-    <!-- Footer -->
-    <footer class="site-footer">
-        <div class="footer-content">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <div class="footer-logo">
-                        <div class="footer-logo-icon">
-                            <img src="../../images/logo.webp" alt="ShramTools Logo">
-                        </div>
-                        <span class="footer-logo-text">ShramTools</span>
+            <!-- Calculator -->
+            <div class="calc-card">
+                <div class="calc-title">
+                    <span>&#129518;</span>
+                    <h2>TVM Calculator &mdash; Solve for Any Variable</h2>
+                </div>
+
+                <!-- Solve-For Tabs -->
+                <div class="solve-tabs" id="solveTabs">
+                    <button class="solve-tab active" data-solve="FV" onclick="setSolveFor('FV')">
+                        <span class="tab-icon">&#128200;</span> Future Value
+                    </button>
+                    <button class="solve-tab" data-solve="PV" onclick="setSolveFor('PV')">
+                        <span class="tab-icon">&#128181;</span> Present Value
+                    </button>
+                    <button class="solve-tab" data-solve="PMT" onclick="setSolveFor('PMT')">
+                        <span class="tab-icon">&#128179;</span> Payment
+                    </button>
+                    <button class="solve-tab" data-solve="RATE" onclick="setSolveFor('RATE')">
+                        <span class="tab-icon">&#128200;</span> Interest Rate
+                    </button>
+                    <button class="solve-tab" data-solve="N" onclick="setSolveFor('N')">
+                        <span class="tab-icon">&#128197;</span> Periods
+                    </button>
+                </div>
+
+                <div class="form-grid">
+                    <div class="form-group" id="grpN">
+                        <label><span class="label-icon">&#128197;</span> Number of Periods (N)</label>
+                        <input type="number" id="inpN" value="120" step="1">
+                        <small>Total number of compounding periods (e.g., 120 months = 10 years)</small>
                     </div>
-                    <p class="footer-desc">
-                        Your trusted destination for 250+ free online calculators and tools. 
-                        From financial planning to health tracking, we've got you covered.
-                    </p>
+
+                    <div class="form-group" id="grpRate">
+                        <label><span class="label-icon">&#128200;</span> Interest Rate per Period (%)</label>
+                        <input type="number" id="inpRate" value="0.5" step="0.01">
+                        <small>Rate per period (e.g., 6% annual ÷ 12 = 0.5% monthly)</small>
+                    </div>
+
+                    <div class="form-group" id="grpPV">
+                        <label><span class="label-icon">&#128181;</span> Present Value (PV)</label>
+                        <input type="number" id="inpPV" value="-50000" step="100">
+                        <small>Initial investment or loan amount. Negative = cash outflow (investment/loan)</small>
+                    </div>
+
+                    <div class="form-group" id="grpPMT">
+                        <label><span class="label-icon">&#128179;</span> Payment per Period (PMT)</label>
+                        <input type="number" id="inpPMT" value="-500" step="10">
+                        <small>Regular payment each period. Negative = cash outflow</small>
+                    </div>
+
+                    <div class="form-group" id="grpFV">
+                        <label><span class="label-icon">&#127919;</span> Future Value (FV) <span class="solving-badge" id="solvingBadge">SOLVING</span></label>
+                        <input type="number" id="inpFV" value="0" step="100" disabled>
+                        <small>Target future amount. 0 for fully amortized loans.</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label><span class="label-icon">&#128197;</span> Payments per Year</label>
+                        <select id="paymentsPerYear">
+                            <option value="12" selected>Monthly (12/yr)</option>
+                            <option value="26">Bi-weekly (26/yr)</option>
+                            <option value="52">Weekly (52/yr)</option>
+                            <option value="4">Quarterly (4/yr)</option>
+                            <option value="2">Semi-annually (2/yr)</option>
+                            <option value="1">Annually (1/yr)</option>
+                        </select>
+                        <small>Auto-converts annual rate to per-period rate in results</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label><span class="label-icon">&#9201;</span> Payment Timing</label>
+                        <select id="paymentTiming">
+                            <option value="0" selected>End of Period (Ordinary Annuity)</option>
+                            <option value="1">Beginning of Period (Annuity Due)</option>
+                        </select>
+                        <small>Most loans use end-of-period; leases often use beginning</small>
+                    </div>
                 </div>
-                
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <ul class="footer-links">
-                        <li><a href="../../index.html">Home</a></li>
-                        <li><a href="../../index.html#financial">Financial Tools</a></li>
-                        <li><a href="../../index.html#health">Health Tools</a></li>
-                        <li><a href="../../index.html#math">Math Tools</a></li>
-                    </ul>
+
+                <div class="btn-row">
+                    <button class="btn-calc" onclick="calculate()">&#128202; Calculate</button>
+                    <button class="btn-reset" onclick="resetForm()">&#128260; Reset</button>
                 </div>
-                
-                <div class="footer-section">
-                    <h4>More Tools</h4>
-                    <ul class="footer-links">
-                        <li><a href="../../index.html#text">Text Tools</a></li>
-                        <li><a href="../../index.html#image">Image Tools</a></li>
-                        <li><a href="../../index.html#student">Student Tools</a></li>
-                        <li><a href="../../index.html#other">Other Tools</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Company</h4>
-                    <ul class="footer-links">
-                        <li><a href="../../about-us.html">About Us</a></li>
-                        <li><a href="../../privacy-policy.html">Privacy Policy</a></li>
-                        <li><a href="../../terms-of-service.html">Terms of Service</a></li>
-                        <li><a href="../../contact.html">Contact</a></li>
-                    </ul>
+
+                <!-- Results -->
+                <div class="results-panel" id="results">
+                    <div class="results-header">
+                        <h3>&#128202; TVM Results</h3>
+                    </div>
+
+                    <div class="result-cards" id="resultCards">
+                        <div class="result-card" id="cardN">
+                            <div class="result-label">Periods (N)</div>
+                            <div class="result-val" id="resN">0</div>
+                        </div>
+                        <div class="result-card" id="cardRate">
+                            <div class="result-label">Rate / Period</div>
+                            <div class="result-val" id="resRate">0%</div>
+                        </div>
+                        <div class="result-card" id="cardPV">
+                            <div class="result-label">Present Value</div>
+                            <div class="result-val" id="resPV">$0</div>
+                        </div>
+                        <div class="result-card" id="cardPMT">
+                            <div class="result-label">Payment (PMT)</div>
+                            <div class="result-val" id="resPMT">$0</div>
+                        </div>
+                        <div class="result-card highlight" id="cardFV">
+                            <div class="result-label">Future Value</div>
+                            <div class="result-val" id="resFV">$0</div>
+                        </div>
+                        <div class="result-card" id="cardTotal">
+                            <div class="result-label">Total Payments</div>
+                            <div class="result-val" id="resTotal">$0</div>
+                        </div>
+                    </div>
+
+                    <!-- Summary -->
+                    <div class="summary-box" id="summaryBox">
+                        <h4>&#128161; Summary</h4>
+                        <p id="summaryText"></p>
+                    </div>
+
+                    <!-- Chart -->
+                    <div class="chart-container">
+                        <canvas id="tvmChart"></canvas>
+                    </div>
+
+                    <!-- Period-by-Period Table -->
+                    <div class="schedule-section" id="scheduleSection">
+                        <h4>&#128203; Period-by-Period Schedule</h4>
+                        <div style="overflow-x: auto; max-height: 500px; overflow-y: auto;">
+                            <table class="schedule-table">
+                                <thead>
+                                    <tr>
+                                        <th>Period</th>
+                                        <th>Payment</th>
+                                        <th>Interest</th>
+                                        <th>Principal</th>
+                                        <th>Balance</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="scheduleBody"></tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2025 ShramTools by <a href="https://shramkavach.com" target="_blank">Shram Kavach</a>. All rights reserved.</p>
-                <div class="social-links">
-                    <a href="#" class="social-link" aria-label="Twitter">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                        </svg>
-                    </a>
-                    <a href="#" class="social-link" aria-label="GitHub">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                        </svg>
-                    </a>
-                    <a href="#" class="social-link" aria-label="LinkedIn">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                        </svg>
-                    </a>
-                </div>
+
+            <!-- About TVM -->
+            <section class="content-card">
+                <h2><span class="section-icon">&#128218;</span> What Is the Time Value of Money?</h2>
+                <p>The <strong>Time Value of Money (TVM)</strong> is the foundational principle of finance: a dollar today is worth more than a dollar in the future because of its potential earning capacity. This concept underpins virtually all financial decisions.</p>
+                <ul>
+                    <li><strong>Present Value (PV):</strong> The current worth of a future sum or stream of payments, discounted at the interest rate. Used for valuing investments, loans, and bonds.</li>
+                    <li><strong>Future Value (FV):</strong> What an investment will grow to over time at a given interest rate. Essential for retirement planning and savings goals.</li>
+                    <li><strong>Payment (PMT):</strong> The periodic payment in an annuity &mdash; loan installments, retirement contributions, or lease payments.</li>
+                    <li><strong>Interest Rate (I/Y):</strong> The rate of return per period. For loans, it&rsquo;s the cost of borrowing; for investments, it&rsquo;s the expected rate of return.</li>
+                    <li><strong>Number of Periods (N):</strong> Total compounding periods. Monthly loans use months; annual investments use years.</li>
+                </ul>
+                <p>These five variables are interrelated &mdash; knowing any four allows you to solve for the fifth. This calculator handles all five cases.</p>
+            </section>
+
+            <div class="image-box">
+                <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6e?auto=format&fit=crop&q=80&w=1200" alt="Financial planning and calculations concept" loading="lazy">
             </div>
+
+            <!-- Formulas -->
+            <section class="content-card">
+                <h2><span class="section-icon">&#129514;</span> Core TVM Formulas</h2>
+                <p>The general TVM equation that relates all five variables:</p>
+
+                <div class="formula-container">
+                    <div class="formula-math">
+                        <span class="var">PV</span>
+                        <span class="operator">&times;</span>
+                        <span class="var">(1+r)</span><sup style="color:#93c5fd;font-size:0.85rem;"><em>n</em></sup>
+                        <span class="operator">+</span>
+                        <span class="var">PMT</span>
+                        <span class="operator">&times;</span>
+                        <span class="frac">
+                            <span class="frac-num">(1+r)<sup><em>n</em></sup> &minus; 1</span>
+                            <span class="frac-line"></span>
+                            <span class="frac-den">r</span>
+                        </span>
+                        <span class="operator">+</span>
+                        <span class="var result">FV</span>
+                        <span class="equals">=</span>
+                        <span class="var">0</span>
+                    </div>
+                    <div class="formula-legend">
+                        <div class="legend-item"><span class="legend-var">PV</span> = Present Value (initial amount)</div>
+                        <div class="legend-item"><span class="legend-var">r</span> = Interest rate per period (decimal)</div>
+                        <div class="legend-item"><span class="legend-var">n</span> = Total number of periods</div>
+                        <div class="legend-item"><span class="legend-var">PMT</span> = Payment per period</div>
+                        <div class="legend-item"><span class="legend-var purple">FV</span> = Future Value</div>
+                    </div>
+                </div>
+
+                <p style="font-size:0.88rem; color:#64748b;">For annuity due (beginning-of-period payments), each PMT factor is multiplied by (1+r). The sign convention: negative values represent cash outflows (money you pay), positive values represent cash inflows (money you receive).</p>
+            </section>
+
+            <!-- Use Cases -->
+            <section class="content-card">
+                <h2><span class="section-icon">&#128161;</span> Common Use Cases</h2>
+                <ul>
+                    <li><strong>Loan Payment:</strong> Solve for PMT. Enter PV (loan amount, negative), N (months), Rate, FV = 0.</li>
+                    <li><strong>Savings Goal:</strong> Solve for PMT. Enter FV (target), N (months), Rate, PV = 0 or current balance.</li>
+                    <li><strong>Investment Growth:</strong> Solve for FV. Enter PV (initial, negative), PMT (monthly contributions, negative), N, Rate.</li>
+                    <li><strong>Mortgage Qualification:</strong> Solve for PV. Enter PMT (max affordable), N (360 for 30yr), Rate, FV = 0.</li>
+                    <li><strong>Rate of Return:</strong> Solve for Rate. Enter PV (cost), FV (sale price), N, PMT = 0.</li>
+                    <li><strong>Time to Pay Off:</strong> Solve for N. Enter PV (balance), PMT (payment), Rate, FV = 0.</li>
+                </ul>
+            </section>
+
+            <!-- FAQ -->
+            <section class="content-card">
+                <h2><span class="section-icon">&#10067;</span> Finance Calculator FAQ</h2>
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>Why are some values negative?</h3>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>TVM calculations use a cash-flow sign convention. Money you pay out (investments, loan amounts, deposits) is negative. Money you receive (future payouts, loan proceeds) is positive. This ensures the formula works correctly &mdash; PV and FV should have opposite signs.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>What&rsquo;s the difference between rate per period and annual rate?</h3>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>The rate per period is the annual rate divided by the number of compounding periods per year. For a 6% annual rate with monthly compounding: 6% &divide; 12 = 0.5% per period. Always use the per-period rate in TVM calculations.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>What is an annuity due vs. ordinary annuity?</h3>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>An ordinary annuity makes payments at the end of each period (most loans). An annuity due makes payments at the beginning (rent, some leases). Annuity due payments earn one extra period of interest, making them slightly more valuable.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>How do I calculate a mortgage payment?</h3>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Select &ldquo;Solve for Payment.&rdquo; Enter PV = &minus;300000 (loan amount), N = 360 (30 years &times; 12), Rate = 0.583 (7% &divide; 12), FV = 0. The calculator will give you the monthly payment. Use end-of-period timing.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>Why can&rsquo;t the rate be solved in some cases?</h3>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Solving for the interest rate requires an iterative numerical method (Newton-Raphson). In some edge cases &mdash; like when cash flows don&rsquo;t change sign or the equation has no real solution &mdash; the solver may not converge. Try adjusting your inputs to ensure a mathematically valid scenario.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Related Tools -->
+            <section class="related-tools">
+                <h2><span class="section-icon">&#128736;</span> Related Financial Tools</h2>
+                <div class="tools-grid">
+                    <a href="compound-interest-calculator.html" class="tool-link"><span class="tool-emoji">&#128202;</span> Compound Interest</a>
+                    <a href="loan-calculator.html" class="tool-link"><span class="tool-emoji">&#128179;</span> Loan Calculator</a>
+                    <a href="mortgage-calculator.html" class="tool-link"><span class="tool-emoji">&#127968;</span> Mortgage Calculator</a>
+                    <a href="investment-calculator.html" class="tool-link"><span class="tool-emoji">&#128200;</span> Investment Calculator</a>
+                    <a href="savings-calculator.html" class="tool-link"><span class="tool-emoji">&#128178;</span> Savings Calculator</a>
+                    <a href="annuity-calculator.html" class="tool-link"><span class="tool-emoji">&#128176;</span> Annuity Calculator</a>
+                </div>
+            </section>
         </div>
-    </footer>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>ScribbleTools</h3>
+                    <p>Free, powerful online calculators for financial planning, health tracking, and everyday math. No sign-up, no ads, just results.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="../../index.html">Home</a>
+                    <a href="../../about-us.html">About Us</a>
+                    <a href="../../all-tools.html">All Tools</a>
+                    <a href="../../blog.html">Blog</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Popular Tools</h3>
+                    <a href="compound-interest-calculator.html">Compound Interest</a>
+                    <a href="mortgage-calculator.html">Mortgage Calculator</a>
+                    <a href="loan-calculator.html">Loan Calculator</a>
+                    <a href="retirement-calculator.html">Retirement Planner</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Legal</h3>
+                    <a href="../../contact.html">Contact</a>
+                    <p style="font-size: 0.8rem; margin-top: 10px;">&#9888;&#65039; For educational purposes. Not financial advice.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 ScribbleTools. All rights reserved.</p>
+                <div class="footer-links-bottom">
+                    <a href="../../contact.html">Contact</a>
+                    <a href="../../about-us.html">About</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+<script>
+    // ========== TVM SOLVER ==========
+    let solveFor = 'FV';
+
+    function setSolveFor(variable) {
+        solveFor = variable;
+        document.querySelectorAll('.solve-tab').forEach(t => t.classList.remove('active'));
+        document.querySelector('[data-solve="' + variable + '"]').classList.add('active');
+
+        // Enable all inputs, then disable the one being solved
+        const fields = { N: 'inpN', RATE: 'inpRate', PV: 'inpPV', PMT: 'inpPMT', FV: 'inpFV' };
+        const labels = { N: 'Periods (N)', RATE: 'Rate / Period', PV: 'Present Value', PMT: 'Payment (PMT)', FV: 'Future Value' };
+
+        Object.entries(fields).forEach(([key, id]) => {
+            const inp = document.getElementById(id);
+            inp.disabled = (key === variable);
+        });
+
+        // Move solving badge
+        document.querySelectorAll('.form-group label .solving-badge').forEach(b => b.remove());
+        const targetLabel = document.getElementById('grp' + (variable === 'RATE' ? 'Rate' : variable)).querySelector('label');
+        const badge = document.createElement('span');
+        badge.className = 'solving-badge';
+        badge.id = 'solvingBadge';
+        badge.textContent = 'SOLVING';
+        targetLabel.appendChild(badge);
+
+        // Update highlight card
+        const cardKeys = { N: 'cardN', RATE: 'cardRate', PV: 'cardPV', PMT: 'cardPMT', FV: 'cardFV' };
+        Object.values(cardKeys).forEach(id => document.getElementById(id).classList.remove('highlight'));
+        document.getElementById(cardKeys[variable]).classList.add('highlight');
+
+        document.getElementById('results').style.display = 'none';
+    }
+
+    function getVal(id) { return parseFloat(document.getElementById(id).value) || 0; }
+
+    function fmt(n) {
+        const abs = Math.abs(n);
+        const str = '$' + abs.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        return n < 0 ? '-' + str : str;
+    }
+
+    // ===== TVM CORE FORMULAS =====
+    // Standard TVM equation: PV*(1+r)^n + PMT*((1+r)^n - 1)/r * (1+r*type) + FV = 0
+
+    function solveFV(n, r, pv, pmt, type) {
+        if (r === 0) return -(pv + pmt * n);
+        const factor = Math.pow(1 + r, n);
+        return -(pv * factor + pmt * (1 + r * type) * (factor - 1) / r);
+    }
+
+    function solvePV(n, r, pmt, fv, type) {
+        if (r === 0) return -(fv + pmt * n);
+        const factor = Math.pow(1 + r, n);
+        return -(fv + pmt * (1 + r * type) * (factor - 1) / r) / factor;
+    }
+
+    function solvePMT(n, r, pv, fv, type) {
+        if (r === 0) return -(pv + fv) / n;
+        const factor = Math.pow(1 + r, n);
+        return -(pv * factor + fv) / ((1 + r * type) * (factor - 1) / r);
+    }
+
+    function solveN(r, pv, pmt, fv, type) {
+        if (r === 0) {
+            if (pmt === 0) return Infinity;
+            return -(pv + fv) / pmt;
+        }
+        // Using logarithmic formula
+        const pmtAdj = pmt * (1 + r * type);
+        const numerator = Math.log((-fv * r + pmtAdj) / (pv * r + pmtAdj));
+        const denominator = Math.log(1 + r);
+        if (isNaN(numerator) || !isFinite(numerator)) return NaN;
+        return numerator / denominator;
+    }
+
+    function solveRate(n, pv, pmt, fv, type) {
+        // Newton-Raphson iterative method
+        let rate = 0.05; // initial guess 5%
+        const maxIter = 200;
+        const tol = 1e-10;
+
+        for (let i = 0; i < maxIter; i++) {
+            const r = rate;
+            if (r === 0) { rate = 0.001; continue; }
+            const factor = Math.pow(1 + r, n);
+            const annuity = (factor - 1) / r;
+            const annuityAdj = annuity * (1 + r * type);
+
+            // f(r) = PV*(1+r)^n + PMT*annuityAdj + FV = 0
+            const f = pv * factor + pmt * annuityAdj + fv;
+
+            // Derivative f'(r)
+            const dFactor = n * Math.pow(1 + r, n - 1);
+            const dAnnuity = (dFactor * r - (factor - 1)) / (r * r);
+            const dAnnuityAdj = dAnnuity * (1 + r * type) + annuity * type;
+            const df = pv * dFactor + pmt * dAnnuityAdj;
+
+            if (Math.abs(df) < 1e-20) break;
+            const newRate = r - f / df;
+            if (Math.abs(newRate - r) < tol) { rate = newRate; break; }
+            rate = newRate;
+            if (rate < -1) rate = -0.99; // bounds
+        }
+        return rate;
+    }
+
+    function calculate() {
+        const type = parseInt(document.getElementById('paymentTiming').value); // 0 = end, 1 = begin
+
+        let n, r, pv, pmt, fv;
+
+        if (solveFor !== 'N') n = getVal('inpN');
+        if (solveFor !== 'RATE') r = getVal('inpRate') / 100; // convert % to decimal
+        if (solveFor !== 'PV') pv = getVal('inpPV');
+        if (solveFor !== 'PMT') pmt = getVal('inpPMT');
+        if (solveFor !== 'FV') fv = getVal('inpFV');
+
+        let solvedValue;
+        switch (solveFor) {
+            case 'FV':
+                solvedValue = solveFV(n, r, pv, pmt, type);
+                fv = solvedValue;
+                break;
+            case 'PV':
+                solvedValue = solvePV(n, r, pmt, fv, type);
+                pv = solvedValue;
+                break;
+            case 'PMT':
+                solvedValue = solvePMT(n, r, pv, fv, type);
+                pmt = solvedValue;
+                break;
+            case 'N':
+                r = getVal('inpRate') / 100;
+                pv = getVal('inpPV');
+                pmt = getVal('inpPMT');
+                fv = getVal('inpFV');
+                solvedValue = solveN(r, pv, pmt, fv, type);
+                n = Math.ceil(solvedValue);
+                break;
+            case 'RATE':
+                n = getVal('inpN');
+                pv = getVal('inpPV');
+                pmt = getVal('inpPMT');
+                fv = getVal('inpFV');
+                solvedValue = solveRate(n, pv, pmt, fv, type);
+                r = solvedValue;
+                break;
+        }
+
+        if (isNaN(solvedValue) || !isFinite(solvedValue)) {
+            alert('No valid solution found. Please check your inputs — ensure the scenario is mathematically valid (e.g., PV and FV should generally have opposite signs).');
+            return;
+        }
+
+        const ppy = parseInt(document.getElementById('paymentsPerYear').value);
+        const totalPaid = Math.abs(pmt) * n;
+        const annualRate = r * ppy * 100;
+
+        // Update result cards
+        document.getElementById('resN').textContent = Math.round(n) + ' periods (' + (n / ppy).toFixed(1) + ' yrs)';
+        document.getElementById('resRate').textContent = (r * 100).toFixed(4) + '% (' + annualRate.toFixed(2) + '%/yr)';
+        document.getElementById('resPV').textContent = fmt(pv);
+        document.getElementById('resPMT').textContent = fmt(pmt);
+        document.getElementById('resFV').textContent = fmt(fv);
+        document.getElementById('resTotal').textContent = fmt(-totalPaid) + ' (' + Math.round(n) + ' payments)';
+
+        // Summary text
+        const summaryEl = document.getElementById('summaryText');
+        const years = (n / ppy).toFixed(1);
+        switch (solveFor) {
+            case 'FV':
+                summaryEl.innerHTML = 'Starting with <span class="highlight-num">' + fmt(Math.abs(pv)) + '</span> and making <span class="highlight-num">' + fmt(Math.abs(pmt)) + '</span> payments each period at <span class="highlight-num">' + (r * 100).toFixed(3) + '%</span> per period for <span class="highlight-num">' + Math.round(n) + ' periods</span> (' + years + ' years), the future value will be <span class="highlight-num">' + fmt(fv) + '</span>.';
+                break;
+            case 'PV':
+                summaryEl.innerHTML = 'To reach <span class="highlight-num">' + fmt(fv) + '</span> in <span class="highlight-num">' + Math.round(n) + ' periods</span> with <span class="highlight-num">' + fmt(Math.abs(pmt)) + '</span> payments at <span class="highlight-num">' + (r * 100).toFixed(3) + '%</span>/period, you need a present value of <span class="highlight-num">' + fmt(pv) + '</span>.';
+                break;
+            case 'PMT':
+                summaryEl.innerHTML = 'With <span class="highlight-num">' + fmt(Math.abs(pv)) + '</span> at <span class="highlight-num">' + (r * 100).toFixed(3) + '%</span>/period for <span class="highlight-num">' + Math.round(n) + ' periods</span>, each payment is <span class="highlight-num">' + fmt(pmt) + '</span>. Total payments: <span class="highlight-num">' + fmt(-totalPaid) + '</span>.';
+                break;
+            case 'RATE':
+                summaryEl.innerHTML = 'The required interest rate is <span class="highlight-num">' + (r * 100).toFixed(4) + '%</span> per period (<span class="highlight-num">' + annualRate.toFixed(2) + '% annually</span>) to go from <span class="highlight-num">' + fmt(pv) + '</span> to <span class="highlight-num">' + fmt(fv) + '</span> over <span class="highlight-num">' + Math.round(n) + ' periods</span>.';
+                break;
+            case 'N':
+                summaryEl.innerHTML = 'It takes <span class="highlight-num">' + Math.ceil(n) + ' periods</span> (<span class="highlight-num">' + years + ' years</span>) at <span class="highlight-num">' + (r * 100).toFixed(3) + '%</span>/period with <span class="highlight-num">' + fmt(Math.abs(pmt)) + '</span> payments to go from <span class="highlight-num">' + fmt(pv) + '</span> to <span class="highlight-num">' + fmt(fv) + '</span>.';
+                break;
+        }
+
+        // Build schedule & chart
+        buildScheduleAndChart(Math.ceil(n), r, pv, pmt, fv, type, ppy);
+
+        document.getElementById('results').style.display = 'block';
+        document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function buildScheduleAndChart(n, r, pv, pmt, fv, type, ppy) {
+        const tbody = document.getElementById('scheduleBody');
+        tbody.innerHTML = '';
+
+        let balance = pv;
+        let totalInterest = 0;
+        let totalPrincipal = 0;
+        const balances = [Math.abs(pv)];
+        const interestData = [];
+        const principalData = [];
+
+        // Limit table rows for very long schedules
+        const maxRows = Math.min(n, 600);
+        const showEvery = n > 120 ? Math.ceil(n / 120) : 1;
+
+        for (let p = 1; p <= n; p++) {
+            let interest, principal, payment;
+
+            if (type === 1 && p === 1) {
+                // Annuity due: first payment happens before any interest
+                interest = 0;
+                payment = pmt;
+                principal = pmt;
+            } else {
+                interest = balance * r;
+                payment = pmt;
+                principal = payment - interest;
+            }
+
+            balance += payment; // pmt is negative for outflows
+            if (type === 0) {
+                interest = (balance - payment) * r;
+                principal = payment - interest;
+                balance = (balance - payment) + interest + payment;
+                // Recalculate properly
+                balance = pv; // reset
+            }
+
+            // Simpler approach: just track balance directly
+            if (p === 1) balance = pv; // reset for clean calculation
+        }
+
+        // Clean recalculation
+        balance = pv;
+        for (let p = 1; p <= n; p++) {
+            let interest, principal;
+
+            if (type === 1) {
+                // Annuity due: payment at start of period
+                balance += pmt;
+                interest = balance * r;
+                principal = pmt;
+                balance += interest;
+            } else {
+                // Ordinary annuity: interest then payment
+                interest = balance * r;
+                balance = balance + interest + pmt;
+                principal = pmt;
+            }
+
+            totalInterest += interest;
+            totalPrincipal += pmt;
+
+            if (p % showEvery === 0 || p === 1 || p === n) {
+                const row = document.createElement('tr');
+                row.innerHTML = '<td>' + p + '</td><td>' + fmt(pmt) + '</td><td>' + fmt(interest) + '</td><td>' + fmt(pmt - interest) + '</td><td>' + fmt(balance) + '</td>';
+                tbody.appendChild(row);
+            }
+
+            if (p % Math.ceil(n / 50) === 0 || p === n) {
+                balances.push(Math.abs(balance));
+            }
+        }
+
+        // Totals row
+        const totalRow = document.createElement('tr');
+        totalRow.className = 'row-total';
+        totalRow.innerHTML = '<td>Total</td><td>' + fmt(pmt * n) + '</td><td>' + fmt(totalInterest) + '</td><td>' + fmt(totalPrincipal) + '</td><td>' + fmt(balance) + '</td>';
+        tbody.appendChild(totalRow);
+
+        // Draw chart
+        drawChart(balances, n);
+    }
+
+    function drawChart(data, totalPeriods) {
+        const canvas = document.getElementById('tvmChart');
+        const ctx = canvas.getContext('2d');
+        const dpr = window.devicePixelRatio || 1;
+
+        canvas.width = canvas.offsetWidth * dpr;
+        canvas.height = 280 * dpr;
+        ctx.scale(dpr, dpr);
+
+        const W = canvas.offsetWidth;
+        const H = 280;
+        const pad = { top: 30, right: 30, bottom: 40, left: 80 };
+        const chartW = W - pad.left - pad.right;
+        const chartH = H - pad.top - pad.bottom;
+
+        ctx.clearRect(0, 0, W, H);
+
+        if (data.length < 2) return;
+
+        const maxVal = Math.max(...data, 1);
+
+        // Grid
+        ctx.strokeStyle = '#e2e8f0';
+        ctx.lineWidth = 0.5;
+        for (let i = 0; i <= 5; i++) {
+            const y = pad.top + chartH - (i / 5) * chartH;
+            ctx.beginPath();
+            ctx.moveTo(pad.left, y);
+            ctx.lineTo(pad.left + chartW, y);
+            ctx.stroke();
+
+            ctx.fillStyle = '#94a3b8';
+            ctx.font = '11px Segoe UI';
+            ctx.textAlign = 'right';
+            const label = '$' + ((maxVal * i / 5) / 1000).toFixed(0) + 'k';
+            ctx.fillText(label, pad.left - 8, y + 4);
+        }
+
+        // Draw line
+        ctx.beginPath();
+        const gradient = ctx.createLinearGradient(pad.left, 0, pad.left + chartW, 0);
+        gradient.addColorStop(0, '#667eea');
+        gradient.addColorStop(1, '#764ba2');
+        ctx.strokeStyle = gradient;
+        ctx.lineWidth = 2.5;
+
+        data.forEach((val, i) => {
+            const x = pad.left + (i / (data.length - 1)) * chartW;
+            const y = pad.top + chartH - (val / maxVal) * chartH;
+            if (i === 0) ctx.moveTo(x, y);
+            else ctx.lineTo(x, y);
+        });
+        ctx.stroke();
+
+        // Fill area
+        const lastX = pad.left + chartW;
+        const lastY = pad.top + chartH - (data[data.length - 1] / maxVal) * chartH;
+        ctx.lineTo(lastX, pad.top + chartH);
+        ctx.lineTo(pad.left, pad.top + chartH);
+        ctx.closePath();
+        const fillGrad = ctx.createLinearGradient(0, pad.top, 0, pad.top + chartH);
+        fillGrad.addColorStop(0, 'rgba(102,126,234,0.15)');
+        fillGrad.addColorStop(1, 'rgba(102,126,234,0.02)');
+        ctx.fillStyle = fillGrad;
+        ctx.fill();
+
+        // X-axis label
+        ctx.fillStyle = '#64748b';
+        ctx.font = '12px Segoe UI';
+        ctx.textAlign = 'center';
+        ctx.fillText('Balance Over Time (' + totalPeriods + ' periods)', W / 2, H - 8);
+
+        // Title
+        ctx.fillStyle = '#1e293b';
+        ctx.font = 'bold 13px Segoe UI';
+        ctx.textAlign = 'left';
+        ctx.fillText('Balance Progression', pad.left, 18);
+    }
+
+    function resetForm() {
+        document.getElementById('inpN').value = '120';
+        document.getElementById('inpRate').value = '0.5';
+        document.getElementById('inpPV').value = '-50000';
+        document.getElementById('inpPMT').value = '-500';
+        document.getElementById('inpFV').value = '0';
+        document.getElementById('paymentsPerYear').value = '12';
+        document.getElementById('paymentTiming').value = '0';
+        setSolveFor('FV');
+        document.getElementById('results').style.display = 'none';
+    }
+
+    function toggleFAQ(el) {
+        const item = el.closest('.faq-item');
+        const wasActive = item.classList.contains('active');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+        if (!wasActive) item.classList.add('active');
+    }
+
+    // Mobile Menu
+    const hamburger = document.getElementById('hamburger');
+    const headerLinks = document.getElementById('headerLinks');
+    const menuOverlay = document.getElementById('menuOverlay');
+    function toggleMenu() {
+        hamburger.classList.toggle('active');
+        headerLinks.classList.toggle('active');
+        menuOverlay.classList.toggle('active');
+        document.body.style.overflow = headerLinks.classList.contains('active') ? 'hidden' : '';
+    }
+    hamburger.addEventListener('click', toggleMenu);
+    menuOverlay.addEventListener('click', toggleMenu);
+    headerLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => { if (window.innerWidth <= 768) toggleMenu(); });
+    });
+
+    // Init
+    setSolveFor('FV');
+</script>
+
 </body>
 </html>
