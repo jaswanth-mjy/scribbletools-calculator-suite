@@ -151,19 +151,26 @@
         .image-box img { width: 100%; height: 100%; object-fit: cover; }
 
         /* Formula */
-        .formula-container { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); border-radius: 14px; padding: 28px; margin: 20px 0; text-align: center; }
-        .formula-math { display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; padding: 12px; }
-        .formula-math .var { font-family: 'Times New Roman', Georgia, serif; font-style: italic; color: #93c5fd; font-size: 1.15rem; font-weight: 600; }
-        .formula-math .var.result { color: #a78bfa; font-size: 1.25rem; }
-        .formula-math .equals { color: #f59e0b; font-size: 1.3rem; font-weight: 700; }
-        .formula-math .operator { color: #f59e0b; font-size: 1.2rem; }
-        .formula-math .frac { display: inline-flex; flex-direction: column; align-items: center; gap: 2px; }
-        .formula-math .frac-num, .formula-math .frac-den { font-family: 'Times New Roman', Georgia, serif; font-style: italic; color: #93c5fd; font-size: 0.95rem; }
-        .formula-math .frac-line { width: 100%; height: 1px; background: #64748b; }
-        .formula-legend { display: flex; flex-direction: column; gap: 8px; margin-top: 18px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,0.1); }
-        .formula-legend .legend-item { font-size: 0.85rem; color: #94a3b8; line-height: 1.6; }
-        .formula-legend .legend-var { font-family: 'Times New Roman', Georgia, serif; font-style: italic; color: #93c5fd; font-weight: 600; }
+        .formula-container { background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); padding: 35px 35px 30px; border-radius: 14px; margin: 25px 0; overflow-x: auto; position: relative; box-shadow: 0 8px 30px rgba(15, 23, 42, 0.2); }
+        .formula-container::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #667eea, #764ba2, #a855f7); border-radius: 14px 14px 0 0; }
+        .formula-container::after { content: 'FORMULA'; position: absolute; top: 12px; right: 16px; font-family: 'Segoe UI', Roboto, sans-serif; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 2px; color: #64748b; font-weight: 700; background: rgba(100, 116, 139, 0.15); padding: 3px 10px; border-radius: 4px; }
+        .formula-math { display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap; font-family: 'Times New Roman', 'Cambria Math', Georgia, serif; font-size: 1.35rem; color: #e2e8f0; padding: 10px 0; font-style: italic; }
+        .formula-math .var { color: #93c5fd; font-weight: 600; font-style: italic; }
+        .formula-math .var.result { color: #a78bfa; font-size: 1.5rem; }
+        .formula-math .operator { color: #94a3b8; font-style: normal; font-weight: 400; margin: 0 2px; }
+        .formula-math .equals { color: #f59e0b; font-style: normal; font-weight: 600; font-size: 1.4rem; margin: 0 6px; }
+        .formula-math sup { font-size: 0.7em; vertical-align: super; line-height: 0; color: #fbbf24; font-style: italic; }
+        .formula-math .paren { color: #64748b; font-style: normal; font-weight: 300; font-size: 1.5rem; }
+        .formula-math .big-paren { font-size: 2.2rem; line-height: 1; color: #475569; font-style: normal; font-weight: 200; vertical-align: middle; }
+        .formula-math .fraction { display: inline-flex; flex-direction: column; align-items: center; vertical-align: middle; margin: 0 4px; }
+        .formula-math .fraction .num { border-bottom: 2px solid #64748b; padding: 0 8px 4px; font-size: 0.95em; }
+        .formula-math .fraction .den { padding: 4px 8px 0; font-size: 0.95em; }
+        .formula-legend { display: flex; flex-wrap: wrap; gap: 15px; margin-top: 20px; padding-top: 18px; border-top: 1px solid #334155; justify-content: center; }
+        .formula-legend .legend-item { display: flex; align-items: center; gap: 6px; font-size: 0.78rem; color: #94a3b8; font-family: 'Segoe UI', Roboto, sans-serif; }
+        .formula-legend .legend-var { font-family: 'Times New Roman', Georgia, serif; font-style: italic; color: #93c5fd; font-weight: 600; font-size: 0.9rem; }
         .formula-legend .legend-var.purple { color: #a78bfa; }
+        .formula-legend .legend-var.yellow { color: #fbbf24; }
+        .formula-label { text-align: center; color: #94a3b8; font-size: 0.8rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px; font-family: 'Segoe UI', Roboto, sans-serif; }
 
         /* FAQ */
         .faq-grid { margin-top: 20px; }
@@ -439,14 +446,13 @@
                     <div class="formula-math">
                         <span class="var">PV</span>
                         <span class="operator">&times;</span>
-                        <span class="var">(1+r)</span><sup style="color:#93c5fd;font-size:0.85rem;"><em>n</em></sup>
+                        <span class="var">(1+r)</span><sup><em>n</em></sup>
                         <span class="operator">+</span>
                         <span class="var">PMT</span>
                         <span class="operator">&times;</span>
-                        <span class="frac">
-                            <span class="frac-num">(1+r)<sup><em>n</em></sup> &minus; 1</span>
-                            <span class="frac-line"></span>
-                            <span class="frac-den">r</span>
+                        <span class="fraction">
+                            <span class="num">(1+r)<sup><em>n</em></sup> &minus; 1</span>
+                            <span class="den">r</span>
                         </span>
                         <span class="operator">+</span>
                         <span class="var result">FV</span>
