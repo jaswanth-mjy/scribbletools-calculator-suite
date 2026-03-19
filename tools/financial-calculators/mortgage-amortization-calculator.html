@@ -3,623 +3,762 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
-    <title>Mortgage Amortization Calculator - Free Online Tool | ShramTools</title>
-    <meta name="description" content="Free Mortgage Amortization Calculator tool by ShramTools. Easy to use, accurate results, no registration required.">
-    <meta name="keywords" content="mortgage amortization calculator, free calculator, online tool, ShramTools">
+    <title>Mortgage Amortization Calculator - Monthly Payment & Schedule | ShramTools</title>
+    <meta name="description" content="Free mortgage amortization calculator with complete monthly schedule. Calculate P&I, escrow, total payment, payoff date, and extra payment savings.">
+    <meta name="keywords" content="mortgage amortization calculator, mortgage schedule, monthly mortgage payment, escrow calculator, extra mortgage payment calculator">
     <meta name="author" content="ShramTools by Shram Kavach">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://shramtools.shramkavach.com/tools/financial-calculators/mortgage-amortization-calculator.html">
-    
-    <!-- Open Graph -->
+
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://shramtools.shramkavach.com/tools/financial-calculators/mortgage-amortization-calculator.html">
-    <meta property="og:title" content="Mortgage Amortization Calculator - Free Online Tool | ShramTools">
-    <meta property="og:description" content="Free Mortgage Amortization Calculator tool. Easy to use, accurate results.">
-    <meta property="og:image" content="https://shramtools.shramkavach.com/images/og-image.jpg">
-    
-    <!-- Twitter -->
+    <meta property="og:title" content="Mortgage Amortization Calculator - Monthly Payment & Full Schedule">
+    <meta property="og:description" content="Calculate mortgage principal & interest, escrow, payoff date, and full amortization table.">
+
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:title" content="Mortgage Amortization Calculator | ShramTools">
-    <meta property="twitter:description" content="Free Mortgage Amortization Calculator tool by ShramTools.">
-    
-    <link rel="icon" type="image/webp" href="../../images/logo.webp">
-    
+    <meta property="twitter:url" content="https://shramtools.shramkavach.com/tools/financial-calculators/mortgage-amortization-calculator.html">
+    <meta property="twitter:title" content="Mortgage Amortization Calculator">
+    <meta property="twitter:description" content="Get full mortgage schedule with taxes, insurance, HOA, PMI, and extra payment savings.">
+
+    <link rel="icon" type="image/jpeg" href="../../images/bmi/bmi-icon-512.jpg">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Mortgage Amortization Calculator",
+      "applicationCategory": "FinanceApplication",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "description": "Free mortgage amortization calculator with monthly schedule, escrow, and extra payment savings",
+      "url": "https://shramtools.shramkavach.com/tools/financial-calculators/mortgage-amortization-calculator.html",
+      "creator": {
+        "@type": "Organization",
+        "name": "ShramTools",
+        "url": "https://shramtools.shramkavach.com",
+        "parentOrganization": { "@type": "Organization", "name": "Shram Kavach", "url": "https://shramkavach.com" }
+      }
+    }
+    </script>
+
     <style>
-        /* Reset & Base */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667EEA 0%, #764BA2 100%);
+            --page-bg: linear-gradient(180deg, #F5F7FA 0%, #E8EEF5 50%, #F0E7F8 100%);
+            --white: #ffffff;
+            --text-main: #1a202c;
+            --text-secondary: #4a5568;
+            --text-muted: #a0aec0;
+            --border: #e2e8f0;
         }
-        
-        html {
-            scroll-behavior: smooth;
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Roboto, -apple-system, BlinkMacSystemFont, sans-serif; background: var(--page-bg); min-height: 100vh; color: var(--text-main); }
+        .page-wrapper { min-height: 100vh; display: flex; flex-direction: column; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 30px 20px; flex: 1; }
+
+        .site-header { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(226, 232, 240, 0.8); position: sticky; top: 0; z-index: 1000; }
+        .header-content { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: flex; justify-content: space-between; align-items: center; height: 70px; }
+        .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .logo-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; overflow: hidden; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3); }
+        .logo-icon img { width: 100%; height: 100%; object-fit: cover; }
+        .logo-text h1 { font-size: 1.3rem; font-weight: 800; background: linear-gradient(135deg, #667eea, #764ba2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1.2; }
+        .logo-text p { font-size: 0.7rem; color: var(--text-muted); font-weight: 500; }
+        .header-links { display: flex; gap: 8px; align-items: center; }
+        .header-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; font-weight: 500; padding: 8px 16px; border-radius: 8px; transition: all 0.2s; position: relative; }
+        .header-links a:hover { color: #667eea; background: #f0f0ff; }
+        .header-links a::after { content: ''; position: absolute; bottom: 2px; left: 50%; width: 0; height: 2px; background: #667eea; transition: all 0.3s; transform: translateX(-50%); }
+        .header-links a:hover::after { width: 60%; }
+        .cta-button { background: var(--primary-gradient) !important; color: white !important; padding: 9px 20px !important; border-radius: 8px !important; font-weight: 600 !important; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3); }
+        .cta-button::after { display: none !important; }
+        .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 5px; z-index: 1001; }
+        .hamburger span { width: 24px; height: 2.5px; background: var(--text-main); border-radius: 2px; transition: all 0.3s; }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+        .menu-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.5); z-index: 998; backdrop-filter: blur(4px); }
+        .menu-overlay.active { display: block; }
+
+        .site-footer { background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%); color: #cbd5e0; padding: 3.5rem 0 0; margin-top: 4rem; border-top: 2px solid #334155; position: relative; }
+        .site-footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, #667eea, #764ba2, transparent); }
+        .footer-content { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 2.5rem; margin-bottom: 2.5rem; }
+        .footer-section h3 { color: #ffffff; font-size: 1.1rem; margin-bottom: 1rem; font-weight: 700; position: relative; display: inline-block; }
+        .footer-section h3::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 35px; height: 3px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 2px; }
+        .footer-section p { font-size: 0.9rem; line-height: 1.8; color: #94a3b8; }
+        .footer-section ul { list-style: none; padding: 0; margin: 0; }
+        .footer-section ul li { margin-bottom: 0.7rem; }
+        .footer-section a { color: #cbd5e0; text-decoration: none; transition: all 0.3s; display: inline-block; font-size: 0.9rem; }
+        .footer-section a:hover { color: #667eea; transform: translateX(5px); }
+        .footer-brand { margin-bottom: 1.2rem; }
+        .footer-logo { display: flex; align-items: center; gap: 0.7rem; margin-bottom: 0.8rem; }
+        .footer-logo-icon { width: 36px; height: 36px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 8px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .footer-logo-icon img { width: 100%; height: 100%; object-fit: cover; }
+        .footer-logo h3 { margin: 0; font-size: 1.3rem; font-weight: 700; }
+        .footer-logo h3::after { display: none; }
+        .footer-bottom { max-width: 1200px; margin: 0 auto; padding: 1.5rem 2rem; border-top: 1px solid #334155; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+        .footer-bottom p { margin: 0; font-size: 0.85rem; color: #94a3b8; }
+        .footer-bottom a { color: #667eea; text-decoration: none; font-weight: 600; transition: color 0.3s; }
+        .footer-links-bottom { display: flex; gap: 1.5rem; }
+        .footer-links-bottom a { color: #94a3b8; font-size: 0.85rem; }
+
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-6px); } }
+
+        .page-header { background: white; padding: 45px 40px; border-radius: 20px; text-align: center; margin-bottom: 35px; box-shadow: 0 10px 40px rgba(0,0,0,0.08); position: relative; overflow: hidden; animation: fadeInUp 0.6s ease; }
+        .page-header::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 5px; background: linear-gradient(90deg, #4299e1, #667eea, #764ba2, #a855f7); }
+        .page-header .header-icon { font-size: 3rem; margin-bottom: 12px; display: block; animation: float 3s ease-in-out infinite; }
+        .page-header h2 { color: #1a202c; font-size: 2.5rem; font-weight: 800; margin-bottom: 12px; letter-spacing: -0.5px; }
+        .page-header p { color: #718096; font-size: 1.1rem; max-width: 700px; margin: 0 auto; line-height: 1.7; }
+
+        .breadcrumb { display: flex; align-items: center; gap: 8px; margin-bottom: 20px; font-size: 0.85rem; animation: fadeIn 0.5s ease; }
+        .breadcrumb a { color: #667eea; text-decoration: none; font-weight: 500; }
+        .breadcrumb span { color: #a0aec0; }
+
+        .calc-wrapper { background: var(--white); border-radius: 16px; box-shadow: 0 10px 40px rgba(0,0,0,0.08); overflow: hidden; display: grid; grid-template-columns: 1.2fr 1fr; margin-bottom: 40px; border: 1px solid rgba(226, 232, 240, 0.8); animation: fadeInUp 0.7s ease; }
+        .calc-inputs { padding: 40px; border-right: 1px solid var(--border); }
+        .calc-inputs-title { display: flex; align-items: center; gap: 10px; margin-bottom: 25px; padding-bottom: 18px; border-bottom: 2px solid #f1f5f9; }
+        .calc-inputs-title span { font-size: 1.5rem; }
+        .calc-inputs-title h2 { font-size: 1.3rem; font-weight: 700; color: var(--text-main); margin: 0; }
+        .calc-results { padding: 40px; background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 50%, #eff1fe 100%); display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden; }
+        .calc-results::before { content: ''; position: absolute; top: -50%; right: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(102, 126, 234, 0.04) 0%, transparent 70%); pointer-events: none; }
+        .input-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .field { margin-bottom: 10px; }
+        .field label { display: flex; align-items: center; gap: 6px; font-weight: 600; font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 8px; }
+        .field label .label-icon { font-size: 1rem; }
+        .input-group { position: relative; display: flex; align-items: center; }
+        .input-group .unit { position: absolute; left: 14px; color: #667eea; font-weight: 700; font-size: 0.95rem; z-index: 1; }
+        .input-group .unit-right { position: absolute; right: 14px; color: #667eea; font-weight: 700; font-size: 0.85rem; z-index: 1; }
+        .input-group input, .input-group select { width: 100%; padding: 14px 14px 14px 32px; border: 2px solid #e2e8f0; border-radius: 10px; font-size: 1rem; outline: none; transition: all 0.3s; background: #fafbfc; color: var(--text-main); font-weight: 500; }
+        .input-group input.with-right { padding-right: 52px; }
+        .input-group select { padding-left: 14px; cursor: pointer; -webkit-appearance: none; -moz-appearance: none; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23667eea' d='M6 8L1 3h10z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; }
+        .input-group input:hover, .input-group select:hover { border-color: #cbd5e0; background: white; }
+        .input-group input:focus, .input-group select:focus { border-color: #667eea; box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1); background: white; }
+        .field-full { grid-column: 1 / -1; }
+
+        .btn-calc { width: 100%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 16px; border: none; border-radius: 10px; font-size: 1.1rem; font-weight: 700; cursor: pointer; margin-top: 15px; transition: all 0.3s; }
+        .btn-calc:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4); }
+        .btn-reset { background: transparent; color: var(--text-muted); border: none; font-size: 0.9rem; margin-top: 12px; cursor: pointer; width: 100%; padding: 8px; border-radius: 8px; transition: all 0.2s; font-weight: 500; }
+        .btn-reset:hover { background: #fef2f2; color: #ef4444; }
+
+        .result-main { text-align: center; margin-bottom: 30px; position: relative; z-index: 1; }
+        .result-main .result-icon { font-size: 2.5rem; margin-bottom: 8px; display: block; }
+        .result-main .label { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 2px; font-weight: 700; margin-bottom: 8px; }
+        .result-main .value { font-size: 2.6rem; font-weight: 800; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1.2; }
+        .result-stats { display: grid; gap: 12px; position: relative; z-index: 1; }
+        .stat-card { background: white; padding: 16px 18px; border-radius: 12px; border: 1px solid #edf2f7; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 8px rgba(0,0,0,0.03); }
+        .stat-card .stat-label { display: flex; align-items: center; gap: 10px; color: var(--text-secondary); font-size: 0.88rem; font-weight: 500; }
+        .stat-card .stat-icon { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 0.95rem; }
+        .stat-card .stat-icon.blue { background: #ebf5ff; }
+        .stat-card .stat-icon.green { background: #f0fdf4; }
+        .stat-card .stat-icon.purple { background: #faf5ff; }
+        .stat-card .stat-icon.amber { background: #fffbeb; }
+        .stat-card .stat-icon.red { background: #fef2f2; }
+        .stat-card .stat-value { font-weight: 700; color: var(--text-main); font-size: 0.95rem; }
+
+        .savings-box { background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%); border: 2px solid #86efac; border-radius: 14px; padding: 25px 30px; margin: 25px 0; display: none; }
+        .savings-box h3 { color: #166534; font-size: 1.1rem; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+        .savings-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #bbf7d0; font-size: 0.95rem; color: #15803d; }
+        .savings-row:last-child { border-bottom: none; }
+        .savings-row .sv { font-weight: 700; }
+
+        .chart-wrapper { background: var(--white); border-radius: 16px; padding: 40px; margin-bottom: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border: 1px solid rgba(226, 232, 240, 0.6); overflow: hidden; animation: fadeInUp 0.8s ease; }
+        .chart-wrapper h2 { margin-bottom: 8px; color: var(--text-main); font-size: 1.6rem; font-weight: 800; display: flex; align-items: center; gap: 12px; }
+        .chart-wrapper .chart-sub { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 25px; }
+        .chart-container { width: 100%; display: flex; justify-content: center; align-items: center; }
+        .chart-canvas { max-width: 320px; max-height: 320px; }
+        .chart-legend { display: flex; gap: 25px; margin-top: 18px; justify-content: center; flex-wrap: wrap; }
+        .legend-item { display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: var(--text-secondary); font-weight: 500; }
+        .legend-dot { width: 12px; height: 12px; border-radius: 3px; }
+        .legend-dot.principal { background: #667eea; }
+        .legend-dot.interest { background: #f59e0b; }
+        .legend-dot.escrow { background: #10b981; }
+
+        .schedule-wrapper { background: var(--white); border-radius: 16px; padding: 40px; margin-bottom: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border: 1px solid rgba(226, 232, 240, 0.6); overflow: hidden; animation: fadeInUp 0.8s ease; }
+        .schedule-wrapper h2 { margin-bottom: 8px; color: var(--text-main); font-size: 1.6rem; font-weight: 800; display: flex; align-items: center; gap: 12px; }
+        .schedule-wrapper .schedule-sub { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px; }
+        .table-container { overflow-x: auto; border-radius: 12px; border: 1px solid #edf2f7; max-height: 500px; overflow-y: auto; }
+        .amort-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+        .amort-table thead { position: sticky; top: 0; z-index: 5; }
+        .amort-table th { background: linear-gradient(135deg, #1e293b 0%, #334155 100%); color: white; padding: 14px 18px; text-align: right; font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap; }
+        .amort-table th:first-child { text-align: center; }
+        .amort-table td { padding: 12px 18px; text-align: right; border-bottom: 1px solid #f1f5f9; font-weight: 500; color: var(--text-secondary); white-space: nowrap; }
+        .amort-table td:first-child { text-align: center; font-weight: 700; color: var(--text-main); }
+        .amort-table tbody tr:nth-child(even) { background: #fafbfd; }
+        .amort-table .interest-val { color: #10b981; }
+        .amort-table .balance-val { font-weight: 700; color: var(--text-main); }
+        .view-toggle { display: flex; gap: 8px; margin-bottom: 18px; }
+        .view-toggle button { padding: 8px 18px; border: 2px solid #e2e8f0; background: white; border-radius: 8px; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: all 0.2s; color: var(--text-secondary); }
+        .view-toggle button.active { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-color: transparent; }
+
+        .content-card { background: var(--white); border-radius: 16px; padding: 40px; margin-bottom: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border: 1px solid rgba(226, 232, 240, 0.6); position: relative; overflow: hidden; }
+        .content-card h2 { margin-bottom: 20px; color: var(--text-main); font-size: 1.6rem; font-weight: 800; display: flex; align-items: center; gap: 12px; }
+        .content-card p { margin-bottom: 15px; color: var(--text-secondary); line-height: 1.8; font-size: 0.98rem; }
+        .content-card ul { padding-left: 0; list-style: none; color: var(--text-secondary); }
+        .content-card ul li { padding: 12px 0 12px 30px; position: relative; border-bottom: 1px solid #f1f5f9; line-height: 1.7; font-size: 0.95rem; }
+        .content-card ul li::before { content: ''; position: absolute; left: 0; top: 18px; width: 8px; height: 8px; border-radius: 50%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+
+        .formula-container { background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); padding: 35px 35px 30px; border-radius: 14px; margin: 25px 0; overflow-x: auto; position: relative; box-shadow: 0 8px 30px rgba(15, 23, 42, 0.2); }
+        .formula-container::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #667eea, #764ba2, #a855f7); border-radius: 14px 14px 0 0; }
+        .formula-container::after { content: 'FORMULA'; position: absolute; top: 12px; right: 16px; font-family: 'Segoe UI', Roboto, sans-serif; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 2px; color: #64748b; font-weight: 700; background: rgba(100, 116, 139, 0.15); padding: 3px 10px; border-radius: 4px; }
+        .formula-math { display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap; font-family: 'Times New Roman', 'Cambria Math', Georgia, serif; font-size: 1.35rem; color: #e2e8f0; padding: 10px 0; font-style: italic; }
+        .formula-math .var { color: #93c5fd; font-weight: 600; }
+        .formula-math .var.result { color: #a78bfa; font-size: 1.5rem; }
+        .formula-math .operator { color: #94a3b8; font-style: normal; }
+        .formula-math .equals { color: #f59e0b; font-style: normal; font-weight: 600; font-size: 1.4rem; }
+        .formula-math sup { font-size: 0.7em; vertical-align: super; line-height: 0; color: #fbbf24; }
+        .formula-math .fraction { display: inline-flex; flex-direction: column; align-items: center; vertical-align: middle; margin: 0 4px; }
+        .formula-math .fraction .num { border-bottom: 2px solid #64748b; padding: 0 8px 4px; font-size: 0.95em; }
+        .formula-math .fraction .den { padding: 4px 8px 0; font-size: 0.95em; }
+        .formula-legend { display: flex; flex-wrap: wrap; gap: 15px; margin-top: 20px; padding-top: 18px; border-top: 1px solid #334155; justify-content: center; }
+        .formula-legend .legend-item { display: flex; align-items: center; gap: 6px; font-size: 0.78rem; color: #94a3b8; }
+        .formula-legend .legend-var { color: #93c5fd; font-weight: 700; }
+
+        .faq-grid { margin-top: 20px; }
+        .faq-item { border: 1px solid #edf2f7; border-radius: 12px; overflow: hidden; transition: all 0.3s; margin-bottom: 12px; background: white; }
+        .faq-item.active { border-color: #667eea; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.1); }
+        .faq-question { padding: 18px 22px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; gap: 15px; }
+        .faq-question h3 { font-size: 1.05rem; margin: 0; color: var(--text-main); font-weight: 600; flex: 1; }
+        .faq-toggle { width: 28px; height: 28px; border-radius: 50%; background: #f1f5f9; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; color: #667eea; flex-shrink: 0; transition: all 0.3s; font-weight: 600; }
+        .faq-item.active .faq-toggle { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; transform: rotate(45deg); }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s ease; padding: 0 22px; }
+        .faq-item.active .faq-answer { max-height: 450px; padding: 0 22px 20px; }
+        .faq-answer p { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.8; }
+
+        .related-tools { background: white; border-radius: 16px; padding: 40px; margin-bottom: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border: 1px solid rgba(226, 232, 240, 0.6); }
+        .related-tools h2 { font-size: 1.6rem; font-weight: 800; color: var(--text-main); margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+        .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
+        .tool-link { display: flex; align-items: center; gap: 12px; padding: 14px 18px; background: #f8fafc; border-radius: 12px; text-decoration: none; color: var(--text-main); font-weight: 600; font-size: 0.9rem; border: 1px solid #edf2f7; transition: all 0.3s; }
+        .tool-link:hover { background: white; border-color: #667eea; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.1); transform: translateY(-2px); }
+
+        @media (max-width: 992px) { .footer-content { grid-template-columns: 1fr 1fr; } .tools-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 850px) { .calc-wrapper { grid-template-columns: 1fr; } .calc-inputs { border-right: none; border-bottom: 1px solid var(--border); } .page-header h2 { font-size: 1.8rem; } .page-header { padding: 30px 20px; } }
+        @media (max-width: 768px) {
+            .container { padding: 25px 15px; } .calc-inputs { padding: 25px; } .calc-results { padding: 30px 25px; }
+            .content-card, .schedule-wrapper, .chart-wrapper { padding: 28px 22px; } .result-main .value { font-size: 2.2rem; }
+            .related-tools { padding: 28px 22px; } .tools-grid { grid-template-columns: 1fr; }
+            .hamburger { display: flex; }
+            .header-links { position: fixed; top: 0; right: -100%; width: 75%; max-width: 280px; height: 100vh; background: #ffffff; box-shadow: -5px 0 25px rgba(0, 0, 0, 0.15); flex-direction: column; gap: 0; align-items: stretch; padding: 4rem 0 2rem; z-index: 999; transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1); overflow-y: auto; }
+            .header-links.active { right: 0; }
+            .header-links a { text-align: left; padding: 1rem 1.5rem; border-bottom: 1px solid #e2e8f0; font-size: 1rem; }
+            .header-links a::after { display: none; }
+            .cta-button { margin: 1rem 1.5rem !important; text-align: center; border-bottom: none !important; }
+            .footer-content { grid-template-columns: 1fr; text-align: center; }
+            .footer-section h3::after { left: 50%; transform: translateX(-50%); }
+            .footer-bottom { flex-direction: column; text-align: center; }
+            .footer-links-bottom { justify-content: center; }
         }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #e8eef5 50%, #f0e7f8 100%);
-            background-attachment: fixed;
-            min-height: 100vh;
-            color: #2d3748;
-            line-height: 1.6;
-        }
-        
-        /* Site Header */
-        .site-header {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(20px) saturate(180%);
-            -webkit-backdrop-filter: blur(20px) saturate(180%);
-            padding: 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 8px 32px rgba(102, 126, 234, 0.08), 0 1px 3px rgba(0, 0, 0, 0.05);
-            border-bottom: 1px solid rgba(102, 126, 234, 0.1);
-        }
-        
-        .site-header::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #667eea, #764ba2, #a855f7, transparent);
-            animation: headerGlow 4s ease-in-out infinite;
-        }
-        
-        @keyframes headerGlow {
-            0%, 100% { opacity: 0.2; }
-            50% { opacity: 0.6; }
-        }
-        
-        .header-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            text-decoration: none;
-        }
-        
-        .logo-icon {
-            width: 45px;
-            height: 45px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            box-shadow: 0 8px 24px rgba(102, 126, 234, 0.4);
-            transition: all 0.4s;
-            overflow: hidden;
-        }
-        
-        .logo-icon img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 12px;
-        }
-        
-        .logo-icon:hover {
-            transform: scale(1.05) rotate(5deg);
-            box-shadow: 0 12px 32px rgba(102, 126, 234, 0.5);
-        }
-        
-        .logo-text {
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .logo-main {
-            font-size: 1.5rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #a855f7 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: -0.5px;
-        }
-        
-        .logo-sub {
-            font-size: 0.7rem;
-            color: #718096;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-top: -2px;
-        }
-        
-        .nav-menu {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-        }
-        
-        .nav-link {
-            color: #4a5568;
-            text-decoration: none;
-            font-weight: 500;
-            padding: 0.6rem 1.2rem;
-            border-radius: 12px;
-            transition: all 0.3s;
-            position: relative;
-        }
-        
-        .nav-link:hover {
-            color: #667eea;
-            background: rgba(102, 126, 234, 0.08);
-        }
-        
-        .nav-link.active {
-            color: #667eea;
-            background: rgba(102, 126, 234, 0.1);
-        }
-        
-        .nav-link-primary {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white !important;
-            padding: 0.7rem 1.5rem;
-            border-radius: 25px;
-            font-weight: 600;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-        }
-        
-        .nav-link-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5);
-            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
-        }
-        
-        /* Main Content - Under Progress */
-        .main-content {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 60px 20px;
-            text-align: center;
-        }
-        
-        .progress-container {
-            background: white;
-            border-radius: 24px;
-            padding: 60px 40px;
-            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.15);
-            border: 1px solid rgba(102, 126, 234, 0.1);
-        }
-        
-        .progress-icon {
-            width: 120px;
-            height: 120px;
-            margin: 0 auto 30px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            animation: pulse 2s ease-in-out infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(102, 126, 234, 0.4); }
-            50% { transform: scale(1.05); box-shadow: 0 0 0 20px rgba(102, 126, 234, 0); }
-        }
-        
-        .progress-icon svg {
-            width: 60px;
-            height: 60px;
-            fill: white;
-        }
-        
-        .progress-title {
-            font-size: 2.5rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #a855f7 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 15px;
-        }
-        
-        .progress-subtitle {
-            font-size: 1.2rem;
-            color: #718096;
-            margin-bottom: 30px;
-        }
-        
-        .progress-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-            color: #92400e;
-            padding: 12px 24px;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1rem;
-            margin-bottom: 30px;
-        }
-        
-        .progress-badge svg {
-            width: 20px;
-            height: 20px;
-            fill: #f59e0b;
-        }
-        
-        .category-badge {
-            display: inline-block;
-            background: rgba(102, 126, 234, 0.1);
-            color: #667eea;
-            padding: 8px 20px;
-            border-radius: 25px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            margin-bottom: 30px;
-        }
-        
-        .progress-message {
-            color: #4a5568;
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 40px;
-        }
-        
-        .explore-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 16px 40px;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            text-decoration: none;
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
-            transition: all 0.3s;
-        }
-        
-        .explore-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.5);
-        }
-        
-        .explore-btn svg {
-            width: 20px;
-            height: 20px;
-            fill: white;
-        }
-        
-        /* Footer */
-        .site-footer {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-            color: #e2e8f0;
-            padding: 60px 0 30px;
-            margin-top: 80px;
-        }
-        
-        .footer-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-        
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 3rem;
-            margin-bottom: 40px;
-        }
-        
-        .footer-brand {
-            max-width: 350px;
-        }
-        
-        .footer-logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 20px;
-        }
-        
-        .footer-logo-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 14px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-        
-        .footer-logo-icon img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 14px;
-        }
-        
-        .footer-logo-text {
-            font-size: 1.8rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #667eea 0%, #a855f7 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .footer-desc {
-            color: #94a3b8;
-            line-height: 1.8;
-            font-size: 0.95rem;
-        }
-        
-        .footer-section h4 {
-            color: white;
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            position: relative;
-            padding-bottom: 10px;
-        }
-        
-        .footer-section h4::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 40px;
-            height: 3px;
-            background: linear-gradient(90deg, #667eea, #a855f7);
-            border-radius: 2px;
-        }
-        
-        .footer-links {
-            list-style: none;
-        }
-        
-        .footer-links li {
-            margin-bottom: 12px;
-        }
-        
-        .footer-links a {
-            color: #94a3b8;
-            text-decoration: none;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .footer-links a:hover {
-            color: #a855f7;
-            transform: translateX(5px);
-        }
-        
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-        
-        .footer-bottom p {
-            color: #64748b;
-            font-size: 0.9rem;
-        }
-        
-        .footer-bottom a {
-            color: #a855f7;
-            text-decoration: none;
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 15px;
-        }
-        
-        .social-link {
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.05);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #94a3b8;
-            text-decoration: none;
-            transition: all 0.3s;
-        }
-        
-        .social-link:hover {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            transform: translateY(-3px);
-        }
-        
-        /* Responsive */
-        @media (max-width: 968px) {
-            .nav-menu {
-                display: none;
-            }
-            
-            .footer-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-            
-            .progress-title {
-                font-size: 2rem;
-            }
-        }
-        
-        @media (max-width: 600px) {
-            .header-content {
-                padding: 1rem;
-            }
-            
-            .progress-container {
-                padding: 40px 20px;
-            }
-            
-            .progress-title {
-                font-size: 1.6rem;
-            }
-            
-            .footer-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .footer-bottom {
-                flex-direction: column;
-                text-align: center;
-            }
-        }
+        @media (max-width: 480px) { .input-grid { grid-template-columns: 1fr; } .field-full { grid-column: auto; } }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="site-header">
-        <div class="header-content">
-            <a href="../../index.html" class="logo">
-                <div class="logo-icon">
-                    <img src="../../images/logo.webp" alt="ShramTools Logo">
-                </div>
-                <div class="logo-text">
-                    <span class="logo-main">ShramTools</span>
-                    <span class="logo-sub">By Shram Kavach</span>
-                </div>
-            </a>
-            <nav class="nav-menu">
-                <a href="../../index.html" class="nav-link">Home</a>
-                <a href="../../index.html#financial" class="nav-link">Financial</a>
-                <a href="../../index.html#health" class="nav-link">Health</a>
-                <a href="../../index.html#math" class="nav-link">Math</a>
-                <a href="../../about-us.html" class="nav-link">About</a>
-                <a href="../../index.html" class="nav-link nav-link-primary">All Tools</a>
+    <div class="page-wrapper">
+        <header class="site-header">
+            <div class="header-content">
+                <a href="../../index.html" class="logo">
+                    <div class="logo-icon"><img src="../../images/logo.webp" alt="ShramTools Logo"></div>
+                    <div class="logo-text"><h1>ShramTools</h1><p>Free Online Tools</p></div>
+                </a>
+                <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+                <nav class="header-links" id="headerLinks">
+                    <a href="../../index.html">Home</a>
+                    <a href="../../index.html#financial">Financial Tools</a>
+                    <a href="../../index.html#health">Health Tools</a>
+                    <a href="../../about-us.html">About</a>
+                    <a href="../../index.html" class="cta-button">Explore Tools</a>
+                </nav>
+            </div>
+        </header>
+        <div class="menu-overlay" id="menuOverlay"></div>
+
+        <div class="container">
+            <nav class="breadcrumb">
+                <a href="../../index.html">Home</a><span>/</span>
+                <a href="../../index.html#financial">Financial Tools</a><span>/</span>
+                <span style="color: #4a5568; font-weight: 600;">Mortgage Amortization Calculator</span>
             </nav>
-        </div>
-    </header>
 
-    <!-- Main Content -->
-    <main class="main-content">
-        <div class="progress-container">
-            <div class="progress-icon">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
-                </svg>
+            <div class="page-header">
+                <span class="header-icon">🏠</span>
+                <h2>Mortgage Amortization Calculator</h2>
+                <p>Calculate principal & interest, escrow, and full monthly amortization schedule. Add taxes, insurance, HOA, PMI, and extra principal payments.</p>
             </div>
-            
-            <h1 class="progress-title">Mortgage Amortization Calculator</h1>
-            
-            <div class="category-badge">Financial Calculators</div>
-            
-            <div class="progress-badge">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
-                </svg>
-                Under Development
-            </div>
-            
-            <p class="progress-subtitle">Coming Soon!</p>
-            
-            <p class="progress-message">
-                We're working hard to bring you an amazing <strong>Mortgage Amortization Calculator</strong> tool. 
-                Our team is crafting a feature-rich, user-friendly experience that will help you 
-                achieve accurate results with ease. Stay tuned!
-            </p>
-            
-            <a href="../../index.html" class="explore-btn">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
-                </svg>
-                Explore Other Tools
-            </a>
-        </div>
-    </main>
 
-    <!-- Footer -->
-    <footer class="site-footer">
-        <div class="footer-content">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <div class="footer-logo">
-                        <div class="footer-logo-icon">
-                            <img src="../../images/logo.webp" alt="ShramTools Logo">
-                        </div>
-                        <span class="footer-logo-text">ShramTools</span>
+            <div class="calc-wrapper">
+                <div class="calc-inputs">
+                    <div class="calc-inputs-title">
+                        <span>📋</span>
+                        <h2>Mortgage Inputs</h2>
                     </div>
-                    <p class="footer-desc">
-                        Your trusted destination for 250+ free online calculators and tools. 
-                        From financial planning to health tracking, we've got you covered.
-                    </p>
+                    <div class="input-grid">
+                        <div class="field">
+                            <label><span class="label-icon">🏡</span> Home Price</label>
+                            <div class="input-group"><span class="unit">$</span><input type="number" id="homePrice" value="450000" min="0" step="1000" oninput="calculate()"></div>
+                        </div>
+                        <div class="field">
+                            <label><span class="label-icon">💵</span> Down Payment</label>
+                            <div class="input-group"><span class="unit">$</span><input type="number" id="downPayment" value="90000" min="0" step="500" oninput="calculate()"></div>
+                        </div>
+                        <div class="field">
+                            <label><span class="label-icon">📈</span> Interest Rate</label>
+                            <div class="input-group"><span class="unit">%</span><input type="number" id="rate" value="6.5" min="0" max="30" step="0.01" oninput="calculate()"></div>
+                        </div>
+                        <div class="field">
+                            <label><span class="label-icon">🗓️</span> Loan Term</label>
+                            <div class="input-group"><input type="number" id="years" class="with-right" value="30" min="1" max="40" step="1" oninput="calculate()"><span class="unit-right">years</span></div>
+                        </div>
+                        <div class="field">
+                            <label><span class="label-icon">🏛️</span> Property Tax (Annual)</label>
+                            <div class="input-group"><span class="unit">$</span><input type="number" id="annualTax" value="5400" min="0" step="100" oninput="calculate()"></div>
+                        </div>
+                        <div class="field">
+                            <label><span class="label-icon">🛡️</span> Insurance (Annual)</label>
+                            <div class="input-group"><span class="unit">$</span><input type="number" id="annualInsurance" value="1800" min="0" step="50" oninput="calculate()"></div>
+                        </div>
+                        <div class="field">
+                            <label><span class="label-icon">🏢</span> HOA (Monthly)</label>
+                            <div class="input-group"><span class="unit">$</span><input type="number" id="hoaMonthly" value="0" min="0" step="10" oninput="calculate()"></div>
+                        </div>
+                        <div class="field">
+                            <label><span class="label-icon">🧾</span> PMI (Monthly)</label>
+                            <div class="input-group"><span class="unit">$</span><input type="number" id="pmiMonthly" value="0" min="0" step="10" oninput="calculate()"></div>
+                        </div>
+                        <div class="field field-full">
+                            <label><span class="label-icon">🚀</span> Extra Principal (Monthly)</label>
+                            <div class="input-group"><span class="unit">$</span><input type="number" id="extraMonthly" value="0" min="0" step="10" oninput="calculate()"></div>
+                        </div>
+                    </div>
+                    <button class="btn-calc" onclick="calculate()">📊 Calculate Mortgage</button>
+                    <button class="btn-reset" onclick="resetForm()">🔄 Reset All</button>
                 </div>
-                
+
+                <div class="calc-results">
+                    <div class="result-main">
+                        <span class="result-icon">💳</span>
+                        <div class="label">Total Monthly Payment</div>
+                        <div class="value" id="totalMonthly">$0</div>
+                    </div>
+                    <div class="result-stats">
+                        <div class="stat-card"><div class="stat-label"><div class="stat-icon blue">💰</div> Loan Amount</div><div class="stat-value" id="loanAmountVal">$0</div></div>
+                        <div class="stat-card"><div class="stat-label"><div class="stat-icon purple">🏦</div> Principal + Interest</div><div class="stat-value" id="piMonthly">$0</div></div>
+                        <div class="stat-card"><div class="stat-label"><div class="stat-icon green">🧾</div> Escrow + Fees</div><div class="stat-value" id="escrowMonthly">$0</div></div>
+                        <div class="stat-card"><div class="stat-label"><div class="stat-icon amber">📈</div> Total Interest</div><div class="stat-value" id="totalInterest">$0</div></div>
+                        <div class="stat-card"><div class="stat-label"><div class="stat-icon red">📅</div> Payoff Date</div><div class="stat-value" id="payoffDate">-</div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="savings-box" id="savingsBox">
+                <h3>✨ Extra Payment Savings</h3>
+                <div class="savings-row"><span>Interest Saved</span><span class="sv" id="svInterest">$0</span></div>
+                <div class="savings-row"><span>Time Saved</span><span class="sv" id="svTime">0 months</span></div>
+                <div class="savings-row"><span>New Payoff Date</span><span class="sv" id="svPayoff">-</span></div>
+                <div class="savings-row"><span>New Total Paid</span><span class="sv" id="svTotalPaid">$0</span></div>
+            </div>
+
+            <div class="chart-wrapper" id="chartSection" style="display:none;">
+                <h2>🥧 Lifetime Cost Breakdown</h2>
+                <p class="chart-sub">Principal, interest, and escrow/fees over the mortgage life</p>
+                <div class="chart-container"><canvas id="pieChart" class="chart-canvas" width="320" height="320"></canvas></div>
+                <div class="chart-legend">
+                    <div class="legend-item"><span class="legend-dot principal"></span> Principal</div>
+                    <div class="legend-item"><span class="legend-dot interest"></span> Interest</div>
+                    <div class="legend-item"><span class="legend-dot escrow"></span> Escrow & Fees</div>
+                </div>
+            </div>
+
+            <div class="schedule-wrapper" id="tableSection" style="display:none;">
+                <h2>📑 Amortization Schedule</h2>
+                <p class="schedule-sub">Monthly principal, interest, escrow, and remaining balance</p>
+                <div class="view-toggle">
+                    <button class="active" onclick="setView('monthly', this)">Monthly</button>
+                    <button onclick="setView('yearly', this)">Yearly Summary</button>
+                </div>
+                <div class="table-container" id="scheduleTable"></div>
+            </div>
+
+            <section class="content-card">
+                <h2><span class="section-icon">🧠</span> Mortgage Payment Formula</h2>
+                <p>Your principal and interest mortgage payment is calculated using the standard amortization equation:</p>
+                <div class="formula-container">
+                    <div class="formula-math">
+                        <span class="var result">M</span>
+                        <span class="equals">=</span>
+                        <span class="var">P</span>
+                        <span class="operator">×</span>
+                        <span class="fraction">
+                            <span class="num"><span class="var">r</span><span class="operator">(</span><span class="var">1</span><span class="operator">+</span><span class="var">r</span><span class="operator">)</span><sup>n</sup></span>
+                            <span class="den"><span class="operator">(</span><span class="var">1</span><span class="operator">+</span><span class="var">r</span><span class="operator">)</span><sup>n</sup><span class="operator">−</span><span class="var">1</span></span>
+                        </span>
+                    </div>
+                    <div class="formula-legend">
+                        <div class="legend-item"><span class="legend-var">M</span> = monthly principal + interest payment</div>
+                        <div class="legend-item"><span class="legend-var">P</span> = loan amount</div>
+                        <div class="legend-item"><span class="legend-var">r</span> = monthly interest rate</div>
+                        <div class="legend-item"><span class="legend-var">n</span> = total number of monthly payments</div>
+                    </div>
+                </div>
+                <p><strong>Total Monthly Payment</strong> = Principal & Interest + Property Tax/12 + Insurance/12 + HOA + PMI.</p>
+            </section>
+
+            <section class="content-card">
+                <h2><span class="section-icon">💡</span> Tips to Reduce Total Mortgage Cost</h2>
+                <ul>
+                    <li>Make consistent extra principal payments, even small amounts, to reduce lifetime interest.</li>
+                    <li>Review refinance opportunities if rates drop significantly below your current mortgage rate.</li>
+                    <li>Eliminate PMI early when your loan-to-value reaches lender thresholds.</li>
+                    <li>Contest property tax assessments if your home valuation appears overstated.</li>
+                    <li>Shop insurance annually; premium savings directly reduce your monthly payment.</li>
+                </ul>
+            </section>
+
+            <section class="content-card">
+                <h2><span class="section-icon">❓</span> Frequently Asked Questions</h2>
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)"><h3>Why is my interest highest at the beginning?</h3><div class="faq-toggle">+</div></div>
+                        <div class="faq-answer"><p>Interest is based on your remaining principal balance. At the beginning of the loan, your balance is highest, so the interest portion of each payment is larger.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)"><h3>Do extra payments go to principal?</h3><div class="faq-toggle">+</div></div>
+                        <div class="faq-answer"><p>This calculator assumes extra monthly payments go directly to principal, which shortens the loan term and lowers total interest.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)"><h3>Is escrow required?</h3><div class="faq-toggle">+</div></div>
+                        <div class="faq-answer"><p>Many lenders require escrow for taxes and insurance, especially with lower down payments. HOA and PMI are lender/property specific.</p></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="related-tools">
+                <h2>🔗 Related Financial Tools</h2>
+                <div class="tools-grid">
+                    <a href="mortgage-calculator.html" class="tool-link"><span class="tool-emoji">🏠</span> Mortgage Calculator</a>
+                    <a href="mortgage-payoff-calculator.html" class="tool-link"><span class="tool-emoji">⚡</span> Mortgage Payoff Calculator</a>
+                    <a href="loan-calculator.html" class="tool-link"><span class="tool-emoji">💳</span> Loan Calculator</a>
+                    <a href="house-affordability-calculator.html" class="tool-link"><span class="tool-emoji">📐</span> House Affordability Calculator</a>
+                    <a href="interest-calculator.html" class="tool-link"><span class="tool-emoji">📈</span> Interest Calculator</a>
+                    <a href="payment-calculator.html" class="tool-link"><span class="tool-emoji">🧾</span> Payment Calculator</a>
+                </div>
+            </section>
+        </div>
+
+        <footer class="site-footer">
+            <div class="footer-content">
                 <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <ul class="footer-links">
-                        <li><a href="../../index.html">Home</a></li>
+                    <div class="footer-brand">
+                        <div class="footer-logo"><div class="footer-logo-icon"><img src="../../images/logo.webp" alt="ShramTools Logo"></div><h3>ShramTools</h3></div>
+                        <p>A comprehensive suite of 250+ free online calculators and tools. Part of the ShramKavach ecosystem.</p>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Categories</h3>
+                    <ul>
                         <li><a href="../../index.html#financial">Financial Tools</a></li>
-                        <li><a href="../../index.html#health">Health Tools</a></li>
+                        <li><a href="../../index.html#health">Health &amp; Fitness</a></li>
                         <li><a href="../../index.html#math">Math Tools</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>More Tools</h4>
-                    <ul class="footer-links">
                         <li><a href="../../index.html#text">Text Tools</a></li>
                         <li><a href="../../index.html#image">Image Tools</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <ul>
                         <li><a href="../../index.html#student">Student Tools</a></li>
                         <li><a href="../../index.html#other">Other Tools</a></li>
+                        <li><a href="https://shramkavach.com/updates">Updates</a></li>
+                        <li><a href="https://shramkavach.com/tutorials">Tutorials</a></li>
+                        <li><a href="https://shramkavach.com/support">Support</a></li>
                     </ul>
                 </div>
-                
                 <div class="footer-section">
-                    <h4>Company</h4>
-                    <ul class="footer-links">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="../../index.html">ShramTools Home</a></li>
                         <li><a href="../../about-us.html">About Us</a></li>
-                        <li><a href="../../privacy-policy.html">Privacy Policy</a></li>
-                        <li><a href="../../terms-of-service.html">Terms of Service</a></li>
                         <li><a href="../../contact.html">Contact</a></li>
+                        <li><a href="https://shramkavach.com/privacy">Privacy Policy</a></li>
+                        <li><a href="https://shramkavach.com/terms">Terms of Service</a></li>
                     </ul>
                 </div>
             </div>
-            
             <div class="footer-bottom">
-                <p>&copy; 2025 ShramTools by <a href="https://shramkavach.com" target="_blank">Shram Kavach</a>. All rights reserved.</p>
-                <div class="social-links">
-                    <a href="#" class="social-link" aria-label="Twitter">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                        </svg>
-                    </a>
-                    <a href="#" class="social-link" aria-label="GitHub">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                        </svg>
-                    </a>
-                    <a href="#" class="social-link" aria-label="LinkedIn">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                        </svg>
-                    </a>
-                </div>
+                <p>&copy; 2026 <a href="https://shramkavach.com">ShramKavach.com</a> - All rights reserved.</p>
+                <div class="footer-links-bottom"><a href="https://shramkavach.com/sitemap">Sitemap</a><a href="https://shramkavach.com/help">Help Center</a></div>
             </div>
-        </div>
-    </footer>
+        </footer>
+    </div>
+
+<script>
+    let scheduleData = [];
+    let currentView = 'monthly';
+
+    const fmt = value => new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(value);
+    const fmt2 = value => new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(value);
+
+    function payoffDateFromMonths(months) {
+        const d = new Date();
+        d.setMonth(d.getMonth() + months);
+        return d.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+    }
+
+    function computeSchedule(principal, annualRate, months, extraPrincipal, monthlyEscrow) {
+        const monthlyRate = annualRate / 100 / 12;
+        let pi;
+
+        if (monthlyRate === 0) {
+            pi = principal / months;
+        } else {
+            const factor = Math.pow(1 + monthlyRate, months);
+            pi = principal * (monthlyRate * factor) / (factor - 1);
+        }
+
+        let balance = principal;
+        let totalInterest = 0;
+        let totalPaid = 0;
+        let totalEscrow = 0;
+        const rows = [];
+        let month = 0;
+
+        while (balance > 0.005 && month < months * 2) {
+            month += 1;
+            const interest = balance * monthlyRate;
+            let principalPart = pi - interest + extraPrincipal;
+
+            if (principalPart > balance) principalPart = balance;
+
+            const piPayment = interest + principalPart;
+            const paymentTotal = piPayment + monthlyEscrow;
+            balance -= principalPart;
+            if (balance < 0) balance = 0;
+
+            totalInterest += interest;
+            totalPaid += paymentTotal;
+            totalEscrow += monthlyEscrow;
+
+            rows.push({ month, paymentTotal, piPayment, principalPart, interest, escrow: monthlyEscrow, balance });
+            if (balance <= 0) break;
+        }
+
+        return { pi, monthsPaid: month, totalInterest, totalPaid, totalEscrow, rows };
+    }
+
+    function calculate() {
+        const homePrice = parseFloat(document.getElementById('homePrice').value) || 0;
+        const downPayment = parseFloat(document.getElementById('downPayment').value) || 0;
+        const rate = parseFloat(document.getElementById('rate').value) || 0;
+        const years = parseFloat(document.getElementById('years').value) || 0;
+        const annualTax = parseFloat(document.getElementById('annualTax').value) || 0;
+        const annualInsurance = parseFloat(document.getElementById('annualInsurance').value) || 0;
+        const hoaMonthly = parseFloat(document.getElementById('hoaMonthly').value) || 0;
+        const pmiMonthly = parseFloat(document.getElementById('pmiMonthly').value) || 0;
+        const extraMonthly = parseFloat(document.getElementById('extraMonthly').value) || 0;
+
+        let principal = Math.max(0, homePrice - downPayment);
+        const months = Math.max(1, Math.round(years * 12));
+        const monthlyEscrow = (annualTax / 12) + (annualInsurance / 12) + hoaMonthly + pmiMonthly;
+
+        if (principal <= 0 || homePrice <= 0) {
+            document.getElementById('totalMonthly').textContent = '$0';
+            document.getElementById('loanAmountVal').textContent = '$0';
+            document.getElementById('piMonthly').textContent = '$0';
+            document.getElementById('escrowMonthly').textContent = '$0';
+            document.getElementById('totalInterest').textContent = '$0';
+            document.getElementById('payoffDate').textContent = '-';
+            document.getElementById('chartSection').style.display = 'none';
+            document.getElementById('tableSection').style.display = 'none';
+            document.getElementById('savingsBox').style.display = 'none';
+            return;
+        }
+
+        const base = computeSchedule(principal, rate, months, 0, monthlyEscrow);
+        const withExtra = computeSchedule(principal, rate, months, extraMonthly, monthlyEscrow);
+        scheduleData = withExtra.rows;
+
+        const totalMonthly = base.pi + monthlyEscrow;
+
+        document.getElementById('totalMonthly').textContent = fmt2(totalMonthly);
+        document.getElementById('loanAmountVal').textContent = fmt(principal);
+        document.getElementById('piMonthly').textContent = fmt2(base.pi);
+        document.getElementById('escrowMonthly').textContent = fmt2(monthlyEscrow);
+        document.getElementById('totalInterest').textContent = fmt(withExtra.totalInterest);
+        document.getElementById('payoffDate').textContent = payoffDateFromMonths(withExtra.monthsPaid);
+
+        if (extraMonthly > 0) {
+            const interestSaved = Math.max(0, base.totalInterest - withExtra.totalInterest);
+            const monthsSaved = Math.max(0, base.monthsPaid - withExtra.monthsPaid);
+            document.getElementById('svInterest').textContent = fmt(interestSaved);
+            document.getElementById('svTime').textContent = monthsSaved + (monthsSaved === 1 ? ' month' : ' months');
+            document.getElementById('svPayoff').textContent = payoffDateFromMonths(withExtra.monthsPaid);
+            document.getElementById('svTotalPaid').textContent = fmt(withExtra.totalPaid);
+            document.getElementById('savingsBox').style.display = 'block';
+        } else {
+            document.getElementById('savingsBox').style.display = 'none';
+        }
+
+        document.getElementById('chartSection').style.display = 'block';
+        document.getElementById('tableSection').style.display = 'block';
+
+        renderPie(principal, withExtra.totalInterest, withExtra.totalEscrow);
+        renderTable();
+    }
+
+    function renderPie(principal, interest, escrow) {
+        const canvas = document.getElementById('pieChart');
+        const ctx = canvas.getContext('2d');
+        const dpr = window.devicePixelRatio || 1;
+
+        canvas.width = 320 * dpr;
+        canvas.height = 320 * dpr;
+        canvas.style.width = '320px';
+        canvas.style.height = '320px';
+        ctx.scale(dpr, dpr);
+        ctx.clearRect(0, 0, 320, 320);
+
+        const total = principal + interest + escrow;
+        if (total <= 0) return;
+
+        const cx = 160, cy = 160, radius = 120;
+        const slices = [
+            { value: principal, color: '#667eea' },
+            { value: interest, color: '#f59e0b' },
+            { value: escrow, color: '#10b981' }
+        ];
+
+        let start = -Math.PI / 2;
+        slices.forEach(s => {
+            const angle = (s.value / total) * Math.PI * 2;
+            ctx.beginPath();
+            ctx.moveTo(cx, cy);
+            ctx.arc(cx, cy, radius, start, start + angle);
+            ctx.closePath();
+            ctx.fillStyle = s.color;
+            ctx.fill();
+            start += angle;
+        });
+
+        ctx.beginPath();
+        ctx.arc(cx, cy, radius * 0.55, 0, Math.PI * 2);
+        ctx.fillStyle = '#fff';
+        ctx.fill();
+
+        ctx.fillStyle = '#1a202c';
+        ctx.font = 'bold 15px Segoe UI';
+        ctx.textAlign = 'center';
+        ctx.fillText('Lifetime Cost', cx, cy - 8);
+        ctx.fillStyle = '#667eea';
+        ctx.font = 'bold 18px Segoe UI';
+        ctx.fillText(fmt(total), cx, cy + 18);
+    }
+
+    function renderTable() {
+        const root = document.getElementById('scheduleTable');
+        if (currentView === 'monthly') renderMonthlyTable(root);
+        else renderYearlyTable(root);
+    }
+
+    function renderMonthlyTable(root) {
+        let html = '<table class="amort-table"><thead><tr>';
+        html += '<th>#</th><th>Total Payment</th><th>P&I</th><th>Principal</th><th>Interest</th><th>Escrow</th><th>Balance</th>';
+        html += '</tr></thead><tbody>';
+
+        scheduleData.forEach(r => {
+            html += '<tr>';
+            html += '<td>' + r.month + '</td>';
+            html += '<td>' + fmt2(r.paymentTotal) + '</td>';
+            html += '<td>' + fmt2(r.piPayment) + '</td>';
+            html += '<td>' + fmt2(r.principalPart) + '</td>';
+            html += '<td class="interest-val">' + fmt2(r.interest) + '</td>';
+            html += '<td>' + fmt2(r.escrow) + '</td>';
+            html += '<td class="balance-val">' + fmt2(r.balance) + '</td>';
+            html += '</tr>';
+        });
+
+        html += '</tbody></table>';
+        root.innerHTML = html;
+    }
+
+    function renderYearlyTable(root) {
+        let html = '<table class="amort-table"><thead><tr>';
+        html += '<th>Year</th><th>Total Paid</th><th>Principal</th><th>Interest</th><th>Escrow</th><th>End Balance</th>';
+        html += '</tr></thead><tbody>';
+
+        let year = 1;
+        let pay = 0, pr = 0, intv = 0, esc = 0, cnt = 0, endBalance = 0;
+
+        scheduleData.forEach((r, idx) => {
+            pay += r.paymentTotal;
+            pr += r.principalPart;
+            intv += r.interest;
+            esc += r.escrow;
+            cnt += 1;
+            endBalance = r.balance;
+
+            if (cnt === 12 || idx === scheduleData.length - 1) {
+                html += '<tr>';
+                html += '<td>' + year + '</td>';
+                html += '<td>' + fmt2(pay) + '</td>';
+                html += '<td>' + fmt2(pr) + '</td>';
+                html += '<td class="interest-val">' + fmt2(intv) + '</td>';
+                html += '<td>' + fmt2(esc) + '</td>';
+                html += '<td class="balance-val">' + fmt2(endBalance) + '</td>';
+                html += '</tr>';
+                year += 1;
+                pay = 0; pr = 0; intv = 0; esc = 0; cnt = 0;
+            }
+        });
+
+        html += '</tbody></table>';
+        root.innerHTML = html;
+    }
+
+    function setView(view, btn) {
+        currentView = view;
+        document.querySelectorAll('.view-toggle button').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        renderTable();
+    }
+
+    function resetForm() {
+        document.getElementById('homePrice').value = '450000';
+        document.getElementById('downPayment').value = '90000';
+        document.getElementById('rate').value = '6.5';
+        document.getElementById('years').value = '30';
+        document.getElementById('annualTax').value = '5400';
+        document.getElementById('annualInsurance').value = '1800';
+        document.getElementById('hoaMonthly').value = '0';
+        document.getElementById('pmiMonthly').value = '0';
+        document.getElementById('extraMonthly').value = '0';
+        document.getElementById('chartSection').style.display = 'none';
+        document.getElementById('tableSection').style.display = 'none';
+        document.getElementById('savingsBox').style.display = 'none';
+        calculate();
+    }
+
+    function toggleFAQ(el) {
+        const item = el.closest('.faq-item');
+        const wasActive = item.classList.contains('active');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+        if (!wasActive) item.classList.add('active');
+    }
+
+    window.addEventListener('DOMContentLoaded', () => calculate());
+
+    const hamburger = document.getElementById('hamburger');
+    const headerLinks = document.getElementById('headerLinks');
+    const menuOverlay = document.getElementById('menuOverlay');
+
+    function toggleMenu() {
+        hamburger.classList.toggle('active');
+        headerLinks.classList.toggle('active');
+        menuOverlay.classList.toggle('active');
+        document.body.style.overflow = headerLinks.classList.contains('active') ? 'hidden' : '';
+    }
+
+    hamburger.addEventListener('click', toggleMenu);
+    menuOverlay.addEventListener('click', toggleMenu);
+    headerLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => { if (window.innerWidth <= 768) toggleMenu(); });
+    });
+</script>
+
 </body>
 </html>
