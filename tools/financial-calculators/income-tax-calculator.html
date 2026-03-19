@@ -294,10 +294,10 @@
                 <!-- Tax Year -->
                 <div class="section-divider">&#128197; Tax Year</div>
                 <div class="status-tabs" id="yearTabs">
-                    <button class="status-tab" data-year="2024" onclick="setYear(2024)">
+                    <button type="button" class="status-tab" data-year="2024" onclick="setYear(2024)">
                         &#128197; 2024 (Filing in 2025)
                     </button>
-                    <button class="status-tab active" data-year="2025" onclick="setYear(2025)">
+                    <button type="button" class="status-tab active" data-year="2025" onclick="setYear(2025)">
                         &#128197; 2025 (Filing in 2026)
                     </button>
                 </div>
@@ -305,10 +305,10 @@
                 <!-- Filing Status -->
                 <div class="section-divider">&#128101; Filing Status</div>
                 <div class="status-tabs" id="statusTabs">
-                    <button class="status-tab active" data-status="single" onclick="setStatus('single')">&#129489; Single</button>
-                    <button class="status-tab" data-status="married" onclick="setStatus('married')">&#128107; Married Filing Jointly</button>
-                    <button class="status-tab" data-status="married_sep" onclick="setStatus('married_sep')">&#128100; Married Filing Separately</button>
-                    <button class="status-tab" data-status="hoh" onclick="setStatus('hoh')">&#127968; Head of Household</button>
+                    <button type="button" class="status-tab active" data-status="single" onclick="setStatus('single')">&#129489; Single</button>
+                    <button type="button" class="status-tab" data-status="married" onclick="setStatus('married')">&#128107; Married Filing Jointly</button>
+                    <button type="button" class="status-tab" data-status="married_sep" onclick="setStatus('married_sep')">&#128100; Married Filing Separately</button>
+                    <button type="button" class="status-tab" data-status="hoh" onclick="setStatus('hoh')">&#127968; Head of Household</button>
                 </div>
 
                 <!-- Income -->
@@ -339,8 +339,8 @@
                 <!-- Deductions -->
                 <div class="section-divider">&#128203; Deductions</div>
                 <div class="deduction-toggle">
-                    <button class="ded-btn active" id="dedStd" onclick="setDeduction('standard')">Standard Deduction</button>
-                    <button class="ded-btn" id="dedItem" onclick="setDeduction('itemized')">Itemized Deductions</button>
+                    <button type="button" class="ded-btn active" id="dedStd" onclick="setDeduction('standard')">Standard Deduction</button>
+                    <button type="button" class="ded-btn" id="dedItem" onclick="setDeduction('itemized')">Itemized Deductions</button>
                 </div>
                 <div class="form-group" id="stdDeductionGroup" style="margin-bottom: 20px;">
                     <label><span class="label-icon">&#128203;</span> Standard Deduction</label>
@@ -374,8 +374,8 @@
                 </div>
 
                 <div class="btn-row">
-                    <button class="btn-calc" onclick="calculate()">&#128202; Calculate Tax</button>
-                    <button class="btn-reset" onclick="resetForm()">&#128260; Reset</button>
+                    <button type="button" class="btn-calc" onclick="calculate()">&#128202; Calculate Tax</button>
+                    <button type="button" class="btn-reset" onclick="resetForm()">&#128260; Reset</button>
                 </div>
 
                 <!-- Results -->
@@ -787,11 +787,12 @@
         const medicareTax = wages * MEDICARE_RATE;
         const addMedicare = Math.max(0, wages - MEDICARE_THRESHOLD[selectedStatus]) * ADDITIONAL_MEDICARE;
         const totalFICA = ssTax + medicareTax + addMedicare;
+        const combinedRate = grossIncome > 0 ? ((taxAfterCredits + totalFICA) / grossIncome * 100).toFixed(1) : '0.0';
         document.getElementById('ficaText').innerHTML =
             'As a W-2 employee on <span class="hl">' + fmt(wages) + '</span> in wages, your share of FICA taxes is approximately <span class="hl">' + fmt(totalFICA) + '</span>/year (<span class="hl">' + fmtD(totalFICA / 12) + '/month</span>). ' +
             'Breakdown: Social Security ' + fmt(ssTax) + ' (6.2% on first ' + fmt(ssWageBase) + ') + Medicare ' + fmt(medicareTax) + ' (1.45%)' +
             (addMedicare > 0 ? ' + Additional Medicare ' + fmt(addMedicare) + ' (0.9% on wages over ' + fmt(MEDICARE_THRESHOLD[selectedStatus]) + ')' : '') + '. ' +
-            'Your employer pays the same amount. Combined federal+FICA tax: <span class="hl">' + fmt(taxAfterCredits + totalFICA) + '</span> (' + ((taxAfterCredits + totalFICA) / grossIncome * 100).toFixed(1) + '% of gross).';
+            'Your employer pays the same amount. Combined federal+FICA tax: <span class="hl">' + fmt(taxAfterCredits + totalFICA) + '</span> (' + combinedRate + '% of gross).';
 
         // Bracket table
         const tbody = document.getElementById('bracketBody');
@@ -933,6 +934,7 @@
 
     // Init
     updateStdDeduction();
+    calculate();
 </script>
 
 </body>
