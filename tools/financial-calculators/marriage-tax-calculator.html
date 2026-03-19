@@ -3,623 +3,590 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
-    <title>Marriage Tax Calculator - Free Online Tool | ShramTools</title>
-    <meta name="description" content="Free Marriage Tax Calculator tool by ShramTools. Easy to use, accurate results, no registration required.">
-    <meta name="keywords" content="marriage tax calculator, free calculator, online tool, ShramTools">
-    <meta name="author" content="ShramTools by Shram Kavach">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://shramtools.shramkavach.com/tools/financial-calculators/marriage-tax-calculator.html">
-    
-    <!-- Open Graph -->
+    <title>Marriage Tax Calculator (2024 & 2025) - Penalty vs Bonus Estimator | ScribbleTools</title>
+    <meta name="description" content="Free Marriage Tax Calculator for 2024 & 2025 federal tax brackets. Compare combined taxes as two single filers vs married filing jointly and estimate marriage tax penalty or bonus.">
+    <meta name="keywords" content="marriage tax calculator, marriage penalty calculator, marriage bonus calculator, married filing jointly calculator, tax bracket calculator">
+    <link rel="canonical" href="https://scribbletools.com/tools/financial-calculators/marriage-tax-calculator.html">
+
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://shramtools.shramkavach.com/tools/financial-calculators/marriage-tax-calculator.html">
-    <meta property="og:title" content="Marriage Tax Calculator - Free Online Tool | ShramTools">
-    <meta property="og:description" content="Free Marriage Tax Calculator tool. Easy to use, accurate results.">
-    <meta property="og:image" content="https://shramtools.shramkavach.com/images/og-image.jpg">
-    
-    <!-- Twitter -->
+    <meta property="og:url" content="https://scribbletools.com/tools/financial-calculators/marriage-tax-calculator.html">
+    <meta property="og:title" content="Marriage Tax Calculator - Penalty vs Bonus Estimator">
+    <meta property="og:description" content="Estimate if marriage increases or decreases your federal income tax for 2024 or 2025.">
+    <meta property="og:image" content="../../images/og-image.jpg">
+
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:title" content="Marriage Tax Calculator | ShramTools">
-    <meta property="twitter:description" content="Free Marriage Tax Calculator tool by ShramTools.">
-    
+    <meta property="twitter:title" content="Marriage Tax Calculator | ScribbleTools">
+    <meta property="twitter:description" content="Compare taxes as single filers vs married filing jointly.">
+
     <link rel="icon" type="image/webp" href="../../images/logo.webp">
-    
+
     <style>
-        /* Reset & Base */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667EEA 0%, #764BA2 100%);
+            --page-bg: linear-gradient(180deg, #F5F7FA 0%, #E8EEF5 50%, #F0E7F8 100%);
+            --text-main: #2D3748;
+            --text-secondary: #4A5568;
+            --text-muted: #718096;
+            --border: #E2E8F0;
         }
-        
-        html {
-            scroll-behavior: smooth;
-        }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #e8eef5 50%, #f0e7f8 100%);
-            background-attachment: fixed;
-            min-height: 100vh;
-            color: #2d3748;
-            line-height: 1.6;
-        }
-        
-        /* Site Header */
-        .site-header {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(20px) saturate(180%);
-            -webkit-backdrop-filter: blur(20px) saturate(180%);
-            padding: 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 8px 32px rgba(102, 126, 234, 0.08), 0 1px 3px rgba(0, 0, 0, 0.05);
-            border-bottom: 1px solid rgba(102, 126, 234, 0.1);
-        }
-        
-        .site-header::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #667eea, #764ba2, #a855f7, transparent);
-            animation: headerGlow 4s ease-in-out infinite;
-        }
-        
-        @keyframes headerGlow {
-            0%, 100% { opacity: 0.2; }
-            50% { opacity: 0.6; }
-        }
-        
-        .header-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            text-decoration: none;
-        }
-        
-        .logo-icon {
-            width: 45px;
-            height: 45px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            box-shadow: 0 8px 24px rgba(102, 126, 234, 0.4);
-            transition: all 0.4s;
-            overflow: hidden;
-        }
-        
-        .logo-icon img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 12px;
-        }
-        
-        .logo-icon:hover {
-            transform: scale(1.05) rotate(5deg);
-            box-shadow: 0 12px 32px rgba(102, 126, 234, 0.5);
-        }
-        
-        .logo-text {
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .logo-main {
-            font-size: 1.5rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #a855f7 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: -0.5px;
-        }
-        
-        .logo-sub {
-            font-size: 0.7rem;
-            color: #718096;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-top: -2px;
-        }
-        
-        .nav-menu {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-        }
-        
-        .nav-link {
-            color: #4a5568;
-            text-decoration: none;
-            font-weight: 500;
-            padding: 0.6rem 1.2rem;
-            border-radius: 12px;
-            transition: all 0.3s;
-            position: relative;
-        }
-        
-        .nav-link:hover {
-            color: #667eea;
-            background: rgba(102, 126, 234, 0.08);
-        }
-        
-        .nav-link.active {
-            color: #667eea;
-            background: rgba(102, 126, 234, 0.1);
-        }
-        
-        .nav-link-primary {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white !important;
-            padding: 0.7rem 1.5rem;
-            border-radius: 25px;
-            font-weight: 600;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-        }
-        
-        .nav-link-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5);
-            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
-        }
-        
-        /* Main Content - Under Progress */
-        .main-content {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 60px 20px;
-            text-align: center;
-        }
-        
-        .progress-container {
-            background: white;
-            border-radius: 24px;
-            padding: 60px 40px;
-            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.15);
-            border: 1px solid rgba(102, 126, 234, 0.1);
-        }
-        
-        .progress-icon {
-            width: 120px;
-            height: 120px;
-            margin: 0 auto 30px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            animation: pulse 2s ease-in-out infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(102, 126, 234, 0.4); }
-            50% { transform: scale(1.05); box-shadow: 0 0 0 20px rgba(102, 126, 234, 0); }
-        }
-        
-        .progress-icon svg {
-            width: 60px;
-            height: 60px;
-            fill: white;
-        }
-        
-        .progress-title {
-            font-size: 2.5rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #a855f7 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 15px;
-        }
-        
-        .progress-subtitle {
-            font-size: 1.2rem;
-            color: #718096;
-            margin-bottom: 30px;
-        }
-        
-        .progress-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-            color: #92400e;
-            padding: 12px 24px;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1rem;
-            margin-bottom: 30px;
-        }
-        
-        .progress-badge svg {
-            width: 20px;
-            height: 20px;
-            fill: #f59e0b;
-        }
-        
-        .category-badge {
-            display: inline-block;
-            background: rgba(102, 126, 234, 0.1);
-            color: #667eea;
-            padding: 8px 20px;
-            border-radius: 25px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            margin-bottom: 30px;
-        }
-        
-        .progress-message {
-            color: #4a5568;
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 40px;
-        }
-        
-        .explore-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 16px 40px;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            text-decoration: none;
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
-            transition: all 0.3s;
-        }
-        
-        .explore-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.5);
-        }
-        
-        .explore-btn svg {
-            width: 20px;
-            height: 20px;
-            fill: white;
-        }
-        
-        /* Footer */
-        .site-footer {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-            color: #e2e8f0;
-            padding: 60px 0 30px;
-            margin-top: 80px;
-        }
-        
-        .footer-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-        
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 3rem;
-            margin-bottom: 40px;
-        }
-        
-        .footer-brand {
-            max-width: 350px;
-        }
-        
-        .footer-logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 20px;
-        }
-        
-        .footer-logo-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 14px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-        
-        .footer-logo-icon img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 14px;
-        }
-        
-        .footer-logo-text {
-            font-size: 1.8rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #667eea 0%, #a855f7 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .footer-desc {
-            color: #94a3b8;
-            line-height: 1.8;
-            font-size: 0.95rem;
-        }
-        
-        .footer-section h4 {
-            color: white;
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            position: relative;
-            padding-bottom: 10px;
-        }
-        
-        .footer-section h4::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 40px;
-            height: 3px;
-            background: linear-gradient(90deg, #667eea, #a855f7);
-            border-radius: 2px;
-        }
-        
-        .footer-links {
-            list-style: none;
-        }
-        
-        .footer-links li {
-            margin-bottom: 12px;
-        }
-        
-        .footer-links a {
-            color: #94a3b8;
-            text-decoration: none;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .footer-links a:hover {
-            color: #a855f7;
-            transform: translateX(5px);
-        }
-        
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-        
-        .footer-bottom p {
-            color: #64748b;
-            font-size: 0.9rem;
-        }
-        
-        .footer-bottom a {
-            color: #a855f7;
-            text-decoration: none;
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 15px;
-        }
-        
-        .social-link {
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.05);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #94a3b8;
-            text-decoration: none;
-            transition: all 0.3s;
-        }
-        
-        .social-link:hover {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            transform: translateY(-3px);
-        }
-        
-        /* Responsive */
-        @media (max-width: 968px) {
-            .nav-menu {
-                display: none;
-            }
-            
-            .footer-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-            
-            .progress-title {
-                font-size: 2rem;
-            }
-        }
-        
-        @media (max-width: 600px) {
-            .header-content {
-                padding: 1rem;
-            }
-            
-            .progress-container {
-                padding: 40px 20px;
-            }
-            
-            .progress-title {
-                font-size: 1.6rem;
-            }
-            
-            .footer-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .footer-bottom {
-                flex-direction: column;
-                text-align: center;
-            }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+        html { scroll-behavior: smooth; }
+        body { background: var(--page-bg); color: var(--text-main); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+        .page-wrapper { min-height: 100vh; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+
+        .site-header { background: rgba(255,255,255,0.85); backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%); position: sticky; top: 0; z-index: 1000; box-shadow: 0 8px 32px rgba(102,126,234,0.08), 0 1px 3px rgba(0,0,0,0.05); border-bottom: 1px solid rgba(102,126,234,0.1); }
+        .site-header::before { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, #667eea, #764ba2, #a855f7, transparent); animation: headerGlow 4s ease-in-out infinite; }
+        @keyframes headerGlow { 0%, 100% { opacity: 0.2; } 50% { opacity: 0.6; } }
+        .header-content { max-width: 1400px; margin: 0 auto; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+        .logo { display: flex; align-items: center; gap: 0.8rem; text-decoration: none; }
+        .logo-icon { width: 45px; height: 45px; border-radius: 12px; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); box-shadow: 0 8px 24px rgba(102,126,234,0.4); overflow: hidden; }
+        .logo-icon img { width: 100%; height: 100%; object-fit: cover; }
+        .logo-text h1 { margin: 0; font-size: 1.6rem; font-weight: 800; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .logo-text p { margin: 0; font-size: 0.7rem; color: #64748b; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; }
+        .header-links { display: flex; gap: 1.5rem; align-items: center; }
+        .header-links a { color: #475569; text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: all 0.3s; padding: 0.5rem 0.8rem; position: relative; }
+        .header-links a:hover { color: #667eea; }
+        .header-links a::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 0; height: 2px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); transition: width 0.3s; }
+        .header-links a:hover::after { width: 80%; }
+        .cta-button { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white !important; padding: 0.6rem 1.2rem !important; border-radius: 8px; font-weight: 600; box-shadow: 0 4px 15px rgba(102,126,234,0.3); }
+        .cta-button::after { display: none !important; }
+
+        .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; z-index: 1001; padding: 5px; }
+        .hamburger span { width: 25px; height: 2.5px; background: #475569; border-radius: 2px; transition: all 0.3s; }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+        .menu-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 998; }
+        .menu-overlay.active { display: block; }
+
+        .breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 0.88rem; margin-bottom: 25px; flex-wrap: wrap; }
+        .breadcrumb a { color: #667eea; text-decoration: none; font-weight: 500; }
+        .breadcrumb span { color: #94a3b8; }
+
+        .page-header { text-align: center; margin-bottom: 35px; padding: 40px 20px; background: white; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border: 1px solid rgba(226,232,240,0.6); }
+        .page-header .header-icon { font-size: 3rem; display: block; margin-bottom: 15px; }
+        .page-header h2 { font-size: 2.2rem; font-weight: 800; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 10px; }
+        .page-header p { color: var(--text-secondary); font-size: 1.05rem; max-width: 760px; margin: 0 auto; line-height: 1.7; }
+
+        .calc-card { background: white; border-radius: 20px; padding: 40px; margin-bottom: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border: 1px solid rgba(226,232,240,0.6); }
+        .calc-title { display: flex; align-items: center; gap: 12px; margin-bottom: 28px; padding-bottom: 18px; border-bottom: 2px solid #f1f5f9; }
+        .calc-title span { font-size: 1.8rem; }
+        .calc-title h2 { font-size: 1.4rem; font-weight: 700; color: var(--text-main); }
+
+        .year-tabs { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; }
+        .year-tab { padding: 10px 18px; border: 2px solid #e2e8f0; border-radius: 10px; background: #f8fafc; font-size: 0.88rem; font-weight: 600; cursor: pointer; transition: all 0.3s; color: var(--text-secondary); }
+        .year-tab.active { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-color: transparent; box-shadow: 0 4px 15px rgba(102,126,234,0.3); }
+
+        .section-divider { font-size: 1.05rem; font-weight: 700; color: #667eea; margin: 25px 0 15px; padding: 10px 16px; background: linear-gradient(135deg, #f0f4ff 0%, #faf5ff 100%); border-radius: 10px; border-left: 4px solid #667eea; display: flex; align-items: center; gap: 8px; }
+
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-bottom: 25px; }
+        .form-group { display: flex; flex-direction: column; gap: 6px; }
+        .form-group label { font-size: 0.88rem; font-weight: 600; color: var(--text-secondary); display: flex; align-items: center; gap: 6px; }
+        .label-icon { font-size: 1rem; }
+        .form-group input, .form-group select { width: 100%; padding: 12px 16px; border: 2px solid #e2e8f0; border-radius: 10px; font-size: 1rem; color: var(--text-main); background: #f8fafc; transition: all 0.3s; outline: none; }
+        .form-group input:focus, .form-group select:focus { border-color: #667eea; background: white; box-shadow: 0 0 0 4px rgba(102,126,234,0.1); }
+        .form-group small { font-size: 0.78rem; color: var(--text-muted); }
+
+        .btn-row { display: flex; gap: 12px; }
+        .btn-calc { flex: 1; padding: 14px 28px; border: none; border-radius: 12px; font-size: 1.05rem; font-weight: 700; cursor: pointer; transition: all 0.3s; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; box-shadow: 0 4px 15px rgba(102,126,234,0.3); }
+        .btn-reset { padding: 14px 24px; border: 2px solid #e2e8f0; border-radius: 12px; font-size: 1rem; font-weight: 600; cursor: pointer; background: white; color: var(--text-secondary); transition: all 0.3s; }
+        .btn-reset:hover { border-color: #ef4444; color: #ef4444; }
+
+        .results-panel { display: none; margin-top: 30px; }
+        .results-header h3 { font-size: 1.3rem; font-weight: 700; color: var(--text-main); display: flex; align-items: center; justify-content: center; gap: 10px; text-align: center; margin-bottom: 25px; }
+
+        .result-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 25px; }
+        .result-card { background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); border-radius: 14px; padding: 20px; text-align: center; border: 1px solid #e2e8f0; }
+        .result-card .result-label { font-size: 0.82rem; font-weight: 600; color: var(--text-muted); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .result-card .result-val { font-size: 1.35rem; font-weight: 800; color: var(--text-main); }
+        .result-card.highlight .result-label, .result-card.highlight .result-val { color: white; }
+        .result-card.highlight { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border: none; }
+        .result-card.good { border-color: #86efac; background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); }
+        .result-card.bad { border-color: #fecaca; background: linear-gradient(135deg, #fff1f2 0%, #ffe4e6 100%); }
+
+        .compare-table { width: 100%; border-collapse: collapse; border-radius: 12px; overflow: hidden; margin-top: 15px; }
+        .compare-table thead { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .compare-table th { padding: 13px 16px; text-align: left; color: white; font-weight: 600; font-size: 0.85rem; }
+        .compare-table td { padding: 11px 16px; border-bottom: 1px solid #f1f5f9; font-size: 0.88rem; color: var(--text-secondary); }
+        .compare-table tbody tr:hover { background: #f8fafc; }
+        .compare-table .row-total td { font-weight: 700; color: var(--text-main); background: #f0f4ff; border-bottom: 2px solid #667eea; }
+
+        .content-card { background: white; border-radius: 20px; padding: 35px; margin-bottom: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border: 1px solid rgba(226,232,240,0.6); }
+        .content-card h2 { font-size: 1.6rem; font-weight: 700; color: var(--text-main); margin-bottom: 18px; display: flex; align-items: center; gap: 10px; }
+        .content-card p { color: var(--text-secondary); margin-bottom: 14px; line-height: 1.8; }
+        .content-card ul { list-style: none; }
+        .content-card li { color: var(--text-secondary); padding: 10px 0 10px 24px; position: relative; border-bottom: 1px solid #f1f5f9; }
+        .content-card li::before { content: ''; width: 8px; height: 8px; border-radius: 50%; position: absolute; left: 0; top: 18px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+
+        .formula-container { background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); padding: 35px 35px 30px; border-radius: 14px; margin: 25px 0; overflow-x: auto; position: relative; box-shadow: 0 8px 30px rgba(15, 23, 42, 0.2); }
+        .formula-container::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #667eea, #764ba2, #a855f7); border-radius: 14px 14px 0 0; }
+        .formula-container::after { content: 'FORMULA'; position: absolute; top: 12px; right: 16px; font-family: 'Segoe UI', Roboto, sans-serif; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 2px; color: #64748b; font-weight: 700; background: rgba(100, 116, 139, 0.15); padding: 3px 10px; border-radius: 4px; }
+        .formula-math { display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap; font-family: 'Times New Roman', 'Cambria Math', Georgia, serif; font-size: 1.3rem; color: #e2e8f0; padding: 10px 0; font-style: italic; }
+        .formula-math .var { color: #93c5fd; font-weight: 600; }
+        .formula-math .var.result { color: #a78bfa; font-size: 1.5rem; }
+        .formula-math .operator { color: #94a3b8; font-style: normal; }
+        .formula-math .equals { color: #f59e0b; font-style: normal; font-weight: 600; font-size: 1.35rem; }
+        .formula-math .paren { color: #64748b; font-style: normal; }
+        .formula-legend { display: flex; flex-wrap: wrap; gap: 15px; margin-top: 20px; padding-top: 18px; border-top: 1px solid #334155; justify-content: center; }
+        .formula-legend .legend-item { display: flex; align-items: center; gap: 6px; font-size: 0.78rem; color: #94a3b8; }
+        .formula-legend .legend-var { color: #93c5fd; font-weight: 700; }
+
+        .faq-grid { margin-top: 20px; }
+        .faq-item { border: 1px solid #edf2f7; border-radius: 12px; overflow: hidden; transition: all 0.3s; margin-bottom: 12px; background: white; }
+        .faq-item.active { border-color: #667eea; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.1); }
+        .faq-question { padding: 18px 22px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; gap: 15px; }
+        .faq-question h3 { font-size: 1.05rem; margin: 0; color: var(--text-main); font-weight: 600; flex: 1; }
+        .faq-toggle { width: 28px; height: 28px; border-radius: 50%; background: #f1f5f9; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; color: #667eea; flex-shrink: 0; transition: all 0.3s; font-weight: 600; }
+        .faq-item.active .faq-toggle { background: var(--primary-gradient); color: white; transform: rotate(45deg); }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s ease; padding: 0 22px; }
+        .faq-item.active .faq-answer { max-height: 400px; padding: 0 22px 20px; }
+        .faq-answer p { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.8; }
+
+        .related-tools { background: white; border-radius: 16px; padding: 40px; margin-bottom: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border: 1px solid rgba(226,232,240,0.6); }
+        .related-tools h2 { font-size: 1.6rem; font-weight: 800; color: var(--text-main); margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+        .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
+        .tool-link { display: flex; align-items: center; gap: 12px; padding: 14px 18px; background: #f8fafc; border-radius: 12px; text-decoration: none; color: var(--text-main); font-weight: 600; font-size: 0.9rem; border: 1px solid #edf2f7; transition: all 0.3s; }
+
+        footer { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #1a1a2e 100%); color: #e2e8f0; padding: 60px 0 0; margin-top: 40px; }
+        .footer-content { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+        .footer-section h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 20px; color: white; position: relative; padding-bottom: 10px; }
+        .footer-section h3::after { content: ''; position: absolute; bottom: 0; left: 0; width: 30px; height: 2px; background: linear-gradient(135deg, #667eea, #764ba2); }
+        .footer-section p { font-size: 0.9rem; color: #94a3b8; line-height: 1.8; }
+        .footer-section a { color: #94a3b8; text-decoration: none; font-size: 0.9rem; display: block; margin-bottom: 10px; transition: all 0.3s; }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding: 20px 2rem; display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; }
+        .footer-bottom p { color: #64748b; font-size: 0.85rem; }
+
+        @media (max-width: 992px) { .footer-content { grid-template-columns: 1fr 1fr; } .result-cards { grid-template-columns: 1fr 1fr; } }
+        @media (max-width: 768px) {
+            .container { padding: 25px 15px; }
+            .calc-card, .content-card, .related-tools { padding: 25px 20px; }
+            .form-grid { grid-template-columns: 1fr; }
+            .result-cards { grid-template-columns: 1fr; }
+            .header-links { position: fixed; top: 0; right: -100%; width: 75%; max-width: 280px; height: 100vh; background: #fff; box-shadow: -5px 0 25px rgba(0,0,0,.15); flex-direction: column; gap: 0; align-items: stretch; padding: 4rem 0 2rem; z-index: 999; transition: right .4s cubic-bezier(.4,0,.2,1); overflow-y: auto; }
+            .header-links.active { right: 0; }
+            .header-links a { text-align: left; padding: 1rem 1.5rem; border-bottom: 1px solid #e2e8f0; font-size: 1rem; }
+            .header-links a::after { display: none; }
+            .cta-button { margin: 1rem 1.5rem !important; text-align: center; border-bottom: none !important; }
+            .hamburger { display: flex; }
+            .footer-content { grid-template-columns: 1fr; text-align: center; }
+            .footer-section h3::after { left: 50%; transform: translateX(-50%); }
+            .footer-bottom { flex-direction: column; text-align: center; }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="site-header">
-        <div class="header-content">
-            <a href="../../index.html" class="logo">
-                <div class="logo-icon">
-                    <img src="../../images/logo.webp" alt="ShramTools Logo">
-                </div>
-                <div class="logo-text">
-                    <span class="logo-main">ShramTools</span>
-                    <span class="logo-sub">By Shram Kavach</span>
-                </div>
-            </a>
-            <nav class="nav-menu">
-                <a href="../../index.html" class="nav-link">Home</a>
-                <a href="../../index.html#financial" class="nav-link">Financial</a>
-                <a href="../../index.html#health" class="nav-link">Health</a>
-                <a href="../../index.html#math" class="nav-link">Math</a>
-                <a href="../../about-us.html" class="nav-link">About</a>
-                <a href="../../index.html" class="nav-link nav-link-primary">All Tools</a>
+    <div class="page-wrapper">
+        <header class="site-header">
+            <div class="header-content">
+                <a href="../../index.html" class="logo">
+                    <div class="logo-icon"><img src="../../images/logo.webp" alt="ScribbleTools Logo"></div>
+                    <div class="logo-text"><h1>ScribbleTools</h1><p>Free Online Tools</p></div>
+                </a>
+                <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+                <nav class="header-links" id="headerLinks">
+                    <a href="../../index.html">Home</a>
+                    <a href="../../index.html#financial">Financial Tools</a>
+                    <a href="../../index.html#health">Health Tools</a>
+                    <a href="../../about-us.html">About</a>
+                    <a href="../../index.html" class="cta-button">Explore Tools</a>
+                </nav>
+            </div>
+        </header>
+        <div class="menu-overlay" id="menuOverlay"></div>
+
+        <div class="container">
+            <nav class="breadcrumb">
+                <a href="../../index.html">Home</a><span>/</span>
+                <a href="../../index.html#financial">Financial Tools</a><span>/</span>
+                <span style="color:#4a5568;font-weight:600;">Marriage Tax Calculator</span>
             </nav>
-        </div>
-    </header>
 
-    <!-- Main Content -->
-    <main class="main-content">
-        <div class="progress-container">
-            <div class="progress-icon">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
-                </svg>
-            </div>
-            
-            <h1 class="progress-title">Marriage Tax Calculator</h1>
-            
-            <div class="category-badge">Financial Calculators</div>
-            
-            <div class="progress-badge">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
-                </svg>
-                Under Development
-            </div>
-            
-            <p class="progress-subtitle">Coming Soon!</p>
-            
-            <p class="progress-message">
-                We're working hard to bring you an amazing <strong>Marriage Tax Calculator</strong> tool. 
-                Our team is crafting a feature-rich, user-friendly experience that will help you 
-                achieve accurate results with ease. Stay tuned!
-            </p>
-            
-            <a href="../../index.html" class="explore-btn">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
-                </svg>
-                Explore Other Tools
-            </a>
-        </div>
-    </main>
+            <section class="page-header">
+                <span class="header-icon">💍</span>
+                <h2>Marriage Tax Calculator</h2>
+                <p>Compare federal tax as two single filers vs married filing jointly for 2024 or 2025. See whether marriage creates a tax penalty or tax bonus based on your income split.</p>
+            </section>
 
-    <!-- Footer -->
-    <footer class="site-footer">
-        <div class="footer-content">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <div class="footer-logo">
-                        <div class="footer-logo-icon">
-                            <img src="../../images/logo.webp" alt="ShramTools Logo">
-                        </div>
-                        <span class="footer-logo-text">ShramTools</span>
+            <section class="calc-card">
+                <div class="calc-title"><span>🧮</span><h2>Enter Income Details</h2></div>
+
+                <div class="year-tabs" id="yearTabs">
+                    <button class="year-tab active" data-year="2025" onclick="setYear(2025)">Tax Year 2025</button>
+                    <button class="year-tab" data-year="2024" onclick="setYear(2024)">Tax Year 2024</button>
+                </div>
+
+                <div class="section-divider">👤 Spouse 1</div>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label><span class="label-icon">💼</span> Wages / Salary</label>
+                        <input type="number" id="s1Wages" min="0" step="100" value="90000">
                     </div>
-                    <p class="footer-desc">
-                        Your trusted destination for 250+ free online calculators and tools. 
-                        From financial planning to health tracking, we've got you covered.
-                    </p>
+                    <div class="form-group">
+                        <label><span class="label-icon">💰</span> Other Income</label>
+                        <input type="number" id="s1Other" min="0" step="100" value="5000">
+                    </div>
                 </div>
-                
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <ul class="footer-links">
-                        <li><a href="../../index.html">Home</a></li>
-                        <li><a href="../../index.html#financial">Financial Tools</a></li>
-                        <li><a href="../../index.html#health">Health Tools</a></li>
-                        <li><a href="../../index.html#math">Math Tools</a></li>
-                    </ul>
+
+                <div class="section-divider">👥 Spouse 2</div>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label><span class="label-icon">💼</span> Wages / Salary</label>
+                        <input type="number" id="s2Wages" min="0" step="100" value="50000">
+                    </div>
+                    <div class="form-group">
+                        <label><span class="label-icon">💰</span> Other Income</label>
+                        <input type="number" id="s2Other" min="0" step="100" value="0">
+                    </div>
                 </div>
-                
-                <div class="footer-section">
-                    <h4>More Tools</h4>
-                    <ul class="footer-links">
-                        <li><a href="../../index.html#text">Text Tools</a></li>
-                        <li><a href="../../index.html#image">Image Tools</a></li>
-                        <li><a href="../../index.html#student">Student Tools</a></li>
-                        <li><a href="../../index.html#other">Other Tools</a></li>
-                    </ul>
+
+                <div class="section-divider">⚙️ Adjustments</div>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label><span class="label-icon">📉</span> Pre-tax Deductions (Spouse 1)</label>
+                        <input type="number" id="s1PreTax" min="0" step="100" value="0">
+                        <small>Example: pre-tax 401(k), HSA payroll deductions.</small>
+                    </div>
+                    <div class="form-group">
+                        <label><span class="label-icon">📉</span> Pre-tax Deductions (Spouse 2)</label>
+                        <input type="number" id="s2PreTax" min="0" step="100" value="0">
+                    </div>
                 </div>
-                
-                <div class="footer-section">
-                    <h4>Company</h4>
-                    <ul class="footer-links">
-                        <li><a href="../../about-us.html">About Us</a></li>
-                        <li><a href="../../privacy-policy.html">Privacy Policy</a></li>
-                        <li><a href="../../terms-of-service.html">Terms of Service</a></li>
-                        <li><a href="../../contact.html">Contact</a></li>
-                    </ul>
+
+                <div class="btn-row">
+                    <button class="btn-calc" onclick="calculateMarriageTax()">Calculate Marriage Tax</button>
+                    <button class="btn-reset" onclick="resetForm()">Reset</button>
                 </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2025 ShramTools by <a href="https://shramkavach.com" target="_blank">Shram Kavach</a>. All rights reserved.</p>
-                <div class="social-links">
-                    <a href="#" class="social-link" aria-label="Twitter">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                        </svg>
-                    </a>
-                    <a href="#" class="social-link" aria-label="GitHub">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                        </svg>
-                    </a>
-                    <a href="#" class="social-link" aria-label="LinkedIn">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                        </svg>
-                    </a>
+
+                <div class="results-panel" id="resultsPanel">
+                    <div class="results-header">
+                        <h3><span>📊</span> Marriage Tax Comparison</h3>
+                    </div>
+
+                    <div class="result-cards">
+                        <div class="result-card">
+                            <div class="result-label">Two Singles (Combined Tax)</div>
+                            <div class="result-val" id="singleCombinedTax">$0</div>
+                        </div>
+                        <div class="result-card highlight">
+                            <div class="result-label">Married Filing Jointly Tax</div>
+                            <div class="result-val" id="marriedTax">$0</div>
+                        </div>
+                        <div class="result-card" id="deltaCard">
+                            <div class="result-label" id="deltaLabel">Marriage Impact</div>
+                            <div class="result-val" id="marriageDelta">$0</div>
+                        </div>
+                    </div>
+
+                    <table class="compare-table">
+                        <thead>
+                            <tr>
+                                <th>Metric</th>
+                                <th>Spouse 1 (Single)</th>
+                                <th>Spouse 2 (Single)</th>
+                                <th>Two Singles Total</th>
+                                <th>Married Joint</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Gross Income</td>
+                                <td id="s1Gross">$0</td>
+                                <td id="s2Gross">$0</td>
+                                <td id="singleGrossTotal">$0</td>
+                                <td id="jointGross">$0</td>
+                            </tr>
+                            <tr>
+                                <td>Standard Deduction</td>
+                                <td id="s1StdDed">$0</td>
+                                <td id="s2StdDed">$0</td>
+                                <td id="singleStdTotal">$0</td>
+                                <td id="jointStdDed">$0</td>
+                            </tr>
+                            <tr>
+                                <td>Taxable Income</td>
+                                <td id="s1Taxable">$0</td>
+                                <td id="s2Taxable">$0</td>
+                                <td id="singleTaxableTotal">$0</td>
+                                <td id="jointTaxable">$0</td>
+                            </tr>
+                            <tr class="row-total">
+                                <td>Federal Tax</td>
+                                <td id="s1Tax">$0</td>
+                                <td id="s2Tax">$0</td>
+                                <td id="singleTaxTotal">$0</td>
+                                <td id="jointTax">$0</td>
+                            </tr>
+                            <tr>
+                                <td>Effective Tax Rate</td>
+                                <td id="s1Eff">0%</td>
+                                <td id="s2Eff">0%</td>
+                                <td id="singleEffTotal">0%</td>
+                                <td id="jointEff">0%</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-            </div>
+            </section>
+
+            <section class="content-card">
+                <h2><span>📘</span> How the Marriage Tax Is Calculated</h2>
+                <p>This tool compares two scenarios using the same total household income:</p>
+                <ul>
+                    <li>Scenario A: each spouse files as <strong>Single</strong>.</li>
+                    <li>Scenario B: both spouses file as <strong>Married Filing Jointly</strong>.</li>
+                </ul>
+                <div class="formula-container">
+                    <div class="formula-math">
+                        <span class="var result">Marriage Impact</span>
+                        <span class="equals">=</span>
+                        <span class="var">Tax</span><span class="paren">(</span><span class="var">Married Joint</span><span class="paren">)</span>
+                        <span class="operator">−</span>
+                        <span class="var">Tax</span><span class="paren">(</span><span class="var">Single 1</span><span class="operator">+</span><span class="var">Single 2</span><span class="paren">)</span>
+                    </div>
+                    <div class="formula-legend">
+                        <div class="legend-item"><span class="legend-var">Positive</span> = marriage tax penalty</div>
+                        <div class="legend-item"><span class="legend-var">Negative</span> = marriage tax bonus</div>
+                    </div>
+                </div>
+                <p>The calculator uses federal income tax brackets and standard deductions for 2024 and 2025. It does not include state taxes, credits, AMT, NIIT, or special filing edge cases.</p>
+            </section>
+
+            <section class="content-card">
+                <h2><span>💡</span> Why Penalties and Bonuses Happen</h2>
+                <ul>
+                    <li><strong>Similar high incomes:</strong> Couples with similar earnings may face a penalty when combined income moves more dollars into higher brackets.</li>
+                    <li><strong>Uneven incomes:</strong> Couples with one high earner and one lower earner often get a bonus due to bracket averaging.</li>
+                    <li><strong>Bracket structure:</strong> Most married brackets are close to double single brackets, but not always perfect at all income levels.</li>
+                    <li><strong>Deductions and credits:</strong> Real-world outcomes can differ when itemized deductions, phase-outs, and credits are included.</li>
+                </ul>
+            </section>
+
+            <section class="content-card">
+                <h2><span>❓</span> Frequently Asked Questions</h2>
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>Does this include state tax?</h3>
+                            <div class="faq-toggle">+</div>
+                        </div>
+                        <div class="faq-answer"><p>No. This tool estimates only federal income tax.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>Does a positive result mean I pay more after marriage?</h3>
+                            <div class="faq-toggle">+</div>
+                        </div>
+                        <div class="faq-answer"><p>Yes. A positive marriage impact means the married-joint tax is higher than filing as two singles. A negative result means a tax bonus.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>Does this replace tax software?</h3>
+                            <div class="faq-toggle">+</div>
+                        </div>
+                        <div class="faq-answer"><p>No. This is an estimator for planning. Final tax liability can differ due to credits, itemized deductions, AMT, and other IRS rules.</p></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="related-tools">
+                <h2>🔗 Related Financial Tools</h2>
+                <div class="tools-grid">
+                    <a href="income-tax-calculator.html" class="tool-link">🧾 Income Tax Calculator</a>
+                    <a href="salary-calculator.html" class="tool-link">💼 Salary Calculator</a>
+                    <a href="retirement-calculator.html" class="tool-link">🏖️ Retirement Calculator</a>
+                    <a href="loan-calculator.html" class="tool-link">💳 Loan Calculator</a>
+                    <a href="savings-calculator.html" class="tool-link">💰 Savings Calculator</a>
+                    <a href="finance-calculator.html" class="tool-link">📈 Finance Calculator</a>
+                </div>
+            </section>
         </div>
-    </footer>
+
+        <footer>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>ScribbleTools</h3>
+                    <p>250+ free online tools and calculators built to make complex decisions simple and fast.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Tools</h3>
+                    <a href="../../index.html#financial">Financial</a>
+                    <a href="../../index.html#health">Health</a>
+                    <a href="../../index.html#math">Math</a>
+                    <a href="../../index.html#text">Text</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Company</h3>
+                    <a href="../../about-us.html">About</a>
+                    <a href="../../contact.html">Contact</a>
+                    <a href="../../all-tools.html">All Tools</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Legal</h3>
+                    <a href="https://shramkavach.com/privacy">Privacy</a>
+                    <a href="https://shramkavach.com/terms">Terms</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 ScribbleTools. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        const TAX_DATA = {
+            2024: {
+                brackets: {
+                    single:  [{ min: 0, max: 11600, rate: 0.10 }, { min: 11600, max: 47150, rate: 0.12 }, { min: 47150, max: 100525, rate: 0.22 }, { min: 100525, max: 191950, rate: 0.24 }, { min: 191950, max: 243725, rate: 0.32 }, { min: 243725, max: 609350, rate: 0.35 }, { min: 609350, max: Infinity, rate: 0.37 }],
+                    married: [{ min: 0, max: 23200, rate: 0.10 }, { min: 23200, max: 94300, rate: 0.12 }, { min: 94300, max: 201050, rate: 0.22 }, { min: 201050, max: 383900, rate: 0.24 }, { min: 383900, max: 487450, rate: 0.32 }, { min: 487450, max: 731200, rate: 0.35 }, { min: 731200, max: Infinity, rate: 0.37 }]
+                },
+                stdDed: { single: 14600, married: 29200 }
+            },
+            2025: {
+                brackets: {
+                    single:  [{ min: 0, max: 11925, rate: 0.10 }, { min: 11925, max: 48475, rate: 0.12 }, { min: 48475, max: 103350, rate: 0.22 }, { min: 103350, max: 197300, rate: 0.24 }, { min: 197300, max: 250525, rate: 0.32 }, { min: 250525, max: 626350, rate: 0.35 }, { min: 626350, max: Infinity, rate: 0.37 }],
+                    married: [{ min: 0, max: 23850, rate: 0.10 }, { min: 23850, max: 96950, rate: 0.12 }, { min: 96950, max: 206700, rate: 0.22 }, { min: 206700, max: 394600, rate: 0.24 }, { min: 394600, max: 501050, rate: 0.32 }, { min: 501050, max: 751600, rate: 0.35 }, { min: 751600, max: Infinity, rate: 0.37 }]
+                },
+                stdDed: { single: 15000, married: 30000 }
+            }
+        };
+
+        let selectedYear = 2025;
+
+        function fmtMoney(n) {
+            return '$' + Math.abs(n).toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+        }
+
+        function fmtPct(v) {
+            return (v * 100).toFixed(2) + '%';
+        }
+
+        function calcBracketTax(taxableIncome, brackets) {
+            let tax = 0;
+            for (const b of brackets) {
+                if (taxableIncome <= b.min) continue;
+                const amountInBracket = Math.min(taxableIncome, b.max) - b.min;
+                tax += amountInBracket * b.rate;
+                if (taxableIncome < b.max) break;
+            }
+            return tax;
+        }
+
+        function setYear(year) {
+            selectedYear = year;
+            document.querySelectorAll('.year-tab').forEach(tab => tab.classList.toggle('active', Number(tab.dataset.year) === year));
+        }
+
+        function calculateMarriageTax() {
+            const s1Wages = parseFloat(document.getElementById('s1Wages').value) || 0;
+            const s1Other = parseFloat(document.getElementById('s1Other').value) || 0;
+            const s2Wages = parseFloat(document.getElementById('s2Wages').value) || 0;
+            const s2Other = parseFloat(document.getElementById('s2Other').value) || 0;
+            const s1PreTax = parseFloat(document.getElementById('s1PreTax').value) || 0;
+            const s2PreTax = parseFloat(document.getElementById('s2PreTax').value) || 0;
+
+            const gross1 = Math.max(0, s1Wages + s1Other);
+            const gross2 = Math.max(0, s2Wages + s2Other);
+            const grossJoint = gross1 + gross2;
+
+            const agi1 = Math.max(0, gross1 - s1PreTax);
+            const agi2 = Math.max(0, gross2 - s2PreTax);
+            const agiJoint = agi1 + agi2;
+
+            const stdSingle = TAX_DATA[selectedYear].stdDed.single;
+            const stdMarried = TAX_DATA[selectedYear].stdDed.married;
+
+            const taxable1 = Math.max(0, agi1 - stdSingle);
+            const taxable2 = Math.max(0, agi2 - stdSingle);
+            const taxableJoint = Math.max(0, agiJoint - stdMarried);
+
+            const s1Tax = calcBracketTax(taxable1, TAX_DATA[selectedYear].brackets.single);
+            const s2Tax = calcBracketTax(taxable2, TAX_DATA[selectedYear].brackets.single);
+            const singleCombinedTax = s1Tax + s2Tax;
+            const marriedTax = calcBracketTax(taxableJoint, TAX_DATA[selectedYear].brackets.married);
+
+            const marriageImpact = marriedTax - singleCombinedTax;
+
+            document.getElementById('singleCombinedTax').textContent = fmtMoney(singleCombinedTax);
+            document.getElementById('marriedTax').textContent = fmtMoney(marriedTax);
+            document.getElementById('marriageDelta').textContent = (marriageImpact >= 0 ? '+' : '−') + fmtMoney(marriageImpact);
+
+            const deltaCard = document.getElementById('deltaCard');
+            const deltaLabel = document.getElementById('deltaLabel');
+            deltaCard.classList.remove('good', 'bad');
+            if (marriageImpact > 0) {
+                deltaCard.classList.add('bad');
+                deltaLabel.textContent = 'Marriage Tax Penalty';
+            } else if (marriageImpact < 0) {
+                deltaCard.classList.add('good');
+                deltaLabel.textContent = 'Marriage Tax Bonus';
+            } else {
+                deltaLabel.textContent = 'No Marriage Tax Change';
+            }
+
+            document.getElementById('s1Gross').textContent = fmtMoney(gross1);
+            document.getElementById('s2Gross').textContent = fmtMoney(gross2);
+            document.getElementById('singleGrossTotal').textContent = fmtMoney(grossJoint);
+            document.getElementById('jointGross').textContent = fmtMoney(grossJoint);
+
+            document.getElementById('s1StdDed').textContent = fmtMoney(stdSingle);
+            document.getElementById('s2StdDed').textContent = fmtMoney(stdSingle);
+            document.getElementById('singleStdTotal').textContent = fmtMoney(stdSingle * 2);
+            document.getElementById('jointStdDed').textContent = fmtMoney(stdMarried);
+
+            document.getElementById('s1Taxable').textContent = fmtMoney(taxable1);
+            document.getElementById('s2Taxable').textContent = fmtMoney(taxable2);
+            document.getElementById('singleTaxableTotal').textContent = fmtMoney(taxable1 + taxable2);
+            document.getElementById('jointTaxable').textContent = fmtMoney(taxableJoint);
+
+            document.getElementById('s1Tax').textContent = fmtMoney(s1Tax);
+            document.getElementById('s2Tax').textContent = fmtMoney(s2Tax);
+            document.getElementById('singleTaxTotal').textContent = fmtMoney(singleCombinedTax);
+            document.getElementById('jointTax').textContent = fmtMoney(marriedTax);
+
+            document.getElementById('s1Eff').textContent = gross1 > 0 ? fmtPct(s1Tax / gross1) : '0.00%';
+            document.getElementById('s2Eff').textContent = gross2 > 0 ? fmtPct(s2Tax / gross2) : '0.00%';
+            document.getElementById('singleEffTotal').textContent = grossJoint > 0 ? fmtPct(singleCombinedTax / grossJoint) : '0.00%';
+            document.getElementById('jointEff').textContent = grossJoint > 0 ? fmtPct(marriedTax / grossJoint) : '0.00%';
+
+            document.getElementById('resultsPanel').style.display = 'block';
+        }
+
+        function resetForm() {
+            document.getElementById('s1Wages').value = 90000;
+            document.getElementById('s1Other').value = 5000;
+            document.getElementById('s2Wages').value = 50000;
+            document.getElementById('s2Other').value = 0;
+            document.getElementById('s1PreTax').value = 0;
+            document.getElementById('s2PreTax').value = 0;
+            document.getElementById('resultsPanel').style.display = 'none';
+        }
+
+        function toggleFAQ(el) {
+            const item = el.closest('.faq-item');
+            const wasActive = item.classList.contains('active');
+            document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+            if (!wasActive) item.classList.add('active');
+        }
+
+        const hamburger = document.getElementById('hamburger');
+        const headerLinks = document.getElementById('headerLinks');
+        const menuOverlay = document.getElementById('menuOverlay');
+
+        function toggleMenu() {
+            hamburger.classList.toggle('active');
+            headerLinks.classList.toggle('active');
+            menuOverlay.classList.toggle('active');
+            document.body.style.overflow = headerLinks.classList.contains('active') ? 'hidden' : '';
+        }
+
+        hamburger.addEventListener('click', toggleMenu);
+        menuOverlay.addEventListener('click', toggleMenu);
+        headerLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => { if (window.innerWidth <= 768) toggleMenu(); });
+        });
+
+        window.addEventListener('DOMContentLoaded', calculateMarriageTax);
+    </script>
 </body>
 </html>
