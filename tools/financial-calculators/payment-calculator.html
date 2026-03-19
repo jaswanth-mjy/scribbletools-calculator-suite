@@ -271,9 +271,9 @@
                     <div class="calc-inputs-title"><span>🧮</span><h2>Loan Inputs</h2></div>
 
                     <div class="solve-mode">
-                        <button id="modePayment" class="active" onclick="setMode('payment')">Solve Payment</button>
-                        <button id="modePrincipal" onclick="setMode('principal')">Solve Loan Amount</button>
-                        <button id="modeTerm" onclick="setMode('term')">Solve Term</button>
+                        <button type="button" id="modePayment" class="active" onclick="setMode('payment')">Solve Payment</button>
+                        <button type="button" id="modePrincipal" onclick="setMode('principal')">Solve Loan Amount</button>
+                        <button type="button" id="modeTerm" onclick="setMode('term')">Solve Term</button>
                     </div>
 
                     <div class="input-grid">
@@ -299,8 +299,8 @@
                         </div>
                     </div>
 
-                    <button class="btn-calc" onclick="calculate()">Calculate</button>
-                    <button class="btn-reset" onclick="resetForm()">Reset</button>
+                    <button type="button" class="btn-calc" onclick="calculate()">Calculate</button>
+                    <button type="button" class="btn-reset" onclick="resetForm()">Reset</button>
                 </div>
 
                 <div class="calc-results">
@@ -323,8 +323,8 @@
                 <h2>Amortization Schedule</h2>
                 <p class="schedule-sub">Payment breakdown and remaining balance over time</p>
                 <div class="view-toggle">
-                    <button class="active" onclick="setView('monthly', this)">Monthly</button>
-                    <button onclick="setView('yearly', this)">Yearly Summary</button>
+                    <button type="button" class="active" onclick="setView('monthly', this)">Monthly</button>
+                    <button type="button" onclick="setView('yearly', this)">Yearly Summary</button>
                 </div>
                 <div class="table-container" id="scheduleTable"></div>
             </div>

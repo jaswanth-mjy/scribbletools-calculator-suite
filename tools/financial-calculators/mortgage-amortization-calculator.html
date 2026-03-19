@@ -326,8 +326,8 @@
                             <div class="input-group"><span class="unit">$</span><input type="number" id="extraMonthly" value="0" min="0" step="10" oninput="calculate()"></div>
                         </div>
                     </div>
-                    <button class="btn-calc" onclick="calculate()">📊 Calculate Mortgage</button>
-                    <button class="btn-reset" onclick="resetForm()">🔄 Reset All</button>
+                    <button type="button" class="btn-calc" onclick="calculate()">📊 Calculate Mortgage</button>
+                    <button type="button" class="btn-reset" onclick="resetForm()">🔄 Reset All</button>
                 </div>
 
                 <div class="calc-results">
@@ -369,8 +369,8 @@
                 <h2>📑 Amortization Schedule</h2>
                 <p class="schedule-sub">Monthly principal, interest, escrow, and remaining balance</p>
                 <div class="view-toggle">
-                    <button class="active" onclick="setView('monthly', this)">Monthly</button>
-                    <button onclick="setView('yearly', this)">Yearly Summary</button>
+                    <button type="button" class="active" onclick="setView('monthly', this)">Monthly</button>
+                    <button type="button" onclick="setView('yearly', this)">Yearly Summary</button>
                 </div>
                 <div class="table-container" id="scheduleTable"></div>
             </div>

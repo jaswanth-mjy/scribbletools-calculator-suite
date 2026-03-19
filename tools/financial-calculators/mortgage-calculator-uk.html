@@ -314,8 +314,8 @@
                         </div>
                     </div>
 
-                    <button class="btn-calc" onclick="calculate()">Calculate Mortgage</button>
-                    <button class="btn-reset" onclick="resetForm()">Reset</button>
+                    <button type="button" class="btn-calc" onclick="calculate()">Calculate Mortgage</button>
+                    <button type="button" class="btn-reset" onclick="resetForm()">Reset</button>
                 </div>
 
                 <div class="calc-results">
@@ -346,8 +346,8 @@
                 <h2>📑 Amortization Schedule</h2>
                 <p class="schedule-sub">Monthly and yearly mortgage breakdown in GBP</p>
                 <div class="view-toggle">
-                    <button class="active" onclick="setView('monthly', this)">Monthly</button>
-                    <button onclick="setView('yearly', this)">Yearly Summary</button>
+                    <button type="button" class="active" onclick="setView('monthly', this)">Monthly</button>
+                    <button type="button" onclick="setView('yearly', this)">Yearly Summary</button>
                 </div>
                 <div class="table-container" id="scheduleTable"></div>
             </div>

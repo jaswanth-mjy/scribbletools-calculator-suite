@@ -307,8 +307,8 @@
                             <div class="input-group"><input type="number" id="lumpMonth" class="with-right" value="12" min="1" step="1" oninput="calculate()"><span class="unit-right">month</span></div>
                         </div>
                     </div>
-                    <button class="btn-calc" onclick="calculate()">Analyze Payoff Plan</button>
-                    <button class="btn-reset" onclick="resetForm()">Reset</button>
+                    <button type="button" class="btn-calc" onclick="calculate()">Analyze Payoff Plan</button>
+                    <button type="button" class="btn-reset" onclick="resetForm()">Reset</button>
                 </div>
 
                 <div class="calc-results">
@@ -356,8 +356,8 @@
                 <h2>Accelerated Amortization Schedule</h2>
                 <p class="schedule-sub">Detailed payoff timeline after applying extra payments</p>
                 <div class="view-toggle">
-                    <button class="active" onclick="setView('monthly', this)">Monthly</button>
-                    <button onclick="setView('yearly', this)">Yearly Summary</button>
+                    <button type="button" class="active" onclick="setView('monthly', this)">Monthly</button>
+                    <button type="button" onclick="setView('yearly', this)">Yearly Summary</button>
                 </div>
                 <div class="table-container" id="scheduleTable"></div>
             </div>

@@ -256,21 +256,21 @@
                     <div class="calc-inputs-title"><span>🧾</span><h2>GST Inputs</h2></div>
 
                     <div class="mode-row">
-                        <button class="toggle-btn active" id="modeAdd" onclick="setMode('add')">Add GST (Exclusive)</button>
-                        <button class="toggle-btn" id="modeRemove" onclick="setMode('remove')">Remove GST (Inclusive)</button>
+                        <button type="button" class="toggle-btn active" id="modeAdd" onclick="setMode('add')">Add GST (Exclusive)</button>
+                        <button type="button" class="toggle-btn" id="modeRemove" onclick="setMode('remove')">Remove GST (Inclusive)</button>
                     </div>
 
                     <div class="tax-type-row">
-                        <button class="toggle-btn active" id="typeIntra" onclick="setTaxType('intra')">Intra-State (CGST + SGST)</button>
-                        <button class="toggle-btn" id="typeInter" onclick="setTaxType('inter')">Inter-State (IGST)</button>
+                        <button type="button" class="toggle-btn active" id="typeIntra" onclick="setTaxType('intra')">Intra-State (CGST + SGST)</button>
+                        <button type="button" class="toggle-btn" id="typeInter" onclick="setTaxType('inter')">Inter-State (IGST)</button>
                     </div>
 
                     <div class="rate-row">
-                        <button class="rate-btn" onclick="setRate(5)">5%</button>
-                        <button class="rate-btn" onclick="setRate(12)">12%</button>
-                        <button class="rate-btn active" onclick="setRate(18)">18%</button>
-                        <button class="rate-btn" onclick="setRate(28)">28%</button>
-                        <button class="rate-btn" id="customBtn" onclick="setCustomRate()">Custom</button>
+                        <button type="button" class="rate-btn" onclick="setRate(5)">5%</button>
+                        <button type="button" class="rate-btn" onclick="setRate(12)">12%</button>
+                        <button type="button" class="rate-btn active" onclick="setRate(18)">18%</button>
+                        <button type="button" class="rate-btn" onclick="setRate(28)">28%</button>
+                        <button type="button" class="rate-btn" id="customBtn" onclick="setCustomRate()">Custom</button>
                     </div>
 
                     <div class="input-grid">
@@ -296,8 +296,8 @@
                         </div>
                     </div>
 
-                    <button class="btn-calc" onclick="calculate()">Calculate GST</button>
-                    <button class="btn-reset" onclick="resetForm()">Reset</button>
+                    <button type="button" class="btn-calc" onclick="calculate()">Calculate GST</button>
+                    <button type="button" class="btn-reset" onclick="resetForm()">Reset</button>
                 </div>
 
                 <div class="calc-results">
