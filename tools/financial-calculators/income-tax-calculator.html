@@ -816,10 +816,11 @@
         totalRow.innerHTML = '<td>Total</td><td></td><td>' + fmt(taxableIncome) + '</td><td>' + fmt(totalTax) + '</td><td></td>';
         tbody.appendChild(totalRow);
 
-        // Chart - income allocation donut
+        document.getElementById('results').style.display = 'block';
+
+        // Chart - income allocation donut (render after panel is visible)
         drawChart(afterTax, taxAfterCredits, totalFICA, deduction, preTax);
 
-        document.getElementById('results').style.display = 'block';
         document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
@@ -827,10 +828,12 @@
         const canvas = document.getElementById('taxChart');
         const ctx = canvas.getContext('2d');
         const dpr = window.devicePixelRatio || 1;
-        canvas.width = canvas.offsetWidth * dpr;
+        const measuredWidth = canvas.clientWidth || canvas.parentElement.clientWidth || 640;
+        const drawWidth = Math.max(280, measuredWidth);
+        canvas.width = drawWidth * dpr;
         canvas.height = 280 * dpr;
         ctx.scale(dpr, dpr);
-        const W = canvas.offsetWidth, H = 280;
+        const W = drawWidth, H = 280;
         ctx.clearRect(0, 0, W, H);
 
         const gross = afterTax + fedTax + fica;
@@ -842,7 +845,7 @@
         const total = segments.reduce((s, x) => s + x.val, 0);
 
         const cx = W / 2, cy = H / 2;
-        const outerR = Math.min(cx, cy) - 40;
+        const outerR = Math.max(30, Math.min(cx, cy) - 40);
         const innerR = outerR * 0.55;
 
         let startAngle = -Math.PI / 2;
