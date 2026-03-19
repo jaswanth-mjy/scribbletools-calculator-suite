@@ -516,40 +516,169 @@
 
     <!-- Main Content -->
     <main class="main-content">
-        <div class="progress-container">
-            <div class="progress-icon">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
-                </svg>
+        <div class="calculator-container">
+            <h1 class="calculator-title">Savings Calculator</h1>
+            <p class="calculator-subtitle">Calculate compound interest and future value of your savings</p>
+            
+            <div class="calculator-wrapper">
+                <div class="input-section">
+                    <div class="form-group">
+                        <label>Initial Amount</label>
+                        <div class="input-group"><span class="unit">₹</span><input type="number" id="principal" value="100000" min="0" placeholder="e.g. 100000"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Monthly Savings</label>
+                        <div class="input-group"><span class="unit">₹</span><input type="number" id="monthlySavings" value="5000" min="0" placeholder="e.g. 5000"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Annual Interest Rate (%)</label>
+                        <div class="input-group"><input type="number" id="annualRate" value="7" min="0" max="50" step="0.1" style="padding-left:14px" placeholder="e.g. 7"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Compounding Frequency</label>
+                        <div class="input-group" style="padding: 0;">
+                            <select id="compounding" style="flex: 1; border: none; background: transparent; padding: 12px 14px; font-size: 1rem; outline: none; width: 100%;">
+                                <option value="12">Monthly</option>
+                                <option value="4">Quarterly</option>
+                                <option value="2">Semi-Annual</option>
+                                <option value="1">Annual</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Investment Period (years)</label>
+                        <div class="input-group"><input type="number" id="years" value="10" min="1" max="50" style="padding-left:14px" placeholder="e.g. 10"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Annual Inflation Rate (%)</label>
+                        <div class="input-group"><input type="number" id="inflation" value="5" min="0" max="30" step="0.1" style="padding-left:14px" placeholder="e.g. 5"></div>
+                    </div>
+                    
+                    <button class="calculate-btn" onclick="calculateSavings()">Calculate Savings</button>
+                    <button class="reset-btn" onclick="resetSavingsForm()">Reset</button>
+                </div>
+                
+                <div class="results-section">
+                    <div class="results-card">
+                        <h3>Savings Summary</h3>
+                        
+                        <div class="result-item">
+                            <label>Initial Principal</label>
+                            <div class="result-value" id="displayPrincipal">₹1,00,000</div>
+                        </div>
+                        
+                        <div class="result-item">
+                            <label>Total Contributions</label>
+                            <div class="result-value" id="totalContrib">₹0</div>
+                        </div>
+                        
+                        <div class="result-item highlighted">
+                            <label>Compound Interest Earned</label>
+                            <div class="result-value" id="interestEarned">₹0</div>
+                        </div>
+                        
+                        <div class="result-item highlighted">
+                            <label>Future Value (Nominal)</label>
+                            <div class="result-value" id="futureValue">₹0</div>
+                        </div>
+                        
+                        <div class="result-item">
+                            <label>Inflation-Adjusted Value</label>
+                            <div class="result-value" id="realValue">₹0</div>
+                        </div>
+                        
+                        <div class="result-item">
+                            <label>Inflation Loss</label>
+                            <div class="result-value" id="inflationLoss">₹0</div>
+                        </div>
+                        
+                        <div class="result-item highlighted">
+                            <label>Effective Annual Return</label>
+                            <div class="result-value" id="effReturn">0%</div>
+                        </div>
+                    </div>
+                    
+                    <div class="info-box">
+                        <h4>📌 Important Notes</h4>
+                        <ul>
+                            <li><strong>Compound Interest:</strong> Interest earned on interest increases returns dramatically</li>
+                            <li><strong>Inflation Adjusted:</strong> Shows purchasing power of your savings</li>
+                            <li><strong>Effective Return:</strong> Return after accounting for inflation</li>
+                            <li>Assumes consistent monthly contributions throughout period</li>
+                            <li>Interest rates are assumed to remain constant</li>
+                            <li>This is an estimate; actual returns may vary</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            
-            <h1 class="progress-title">Savings Calculator</h1>
-            
-            <div class="category-badge">Financial Calculators</div>
-            
-            <div class="progress-badge">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
-                </svg>
-                Under Development
-            </div>
-            
-            <p class="progress-subtitle">Coming Soon!</p>
-            
-            <p class="progress-message">
-                We're working hard to bring you an amazing <strong>Savings Calculator</strong> tool. 
-                Our team is crafting a feature-rich, user-friendly experience that will help you 
-                achieve accurate results with ease. Stay tuned!
-            </p>
-            
-            <a href="../../index.html" class="explore-btn">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
-                </svg>
-                Explore Other Tools
-            </a>
         </div>
     </main>
+    
+    <script>
+        function formatCurrency(amount) {
+            return new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(amount));
+        }
+        
+        function calculateSavings() {
+            const principal = parseFloat(document.getElementById('principal').value) || 0;
+            const monthlySavings = parseFloat(document.getElementById('monthlySavings').value) || 0;
+            const annualRate = parseFloat(document.getElementById('annualRate').value) / 100 || 0;
+            const compoundingFreq = parseInt(document.getElementById('compounding').value) || 12;
+            const years = parseInt(document.getElementById('years').value) || 10;
+            const inflationRate = parseFloat(document.getElementById('inflation').value) / 100 || 0;
+            
+            // Calculate compound interest with monthly contributions
+            const monthlyRate = annualRate / 12;
+            const totalMonths = years * 12;
+            
+            // Future Value of Principal
+            let principalFuture = principal * Math.pow(1 + monthlyRate, totalMonths);
+            
+            // Future Value of Annuity (monthly savings)
+            let savingsFuture = 0;
+            if (monthlySavings > 0) {
+                savingsFuture = monthlySavings * (Math.pow(1 + monthlyRate, totalMonths) - 1) / monthlyRate;
+            }
+            
+            const totalFutureValue = principalFuture + savingsFuture;
+            const totalContributions = principal + (monthlySavings * totalMonths);
+            const interestEarned = totalFutureValue - totalContributions;
+            
+            // Calculate inflation-adjusted value
+            const inflationFactor = Math.pow(1 + inflationRate, years);
+            const realValue = totalFutureValue / inflationFactor;
+            const inflationLoss = totalFutureValue - realValue;
+            
+            // Effective annual return (after inflation)
+            const effectiveReturn = ((totalFutureValue / totalContributions) ** (1 / years) - 1) * 100 - (inflationRate * 100);
+            
+            // Update display
+            document.getElementById('displayPrincipal').innerText = formatCurrency(principal);
+            document.getElementById('totalContrib').innerText = formatCurrency(totalContributions);
+            document.getElementById('interestEarned').innerText = formatCurrency(interestEarned);
+            document.getElementById('futureValue').innerText = formatCurrency(totalFutureValue);
+            document.getElementById('realValue').innerText = formatCurrency(realValue);
+            document.getElementById('inflationLoss').innerText = formatCurrency(inflationLoss);
+            document.getElementById('effReturn').innerText = effectiveReturn.toFixed(2) + '%';
+        }
+        
+        function resetSavingsForm() {
+            document.getElementById('principal').value = '100000';
+            document.getElementById('monthlySavings').value = '5000';
+            document.getElementById('annualRate').value = '7';
+            document.getElementById('compounding').value = '12';
+            document.getElementById('years').value = '10';
+            document.getElementById('inflation').value = '5';
+            calculateSavings();
+        }
+        
+        window.addEventListener('load', calculateSavings);
+    </script>
 
     <!-- Footer -->
     <footer class="site-footer">

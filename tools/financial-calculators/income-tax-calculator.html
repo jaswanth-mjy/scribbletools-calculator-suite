@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Income Tax Calculator (2024 & 2025) - Federal Tax Brackets & Rates | ScribbleTools</title>
-    <meta name="description" content="Free US Federal Income Tax Calculator for 2024 & 2025 tax years. Calculate your tax liability, effective rate, marginal bracket, and take-home pay with standard or itemized deductions.">
-    <meta name="keywords" content="income tax calculator, federal tax brackets, tax calculator 2025, effective tax rate, marginal tax rate, standard deduction, take home pay calculator, 1040 estimator">
+    <title>Income Tax Calculator (India) - New vs Old Regime | ScribbleTools</title>
+    <meta name="description" content="Free Indian income tax calculator for FY 2024-25 and FY 2025-26. Compare old vs new regime, estimate rebate, cess, effective rate, and net tax payable.">
+    <meta name="keywords" content="income tax calculator india, old vs new tax regime, FY 2025-26 tax calculator, 87A rebate, cess calculator, take home pay india">
     <link rel="canonical" href="https://scribbletools.com/tools/financial-calculators/income-tax-calculator.html">
 
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://scribbletools.com/tools/financial-calculators/income-tax-calculator.html">
-    <meta property="og:title" content="Income Tax Calculator - Federal Tax Brackets 2024 & 2025 | ScribbleTools">
-    <meta property="og:description" content="Estimate your US federal income tax, effective rate, and take-home pay for 2024 or 2025.">
+    <meta property="og:title" content="Income Tax Calculator (India) - Old vs New Regime | ScribbleTools">
+    <meta property="og:description" content="Estimate your Indian income tax, cess, effective rate, and payable/refund for FY 2024-25 or FY 2025-26.">
     <meta property="og:image" content="../../images/og-image.jpg">
 
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:title" content="Income Tax Calculator | ScribbleTools">
-    <meta property="twitter:description" content="Estimate your federal tax liability and effective rate for 2024 or 2025.">
+    <meta property="twitter:description" content="Estimate Indian income tax under old and new regime for FY 2024-25 and FY 2025-26.">
 
     <link rel="icon" type="image/webp" href="../../images/logo.webp">
 
@@ -281,94 +281,88 @@
             <header class="page-header">
                 <span class="header-icon">&#128176;</span>
                 <h2>Income Tax Calculator</h2>
-                <p>Estimate your US federal income tax for the 2024 or 2025 tax year. See your effective rate, marginal bracket, take-home pay, and a full bracket-by-bracket breakdown.</p>
+                <p>Estimate your Indian income tax for FY 2024-25 or FY 2025-26. Compare old and new regime outcomes with rebate, cess, effective rate, and net payable/refund.</p>
             </header>
 
             <!-- Calculator -->
             <div class="calc-card">
                 <div class="calc-title">
                     <span>&#128202;</span>
-                    <h2>Federal Income Tax Estimator</h2>
+                    <h2>Indian Income Tax Estimator</h2>
                 </div>
 
                 <!-- Tax Year -->
-                <div class="section-divider">&#128197; Tax Year</div>
+                <div class="section-divider">&#128197; Financial Year</div>
                 <div class="status-tabs" id="yearTabs">
                     <button type="button" class="status-tab" data-year="2024" onclick="setYear(2024)">
-                        &#128197; 2024 (Filing in 2025)
+                        &#128197; FY 2024-25 (AY 2025-26)
                     </button>
                     <button type="button" class="status-tab active" data-year="2025" onclick="setYear(2025)">
-                        &#128197; 2025 (Filing in 2026)
+                        &#128197; FY 2025-26 (AY 2026-27)
                     </button>
                 </div>
 
-                <!-- Filing Status -->
-                <div class="section-divider">&#128101; Filing Status</div>
+                <!-- Tax Regime -->
+                <div class="section-divider">&#128101; Tax Regime</div>
                 <div class="status-tabs" id="statusTabs">
-                    <button type="button" class="status-tab active" data-status="single" onclick="setStatus('single')">&#129489; Single</button>
-                    <button type="button" class="status-tab" data-status="married" onclick="setStatus('married')">&#128107; Married Filing Jointly</button>
-                    <button type="button" class="status-tab" data-status="married_sep" onclick="setStatus('married_sep')">&#128100; Married Filing Separately</button>
-                    <button type="button" class="status-tab" data-status="hoh" onclick="setStatus('hoh')">&#127968; Head of Household</button>
+                    <button type="button" class="status-tab active" data-status="new" onclick="setStatus('new')">&#10024; New Regime</button>
+                    <button type="button" class="status-tab" data-status="old" onclick="setStatus('old')">&#128220; Old Regime</button>
                 </div>
 
                 <!-- Income -->
                 <div class="section-divider">&#128181; Income</div>
                 <div class="form-grid">
                     <div class="form-group">
-                        <label><span class="label-icon">&#128178;</span> W-2 Wages / Salary</label>
+                        <label><span class="label-icon">&#128178;</span> Salary Income</label>
                         <input type="number" id="wages" value="85000" step="1000">
-                        <small>Gross wages, salaries, tips (Box 1 of W-2)</small>
+                        <small>Annual salary income before tax (₹)</small>
                     </div>
                     <div class="form-group">
                         <label><span class="label-icon">&#128200;</span> Other Income</label>
                         <input type="number" id="otherIncome" value="0" step="100">
-                        <small>Interest, dividends, freelance, rental, etc.</small>
+                        <small>Interest, rental, freelance, and other taxable income (₹)</small>
                     </div>
                     <div class="form-group">
-                        <label><span class="label-icon">&#128202;</span> Pre-Tax Deductions (401k, HSA)</label>
+                        <label><span class="label-icon">&#128202;</span> Section 80C (Old Regime)</label>
                         <input type="number" id="preTax" value="0" step="100">
-                        <small>401(k) contributions, HSA, FSA (already excluded from W-2? Leave 0)</small>
+                        <small>Typically capped at ₹1,50,000 (PPF/EPF/ELSS/life insurance principal etc.)</small>
                     </div>
                     <div class="form-group">
-                        <label><span class="label-icon">&#128179;</span> Tax Credits</label>
+                        <label><span class="label-icon">&#128179;</span> TDS / Advance Tax Paid</label>
                         <input type="number" id="taxCredits" value="0" step="100">
-                        <small>Child Tax Credit, EITC, education credits, etc.</small>
+                        <small>Total tax already paid during the year (₹)</small>
                     </div>
                 </div>
 
                 <!-- Deductions -->
                 <div class="section-divider">&#128203; Deductions</div>
-                <div class="deduction-toggle">
-                    <button type="button" class="ded-btn active" id="dedStd" onclick="setDeduction('standard')">Standard Deduction</button>
-                    <button type="button" class="ded-btn" id="dedItem" onclick="setDeduction('itemized')">Itemized Deductions</button>
-                </div>
                 <div class="form-group" id="stdDeductionGroup" style="margin-bottom: 20px;">
                     <label><span class="label-icon">&#128203;</span> Standard Deduction</label>
                     <input type="number" id="stdDeduction" value="15000" step="100" readonly style="background: #e2e8f0; font-weight: 700; color: #667eea;">
-                    <small id="stdNote">2025 Single: $15,000. Auto-filled based on filing status &amp; year.</small>
+                    <small id="stdNote">Auto-filled by regime and financial year.</small>
                 </div>
-                <div class="itemized-fields" id="itemizedFields">
+                <div class="itemized-fields show" id="itemizedFields">
                     <div class="form-group">
-                        <label><span class="label-icon">&#127970;</span> State &amp; Local Taxes (SALT)</label>
+                        <label><span class="label-icon">&#127973;</span> Section 80D (Old Regime)</label>
                         <input type="number" id="salt" value="0" step="100">
-                        <small>Capped at $10,000 ($5,000 married-sep)</small>
+                        <small>Medical insurance premium deduction (enter eligible amount)</small>
                     </div>
                     <div class="form-group">
-                        <label><span class="label-icon">&#127974;</span> Mortgage Interest</label>
+                        <label><span class="label-icon">&#127974;</span> Section 80CCD(1B) NPS (Old Regime)</label>
                         <input type="number" id="mortgageInt" value="0" step="100">
-                        <small>Interest on up to $750,000 of mortgage debt</small>
+                        <small>Additional NPS deduction, typically up to ₹50,000</small>
                     </div>
                     <div class="form-group">
-                        <label><span class="label-icon">&#128156;</span> Charitable Donations</label>
+                        <label><span class="label-icon">&#128156;</span> Other Eligible Deductions (Old Regime)</label>
                         <input type="number" id="charity" value="0" step="100">
                     </div>
                     <div class="form-group">
-                        <label><span class="label-icon">&#127973;</span> Medical Expenses (above 7.5% AGI)</label>
+                        <label><span class="label-icon">&#127968;</span> Home Loan Interest (Section 24, Old Regime)</label>
                         <input type="number" id="medical" value="0" step="100">
-                        <small>Only the portion exceeding 7.5% of AGI is deductible</small>
+                        <small>For self-occupied house, generally up to ₹2,00,000 (subject to conditions)</small>
                     </div>
                     <div class="form-group">
-                        <label><span class="label-icon">&#128179;</span> Other Itemized Deductions</label>
+                        <label><span class="label-icon">&#128179;</span> Additional Old Regime Deductions</label>
                         <input type="number" id="otherDed" value="0" step="100">
                     </div>
                 </div>
@@ -386,28 +380,28 @@
 
                     <div class="result-cards">
                         <div class="result-card highlight">
-                            <div class="result-label">Federal Tax Owed</div>
-                            <div class="result-val" id="resTax">$0</div>
+                            <div class="result-label">Total Tax Liability</div>
+                            <div class="result-val" id="resTax">₹0</div>
                         </div>
                         <div class="result-card">
                             <div class="result-label">Effective Tax Rate</div>
                             <div class="result-val" id="resEffective">0%</div>
                         </div>
                         <div class="result-card">
-                            <div class="result-label">Marginal Bracket</div>
-                            <div class="result-val" id="resMarginal">10%</div>
+                            <div class="result-label">Highest Slab Used</div>
+                            <div class="result-val" id="resMarginal">0%</div>
                         </div>
                         <div class="result-card green">
-                            <div class="result-label">After-Tax Income</div>
-                            <div class="result-val" id="resAfterTax">$0</div>
+                            <div class="result-label">Income After Tax</div>
+                            <div class="result-val" id="resAfterTax">₹0</div>
                         </div>
                         <div class="result-card green">
-                            <div class="result-label">Monthly Take-Home</div>
-                            <div class="result-val" id="resMonthly">$0</div>
+                            <div class="result-label">Net Payable / Refund</div>
+                            <div class="result-val" id="resMonthly">₹0</div>
                         </div>
                         <div class="result-card">
                             <div class="result-label">Taxable Income</div>
-                            <div class="result-val" id="resTaxable">$0</div>
+                            <div class="result-val" id="resTaxable">₹0</div>
                         </div>
                     </div>
 
@@ -425,7 +419,7 @@
                                 <thead>
                                     <tr>
                                         <th>Rate</th>
-                                        <th>Bracket Range</th>
+                                        <th>Slab Range</th>
                                         <th>Taxable in Bracket</th>
                                         <th>Tax from Bracket</th>
                                         <th>Portion Used</th>
@@ -441,77 +435,69 @@
                         <canvas id="taxChart"></canvas>
                     </div>
 
-                    <!-- FICA Note -->
-                    <div class="summary-box" style="margin-top: 20px; background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%); border-color: #fcd34d;">
-                        <h4>&#9888;&#65039; FICA / Payroll Taxes (Not Included Above)</h4>
-                        <p id="ficaText"></p>
-                    </div>
                 </div>
             </div>
 
-            <!-- Education: How Brackets Work -->
+            <!-- Education: How Slabs Work -->
             <section class="content-card">
-                <h2><span class="section-icon">&#128218;</span> How Federal Tax Brackets Work</h2>
-                <p>The US uses a <strong>progressive (marginal) tax system</strong>. Your income isn&rsquo;t all taxed at one rate &mdash; instead, it&rsquo;s split into layers (brackets), and each layer is taxed at its own rate:</p>
+                <h2><span class="section-icon">&#128218;</span> How Indian Income Tax Slabs Work</h2>
+                <p>India also uses a <strong>progressive tax system</strong>. Your taxable income is split into slabs, and each slab is taxed at its corresponding rate:</p>
                 <ol>
-                    <li>The first portion of taxable income is taxed at <strong>10%</strong>.</li>
-                    <li>The next portion at <strong>12%</strong>.</li>
-                    <li>Then <strong>22%</strong>, <strong>24%</strong>, <strong>32%</strong>, <strong>35%</strong>, and finally <strong>37%</strong> on the highest earners.</li>
+                    <li>Lower slab portions are taxed at lower rates (or nil rate).</li>
+                    <li>Higher slab portions are taxed at progressively higher rates.</li>
+                    <li>Tax rebate under Section 87A may reduce tax to zero if taxable income is within the eligible limit.</li>
                 </ol>
-                <p>This means your <strong>marginal rate</strong> (the rate on your last dollar) is always higher than your <strong>effective rate</strong> (total tax &divide; total income). For example, a single filer with $100,000 taxable income in 2025 is in the 22% bracket, but their effective rate is only about 16%.</p>
+                <p>Your <strong>highest slab rate</strong> is the rate of your last slab portion, while your <strong>effective rate</strong> is total tax divided by gross income. Effective rate is usually lower than the top slab rate.</p>
             </section>
 
             <div class="image-box">
                 <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=80&w=1200" alt="Tax documents and calculator" loading="lazy">
             </div>
 
-            <!-- 2025 Bracket Tables -->
+            <!-- Slab Tables -->
             <section class="content-card">
-                <h2><span class="section-icon">&#129518;</span> 2025 Federal Tax Brackets</h2>
-                <p>These are the IRS-published brackets for tax year 2025 (returns filed in 2026), adjusted for inflation:</p>
+                <h2><span class="section-icon">&#129518;</span> FY 2025-26 Slab Snapshot</h2>
+                <p>Indicative slab structure used by this calculator for resident individuals:</p>
 
-                <h3 style="font-size: 1.1rem; margin: 20px 0 10px; color: var(--text-main);">Single Filers</h3>
+                <h3 style="font-size: 1.1rem; margin: 20px 0 10px; color: var(--text-main);">New Regime (FY 2025-26)</h3>
                 <table class="bracket-band-table">
                     <thead><tr><th>Rate</th><th>Taxable Income Range</th></tr></thead>
                     <tbody>
-                        <tr><td>10%</td><td>$0 &ndash; $11,925</td></tr>
-                        <tr><td>12%</td><td>$11,926 &ndash; $48,475</td></tr>
-                        <tr><td>22%</td><td>$48,476 &ndash; $103,350</td></tr>
-                        <tr><td>24%</td><td>$103,351 &ndash; $197,300</td></tr>
-                        <tr><td>32%</td><td>$197,301 &ndash; $250,525</td></tr>
-                        <tr><td>35%</td><td>$250,526 &ndash; $626,350</td></tr>
-                        <tr><td>37%</td><td>Over $626,350</td></tr>
+                        <tr><td>0%</td><td>₹0 &ndash; ₹4,00,000</td></tr>
+                        <tr><td>5%</td><td>₹4,00,001 &ndash; ₹8,00,000</td></tr>
+                        <tr><td>10%</td><td>₹8,00,001 &ndash; ₹12,00,000</td></tr>
+                        <tr><td>15%</td><td>₹12,00,001 &ndash; ₹16,00,000</td></tr>
+                        <tr><td>20%</td><td>₹16,00,001 &ndash; ₹20,00,000</td></tr>
+                        <tr><td>25%</td><td>₹20,00,001 &ndash; ₹24,00,000</td></tr>
+                        <tr><td>30%</td><td>Above ₹24,00,000</td></tr>
                     </tbody>
                 </table>
 
-                <h3 style="font-size: 1.1rem; margin: 20px 0 10px; color: var(--text-main);">Married Filing Jointly</h3>
+                <h3 style="font-size: 1.1rem; margin: 20px 0 10px; color: var(--text-main);">Old Regime</h3>
                 <table class="bracket-band-table">
                     <thead><tr><th>Rate</th><th>Taxable Income Range</th></tr></thead>
                     <tbody>
-                        <tr><td>10%</td><td>$0 &ndash; $23,850</td></tr>
-                        <tr><td>12%</td><td>$23,851 &ndash; $96,950</td></tr>
-                        <tr><td>22%</td><td>$96,951 &ndash; $206,700</td></tr>
-                        <tr><td>24%</td><td>$206,701 &ndash; $394,600</td></tr>
-                        <tr><td>32%</td><td>$394,601 &ndash; $501,050</td></tr>
-                        <tr><td>35%</td><td>$501,051 &ndash; $751,600</td></tr>
-                        <tr><td>37%</td><td>Over $751,600</td></tr>
+                        <tr><td>0%</td><td>₹0 &ndash; ₹2,50,000</td></tr>
+                        <tr><td>5%</td><td>₹2,50,001 &ndash; ₹5,00,000</td></tr>
+                        <tr><td>20%</td><td>₹5,00,001 &ndash; ₹10,00,000</td></tr>
+                        <tr><td>30%</td><td>Above ₹10,00,000</td></tr>
                     </tbody>
                 </table>
             </section>
 
             <!-- Formula -->
             <section class="content-card">
-                <h2><span class="section-icon">&#129514;</span> Tax Calculation Formula</h2>
+                <h2><span class="section-icon">&#129514;</span> Tax Calculation Formula (Simplified)</h2>
                 <div class="formula-container">
                     <div class="formula-math">
                         <span class="var result">Tax</span>
                         <span class="equals">=</span>
                         <span class="var">&Sigma;</span>
-                        <span class="var">(Income in Bracket<sub>i</sub>)</span>
+                        <span class="var">(Income in Slab<sub>i</sub>)</span>
                         <span class="operator">&times;</span>
                         <span class="var">Rate<sub>i</sub></span>
                         <span class="operator">&minus;</span>
-                        <span class="var">Credits</span>
+                        <span class="var">Rebate</span>
                     </div>
                     <div style="height: 10px;"></div>
                     <div class="formula-math">
@@ -519,74 +505,65 @@
                         <span class="equals">=</span>
                         <span class="var">Gross Income</span>
                         <span class="operator">&minus;</span>
-                        <span class="var">Pre-Tax Deductions</span>
+                        <span class="var">Allowed Deductions</span>
                         <span class="operator">&minus;</span>
-                        <span class="var">Standard/Itemized Deduction</span>
+                        <span class="var">Standard Deduction</span>
                     </div>
                     <div class="formula-legend">
-                        <div class="legend-item"><span class="legend-var purple">Tax</span> = Total federal income tax liability</div>
-                        <div class="legend-item"><span class="legend-var">Rate<sub>i</sub></span> = Marginal rate for bracket i (10%, 12%, 22%, 24%, 32%, 35%, 37%)</div>
-                        <div class="legend-item"><span class="legend-var">Credits</span> = Non-refundable + refundable tax credits</div>
+                        <div class="legend-item"><span class="legend-var purple">Tax</span> = Income tax before cess</div>
+                        <div class="legend-item"><span class="legend-var">Rate<sub>i</sub></span> = Applicable slab rate for slab i</div>
+                        <div class="legend-item"><span class="legend-var">Rebate</span> = Section 87A rebate where eligible</div>
                     </div>
                 </div>
             </section>
 
             <!-- FAQ -->
             <section class="content-card">
-                <h2><span class="section-icon">&#10067;</span> Income Tax FAQ</h2>
+                <h2><span class="section-icon">&#10067;</span> Income Tax FAQ (India)</h2>
                 <div class="faq-grid">
                     <div class="faq-item">
                         <div class="faq-question" onclick="toggleFAQ(this)">
-                            <h3>What&rsquo;s the difference between marginal and effective tax rate?</h3>
+                            <h3>What&rsquo;s the difference between highest slab rate and effective tax rate?</h3>
                             <span class="faq-toggle">+</span>
                         </div>
                         <div class="faq-answer">
-                            <p>Your <strong>marginal rate</strong> is the rate on your last dollar of taxable income &mdash; the highest bracket you&rsquo;ve entered. Your <strong>effective rate</strong> is your total tax divided by total income, which is always lower because earlier dollars are taxed at lower rates. For financial decisions, the marginal rate matters most (e.g., for evaluating a raise or deduction).</p>
+                            <p>Your <strong>highest slab rate</strong> is the rate on the top slab portion of your taxable income. Your <strong>effective tax rate</strong> is total tax liability divided by total gross income, so it is usually lower.</p>
                         </div>
                     </div>
                     <div class="faq-item">
                         <div class="faq-question" onclick="toggleFAQ(this)">
-                            <h3>Should I take the standard or itemized deduction?</h3>
+                            <h3>Which deductions are considered here?</h3>
                             <span class="faq-toggle">+</span>
                         </div>
                         <div class="faq-answer">
-                            <p>Take whichever is <em>larger</em>. After the 2017 Tax Cuts &amp; Jobs Act nearly doubled the standard deduction, about 87% of filers now take the standard deduction. You should consider itemizing if you have large mortgage interest, state/local taxes (up to $10,000 SALT cap), or significant charitable donations that together exceed the standard amount.</p>
+                            <p>This calculator includes standard deduction and common old-regime deductions entered by you (such as 80C/80D/NPS/Section 24). It is an educational estimator; always validate deduction eligibility and limits with current CBDT/Income Tax Department rules.</p>
                         </div>
                     </div>
                     <div class="faq-item">
                         <div class="faq-question" onclick="toggleFAQ(this)">
-                            <h3>Does this calculator include FICA / Social Security / Medicare taxes?</h3>
+                            <h3>Does this include surcharge and special income rates?</h3>
                             <span class="faq-toggle">+</span>
                         </div>
                         <div class="faq-answer">
-                            <p>The main calculation shows only <strong>federal income tax</strong>. FICA taxes (7.65% for most workers: 6.2% Social Security + 1.45% Medicare) are shown separately in the FICA note below the results. Self-employed individuals pay the full 15.3%. These are in addition to federal income tax.</p>
+                            <p>This version is focused on slab tax, Section 87A rebate, and 4% health &amp; education cess. It does not model surcharge, capital-gains special rates, agricultural income integration, or AMT.</p>
                         </div>
                     </div>
                     <div class="faq-item">
                         <div class="faq-question" onclick="toggleFAQ(this)">
-                            <h3>What about state income taxes?</h3>
+                            <h3>Is Section 87A rebate applied automatically?</h3>
                             <span class="faq-toggle">+</span>
                         </div>
                         <div class="faq-answer">
-                            <p>This calculator covers <strong>federal taxes only</strong>. State income tax varies widely &mdash; 7 states have no income tax (TX, FL, NV, WA, WY, SD, AK), while California&rsquo;s top rate is 13.3% and New York City adds a city tax. Total state+local rates generally add 0%&ndash;13% on top of federal.</p>
+                            <p>Yes. If your taxable income is within the configured rebate threshold for the selected regime and year, rebate is applied up to the allowable amount, and then cess is computed on post-rebate tax.</p>
                         </div>
                     </div>
                     <div class="faq-item">
                         <div class="faq-question" onclick="toggleFAQ(this)">
-                            <h3>What is the SALT cap?</h3>
+                            <h3>Does this replace filing on the Income Tax portal?</h3>
                             <span class="faq-toggle">+</span>
                         </div>
                         <div class="faq-answer">
-                            <p>The State and Local Tax (SALT) deduction is capped at $10,000 ($5,000 for married filing separately) under the Tax Cuts &amp; Jobs Act (2018&ndash;2025). This limits the federal deduction for state income taxes, local taxes, and property taxes combined. The cap is expected to be a topic of debate when the TCJA provisions potentially sunset after 2025.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <div class="faq-question" onclick="toggleFAQ(this)">
-                            <h3>When do the TCJA provisions expire?</h3>
-                            <span class="faq-toggle">+</span>
-                        </div>
-                        <div class="faq-answer">
-                            <p>Most individual provisions of the 2017 Tax Cuts &amp; Jobs Act are set to sunset after December 31, 2025. Without Congressional action, brackets would revert to pre-2018 levels (with inflation adjustments), the standard deduction would roughly halve, personal exemptions would return, and the SALT cap would be removed. Congress may extend, modify, or let them expire.</p>
+                            <p>No. This is an educational estimate to help with planning. Final liability should be validated while filing your return (ITR) with complete income heads, exemptions, deductions, set-offs, and statutory disclosures.</p>
                         </div>
                     </div>
                 </div>
@@ -597,11 +574,11 @@
                 <h2><span class="section-icon">&#128736;</span> Related Financial Tools</h2>
                 <div class="tools-grid">
                     <a href="salary-calculator.html" class="tool-link"><span class="tool-emoji">&#128176;</span> Salary Calculator</a>
-                    <a href="marriage-tax-calculator.html" class="tool-link"><span class="tool-emoji">&#128141;</span> Marriage Tax</a>
-                    <a href="estate-tax-calculator.html" class="tool-link"><span class="tool-emoji">&#127974;</span> Estate Tax</a>
-                    <a href="401k-calculator.html" class="tool-link"><span class="tool-emoji">&#128200;</span> 401(k) Calculator</a>
-                    <a href="retirement-calculator.html" class="tool-link"><span class="tool-emoji">&#127774;</span> Retirement Planner</a>
                     <a href="indian-gst-calculator.html" class="tool-link"><span class="tool-emoji">&#127470;&#127475;</span> Indian GST</a>
+                    <a href="loan-calculator.html" class="tool-link"><span class="tool-emoji">&#128179;</span> Loan Calculator</a>
+                    <a href="savings-calculator.html" class="tool-link"><span class="tool-emoji">&#128200;</span> Savings Calculator</a>
+                    <a href="retirement-calculator.html" class="tool-link"><span class="tool-emoji">&#127774;</span> Retirement Planner</a>
+                    <a href="investment-calculator.html" class="tool-link"><span class="tool-emoji">&#128200;</span> Investment Calculator</a>
                 </div>
             </section>
         </div>
@@ -630,11 +607,11 @@
                 <div class="footer-section">
                     <h3>Legal</h3>
                     <a href="../../contact.html">Contact</a>
-                    <p style="font-size: 0.8rem; margin-top: 10px;">&#9888;&#65039; For educational purposes. Not tax advice. Consult a CPA.</p>
+                    <p style="font-size: 0.8rem; margin-top: 10px;">&#9888;&#65039; For educational purposes. Not tax advice. Consult a qualified tax professional.</p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 ScribbleTools. All rights reserved.</p>
+                <p>&copy; 2026 ScribbleTools. All rights reserved.</p>
                 <div class="footer-links-bottom">
                     <a href="../../contact.html">Contact</a>
                     <a href="../../about-us.html">About</a>
@@ -644,187 +621,199 @@
     </div>
 
 <script>
-    // ===== US FEDERAL INCOME TAX CALCULATOR =====
-
-    // 2024 & 2025 Tax Brackets (IRS Revenue Procedure 2024-40 for 2025, Rev Proc 2023-34 for 2024)
     const TAX_DATA = {
         2024: {
-            brackets: {
-                single:      [{ min: 0, max: 11600, rate: 0.10 }, { min: 11600, max: 47150, rate: 0.12 }, { min: 47150, max: 100525, rate: 0.22 }, { min: 100525, max: 191950, rate: 0.24 }, { min: 191950, max: 243725, rate: 0.32 }, { min: 243725, max: 609350, rate: 0.35 }, { min: 609350, max: Infinity, rate: 0.37 }],
-                married:     [{ min: 0, max: 23200, rate: 0.10 }, { min: 23200, max: 94300, rate: 0.12 }, { min: 94300, max: 201050, rate: 0.22 }, { min: 201050, max: 383900, rate: 0.24 }, { min: 383900, max: 487450, rate: 0.32 }, { min: 487450, max: 731200, rate: 0.35 }, { min: 731200, max: Infinity, rate: 0.37 }],
-                married_sep: [{ min: 0, max: 11600, rate: 0.10 }, { min: 11600, max: 47150, rate: 0.12 }, { min: 47150, max: 100525, rate: 0.22 }, { min: 100525, max: 191950, rate: 0.24 }, { min: 191950, max: 243725, rate: 0.32 }, { min: 243725, max: 365600, rate: 0.35 }, { min: 365600, max: Infinity, rate: 0.37 }],
-                hoh:         [{ min: 0, max: 16550, rate: 0.10 }, { min: 16550, max: 63100, rate: 0.12 }, { min: 63100, max: 100500, rate: 0.22 }, { min: 100500, max: 191950, rate: 0.24 }, { min: 191950, max: 243700, rate: 0.32 }, { min: 243700, max: 609350, rate: 0.35 }, { min: 609350, max: Infinity, rate: 0.37 }]
-            },
-            stdDed: { single: 14600, married: 29200, married_sep: 14600, hoh: 21900 }
+            standardDeduction: { new: 75000, old: 50000 },
+            rebate: { new: { limit: 700000, max: 25000 }, old: { limit: 500000, max: 12500 } },
+            slabs: {
+                new: [
+                    { min: 0, max: 300000, rate: 0.00 },
+                    { min: 300000, max: 700000, rate: 0.05 },
+                    { min: 700000, max: 1000000, rate: 0.10 },
+                    { min: 1000000, max: 1200000, rate: 0.15 },
+                    { min: 1200000, max: 1500000, rate: 0.20 },
+                    { min: 1500000, max: Infinity, rate: 0.30 }
+                ],
+                old: [
+                    { min: 0, max: 250000, rate: 0.00 },
+                    { min: 250000, max: 500000, rate: 0.05 },
+                    { min: 500000, max: 1000000, rate: 0.20 },
+                    { min: 1000000, max: Infinity, rate: 0.30 }
+                ]
+            }
         },
         2025: {
-            brackets: {
-                single:      [{ min: 0, max: 11925, rate: 0.10 }, { min: 11925, max: 48475, rate: 0.12 }, { min: 48475, max: 103350, rate: 0.22 }, { min: 103350, max: 197300, rate: 0.24 }, { min: 197300, max: 250525, rate: 0.32 }, { min: 250525, max: 626350, rate: 0.35 }, { min: 626350, max: Infinity, rate: 0.37 }],
-                married:     [{ min: 0, max: 23850, rate: 0.10 }, { min: 23850, max: 96950, rate: 0.12 }, { min: 96950, max: 206700, rate: 0.22 }, { min: 206700, max: 394600, rate: 0.24 }, { min: 394600, max: 501050, rate: 0.32 }, { min: 501050, max: 751600, rate: 0.35 }, { min: 751600, max: Infinity, rate: 0.37 }],
-                married_sep: [{ min: 0, max: 11925, rate: 0.10 }, { min: 11925, max: 48475, rate: 0.12 }, { min: 48475, max: 103350, rate: 0.22 }, { min: 103350, max: 197300, rate: 0.24 }, { min: 197300, max: 250525, rate: 0.32 }, { min: 250525, max: 375800, rate: 0.35 }, { min: 375800, max: Infinity, rate: 0.37 }],
-                hoh:         [{ min: 0, max: 17000, rate: 0.10 }, { min: 17000, max: 64850, rate: 0.12 }, { min: 64850, max: 103350, rate: 0.22 }, { min: 103350, max: 197300, rate: 0.24 }, { min: 197300, max: 250500, rate: 0.32 }, { min: 250500, max: 626350, rate: 0.35 }, { min: 626350, max: Infinity, rate: 0.37 }]
-            },
-            stdDed: { single: 15000, married: 30000, married_sep: 15000, hoh: 22500 }
+            standardDeduction: { new: 75000, old: 50000 },
+            rebate: { new: { limit: 1200000, max: 60000 }, old: { limit: 500000, max: 12500 } },
+            slabs: {
+                new: [
+                    { min: 0, max: 400000, rate: 0.00 },
+                    { min: 400000, max: 800000, rate: 0.05 },
+                    { min: 800000, max: 1200000, rate: 0.10 },
+                    { min: 1200000, max: 1600000, rate: 0.15 },
+                    { min: 1600000, max: 2000000, rate: 0.20 },
+                    { min: 2000000, max: 2400000, rate: 0.25 },
+                    { min: 2400000, max: Infinity, rate: 0.30 }
+                ],
+                old: [
+                    { min: 0, max: 250000, rate: 0.00 },
+                    { min: 250000, max: 500000, rate: 0.05 },
+                    { min: 500000, max: 1000000, rate: 0.20 },
+                    { min: 1000000, max: Infinity, rate: 0.30 }
+                ]
+            }
         }
     };
 
-    // FICA
-    const SS_RATE = 0.062, MEDICARE_RATE = 0.0145, ADDITIONAL_MEDICARE = 0.009;
-    const SS_WAGE_BASE = { 2024: 168600, 2025: 176100 };
-    const MEDICARE_THRESHOLD = { single: 200000, married: 250000, married_sep: 125000, hoh: 200000 };
+    const CESS_RATE = 0.04;
+    const CAP_80C = 150000;
+    const CAP_80CCD_1B = 50000;
 
     let selectedYear = 2025;
-    let selectedStatus = 'single';
-    let deductionType = 'standard';
+    let selectedStatus = 'new';
 
-    const fmt = n => '$' + Math.abs(n).toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
-    const fmtD = n => '$' + Math.abs(n).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    const fmt = n => '₹' + Math.abs(n).toLocaleString('en-IN', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+    const fmtD = n => '₹' + Math.abs(n).toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
-    function setYear(y) {
-        selectedYear = y;
-        document.querySelectorAll('#yearTabs .status-tab').forEach(t => t.classList.toggle('active', parseInt(t.dataset.year) === y));
+    function setYear(year) {
+        selectedYear = year;
+        document.querySelectorAll('#yearTabs .status-tab').forEach(tab => tab.classList.toggle('active', Number(tab.dataset.year) === year));
         updateStdDeduction();
+        updateDeductionState();
     }
 
-    function setStatus(s) {
-        selectedStatus = s;
-        document.querySelectorAll('#statusTabs .status-tab').forEach(t => t.classList.toggle('active', t.dataset.status === s));
+    function setStatus(status) {
+        selectedStatus = status;
+        document.querySelectorAll('#statusTabs .status-tab').forEach(tab => tab.classList.toggle('active', tab.dataset.status === status));
         updateStdDeduction();
-    }
-
-    function setDeduction(type) {
-        deductionType = type;
-        document.getElementById('dedStd').classList.toggle('active', type === 'standard');
-        document.getElementById('dedItem').classList.toggle('active', type === 'itemized');
-        document.getElementById('stdDeductionGroup').style.display = type === 'standard' ? '' : 'none';
-        document.getElementById('itemizedFields').classList.toggle('show', type === 'itemized');
+        updateDeductionState();
     }
 
     function updateStdDeduction() {
-        const sd = TAX_DATA[selectedYear].stdDed[selectedStatus];
-        document.getElementById('stdDeduction').value = sd;
-        const labels = { single: 'Single', married: 'Married Filing Jointly', married_sep: 'Married Filing Separately', hoh: 'Head of Household' };
-        document.getElementById('stdNote').textContent = selectedYear + ' ' + labels[selectedStatus] + ': ' + fmt(sd) + '. Auto-filled based on filing status & year.';
+        const stdDed = TAX_DATA[selectedYear].standardDeduction[selectedStatus];
+        document.getElementById('stdDeduction').value = stdDed;
+        const fyLabel = selectedYear === 2024 ? 'FY 2024-25' : 'FY 2025-26';
+        const regimeLabel = selectedStatus === 'new' ? 'New Regime' : 'Old Regime';
+        document.getElementById('stdNote').textContent = `${fyLabel} ${regimeLabel}: ${fmt(stdDed)} standard deduction auto-applied.`;
     }
 
-    function calculate() {
-        const wages = parseFloat(document.getElementById('wages').value) || 0;
-        const other = parseFloat(document.getElementById('otherIncome').value) || 0;
-        const preTax = parseFloat(document.getElementById('preTax').value) || 0;
-        const credits = parseFloat(document.getElementById('taxCredits').value) || 0;
+    function updateDeductionState() {
+        const oldOnlyIds = ['preTax', 'salt', 'mortgageInt', 'charity', 'medical', 'otherDed'];
+        const oldMode = selectedStatus === 'old';
+        oldOnlyIds.forEach(id => {
+            const input = document.getElementById(id);
+            if (!input) return;
+            input.disabled = !oldMode;
+            input.style.background = oldMode ? '#f8fafc' : '#eef2ff';
+        });
+    }
 
-        const grossIncome = wages + other;
-        const agi = grossIncome - preTax;
-
-        // Deduction
-        let deduction;
-        if (deductionType === 'standard') {
-            deduction = TAX_DATA[selectedYear].stdDed[selectedStatus];
-        } else {
-            const saltCap = selectedStatus === 'married_sep' ? 5000 : 10000;
-            const salt = Math.min(parseFloat(document.getElementById('salt').value) || 0, saltCap);
-            const mortgage = parseFloat(document.getElementById('mortgageInt').value) || 0;
-            const charity = parseFloat(document.getElementById('charity').value) || 0;
-            const medicalRaw = parseFloat(document.getElementById('medical').value) || 0;
-            const medicalFloor = agi * 0.075;
-            const medical = Math.max(0, medicalRaw - medicalFloor);
-            const otherDed = parseFloat(document.getElementById('otherDed').value) || 0;
-            deduction = salt + mortgage + charity + medical + otherDed;
-        }
-
-        const taxableIncome = Math.max(0, agi - deduction);
-
-        // Calculate tax bracket by bracket
-        const brackets = TAX_DATA[selectedYear].brackets[selectedStatus];
-        let totalTax = 0;
-        let marginalRate = 0.10;
+    function computeSlabTax(taxableIncome, slabs) {
+        let tax = 0;
+        let topRate = 0;
         const breakdown = [];
 
-        brackets.forEach(b => {
-            const bracketWidth = b.max - b.min;
-            const incomeInBracket = Math.max(0, Math.min(taxableIncome - b.min, bracketWidth));
-            const taxInBracket = incomeInBracket * b.rate;
-            totalTax += taxInBracket;
-
-            if (incomeInBracket > 0) marginalRate = b.rate;
+        slabs.forEach(slab => {
+            const slabWidth = slab.max - slab.min;
+            const incomeInSlab = Math.max(0, Math.min(taxableIncome - slab.min, slabWidth));
+            const taxInSlab = incomeInSlab * slab.rate;
+            tax += taxInSlab;
+            if (incomeInSlab > 0) topRate = slab.rate;
 
             breakdown.push({
-                rate: b.rate,
-                min: b.min,
-                max: b.max,
-                income: incomeInBracket,
-                tax: taxInBracket,
-                bracketWidth: bracketWidth,
-                active: incomeInBracket > 0
+                min: slab.min,
+                max: slab.max,
+                rate: slab.rate,
+                income: incomeInSlab,
+                tax: taxInSlab
             });
         });
 
-        // Apply credits
-        const taxAfterCredits = Math.max(0, totalTax - credits);
-        const effectiveRate = grossIncome > 0 ? (taxAfterCredits / grossIncome) * 100 : 0;
-        const afterTax = grossIncome - taxAfterCredits;
+        return { tax, topRate, breakdown };
+    }
 
-        // Display results
-        document.getElementById('resTax').textContent = fmt(taxAfterCredits);
+    function calculate() {
+        const salary = Math.max(0, parseFloat(document.getElementById('wages').value) || 0);
+        const otherIncome = Math.max(0, parseFloat(document.getElementById('otherIncome').value) || 0);
+        const tdsPaid = Math.max(0, parseFloat(document.getElementById('taxCredits').value) || 0);
+
+        const ded80C = Math.max(0, parseFloat(document.getElementById('preTax').value) || 0);
+        const ded80D = Math.max(0, parseFloat(document.getElementById('salt').value) || 0);
+        const ded80CCD1B = Math.max(0, parseFloat(document.getElementById('mortgageInt').value) || 0);
+        const dedOther = Math.max(0, parseFloat(document.getElementById('charity').value) || 0);
+        const dedHomeLoan = Math.max(0, parseFloat(document.getElementById('medical').value) || 0);
+        const dedExtra = Math.max(0, parseFloat(document.getElementById('otherDed').value) || 0);
+
+        const grossIncome = salary + otherIncome;
+        const stdDed = TAX_DATA[selectedYear].standardDeduction[selectedStatus];
+
+        let oldRegimeDeductions = 0;
+        if (selectedStatus === 'old') {
+            oldRegimeDeductions = Math.min(ded80C, CAP_80C)
+                + ded80D
+                + Math.min(ded80CCD1B, CAP_80CCD_1B)
+                + dedOther
+                + dedHomeLoan
+                + dedExtra;
+        }
+
+        const totalDeductions = stdDed + oldRegimeDeductions;
+        const taxableIncome = Math.max(0, grossIncome - totalDeductions);
+
+        const slabs = TAX_DATA[selectedYear].slabs[selectedStatus];
+        const { tax: taxBeforeRebate, topRate, breakdown } = computeSlabTax(taxableIncome, slabs);
+
+        const rebateCfg = TAX_DATA[selectedYear].rebate[selectedStatus];
+        const rebate = taxableIncome <= rebateCfg.limit ? Math.min(taxBeforeRebate, rebateCfg.max) : 0;
+        const taxAfterRebate = Math.max(0, taxBeforeRebate - rebate);
+        const cess = taxAfterRebate * CESS_RATE;
+        const totalTax = taxAfterRebate + cess;
+        const effectiveRate = grossIncome > 0 ? (totalTax / grossIncome) * 100 : 0;
+        const afterTaxIncome = grossIncome - totalTax;
+        const netPayable = totalTax - tdsPaid;
+
+        document.getElementById('resTax').textContent = fmt(totalTax);
         document.getElementById('resEffective').textContent = effectiveRate.toFixed(2) + '%';
-        document.getElementById('resMarginal').textContent = (marginalRate * 100) + '%';
-        document.getElementById('resAfterTax').textContent = fmt(afterTax);
-        document.getElementById('resMonthly').textContent = fmtD(afterTax / 12);
+        document.getElementById('resMarginal').textContent = (topRate * 100).toFixed(0) + '%';
+        document.getElementById('resAfterTax').textContent = fmt(afterTaxIncome);
+        document.getElementById('resMonthly').textContent = netPayable >= 0 ? ('Pay ' + fmt(netPayable)) : ('Refund ' + fmt(Math.abs(netPayable)));
         document.getElementById('resTaxable').textContent = fmt(taxableIncome);
 
-        // Summary
-        const statusLabels = { single: 'Single', married: 'Married Filing Jointly', married_sep: 'Married Filing Separately', hoh: 'Head of Household' };
+        const fyLabel = selectedYear === 2024 ? 'FY 2024-25' : 'FY 2025-26';
+        const regimeLabel = selectedStatus === 'new' ? 'New Regime' : 'Old Regime';
+
         document.getElementById('summaryText').innerHTML =
-            'For tax year <span class="hl">' + selectedYear + '</span> filing as <span class="hl">' + statusLabels[selectedStatus] + '</span>: ' +
-            'On <span class="hl">' + fmt(grossIncome) + '</span> gross income with a <span class="hl">' + fmt(deduction) + '</span> ' + deductionType + ' deduction, your taxable income is <span class="hl">' + fmt(taxableIncome) + '</span>. ' +
-            'Federal tax is <span class="hl">' + fmt(taxAfterCredits) + '</span>' + (credits > 0 ? ' (after ' + fmt(credits) + ' in credits)' : '') +
-            '. Your effective rate is <span class="hl">' + effectiveRate.toFixed(2) + '%</span> and your marginal bracket is <span class="hl">' + (marginalRate * 100) + '%</span>. ' +
-            'That leaves <span class="hl">' + fmt(afterTax) + '</span> after federal tax (<span class="hl">' + fmtD(afterTax / 12) + '/month</span>).';
+            `For <span class="hl">${fyLabel}</span> under <span class="hl">${regimeLabel}</span>, gross income is <span class="hl">${fmt(grossIncome)}</span>, total deductions are <span class="hl">${fmt(totalDeductions)}</span>, and taxable income is <span class="hl">${fmt(taxableIncome)}</span>. ` +
+            `Tax before rebate is <span class="hl">${fmt(taxBeforeRebate)}</span>, rebate is <span class="hl">${fmt(rebate)}</span>, cess is <span class="hl">${fmt(cess)}</span>, and total tax liability is <span class="hl">${fmt(totalTax)}</span>. ` +
+            `After considering tax already paid (<span class="hl">${fmt(tdsPaid)}</span>), ${netPayable >= 0 ? `net payable is <span class="hl">${fmt(netPayable)}</span>` : `estimated refund is <span class="hl">${fmt(Math.abs(netPayable))}</span>`}.`;
 
-        // FICA
-        const ssWageBase = SS_WAGE_BASE[selectedYear] || 176100;
-        const ssTax = Math.min(wages, ssWageBase) * SS_RATE;
-        const medicareTax = wages * MEDICARE_RATE;
-        const addMedicare = Math.max(0, wages - MEDICARE_THRESHOLD[selectedStatus]) * ADDITIONAL_MEDICARE;
-        const totalFICA = ssTax + medicareTax + addMedicare;
-        const combinedRate = grossIncome > 0 ? ((taxAfterCredits + totalFICA) / grossIncome * 100).toFixed(1) : '0.0';
-        document.getElementById('ficaText').innerHTML =
-            'As a W-2 employee on <span class="hl">' + fmt(wages) + '</span> in wages, your share of FICA taxes is approximately <span class="hl">' + fmt(totalFICA) + '</span>/year (<span class="hl">' + fmtD(totalFICA / 12) + '/month</span>). ' +
-            'Breakdown: Social Security ' + fmt(ssTax) + ' (6.2% on first ' + fmt(ssWageBase) + ') + Medicare ' + fmt(medicareTax) + ' (1.45%)' +
-            (addMedicare > 0 ? ' + Additional Medicare ' + fmt(addMedicare) + ' (0.9% on wages over ' + fmt(MEDICARE_THRESHOLD[selectedStatus]) + ')' : '') + '. ' +
-            'Your employer pays the same amount. Combined federal+FICA tax: <span class="hl">' + fmt(taxAfterCredits + totalFICA) + '</span> (' + combinedRate + '% of gross).';
-
-        // Bracket table
         const tbody = document.getElementById('bracketBody');
         tbody.innerHTML = '';
-        let cumulativeTax = 0;
-        breakdown.forEach(b => {
-            cumulativeTax += b.tax;
-            const pctUsed = b.max === Infinity ? (b.income > 0 ? 100 : 0) : Math.min(100, (b.income / (b.max - b.min)) * 100);
+
+        breakdown.forEach(item => {
+            const width = item.max === Infinity ? (item.income > 0 ? 100 : 0) : ((item.max - item.min) > 0 ? Math.min(100, (item.income / (item.max - item.min)) * 100) : 0);
             const row = document.createElement('tr');
-            if (b.active && b.income < (b.max - b.min)) row.className = 'row-active'; // partial bracket
+            if (item.income > 0 && item.max !== Infinity && item.income < (item.max - item.min)) row.className = 'row-active';
             row.innerHTML =
-                '<td><strong>' + (b.rate * 100) + '%</strong></td>' +
-                '<td>' + fmt(b.min) + ' &ndash; ' + (b.max === Infinity ? '&infin;' : fmt(b.max)) + '</td>' +
-                '<td>' + fmt(b.income) + '</td>' +
-                '<td>' + fmt(b.tax) + '</td>' +
-                '<td><div class="bracket-bar"><div class="bracket-bar-fill" style="width:' + pctUsed + '%"></div></div> ' + pctUsed.toFixed(0) + '%</td>';
+                `<td><strong>${(item.rate * 100).toFixed(0)}%</strong></td>` +
+                `<td>${fmt(item.min)} &ndash; ${item.max === Infinity ? '&infin;' : fmt(item.max)}</td>` +
+                `<td>${fmt(item.income)}</td>` +
+                `<td>${fmt(item.tax)}</td>` +
+                `<td><div class="bracket-bar"><div class="bracket-bar-fill" style="width:${width.toFixed(0)}%"></div></div> ${width.toFixed(0)}%</td>`;
             tbody.appendChild(row);
         });
+
         const totalRow = document.createElement('tr');
         totalRow.className = 'row-total';
-        totalRow.innerHTML = '<td>Total</td><td></td><td>' + fmt(taxableIncome) + '</td><td>' + fmt(totalTax) + '</td><td></td>';
+        totalRow.innerHTML = `<td>Total</td><td></td><td>${fmt(taxableIncome)}</td><td>${fmt(taxBeforeRebate)}</td><td></td>`;
         tbody.appendChild(totalRow);
 
         document.getElementById('results').style.display = 'block';
-
-        // Chart - income allocation donut (render after panel is visible)
-        drawChart(afterTax, taxAfterCredits, totalFICA, deduction, preTax);
-
+        drawChart(afterTaxIncome, taxAfterRebate, cess);
         document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
-    function drawChart(afterTax, fedTax, fica, deduction, preTax) {
+    function drawChart(afterTaxIncome, incomeTax, cess) {
         const canvas = document.getElementById('taxChart');
         const ctx = canvas.getContext('2d');
         const dpr = window.devicePixelRatio || 1;
@@ -833,45 +822,49 @@
         canvas.width = drawWidth * dpr;
         canvas.height = 280 * dpr;
         ctx.scale(dpr, dpr);
-        const W = drawWidth, H = 280;
+        const W = drawWidth;
+        const H = 280;
         ctx.clearRect(0, 0, W, H);
 
-        const gross = afterTax + fedTax + fica;
         const segments = [
-            { label: 'Take-Home', val: afterTax, color: '#10b981' },
-            { label: 'Federal Tax', val: fedTax, color: '#667eea' },
-            { label: 'FICA', val: fica, color: '#f59e0b' }
+            { label: 'Take-Home', val: afterTaxIncome, color: '#10b981' },
+            { label: 'Income Tax', val: incomeTax, color: '#667eea' },
+            { label: 'Cess', val: cess, color: '#f59e0b' }
         ];
-        const total = segments.reduce((s, x) => s + x.val, 0);
 
-        const cx = W / 2, cy = H / 2;
+        const total = segments.reduce((sum, seg) => sum + seg.val, 0);
+        if (total <= 0) return;
+
+        const cx = W / 2;
+        const cy = H / 2;
         const outerR = Math.max(30, Math.min(cx, cy) - 40);
         const innerR = outerR * 0.55;
 
         let startAngle = -Math.PI / 2;
-        segments.forEach(s => {
-            if (s.val <= 0) return;
-            const slice = (s.val / total) * Math.PI * 2;
+        segments.forEach(seg => {
+            if (seg.val <= 0) return;
+            const slice = (seg.val / total) * Math.PI * 2;
+
             ctx.beginPath();
             ctx.arc(cx, cy, outerR, startAngle, startAngle + slice);
             ctx.arc(cx, cy, innerR, startAngle + slice, startAngle, true);
             ctx.closePath();
-            ctx.fillStyle = s.color;
+            ctx.fillStyle = seg.color;
             ctx.fill();
 
-            if (s.val / total > 0.05) {
+            if (seg.val / total > 0.05) {
                 const mid = startAngle + slice / 2;
-                const lr = (outerR + innerR) / 2;
+                const labelRadius = (outerR + innerR) / 2;
                 ctx.fillStyle = '#fff';
                 ctx.font = 'bold 11px Segoe UI';
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
-                ctx.fillText(Math.round((s.val / total) * 100) + '%', cx + Math.cos(mid) * lr, cy + Math.sin(mid) * lr);
+                ctx.fillText(Math.round((seg.val / total) * 100) + '%', cx + Math.cos(mid) * labelRadius, cy + Math.sin(mid) * labelRadius);
             }
+
             startAngle += slice;
         });
 
-        // Center
         ctx.fillStyle = '#1e293b';
         ctx.font = 'bold 16px Segoe UI';
         ctx.textAlign = 'center';
@@ -881,23 +874,22 @@
         ctx.font = '11px Segoe UI';
         ctx.fillText('gross income', cx, cy + 12);
 
-        // Legend
-        let ly = H - 15;
-        const lx = 20;
+        const legendY = H - 15;
+        const legendX = 20;
         ctx.textAlign = 'left';
         ctx.textBaseline = 'middle';
-        segments.forEach((s, i) => {
-            const x = lx + i * (W / segments.length);
-            ctx.fillStyle = s.color;
-            ctx.fillRect(x, ly - 5, 10, 10);
+        segments.forEach((seg, index) => {
+            const x = legendX + index * (W / segments.length);
+            ctx.fillStyle = seg.color;
+            ctx.fillRect(x, legendY - 5, 10, 10);
             ctx.fillStyle = '#475569';
             ctx.font = '11px Segoe UI';
-            ctx.fillText(s.label + ': ' + fmt(s.val), x + 14, ly);
+            ctx.fillText(seg.label + ': ' + fmt(seg.val), x + 14, legendY);
         });
     }
 
     function resetForm() {
-        document.getElementById('wages').value = '85000';
+        document.getElementById('wages').value = '850000';
         document.getElementById('otherIncome').value = '0';
         document.getElementById('preTax').value = '0';
         document.getElementById('taxCredits').value = '0';
@@ -907,8 +899,7 @@
         document.getElementById('medical').value = '0';
         document.getElementById('otherDed').value = '0';
         setYear(2025);
-        setStatus('single');
-        setDeduction('standard');
+        setStatus('new');
         document.getElementById('results').style.display = 'none';
     }
 
@@ -919,24 +910,25 @@
         if (!wasActive) item.classList.add('active');
     }
 
-    // Mobile Menu
     const hamburger = document.getElementById('hamburger');
     const headerLinks = document.getElementById('headerLinks');
     const menuOverlay = document.getElementById('menuOverlay');
+
     function toggleMenu() {
         hamburger.classList.toggle('active');
         headerLinks.classList.toggle('active');
         menuOverlay.classList.toggle('active');
         document.body.style.overflow = headerLinks.classList.contains('active') ? 'hidden' : '';
     }
+
     hamburger.addEventListener('click', toggleMenu);
     menuOverlay.addEventListener('click', toggleMenu);
     headerLinks.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => { if (window.innerWidth <= 768) toggleMenu(); });
     });
 
-    // Init
     updateStdDeduction();
+    updateDeductionState();
     calculate();
 </script>
 

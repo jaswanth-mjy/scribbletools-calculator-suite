@@ -516,40 +516,182 @@
 
     <!-- Main Content -->
     <main class="main-content">
-        <div class="progress-container">
-            <div class="progress-icon">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
-                </svg>
+        <div class="calculator-container">
+            <h1 class="calculator-title">Retirement Calculator</h1>
+            <p class="calculator-subtitle">Calculate retirement corpus and plan for financial independence</p>
+            
+            <div class="calculator-wrapper">
+                <div class="input-section">
+                    <div class="form-group">
+                        <label>Current Age (years)</label>
+                        <div class="input-group"><input type="number" id="retCurrentAge" value="35" min="18" max="70" style="padding-left:14px" placeholder="e.g. 35"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Retirement Age (years)</label>
+                        <div class="input-group"><input type="number" id="retRetireAge" value="60" min="40" max="80" style="padding-left:14px" placeholder="e.g. 60"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Life Expectancy (years)</label>
+                        <div class="input-group"><input type="number" id="lifeExpectancy" value="85" min="60" max="100" style="padding-left:14px" placeholder="e.g. 85"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Current Monthly Expenses</label>
+                        <div class="input-group"><span class="unit">₹</span><input type="number" id="monthlyExpense" value="50000" min="0" placeholder="e.g. 50000"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Annual Inflation Rate (%)</label>
+                        <div class="input-group"><input type="number" id="retInflation" value="6" min="0" max="30" step="0.1" style="padding-left:14px" placeholder="e.g. 6"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Pre-Retirement Return (%)</label>
+                        <div class="input-group"><input type="number" id="preRetReturn" value="10" min="0" max="30" step="0.1" style="padding-left:14px" placeholder="e.g. 10"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Post-Retirement Return (%)</label>
+                        <div class="input-group"><input type="number" id="postRetReturn" value="7" min="0" max="20" step="0.1" style="padding-left:14px" placeholder="e.g. 7"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Current Retirement Savings</label>
+                        <div class="input-group"><span class="unit">₹</span><input type="number" id="currentSavings" value="500000" min="0" placeholder="e.g. 500000"></div>
+                    </div>
+                    
+                    <button class="calculate-btn" onclick="calculateRetirement()">Calculate Retirement Needs</button>
+                    <button class="reset-btn" onclick="resetRetirementForm()">Reset</button>
+                </div>
+                
+                <div class="results-section">
+                    <div class="results-card">
+                        <h3>Retirement Analysis</h3>
+                        
+                        <div class="result-item">
+                            <label>Years to Retirement</label>
+                            <div class="result-value" id="yearsToRetire">25</div>
+                        </div>
+                        
+                        <div class="result-item">
+                            <label>Retirement Duration (years)</label>
+                            <div class="result-value" id="retDuration">25</div>
+                        </div>
+                        
+                        <div class="result-item">
+                            <label>Monthly Expense at Retirement</label>
+                            <div class="result-value" id="futureMonthlyExp">₹0</div>
+                        </div>
+                        
+                        <div class="result-item highlighted">
+                            <label>Total Retirement Corpus Needed</label>
+                            <div class="result-value" id="corpusNeeded">₹0</div>
+                        </div>
+                        
+                        <div class="result-item">
+                            <label>Projected Savings at Retirement</label>
+                            <div class="result-value" id="projectedSavings">₹0</div>
+                        </div>
+                        
+                        <div class="result-item highlighted">
+                            <label>Shortfall / Surplus</label>
+                            <div class="result-value" id="shortfallSurplus">₹0</div>
+                        </div>
+                        
+                        <div class="result-item">
+                            <label>Estimated Monthly Income</label>
+                            <div class="result-value" id="monthlyIncome">₹0</div>
+                        </div>
+                    </div>
+                    
+                    <div class="info-box">
+                        <h4>📌 Important Notes</h4>
+                        <ul>
+                            <li><strong>Corpus Needed:</strong> Assumes 50% investment withdrawal during retirement</li>
+                            <li><strong>Inflation Impact:</strong> Current expenses adjusted for inflation at retirement</li>
+                            <li><strong>Investment Returns:</strong> Different rates for pre- and post-retirement periods</li>
+                            <li>Monthly income assumes 4% safe withdrawal rule from corpus</li>
+                            <li>Does not include Social Security or Pension amounts</li>
+                            <li>Consult financial advisor for personalized retirement planning</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            
-            <h1 class="progress-title">Retirement Calculator</h1>
-            
-            <div class="category-badge">Financial Calculators</div>
-            
-            <div class="progress-badge">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
-                </svg>
-                Under Development
-            </div>
-            
-            <p class="progress-subtitle">Coming Soon!</p>
-            
-            <p class="progress-message">
-                We're working hard to bring you an amazing <strong>Retirement Calculator</strong> tool. 
-                Our team is crafting a feature-rich, user-friendly experience that will help you 
-                achieve accurate results with ease. Stay tuned!
-            </p>
-            
-            <a href="../../index.html" class="explore-btn">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
-                </svg>
-                Explore Other Tools
-            </a>
         </div>
     </main>
+    
+    <script>
+        function formatCurrency(amount) {
+            return new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(amount));
+        }
+        
+        function calculateRetirement() {
+            const currentAge = parseInt(document.getElementById('retCurrentAge').value) || 35;
+            const retireAge = parseInt(document.getElementById('retRetireAge').value) || 60;
+            const lifeExpectancy = parseInt(document.getElementById('lifeExpectancy').value) || 85;
+            const monthlyExpense = parseFloat(document.getElementById('monthlyExpense').value) || 0;
+            const inflation = parseFloat(document.getElementById('retInflation').value) / 100 || 0;
+            const preRetReturn = parseFloat(document.getElementById('preRetReturn').value) / 100 || 0;
+            const postRetReturn = parseFloat(document.getElementById('postRetReturn').value) / 100 || 0;
+            const currentSavings = parseFloat(document.getElementById('currentSavings').value) || 0;
+            
+            if (currentAge >= retireAge) {
+                alert('Please enter valid ages. Current age must be less than retirement age.');
+                return;
+            }
+            
+            const yearsToRetire = retireAge - currentAge;
+            const retirementDuration = lifeExpectancy - retireAge;
+            
+            // Future monthly expense (inflation adjusted)
+            const inflationFactor = Math.pow(1 + inflation, yearsToRetire);
+            const futureMonthlyExp = monthlyExpense * inflationFactor;
+            
+            // Total corpus needed (retirement duration in months)
+            const retirementMonths = retirementDuration * 12;
+            const corpusNeeded = futureMonthlyExp * retirementMonths * 0.5; // 50% withdrawal strategy
+            
+            // Project current savings at retirement
+            const monthlyPreRetReturn = Math.pow(1 + preRetReturn, 1/12) - 1;
+            const monthsToRetire = yearsToRetire * 12;
+            const projectedSavings = currentSavings * Math.pow(1 + monthlyPreRetReturn, monthsToRetire);
+            
+            // Shortfall or surplus
+            const shortfallSurplus = projectedSavings - corpusNeeded;
+            
+            // Monthly income (4% safe withdrawal)
+            const monthlyIncome = (projectedSavings * 0.04) / 12;
+            
+            // Update display
+            document.getElementById('yearsToRetire').innerText = yearsToRetire;
+            document.getElementById('retDuration').innerText = retirementDuration;
+            document.getElementById('futureMonthlyExp').innerText = formatCurrency(futureMonthlyExp);
+            document.getElementById('corpusNeeded').innerText = formatCurrency(corpusNeeded);
+            document.getElementById('projectedSavings').innerText = formatCurrency(projectedSavings);
+            document.getElementById('shortfallSurplus').innerText = formatCurrency(shortfallSurplus);
+            document.getElementById('monthlyIncome').innerText = formatCurrency(monthlyIncome);
+            
+            if (shortfallSurplus < 0) {
+                alert('⚠️ Warning: Projected savings may not be sufficient for retirement. Consider increasing savings or retirement age.');
+            }
+        }
+        
+        function resetRetirementForm() {
+            document.getElementById('retCurrentAge').value = '35';
+            document.getElementById('retRetireAge').value = '60';
+            document.getElementById('lifeExpectancy').value = '85';
+            document.getElementById('monthlyExpense').value = '50000';
+            document.getElementById('retInflation').value = '6';
+            document.getElementById('preRetReturn').value = '10';
+            document.getElementById('postRetReturn').value = '7';
+            document.getElementById('currentSavings').value = '500000';
+            calculateRetirement();
+        }
+        
+        window.addEventListener('load', calculateRetirement);
+    </script>
 
     <!-- Footer -->
     <footer class="site-footer">

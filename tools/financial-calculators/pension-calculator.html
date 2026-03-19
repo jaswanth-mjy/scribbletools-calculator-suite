@@ -516,40 +516,195 @@
 
     <!-- Main Content -->
     <main class="main-content">
-        <div class="progress-container">
-            <div class="progress-icon">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
-                </svg>
+        <div class="calculator-container">
+            <h1 class="calculator-title">Pension & Gratuity Calculator</h1>
+            <p class="calculator-subtitle">Calculate pension corpus and gratuity benefits for Indian employees</p>
+            
+            <div class="calculator-wrapper">
+                <div class="input-section">
+                    <div class="form-group">
+                        <label>Monthly Salary</label>
+                        <div class="input-group"><span class="unit">₹</span><input type="number" id="penSalary" value="50000" min="0" placeholder="e.g. 50000"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Years of Service</label>
+                        <div class="input-group"><input type="number" id="yearsService" value="20" min="0" max="60" style="padding-left:14px" placeholder="e.g. 20"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Pension Type</label>
+                        <div class="input-group" style="padding: 0;">
+                            <select id="pensionType" style="flex: 1; border: none; background: transparent; padding: 12px 14px; font-size: 1rem; outline: none; width: 100%;">
+                                <option value="normal">Normal Pension (50% basic + DA)</option>
+                                <option value="higher">Higher Pension (60% basic + DA)</option>
+                                <option value="family">Family Pension (50% of employee pension)</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Basic Salary (if different from above)</label>
+                        <div class="input-group"><span class="unit">₹</span><input type="number" id="basicSalary" value="" min="0" placeholder="Leave empty to use monthly salary"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Dearness Allowance (DA)</label>
+                        <div class="input-group"><input type="number" id="da" value="32" min="0" max="200" step="0.1" style="padding-left:14px" placeholder="e.g. 32 (%)"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Assumed Life Expectancy</label>
+                        <div class="input-group"><input type="number" id="penLifeExpectancy" value="80" min="60" max="100" style="padding-left:14px" placeholder="e.g. 80"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Retirement Age</label>
+                        <div class="input-group"><input type="number" id="penRetireAge" value="60" min="40" max="70" style="padding-left:14px" placeholder="e.g. 60"></div>
+                    </div>
+                    
+                    <button class="calculate-btn" onclick="calculatePension()">Calculate Pension</button>
+                    <button class="reset-btn" onclick="resetPensionForm()">Reset</button>
+                </div>
+                
+                <div class="results-section">
+                    <div class="results-card">
+                        <h3>Pension & Gratuity Breakdown</h3>
+                        
+                        <div class="result-item">
+                            <label>Last Drawn Salary</label>
+                            <div class="result-value" id="displaySalary">₹50,000</div>
+                        </div>
+                        
+                        <div class="result-item">
+                            <label>Basic + DA (Pension Base)</label>
+                            <div class="result-value" id="pensionBase">₹0</div>
+                        </div>
+                        
+                        <div class="result-item highlighted">
+                            <label>Monthly Pension Amount</label>
+                            <div class="result-value" id="monthlyPension">₹0</div>
+                        </div>
+                        
+                        <div class="result-item">
+                            <label>Gratuity (15 days/year)</label>
+                            <div class="result-value" id="gratuity">₹0</div>
+                        </div>
+                        
+                        <div class="result-item">
+                            <label>Total Pension Corpus (20 years)</label>
+                            <div class="result-value" id="pensionCorpus">₹0</div>
+                        </div>
+                        
+                        <div class="result-item">
+                            <label>Pension Tenure (years)</label>
+                            <div class="result-value" id="pensionTenure">20</div>
+                        </div>
+                        
+                        <div class="result-item highlighted">
+                            <label>Gratuity + Pension Corpus</label>
+                            <div class="result-value" id="totalBenefit">₹0</div>
+                        </div>
+                    </div>
+                    
+                    <div class="info-box">
+                        <h4>📌 Important Notes</h4>
+                        <ul>
+                            <li><strong>Gratuity:</strong> Calculated as 15 days salary per year of service (₹½ million cap)</li>
+                            <li><strong>Pension:</strong> Based on basic salary + DA at time of retirement</li>
+                            <li><strong>Normal Pension:</strong> 50% of (Basic + DA) after 10 years of service</li>
+                            <li><strong>Calculation assumes:</strong> No salary increases after retirement</li>
+                            <li>Actual pension subject to government regulations and service terms</li>
+                            <li>This is an estimate; consult HR/Payroll for exact calculations</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            
-            <h1 class="progress-title">Pension Calculator</h1>
-            
-            <div class="category-badge">Financial Calculators</div>
-            
-            <div class="progress-badge">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
-                </svg>
-                Under Development
-            </div>
-            
-            <p class="progress-subtitle">Coming Soon!</p>
-            
-            <p class="progress-message">
-                We're working hard to bring you an amazing <strong>Pension Calculator</strong> tool. 
-                Our team is crafting a feature-rich, user-friendly experience that will help you 
-                achieve accurate results with ease. Stay tuned!
-            </p>
-            
-            <a href="../../index.html" class="explore-btn">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
-                </svg>
-                Explore Other Tools
-            </a>
         </div>
     </main>
+    
+    <script>
+        function formatCurrency(amount) {
+            return new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(amount));
+        }
+        
+        function calculatePension() {
+            const salary = parseFloat(document.getElementById('penSalary').value) || 0;
+            const yearsService = parseInt(document.getElementById('yearsService').value) || 0;
+            const pensionType = document.getElementById('pensionType').value;
+            const basicSalaryInput = document.getElementById('basicSalary').value;
+            const da = parseFloat(document.getElementById('da').value) / 100 || 0;
+            const lifeExpectancy = parseInt(document.getElementById('penLifeExpectancy').value) || 80;
+            const retireAge = parseInt(document.getElementById('penRetireAge').value) || 60;
+            
+            if (salary <= 0) {
+                alert('Please enter a valid salary amount');
+                return;
+            }
+            
+            // Basic salary calculation
+            const basicSalary = basicSalaryInput ? parseFloat(basicSalaryInput) : salary * 0.5; // Assume basic is 50% of total
+            const daAmount = basicSalary * da;
+            const pensionBase = basicSalary + daAmount;
+            
+            // Gratuity calculation: 15 days salary per year
+            // = (Salary * 15 / 30) * Years = Salary * 0.5 * Years
+            const gratuity = Math.min((salary * 15 / 30) * yearsService, 5000000); // Cap at ₹50 lakh
+            
+            // Monthly pension based on type
+            let monthlyPension = 0;
+            if (yearsService >= 10) {
+                switch(pensionType) {
+                    case 'normal':
+                        monthlyPension = pensionBase * 0.5;
+                        break;
+                    case 'higher':
+                        monthlyPension = pensionBase * 0.6;
+                        break;
+                    case 'family':
+                        monthlyPension = (pensionBase * 0.5) * 0.5;
+                        break;
+                    default:
+                        monthlyPension = pensionBase * 0.5;
+                }
+            } else {
+                monthlyPension = 0; // Less than 10 years, no pension
+            }
+            
+            // Pension tenure
+            const pensiontTenure = Math.max(0, lifeExpectancy - retireAge);
+            const pensionCorpus = monthlyPension * 12 * pensiontTenure;
+            
+            // Total benefit
+            const totalBenefit = gratuity + pensionCorpus;
+            
+            // Update display
+            document.getElementById('displaySalary').innerText = formatCurrency(salary);
+            document.getElementById('pensionBase').innerText = formatCurrency(pensionBase);
+            document.getElementById('monthlyPension').innerText = formatCurrency(monthlyPension);
+            document.getElementById('gratuity').innerText = formatCurrency(gratuity);
+            document.getElementById('pensionTenure').innerText = pensiontTenure;
+            document.getElementById('pensionCorpus').innerText = formatCurrency(pensionCorpus);
+            document.getElementById('totalBenefit').innerText = formatCurrency(totalBenefit);
+            
+            if (yearsService < 10) {
+                alert('⚠️ Note: Pension eligibility typically requires minimum 10 years of service');
+            }
+        }
+        
+        function resetPensionForm() {
+            document.getElementById('penSalary').value = '50000';
+            document.getElementById('yearsService').value = '20';
+            document.getElementById('pensionType').value = 'normal';
+            document.getElementById('basicSalary').value = '';
+            document.getElementById('da').value = '32';
+            document.getElementById('penLifeExpectancy').value = '80';
+            document.getElementById('penRetireAge').value = '60';
+            calculatePension();
+        }
+        
+        window.addEventListener('load', calculatePension);
+    </script>
 
     <!-- Footer -->
     <footer class="site-footer">

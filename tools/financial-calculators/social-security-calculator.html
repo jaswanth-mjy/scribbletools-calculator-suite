@@ -6,24 +6,24 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
-    <title>Social Security Calculator - Free Online Tool | ShramTools</title>
-    <meta name="description" content="Free Social Security Calculator tool by ShramTools. Easy to use, accurate results, no registration required.">
-    <meta name="keywords" content="social security calculator, free calculator, online tool, ShramTools">
+    <title>Indian Pension & Retirement Calculator - EPF, NPS | ShramTools</title>
+    <meta name="description" content="Free Indian Pension Retirement Calculator. Calculate EPF, NPS, and retirement corpus needed. Plan your retirement with detailed projections.">
+    <meta name="keywords" content="pension calculator, retirement calculator, EPF calculator, NPS calculator, India, ShramTools">
     <meta name="author" content="ShramTools by Shram Kavach">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://shramtools.shramkavach.com/tools/financial-calculators/social-security-calculator.html">
+    <link rel="canonical" href="https://shramtools.shramkavach.com/tools/financial-calculators/pension-retirement-calculator.html">
     
     <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://shramtools.shramkavach.com/tools/financial-calculators/social-security-calculator.html">
-    <meta property="og:title" content="Social Security Calculator - Free Online Tool | ShramTools">
-    <meta property="og:description" content="Free Social Security Calculator tool. Easy to use, accurate results.">
+    <meta property="og:url" content="https://shramtools.shramkavach.com/tools/financial-calculators/pension-retirement-calculator.html">
+    <meta property="og:title" content="Indian Pension & Retirement Calculator | ShramTools">
+    <meta property="og:description" content="Calculate EPF, NPS, Gratuity and plan your retirement with detailed projections for India.">
     <meta property="og:image" content="https://shramtools.shramkavach.com/images/og-image.jpg">
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:title" content="Social Security Calculator | ShramTools">
-    <meta property="twitter:description" content="Free Social Security Calculator tool by ShramTools.">
+    <meta property="twitter:title" content="Indian Pension & Retirement Calculator | ShramTools">
+    <meta property="twitter:description" content="Plan your retirement with EPF, NPS & Gratuity calculations - India focused">
     
     <link rel="icon" type="image/webp" href="../../images/logo.webp">
     
@@ -182,15 +182,14 @@
             background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
         }
         
-        /* Main Content - Under Progress */
+        /* Main Content */
         .main-content {
-            max-width: 900px;
+            max-width: 1300px;
             margin: 0 auto;
             padding: 60px 20px;
-            text-align: center;
         }
         
-        .progress-container {
+        .calculator-container {
             background: white;
             border-radius: 24px;
             padding: 60px 40px;
@@ -198,106 +197,198 @@
             border: 1px solid rgba(102, 126, 234, 0.1);
         }
         
-        .progress-icon {
-            width: 120px;
-            height: 120px;
-            margin: 0 auto 30px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            animation: pulse 2s ease-in-out infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(102, 126, 234, 0.4); }
-            50% { transform: scale(1.05); box-shadow: 0 0 0 20px rgba(102, 126, 234, 0); }
-        }
-        
-        .progress-icon svg {
-            width: 60px;
-            height: 60px;
-            fill: white;
-        }
-        
-        .progress-title {
+        .calculator-title {
             font-size: 2.5rem;
             font-weight: 800;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #a855f7 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
+            text-align: center;
         }
         
-        .progress-subtitle {
-            font-size: 1.2rem;
-            color: #718096;
-            margin-bottom: 30px;
-        }
-        
-        .progress-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-            color: #92400e;
-            padding: 12px 24px;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1rem;
-            margin-bottom: 30px;
-        }
-        
-        .progress-badge svg {
-            width: 20px;
-            height: 20px;
-            fill: #f59e0b;
-        }
-        
-        .category-badge {
-            display: inline-block;
-            background: rgba(102, 126, 234, 0.1);
-            color: #667eea;
-            padding: 8px 20px;
-            border-radius: 25px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            margin-bottom: 30px;
-        }
-        
-        .progress-message {
-            color: #4a5568;
+        .calculator-subtitle {
             font-size: 1.1rem;
-            line-height: 1.8;
+            color: #718096;
+            text-align: center;
             margin-bottom: 40px;
         }
         
-        .explore-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 16px 40px;
-            border-radius: 50px;
-            font-size: 1.1rem;
+        .calculator-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        
+        .input-section {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .form-group label {
             font-weight: 600;
-            text-decoration: none;
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+            color: #2d3748;
+            font-size: 0.95rem;
+        }
+        
+        .input-group {
+            display: flex;
+            align-items: center;
+            background: #f7fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            overflow: hidden;
             transition: all 0.3s;
         }
         
-        .explore-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.5);
+        .input-group:focus-within {
+            border-color: #667eea;
+            background: #f0f4ff;
         }
         
-        .explore-btn svg {
-            width: 20px;
-            height: 20px;
-            fill: white;
+        .input-group input {
+            flex: 1;
+            border: none;
+            background: transparent;
+            padding: 12px 14px;
+            font-size: 1rem;
+            outline: none;
+        }
+        
+        .input-group .unit {
+            padding: 0 14px;
+            font-weight: 600;
+            color: #667eea;
+        }
+        
+        .calculate-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 14px 28px;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 8px 24px rgba(102, 126, 234, 0.3);
+            margin-top: 10px;
+        }
+        
+        .calculate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px rgba(102, 126, 234, 0.4);
+        }
+        
+        .calculate-btn:active {
+            transform: translateY(0);
+        }
+        
+        .reset-btn {
+            background: #e2e8f0;
+            color: #4a5568;
+            padding: 12px 28px;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .reset-btn:hover {
+            background: #cbd5e0;
+        }
+        
+        .results-section {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .results-card {
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+            border: 2px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 28px;
+        }
+        
+        .results-card h3 {
+            font-size: 1.4rem;
+            color: #2d3748;
+            margin-bottom: 24px;
+            font-weight: 700;
+        }
+        
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 0;
+            border-bottom: 1px solid #e2e8f0;
+            transition: all 0.3s;
+        }
+        
+        .result-item:last-child {
+            border-bottom: none;
+        }
+        
+        .result-item.highlighted {
+            background: rgba(102, 126, 234, 0.05);
+            padding: 14px 12px;
+            border-radius: 8px;
+            margin: 8px 0;
+        }
+        
+        .result-item label {
+            font-weight: 500;
+            color: #4a5568;
+            font-size: 0.95rem;
+        }
+        
+        .result-value {
+            font-weight: 700;
+            color: #667eea;
+            font-size: 1.2rem;
+        }
+        
+        .info-box {
+            background: rgba(102, 126, 234, 0.08);
+            border-left: 4px solid #667eea;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 10px;
+        }
+        
+        .info-box h4 {
+            color: #2d3748;
+            margin-bottom: 12px;
+            font-size: 1rem;
+            font-weight: 700;
+        }
+        
+        .info-box ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .info-box li {
+            color: #4a5568;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        
+        .info-box li strong {
+            color: #2d3748;
         }
         
         /* Footer */
@@ -452,6 +543,16 @@
         }
         
         /* Responsive */
+        @media (max-width: 1024px) {
+            .calculator-wrapper {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-menu {
+                display: none;
+            }
+        }
+        
         @media (max-width: 968px) {
             .nav-menu {
                 display: none;
@@ -461,7 +562,7 @@
                 grid-template-columns: 1fr 1fr;
             }
             
-            .progress-title {
+            .calculator-title {
                 font-size: 2rem;
             }
         }
@@ -471,12 +572,16 @@
                 padding: 1rem;
             }
             
-            .progress-container {
+            .calculator-container {
                 padding: 40px 20px;
             }
             
-            .progress-title {
+            .calculator-title {
                 font-size: 1.6rem;
+            }
+            
+            .calculator-wrapper {
+                grid-template-columns: 1fr;
             }
             
             .footer-grid {
@@ -516,40 +621,219 @@
 
     <!-- Main Content -->
     <main class="main-content">
-        <div class="progress-container">
-            <div class="progress-icon">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
-                </svg>
+        <div class="calculator-container">
+            <h1 class="calculator-title">Indian Pension & Retirement Calculator</h1>
+            <p class="calculator-subtitle">Plan your retirement with EPF, NPS & Gratuity calculations</p>
+            
+            <div class="calculator-wrapper">
+                <div class="input-section">
+                    <div class="form-group">
+                        <label>Current Age (years)</label>
+                        <div class="input-group"><input type="number" id="age" value="30" min="18" max="70" style="padding-left:14px" placeholder="e.g. 30"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Retirement Age (years)</label>
+                        <div class="input-group"><input type="number" id="retireAge" value="60" min="40" max="80" style="padding-left:14px" placeholder="e.g. 60"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Monthly Salary</label>
+                        <div class="input-group"><span class="unit">₹</span><input type="number" id="salary" value="50000" min="0" placeholder="e.g. 50000"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Annual Salary Increase (%)</label>
+                        <div class="input-group"><input type="number" id="salaryIncrease" value="5" min="0" max="100" step="0.1" style="padding-left:14px" placeholder="e.g. 5"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Current EPF Balance</label>
+                        <div class="input-group"><span class="unit">₹</span><input type="number" id="epfBalance" value="500000" min="0" placeholder="e.g. 500000"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>EPF Annual Return (%)</label>
+                        <div class="input-group"><input type="number" id="epfReturn" value="8.15" min="0" max="20" step="0.1" style="padding-left:14px" placeholder="e.g. 8.15"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>NPS Annual Contribution</label>
+                        <div class="input-group"><span class="unit">₹</span><input type="number" id="npsContrib" value="50000" min="0" placeholder="e.g. 50000"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>NPS Expected Return (%)</label>
+                        <div class="input-group"><input type="number" id="npsReturn" value="10" min="0" max="20" step="0.1" style="padding-left:14px" placeholder="e.g. 10"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Life Expectancy (years)</label>
+                        <div class="input-group"><input type="number" id="lifeExpectancy" value="85" min="60" max="100" style="padding-left:14px" placeholder="e.g. 85"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Inflation Rate (%)</label>
+                        <div class="input-group"><input type="number" id="inflation" value="6" min="0" max="20" step="0.1" style="padding-left:14px" placeholder="e.g. 6"></div>
+                    </div>
+                    
+                    <button class="calculate-btn" onclick="calculateRetirement()">Calculate Retirement</button>
+                    <button class="reset-btn" onclick="resetForm()">Reset</button>
+                </div>
+                
+                <div class="results-section">
+                    <div class="results-card">
+                        <h3>Retirement Summary</h3>
+                        
+                        <div class="result-item">
+                            <label>Years to Retirement</label>
+                            <div class="result-value" id="yearsToRetire">30</div>
+                        </div>
+                        
+                        <div class="result-item highlighted">
+                            <label>Projected EPF Balance at Retirement</label>
+                            <div class="result-value" id="projectedEPF">₹0</div>
+                        </div>
+                        
+                        <div class="result-item highlighted">
+                            <label>Projected NPS Balance at Retirement</label>
+                            <div class="result-value" id="projectedNPS">₹0</div>
+                        </div>
+                        
+                        <div class="result-item">
+                            <label>Total Retirement Corpus</label>
+                            <div class="result-value" id="totalCorpus">₹0</div>
+                        </div>
+                        
+                        <div class="result-item">
+                            <label>Estimated Monthly Pension (60% Withdrawal)</label>
+                            <div class="result-value" id="monthlyPension">₹0</div>
+                        </div>
+                        
+                        <div class="result-item">
+                            <label>Retirement Duration (years)</label>
+                            <div class="result-value" id="retirementDuration">25</div>
+                        </div>
+                        
+                        <div class="result-item">
+                            <label>Total Retirement Expenses Needed</label>
+                            <div class="result-value" id="totalExpenses">₹0</div>
+                        </div>
+                    </div>
+                    
+                    <div class="info-box">
+                        <h4>📌 Important Notes</h4>
+                        <ul>
+                            <li><strong>EPF:</strong> Employee contributes 12%, employer contributes 12% of basic + DA</li>
+                            <li><strong>NPS:</strong> Max tax benefit ₹2 lakh/year (Section 80C) + ₹50k additional (Section 80CCD(1B))</li>
+                            <li><strong>Gratuity:</strong> Not calculated here; typically 15 days salary per year of service</li>
+                            <li><strong>Inflation-adjusted:</strong> Results account for inflation at retirement</li>
+                            <li>This calculator provides estimates; consult a financial advisor for detailed planning</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            
-            <h1 class="progress-title">Social Security Calculator</h1>
-            
-            <div class="category-badge">Financial Calculators</div>
-            
-            <div class="progress-badge">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
-                </svg>
-                Under Development
-            </div>
-            
-            <p class="progress-subtitle">Coming Soon!</p>
-            
-            <p class="progress-message">
-                We're working hard to bring you an amazing <strong>Social Security Calculator</strong> tool. 
-                Our team is crafting a feature-rich, user-friendly experience that will help you 
-                achieve accurate results with ease. Stay tuned!
-            </p>
-            
-            <a href="../../index.html" class="explore-btn">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
-                </svg>
-                Explore Other Tools
-            </a>
         </div>
     </main>
+    
+    <script>
+        function formatCurrency(amount) {
+            return new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(amount));
+        }
+        
+        function calculateRetirement() {
+            const age = parseInt(document.getElementById('age').value) || 0;
+            const retireAge = parseInt(document.getElementById('retireAge').value) || 60;
+            const salary = parseFloat(document.getElementById('salary').value) || 0;
+            const salaryIncrease = parseFloat(document.getElementById('salaryIncrease').value) / 100 || 0;
+            const epfBalance = parseFloat(document.getElementById('epfBalance').value) || 0;
+            const epfReturn = parseFloat(document.getElementById('epfReturn').value) / 100 || 0;
+            const npsContrib = parseFloat(document.getElementById('npsContrib').value) || 0;
+            const npsReturn = parseFloat(document.getElementById('npsReturn').value) / 100 || 0;
+            const lifeExpectancy = parseInt(document.getElementById('lifeExpectancy').value) || 85;
+            const inflation = parseFloat(document.getElementById('inflation').value) / 100 || 0;
+            
+            if (age >= retireAge || salary < 0) {
+                alert('Please enter valid values. Current age must be less than retirement age.');
+                return;
+            }
+            
+            const yearsToRetire = retireAge - age;
+            
+            // Calculate EPF at retirement (12% + 12% annual contribution)
+            let epfFinal = epfBalance;
+            let currentSalary = salary;
+            for (let i = 0; i < yearsToRetire; i++) {
+                const annualContrib = currentSalary * 12 * 0.24; // 12 months * 24% (12% + 12%)
+                epfFinal = (epfFinal + annualContrib) * (1 + epfReturn);
+                currentSalary *= (1 + salaryIncrease);
+            }
+            
+            // Calculate NPS at retirement
+            let npsFinal = 0;
+            currentSalary = salary;
+            for (let i = 0; i < yearsToRetire; i++) {
+                npsFinal = (npsFinal + npsContrib) * (1 + npsReturn);
+                currentSalary *= (1 + salaryIncrease);
+            }
+            
+            // Total retirement corpus (60% can be withdrawn as lump sum)
+            const totalCorpus = epfFinal + npsFinal;
+            const withdrawalAmount = totalCorpus * 0.6; // 60% at retirement
+            const annuityAmount = totalCorpus * 0.4; // 40% remains for annuity/withdrawal
+            
+            // Monthly pension (assuming 4.5% annual return on remaining balance)
+            const monthlyReturn = 0.045;
+            const monthlyPension = (annuityAmount / 12) * (monthlyReturn / 12) + (annuityAmount / ((lifeExpectancy - retireAge) * 12));
+            
+            // Retirement duration
+            const retirementDuration = lifeExpectancy - retireAge;
+            
+            // Total expenses needed (adjusted for inflation)
+            const currentMonthlyExpense = salary * 0.8; // Assuming 80% of current salary needed at retirement
+            const inflationFactor = Math.pow(1 + inflation, yearsToRetire);
+            const retiredMonthlyExpense = currentMonthlyExpense * inflationFactor;
+            const totalExpensesNeeded = retiredMonthlyExpense * retirementDuration * 12;
+            
+            // Update display
+            document.getElementById('yearsToRetire').innerText = yearsToRetire;
+            document.getElementById('projectedEPF').innerText = formatCurrency(epfFinal);
+            document.getElementById('projectedNPS').innerText = formatCurrency(npsFinal);
+            document.getElementById('totalCorpus').innerText = formatCurrency(totalCorpus);
+            document.getElementById('monthlyPension').innerText = formatCurrency(monthlyPension);
+            document.getElementById('retirementDuration').innerText = retirementDuration;
+            document.getElementById('totalExpenses').innerText = formatCurrency(totalExpensesNeeded);
+            
+            // Show warning if corpus is insufficient
+            if (totalCorpus < totalExpensesNeeded * 0.9) {
+                alert('⚠️ Warning: Your projected retirement corpus may be insufficient for your expected expenses. Consider increasing savings or adjusting retirement age.');
+            }
+        }
+        
+        function resetForm() {
+            document.getElementById('age').value = '30';
+            document.getElementById('retireAge').value = '60';
+            document.getElementById('salary').value = '50000';
+            document.getElementById('salaryIncrease').value = '5';
+            document.getElementById('epfBalance').value = '500000';
+            document.getElementById('epfReturn').value = '8.15';
+            document.getElementById('npsContrib').value = '50000';
+            document.getElementById('npsReturn').value = '10';
+            document.getElementById('lifeExpectancy').value = '85';
+            document.getElementById('inflation').value = '6';
+            
+            document.getElementById('yearsToRetire').innerText = '30';
+            document.getElementById('projectedEPF').innerText = '₹0';
+            document.getElementById('projectedNPS').innerText = '₹0';
+            document.getElementById('totalCorpus').innerText = '₹0';
+            document.getElementById('monthlyPension').innerText = '₹0';
+            document.getElementById('retirementDuration').innerText = '25';
+            document.getElementById('totalExpenses').innerText = '₹0';
+        }
+        
+        // Auto-calculate on load
+        window.addEventListener('load', calculateRetirement);
+    </script>
 
     <!-- Footer -->
     <footer class="site-footer">

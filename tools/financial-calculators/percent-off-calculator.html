@@ -75,12 +75,12 @@
       <div class="left">
         <div class="title"><span>🧮</span><h3>Discount Inputs</h3></div>
         <div class="grid">
-          <div class="field"><label>Original Price</label><div class="ig"><span class="u">$</span><input id="price" type="number" value="100" min="0" step="0.01" oninput="calculate()"></div></div>
+          <div class="field"><label>Original Price</label><div class="ig"><span class="u">₹</span><input id="price" type="number" value="100" min="0" step="0.01" oninput="calculate()"></div></div>
           <div class="field"><label>Discount %</label><div class="ig"><span class="u">%</span><input id="disc1" type="number" value="20" min="0" max="100" step="0.01" oninput="calculate()"></div></div>
           <div class="field"><label>Extra Discount %</label><div class="ig"><span class="u">%</span><input id="disc2" type="number" value="0" min="0" max="100" step="0.01" oninput="calculate()"></div></div>
           <div class="field"><label>Sales Tax %</label><div class="ig"><span class="u">%</span><input id="tax" type="number" value="0" min="0" max="100" step="0.01" oninput="calculate()"></div></div>
-          <div class="field"><label>Shipping</label><div class="ig"><span class="u">$</span><input id="ship" type="number" value="0" min="0" step="0.01" oninput="calculate()"></div></div>
-          <div class="field"><label>Currency</label><div class="ig"><select id="currency" onchange="calculate()"><option value="USD">USD</option><option value="INR">INR</option><option value="EUR">EUR</option><option value="GBP">GBP</option></select></div></div>
+          <div class="field"><label>Shipping</label><div class="ig"><span class="u">₹</span><input id="ship" type="number" value="0" min="0" step="0.01" oninput="calculate()"></div></div>
+          <div class="field"><label>Currency</label><div class="ig"><select id="currency" onchange="calculate()"><option value="INR">INR</option><option value="USD">USD</option><option value="EUR">EUR</option><option value="GBP">GBP</option></select></div></div>
           <div class="field full"><label>Coupon Code Note</label><div class="ig"><input id="coupon" type="text" value="SAVE20" oninput="calculate()"></div></div>
         </div>
         <button type="button" class="btn" onclick="calculate()">Calculate Savings</button>
@@ -88,12 +88,12 @@
       </div>
 
       <div class="right">
-        <div class="main"><div class="label">Final Payable Price</div><div id="finalPrice" class="val">$0.00</div></div>
+        <div class="main"><div class="label">Final Payable Price</div><div id="finalPrice" class="val">₹0.00</div></div>
         <div class="stats">
-          <div class="card"><span class="k">Total Savings</span><span id="saved" class="v">$0.00</span></div>
-          <div class="card"><span class="k">Price After Discounts</span><span id="afterDisc" class="v">$0.00</span></div>
-          <div class="card"><span class="k">Discount Amount</span><span id="discAmt" class="v">$0.00</span></div>
-          <div class="card"><span class="k">Tax Amount</span><span id="taxAmt" class="v">$0.00</span></div>
+          <div class="card"><span class="k">Total Savings</span><span id="saved" class="v">₹0.00</span></div>
+          <div class="card"><span class="k">Price After Discounts</span><span id="afterDisc" class="v">₹0.00</span></div>
+          <div class="card"><span class="k">Discount Amount</span><span id="discAmt" class="v">₹0.00</span></div>
+          <div class="card"><span class="k">Tax Amount</span><span id="taxAmt" class="v">₹0.00</span></div>
           <div class="card"><span class="k">Effective Discount</span><span id="effDisc" class="v">0%</span></div>
         </div>
       </div>
@@ -133,7 +133,7 @@
 
 <script>
   function formatMoney(value, currency) {
-    return new Intl.NumberFormat('en-US', { style: 'currency', currency, minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(value);
+    return new Intl.NumberFormat('en-IN', { style: 'currency', currency, minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(value);
   }
 
   function calculate() {
@@ -165,7 +165,7 @@
     document.getElementById('disc2').value = '0';
     document.getElementById('tax').value = '0';
     document.getElementById('ship').value = '0';
-    document.getElementById('currency').value = 'USD';
+    document.getElementById('currency').value = 'INR';
     document.getElementById('coupon').value = 'SAVE20';
     calculate();
   }

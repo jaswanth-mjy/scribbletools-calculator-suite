@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Auto Loan Calculator - Free Car Payment Estimator | ShramTools</title>
-    <meta name="description" content="Calculate your monthly car payment, total interest, and amortization schedule instantly. Free auto loan calculator with trade-in, down payment, and sales tax support.">
-    <meta name="keywords" content="auto loan calculator, car payment calculator, car loan, monthly payment, vehicle financing, auto finance, car interest rate">
+    <title>Vehicle Loan Calculator - Free Car Payment Estimator (India) | ShramTools</title>
+    <meta name="description" content="Calculate your monthly vehicle payment, total interest, and amortization schedule. Free calculator for auto loans and vehicle financing with down payment and insurance support.">
+    <meta name="keywords" content="vehicle loan calculator, car payment calculator, auto loan, monthly payment, vehicle financing, car interest rate, india">
     <meta name="author" content="ShramTools by Shram Kavach">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://shramtools.shramkavach.com/tools/financial-calculators/auto-loan-calculator.html">
@@ -31,7 +31,7 @@
       "offers": {
         "@type": "Offer",
         "price": "0",
-        "priceCurrency": "USD"
+        "priceCurrency": "INR"
       },
       "description": "Free online auto loan calculator with monthly payments, amortization schedule, and total cost breakdown",
       "url": "https://shramtools.shramkavach.com/tools/financial-calculators/auto-loan-calculator.html",
@@ -1303,19 +1303,19 @@
                     <div class="input-grid">
                         <div class="field">
                             <label for="vehiclePrice"><span class="label-icon">&#128178;</span> Vehicle Price</label>
-                            <div class="input-group"><span class="unit">$</span><input type="number" id="vehiclePrice" value="35000" placeholder="e.g. 35000"></div>
+                            <div class="input-group"><span class="unit">₹</span><input type="number" id="vehiclePrice" value="800000" placeholder="e.g. 800000"></div>
                         </div>
                         <div class="field">
                             <label for="downPayment"><span class="label-icon">&#128181;</span> Down Payment</label>
-                            <div class="input-group"><span class="unit">$</span><input type="number" id="downPayment" value="5000" placeholder="e.g. 5000"></div>
+                            <div class="input-group"><span class="unit">₹</span><input type="number" id="downPayment" value="160000" placeholder="e.g. 160000"></div>
                         </div>
                         <div class="field">
-                            <label for="tradeIn"><span class="label-icon">&#128663;</span> Trade-in Value</label>
-                            <div class="input-group"><span class="unit">$</span><input type="number" id="tradeIn" value="0" placeholder="e.g. 3000"></div>
+                            <label for="tradeIn"><span class="label-icon">&#128663;</span> Exchange-In Value</label>
+                            <div class="input-group"><span class="unit">₹</span><input type="number" id="tradeIn" value="0" placeholder="e.g. 100000"></div>
                         </div>
                         <div class="field">
-                            <label for="salesTax"><span class="label-icon">&#127991;&#65039;</span> Sales Tax (%)</label>
-                            <div class="input-group"><input type="number" id="salesTax" value="6" step="0.01" style="padding-left:14px" placeholder="e.g. 6"></div>
+                            <label for="salesTax"><span class="label-icon">&#127991;&#65039;</span> Registration/Insurance (%)</label>
+                            <div class="input-group"><input type="number" id="salesTax" value="5" step="0.01" style="padding-left:14px" placeholder="e.g. 5"></div>
                         </div>
                         <div class="field">
                             <label for="interestRate"><span class="label-icon">&#128200;</span> Interest Rate (APR %)</label>
@@ -1343,7 +1343,7 @@
                     <div class="result-main">
                         <span class="result-icon">&#128176;</span>
                         <div class="label">Monthly Payment</div>
-                        <div class="value" id="monthlyPayment">$0</div>
+                        <div class="value" id="monthlyPayment">₹0</div>
                     </div>
                     <div class="result-stats">
                         <div class="stat-card">
@@ -1351,28 +1351,28 @@
                                 <div class="stat-icon blue">&#128178;</div>
                                 Loan Amount
                             </div>
-                            <span class="stat-value" id="loanAmount">$0</span>
+                            <span class="stat-value" id="loanAmount">₹0</span>
                         </div>
                         <div class="stat-card">
                             <div class="stat-label">
                                 <div class="stat-icon purple">&#127991;&#65039;</div>
-                                Sales Tax
+                                Registration/Insurance
                             </div>
-                            <span class="stat-value" id="taxAmount">$0</span>
+                            <span class="stat-value" id="taxAmount">₹0</span>
                         </div>
                         <div class="stat-card">
                             <div class="stat-label">
                                 <div class="stat-icon green">&#128200;</div>
                                 Total Interest
                             </div>
-                            <span class="stat-value" id="totalInterest" style="color: #10b981;">$0</span>
+                            <span class="stat-value" id="totalInterest" style="color: #10b981;">₹0</span>
                         </div>
                         <div class="stat-card">
                             <div class="stat-label">
                                 <div class="stat-icon amber">&#128176;</div>
                                 Total Cost
                             </div>
-                            <span class="stat-value" id="totalCost">$0</span>
+                            <span class="stat-value" id="totalCost">₹0</span>
                         </div>
                     </div>
                 </section>
@@ -1392,14 +1392,14 @@
             <!-- Content: About -->
             <section class="content-card">
                 <h2><span class="section-icon">&#128218;</span> What Is an Auto Loan?</h2>
-                <p>An auto loan is a secured installment loan used to purchase a vehicle. The car itself serves as collateral, which typically results in <strong>lower interest rates</strong> compared to unsecured personal loans. You repay the loan in fixed monthly payments over a set term &mdash; usually 24 to 84 months.</p>
-                <p>Key components that determine your auto loan cost:</p>
+                <p>A vehicle loan is a secured installment loan used to purchase a car, bike, or other transport. The vehicle serves as collateral, typically resulting in lower interest rates than unsecured loans. You repay in fixed monthly installments over a set term &mdash; usually 24 to 84 months.</p>
+                <p>Key components affecting your vehicle loan cost:</p>
                 <ul>
-                    <li><strong>Vehicle Price:</strong> The sticker or negotiated price of the car.</li>
-                    <li><strong>Down Payment &amp; Trade-in:</strong> These reduce the amount you need to finance, lowering your monthly payment and total interest.</li>
-                    <li><strong>Sales Tax:</strong> Most states charge sales tax on the vehicle purchase, which is typically rolled into the loan.</li>
-                    <li><strong>Interest Rate (APR):</strong> Annual Percentage Rate determines how much extra you pay to borrow. Rates depend on your credit score, loan term, and whether the car is new or used.</li>
-                    <li><strong>Loan Term:</strong> Longer terms mean lower monthly payments but significantly more total interest paid.</li>
+                    <li><strong>Vehicle Price:</strong> The negotiated or listed price of the vehicle.</li>
+                    <li><strong>Down Payment &amp; Exchange-In:</strong> These reduce the financed amount, lowering monthly payment and total interest.</li>
+                    <li><strong>Registration &amp; Insurance:</strong> One-time costs often included in the financed amount vary by state and insurer.</li>
+                    <li><strong>Interest Rate (APR):</strong> Determines total borrowing cost. Rates vary based on lender, vehicle age, loan term, and your repayment history.</li>
+                    <li><strong>Loan Term:</strong> Longer terms reduce monthly payment but increase total interest paid significantly.</li>
                 </ul>
             </section>
 
@@ -1411,12 +1411,12 @@
             <section class="content-card">
                 <h2><span class="section-icon">&#128203;</span> How to Use This Calculator</h2>
                 <ul>
-                    <li><strong>Vehicle Price:</strong> Enter the total purchase price or MSRP. Negotiating even $1,000 off can save hundreds in interest over the loan.</li>
-                    <li><strong>Down Payment:</strong> Cash you pay upfront. Aim for at least 20% to avoid being &ldquo;upside down&rdquo; on the loan (owing more than the car is worth).</li>
-                    <li><strong>Trade-in Value:</strong> The amount a dealer offers for your current vehicle. This directly reduces the financed amount.</li>
-                    <li><strong>Sales Tax:</strong> Enter your state&rsquo;s vehicle sales tax rate. Some states tax the full price; others tax the difference after trade-in.</li>
-                    <li><strong>Interest Rate (APR):</strong> Check your pre-approval rate from banks or credit unions. New cars average ~5-7%; used cars ~7-10% (varies by credit score).</li>
-                    <li><strong>Loan Term:</strong> Common terms are 36, 48, 60, or 72 months. Shorter terms cost more monthly but save substantially on interest.</li>
+                    <li><strong>Vehicle Price:</strong> Enter the negotiated ex-showroom price. Negotiating even ₹50,000 off can save significant interest.</li>
+                    <li><strong>Down Payment:</strong> Upfront cash. A higher down payment (typically 20%+) reduces EMI and total interest.</li>
+                    <li><strong>Exchange-In Value:</strong> If trading in an old vehicle, enter its estimated value to reduce the financed amount.</li>
+                    <li><strong>Registration/Insurance:</strong> Estimate one-time costs as a percentage to include in total financing.</li>
+                    <li><strong>Interest Rate (APR):</strong> Check rates from banks or NBFCs. Typical vehicle loan rates range from 6-9% depending on credit profile and vehicle type.</li>
+                    <li><strong>Loan Term:</strong> Standard terms are 36, 48, 60, or 72 months. Shorter terms have higher EMI but lower total interest.</li>
                 </ul>
             </section>
 
@@ -1454,10 +1454,10 @@
             <!-- Practical Example -->
             <section class="content-card">
                 <h2><span class="section-icon">&#128161;</span> Practical Example</h2>
-                <p>You&rsquo;re buying a <strong>$35,000</strong> car with a <strong>$5,000 down payment</strong>, no trade-in, <strong>6% sales tax</strong>, at <strong>6.5% APR</strong> for <strong>60 months</strong>.</p>
-                <p>Sales tax: $35,000 &times; 6% = <strong>$2,100</strong>. Financed amount: $35,000 + $2,100 &minus; $5,000 = <strong>$32,100</strong>.</p>
-                <p>Your monthly payment would be approximately <strong>$627</strong>. Over 60 months you&rsquo;d pay <strong>$37,639 total</strong>, meaning <strong>$5,539 in interest</strong> alone.</p>
-                <p>If you opted for a 48-month term instead, your payment rises to ~$762/month, but you&rsquo;d save <strong>$1,200+ in interest</strong>. This illustrates why shorter terms are financially smarter when affordable.</p>
+                <p>You&rsquo;re buying a <strong>₹800,000</strong> vehicle with a <strong>₹160,000 down payment</strong>, no exchange-in, <strong>5% registration/insurance</strong>, at <strong>8% APR</strong> for <strong>60 months</strong>.</p>
+                <p>Registration/Insurance: ₹800,000 &times; 5% = <strong>₹40,000</strong>. Financed amount: ₹800,000 + ₹40,000 &minus; ₹160,000 = <strong>₹680,000</strong>.</p>
+                <p>Your monthly EMI would be approximately <strong>₹15,400</strong>. Over 60 months you&rsquo;d pay <strong>₹924,000 total</strong>, meaning <strong>₹244,000 in interest</strong>.</p>
+                <p>If you opted for a 48-month term instead, your EMI rises to ~₹16,200/month, but you&rsquo;d save <strong>₹60,000+ in interest</strong>. This shows why shorter terms save on total cost when monthly budgets allow.</p>
             </section>
 
             <!-- FAQ -->
@@ -1497,7 +1497,7 @@
                             <span class="faq-toggle">+</span>
                         </div>
                         <div class="faq-answer">
-                            <p>Always get pre-approved from your bank or credit union first, then let the dealer try to beat that rate. Credit unions often offer the lowest rates. Dealer financing can sometimes include manufacturer incentives (0% APR deals), but watch for hidden fees.</p>
+                            <p>Get pre-approval from your bank, NBFC, or credit union first to know your maximum borrowing capacity. Compare rates; lenders often offer competitive options. Watch for hidden charges like documentation fees and insurance premiums.
                         </div>
                     </div>
                     <div class="faq-item">
@@ -1506,7 +1506,7 @@
                             <span class="faq-toggle">+</span>
                         </div>
                         <div class="faq-answer">
-                            <p>Most auto loans allow early payoff, but check for prepayment penalties. Making extra payments toward principal &mdash; even $50-100 extra per month &mdash; can shave months off your loan and save hundreds in interest.</p>
+                            <p>Most vehicle loans allow early payoff, but check for prepayment penalties. Making extra payments toward principal &mdash; even ₹2,000-5,000 extra per month &mdash; can reduce your loan tenure and save on interest.</p>
                         </div>
                     </div>
                 </div>
@@ -1596,11 +1596,11 @@
     let currentView = 'monthly';
 
     function formatCurrency(val) {
-        return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(val);
+        return new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }).format(val);
     }
 
     function formatCurrencyExact(val) {
-        return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(val);
+        return new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(val);
     }
 
     function calculate() {
@@ -1617,10 +1617,10 @@
         const principal = price + taxAmount - down - trade;
 
         if (principal <= 0) {
-            document.getElementById('monthlyPayment').innerText = '$0';
-            document.getElementById('loanAmount').innerText = '$0';
+            document.getElementById('monthlyPayment').innerText = '₹0';
+            document.getElementById('loanAmount').innerText = '₹0';
             document.getElementById('taxAmount').innerText = formatCurrency(taxAmount);
-            document.getElementById('totalInterest').innerText = '$0';
+            document.getElementById('totalInterest').innerText = '₹0';
             document.getElementById('totalCost').innerText = formatCurrency(down + trade);
             document.getElementById('scheduleSection').style.display = 'none';
             return;
@@ -1732,11 +1732,11 @@
         document.getElementById('salesTax').value = '';
         document.getElementById('interestRate').value = '';
         document.getElementById('loanTerm').value = '60';
-        document.getElementById('monthlyPayment').innerText = '$0';
-        document.getElementById('loanAmount').innerText = '$0';
-        document.getElementById('taxAmount').innerText = '$0';
-        document.getElementById('totalInterest').innerText = '$0';
-        document.getElementById('totalCost').innerText = '$0';
+        document.getElementById('monthlyPayment').innerText = '₹0';
+        document.getElementById('loanAmount').innerText = '₹0';
+        document.getElementById('taxAmount').innerText = '₹0';
+        document.getElementById('totalInterest').innerText = '₹0';
+        document.getElementById('totalCost').innerText = '₹0';
         document.getElementById('scheduleSection').style.display = 'none';
         amortData = [];
     }

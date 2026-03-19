@@ -181,7 +181,7 @@
 
             <div class="form-grid">
                 <div class="form-group">
-                    <label><span class="label-icon">&#128181;</span> Principal Amount ($)</label>
+                    <label><span class="label-icon">&#128181;</span> Principal Amount (₹)</label>
                     <input type="number" id="principal" value="10000" step="100" min="0">
                     <small>Initial deposit or investment amount</small>
                 </div>
@@ -214,7 +214,7 @@
                     </select>
                 </div>
                 <div class="form-group" id="grpContrib">
-                    <label><span class="label-icon">&#128181;</span> Regular Contribution ($)</label>
+                    <label><span class="label-icon">&#128181;</span> Regular Contribution (₹)</label>
                     <input type="number" id="contrib" value="100" step="50" min="0">
                     <small>Additional amount added per period</small>
                 </div>
@@ -245,22 +245,22 @@
 
                 <div class="big-result">
                     <div class="r-label">Total Balance</div>
-                    <div class="r-val" id="bigVal">$0</div>
+                    <div class="r-val" id="bigVal">₹0</div>
                     <div class="r-sub" id="bigSub"></div>
                 </div>
 
                 <div class="result-cards">
                     <div class="result-card">
                         <div class="result-label">Total Interest Earned</div>
-                        <div class="result-val" id="resTotalInt">$0</div>
+                        <div class="result-val" id="resTotalInt">₹0</div>
                     </div>
                     <div class="result-card">
                         <div class="result-label">Total Contributions</div>
-                        <div class="result-val" id="resTotalContrib">$0</div>
+                        <div class="result-val" id="resTotalContrib">₹0</div>
                     </div>
                     <div class="result-card">
                         <div class="result-label">Principal</div>
-                        <div class="result-val" id="resPrincipal">$0</div>
+                        <div class="result-val" id="resPrincipal">₹0</div>
                     </div>
                 </div>
 
@@ -292,8 +292,8 @@
 
         <section class="content-card">
             <h2><span class="section-icon">&#128218;</span> Simple vs. Compound Interest</h2>
-            <p><strong>Simple interest</strong> is calculated only on the original principal. It grows linearly over time. For a $10,000 deposit at 6% for 10 years, simple interest yields $6,000 (total $16,000).</p>
-            <p><strong>Compound interest</strong> is calculated on the principal <em>plus</em> accumulated interest, creating exponential growth. The same deposit compounded monthly yields ~$8,167 in interest (total ~$18,167). The more frequently interest compounds, the faster the balance grows.</p>
+            <p><strong>Simple interest</strong> is calculated only on the original principal. It grows linearly over time. For a ₹10,00,000 deposit at 6% for 10 years, simple interest yields ₹6,00,000 (total ₹16,00,000).</p>
+            <p><strong>Compound interest</strong> is calculated on the principal <em>plus</em> accumulated interest, creating exponential growth. The same deposit compounded monthly yields about ₹8,19,397 in interest (total about ₹18,19,397). The more frequently interest compounds, the faster the balance grows.</p>
             <ul>
                 <li><strong>Annually:</strong> Interest added once per year.</li>
                 <li><strong>Monthly:</strong> Interest added 12 times per year &mdash; most common for savings accounts.</li>
@@ -372,7 +372,7 @@
                     <div class="faq-question" onclick="toggleFAQ(this)">
                         <h3>How much difference does compounding frequency make?</h3><span class="faq-toggle">+</span>
                     </div>
-                    <div class="faq-answer"><p>On $10,000 at 6% for 10 years: Annual compounding = $17,908, Monthly = $18,194, Daily = $18,221, Continuous = $18,221. The jump from annual to monthly is most significant; after that, returns diminish rapidly. For most practical purposes, monthly and daily produce nearly identical results.</p></div>
+                    <div class="faq-answer"><p>On ₹10,00,000 at 6% for 10 years: Annual compounding ≈ ₹17,90,848, Monthly ≈ ₹18,19,397, Daily ≈ ₹18,22,103, Continuous ≈ ₹18,22,119. The jump from annual to monthly is most significant; after that, returns diminish rapidly.</p></div>
                 </div>
                 <div class="faq-item">
                     <div class="faq-question" onclick="toggleFAQ(this)">
@@ -384,13 +384,13 @@
                     <div class="faq-question" onclick="toggleFAQ(this)">
                         <h3>How do regular contributions affect growth?</h3><span class="faq-toggle">+</span>
                     </div>
-                    <div class="faq-answer"><p>Regular contributions dramatically accelerate wealth building. $10,000 at 6% for 20 years grows to ~$32,071 alone. Add $200/month and the total becomes ~$124,699 &mdash; with $58,000 in contributions and ~$56,628 in interest. The earlier and more consistently you contribute, the greater the compounding benefit.</p></div>
+                    <div class="faq-answer"><p>Regular contributions dramatically accelerate wealth building. ₹10,00,000 at 6% for 20 years grows to about ₹32,07,135 alone. Add ₹20,000/month and the total becomes about ₹1,24,70,175 &mdash; with ₹58,00,000 in contributions and about ₹56,70,175 in interest.</p></div>
                 </div>
                 <div class="faq-item">
                     <div class="faq-question" onclick="toggleFAQ(this)">
                         <h3>Is interest earned on savings taxable?</h3><span class="faq-toggle">+</span>
                     </div>
-                    <div class="faq-answer"><p>Yes. In the US, interest earned on savings accounts, CDs, and bonds is generally taxable as ordinary income. Banks issue Form 1099-INT for interest over $10. Tax-advantaged accounts (IRAs, 401(k)s) can defer or eliminate interest taxation. Municipal bond interest is typically exempt from federal tax.</p></div>
+                    <div class="faq-answer"><p>Yes, in India interest is generally taxable under &ldquo;Income from Other Sources&rdquo; unless specifically exempt. Interest from savings accounts and fixed deposits is taxable at your slab rate; TDS may apply above prescribed thresholds. Always verify current limits and exemptions for the relevant financial year.</p></div>
                 </div>
             </div>
         </section>
@@ -420,7 +420,7 @@
 </div>
 
 <script>
-const fmt = n => '$' + Math.abs(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+const fmt = n => '₹' + Math.abs(n).toLocaleString('en-IN',{minimumFractionDigits:2,maximumFractionDigits:2});
 let calcMode = 'compound';
 
 function setMode(m) {
@@ -595,7 +595,7 @@ function drawChart(yearData, principal) {
         ctx.beginPath(); ctx.moveTo(pad.left, y); ctx.lineTo(pad.left + cW, y); ctx.stroke();
         ctx.fillStyle = '#94a3b8'; ctx.font = '11px Segoe UI'; ctx.textAlign = 'right';
         const v = (maxV * i / 5);
-        ctx.fillText(v >= 1e6 ? '$' + (v/1e6).toFixed(1) + 'M' : v >= 1e3 ? '$' + (v/1e3).toFixed(0) + 'k' : '$' + v.toFixed(0), pad.left - 8, y + 4);
+        ctx.fillText(v >= 1e7 ? '₹' + (v/1e7).toFixed(1) + 'Cr' : v >= 1e5 ? '₹' + (v/1e5).toFixed(1) + 'L' : '₹' + v.toFixed(0), pad.left - 8, y + 4);
     }
 
     // Bars

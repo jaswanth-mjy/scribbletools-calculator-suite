@@ -28,7 +28,7 @@
       "@type": "WebApplication",
       "name": "Mortgage Amortization Calculator",
       "applicationCategory": "FinanceApplication",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" },
       "description": "Free mortgage amortization calculator with monthly schedule, escrow, and extra payment savings",
       "url": "https://shramtools.shramkavach.com/tools/financial-calculators/mortgage-amortization-calculator.html",
       "creator": {
@@ -291,11 +291,11 @@
                     <div class="input-grid">
                         <div class="field">
                             <label><span class="label-icon">🏡</span> Home Price</label>
-                            <div class="input-group"><span class="unit">$</span><input type="number" id="homePrice" value="450000" min="0" step="1000" oninput="calculate()"></div>
+                            <div class="input-group"><span class="unit">₹</span><input type="number" id="homePrice" value="450000" min="0" step="1000" oninput="calculate()"></div>
                         </div>
                         <div class="field">
                             <label><span class="label-icon">💵</span> Down Payment</label>
-                            <div class="input-group"><span class="unit">$</span><input type="number" id="downPayment" value="90000" min="0" step="500" oninput="calculate()"></div>
+                            <div class="input-group"><span class="unit">₹</span><input type="number" id="downPayment" value="90000" min="0" step="500" oninput="calculate()"></div>
                         </div>
                         <div class="field">
                             <label><span class="label-icon">📈</span> Interest Rate</label>
@@ -307,23 +307,23 @@
                         </div>
                         <div class="field">
                             <label><span class="label-icon">🏛️</span> Property Tax (Annual)</label>
-                            <div class="input-group"><span class="unit">$</span><input type="number" id="annualTax" value="5400" min="0" step="100" oninput="calculate()"></div>
+                            <div class="input-group"><span class="unit">₹</span><input type="number" id="annualTax" value="5400" min="0" step="100" oninput="calculate()"></div>
                         </div>
                         <div class="field">
                             <label><span class="label-icon">🛡️</span> Insurance (Annual)</label>
-                            <div class="input-group"><span class="unit">$</span><input type="number" id="annualInsurance" value="1800" min="0" step="50" oninput="calculate()"></div>
+                            <div class="input-group"><span class="unit">₹</span><input type="number" id="annualInsurance" value="1800" min="0" step="50" oninput="calculate()"></div>
                         </div>
                         <div class="field">
                             <label><span class="label-icon">🏢</span> HOA (Monthly)</label>
-                            <div class="input-group"><span class="unit">$</span><input type="number" id="hoaMonthly" value="0" min="0" step="10" oninput="calculate()"></div>
+                            <div class="input-group"><span class="unit">₹</span><input type="number" id="hoaMonthly" value="0" min="0" step="10" oninput="calculate()"></div>
                         </div>
                         <div class="field">
                             <label><span class="label-icon">🧾</span> PMI (Monthly)</label>
-                            <div class="input-group"><span class="unit">$</span><input type="number" id="pmiMonthly" value="0" min="0" step="10" oninput="calculate()"></div>
+                            <div class="input-group"><span class="unit">₹</span><input type="number" id="pmiMonthly" value="0" min="0" step="10" oninput="calculate()"></div>
                         </div>
                         <div class="field field-full">
                             <label><span class="label-icon">🚀</span> Extra Principal (Monthly)</label>
-                            <div class="input-group"><span class="unit">$</span><input type="number" id="extraMonthly" value="0" min="0" step="10" oninput="calculate()"></div>
+                            <div class="input-group"><span class="unit">₹</span><input type="number" id="extraMonthly" value="0" min="0" step="10" oninput="calculate()"></div>
                         </div>
                     </div>
                     <button type="button" class="btn-calc" onclick="calculate()">📊 Calculate Mortgage</button>
@@ -334,13 +334,13 @@
                     <div class="result-main">
                         <span class="result-icon">💳</span>
                         <div class="label">Total Monthly Payment</div>
-                        <div class="value" id="totalMonthly">$0</div>
+                        <div class="value" id="totalMonthly">₹0</div>
                     </div>
                     <div class="result-stats">
-                        <div class="stat-card"><div class="stat-label"><div class="stat-icon blue">💰</div> Loan Amount</div><div class="stat-value" id="loanAmountVal">$0</div></div>
-                        <div class="stat-card"><div class="stat-label"><div class="stat-icon purple">🏦</div> Principal + Interest</div><div class="stat-value" id="piMonthly">$0</div></div>
-                        <div class="stat-card"><div class="stat-label"><div class="stat-icon green">🧾</div> Escrow + Fees</div><div class="stat-value" id="escrowMonthly">$0</div></div>
-                        <div class="stat-card"><div class="stat-label"><div class="stat-icon amber">📈</div> Total Interest</div><div class="stat-value" id="totalInterest">$0</div></div>
+                        <div class="stat-card"><div class="stat-label"><div class="stat-icon blue">💰</div> Loan Amount</div><div class="stat-value" id="loanAmountVal">₹0</div></div>
+                        <div class="stat-card"><div class="stat-label"><div class="stat-icon purple">🏦</div> Principal + Interest</div><div class="stat-value" id="piMonthly">₹0</div></div>
+                        <div class="stat-card"><div class="stat-label"><div class="stat-icon green">🧾</div> Escrow + Fees</div><div class="stat-value" id="escrowMonthly">₹0</div></div>
+                        <div class="stat-card"><div class="stat-label"><div class="stat-icon amber">📈</div> Total Interest</div><div class="stat-value" id="totalInterest">₹0</div></div>
                         <div class="stat-card"><div class="stat-label"><div class="stat-icon red">📅</div> Payoff Date</div><div class="stat-value" id="payoffDate">-</div></div>
                     </div>
                 </div>
@@ -348,10 +348,10 @@
 
             <div class="savings-box" id="savingsBox">
                 <h3>✨ Extra Payment Savings</h3>
-                <div class="savings-row"><span>Interest Saved</span><span class="sv" id="svInterest">$0</span></div>
+                <div class="savings-row"><span>Interest Saved</span><span class="sv" id="svInterest">₹0</span></div>
                 <div class="savings-row"><span>Time Saved</span><span class="sv" id="svTime">0 months</span></div>
                 <div class="savings-row"><span>New Payoff Date</span><span class="sv" id="svPayoff">-</span></div>
-                <div class="savings-row"><span>New Total Paid</span><span class="sv" id="svTotalPaid">$0</span></div>
+                <div class="savings-row"><span>New Total Paid</span><span class="sv" id="svTotalPaid">₹0</span></div>
             </div>
 
             <div class="chart-wrapper" id="chartSection" style="display:none;">
@@ -491,13 +491,13 @@
     let scheduleData = [];
     let currentView = 'monthly';
 
-    const fmt = value => new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(value);
-    const fmt2 = value => new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(value);
+    const fmt = value => new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }).format(value);
+    const fmt2 = value => new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(value);
 
     function payoffDateFromMonths(months) {
         const d = new Date();
         d.setMonth(d.getMonth() + months);
-        return d.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+        return d.toLocaleDateString('en-IN', { month: 'short', year: 'numeric' });
     }
 
     function computeSchedule(principal, annualRate, months, extraPrincipal, monthlyEscrow) {
@@ -557,11 +557,11 @@
         const monthlyEscrow = (annualTax / 12) + (annualInsurance / 12) + hoaMonthly + pmiMonthly;
 
         if (principal <= 0 || homePrice <= 0) {
-            document.getElementById('totalMonthly').textContent = '$0';
-            document.getElementById('loanAmountVal').textContent = '$0';
-            document.getElementById('piMonthly').textContent = '$0';
-            document.getElementById('escrowMonthly').textContent = '$0';
-            document.getElementById('totalInterest').textContent = '$0';
+            document.getElementById('totalMonthly').textContent = '₹0';
+            document.getElementById('loanAmountVal').textContent = '₹0';
+            document.getElementById('piMonthly').textContent = '₹0';
+            document.getElementById('escrowMonthly').textContent = '₹0';
+            document.getElementById('totalInterest').textContent = '₹0';
             document.getElementById('payoffDate').textContent = '-';
             document.getElementById('chartSection').style.display = 'none';
             document.getElementById('tableSection').style.display = 'none';

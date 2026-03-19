@@ -93,14 +93,14 @@
 
             <div class="form-grid">
                 <div class="form-group">
-                    <label><span class="label-icon">&#128181;</span> Initial Investment ($)</label>
+                    <label><span class="label-icon">&#128181;</span> Initial Investment (₹)</label>
                     <input type="number" id="initial" value="25000" step="1000" min="0">
                     <small>Starting lump sum amount</small>
                 </div>
                 <div class="form-group">
                     <label><span class="label-icon">&#128200;</span> Expected Annual Return (%)</label>
                     <input type="number" id="returnRate" value="8" step="0.5" min="-50" max="100">
-                    <small>S&amp;P 500 historical ~10%, balanced portfolio ~7%</small>
+                    <small>Equity-heavy portfolios can be volatile; balanced portfolios may deliver steadier returns</small>
                 </div>
                 <div class="form-group">
                     <label><span class="label-icon">&#128197;</span> Investment Period (Years)</label>
@@ -118,7 +118,7 @@
 
                 <div class="section-divider">&#128181; Regular Contributions</div>
                 <div class="form-group">
-                    <label><span class="label-icon">&#128178;</span> Contribution Amount ($)</label>
+                    <label><span class="label-icon">&#128178;</span> Contribution Amount (₹)</label>
                     <input type="number" id="contrib" value="500" step="50" min="0">
                 </div>
                 <div class="form-group">
@@ -151,7 +151,7 @@
                 <div class="form-group">
                     <label><span class="label-icon">&#128179;</span> Capital Gains Tax Rate (%)</label>
                     <input type="number" id="taxRate" value="15" step="1" min="0" max="50">
-                    <small>Long-term: 0/15/20%. Short-term: ordinary income rate</small>
+                    <small>Use an estimated effective tax rate based on your investment type and holding period</small>
                 </div>
             </div>
 
@@ -165,17 +165,17 @@
 
                 <div class="big-result">
                     <div class="r-label">Total Portfolio Value</div>
-                    <div class="r-val" id="bigVal">$0</div>
+                    <div class="r-val" id="bigVal">₹0</div>
                     <div class="r-sub" id="bigSub"></div>
                 </div>
 
                 <div class="result-cards">
-                    <div class="result-card"><div class="result-label">Total Invested</div><div class="result-val" id="resTotInvested">$0</div></div>
-                    <div class="result-card"><div class="result-label">Investment Gains</div><div class="result-val" id="resGains">$0</div></div>
-                    <div class="result-card"><div class="result-label">Total Fees Paid</div><div class="result-val" id="resFees">$0</div></div>
-                    <div class="result-card"><div class="result-label">Tax on Gains</div><div class="result-val" id="resTax">$0</div></div>
-                    <div class="result-card"><div class="result-label">After-Tax Value</div><div class="result-val" id="resAfterTax">$0</div></div>
-                    <div class="result-card"><div class="result-label">Real Value (Inflation-Adj)</div><div class="result-val" id="resReal">$0</div></div>
+                    <div class="result-card"><div class="result-label">Total Invested</div><div class="result-val" id="resTotInvested">₹0</div></div>
+                    <div class="result-card"><div class="result-label">Investment Gains</div><div class="result-val" id="resGains">₹0</div></div>
+                    <div class="result-card"><div class="result-label">Total Fees Paid</div><div class="result-val" id="resFees">₹0</div></div>
+                    <div class="result-card"><div class="result-label">Tax on Gains</div><div class="result-val" id="resTax">₹0</div></div>
+                    <div class="result-card"><div class="result-label">After-Tax Value</div><div class="result-val" id="resAfterTax">₹0</div></div>
+                    <div class="result-card"><div class="result-label">Real Value (Inflation-Adj)</div><div class="result-val" id="resReal">₹0</div></div>
                 </div>
 
                 <div class="summary-box">
@@ -204,11 +204,11 @@
             <p>Investment growth relies on <strong>compound returns</strong> — your earnings generate their own earnings. This creates exponential growth over time, making time in the market the most powerful factor.</p>
             <ul>
                 <li><strong>Initial investment:</strong> Your starting capital. Even small amounts compound dramatically over decades.</li>
-                <li><strong>Regular contributions:</strong> Dollar-cost averaging smooths market volatility and builds wealth consistently.</li>
+                <li><strong>Regular contributions:</strong> Rupee-cost averaging smooths market volatility and builds wealth consistently.</li>
                 <li><strong>Expected return:</strong> Based on asset allocation. 100% stocks historically return ~10%, but with higher volatility. A 60/40 stock/bond mix returns ~7-8%.</li>
                 <li><strong>Fees matter enormously:</strong> A 1% annual fee vs 0.1% can cost hundreds of thousands over 30 years. Low-cost index funds are widely recommended.</li>
-                <li><strong>Inflation erodes value:</strong> A nominal $1M in 30 years at 3% inflation has the purchasing power of only ~$412K in today&rsquo;s dollars.</li>
-                <li><strong>Tax efficiency:</strong> Tax-advantaged accounts (401k, IRA, Roth) defer or eliminate taxes, dramatically improving after-tax returns.</li>
+                <li><strong>Inflation erodes value:</strong> A large nominal corpus decades later can have much lower purchasing power in today&rsquo;s terms.</li>
+                <li><strong>Tax efficiency:</strong> Tax treatment varies by instrument and holding period, which can materially change after-tax outcomes.</li>
             </ul>
         </section>
 
@@ -248,19 +248,19 @@
             <div class="faq-grid">
                 <div class="faq-item">
                     <div class="faq-question" onclick="toggleFAQ(this)"><h3>What return rate should I use?</h3><span class="faq-toggle">+</span></div>
-                    <div class="faq-answer"><p>Historical averages: US stocks (S&amp;P 500) ~10% nominal, international stocks ~8%, bonds ~5%, real estate ~8-10% (with leverage). A diversified portfolio (60/40 stocks/bonds) averages ~7-8%. Use conservative estimates (6-7%) for planning to account for below-average periods.</p></div>
+                    <div class="faq-answer"><p>Use a conservative assumption based on your asset mix and time horizon. Equity-heavy portfolios can deliver higher long-term returns but with deeper drawdowns, while debt-heavy portfolios are steadier. For planning, many investors test multiple scenarios (e.g., conservative, base, optimistic) rather than a single number.</p></div>
                 </div>
                 <div class="faq-item">
                     <div class="faq-question" onclick="toggleFAQ(this)"><h3>How much should I invest per month?</h3><span class="faq-toggle">+</span></div>
-                    <div class="faq-answer"><p>A common guideline is to invest 15-20% of gross income for retirement. Start with whatever you can afford and increase annually. Even $100/month at 8% for 30 years grows to ~$150K. The key is consistency and starting early — time is your greatest asset.</p></div>
+                    <div class="faq-answer"><p>A common guideline is to invest 15-20% of gross income for long-term goals. Start with what is affordable and increase contributions over time. Even modest monthly investing can compound meaningfully over decades if maintained consistently.</p></div>
                 </div>
                 <div class="faq-item">
                     <div class="faq-question" onclick="toggleFAQ(this)"><h3>How do fees impact my investment?</h3><span class="faq-toggle">+</span></div>
-                    <div class="faq-answer"><p>Fees compound just like returns — but against you. On a $100K portfolio growing at 8% over 30 years: 0.1% fee = $906K final; 1.0% fee = $761K final. That 0.9% difference costs $145K! Choose low-cost index funds (0.03-0.20%) over actively managed funds (0.5-1.5%).</p></div>
+                    <div class="faq-answer"><p>Fees compound just like returns, but in reverse. Over long periods, even a small fee difference can reduce final corpus significantly. Prefer cost-efficient products when they fit your allocation and risk profile.</p></div>
                 </div>
                 <div class="faq-item">
                     <div class="faq-question" onclick="toggleFAQ(this)"><h3>Should I use nominal or real returns?</h3><span class="faq-toggle">+</span></div>
-                    <div class="faq-answer"><p>This calculator shows both. Nominal returns tell you the dollar amount you&rsquo;ll have. Real (inflation-adjusted) returns tell you the purchasing power. For planning expenses in today&rsquo;s dollars, real returns are more useful. For seeing your account balance, nominal returns apply.</p></div>
+                    <div class="faq-answer"><p>This calculator shows both. Nominal returns show the rupee amount you may see in statements, while real returns show purchasing power after inflation. For lifestyle planning in today&rsquo;s money, real returns are usually more meaningful.</p></div>
                 </div>
                 <div class="faq-item">
                     <div class="faq-question" onclick="toggleFAQ(this)"><h3>What about market volatility?</h3><span class="faq-toggle">+</span></div>
@@ -294,7 +294,7 @@
 </div>
 
 <script>
-const fmt = n => '$' + Math.abs(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+const fmt = n => '₹' + Math.abs(n).toLocaleString('en-IN',{minimumFractionDigits:2,maximumFractionDigits:2});
 
 function calculate() {
     const P = parseFloat(document.getElementById('initial').value) || 0;
@@ -426,7 +426,12 @@ function drawChart(yearData, initialP) {
         ctx.beginPath(); ctx.moveTo(pad.left, y); ctx.lineTo(pad.left + cW, y); ctx.stroke();
         ctx.fillStyle = '#94a3b8'; ctx.font = '11px Segoe UI'; ctx.textAlign = 'right';
         const v = maxV * i / 5;
-        ctx.fillText(v >= 1e6 ? '$' + (v / 1e6).toFixed(1) + 'M' : '$' + (v / 1e3).toFixed(0) + 'k', pad.left - 8, y + 4);
+        const axisLabel = v >= 1e7
+            ? '₹' + (v / 1e7).toFixed(1) + 'Cr'
+            : v >= 1e5
+                ? '₹' + (v / 1e5).toFixed(1) + 'L'
+                : '₹' + (v / 1e3).toFixed(0) + 'k';
+        ctx.fillText(axisLabel, pad.left - 8, y + 4);
     }
 
     // Stacked bars

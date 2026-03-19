@@ -28,7 +28,7 @@
       "@type": "WebApplication",
       "name": "Payment Calculator",
       "applicationCategory": "FinanceApplication",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" },
       "description": "Free payment calculator for monthly payment, affordable principal, and payoff term with amortization schedule",
       "url": "https://shramtools.shramkavach.com/tools/financial-calculators/payment-calculator.html",
       "creator": {
@@ -279,11 +279,11 @@
                     <div class="input-grid">
                         <div class="field" id="fieldPrincipal">
                             <label>🏦 Loan Amount</label>
-                            <div class="input-group"><span class="unit">$</span><input type="number" id="principal" value="250000" min="0" step="1000" oninput="calculate()"></div>
+                            <div class="input-group"><span class="unit">₹</span><input type="number" id="principal" value="250000" min="0" step="1000" oninput="calculate()"></div>
                         </div>
                         <div class="field" id="fieldPayment">
                             <label>💵 Monthly Payment</label>
-                            <div class="input-group"><span class="unit">$</span><input type="number" id="payment" value="1500" min="0" step="1" oninput="calculate()"></div>
+                            <div class="input-group"><span class="unit">₹</span><input type="number" id="payment" value="1500" min="0" step="1" oninput="calculate()"></div>
                         </div>
                         <div class="field">
                             <label>📈 Interest Rate</label>
@@ -295,7 +295,7 @@
                         </div>
                         <div class="field field-full">
                             <label>🔁 Extra Monthly Principal</label>
-                            <div class="input-group"><span class="unit">$</span><input type="number" id="extraMonthly" value="0" min="0" step="10" oninput="calculate()"></div>
+                            <div class="input-group"><span class="unit">₹</span><input type="number" id="extraMonthly" value="0" min="0" step="10" oninput="calculate()"></div>
                         </div>
                     </div>
 
@@ -307,13 +307,13 @@
                     <div class="result-main">
                         <span class="result-icon">📊</span>
                         <div class="label" id="resultLabel">Monthly Payment</div>
-                        <div class="value" id="resultValue">$0</div>
+                        <div class="value" id="resultValue">₹0</div>
                     </div>
                     <div class="result-stats">
-                        <div class="stat-card"><div class="stat-label"><div class="stat-icon blue">🏦</div> Loan Amount</div><div class="stat-value" id="outPrincipal">$0</div></div>
-                        <div class="stat-card"><div class="stat-label"><div class="stat-icon green">💵</div> Base Payment</div><div class="stat-value" id="outPayment">$0</div></div>
+                        <div class="stat-card"><div class="stat-label"><div class="stat-icon blue">🏦</div> Loan Amount</div><div class="stat-value" id="outPrincipal">₹0</div></div>
+                        <div class="stat-card"><div class="stat-label"><div class="stat-icon green">💵</div> Base Payment</div><div class="stat-value" id="outPayment">₹0</div></div>
                         <div class="stat-card"><div class="stat-label"><div class="stat-icon purple">📆</div> Loan Term</div><div class="stat-value" id="outTerm">0 mo</div></div>
-                        <div class="stat-card"><div class="stat-label"><div class="stat-icon amber">📈</div> Total Interest</div><div class="stat-value" id="outInterest">$0</div></div>
+                        <div class="stat-card"><div class="stat-label"><div class="stat-icon amber">📈</div> Total Interest</div><div class="stat-value" id="outInterest">₹0</div></div>
                         <div class="stat-card"><div class="stat-label"><div class="stat-icon red">✅</div> Payoff Date</div><div class="stat-value" id="outPayoff">-</div></div>
                     </div>
                 </div>
@@ -439,13 +439,13 @@
     let currentView = 'monthly';
     let amortRows = [];
 
-    const fmt = value => new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(value);
-    const fmt2 = value => new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(value);
+    const fmt = value => new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }).format(value);
+    const fmt2 = value => new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(value);
 
     function payoffDateFromMonths(months) {
         const d = new Date();
         d.setMonth(d.getMonth() + months);
-        return d.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+        return d.toLocaleDateString('en-IN', { month: 'short', year: 'numeric' });
     }
 
     function pmt(principal, monthlyRate, months) {
@@ -569,11 +569,11 @@
 
     function clearOutput(labelOverride) {
         document.getElementById('resultLabel').textContent = labelOverride || 'Result';
-        document.getElementById('resultValue').textContent = '$0';
-        document.getElementById('outPrincipal').textContent = '$0';
-        document.getElementById('outPayment').textContent = '$0';
+        document.getElementById('resultValue').textContent = '₹0';
+        document.getElementById('outPrincipal').textContent = '₹0';
+        document.getElementById('outPayment').textContent = '₹0';
         document.getElementById('outTerm').textContent = '0 mo';
-        document.getElementById('outInterest').textContent = '$0';
+        document.getElementById('outInterest').textContent = '₹0';
         document.getElementById('outPayoff').textContent = '-';
         document.getElementById('tableSection').style.display = 'none';
         amortRows = [];

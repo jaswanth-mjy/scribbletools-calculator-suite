@@ -516,40 +516,176 @@
 
     <!-- Main Content -->
     <main class="main-content">
-        <div class="progress-container">
-            <div class="progress-icon">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
-                </svg>
+        <div class="calculator-container">
+            <h1 class="calculator-title">Salary Calculator</h1>
+            <p class="calculator-subtitle">Calculate net salary with Indian tax deductions for FY 2024-25</p>
+            
+            <div class="calculator-wrapper">
+                <div class="input-section">
+                    <div class="form-group">
+                        <label>Monthly Gross Salary</label>
+                        <div class="input-group"><span class="unit">₹</span><input type="number" id="grossSalary" value="60000" min="0" placeholder="e.g. 60000"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>HRA (House Rent Allowance)</label>
+                        <div class="input-group"><span class="unit">₹</span><input type="number" id="hra" value="15000" min="0" placeholder="e.g. 15000"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Other Allowances</label>
+                        <div class="input-group"><span class="unit">₹</span><input type="number" id="otherAllowances" value="5000" min="0" placeholder="e.g. 5000"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>EPF Contribution (%)</label>
+                        <div class="input-group"><input type="number" id="epfPercent" value="12" min="0" max="100" step="0.1" style="padding-left:14px" placeholder="e.g. 12"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Professional Tax</label>
+                        <div class="input-group"><span class="unit">₹</span><input type="number" id="profTax" value="200" min="0" placeholder="e.g. 200"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Other Deductions</label>
+                        <div class="input-group"><span class="unit">₹</span><input type="number" id="otherDed" value="0" min="0" placeholder="e.g. 0"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Age Group</label>
+                        <div class="input-group" style="padding: 0;">
+                            <select id="ageGroup" style="flex: 1; border: none; background: transparent; padding: 12px 14px; font-size: 1rem; outline: none; width: 100%;">
+                                <option value="below60">Below 60 years</option>
+                                <option value="above60">Senior Citizen (60-80)</option>
+                                <option value="above80">Super Senior (Above 80)</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <button class="calculate-btn" onclick="calculateSalary()">Calculate Salary</button>
+                    <button class="reset-btn" onclick="resetSalaryForm()">Reset</button>
+                </div>
+                
+                <div class="results-section">
+                    <div class="results-card">
+                        <h3>Salary Breakdown</h3>
+                        
+                        <div class="result-item">
+                            <label>Monthly Gross Salary</label>
+                            <div class="result-value" id="displayGross">₹60,000</div>
+                        </div>
+                        
+                        <div class="result-item">
+                            <label>Taxable Income</label>
+                            <div class="result-value" id="taxableIncome">₹0</div>
+                        </div>
+                        
+                        <div class="result-item highlighted">
+                            <label>Income Tax</label>
+                            <div class="result-value" id="incomeTax">₹0</div>
+                        </div>
+                        
+                        <div class="result-item">
+                            <label>EPF (Employee)</label>
+                            <div class="result-value" id="epfAmount">₹0</div>
+                        </div>
+                        
+                        <div class="result-item">
+                            <label>Professional Tax</label>
+                            <div class="result-value" id="profTaxAmount">₹0</div>
+                        </div>
+                        
+                        <div class="result-item">
+                            <label>Other Deductions</label>
+                            <div class="result-value" id="otherDedAmount">₹0</div>
+                        </div>
+                        
+                        <div class="result-item highlighted">
+                            <label>Net Salary (Take Home)</label>
+                            <div class="result-value" id="netSalary">₹0</div>
+                        </div>
+                    </div>
+                    
+                    <div class="info-box">
+                        <h4>📌 Important Notes</h4>
+                        <ul>
+                            <li><strong>FY 2024-25 Tax Slabs:</strong> No tax up to ₹3 lakh (new regime)</li>
+                            <li><strong>EPF:</strong> Standard deduction ₹50,000 applicable</li>
+                            <li><strong>HRA:</strong> Included in gross for tax calculation</li>
+                            <li><strong>Professional Tax:</strong> Varies by state (₹0-2500 p.a.)</li>
+                            <li>Employer's EPF contribution not shown in net salary</li>
+                            <li>This is an estimate; actual tax may vary based on investments</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            
-            <h1 class="progress-title">Salary Calculator</h1>
-            
-            <div class="category-badge">Financial Calculators</div>
-            
-            <div class="progress-badge">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
-                </svg>
-                Under Development
-            </div>
-            
-            <p class="progress-subtitle">Coming Soon!</p>
-            
-            <p class="progress-message">
-                We're working hard to bring you an amazing <strong>Salary Calculator</strong> tool. 
-                Our team is crafting a feature-rich, user-friendly experience that will help you 
-                achieve accurate results with ease. Stay tuned!
-            </p>
-            
-            <a href="../../index.html" class="explore-btn">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
-                </svg>
-                Explore Other Tools
-            </a>
         </div>
     </main>
+    
+    <script>
+        function formatCurrency(amount) {
+            return new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(amount));
+        }
+        
+        function calculateIncomeTax(taxableIncome, ageGroup) {
+            // FY 2024-25 Tax Slabs (New Regime)
+            if (taxableIncome <= 300000) return 0;
+            if (taxableIncome <= 500000) return (taxableIncome - 300000) * 0.05;
+            if (taxableIncome <= 750000) return (200000 * 0.05) + ((taxableIncome - 500000) * 0.1);
+            if (taxableIncome <= 1000000) return (200000 * 0.05) + (250000 * 0.1) + ((taxableIncome - 750000) * 0.15);
+            if (taxableIncome <= 1250000) return (200000 * 0.05) + (250000 * 0.1) + (250000 * 0.15) + ((taxableIncome - 1000000) * 0.2);
+            if (taxableIncome <= 1500000) return (200000 * 0.05) + (250000 * 0.1) + (250000 * 0.15) + (250000 * 0.2) + ((taxableIncome - 1250000) * 0.25);
+            return (200000 * 0.05) + (250000 * 0.1) + (250000 * 0.15) + (250000 * 0.2) + (250000 * 0.25) + ((taxableIncome - 1500000) * 0.3);
+        }
+        
+        function calculateSalary() {
+            const grossSalary = parseFloat(document.getElementById('grossSalary').value) || 0;
+            const hra = parseFloat(document.getElementById('hra').value) || 0;
+            const otherAllowances = parseFloat(document.getElementById('otherAllowances').value) || 0;
+            const epfPercent = parseFloat(document.getElementById('epfPercent').value) / 100 || 0;
+            const profTax = parseFloat(document.getElementById('profTax').value) || 0;
+            const otherDed = parseFloat(document.getElementById('otherDed').value) || 0;
+            const ageGroup = document.getElementById('ageGroup').value;
+            
+            // Calculate annual income for tax purposes
+            const annualGross = (grossSalary + hra + otherAllowances) * 12;
+            const standardDeduction = 50000;
+            const taxableIncome = Math.max(0, annualGross - standardDeduction);
+            
+            // Calculate monthly tax (annual/12)
+            const monthlyTax = calculateIncomeTax(taxableIncome, ageGroup) / 12;
+            
+            // Calculate deductions
+            const epfAmount = grossSalary * epfPercent;
+            const totalDeductions = monthlyTax + epfAmount + profTax + otherDed;
+            
+            // Calculate net salary
+            const netSalary = Math.max(0, grossSalary - totalDeductions);
+            
+            // Update display
+            document.getElementById('displayGross').innerText = formatCurrency(grossSalary);
+            document.getElementById('taxableIncome').innerText = formatCurrency(taxableIncome);
+            document.getElementById('incomeTax').innerText = formatCurrency(monthlyTax);
+            document.getElementById('epfAmount').innerText = formatCurrency(epfAmount);
+            document.getElementById('profTaxAmount').innerText = formatCurrency(profTax);
+            document.getElementById('otherDedAmount').innerText = formatCurrency(otherDed);
+            document.getElementById('netSalary').innerText = formatCurrency(netSalary);
+        }
+        
+        function resetSalaryForm() {
+            document.getElementById('grossSalary').value = '60000';
+            document.getElementById('hra').value = '15000';
+            document.getElementById('otherAllowances').value = '5000';
+            document.getElementById('epfPercent').value = '12';
+            document.getElementById('profTax').value = '200';
+            document.getElementById('otherDed').value = '0';
+            document.getElementById('ageGroup').value = 'below60';
+            calculateSalary();
+        }
+        
+        window.addEventListener('load', calculateSalary);
+    </script>
 
     <!-- Footer -->
     <footer class="site-footer">

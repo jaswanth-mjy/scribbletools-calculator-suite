@@ -28,7 +28,7 @@
       "@type": "WebApplication",
       "name": "Loan Calculator",
       "applicationCategory": "FinanceApplication",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" },
       "description": "Free loan calculator with amortization schedule, extra payment analysis, and payoff date estimation",
       "url": "https://shramtools.shramkavach.com/tools/financial-calculators/loan-calculator.html",
       "creator": {
@@ -340,7 +340,7 @@
                         <div class="field field-full">
                             <label><span class="label-icon">&#128176;</span> Loan Amount</label>
                             <div class="input-group">
-                                <span class="unit">$</span>
+                                <span class="unit">₹</span>
                                 <input type="number" id="loanAmount" value="25000" min="0" step="100" oninput="calculate()">
                             </div>
                         </div>
@@ -370,7 +370,7 @@
                         <div class="field">
                             <label><span class="label-icon">&#128640;</span> Extra Monthly Payment</label>
                             <div class="input-group">
-                                <span class="unit">$</span>
+                                <span class="unit">₹</span>
                                 <input type="number" id="extraPayment" value="0" min="0" step="10" oninput="calculate()">
                             </div>
                         </div>
@@ -383,20 +383,20 @@
                     <div class="result-main">
                         <span class="result-icon">&#128176;</span>
                         <div class="label">Monthly Payment</div>
-                        <div class="value" id="monthlyPayment">$0</div>
+                        <div class="value" id="monthlyPayment">₹0</div>
                     </div>
                     <div class="result-stats">
                         <div class="stat-card">
                             <div class="stat-label"><div class="stat-icon blue">&#128176;</div> Loan Amount</div>
-                            <div class="stat-value" id="statPrincipal">$0</div>
+                            <div class="stat-value" id="statPrincipal">₹0</div>
                         </div>
                         <div class="stat-card">
                             <div class="stat-label"><div class="stat-icon amber">&#128200;</div> Total Interest</div>
-                            <div class="stat-value" id="statInterest">$0</div>
+                            <div class="stat-value" id="statInterest">₹0</div>
                         </div>
                         <div class="stat-card">
                             <div class="stat-label"><div class="stat-icon purple">&#128178;</div> Total Cost</div>
-                            <div class="stat-value" id="statTotal">$0</div>
+                            <div class="stat-value" id="statTotal">₹0</div>
                         </div>
                         <div class="stat-card">
                             <div class="stat-label"><div class="stat-icon green">&#128197;</div> Payoff Date</div>
@@ -413,10 +413,10 @@
             <!-- Extra Payment Savings -->
             <div class="savings-box" id="savingsBox">
                 <h3>&#127775; Extra Payment Savings</h3>
-                <div class="savings-row"><span>Interest Saved</span><span class="sv" id="svInterest">$0</span></div>
+                <div class="savings-row"><span>Interest Saved</span><span class="sv" id="svInterest">₹0</span></div>
                 <div class="savings-row"><span>Time Saved</span><span class="sv" id="svTime">0 months</span></div>
                 <div class="savings-row"><span>New Payoff Date</span><span class="sv" id="svPayoff">-</span></div>
-                <div class="savings-row"><span>New Total Cost</span><span class="sv" id="svTotal">$0</span></div>
+                <div class="savings-row"><span>New Total Cost</span><span class="sv" id="svTotal">₹0</span></div>
             </div>
 
             <!-- Chart -->
@@ -474,7 +474,7 @@
                 <h2><span class="section-icon">&#128161;</span> How Loan Amortization Works</h2>
                 <p>With an amortizing loan, each monthly payment is split between interest and principal. Early payments are mostly interest, while later payments are mostly principal:</p>
                 <ul>
-                    <li><strong>Early payments (Year 1&ndash;2):</strong> Most of your payment goes to interest. For a $25,000 loan at 6.5%, about 54% of your first payment is interest.</li>
+                    <li><strong>Early payments (Year 1&ndash;2):</strong> Most of your payment goes to interest. For a ₹25,000 loan at 6.5%, about 54% of your first payment is interest.</li>
                     <li><strong>Middle payments:</strong> The split equalizes as principal is paid down. Your interest portion shrinks each month.</li>
                     <li><strong>Final payments:</strong> Nearly all payment goes to principal with minimal interest charges.</li>
                     <li><strong>Extra payments:</strong> Any amount above the minimum goes directly to principal reduction, accelerating payoff and reducing total interest.</li>
@@ -498,7 +498,7 @@
             <section class="content-card">
                 <h2><span class="section-icon">&#128640;</span> Strategies to Pay Off Your Loan Faster</h2>
                 <ul>
-                    <li><strong>Round up payments:</strong> If your payment is $483, pay $500 instead. The extra $17/month adds up significantly over the loan term.</li>
+                    <li><strong>Round up payments:</strong> If your payment is ₹483, pay ₹500 instead. The extra ₹17/month adds up significantly over the loan term.</li>
                     <li><strong>Make bi-weekly payments:</strong> Pay half your monthly amount every two weeks. You'll make 26 half-payments (13 full payments) per year instead of 12.</li>
                     <li><strong>Apply windfalls:</strong> Use tax refunds, bonuses, or other unexpected income as lump-sum principal payments.</li>
                     <li><strong>Refinance if rates drop:</strong> If interest rates fall 1%+ below your current rate, refinancing could save you thousands.</li>
@@ -525,7 +525,7 @@
                             <div class="faq-toggle">+</div>
                         </div>
                         <div class="faq-answer">
-                            <p>Even small extra payments can save significant money. For example, adding $50/month to a $25,000 loan at 6.5% for 5 years saves about $540 in interest and pays off the loan 5 months early. Use the extra payment field above to see your exact savings.</p>
+                            <p>Even small extra payments can save significant money. For example, adding ₹50/month to a ₹25,000 loan at 6.5% for 5 years saves about ₹540 in interest and pays off the loan 5 months early. Use the extra payment field above to see your exact savings.</p>
                         </div>
                     </div>
                     <div class="faq-item">
@@ -629,17 +629,17 @@
     let currentView = 'monthly';
 
     function fmt(val) {
-        return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(val);
+        return new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }).format(val);
     }
 
     function fmtExact(val) {
-        return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(val);
+        return new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(val);
     }
 
     function getPayoffDate(months) {
         const d = new Date();
         d.setMonth(d.getMonth() + months);
-        return d.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+        return d.toLocaleDateString('en-IN', { month: 'short', year: 'numeric' });
     }
 
     function computeAmort(P, annualRate, totalMonths, extra) {
@@ -698,10 +698,10 @@
         const totalMonths = unit === 'years' ? Math.round(term * 12) : Math.round(term);
 
         if (P <= 0 || totalMonths <= 0) {
-            document.getElementById('monthlyPayment').textContent = '$0';
-            document.getElementById('statPrincipal').textContent = '$0';
-            document.getElementById('statInterest').textContent = '$0';
-            document.getElementById('statTotal').textContent = '$0';
+            document.getElementById('monthlyPayment').textContent = '₹0';
+            document.getElementById('statPrincipal').textContent = '₹0';
+            document.getElementById('statInterest').textContent = '₹0';
+            document.getElementById('statTotal').textContent = '₹0';
             document.getElementById('statPayoff').textContent = '-';
             document.getElementById('statRatio').textContent = '0%';
             document.getElementById('chartSection').style.display = 'none';
@@ -880,10 +880,10 @@
         document.getElementById('loanTerm').value = '5';
         document.getElementById('termUnit').value = 'years';
         document.getElementById('extraPayment').value = '0';
-        document.getElementById('monthlyPayment').textContent = '$0';
-        document.getElementById('statPrincipal').textContent = '$0';
-        document.getElementById('statInterest').textContent = '$0';
-        document.getElementById('statTotal').textContent = '$0';
+        document.getElementById('monthlyPayment').textContent = '₹0';
+        document.getElementById('statPrincipal').textContent = '₹0';
+        document.getElementById('statInterest').textContent = '₹0';
+        document.getElementById('statTotal').textContent = '₹0';
         document.getElementById('statPayoff').textContent = '-';
         document.getElementById('statRatio').textContent = '0%';
         document.getElementById('chartSection').style.display = 'none';

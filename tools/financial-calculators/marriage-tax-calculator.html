@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marriage Tax Calculator (2024 & 2025) - Penalty vs Bonus Estimator | ScribbleTools</title>
-    <meta name="description" content="Free Marriage Tax Calculator for 2024 & 2025 federal tax brackets. Compare combined taxes as two single filers vs married filing jointly and estimate marriage tax penalty or bonus.">
-    <meta name="keywords" content="marriage tax calculator, marriage penalty calculator, marriage bonus calculator, married filing jointly calculator, tax bracket calculator">
+    <title>Household Tax Split Calculator (India) - Couple Income Comparison | ScribbleTools</title>
+    <meta name="description" content="Free India household tax split calculator. Compare current spouse-wise tax with an equal-income split scenario using FY-based slab rules.">
+    <meta name="keywords" content="india tax calculator for couples, household tax split calculator, spouse income tax comparison, family tax planning india">
     <link rel="canonical" href="https://scribbletools.com/tools/financial-calculators/marriage-tax-calculator.html">
 
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://scribbletools.com/tools/financial-calculators/marriage-tax-calculator.html">
-    <meta property="og:title" content="Marriage Tax Calculator - Penalty vs Bonus Estimator">
-    <meta property="og:description" content="Estimate if marriage increases or decreases your federal income tax for 2024 or 2025.">
+    <meta property="og:title" content="Household Tax Split Calculator (India)">
+    <meta property="og:description" content="Compare current spouse-wise tax vs equal split scenario under India slab rules.">
     <meta property="og:image" content="../../images/og-image.jpg">
 
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:title" content="Marriage Tax Calculator | ScribbleTools">
-    <meta property="twitter:description" content="Compare taxes as single filers vs married filing jointly.">
+    <meta property="twitter:title" content="Household Tax Split Calculator | ScribbleTools">
+    <meta property="twitter:description" content="Compare spouse-wise vs equal-split household tax in India.">
 
     <link rel="icon" type="image/webp" href="../../images/logo.webp">
 
@@ -199,21 +199,21 @@
             <nav class="breadcrumb">
                 <a href="../../index.html">Home</a><span>/</span>
                 <a href="../../index.html#financial">Financial Tools</a><span>/</span>
-                <span style="color:#4a5568;font-weight:600;">Marriage Tax Calculator</span>
+                <span style="color:#4a5568;font-weight:600;">Household Tax Split Calculator</span>
             </nav>
 
             <section class="page-header">
                 <span class="header-icon">💍</span>
-                <h2>Marriage Tax Calculator</h2>
-                <p>Compare federal tax as two single filers vs married filing jointly for 2024 or 2025. See whether marriage creates a tax penalty or tax bonus based on your income split.</p>
+                <h2>Household Tax Split Calculator (India)</h2>
+                <p>Compare your current spouse-wise tax with an equal-income split scenario for planning. This is an educational estimator using India slab rules and cess.</p>
             </section>
 
             <section class="calc-card">
                 <div class="calc-title"><span>🧮</span><h2>Enter Income Details</h2></div>
 
                 <div class="year-tabs" id="yearTabs">
-                    <button type="button" class="year-tab active" data-year="2025" onclick="setYear(2025)">Tax Year 2025</button>
-                    <button type="button" class="year-tab" data-year="2024" onclick="setYear(2024)">Tax Year 2024</button>
+                    <button type="button" class="year-tab active" data-year="2025" onclick="setYear(2025)">FY 2025-26</button>
+                    <button type="button" class="year-tab" data-year="2024" onclick="setYear(2024)">FY 2024-25</button>
                 </div>
 
                 <div class="section-divider">👤 Spouse 1</div>
@@ -260,21 +260,21 @@
 
                 <div class="results-panel" id="resultsPanel">
                     <div class="results-header">
-                        <h3><span>📊</span> Marriage Tax Comparison</h3>
+                        <h3><span>📊</span> Household Tax Comparison</h3>
                     </div>
 
                     <div class="result-cards">
                         <div class="result-card">
-                            <div class="result-label">Two Singles (Combined Tax)</div>
-                            <div class="result-val" id="singleCombinedTax">$0</div>
+                            <div class="result-label">Current Spouse-wise Tax</div>
+                            <div class="result-val" id="singleCombinedTax">₹0</div>
                         </div>
                         <div class="result-card highlight">
-                            <div class="result-label">Married Filing Jointly Tax</div>
-                            <div class="result-val" id="marriedTax">$0</div>
+                            <div class="result-label">Equal Split Scenario Tax</div>
+                            <div class="result-val" id="marriedTax">₹0</div>
                         </div>
                         <div class="result-card" id="deltaCard">
                             <div class="result-label" id="deltaLabel">Marriage Impact</div>
-                            <div class="result-val" id="marriageDelta">$0</div>
+                            <div class="result-val" id="marriageDelta">₹0</div>
                         </div>
                     </div>
 
@@ -282,40 +282,40 @@
                         <thead>
                             <tr>
                                 <th>Metric</th>
-                                <th>Spouse 1 (Single)</th>
-                                <th>Spouse 2 (Single)</th>
-                                <th>Two Singles Total</th>
-                                <th>Married Joint</th>
+                                <th>Spouse 1</th>
+                                <th>Spouse 2</th>
+                                <th>Current Total</th>
+                                <th>Equal Split</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>Gross Income</td>
-                                <td id="s1Gross">$0</td>
-                                <td id="s2Gross">$0</td>
-                                <td id="singleGrossTotal">$0</td>
-                                <td id="jointGross">$0</td>
+                                <td id="s1Gross">₹0</td>
+                                <td id="s2Gross">₹0</td>
+                                <td id="singleGrossTotal">₹0</td>
+                                <td id="jointGross">₹0</td>
                             </tr>
                             <tr>
                                 <td>Standard Deduction</td>
-                                <td id="s1StdDed">$0</td>
-                                <td id="s2StdDed">$0</td>
-                                <td id="singleStdTotal">$0</td>
-                                <td id="jointStdDed">$0</td>
+                                <td id="s1StdDed">₹0</td>
+                                <td id="s2StdDed">₹0</td>
+                                <td id="singleStdTotal">₹0</td>
+                                <td id="jointStdDed">₹0</td>
                             </tr>
                             <tr>
                                 <td>Taxable Income</td>
-                                <td id="s1Taxable">$0</td>
-                                <td id="s2Taxable">$0</td>
-                                <td id="singleTaxableTotal">$0</td>
-                                <td id="jointTaxable">$0</td>
+                                <td id="s1Taxable">₹0</td>
+                                <td id="s2Taxable">₹0</td>
+                                <td id="singleTaxableTotal">₹0</td>
+                                <td id="jointTaxable">₹0</td>
                             </tr>
                             <tr class="row-total">
-                                <td>Federal Tax</td>
-                                <td id="s1Tax">$0</td>
-                                <td id="s2Tax">$0</td>
-                                <td id="singleTaxTotal">$0</td>
-                                <td id="jointTax">$0</td>
+                                <td>Income Tax + Cess</td>
+                                <td id="s1Tax">₹0</td>
+                                <td id="s2Tax">₹0</td>
+                                <td id="singleTaxTotal">₹0</td>
+                                <td id="jointTax">₹0</td>
                             </tr>
                             <tr>
                                 <td>Effective Tax Rate</td>
@@ -330,35 +330,35 @@
             </section>
 
             <section class="content-card">
-                <h2><span>📘</span> How the Marriage Tax Is Calculated</h2>
+                <h2><span>📘</span> How the Comparison Is Calculated</h2>
                 <p>This tool compares two scenarios using the same total household income:</p>
                 <ul>
-                    <li>Scenario A: each spouse files as <strong>Single</strong>.</li>
-                    <li>Scenario B: both spouses file as <strong>Married Filing Jointly</strong>.</li>
+                    <li>Scenario A: current spouse-wise income and deductions (default real-life case).</li>
+                    <li>Scenario B: total household income split equally between spouses (what-if planning scenario).</li>
                 </ul>
                 <div class="formula-container">
                     <div class="formula-math">
-                        <span class="var result">Marriage Impact</span>
+                        <span class="var result">Tax Impact</span>
                         <span class="equals">=</span>
-                        <span class="var">Tax</span><span class="paren">(</span><span class="var">Married Joint</span><span class="paren">)</span>
+                        <span class="var">Tax</span><span class="paren">(</span><span class="var">Equal Split</span><span class="paren">)</span>
                         <span class="operator">−</span>
-                        <span class="var">Tax</span><span class="paren">(</span><span class="var">Single 1</span><span class="operator">+</span><span class="var">Single 2</span><span class="paren">)</span>
+                        <span class="var">Tax</span><span class="paren">(</span><span class="var">Current Spouse-wise</span><span class="paren">)</span>
                     </div>
                     <div class="formula-legend">
-                        <div class="legend-item"><span class="legend-var">Positive</span> = marriage tax penalty</div>
-                        <div class="legend-item"><span class="legend-var">Negative</span> = marriage tax bonus</div>
+                        <div class="legend-item"><span class="legend-var">Positive</span> = equal split gives higher tax</div>
+                        <div class="legend-item"><span class="legend-var">Negative</span> = equal split gives lower tax</div>
                     </div>
                 </div>
-                <p>The calculator uses federal income tax brackets and standard deductions for 2024 and 2025. It does not include state taxes, credits, AMT, NIIT, or special filing edge cases.</p>
+                <p>The calculator uses India slab rates, rebate logic (where applicable), and 4% cess for the selected FY. It is for planning only.</p>
             </section>
 
             <section class="content-card">
-                <h2><span>💡</span> Why Penalties and Bonuses Happen</h2>
+                <h2><span>💡</span> Why Differences Happen</h2>
                 <ul>
-                    <li><strong>Similar high incomes:</strong> Couples with similar earnings may face a penalty when combined income moves more dollars into higher brackets.</li>
-                    <li><strong>Uneven incomes:</strong> Couples with one high earner and one lower earner often get a bonus due to bracket averaging.</li>
-                    <li><strong>Bracket structure:</strong> Most married brackets are close to double single brackets, but not always perfect at all income levels.</li>
-                    <li><strong>Deductions and credits:</strong> Real-world outcomes can differ when itemized deductions, phase-outs, and credits are included.</li>
+                    <li><strong>Uneven spouse income:</strong> Slab progression can make split vs non-split distributions differ in total tax.</li>
+                    <li><strong>Rebate thresholds:</strong> If one scenario pushes taxable income below rebate limits, tax can reduce significantly.</li>
+                    <li><strong>Deduction usage:</strong> Eligible deductions entered for each spouse can change taxable income asymmetrically.</li>
+                    <li><strong>Cess impact:</strong> 4% cess applies on tax after rebate, affecting final payable amount.</li>
                 </ul>
             </section>
 
@@ -367,24 +367,24 @@
                 <div class="faq-grid">
                     <div class="faq-item">
                         <div class="faq-question" onclick="toggleFAQ(this)">
-                            <h3>Does this include state tax?</h3>
+                            <h3>Does this include surcharge or all edge cases?</h3>
                             <div class="faq-toggle">+</div>
                         </div>
-                        <div class="faq-answer"><p>No. This tool estimates only federal income tax.</p></div>
+                        <div class="faq-answer"><p>No. This is a simplified estimator and may not include all special-case provisions.</p></div>
                     </div>
                     <div class="faq-item">
                         <div class="faq-question" onclick="toggleFAQ(this)">
-                            <h3>Does a positive result mean I pay more after marriage?</h3>
+                            <h3>Does a positive result mean equal split is worse?</h3>
                             <div class="faq-toggle">+</div>
                         </div>
-                        <div class="faq-answer"><p>Yes. A positive marriage impact means the married-joint tax is higher than filing as two singles. A negative result means a tax bonus.</p></div>
+                        <div class="faq-answer"><p>Yes. Positive means equal split tax is higher than current spouse-wise tax. Negative means equal split is lower.</p></div>
                     </div>
                     <div class="faq-item">
                         <div class="faq-question" onclick="toggleFAQ(this)">
                             <h3>Does this replace tax software?</h3>
                             <div class="faq-toggle">+</div>
                         </div>
-                        <div class="faq-answer"><p>No. This is an estimator for planning. Final tax liability can differ due to credits, itemized deductions, AMT, and other IRS rules.</p></div>
+                        <div class="faq-answer"><p>No. This is an estimator for planning. Final liability can differ based on detailed provisions and filing data.</p></div>
                     </div>
                 </div>
             </section>
@@ -436,40 +436,60 @@
     <script>
         const TAX_DATA = {
             2024: {
-                brackets: {
-                    single:  [{ min: 0, max: 11600, rate: 0.10 }, { min: 11600, max: 47150, rate: 0.12 }, { min: 47150, max: 100525, rate: 0.22 }, { min: 100525, max: 191950, rate: 0.24 }, { min: 191950, max: 243725, rate: 0.32 }, { min: 243725, max: 609350, rate: 0.35 }, { min: 609350, max: Infinity, rate: 0.37 }],
-                    married: [{ min: 0, max: 23200, rate: 0.10 }, { min: 23200, max: 94300, rate: 0.12 }, { min: 94300, max: 201050, rate: 0.22 }, { min: 201050, max: 383900, rate: 0.24 }, { min: 383900, max: 487450, rate: 0.32 }, { min: 487450, max: 731200, rate: 0.35 }, { min: 731200, max: Infinity, rate: 0.37 }]
-                },
-                stdDed: { single: 14600, married: 29200 }
+                slabs: [
+                    { min: 0, max: 300000, rate: 0.00 },
+                    { min: 300000, max: 600000, rate: 0.05 },
+                    { min: 600000, max: 900000, rate: 0.10 },
+                    { min: 900000, max: 1200000, rate: 0.15 },
+                    { min: 1200000, max: 1500000, rate: 0.20 },
+                    { min: 1500000, max: Infinity, rate: 0.30 }
+                ],
+                stdDed: 50000,
+                rebateLimit: 700000
             },
             2025: {
-                brackets: {
-                    single:  [{ min: 0, max: 11925, rate: 0.10 }, { min: 11925, max: 48475, rate: 0.12 }, { min: 48475, max: 103350, rate: 0.22 }, { min: 103350, max: 197300, rate: 0.24 }, { min: 197300, max: 250525, rate: 0.32 }, { min: 250525, max: 626350, rate: 0.35 }, { min: 626350, max: Infinity, rate: 0.37 }],
-                    married: [{ min: 0, max: 23850, rate: 0.10 }, { min: 23850, max: 96950, rate: 0.12 }, { min: 96950, max: 206700, rate: 0.22 }, { min: 206700, max: 394600, rate: 0.24 }, { min: 394600, max: 501050, rate: 0.32 }, { min: 501050, max: 751600, rate: 0.35 }, { min: 751600, max: Infinity, rate: 0.37 }]
-                },
-                stdDed: { single: 15000, married: 30000 }
+                slabs: [
+                    { min: 0, max: 400000, rate: 0.00 },
+                    { min: 400000, max: 800000, rate: 0.05 },
+                    { min: 800000, max: 1200000, rate: 0.10 },
+                    { min: 1200000, max: 1600000, rate: 0.15 },
+                    { min: 1600000, max: 2000000, rate: 0.20 },
+                    { min: 2000000, max: 2400000, rate: 0.25 },
+                    { min: 2400000, max: Infinity, rate: 0.30 }
+                ],
+                stdDed: 75000,
+                rebateLimit: 1200000
             }
         };
 
         let selectedYear = 2025;
 
         function fmtMoney(n) {
-            return '$' + Math.abs(n).toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+            return '₹' + Math.abs(n).toLocaleString('en-IN', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
         }
 
         function fmtPct(v) {
             return (v * 100).toFixed(2) + '%';
         }
 
-        function calcBracketTax(taxableIncome, brackets) {
+        function calcTaxBeforeRebate(taxableIncome, slabs) {
             let tax = 0;
-            for (const b of brackets) {
+            for (const b of slabs) {
                 if (taxableIncome <= b.min) continue;
                 const amountInBracket = Math.min(taxableIncome, b.max) - b.min;
                 tax += amountInBracket * b.rate;
                 if (taxableIncome < b.max) break;
             }
             return tax;
+        }
+
+        function calcIndianTax(taxableIncome, fy) {
+            const fyData = TAX_DATA[fy];
+            const taxBeforeRebate = calcTaxBeforeRebate(taxableIncome, fyData.slabs);
+            const rebate = taxableIncome <= fyData.rebateLimit ? taxBeforeRebate : 0;
+            const taxAfterRebate = Math.max(0, taxBeforeRebate - rebate);
+            const cess = taxAfterRebate * 0.04;
+            return taxAfterRebate + cess;
         }
 
         function setYear(year) {
@@ -493,17 +513,18 @@
             const agi2 = Math.max(0, gross2 - s2PreTax);
             const agiJoint = agi1 + agi2;
 
-            const stdSingle = TAX_DATA[selectedYear].stdDed.single;
-            const stdMarried = TAX_DATA[selectedYear].stdDed.married;
+            const stdDed = TAX_DATA[selectedYear].stdDed;
 
-            const taxable1 = Math.max(0, agi1 - stdSingle);
-            const taxable2 = Math.max(0, agi2 - stdSingle);
-            const taxableJoint = Math.max(0, agiJoint - stdMarried);
+            const taxable1 = Math.max(0, agi1 - stdDed);
+            const taxable2 = Math.max(0, agi2 - stdDed);
 
-            const s1Tax = calcBracketTax(taxable1, TAX_DATA[selectedYear].brackets.single);
-            const s2Tax = calcBracketTax(taxable2, TAX_DATA[selectedYear].brackets.single);
+            const eqIncomeEach = agiJoint / 2;
+            const taxableEqEach = Math.max(0, eqIncomeEach - stdDed);
+
+            const s1Tax = calcIndianTax(taxable1, selectedYear);
+            const s2Tax = calcIndianTax(taxable2, selectedYear);
             const singleCombinedTax = s1Tax + s2Tax;
-            const marriedTax = calcBracketTax(taxableJoint, TAX_DATA[selectedYear].brackets.married);
+            const marriedTax = calcIndianTax(taxableEqEach, selectedYear) * 2;
 
             const marriageImpact = marriedTax - singleCombinedTax;
 
@@ -516,12 +537,12 @@
             deltaCard.classList.remove('good', 'bad');
             if (marriageImpact > 0) {
                 deltaCard.classList.add('bad');
-                deltaLabel.textContent = 'Marriage Tax Penalty';
+                deltaLabel.textContent = 'Equal Split Costs More';
             } else if (marriageImpact < 0) {
                 deltaCard.classList.add('good');
-                deltaLabel.textContent = 'Marriage Tax Bonus';
+                deltaLabel.textContent = 'Equal Split Saves Tax';
             } else {
-                deltaLabel.textContent = 'No Marriage Tax Change';
+                deltaLabel.textContent = 'No Difference';
             }
 
             document.getElementById('s1Gross').textContent = fmtMoney(gross1);
@@ -529,15 +550,15 @@
             document.getElementById('singleGrossTotal').textContent = fmtMoney(grossJoint);
             document.getElementById('jointGross').textContent = fmtMoney(grossJoint);
 
-            document.getElementById('s1StdDed').textContent = fmtMoney(stdSingle);
-            document.getElementById('s2StdDed').textContent = fmtMoney(stdSingle);
-            document.getElementById('singleStdTotal').textContent = fmtMoney(stdSingle * 2);
-            document.getElementById('jointStdDed').textContent = fmtMoney(stdMarried);
+            document.getElementById('s1StdDed').textContent = fmtMoney(stdDed);
+            document.getElementById('s2StdDed').textContent = fmtMoney(stdDed);
+            document.getElementById('singleStdTotal').textContent = fmtMoney(stdDed * 2);
+            document.getElementById('jointStdDed').textContent = fmtMoney(stdDed * 2);
 
             document.getElementById('s1Taxable').textContent = fmtMoney(taxable1);
             document.getElementById('s2Taxable').textContent = fmtMoney(taxable2);
             document.getElementById('singleTaxableTotal').textContent = fmtMoney(taxable1 + taxable2);
-            document.getElementById('jointTaxable').textContent = fmtMoney(taxableJoint);
+            document.getElementById('jointTaxable').textContent = fmtMoney(taxableEqEach * 2);
 
             document.getElementById('s1Tax').textContent = fmtMoney(s1Tax);
             document.getElementById('s2Tax').textContent = fmtMoney(s2Tax);
@@ -553,9 +574,9 @@
         }
 
         function resetForm() {
-            document.getElementById('s1Wages').value = 90000;
-            document.getElementById('s1Other').value = 5000;
-            document.getElementById('s2Wages').value = 50000;
+            document.getElementById('s1Wages').value = 1200000;
+            document.getElementById('s1Other').value = 0;
+            document.getElementById('s2Wages').value = 600000;
             document.getElementById('s2Other').value = 0;
             document.getElementById('s1PreTax').value = 0;
             document.getElementById('s2PreTax').value = 0;

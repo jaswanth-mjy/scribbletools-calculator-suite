@@ -79,14 +79,14 @@
       <div class="left">
         <div class="title"><span>📋</span><h3>Rent Inputs</h3></div>
         <div class="grid">
-          <div class="field"><label>Monthly Rent</label><div class="ig"><span class="u">$</span><input id="rent" type="number" value="1800" min="0" step="1" oninput="calculate()"></div></div>
+          <div class="field"><label>Monthly Rent</label><div class="ig"><span class="u">₹</span><input id="rent" type="number" value="1800" min="0" step="1" oninput="calculate()"></div></div>
           <div class="field"><label>Lease Term</label><div class="ig"><input id="months" class="withr" type="number" value="12" min="1" max="60" step="1" oninput="calculate()"><span class="ur">months</span></div></div>
-          <div class="field"><label>Utilities (Monthly)</label><div class="ig"><span class="u">$</span><input id="utilities" type="number" value="150" min="0" step="1" oninput="calculate()"></div></div>
-          <div class="field"><label>Parking (Monthly)</label><div class="ig"><span class="u">$</span><input id="parking" type="number" value="0" min="0" step="1" oninput="calculate()"></div></div>
-          <div class="field"><label>Insurance (Monthly)</label><div class="ig"><span class="u">$</span><input id="insurance" type="number" value="20" min="0" step="1" oninput="calculate()"></div></div>
-          <div class="field"><label>Other Monthly Cost</label><div class="ig"><span class="u">$</span><input id="other" type="number" value="0" min="0" step="1" oninput="calculate()"></div></div>
-          <div class="field"><label>Security Deposit</label><div class="ig"><span class="u">$</span><input id="deposit" type="number" value="1800" min="0" step="1" oninput="calculate()"></div></div>
-          <div class="field"><label>One-time Fees</label><div class="ig"><span class="u">$</span><input id="fees" type="number" value="300" min="0" step="1" oninput="calculate()"></div></div>
+          <div class="field"><label>Utilities (Monthly)</label><div class="ig"><span class="u">₹</span><input id="utilities" type="number" value="150" min="0" step="1" oninput="calculate()"></div></div>
+          <div class="field"><label>Parking (Monthly)</label><div class="ig"><span class="u">₹</span><input id="parking" type="number" value="0" min="0" step="1" oninput="calculate()"></div></div>
+          <div class="field"><label>Insurance (Monthly)</label><div class="ig"><span class="u">₹</span><input id="insurance" type="number" value="20" min="0" step="1" oninput="calculate()"></div></div>
+          <div class="field"><label>Other Monthly Cost</label><div class="ig"><span class="u">₹</span><input id="other" type="number" value="0" min="0" step="1" oninput="calculate()"></div></div>
+          <div class="field"><label>Security Deposit</label><div class="ig"><span class="u">₹</span><input id="deposit" type="number" value="1800" min="0" step="1" oninput="calculate()"></div></div>
+          <div class="field"><label>One-time Fees</label><div class="ig"><span class="u">₹</span><input id="fees" type="number" value="300" min="0" step="1" oninput="calculate()"></div></div>
           <div class="field"><label>Annual Rent Increase</label><div class="ig"><span class="u">%</span><input id="increase" type="number" value="5" min="0" max="30" step="0.1" oninput="calculate()"></div></div>
           <div class="field"><label>Projection Years</label><div class="ig"><input id="years" class="withr" type="number" value="5" min="1" max="15" step="1" oninput="calculate()"><span class="ur">years</span></div></div>
         </div>
@@ -95,13 +95,13 @@
       </div>
 
       <div class="right">
-        <div class="main"><div class="label">Total Monthly Housing Cost</div><div id="monthlyTotal" class="val">$0.00</div></div>
+        <div class="main"><div class="label">Total Monthly Housing Cost</div><div id="monthlyTotal" class="val">₹0.00</div></div>
         <div class="stats">
-          <div class="card"><span class="k">Lease Total (Recurring)</span><span id="leaseTotal" class="v">$0.00</span></div>
-          <div class="card"><span class="k">Upfront Move-In Cost</span><span id="moveIn" class="v">$0.00</span></div>
-          <div class="card"><span class="k">Total First Year Cost</span><span id="firstYear" class="v">$0.00</span></div>
-          <div class="card"><span class="k">Avg Cost Per Day</span><span id="perDay" class="v">$0.00</span></div>
-          <div class="card"><span class="k">5-Year Projected Cost</span><span id="projTotal" class="v">$0.00</span></div>
+          <div class="card"><span class="k">Lease Total (Recurring)</span><span id="leaseTotal" class="v">₹0.00</span></div>
+          <div class="card"><span class="k">Upfront Move-In Cost</span><span id="moveIn" class="v">₹0.00</span></div>
+          <div class="card"><span class="k">Total First Year Cost</span><span id="firstYear" class="v">₹0.00</span></div>
+          <div class="card"><span class="k">Avg Cost Per Day</span><span id="perDay" class="v">₹0.00</span></div>
+          <div class="card"><span class="k">5-Year Projected Cost</span><span id="projTotal" class="v">₹0.00</span></div>
         </div>
       </div>
     </section>
@@ -139,7 +139,7 @@
 </div>
 
 <script>
-  const money = n => new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',minimumFractionDigits:2,maximumFractionDigits:2}).format(n);
+  const money = n => new Intl.NumberFormat('en-IN',{style:'currency',currency:'INR',minimumFractionDigits:2,maximumFractionDigits:2}).format(n);
 
   function calculate(){
     const rent = Math.max(0, parseFloat(document.getElementById('rent').value) || 0);
