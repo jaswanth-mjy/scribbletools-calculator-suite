@@ -390,6 +390,182 @@
         .info-box li strong {
             color: #2d3748;
         }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 30px;
+            font-size: 0.9rem;
+            flex-wrap: wrap;
+        }
+
+        .breadcrumb a {
+            color: #667eea;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .breadcrumb a:hover {
+            color: #764ba2;
+        }
+
+        .breadcrumb span {
+            color: #cbd5e0;
+            margin: 0 4px;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(102, 126, 234, 0.1);
+        }
+
+        .faq-section h2 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            margin-bottom: 30px;
+            color: #2d3748;
+        }
+
+        .faq-grid {
+            display: grid;
+            gap: 15px;
+        }
+
+        .faq-item {
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .faq-item:hover {
+            border-color: #667eea;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.1);
+        }
+
+        .faq-question {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            background: #f7fafc;
+            font-weight: 600;
+            color: #2d3748;
+        }
+
+        .faq-toggle {
+            font-size: 1.5rem;
+            color: #667eea;
+            transition: all 0.3s;
+            user-select: none;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s;
+            color: #4a5568;
+            line-height: 1.8;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 20px;
+            max-height: 500px;
+        }
+
+        /* Formula Section */
+        .formula-section {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border-radius: 16px;
+            padding: 40px;
+            margin: 40px 0;
+            color: #e2e8f0;
+            border-left: 4px solid #667eea;
+        }
+
+        .formula-section h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: #a78bfa;
+        }
+
+        .formula-math {
+            font-family: 'Times New Roman', serif;
+            font-size: 1.1rem;
+            margin: 20px 0;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            overflow-x: auto;
+        }
+
+        .formula-note {
+            font-size: 0.9rem;
+            color: #cbd5e0;
+            margin-top: 15px;
+            line-height: 1.8;
+        }
+
+        /* Related Tools Section */
+        .related-tools {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(102, 126, 234, 0.1);
+        }
+
+        .related-tools h2 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            margin-bottom: 30px;
+            color: #2d3748;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+        }
+
+        .tool-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 18px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            text-decoration: none;
+            color: #2d3748;
+            font-weight: 600;
+            transition: all 0.3s;
+            background: #fafbfc;
+        }
+
+        .tool-link:hover {
+            border-color: #667eea;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+        }
+
+        .tool-emoji {
+            font-size: 1.5rem;
+        }
         
         /* Image Section */
         .image-box {
@@ -654,6 +830,14 @@
 
     <!-- Main Content -->
     <main class="main-content">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span>/</span>
+            <a href="../../all-tools.html">All Tools</a>
+            <span>/</span>
+            <a href="savings-calculator.html">Savings Calculator</a>
+        </nav>
+
         <div class="calculator-container">
             <h1 class="calculator-title">Savings Calculator</h1>
             <p class="calculator-subtitle">Calculate compound interest and future value of your savings</p>
@@ -755,6 +939,51 @@
                 </div>
             </div>
         </div>
+
+        <section class="formula-section">
+            <h3>📐 Savings Growth Formula</h3>
+            <div class="formula-math">FV = PV × (1 + r/100)<sup>n</sup></div>
+            <p class="formula-note">
+                Here, <strong>FV</strong> is future value, <strong>PV</strong> is present value,
+                <strong>r</strong> is annual return rate, and <strong>n</strong> is years.
+                Compound interest helps money grow faster over longer periods.
+                To estimate real purchasing power, compare this nominal growth with inflation-adjusted returns.
+            </p>
+        </section>
+
+        <section class="faq-section">
+            <h2>❓ Savings Calculator FAQs</h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question">Why does compound interest matter so much?<span class="faq-toggle">+</span></div>
+                    <div class="faq-answer">Compound interest earns returns on both your principal and past interest. Over long periods, this snowball effect can significantly increase your final corpus.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">How does inflation impact my savings target?<span class="faq-toggle">+</span></div>
+                    <div class="faq-answer">Inflation reduces purchasing power each year. A goal that seems enough today may be inadequate later, so inflation-adjusted values are essential for realistic planning.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">What is a real return?<span class="faq-toggle">+</span></div>
+                    <div class="faq-answer">Real return is your investment return after subtracting inflation. It reflects true growth in purchasing power, not just nominal portfolio gains.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">How important is the investment time horizon?<span class="faq-toggle">+</span></div>
+                    <div class="faq-answer">Time horizon is critical because compounding accelerates with time. Starting earlier generally lowers the monthly amount needed to reach the same future target.</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="related-tools">
+            <h2>🔗 Related Financial Tools</h2>
+            <div class="tools-grid">
+                <a href="compound-interest-calculator.html" class="tool-link"><span class="tool-emoji">📈</span>Compound Interest</a>
+                <a href="retirement-calculator.html" class="tool-link"><span class="tool-emoji">🏖️</span>Retirement</a>
+                <a href="inflation-calculator.html" class="tool-link"><span class="tool-emoji">📉</span>Inflation</a>
+                <a href="investment-calculator.html" class="tool-link"><span class="tool-emoji">💹</span>Investment</a>
+                <a href="interest-calculator.html" class="tool-link"><span class="tool-emoji">💰</span>Interest</a>
+                <a href="annuity-calculator.html" class="tool-link"><span class="tool-emoji">🧾</span>Annuity</a>
+            </div>
+        </section>
         
         <div class="image-box">
             <img src="https://images.unsplash.com/photo-1579621970563-430f63602022?auto=format&fit=crop&q=80&w=1200" alt="Savings and financial growth planning" loading="lazy">
@@ -818,6 +1047,13 @@
             document.getElementById('inflation').value = '5';
             calculateSavings();
         }
+
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const faqItem = question.parentElement;
+                faqItem.classList.toggle('active');
+            });
+        });
         
         window.addEventListener('load', calculateSavings);
     </script>

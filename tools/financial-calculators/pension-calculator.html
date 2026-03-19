@@ -390,6 +390,182 @@
         .info-box li strong {
             color: #2d3748;
         }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 30px;
+            font-size: 0.9rem;
+            flex-wrap: wrap;
+        }
+
+        .breadcrumb a {
+            color: #667eea;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .breadcrumb a:hover {
+            color: #764ba2;
+        }
+
+        .breadcrumb span {
+            color: #cbd5e0;
+            margin: 0 4px;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(102, 126, 234, 0.1);
+        }
+
+        .faq-section h2 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            margin-bottom: 30px;
+            color: #2d3748;
+        }
+
+        .faq-grid {
+            display: grid;
+            gap: 15px;
+        }
+
+        .faq-item {
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .faq-item:hover {
+            border-color: #667eea;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.1);
+        }
+
+        .faq-question {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            background: #f7fafc;
+            font-weight: 600;
+            color: #2d3748;
+        }
+
+        .faq-toggle {
+            font-size: 1.5rem;
+            color: #667eea;
+            transition: all 0.3s;
+            user-select: none;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s;
+            color: #4a5568;
+            line-height: 1.8;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 20px;
+            max-height: 500px;
+        }
+
+        /* Formula Section */
+        .formula-section {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border-radius: 16px;
+            padding: 40px;
+            margin: 40px 0;
+            color: #e2e8f0;
+            border-left: 4px solid #667eea;
+        }
+
+        .formula-section h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: #a78bfa;
+        }
+
+        .formula-math {
+            font-family: 'Times New Roman', serif;
+            font-size: 1.1rem;
+            margin: 20px 0;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            overflow-x: auto;
+        }
+
+        .formula-note {
+            font-size: 0.9rem;
+            color: #cbd5e0;
+            margin-top: 15px;
+            line-height: 1.8;
+        }
+
+        /* Related Tools Section */
+        .related-tools {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(102, 126, 234, 0.1);
+        }
+
+        .related-tools h2 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            margin-bottom: 30px;
+            color: #2d3748;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+        }
+
+        .tool-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 18px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            text-decoration: none;
+            color: #2d3748;
+            font-weight: 600;
+            transition: all 0.3s;
+            background: #fafbfc;
+        }
+
+        .tool-link:hover {
+            border-color: #667eea;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+        }
+
+        .tool-emoji {
+            font-size: 1.5rem;
+        }
         
         /* Image Section */
         .image-box {
@@ -654,6 +830,14 @@
 
     <!-- Main Content -->
     <main class="main-content">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span>/</span>
+            <a href="../../all-tools.html">All Tools</a>
+            <span>/</span>
+            <a href="pension-calculator.html">Pension Calculator</a>
+        </nav>
+
         <div class="calculator-container">
             <h1 class="calculator-title">Pension & Gratuity Calculator</h1>
             <p class="calculator-subtitle">Calculate pension corpus and gratuity benefits for Indian employees</p>
@@ -759,6 +943,50 @@
                 </div>
             </div>
         </div>
+
+        <section class="formula-section">
+            <h3>📐 Pension & Gratuity Formula</h3>
+            <div class="formula-math">Gratuity = ₹15 × Service Years (capped at ₹50L)</div>
+            <p class="formula-note">
+                Pension payouts are generally derived from salary components and scheme tiers.
+                Gratuity is service-linked and often capped, while pension tier structure can vary by employer or policy.
+                DA integration may also impact effective pension payouts over time.
+            </p>
+        </section>
+
+        <section class="faq-section">
+            <h2>❓ Pension Calculator FAQs</h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question">Who is eligible for gratuity benefits?<span class="faq-toggle">+</span></div>
+                    <div class="faq-answer">Typically, gratuity applies after completing the minimum service period under labor rules or employer policy. Eligibility can vary by organization and employment type.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">What are pension tiers and why do they matter?<span class="faq-toggle">+</span></div>
+                    <div class="faq-answer">Pension tiers represent different contribution or benefit structures. Higher tiers may involve larger contributions but can provide better retirement income.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">How does DA integration affect pension?<span class="faq-toggle">+</span></div>
+                    <div class="faq-answer">When dearness allowance is integrated, pension calculations may be linked to inflation-related adjustments, improving long-term income stability.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">What is a vesting period in pension plans?<span class="faq-toggle">+</span></div>
+                    <div class="faq-answer">Vesting period is the minimum duration required before you gain rights to employer-contributed pension benefits. Leaving earlier may reduce or forfeit some benefits.</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="related-tools">
+            <h2>🔗 Related Financial Tools</h2>
+            <div class="tools-grid">
+                <a href="retirement-calculator.html" class="tool-link"><span class="tool-emoji">🏖️</span>Retirement</a>
+                <a href="social-security-calculator.html" class="tool-link"><span class="tool-emoji">🛡️</span>Social Security</a>
+                <a href="salary-calculator.html" class="tool-link"><span class="tool-emoji">💼</span>Salary</a>
+                <a href="loan-calculator.html" class="tool-link"><span class="tool-emoji">🏦</span>Loan</a>
+                <a href="payment-calculator.html" class="tool-link"><span class="tool-emoji">💳</span>Payment</a>
+                <a href="insurance-calculator.html" class="tool-link"><span class="tool-emoji">🧰</span>Insurance</a>
+            </div>
+        </section>
         
         <div class="image-box">
             <img src="https://images.unsplash.com/photo-1483389127117-b6a2102724ae?auto=format&fit=crop&q=80&w=1200" alt="Pension and retirement security planning" loading="lazy">
@@ -844,6 +1072,13 @@
             document.getElementById('penRetireAge').value = '60';
             calculatePension();
         }
+
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const faqItem = question.parentElement;
+                faqItem.classList.toggle('active');
+            });
+        });
         
         window.addEventListener('load', calculatePension);
     </script>

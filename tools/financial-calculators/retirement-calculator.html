@@ -390,6 +390,182 @@
         .info-box li strong {
             color: #2d3748;
         }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 30px;
+            font-size: 0.9rem;
+            flex-wrap: wrap;
+        }
+
+        .breadcrumb a {
+            color: #667eea;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .breadcrumb a:hover {
+            color: #764ba2;
+        }
+
+        .breadcrumb span {
+            color: #cbd5e0;
+            margin: 0 4px;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(102, 126, 234, 0.1);
+        }
+
+        .faq-section h2 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            margin-bottom: 30px;
+            color: #2d3748;
+        }
+
+        .faq-grid {
+            display: grid;
+            gap: 15px;
+        }
+
+        .faq-item {
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .faq-item:hover {
+            border-color: #667eea;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.1);
+        }
+
+        .faq-question {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            background: #f7fafc;
+            font-weight: 600;
+            color: #2d3748;
+        }
+
+        .faq-toggle {
+            font-size: 1.5rem;
+            color: #667eea;
+            transition: all 0.3s;
+            user-select: none;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s;
+            color: #4a5568;
+            line-height: 1.8;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 20px;
+            max-height: 500px;
+        }
+
+        /* Formula Section */
+        .formula-section {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border-radius: 16px;
+            padding: 40px;
+            margin: 40px 0;
+            color: #e2e8f0;
+            border-left: 4px solid #667eea;
+        }
+
+        .formula-section h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: #a78bfa;
+        }
+
+        .formula-math {
+            font-family: 'Times New Roman', serif;
+            font-size: 1.1rem;
+            margin: 20px 0;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            overflow-x: auto;
+        }
+
+        .formula-note {
+            font-size: 0.9rem;
+            color: #cbd5e0;
+            margin-top: 15px;
+            line-height: 1.8;
+        }
+
+        /* Related Tools Section */
+        .related-tools {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(102, 126, 234, 0.1);
+        }
+
+        .related-tools h2 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            margin-bottom: 30px;
+            color: #2d3748;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+        }
+
+        .tool-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 18px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            text-decoration: none;
+            color: #2d3748;
+            font-weight: 600;
+            transition: all 0.3s;
+            background: #fafbfc;
+        }
+
+        .tool-link:hover {
+            border-color: #667eea;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+        }
+
+        .tool-emoji {
+            font-size: 1.5rem;
+        }
         
         /* Image Section */
         .image-box {
@@ -654,6 +830,14 @@
 
     <!-- Main Content -->
     <main class="main-content">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span>/</span>
+            <a href="../../all-tools.html">All Tools</a>
+            <span>/</span>
+            <a href="retirement-calculator.html">Retirement Calculator</a>
+        </nav>
+
         <div class="calculator-container">
             <h1 class="calculator-title">Retirement Calculator</h1>
             <p class="calculator-subtitle">Calculate retirement corpus and plan for financial independence</p>
@@ -758,6 +942,49 @@
                 </div>
             </div>
         </div>
+
+        <section class="formula-section">
+            <h3>📐 Retirement Corpus Formula</h3>
+            <div class="formula-math">Required Corpus = Annual Expense at Retirement ÷ 4% (then inflation-adjusted)</div>
+            <p class="formula-note">
+                A common planning guideline is the <strong>4% withdrawal rule</strong>, where annual retirement withdrawal is about 4% of your corpus.
+                This estimate should be adjusted for inflation and expected post-retirement returns to maintain long-term purchasing power.
+            </p>
+        </section>
+
+        <section class="faq-section">
+            <h2>❓ Retirement Calculator FAQs</h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question">What is a safe withdrawal rate in retirement?<span class="faq-toggle">+</span></div>
+                    <div class="faq-answer">Many planners use 4% as a starting benchmark, but ideal withdrawal rates depend on retirement duration, returns, inflation, and personal risk tolerance.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Why should inflation be included in retirement planning?<span class="faq-toggle">+</span></div>
+                    <div class="faq-answer">Inflation raises future living costs. Ignoring it can cause major underestimation of required retirement corpus and monthly income needs.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">How do pre-retirement returns affect my target?<span class="faq-toggle">+</span></div>
+                    <div class="faq-answer">Higher pre-retirement returns can reduce monthly savings needed, while lower returns increase contribution requirements. Use realistic long-term assumptions.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">How is the corpus requirement calculated?<span class="faq-toggle">+</span></div>
+                    <div class="faq-answer">It starts with projected expenses at retirement age, then estimates how much capital is needed to support withdrawals across retirement years with inflation in mind.</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="related-tools">
+            <h2>🔗 Related Financial Tools</h2>
+            <div class="tools-grid">
+                <a href="savings-calculator.html" class="tool-link"><span class="tool-emoji">💵</span>Savings</a>
+                <a href="pension-calculator.html" class="tool-link"><span class="tool-emoji">🧓</span>Pension</a>
+                <a href="compound-interest-calculator.html" class="tool-link"><span class="tool-emoji">📈</span>Compound Interest</a>
+                <a href="401k-calculator.html" class="tool-link"><span class="tool-emoji">🏦</span>401(k)</a>
+                <a href="annuity-calculator.html" class="tool-link"><span class="tool-emoji">🧾</span>Annuity</a>
+                <a href="inflation-calculator.html" class="tool-link"><span class="tool-emoji">📉</span>Inflation</a>
+            </div>
+        </section>
         
         <div class="image-box">
             <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=1200" alt="Retirement planning and life goals" loading="lazy">
@@ -831,6 +1058,13 @@
             document.getElementById('currentSavings').value = '500000';
             calculateRetirement();
         }
+
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const faqItem = question.parentElement;
+                faqItem.classList.toggle('active');
+            });
+        });
         
         window.addEventListener('load', calculateRetirement);
     </script>

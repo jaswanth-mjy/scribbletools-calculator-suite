@@ -391,6 +391,182 @@
         .info-box li strong {
             color: #2d3748;
         }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 30px;
+            font-size: 0.9rem;
+            flex-wrap: wrap;
+        }
+
+        .breadcrumb a {
+            color: #667eea;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .breadcrumb a:hover {
+            color: #764ba2;
+        }
+
+        .breadcrumb span {
+            color: #cbd5e0;
+            margin: 0 4px;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(102, 126, 234, 0.1);
+        }
+
+        .faq-section h2 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            margin-bottom: 30px;
+            color: #2d3748;
+        }
+
+        .faq-grid {
+            display: grid;
+            gap: 15px;
+        }
+
+        .faq-item {
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .faq-item:hover {
+            border-color: #667eea;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.1);
+        }
+
+        .faq-question {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            background: #f7fafc;
+            font-weight: 600;
+            color: #2d3748;
+        }
+
+        .faq-toggle {
+            font-size: 1.5rem;
+            color: #667eea;
+            transition: all 0.3s;
+            user-select: none;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s;
+            color: #4a5568;
+            line-height: 1.8;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 20px;
+            max-height: 500px;
+        }
+
+        /* Formula Section */
+        .formula-section {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border-radius: 16px;
+            padding: 40px;
+            margin: 40px 0;
+            color: #e2e8f0;
+            border-left: 4px solid #667eea;
+        }
+
+        .formula-section h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: #a78bfa;
+        }
+
+        .formula-math {
+            font-family: 'Times New Roman', serif;
+            font-size: 1.1rem;
+            margin: 20px 0;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            overflow-x: auto;
+        }
+
+        .formula-note {
+            font-size: 0.9rem;
+            color: #cbd5e0;
+            margin-top: 15px;
+            line-height: 1.8;
+        }
+
+        /* Related Tools Section */
+        .related-tools {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(102, 126, 234, 0.1);
+        }
+
+        .related-tools h2 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            margin-bottom: 30px;
+            color: #2d3748;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+        }
+
+        .tool-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 18px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            text-decoration: none;
+            color: #2d3748;
+            font-weight: 600;
+            transition: all 0.3s;
+            background: #fafbfc;
+        }
+
+        .tool-link:hover {
+            border-color: #667eea;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+        }
+
+        .tool-emoji {
+            font-size: 1.5rem;
+        }
         
         /* Image Section */
         .image-box {
@@ -655,6 +831,14 @@
 
     <!-- Main Content -->
     <main class="main-content">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span>/</span>
+            <a href="../../all-tools.html">All Tools</a>
+            <span>/</span>
+            <a href="percent-off-calculator.html">Percent Off Calculator</a>
+        </nav>
+
         <div class="calculator-container">
             <h1 class="calculator-title">Percent Off Calculator</h1>
             <p class="calculator-subtitle">Calculate stacked discounts, tax, shipping & true final price</p>
@@ -758,6 +942,50 @@
                 </div>
             </div>
         </div>
+
+        <section class="formula-section">
+            <h3>📐 Discount Stacking Formula</h3>
+            <div class="formula-math">Final Price = P × (1−d₁/100) × (1−d₂/100) + tax + shipping</div>
+            <p class="formula-note">
+                Stacked discounts are applied sequentially, not added directly.
+                That means a 20% and 10% combo gives an effective 28% discount, not 30%.
+                Tax is usually calculated on the discounted subtotal, then shipping is added at checkout.
+            </p>
+        </section>
+
+        <section class="faq-section">
+            <h2>❓ Percent Off Calculator FAQs</h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question">How does discount stacking really work?<span class="faq-toggle">+</span></div>
+                    <div class="faq-answer">Each discount applies to the reduced price from the previous step. This makes the combined effective discount lower than simple addition.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Is tax calculated before or after discounts?<span class="faq-toggle">+</span></div>
+                    <div class="faq-answer">In most cases, tax is applied after discounts on the taxable amount. This usually reduces total tax compared to taxing the original price.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">When should shipping be added?<span class="faq-toggle">+</span></div>
+                    <div class="faq-answer">Shipping is typically added near the end of checkout, after item discounts and often after tax calculations depending on platform and tax rules.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">How should coupon codes be used for maximum savings?<span class="faq-toggle">+</span></div>
+                    <div class="faq-answer">Try percentage coupons on higher base amounts and compare with flat coupons. Also verify whether coupons apply before or after existing sale discounts.</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="related-tools">
+            <h2>🔗 Related Financial Tools</h2>
+            <div class="tools-grid">
+                <a href="currency-calculator.html" class="tool-link"><span class="tool-emoji">💱</span>Currency</a>
+                <a href="payment-calculator.html" class="tool-link"><span class="tool-emoji">💳</span>Payment</a>
+                <a href="indian-gst-calculator.html" class="tool-link"><span class="tool-emoji">🧾</span>Indian GST</a>
+                <a href="marriage-tax-calculator.html" class="tool-link"><span class="tool-emoji">📊</span>Marriage Tax</a>
+                <a href="finance-calculator.html" class="tool-link"><span class="tool-emoji">📉</span>Finance</a>
+                <a href="loan-calculator.html" class="tool-link"><span class="tool-emoji">🏦</span>Loan</a>
+            </div>
+        </section>
         
         <div class="image-box">
             <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?auto=format&fit=crop&q=80&w=1200" alt="Shopping discounts and savings" loading="lazy">
@@ -877,6 +1105,13 @@
         document.getElementById('coupon').value = 'SAVE30';
         calculate();
     }
+
+    document.querySelectorAll('.faq-question').forEach(question => {
+        question.addEventListener('click', () => {
+            const faqItem = question.parentElement;
+            faqItem.classList.toggle('active');
+        });
+    });
 
     window.addEventListener('DOMContentLoaded', calculate);
 </script>
