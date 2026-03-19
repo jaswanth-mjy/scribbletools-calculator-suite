@@ -182,15 +182,14 @@
             background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
         }
         
-        /* Main Content - Under Progress */
+        /* Main Content */
         .main-content {
-            max-width: 900px;
+            max-width: 1300px;
             margin: 0 auto;
             padding: 60px 20px;
-            text-align: center;
         }
         
-        .progress-container {
+        .calculator-container {
             background: white;
             border-radius: 24px;
             padding: 60px 40px;
@@ -198,106 +197,198 @@
             border: 1px solid rgba(102, 126, 234, 0.1);
         }
         
-        .progress-icon {
-            width: 120px;
-            height: 120px;
-            margin: 0 auto 30px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            animation: pulse 2s ease-in-out infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(102, 126, 234, 0.4); }
-            50% { transform: scale(1.05); box-shadow: 0 0 0 20px rgba(102, 126, 234, 0); }
-        }
-        
-        .progress-icon svg {
-            width: 60px;
-            height: 60px;
-            fill: white;
-        }
-        
-        .progress-title {
+        .calculator-title {
             font-size: 2.5rem;
             font-weight: 800;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #a855f7 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
+            text-align: center;
         }
         
-        .progress-subtitle {
-            font-size: 1.2rem;
-            color: #718096;
-            margin-bottom: 30px;
-        }
-        
-        .progress-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-            color: #92400e;
-            padding: 12px 24px;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1rem;
-            margin-bottom: 30px;
-        }
-        
-        .progress-badge svg {
-            width: 20px;
-            height: 20px;
-            fill: #f59e0b;
-        }
-        
-        .category-badge {
-            display: inline-block;
-            background: rgba(102, 126, 234, 0.1);
-            color: #667eea;
-            padding: 8px 20px;
-            border-radius: 25px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            margin-bottom: 30px;
-        }
-        
-        .progress-message {
-            color: #4a5568;
+        .calculator-subtitle {
             font-size: 1.1rem;
-            line-height: 1.8;
+            color: #718096;
+            text-align: center;
             margin-bottom: 40px;
         }
         
-        .explore-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 16px 40px;
-            border-radius: 50px;
-            font-size: 1.1rem;
+        .calculator-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        
+        .input-section {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .form-group label {
             font-weight: 600;
-            text-decoration: none;
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+            color: #2d3748;
+            font-size: 0.95rem;
+        }
+        
+        .input-group {
+            display: flex;
+            align-items: center;
+            background: #f7fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            overflow: hidden;
             transition: all 0.3s;
         }
         
-        .explore-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.5);
+        .input-group:focus-within {
+            border-color: #667eea;
+            background: #f0f4ff;
         }
         
-        .explore-btn svg {
-            width: 20px;
-            height: 20px;
-            fill: white;
+        .input-group input {
+            flex: 1;
+            border: none;
+            background: transparent;
+            padding: 12px 14px;
+            font-size: 1rem;
+            outline: none;
+        }
+        
+        .input-group .unit {
+            padding: 0 14px;
+            font-weight: 600;
+            color: #667eea;
+        }
+        
+        .calculate-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 14px 28px;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 8px 24px rgba(102, 126, 234, 0.3);
+            margin-top: 10px;
+        }
+        
+        .calculate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px rgba(102, 126, 234, 0.4);
+        }
+        
+        .calculate-btn:active {
+            transform: translateY(0);
+        }
+        
+        .reset-btn {
+            background: #e2e8f0;
+            color: #4a5568;
+            padding: 12px 28px;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .reset-btn:hover {
+            background: #cbd5e0;
+        }
+        
+        .results-section {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .results-card {
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+            border: 2px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 28px;
+        }
+        
+        .results-card h3 {
+            font-size: 1.4rem;
+            color: #2d3748;
+            margin-bottom: 24px;
+            font-weight: 700;
+        }
+        
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 0;
+            border-bottom: 1px solid #e2e8f0;
+            transition: all 0.3s;
+        }
+        
+        .result-item:last-child {
+            border-bottom: none;
+        }
+        
+        .result-item.highlighted {
+            background: rgba(102, 126, 234, 0.05);
+            padding: 14px 12px;
+            border-radius: 8px;
+            margin: 8px 0;
+        }
+        
+        .result-item label {
+            font-weight: 500;
+            color: #4a5568;
+            font-size: 0.95rem;
+        }
+        
+        .result-value {
+            font-weight: 700;
+            color: #667eea;
+            font-size: 1.2rem;
+        }
+        
+        .info-box {
+            background: rgba(102, 126, 234, 0.08);
+            border-left: 4px solid #667eea;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 10px;
+        }
+        
+        .info-box h4 {
+            color: #2d3748;
+            margin-bottom: 12px;
+            font-size: 1rem;
+            font-weight: 700;
+        }
+        
+        .info-box ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .info-box li {
+            color: #4a5568;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        
+        .info-box li strong {
+            color: #2d3748;
         }
         
         /* Footer */
@@ -466,17 +557,31 @@
             }
         }
         
+        @media (max-width: 1024px) {
+            .calculator-wrapper {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-menu {
+                display: none;
+            }
+        }
+        
         @media (max-width: 600px) {
             .header-content {
                 padding: 1rem;
             }
             
-            .progress-container {
+            .calculator-container {
                 padding: 40px 20px;
             }
             
-            .progress-title {
+            .calculator-title {
                 font-size: 1.6rem;
+            }
+            
+            .calculator-wrapper {
+                grid-template-columns: 1fr;
             }
             
             .footer-grid {
