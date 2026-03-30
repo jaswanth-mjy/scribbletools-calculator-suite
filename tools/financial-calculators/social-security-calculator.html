@@ -390,6 +390,165 @@
         .info-box li strong {
             color: #2d3748;
         }
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 28px;
+            font-size: 0.9rem;
+            flex-wrap: wrap;
+        }
+
+        .breadcrumb a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            color: #764ba2;
+        }
+
+        .breadcrumb span {
+            color: #cbd5e0;
+        }
+
+        .formula-section {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border-radius: 16px;
+            padding: 40px;
+            margin: 40px 0;
+            color: #e2e8f0;
+            border-left: 4px solid #667eea;
+        }
+
+        .formula-section h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: #a78bfa;
+        }
+
+        .formula-math {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            font-family: 'Times New Roman', 'Cambria Math', Georgia, serif;
+            font-size: 1.25rem;
+            margin: 20px 0;
+            padding: 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            overflow-x: auto;
+            font-style: italic;
+        }
+
+        .formula-math .var { color: #93c5fd; font-weight: 600; }
+        .formula-math .var.result { color: #a78bfa; font-size: 1.35rem; }
+        .formula-math .operator { color: #94a3b8; font-style: normal; }
+        .formula-math .equals { color: #f59e0b; font-style: normal; font-weight: 700; }
+        .formula-math sup { font-size: 0.7em; color: #fbbf24; }
+
+        .formula-legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-top: 20px;
+            padding-top: 16px;
+            border-top: 1px solid #334155;
+            justify-content: center;
+        }
+
+        .formula-legend .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.82rem;
+            color: #cbd5e0;
+        }
+
+        .formula-legend .legend-var {
+            color: #93c5fd;
+            font-weight: 700;
+        }
+
+        .formula-note {
+            font-size: 0.9rem;
+            color: #cbd5e0;
+            margin-top: 15px;
+            line-height: 1.8;
+        }
+
+        .faq-section {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(102, 126, 234, 0.1);
+        }
+
+        .faq-section h2 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            margin-bottom: 30px;
+            color: #2d3748;
+        }
+
+        .faq-grid { display: grid; gap: 15px; }
+        .faq-item { border: 2px solid #e2e8f0; border-radius: 12px; overflow: hidden; transition: all 0.3s; }
+        .faq-item:hover { border-color: #667eea; box-shadow: 0 4px 12px rgba(102, 126, 234, 0.1); }
+        .faq-question { padding: 20px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; background: #f7fafc; font-weight: 600; color: #2d3748; }
+        .faq-toggle { font-size: 1.5rem; color: #667eea; transition: all 0.3s; user-select: none; }
+        .faq-item.active .faq-toggle { transform: rotate(45deg); }
+        .faq-answer { padding: 0 20px; max-height: 0; overflow: hidden; transition: all 0.3s; color: #4a5568; line-height: 1.8; }
+        .faq-item.active .faq-answer { padding: 20px; max-height: 500px; }
+
+        .related-tools {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(102, 126, 234, 0.1);
+        }
+
+        .related-tools h2 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            margin-bottom: 30px;
+            color: #2d3748;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+        }
+
+        .tool-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 18px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            text-decoration: none;
+            color: #2d3748;
+            font-weight: 600;
+            transition: all 0.3s;
+            background: #fafbfc;
+        }
+
+        .tool-link:hover {
+            border-color: #667eea;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+        }
+
+        .tool-emoji { font-size: 1.5rem; }
         
         /* Image Section */
         .image-box {
@@ -654,6 +813,14 @@
 
     <!-- Main Content -->
     <main class="main-content">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span>/</span>
+            <a href="../../all-tools.html">All Tools</a>
+            <span>/</span>
+            <a href="social-security-calculator.html">Social Security Calculator</a>
+        </nav>
+
         <div class="calculator-container">
             <h1 class="calculator-title">Indian Pension & Retirement Calculator</h1>
             <p class="calculator-subtitle">Plan your retirement with EPF, NPS & Gratuity calculations</p>
@@ -771,6 +938,72 @@
         <div class="image-box">
             <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=1200" alt="Social security and pension planning" loading="lazy">
         </div>
+
+        <section class="formula-section">
+            <h3>📐 Retirement Corpus Formula Pattern</h3>
+            <div class="formula-math">
+                <span class="var result">TC</span>
+                <span class="equals">=</span>
+                <span class="var">EPF</span>
+                <span class="operator">+</span>
+                <span class="var">NPS</span>
+            </div>
+            <div class="formula-math">
+                <span class="var result">MP</span>
+                <span class="equals">=</span>
+                <span class="var">0.6</span>
+                <span class="operator">×</span>
+                <span class="var">TC</span>
+                <span class="operator">÷</span>
+                <span class="operator">(</span>
+                <span class="var">12</span>
+                <span class="operator">×</span>
+                <span class="var">RD</span>
+                <span class="operator">)</span>
+            </div>
+            <div class="formula-legend">
+                <div class="legend-item"><span class="legend-var">TC</span> = total corpus at retirement</div>
+                <div class="legend-item"><span class="legend-var">EPF</span> = projected EPF balance</div>
+                <div class="legend-item"><span class="legend-var">NPS</span> = projected NPS balance</div>
+                <div class="legend-item"><span class="legend-var">MP</span> = estimated monthly pension</div>
+                <div class="legend-item"><span class="legend-var">RD</span> = retirement duration (years)</div>
+            </div>
+            <p class="formula-note">Uses projected contributions, growth rates, and retirement duration assumptions.</p>
+        </section>
+
+        <section class="faq-section">
+            <h2>❓ Social Security FAQs</h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question">How is EPF projection calculated?<span class="faq-toggle">+</span></div>
+                    <div class="faq-answer">EPF is projected using current balance plus annual contributions and expected annual EPF return until retirement age.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Why include inflation in retirement planning?<span class="faq-toggle">+</span></div>
+                    <div class="faq-answer">Inflation reduces purchasing power over time. Including inflation gives a more realistic estimate of future expenses.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Is this an official pension estimate?<span class="faq-toggle">+</span></div>
+                    <div class="faq-answer">No. This tool provides indicative planning values based on your inputs and assumptions, not official EPFO/NPS statements.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Can I improve monthly retirement income?<span class="faq-toggle">+</span></div>
+                    <div class="faq-answer">Yes. Increasing annual contributions, delaying retirement, and improving return assumptions can increase projected pension.</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="related-tools">
+            <h2>🔗 Related Financial Tools</h2>
+            <div class="tools-grid">
+                <a href="retirement-calculator.html" class="tool-link"><span class="tool-emoji">🏖️</span>Retirement Calculator</a>
+                <a href="pension-calculator.html" class="tool-link"><span class="tool-emoji">🧓</span>Pension Calculator</a>
+                <a href="salary-calculator.html" class="tool-link"><span class="tool-emoji">💼</span>Salary Calculator</a>
+                <a href="savings-calculator.html" class="tool-link"><span class="tool-emoji">💰</span>Savings Calculator</a>
+                <a href="investment-calculator.html" class="tool-link"><span class="tool-emoji">📈</span>Investment Calculator</a>
+                <a href="compound-interest-calculator.html" class="tool-link"><span class="tool-emoji">🧮</span>Compound Interest</a>
+            </div>
+        </section>
     </main>
     
     <script>
@@ -870,6 +1103,15 @@
         
         // Auto-calculate on load
         window.addEventListener('load', calculateRetirement);
+
+        // FAQ toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.faq-item').forEach(item => {
+                item.querySelector('.faq-question').addEventListener('click', function() {
+                    item.classList.toggle('active');
+                });
+            });
+        });
     </script>
 
     <!-- Footer -->

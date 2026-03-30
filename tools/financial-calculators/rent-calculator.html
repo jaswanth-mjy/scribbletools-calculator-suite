@@ -29,6 +29,10 @@
     .page-header:before{content:'';position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,#4299e1,#667eea,#764ba2,#a855f7)}
     .page-header .icon{font-size:2.9rem;display:block;margin-bottom:10px}.page-header h2{font-size:2.35rem;font-weight:800;margin-bottom:10px}.page-header p{color:#718096;max-width:700px;margin:0 auto;line-height:1.7}
 
+    .breadcrumb{display:flex;align-items:center;gap:8px;margin-bottom:20px;font-size:.85rem}
+    .breadcrumb a{color:#667eea;text-decoration:none;font-weight:500}.breadcrumb a:hover{color:#764ba2}
+    .breadcrumb span{color:#a0aec0}
+
     .calc{display:grid;grid-template-columns:1.2fr 1fr;background:#fff;border-radius:16px;box-shadow:0 10px 40px rgba(0,0,0,.08);overflow:hidden;border:1px solid rgba(226,232,240,.8);margin-bottom:28px}
     .left{padding:34px;border-right:1px solid var(--b)}.right{padding:34px;background:linear-gradient(135deg,#f8fafc 0%,#f1f5f9 50%,#eff1fe 100%)}
     .title{display:flex;align-items:center;gap:10px;margin-bottom:18px;padding-bottom:14px;border-bottom:2px solid #f1f5f9}.title h3{font-size:1.2rem}
@@ -47,14 +51,37 @@
     .stats{display:grid;gap:10px}.card{background:#fff;border:1px solid #edf2f7;border-radius:12px;padding:14px;display:flex;justify-content:space-between;align-items:center}
     .card .k{font-size:.88rem;color:#4a5568}.card .v{font-weight:700}
 
-    .tableWrap,.content,.related{background:#fff;border-radius:16px;padding:32px;margin-bottom:24px;box-shadow:0 4px 20px rgba(0,0,0,.05);border:1px solid rgba(226,232,240,.6)}
-    .tableWrap h2,.content h2,.related h2{font-size:1.5rem;font-weight:800;margin-bottom:15px}
+    .tableWrap,.content,.related,.formula-section,.faq-section,.related-tools{background:#fff;border-radius:16px;padding:32px;margin-bottom:24px;box-shadow:0 4px 20px rgba(0,0,0,.05);border:1px solid rgba(226,232,240,.6)}
+    .tableWrap h2,.content h2,.related h2,.faq-section h2,.related-tools h2{font-size:1.5rem;font-weight:800;margin-bottom:15px}
     .table{width:100%;border-collapse:collapse;font-size:.92rem}.table th{background:linear-gradient(135deg,#1e293b 0%,#334155 100%);color:#fff;padding:12px;text-align:right}
     .table th:first-child,.table td:first-child{text-align:left}.table td{padding:11px;border-bottom:1px solid #eef2f7;text-align:right;color:#4a5568}
     .table tr:nth-child(even){background:#fafbfd}
     .content p{color:#4a5568;line-height:1.8;margin-bottom:10px}
     .tools{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}.tool{padding:12px 14px;background:#f8fafc;border:1px solid #edf2f7;border-radius:12px;text-decoration:none;color:#1a202c;font-weight:600}
     .tool:hover{border-color:#667eea;background:#fff}
+
+    .formula-section{background:linear-gradient(135deg,#1e293b 0%,#0f172a 100%);color:#e2e8f0;border-left:4px solid #667eea}
+    .formula-section h3{font-size:1.2rem;margin-bottom:20px;color:#a78bfa}
+    .formula-math{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;font-family:'Times New Roman','Cambria Math',Georgia,serif;font-size:1.2rem;padding:14px;background:rgba(255,255,255,.05);border-radius:8px;font-style:italic;margin:16px 0}
+    .formula-math .var{color:#93c5fd;font-weight:600}.formula-math .var.result{color:#a78bfa;font-size:1.32rem}
+    .formula-math .operator{color:#94a3b8;font-style:normal}.formula-math .equals{color:#f59e0b;font-style:normal;font-weight:700}
+    .formula-legend{display:flex;flex-wrap:wrap;gap:12px;margin-top:16px;padding-top:14px;border-top:1px solid #334155;justify-content:center}
+    .formula-legend .legend-item{display:flex;align-items:center;gap:6px;font-size:.82rem;color:#cbd5e0}
+    .formula-legend .legend-var{color:#93c5fd;font-weight:700}
+    .formula-note{color:#cbd5e0;font-size:.9rem;line-height:1.7;margin-top:12px}
+
+    .faq-grid{display:grid;gap:12px}
+    .faq-item{border:2px solid #e2e8f0;border-radius:12px;overflow:hidden;transition:all .3s;background:#fff}
+    .faq-item:hover{border-color:#667eea;box-shadow:0 4px 12px rgba(102,126,234,.1)}
+    .faq-question{padding:18px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;background:#f7fafc;font-weight:600;color:#2d3748}
+    .faq-toggle{font-size:1.4rem;color:#667eea;transition:all .3s;user-select:none}
+    .faq-item.active .faq-toggle{transform:rotate(45deg)}
+    .faq-answer{padding:0 18px;max-height:0;overflow:hidden;transition:all .3s;color:#4a5568;line-height:1.8}
+    .faq-item.active .faq-answer{padding:18px;max-height:300px}
+
+    .related-tools .tools-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+    .related-tools .tool-link{padding:12px 14px;background:#f8fafc;border:1px solid #edf2f7;border-radius:12px;text-decoration:none;color:#1a202c;font-weight:600;display:flex;align-items:center;gap:10px;transition:all .3s}
+    .related-tools .tool-link:hover{border-color:#667eea;background:#fff}
     
     .image-box{width:100%;border-radius:16px;overflow:hidden;margin:35px 0;height:350px;position:relative;box-shadow:0 10px 40px rgba(0,0,0,.1)}
     .image-box::after{content:'';position:absolute;bottom:0;left:0;right:0;height:50%;background:linear-gradient(to top,rgba(15,23,42,.4),transparent);pointer-events:none}
@@ -78,6 +105,7 @@
   </header>
 
   <div class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="../../index.html">Home</a><span>/</span><a href="../../all-tools.html">All Tools</a><span>/</span><a href="rent-calculator.html">Rent Calculator</a></nav>
     <div class="page-header"><span class="icon">🏠</span><h2>Rent Calculator</h2><p>Estimate monthly housing cost, lease total, move-in cash needed, and projected rent growth over upcoming years.</p></div>
 
     <section class="calc">
@@ -119,21 +147,38 @@
       </table>
     </section>
 
-    <section class="content">
-      <h2>How it Works</h2>
-      <p>This calculator combines recurring monthly costs and one-time move-in costs to estimate practical affordability and long-term housing spend.</p>
-      <p>Projected values assume a fixed annual rent increase percentage and constant monthly non-rent costs.</p>
+    <section class="formula-section">
+      <h3>📐 Rent Cost Formula Pattern</h3>
+      <div class="formula-math"><span class="var result">M</span><span class="equals">=</span><span class="var">R</span><span class="operator">+</span><span class="var">U</span><span class="operator">+</span><span class="var">P</span><span class="operator">+</span><span class="var">I</span><span class="operator">+</span><span class="var">O</span></div>
+      <div class="formula-math"><span class="var result">LT</span><span class="equals">=</span><span class="var">M</span><span class="operator">×</span><span class="var">m</span></div>
+      <div class="formula-legend">
+        <div class="legend-item"><span class="legend-var">M</span> = monthly housing total</div>
+        <div class="legend-item"><span class="legend-var">R</span> = rent</div>
+        <div class="legend-item"><span class="legend-var">U,P,I,O</span> = utilities, parking, insurance, other</div>
+        <div class="legend-item"><span class="legend-var">LT</span> = lease recurring total</div>
+        <div class="legend-item"><span class="legend-var">m</span> = lease months</div>
+      </div>
+      <p class="formula-note">Yearly projections apply the annual increase rate to rent for each future year.</p>
     </section>
 
-    <section class="related">
+    <section class="faq-section">
+      <h2>❓ Rent Calculator FAQs</h2>
+      <div class="faq-grid">
+        <div class="faq-item"><div class="faq-question">What is included in monthly housing cost?<span class="faq-toggle">+</span></div><div class="faq-answer">It includes rent plus utilities, parking, insurance, and any other monthly costs you enter.</div></div>
+        <div class="faq-item"><div class="faq-question">Does lease total include deposit and one-time fees?<span class="faq-toggle">+</span></div><div class="faq-answer">Lease total shown as recurring cost is monthly spending × lease months. Move-in cost separately includes deposit and one-time fees.</div></div>
+        <div class="faq-item"><div class="faq-question">How is projected future rent calculated?<span class="faq-toggle">+</span></div><div class="faq-answer">Each year's rent is increased by the annual rent increase rate you provide, then monthly total is recalculated.</div></div>
+      </div>
+    </section>
+
+    <section class="related related-tools">
       <h2>Related Financial Tools</h2>
-      <div class="tools">
-        <a class="tool" href="house-affordability-calculator.html">📐 House Affordability</a>
-        <a class="tool" href="mortgage-calculator.html">🏠 Mortgage Calculator</a>
-        <a class="tool" href="payment-calculator.html">📊 Payment Calculator</a>
-        <a class="tool" href="percent-off-calculator.html">🏷️ Percent Off Calculator</a>
-        <a class="tool" href="salary-calculator.html">💼 Salary Calculator</a>
-        <a class="tool" href="savings-calculator.html">💰 Savings Calculator</a>
+      <div class="tools tools-grid">
+        <a class="tool tool-link" href="house-affordability-calculator.html"><span>📐</span> House Affordability</a>
+        <a class="tool tool-link" href="mortgage-calculator.html"><span>🏠</span> Mortgage Calculator</a>
+        <a class="tool tool-link" href="payment-calculator.html"><span>📊</span> Payment Calculator</a>
+        <a class="tool tool-link" href="percent-off-calculator.html"><span>🏷️</span> Percent Off Calculator</a>
+        <a class="tool tool-link" href="salary-calculator.html"><span>💼</span> Salary Calculator</a>
+        <a class="tool tool-link" href="savings-calculator.html"><span>💰</span> Savings Calculator</a>
       </div>
     </section>
     
@@ -204,6 +249,11 @@
   }
 
   window.addEventListener('DOMContentLoaded', calculate);
+  document.addEventListener('DOMContentLoaded', function(){
+    document.querySelectorAll('.faq-item').forEach(item => {
+      item.querySelector('.faq-question').addEventListener('click', function(){ item.classList.toggle('active'); });
+    });
+  });
 </script>
 </body>
 </html>
