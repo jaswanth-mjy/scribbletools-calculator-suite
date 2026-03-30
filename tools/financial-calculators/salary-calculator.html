@@ -503,13 +503,89 @@
            }
        
            .formula-math {
-               font-family: 'Times New Roman', serif;
-               font-size: 1.1rem;
+               display: flex;
+               align-items: center;
+               justify-content: center;
+               gap: 8px;
+               flex-wrap: wrap;
+               font-family: 'Times New Roman', 'Cambria Math', Georgia, serif;
+               font-size: 1.25rem;
                margin: 20px 0;
-               padding: 15px;
+               padding: 16px;
                background: rgba(255, 255, 255, 0.05);
                border-radius: 8px;
                overflow-x: auto;
+               font-style: italic;
+           }
+
+           .formula-math .var {
+               color: #93c5fd;
+               font-weight: 600;
+           }
+
+           .formula-math .var.result {
+               color: #a78bfa;
+               font-size: 1.35rem;
+           }
+
+           .formula-math .operator {
+               color: #94a3b8;
+               font-style: normal;
+           }
+
+           .formula-math .equals {
+               color: #f59e0b;
+               font-style: normal;
+               font-weight: 700;
+           }
+
+           .formula-math sup {
+               font-size: 0.7em;
+               vertical-align: super;
+               line-height: 0;
+               color: #fbbf24;
+           }
+
+           .formula-math .fraction {
+               display: inline-flex;
+               flex-direction: column;
+               align-items: center;
+               vertical-align: middle;
+               margin: 0 4px;
+           }
+
+           .formula-math .fraction .num {
+               border-bottom: 2px solid #64748b;
+               padding: 0 8px 4px;
+               font-size: 0.95em;
+           }
+
+           .formula-math .fraction .den {
+               padding: 4px 8px 0;
+               font-size: 0.95em;
+           }
+
+           .formula-legend {
+               display: flex;
+               flex-wrap: wrap;
+               gap: 14px;
+               margin-top: 20px;
+               padding-top: 16px;
+               border-top: 1px solid #334155;
+               justify-content: center;
+           }
+
+           .formula-legend .legend-item {
+               display: flex;
+               align-items: center;
+               gap: 6px;
+               font-size: 0.82rem;
+               color: #cbd5e0;
+           }
+
+           .formula-legend .legend-var {
+               color: #93c5fd;
+               font-weight: 700;
            }
        
            .formula-note {
@@ -950,21 +1026,45 @@
 
         <!-- Formula Section -->
         <section class="formula-section">
-            <h3>📐 How It Works</h3>
+            <h3>📐 Salary Formula Pattern</h3>
             <div class="formula-math">
-                <strong>Taxable Income</strong> = Annual Gross - Standard Deduction (₹50,000)
+                <span class="var result">N</span>
+                <span class="equals">=</span>
+                <span class="var">G</span>
+                <span class="operator">−</span>
+                <span class="operator">(</span>
+                <span class="var">E</span>
+                <span class="operator">+</span>
+                <span class="var">PT</span>
+                <span class="operator">+</span>
+                <span class="var">OD</span>
+                <span class="operator">+</span>
+                <span class="var">T</span>
+                <span class="operator">)</span>
             </div>
             <div class="formula-math">
-                <strong>Income Tax</strong> = Applied using FY2024-25 tax slab (New Regime)
+                <span class="var">T</span>
+                <span class="equals">=</span>
+                <span class="var">f</span>
+                <span class="operator">(</span>
+                <span class="var">TI</span>
+                <span class="operator">)</span>
+                <span class="operator">,</span>
+                <span class="var">TI</span>
+                <span class="equals">=</span>
+                <span class="var">AG</span>
+                <span class="operator">−</span>
+                <span class="var">50,000</span>
             </div>
-            <p class="formula-note">
-                Tax Slabs (New Regime):<br>
-                • ₹0 - ₹3L = 0%<br>
-                • ₹3L - ₹5L = 5%<br>
-                • ₹5L - ₹7.5L = 10%<br>
-                • ₹7.5L - ₹10L = 15%<br>
-                • Higher slabs: 20%, 25%, 30%
-            </p>
+            <div class="formula-legend">
+                <div class="legend-item"><span class="legend-var">N</span> = net monthly salary</div>
+                <div class="legend-item"><span class="legend-var">G</span> = gross monthly salary</div>
+                <div class="legend-item"><span class="legend-var">E</span> = EPF deduction</div>
+                <div class="legend-item"><span class="legend-var">PT</span> = professional tax</div>
+                <div class="legend-item"><span class="legend-var">OD</span> = other deductions</div>
+                <div class="legend-item"><span class="legend-var">T</span> = monthly income tax</div>
+            </div>
+            <p class="formula-note">Tax uses FY 2024-25 new-regime slab function applied on annual taxable income.</p>
         </section>
 
         <!-- FAQ Section -->

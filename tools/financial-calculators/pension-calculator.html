@@ -503,13 +503,70 @@
         }
 
         .formula-math {
-            font-family: 'Times New Roman', serif;
-            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            font-family: 'Times New Roman', 'Cambria Math', Georgia, serif;
+            font-size: 1.25rem;
             margin: 20px 0;
-            padding: 15px;
+            padding: 16px;
             background: rgba(255, 255, 255, 0.05);
             border-radius: 8px;
             overflow-x: auto;
+            font-style: italic;
+        }
+
+        .formula-math .var {
+            color: #93c5fd;
+            font-weight: 600;
+        }
+
+        .formula-math .var.result {
+            color: #a78bfa;
+            font-size: 1.35rem;
+        }
+
+        .formula-math .operator {
+            color: #94a3b8;
+            font-style: normal;
+        }
+
+        .formula-math .equals {
+            color: #f59e0b;
+            font-style: normal;
+            font-weight: 700;
+        }
+
+        .formula-math .formula-cap {
+            color: #fbbf24;
+            font-style: normal;
+            font-size: 0.95rem;
+            font-weight: 700;
+        }
+
+        .formula-legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-top: 20px;
+            padding-top: 16px;
+            border-top: 1px solid #334155;
+            justify-content: center;
+        }
+
+        .formula-legend .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.82rem;
+            color: #cbd5e0;
+        }
+
+        .formula-legend .legend-var {
+            color: #93c5fd;
+            font-weight: 700;
         }
 
         .formula-note {
@@ -950,12 +1007,44 @@
 
         <section class="formula-section">
             <h3>📐 Pension & Gratuity Formula</h3>
-            <div class="formula-math">Gratuity = ₹15 × Service Years (capped at ₹50L)</div>
-            <p class="formula-note">
-                Pension payouts are generally derived from salary components and scheme tiers.
-                Gratuity is service-linked and often capped, while pension tier structure can vary by employer or policy.
-                DA integration may also impact effective pension payouts over time.
-            </p>
+            <div class="formula-math">
+                <span class="var result">G</span>
+                <span class="equals">=</span>
+                <span class="var">min</span>
+                <span class="operator">(</span>
+                <span class="var">15</span>
+                <span class="operator">×</span>
+                <span class="var">S</span>
+                <span class="operator">×</span>
+                <span class="var">Y</span>
+                <span class="operator">÷</span>
+                <span class="var">26</span>
+                <span class="operator">,</span>
+                <span class="formula-cap">₹50,00,000</span>
+                <span class="operator">)</span>
+            </div>
+            <div class="formula-math">
+                <span class="var result">P</span>
+                <span class="equals">=</span>
+                <span class="var">B</span>
+                <span class="operator">×</span>
+                <span class="var">TierFactor</span>
+                <span class="operator">×</span>
+                <span class="operator">(</span>
+                <span class="var">1</span>
+                <span class="operator">+</span>
+                <span class="var">DA</span>
+                <span class="operator">)</span>
+            </div>
+            <div class="formula-legend">
+                <div class="legend-item"><span class="legend-var">G</span> = gratuity amount</div>
+                <div class="legend-item"><span class="legend-var">S</span> = last drawn basic salary</div>
+                <div class="legend-item"><span class="legend-var">Y</span> = completed years of service</div>
+                <div class="legend-item"><span class="legend-var">P</span> = pension amount</div>
+                <div class="legend-item"><span class="legend-var">B</span> = pension base salary</div>
+                <div class="legend-item"><span class="legend-var">DA</span> = dearness allowance rate</div>
+            </div>
+            <p class="formula-note">Shows capped gratuity and tier-adjusted pension in a formula-first pattern.</p>
         </section>
 
         <section class="faq-section">

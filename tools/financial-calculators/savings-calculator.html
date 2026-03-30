@@ -503,13 +503,70 @@
         }
 
         .formula-math {
-            font-family: 'Times New Roman', serif;
-            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            font-family: 'Times New Roman', 'Cambria Math', Georgia, serif;
+            font-size: 1.25rem;
             margin: 20px 0;
-            padding: 15px;
+            padding: 16px;
             background: rgba(255, 255, 255, 0.05);
             border-radius: 8px;
             overflow-x: auto;
+            font-style: italic;
+        }
+
+        .formula-math .var {
+            color: #93c5fd;
+            font-weight: 600;
+        }
+
+        .formula-math .var.result {
+            color: #a78bfa;
+            font-size: 1.35rem;
+        }
+
+        .formula-math .operator {
+            color: #94a3b8;
+            font-style: normal;
+        }
+
+        .formula-math .equals {
+            color: #f59e0b;
+            font-style: normal;
+            font-weight: 700;
+        }
+
+        .formula-math sup {
+            font-size: 0.7em;
+            vertical-align: super;
+            line-height: 0;
+            color: #fbbf24;
+        }
+
+        .formula-legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-top: 20px;
+            padding-top: 16px;
+            border-top: 1px solid #334155;
+            justify-content: center;
+        }
+
+        .formula-legend .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.82rem;
+            color: #cbd5e0;
+        }
+
+        .formula-legend .legend-var {
+            color: #93c5fd;
+            font-weight: 700;
         }
 
         .formula-note {
@@ -946,13 +1003,39 @@
 
         <section class="formula-section">
             <h3>📐 Savings Growth Formula</h3>
-            <div class="formula-math">FV = PV × (1 + r/100)<sup>n</sup></div>
-            <p class="formula-note">
-                Here, <strong>FV</strong> is future value, <strong>PV</strong> is present value,
-                <strong>r</strong> is annual return rate, and <strong>n</strong> is years.
-                Compound interest helps money grow faster over longer periods.
-                To estimate real purchasing power, compare this nominal growth with inflation-adjusted returns.
-            </p>
+            <div class="formula-math">
+                <span class="var result">FV</span>
+                <span class="equals">=</span>
+                <span class="var">PV</span>
+                <span class="operator">×</span>
+                <span class="operator">(</span>
+                <span class="var">1</span>
+                <span class="operator">+</span>
+                <span class="var">r</span>
+                <span class="operator">)</span>
+                <sup>n</sup>
+            </div>
+            <div class="formula-math">
+                <span class="var result">RV</span>
+                <span class="equals">=</span>
+                <span class="var">FV</span>
+                <span class="operator">÷</span>
+                <span class="operator">(</span>
+                <span class="var">1</span>
+                <span class="operator">+</span>
+                <span class="var">i</span>
+                <span class="operator">)</span>
+                <sup>n</sup>
+            </div>
+            <div class="formula-legend">
+                <div class="legend-item"><span class="legend-var">FV</span> = future value</div>
+                <div class="legend-item"><span class="legend-var">PV</span> = principal/current value</div>
+                <div class="legend-item"><span class="legend-var">r</span> = annual return rate</div>
+                <div class="legend-item"><span class="legend-var">i</span> = inflation rate</div>
+                <div class="legend-item"><span class="legend-var">RV</span> = inflation-adjusted value</div>
+                <div class="legend-item"><span class="legend-var">n</span> = years</div>
+            </div>
+            <p class="formula-note">This visual formula pattern shows both nominal growth and real purchasing-power value.</p>
         </section>
 
         <section class="faq-section">

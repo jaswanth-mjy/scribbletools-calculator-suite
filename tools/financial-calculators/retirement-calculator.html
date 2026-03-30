@@ -503,13 +503,70 @@
         }
 
         .formula-math {
-            font-family: 'Times New Roman', serif;
-            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            font-family: 'Times New Roman', 'Cambria Math', Georgia, serif;
+            font-size: 1.25rem;
             margin: 20px 0;
-            padding: 15px;
+            padding: 16px;
             background: rgba(255, 255, 255, 0.05);
             border-radius: 8px;
             overflow-x: auto;
+            font-style: italic;
+        }
+
+        .formula-math .var {
+            color: #93c5fd;
+            font-weight: 600;
+        }
+
+        .formula-math .var.result {
+            color: #a78bfa;
+            font-size: 1.35rem;
+        }
+
+        .formula-math .operator {
+            color: #94a3b8;
+            font-style: normal;
+        }
+
+        .formula-math .equals {
+            color: #f59e0b;
+            font-style: normal;
+            font-weight: 700;
+        }
+
+        .formula-math sup {
+            font-size: 0.7em;
+            vertical-align: super;
+            line-height: 0;
+            color: #fbbf24;
+        }
+
+        .formula-legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-top: 20px;
+            padding-top: 16px;
+            border-top: 1px solid #334155;
+            justify-content: center;
+        }
+
+        .formula-legend .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.82rem;
+            color: #cbd5e0;
+        }
+
+        .formula-legend .legend-var {
+            color: #93c5fd;
+            font-weight: 700;
         }
 
         .formula-note {
@@ -949,11 +1006,36 @@
 
         <section class="formula-section">
             <h3>📐 Retirement Corpus Formula</h3>
-            <div class="formula-math">Required Corpus = Annual Expense at Retirement ÷ 4% (then inflation-adjusted)</div>
-            <p class="formula-note">
-                A common planning guideline is the <strong>4% withdrawal rule</strong>, where annual retirement withdrawal is about 4% of your corpus.
-                This estimate should be adjusted for inflation and expected post-retirement returns to maintain long-term purchasing power.
-            </p>
+            <div class="formula-math">
+                <span class="var result">C</span>
+                <span class="equals">=</span>
+                <span class="var">AE</span>
+                <span class="operator">÷</span>
+                <span class="var">WR</span>
+            </div>
+            <div class="formula-math">
+                <span class="var">AE</span>
+                <span class="equals">=</span>
+                <span class="var">ME</span>
+                <span class="operator">×</span>
+                <span class="var">12</span>
+                <span class="operator">×</span>
+                <span class="operator">(</span>
+                <span class="var">1</span>
+                <span class="operator">+</span>
+                <span class="var">i</span>
+                <span class="operator">)</span>
+                <sup>y</sup>
+            </div>
+            <div class="formula-legend">
+                <div class="legend-item"><span class="legend-var">C</span> = required retirement corpus</div>
+                <div class="legend-item"><span class="legend-var">AE</span> = annual expense at retirement</div>
+                <div class="legend-item"><span class="legend-var">ME</span> = current monthly expense</div>
+                <div class="legend-item"><span class="legend-var">WR</span> = withdrawal rate (typically 4%)</div>
+                <div class="legend-item"><span class="legend-var">i</span> = inflation rate</div>
+                <div class="legend-item"><span class="legend-var">y</span> = years to retirement</div>
+            </div>
+            <p class="formula-note">This follows a formula-style 4% withdrawal framework with inflation projection.</p>
         </section>
 
         <section class="faq-section">
